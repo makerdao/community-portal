@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import Header from "../ui/header"
 import Breadcrumbs from '@modules/ui/Breadcrumbs'
-
+import Sidenav from '@modules/ui/Sidenav'
 const shortcodes = {Breadcrumbs};
 
 const Layout = ({ children }) => {

@@ -1,9 +1,10 @@
 import React from 'react'
 import SEO from '@modules/utility/seo';
+import Sidenav from '@modules/ui/Sidenav'
 
 export default (props) => {
 	const {children, pageContext, uri} = props; 
-	const {title, author, date, description, keywords} = pageContext.frontmatter; 
+	const {title, author, date, description, keywords, hideSideNav} = pageContext.frontmatter; 
 
 	let fileName = uri.split('/'); //NOTE(Rejon): Remove the first element, it'll always be an empty string. 
 
@@ -13,6 +14,7 @@ export default (props) => {
 	return (
 		<>
 			<SEO title={_pageTitle} description={description} keywords={keywords} />
+			<Sidenav/>
 			<article>
 				{children}
 			</article>
