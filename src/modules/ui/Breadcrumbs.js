@@ -3,21 +3,22 @@ import React from "react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
 import { jsx } from "theme-ui";
+import { useLocation } from "@reach/router"
 
-import { usePage } from "@modules/layouts/PageContext";
 
 const Breadcrumbs = ({ children, pageContext }) => {
-  const { uri } = usePage();
-
-  let currentPath = "/";
-  let fileName = uri.split("/"); //NOTE(Rejon): Remove the first element, it'll always be an empty string.
-  fileName.splice(0,2);
+  let {pathname} = useLocation();
+  pathname = pathname.replace(/\/+$/, ""); //Remove trailing slashes
   
+  let locale = 'en'
+  let currentPath = pathname;
+  let fileName = pathname.split("/").splice(0,2); //NOTE(Rejon): Remove the first element, it'll always be an empty string.
+  fileName.splice(0,2);
 
   return (
     <>
       <div>
-        {uri !== "/" && <Link to="/">Home</Link>} /
+        {pathname !== `/${locale}` && <><Link to={`/${locale}`}>Home</Link>{' /'}</>} 
         {fileName.map((pathName, index) => {
           currentPath += pathName + "/";
           let output = pathName;

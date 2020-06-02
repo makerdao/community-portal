@@ -1,7 +1,8 @@
-//NOTE(Rejon): This context provider exists soley to pass down localtion and pageContext to non page components.
+//NOTE(Rejon): This context provider exists to pass context of page related props like locale, ect.
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { useLocation } from "@reach/router"
 
 export const PageDataContext = createContext();
 
@@ -15,6 +16,9 @@ export const usePage = () => {
 };
 
 const PageDataProvider = ({ children, value }) => {
+  let {pathname} = useLocation();
+  pathname = pathname.replace(/\/+$/, ""); //Remove trailing slashes
+
   const { allDirectory } = useStaticQuery(graphql`
     query getDefaultLocale {
       allDirectory(
@@ -29,8 +33,6 @@ const PageDataProvider = ({ children, value }) => {
 
   const locales = allDirectory.nodes.map((n) => n.absolutePath.split("/").pop());
   const [locale, setLocale] = useState(locales[0]);
-
-  const { location, pageContext, uri } = value;
   
   //Update local storage if it doesn't match app state.
   useEffect(() => {
@@ -41,20 +43,17 @@ const PageDataProvider = ({ children, value }) => {
 
   //Update app locale if our url locale route has changed. 
   useEffect(() => {
-    const uriSplit = uri.split('/'); //uri will be (/locale/path/to/file). We need the locale part.
+    const uriSplit = pathname.split('/'); //uri will be (/locale/path/to/file). We need the locale part.
 
     //NOTE(Rejon): Index 1 of the uriSplit should be the locale, but in the case it's not we check.
     if (typeof uriSplit[1] === 'string' && locales.indexOf(uriSplit[1]) && locale !== uriSplit[1] && uriSplit[1] !== '') {
       setLocale(uriSplit[1]);
     }
-  }, [uri, locale, locales])
+  }, [pathname, locale, locales])
 
   return (
     <PageDataContext.Provider
       value={{
-        location,
-        pageContext,
-        uri,
         setLocale,
         locale
       }}

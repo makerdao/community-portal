@@ -5,32 +5,39 @@ import React from "react";
 import { jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
+import {Sidenav} from '@theme-ui/sidenav'
 
 const Header = () => {
-  const { site, allDirectory } = useStaticQuery(graphql`
+  const { site, allMdx } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
           title
         }
       }
+
+      allMdx(filter: {fileAbsolutePath: {regex: "/\/content\/([^\/]+)\/?\/(header.mdx)$/"}}) {
+        nodes {
+          fileAbsolutePath
+          headings(depth: h1) {
+            value
+            depth
+          }
+        }
+      }
     }
+
   `);
+
+  console.log("Header",allMdx)
+
+  
 
   const siteTitle = site.siteMetadata.title;
 
   return (
     <header sx={{ marginBottom: "1.45rem" }}>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-      </div>
+
     </header>
   );
 };

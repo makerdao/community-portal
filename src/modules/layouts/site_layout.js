@@ -12,7 +12,9 @@ import { MDXProvider } from "@mdx-js/react";
 import Header from "../ui/header";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import Sidenav from "@modules/ui/Sidenav";
-const shortcodes = { Breadcrumbs };
+import StatusBanner from '@modules/ui/StatusBanner';
+
+const shortcodes = { Breadcrumbs, StatusBanner, Sidebar };
 
 const Layout = ({ children }) => {
   return (
