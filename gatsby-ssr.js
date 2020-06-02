@@ -5,12 +5,9 @@
  */
 
 // You can delete this file if you're not using it
-import React from 'react';
-import {PageDataProvider} from "@modules/layouts/PageContext"
+import React from "react";
+import { PageDataProvider } from "@modules/layouts/PageContext";
 
-
-export const wrapPageElement = ({element, props}) => (
-	<PageDataProvider value={props}>
-		{element}
-	</PageDataProvider>
-)
+export const wrapPageElement = ({ element, props }) => (
+  <PageDataProvider value={props}>{element}</PageDataProvider>
+);

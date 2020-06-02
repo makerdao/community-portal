@@ -1,30 +1,25 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { AccordionNav } from '@theme-ui/sidenav'
-import {useStaticQuery, graphql} from 'gatsby'
+import { jsx } from "theme-ui";
+import { AccordionNav } from "@theme-ui/sidenav";
+import { useStaticQuery, graphql } from "gatsby";
 
-
-const Sidenav = props => {
-	const data = useStaticQuery(graphql`
-		{
-				allMdx {
-    nodes {
-      headings {
-        depth
-        value
+const Sidenav = (props) => {
+  const data = useStaticQuery(graphql`
+    {
+      allMdx {
+        nodes {
+          headings {
+            depth
+            value
+          }
+        }
       }
     }
-  }
-		}
-	`)
+  `);
 
-	console.log(data)
+  console.log(data);
 
-	return (
-		<div>
+  return <div>Hi</div>;
+};
 
-		</div>
-	)
-}
-
-export default Sidenav
+export default Sidenav;

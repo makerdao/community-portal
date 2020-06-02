@@ -1,25 +1,58 @@
-/** @jsx jsx */
-import React from "react"
-import {Card, Box, Label, Input, Button, Heading, jsx, useColorMode} from 'theme-ui'
+import React, {useEffect} from "react";
+import { Helmet } from "react-helmet";
+import { useNavigate } from "@reach/router"
+import { useStaticQuery, graphql } from "gatsby";
+import {usePage} from '@modules/layouts/PageContext';
 
-import SEO from "../modules/utility/seo"
 
+//This page doesn't exist and solely acts as a reroute for language. 
 const IndexPage = () => {
-  const [colorMode, setColorMode] = useColorMode()
-  
-  return (
-    <>
-      <SEO title="Home" />
-      <Card>
-        <Heading variant="h2" as="h2"> Current Theme: {colorMode === 'default' ? 'Maker Default' : 'Oasis'}</Heading>
-        <Box>
-          <Label>Example Input</Label>
-          <Input defaultValue="Default Text"></Input>
-          <Button sx={{mt: 3}} onClick={() => setColorMode(colorMode === 'default' ? 'oasis' : 'default')}>Toggle Theme</Button>
-        </Box>
-      </Card>
-    </>
-  )
-}
+  const navigate = useNavigate();
+  const {locale, setLocale} = usePage();
 
-export default IndexPage
+  //Run a query to get top level directories in the content folder. 
+  //ie. /content/en/  /content/es ect...
+  const { allDirectory } = useStaticQuery(graphql`
+    query getLocalePaths {
+      allDirectory(
+        filter: { absolutePath: { regex: "//content/([^/]+)[^/]$/" } }
+      ) {
+        nodes {
+          absolutePath
+        }
+      }
+    }
+  `);
+  
+  //Navigate to locale index page. /en /es /de /fr ect...
+  useEffect(() => {
+    //Get list of locales from content directory top level folder paths. 
+    const locales = allDirectory.nodes.map((n) => n.absolutePath.split("/").pop());
+    let initialLocale = locale; 
+    //Check if the locale is in local storage. 
+    const localeSetting = localStorage.getItem('locale')
+
+    //If it is and it exists in the content directory, we've got a valid locale.
+    if (localeSetting && locales.indexOf(localeSetting) !== -1) {
+      initialLocale = localeSetting;
+    }
+
+    //Check browser settings for current language. 
+    const [browserSetting] = navigator.language.split('-');
+    
+    //If it is and it exists in the content directory, we've got a valid locale.
+    if (locales.indexOf(browserSetting) !== -1) {
+      initialLocale = browserSetting; 
+    }
+
+    navigate(`/${initialLocale}`, {replace: true});
+  })
+
+  return (
+    <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+    </Helmet>  
+  );
+};
+
+export default IndexPage;

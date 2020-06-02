@@ -5,17 +5,16 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 
-import { MDXProvider } from "@mdx-js/react"
-import Header from "../ui/header"
-import Breadcrumbs from '@modules/ui/Breadcrumbs'
-import Sidenav from '@modules/ui/Sidenav'
-const shortcodes = {Breadcrumbs};
+import { MDXProvider } from "@mdx-js/react";
+import Header from "../ui/header";
+import Breadcrumbs from "@modules/ui/Breadcrumbs";
+import Sidenav from "@modules/ui/Sidenav";
+const shortcodes = { Breadcrumbs };
 
 const Layout = ({ children }) => {
-
   return (
     <>
       <Header />
@@ -27,9 +26,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>
-          <MDXProvider components={shortcodes}>
-            {children}
-          </MDXProvider>
+          <MDXProvider components={shortcodes}>{children}</MDXProvider>
         </main>
         <footer>
           © {new Date().getFullYear()}, Built with
@@ -40,11 +37,11 @@ const Layout = ({ children }) => {
         </footer>
       </div>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
