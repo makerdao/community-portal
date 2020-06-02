@@ -1,42 +1,53 @@
 /** @jsx jsx */
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import {jsx} from 'theme-ui'
+import Link  from "@modules/utility/Link";
+import PropTypes from "prop-types";
+import React from "react";
+import { jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
+import { useStaticQuery, graphql } from "gatsby";
+import {Sidenav} from '@theme-ui/sidenav'
 
-const Header = ({ siteTitle }) => (
-  <header sx={{bg: 'primary', marginBottom: '1.45rem'}}>
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-        display: 'flex',
-        'alignItems': 'center'
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const Header = () => {
+  const { site, allMdx } = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+
+      allMdx(filter: {fileAbsolutePath: {regex: "/\/content\/([^\/]+)\/?\/(header.mdx)$/"}}) {
+        nodes {
+          fileAbsolutePath
+          headings(depth: h1) {
+            value
+            depth
+          }
+        }
+      }
+    }
+
+  `);
+
+  console.log("Header",allMdx)
+
+  
+
+  const siteTitle = site.siteMetadata.title;
+
+  return (
+    <header sx={{ marginBottom: "1.45rem" }}>
+
+    </header>
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;

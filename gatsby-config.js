@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require("path");
 
 module.exports = {
   siteMetadata: {
@@ -6,17 +6,10 @@ module.exports = {
     description: `Gatsby DaiUI Starter`,
     author: `Réjon Taylor-Foster (@Maximum_Crash)`,
     copyright: "",
-
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -29,11 +22,12 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    { resolve: 'gatsby-plugin-theme-ui',
+    {
+      resolve: "gatsby-plugin-theme-ui",
       options: {
-        prismPreset: 'night-owl',
-        preset: '@makerdao/dai-ui-theme-maker'
-      }
+        prismPreset: "night-owl",
+        preset: "@makerdao/dai-ui-theme-maker",
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -46,6 +40,10 @@ module.exports = {
       resolve: "gatsby-plugin-page-creator",
       options: {
         path: `${__dirname}/content`,
+        ignore: {
+          patterns: [`**/header.mdx`, `**/sidebar.mdx`],
+          options: {nocase: true}
+        }
       },
     },
     {
@@ -60,33 +58,35 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve('./src/modules/layouts/default_layout.js')
+          default: require.resolve("./src/modules/layouts/default_layout.js"),
         },
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`
+            resolve: `gatsby-remark-images`,
           },
         ],
       },
     },
-    { //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
+    {
+      //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "@modules": path.resolve(__dirname, 'src/modules'),
-          "@src": path.resolve(__dirname, 'src'),
-
-          "@pages": path.resolve(__dirname, 'src/pages'),
-          "@images": path.resolve(__dirname, 'public/images'),
+          "@modules": path.resolve(__dirname, "src/modules"),
+          "@src": path.resolve(__dirname, "src"),
+          "@utils": path.resolve(__dirname, 'src/utils.js'),
+          "@pages": path.resolve(__dirname, "src/pages"),
+          "@images": path.resolve(__dirname, "public/images"),
         },
-        extensions: [ //NOTE(Rejon): You don't have to write .js at the end of js files now.
-          "js"
-        ]
-      }
-    }
-    
+        extensions: [
+          //NOTE(Rejon): You don't have to write .js at the end of js files now.
+          "js",
+        ],
+      },
+    },
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
