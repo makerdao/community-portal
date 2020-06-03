@@ -32,9 +32,8 @@ export default (props) => {
 	  return undefined; 
   }
 
-  console.log(pageContext)
-
   //SEO page title priority is: frontmatter title -> First H1 in mdx -> Filename fallback from uri
+  //NOTE(Rejon): If the page is an index of a directory, the uri split will be the name of the directory. ie. /en/bounties -> bounties
   const _pageTitle = title || getFirstHeading() || uri.split("/").pop()
 
   return (

@@ -48,7 +48,7 @@ module.exports = {
       options: {
         path: `${__dirname}/content`,
         ignore: {
-          patterns: [`**/header.mdx`, `**/sidebar.mdx`],
+          patterns: [`**/header.mdx`],
           options: {nocase: true}
         }
       },
