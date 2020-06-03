@@ -22,7 +22,7 @@ _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-
 1.  **Clone**
 
     ```shell
-    git clone https://github.com/MaximumCrash/maker-portal-sandbox.git
+    git clone https://github.com/makerdao/community-portal.git
     ```
 
 2.  **Install**
