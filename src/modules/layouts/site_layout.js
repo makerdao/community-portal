@@ -9,16 +9,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { MDXProvider } from "@mdx-js/react";
+
 import Header from "../ui/header";
-import Breadcrumbs from "@modules/ui/Breadcrumbs";
-import Sidenav from "@modules/ui/Sidenav";
-import StatusBanner from '@modules/ui/StatusBanner';
 
-const shortcodes = { Breadcrumbs, StatusBanner, Sidebar };
+import { PageDataProvider } from "@modules/layouts/PageContext";
+import Shortcodes from '@modules/ui/shortcodes';
 
-const Layout = ({ children }) => {
-  return (
-    <>
+const Layout = ({ children }) => (
+    <PageDataProvider>
       <Header />
       <div
         style={{
@@ -28,7 +26,9 @@ const Layout = ({ children }) => {
         }}
       >
         <main>
-          <MDXProvider components={shortcodes}>{children}</MDXProvider>
+          <MDXProvider components={Shortcodes}>
+            {children}
+          </MDXProvider>
         </main>
         <footer>
           © {new Date().getFullYear()}, Built with
@@ -38,9 +38,8 @@ const Layout = ({ children }) => {
           and <a href="https://github.com/makerdao/dai-ui">Dai-Ui</a>
         </footer>
       </div>
-    </>
+    </PageDataProvider>
   );
-};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

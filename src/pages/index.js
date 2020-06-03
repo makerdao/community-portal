@@ -8,7 +8,7 @@ import {usePage} from '@modules/layouts/PageContext';
 //This page doesn't exist and solely acts as a reroute for language. 
 const IndexPage = () => {
   const navigate = useNavigate();
-  const {locale, setLocale} = usePage();
+  const {locale} = usePage();
 
   //Run a query to get top level directories in the content folder. 
   //ie. /content/en/  /content/es ect...
@@ -45,6 +45,7 @@ const IndexPage = () => {
       initialLocale = browserSetting; 
     }
 
+    //Replace current route with locale based index. 
     navigate(`/${initialLocale}`, {replace: true});
   })
 
