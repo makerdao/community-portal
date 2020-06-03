@@ -18,8 +18,7 @@ module.exports = {
         name: `Gatsby + Dai-Ui Starter`,
         short_name: `Gatsby + Dai-Ui`,
         start_url: `/`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        display: `minimal-ui`, // This path is relative to the root of the site.
       },
     },
     {

@@ -22,7 +22,7 @@ const PageDataProvider = ({ children, value }) => {
   const { allDirectory } = useStaticQuery(graphql`
     query getDefaultLocale {
       allDirectory(
-        filter: { absolutePath: { regex: "//content/([^/]+)[^/]$/" } }
+        filter: { absolutePath: { regex: "//content/([^/]+)[^/]$/" } }  
       ) {
         nodes {
           absolutePath

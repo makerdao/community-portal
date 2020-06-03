@@ -1367,31 +1367,17 @@
     core-js "^3.4.1"
     regenerator-runtime "^0.13.3"
 
-"@makerdao/dai-ui-icons@^0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.29.tgz#4d25f82bbdde20184e45f4b64c7304df62ca4e09"
-  integrity sha512-I9Aerw3x6HkMRLUwgpveaNII2UHs1LZUuO/q4zPq577KvT33EWVxp3HHc17guNeAHshJXt7TRWUJNxsVZhCRXg==
+"@makerdao/dai-ui-icons@^0.0.38":
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.38.tgz#cbd6b559f01f6d03c2481b38dde273ca8f2b812c"
+  integrity sha512-3Ua/ZLJe3grIAnAEavqzHAI7Uquru/01JrWGZJvyiDtkFgutDC5zBN/3aocrJ8h+JfyPPfEkxDBjaRW5Hgc3HA==
 
-"@makerdao/dai-ui-theme-maker@^0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.29.tgz#f60ee71d3a82fd74775352bd9e25305e3ff333d5"
-  integrity sha512-+PQVw3msSFL0uHiFCNHhJ81VZZwgXrHqwPT2jisPXxcTj8oqtMRK2WNxRwqf11fpFD2Tx1T3AHKuam6l7EQUFA==
+"@makerdao/dai-ui-theme-maker@^0.0.38":
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.38.tgz#b48f11cc6ae0f5040cc8761cacbc02cd1c4895ec"
+  integrity sha512-paSgGIc2onxlE0p0tr4jpa/N7IrGst0zcktGiKdrhl33HmYV1DXScGm4dWzLBFHPU7moq12herP5q6HWWrS1XQ==
   dependencies:
     "@theme-ui/color" "^0.3.1"
-
-"@makerdao/dai-ui-theme-maker@^0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.35.tgz#1a3296f14a4f11f58664d21164417a1a85fd0fab"
-  integrity sha512-pPVYMfMubabgp/8FAXW5DSQUMASmLrOSx75ImgmPj+nTI2YDaevkDmrswCsPjWtYQ7wHy6wPJYweAz+0IeJ5Zg==
-  dependencies:
-    "@theme-ui/color" "^0.3.1"
-
-"@makerdao/dai-ui-theme-oasis@^0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-oasis/-/dai-ui-theme-oasis-0.0.35.tgz#cbeca7938e7f5adc1e7e05fe6c724c56d8b8bacd"
-  integrity sha512-/DuJWlA0apTrpmu4W/AkUScPIw7WG3OB0fpI29Q5FJSjijR6jeAoFNPJRmnuMrqQWzKN4y0KjM3BWAdtp1hXUw==
-  dependencies:
-    "@makerdao/dai-ui-theme-maker" "^0.0.35"
 
 "@mdx-js/mdx@^1.6.1", "@mdx-js/mdx@^1.6.4":
   version "1.6.4"

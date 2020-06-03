@@ -15,8 +15,6 @@ export default (props) => {
     keywords,
     hideSideNav,
   } = pageContext.frontmatter;
-
-  console.log(props)
   
   //For the sake of SEO we may want the page title to be based on the first h1 in our MDX file. 
   //if no title is specified in the metadata. 

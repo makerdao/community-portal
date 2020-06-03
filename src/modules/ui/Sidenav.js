@@ -17,7 +17,7 @@ const Sidenav = (props) => {
     }
   `);
 
-  console.log(data);
+  //console.log(data);
 
   return <div>Hi</div>;
 };
