@@ -14,6 +14,7 @@ export default (props) => {
     description,
     keywords,
     hideSideNav,
+    featuredImage
   } = pageContext.frontmatter;
   
   //For the sake of SEO we may want the page title to be based on the first h1 in our MDX file. 
@@ -30,6 +31,8 @@ export default (props) => {
 	  
 	  return undefined; 
   }
+
+  console.log(pageContext)
 
   //SEO page title priority is: frontmatter title -> First H1 in mdx -> Filename fallback from uri
   const _pageTitle = title || getFirstHeading() || uri.split("/").pop()
