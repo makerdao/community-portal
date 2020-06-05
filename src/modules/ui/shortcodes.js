@@ -3,7 +3,8 @@ import React from 'react'
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import Sidenav from "@modules/ui/Sidenav";
 import StatusBanner from '@modules/ui/StatusBanner';
-import Link from "@modules/utility/Link"
+import Link from "@modules/utility/Link";
+import Callout from "@modules/ui/Callout";
 import {Image, Text, Divider} from 'theme-ui'
 
 export default {
@@ -18,5 +19,6 @@ export default {
 	p: props => <Text {...props}/>,
 	Breadcrumbs,
 	StatusBanner,
-	Sidenav 
+  Sidenav, 
+  Callout
 }; 
