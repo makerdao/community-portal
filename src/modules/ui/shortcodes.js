@@ -1,10 +1,10 @@
 
 import React from 'react'
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
-import Sidenav from "@modules/ui/Sidenav";
+import Sidenav from "@modules/sidenav";
 import StatusBanner from '@modules/ui/StatusBanner';
 import Link from "@modules/utility/Link"
-import {Image, Text, Divider, Button} from 'theme-ui'
+import {Image, Text, Divider, Button, Box} from 'theme-ui'
 
 export default {
 	a: props => <Link to={props.href} {...props}/>,
@@ -19,5 +19,6 @@ export default {
 	Button,
 	Breadcrumbs,
 	StatusBanner,
-	Sidenav 
+	Sidenav,
+	Box
 }; 

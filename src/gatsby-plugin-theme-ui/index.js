@@ -6,5 +6,6 @@ export default {
   icons, //<- Icon package
   colors: {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
+    'body': '#53546A'
   },
 };

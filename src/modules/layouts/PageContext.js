@@ -46,7 +46,6 @@ const PageDataProvider = ({ children, value }) => {
   //Update app locale if our url locale route has changed. 
   useEffect(() => {
     const uriSplit = pathname.split('/'); //uri will be (/locale/path/to/file). We need the locale part.
-
     //NOTE(Rejon): Index 1 of the uriSplit should be the locale, but in the case it's not we check.
     if (typeof uriSplit[1] === 'string' && locales.indexOf(uriSplit[1]) !== -1 && locale !== uriSplit[1] && uriSplit[1] !== '') {
       setLocale(uriSplit[1]);

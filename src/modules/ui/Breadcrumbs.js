@@ -13,15 +13,15 @@ const Breadcrumbs = ({ children, pageContext }) => {
   const {locale} = usePage();
   pathname = pathname.replace(/\/+$/, ""); //Remove trailing slashes
   
-
   let currentPath = pathname;
-  let fileName = pathname.split("/").splice(0,2); //NOTE(Rejon): Remove the first element, it'll always be an empty string.
+  let fileName = pathname.split("/"); //NOTE(Rejon): Remove the first element, it'll always be an empty string.
   fileName.splice(0,2);
+  console.log(fileName)
 
   return (
     <>
       <div>
-        {pathname !== `/${locale}` && <><Link to={`/${locale}`}>Home</Link>{' /'}</>} 
+        {pathname !== `/${locale}` && <><Link to={`/${locale}/`}>Home</Link>{' /'}</>} 
         {fileName.map((pathName, index) => {
           currentPath += pathName + "/";
           let output = pathName;
