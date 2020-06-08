@@ -1,10 +1,12 @@
+/** @jsx jsx */
 import React from 'react'
 import { Link as GatsbyLink } from "gatsby"
+import {jsx, Link as ThemeLink} from 'theme-ui'
 import {usePage} from '@modules/layouts/PageContext'
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
+const Link = ({ children, to, activeClassName, partiallyActive, variant, ...other }) => {
   const {locale} = usePage();
   
   // Tailor the following test to your environment.
@@ -19,6 +21,7 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
     //NOTE(Rejon): While I could also check if it has a locale and if it exists,
     //             I think it could mess with the expectations of how links work. 
     //             If an invalid locale is passed, then it should go to a 404 page, unless the team specifies otherwise. 
+    //NOTE(Rejon): There's no slash in this string because CCs will write the md with a starting slash.
     if (!hasLocale) {
       to = `/${locale}${to}`;
     }
@@ -26,8 +29,20 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
     return (
       <GatsbyLink
         to={to}
-        activeClassName={activeClassName}
-        partiallyActive={partiallyActive}
+        activeClassName={activeClassName || (to !== `/${locale}/` ? 'active' : null)}
+        partiallyActive={partiallyActive || (to !== `/${locale}/` ? true : null)}
+        sx={{
+          color: 'inherit',
+          '&.active': {
+            color: 'primary',
+          },
+          '&:hover': {
+            color: 'primary'
+          },
+          '&:hover > svg': {
+            color: 'primary'
+          } 
+        }}
         {...other}
       >
         {children}
@@ -35,9 +50,9 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
     )
   }
   return (
-    <a href={to} {...other}>
+    <ThemeLink href={to} variant="nav" {...other}>
       {children}
-    </a>
+    </ThemeLink>
   )
 }
 export default Link

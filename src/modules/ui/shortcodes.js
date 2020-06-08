@@ -18,5 +18,6 @@ export default {
 	p: props => <Text {...props}/>,
 	Breadcrumbs,
 	StatusBanner,
-	Sidenav 
+	Sidenav,
+	Link
 }; 

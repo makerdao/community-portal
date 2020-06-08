@@ -41,7 +41,7 @@ const PoweredBy = () => (
   </span>
 )
 
-export default function Search({indices, collapse, hitsAsGrid}) {
+export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
 	const ref = createRef()
 	const [query, setQuery] = useState(``)
 	const [focus, setFocus] = useState(false)
@@ -53,7 +53,7 @@ export default function Search({indices, collapse, hitsAsGrid}) {
 	useClickOutside(ref, () => setFocus(false))
 
 	return (
-		<Box ref={ref}>
+		<Box ref={ref} {...otherProps}>
 			<InstantSearch
 				searchClient={searchClient}
 				indexName={indices[0].name} //NOTE(Rejon): If we have more than 1 index, you'll have to manage the state for this somewhere.
@@ -70,8 +70,9 @@ export default function Search({indices, collapse, hitsAsGrid}) {
 						</Results>
 					</Index>
 				))}
-				</Box>
 				<PoweredBy/>
+				</Box>
+				
 			</InstantSearch>
 		</Box>
 	)

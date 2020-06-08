@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import React from "react";
+import React, {Fragment} from "react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { Link } from "gatsby";
-import { jsx } from "theme-ui";
+import Link from '@modules/utility/Link'
+import { jsx, Text } from "theme-ui";
 import { useLocation } from "@reach/router"
 
 
@@ -12,13 +12,13 @@ const Breadcrumbs = ({ children, pageContext }) => {
   
   let locale = 'en'
   let currentPath = pathname;
-  let fileName = pathname.split("/").splice(0,2); //NOTE(Rejon): Remove the first element, it'll always be an empty string.
+  let fileName = pathname.split("/"); //NOTE(Rejon): Remove the first element, it'll always be an empty string.
   fileName.splice(0,2);
 
   return (
     <>
       <div>
-        {pathname !== `/${locale}` && <><Link to={`/${locale}`}>Home</Link>{' /'}</>} 
+        {pathname !== `/${locale}/` && <><Link to={`/${locale}/`} sx={{textDecoration: 'none'}} partiallyActive={true} activeClassName={'active'}>Home</Link>{' /'}</>} 
         {fileName.map((pathName, index) => {
           currentPath += pathName + "/";
           let output = pathName;
@@ -26,24 +26,24 @@ const Breadcrumbs = ({ children, pageContext }) => {
           //Link to the page
           if (index !== fileName.length - 1) {
             return (
-              <>
+              <Fragment key={`document-path-${index}`}>
                 {" "}
-                <Link to={currentPath} sx={{ textTransform: "capitalize" }}>
+                <Link to={currentPath} className="active" sx={{ textTransform: "capitalize", textDecoration: 'none' }}>
                   {index >= 2 ? "..." : pathName}
                 </Link>{" "}
                 /{" "}
-              </>
+              </Fragment>
             );
           }
 
           return (
-            <span
-              sx={{ textTransform: "capitalize" }}
+            <Text
+              sx={{ textTransform: "capitalize", display: 'inline-block' }}
               key={`document-path-${index}`}
             >
               {" "}
               {pathName}
-            </span>
+            </Text>
           );
         })}
       </div>

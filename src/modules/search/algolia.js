@@ -1,3 +1,5 @@
+//NOTE(Rejon): This query is THE heart of what pages get indexed. 
+//             Currently: All pages that aren't a header file, index file (of Topsections or site).
 const pageQuery = `{
 pages: allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/.*\/(?!index.mdx|header.mdx)/"}}) {
     edges {
@@ -17,6 +19,9 @@ pages: allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/.*\/(?!index.
   }
 }`
 
+//This is the object that Algolia will receive and return for searches. 
+//Results will be based on what's here. 
+//EX: I search "Hi" and the title or exerpt have "Hi". They will be returned. 
 const flatten = arr =>
   arr.map(({ node: { frontmatter, title, headings, fileAbsolutePath, ...rest } }) => {
     const splitPath = fileAbsolutePath.split('/'); 
@@ -28,6 +33,7 @@ const flatten = arr =>
       fileName = splitPath[splitPath.length - 1];
     }
 
+    //Classic title rule.
     const _title = frontmatter.title || (headings[0] ? headings[0].value : null) || fileName;
 
     return  {
