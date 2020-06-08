@@ -33,7 +33,7 @@ const PageDataProvider = ({ children, value }) => {
 
   const locales = allDirectory.nodes.map((n) => n.absolutePath.split("/").pop());
   //NOTE(Rejon): This defaultLocale const may seem redundant, but it's ensure the site doesn't reload twice on mount.
-  const defaultLocale = localStorage.getItem('locale') || navigator.language.split('-') || locales[0];
+  const defaultLocale = 'en';
   const [locale, setLocale] = useState(defaultLocale);
   
   //Update local storage if it doesn't match app state.

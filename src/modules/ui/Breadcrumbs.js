@@ -16,7 +16,6 @@ const Breadcrumbs = ({ children, pageContext }) => {
   let currentPath = pathname;
   let fileName = pathname.split("/"); //NOTE(Rejon): Remove the first element, it'll always be an empty string.
   fileName.splice(0,2);
-  console.log(fileName)
 
   return (
     <>
