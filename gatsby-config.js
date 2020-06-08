@@ -1,5 +1,5 @@
 const path = require("path");
-const queries = require('./src/modules/utility/algolia')
+const queries = require('./src/modules/search/algolia')
 require("dotenv").config()
 
 module.exports = {

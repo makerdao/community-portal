@@ -10,6 +10,11 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import {usePage} from '@modules/layouts/PageContext'
 import Shortcodes from '@modules/ui/shortcodes'
+import Search from '@modules/search'
+
+const searchIndices = [
+  { name: `Pages`, title: `Pages`, hitComp: `SearchHit_Page` },
+];
 
 const Header = () => {
   const {locale} = usePage();
@@ -47,6 +52,7 @@ const Header = () => {
           {localizedHeader.body}
         </MDXRenderer>
       </MDXProvider>
+      <Search collapse indices={searchIndices}/>
     </header>
   );
 };

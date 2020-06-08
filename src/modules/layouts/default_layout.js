@@ -32,8 +32,6 @@ export default (props) => {
 	  return undefined; 
   }
 
-  console.log(pageContext)
-
   //SEO page title priority is: frontmatter title -> First H1 in mdx -> Filename fallback from uri
   const _pageTitle = title || getFirstHeading() || uri.split("/").pop()
 

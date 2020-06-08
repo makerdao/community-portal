@@ -1,19 +1,18 @@
 const pageQuery = `{
-  pages: allMarkdownRemark(
-    filter: {
-      fileAbsolutePath: { regex: "/pages/" },
-      frontmatter: {purpose: {eq: "page"}}
-    }
-  ) {
+pages: allMdx(filter: {fileAbsolutePath: {regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx)/"}}) {
     edges {
       node {
-        objectID: id
+		objectID: id
+        headings(depth: h1) {
+          value
+        }
+        fileAbsolutePath
         frontmatter {
           title
-          slug
         }
-        excerpt(pruneLength: 5000)
+		excerpt(pruneLength: 5000)
       }
+   
     }
   }
 }`
@@ -29,12 +28,6 @@ const queries = [
     query: pageQuery,
     transformer: ({ data }) => flatten(data.pages.edges),
     indexName: `Pages`,
-    settings,
-  },
-  {
-    query: postQuery,
-    transformer: ({ data }) => flatten(data.posts.edges),
-    indexName: `Posts`,
     settings,
   },
 ]
