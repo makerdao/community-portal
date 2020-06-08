@@ -56,20 +56,21 @@ export default function Search({indices, collapse, hitsAsGrid}) {
 		<Box ref={ref}>
 			<InstantSearch
 				searchClient={searchClient}
-				indexName={indices[0].name}
+				indexName={indices[0].name} //NOTE(Rejon): If we have more than 1 index, you'll have to manage the state for this somewhere.
 				onSearchStateChange={({ query }) => setQuery(query)}
 			>	
 				<SearchInput onFocus={() => setFocus(true)} {...{ collapse, focus }}/>
-				{indices.map(({name, title, hitComp}) => (
+				<Box sx={{
+					display: (query.length > 0 && focus) ? 'grid' : 'none'
+				}}>
+					{indices.map(({name, title, hitComp}) => (
 					<Index key={name} indexName={name}>
-						{name}
-						{title}
-						{hitComp}
 						<Results>
 							<Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
 						</Results>
 					</Index>
 				))}
+				</Box>
 				<PoweredBy/>
 			</InstantSearch>
 		</Box>

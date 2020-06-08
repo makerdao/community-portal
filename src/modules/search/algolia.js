@@ -1,5 +1,5 @@
 const pageQuery = `{
-pages: allMdx(filter: {fileAbsolutePath: {regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx)/"}}) {
+pages: allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/.*\/(?!index.mdx|header.mdx)/"}}) {
     edges {
       node {
 		objectID: id
@@ -18,10 +18,24 @@ pages: allMdx(filter: {fileAbsolutePath: {regex: "//([\\\\w]{2})/(?!header.mdx|i
 }`
 
 const flatten = arr =>
-  arr.map(({ node: { frontmatter, ...rest } }) => ({
+  arr.map(({ node: { frontmatter, title, headings, fileAbsolutePath, ...rest } }) => {
+    const splitPath = fileAbsolutePath.split('/'); 
+    let fileName = splitPath.pop().replace(/(.mdx)$/gm, '');
+
+    //If the filename is index.mdx, use the name of it's directory instead.
+    if (fileName === 'index') 
+    {
+      fileName = splitPath[splitPath.length - 1];
+    }
+
+    const _title = frontmatter.title || (headings[0] ? headings[0].value : null) || fileName;
+
+    return  {
     ...frontmatter,
+    title: _title,
     ...rest,
-  }))
+  }
+  })
 const settings = { attributesToSnippet: [`excerpt:20`] }
 const queries = [
   {
