@@ -5,7 +5,7 @@ import algoliasearch from 'algoliasearch/lite';
 import {Box, Input, Spinner, jsx} from 'theme-ui';
 
 import SearchInput from './SearchInput'
-import Root from './Root'
+
 import * as hitComps from './hit_components';
 
 const Results = connectStateResults(
