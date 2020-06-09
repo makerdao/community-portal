@@ -13,10 +13,11 @@ const Results = connectStateResults(
 		res && res.nbHits > 0 ? children : `No results for '${state.query}'`
 )
 
-const Stats = connectStateResults(
-	({searchResults: res}) =>
-		res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
-)
+//NOTE(Rejon): Commented out unless they want result count included.
+// const Stats = connectStateResults(
+// 	({searchResults: res}) =>
+// 		res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
+// )
 
 const LoadingIndicator = connectStateResults(
 	({isSearchStalled}) => isSearchStalled ? <Spinner/> : null
