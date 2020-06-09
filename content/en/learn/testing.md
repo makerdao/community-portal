@@ -4,5 +4,6 @@ title: Hello World
 
 # Testing uri
 
-<Breadcrumbs/>
 
+- Hello
+- Goodbye

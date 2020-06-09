@@ -11,7 +11,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `imgs`,
+        path: `./src/imgs`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
@@ -45,6 +51,7 @@ module.exports = {
         path: `${__dirname}/content/images`,
       },
     },
+    
     {
       resolve: "gatsby-plugin-page-creator",
       options: {

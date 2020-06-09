@@ -26,7 +26,7 @@ const flatten = arr =>
   arr.map(({ node: { frontmatter, title, headings, fileAbsolutePath, ...rest } }) => {
     
     const splitPath = fileAbsolutePath.split('/'); 
-    let fileName = splitPath.pop().replace(/(.mdx)$/gm, '');
+    let fileName = splitPath.pop().replace(/(.mdx|.md)$/gm, '');
 
     //If the filename is index.mdx, use the name of it's directory instead.
     if (fileName === 'index') 

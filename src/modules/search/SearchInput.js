@@ -12,8 +12,18 @@ const SearchInput = ({refine, currentRefinement, delay, ...rest}) => {
 	const onChangeDebounce  = event => {
 		const _value = event.currentTarget.value;
 
-		clearTimeout(timerID);
-		timerID = setTimeout(() => refine(_value), bounceDelay);
+		if (timerID !== null)
+		{
+			clearTimeout(timerID);
+		}
+		
+		if (bounceDelay > 0) {
+			timerID = setTimeout(() =>  refine(_value), bounceDelay);
+		}
+		else {
+			 refine(_value)
+		}
+		
 		setValue(_value)
 	};
 

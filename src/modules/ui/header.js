@@ -47,6 +47,7 @@ const Header = () => {
 
   return (
     <Flex as="header" sx={{ marginBottom: "1.45rem",
+    p:4,
           '& > ul': {
             display: 'inline-flex',
             alignItems: 'center',

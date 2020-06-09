@@ -42,8 +42,8 @@ const Breadcrumbs = ({ children, pageContext }) => {
               sx={{ textTransform: "capitalize", display: 'inline-block' }}
               key={`document-path-${index}`}
             >
-              {" "}
-              {pathName}
+              
+              {` ${pathName}`}
             </Text>
           );
         })}
