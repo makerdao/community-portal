@@ -5,6 +5,7 @@ import Sidenav from "@modules/ui/Sidenav";
 import StatusBanner from '@modules/ui/StatusBanner';
 import Link from "@modules/utility/Link";
 import Callout from "@modules/ui/Callout";
+import Button from "@modules/ui/Button";
 import {Image, Text, Divider} from 'theme-ui'
 
 export default {
@@ -20,5 +21,6 @@ export default {
 	Breadcrumbs,
 	StatusBanner,
   Sidenav, 
-  Callout
+  Callout,
+  Button
 }; 
