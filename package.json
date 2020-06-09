@@ -57,6 +57,5 @@
   },
   "bugs": {
     "url": "https://github.com/makerdao/community-portal/issues"
-  },
-  "snyk": true
+  }
 }
