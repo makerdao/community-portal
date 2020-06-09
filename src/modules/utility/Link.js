@@ -18,7 +18,7 @@ const Link = ({ children, to, activeClassName, partiallyActive, variant, ...othe
     const hasLocale = /^\/([\w]{2})\//.test(to);
 
     //If it doesn't have the locale specified use the current locale.
-    //NOTE(Rejon): While I could also check if it has a locale and if it exists,
+    //NOTE(Réjon): While I could also check if it has a locale and if it exists,
     //             I think it could mess with the expectations of how links work. 
     //             If an invalid locale is passed, then it should go to a 404 page, unless the team specifies otherwise. 
     //NOTE(Rejon): There's no slash in this string because CCs will write the md with a starting slash.
@@ -45,7 +45,7 @@ const Link = ({ children, to, activeClassName, partiallyActive, variant, ...othe
         }}
         {...other}
       >
-        {children}
+          {children}
       </GatsbyLink>
     )
   }

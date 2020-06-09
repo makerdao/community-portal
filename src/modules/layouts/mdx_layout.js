@@ -1,11 +1,11 @@
 import React from "react";
 import SEO from "@modules/utility/seo";
-import Sidenav from "@modules/sidenav/";
+import Sidenav from "@modules/ui/Sidenav";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import {Button} from 'theme-ui'
 import { useStaticQuery, graphql } from "gatsby";
 
-export default (props) => {
+const DefaultLayout = (props) => {
   const { children, pageContext, uri } = props;
   const {
     title,
@@ -45,3 +45,5 @@ export default (props) => {
     </>
   );
 };
+
+export default DefaultLayout;

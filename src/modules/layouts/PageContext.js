@@ -22,7 +22,7 @@ const PageDataProvider = ({ children, value }) => {
   const { allDirectory } = useStaticQuery(graphql`
     query getDefaultLocale {
       allDirectory(
-        filter: { absolutePath: { regex: "//content/([^/]+)[^/]$/" } }  
+        filter: { absolutePath: { regex: "/\/content\/([\\\\w{2}])[^/]$/" } }  
       ) {
         nodes {
           absolutePath
@@ -32,7 +32,9 @@ const PageDataProvider = ({ children, value }) => {
   `);
 
   const locales = allDirectory.nodes.map((n) => n.absolutePath.split("/").pop());
-  const [locale, setLocale] = useState(locales[0]);
+  //NOTE(Rejon): This defaultLocale const may seem redundant, but it's ensure the site doesn't reload twice on mount.
+  const defaultLocale = 'en';
+  const [locale, setLocale] = useState(defaultLocale);
   
   //Update local storage if it doesn't match app state.
   useEffect(() => {
@@ -44,10 +46,10 @@ const PageDataProvider = ({ children, value }) => {
   //Update app locale if our url locale route has changed. 
   useEffect(() => {
     const uriSplit = pathname.split('/'); //uri will be (/locale/path/to/file). We need the locale part.
-
     //NOTE(Rejon): Index 1 of the uriSplit should be the locale, but in the case it's not we check.
-    if (typeof uriSplit[1] === 'string' && locales.indexOf(uriSplit[1]) && locale !== uriSplit[1] && uriSplit[1] !== '') {
+    if (typeof uriSplit[1] === 'string' && locales.indexOf(uriSplit[1]) !== -1 && locale !== uriSplit[1] && uriSplit[1] !== '') {
       setLocale(uriSplit[1]);
+      localStorage.setItem('locale', uriSplit[1]);
     }
   }, [pathname, locale, locales])
 
