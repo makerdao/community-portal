@@ -37,6 +37,7 @@ const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }
           {...other}
         >
           {<Icon name={icon} sx={{verticalAlign: 'middle'}}/>}
+          {icon ? '\u00A0': ''} {/*add space as workaround for svg padding resizing issue*/}
           {children}
         </GatsbyLink>
     )
@@ -48,8 +49,9 @@ const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }
         {...other}
       >
         <Icon name={icon} sx={{verticalAlign: 'middle'}}/>
+        {icon ? '\u00A0': ''}
         {children}
-        <Icon name='increase'sx={{size: 2}}/>
+        <Icon name='increase' sx={{paddingRight: '1'}}/>
       </a>
   )
 }
