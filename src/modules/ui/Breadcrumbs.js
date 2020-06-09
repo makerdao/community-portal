@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import React from "react";
+import React, {Fragment} from "react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-
-import { jsx, Test } from "theme-ui";
+import { jsx, Text } from "theme-ui";
 import { useLocation } from "@reach/router"
 
 import {usePage} from '@modules/layouts/PageContext'
@@ -20,7 +19,7 @@ const Breadcrumbs = ({ children, pageContext }) => {
   return (
     <>
       <div>
-        {pathname !== `/${locale}` && <><Link to={`/${locale}/`}>Home</Link>{' /'}</>} 
+        {pathname !== `/${locale}/` && <><Link to={`/${locale}/`} sx={{textDecoration: 'none'}} partiallyActive={true} activeClassName={'active'}>Home</Link>{' /'}</>} 
         {fileName.map((pathName, index) => {
           currentPath += pathName + "/";
           let output = pathName;
@@ -28,24 +27,24 @@ const Breadcrumbs = ({ children, pageContext }) => {
           //Link to the page
           if (index !== fileName.length - 1) {
             return (
-              <>
+              <Fragment key={`document-path-${index}`}>
                 {" "}
-                <Link to={currentPath} sx={{ textTransform: "capitalize" }}>
+                <Link to={currentPath} className="active" sx={{ textTransform: "capitalize", textDecoration: 'none' }}>
                   {index >= 2 ? "..." : pathName}
                 </Link>{" "}
                 /{" "}
-              </>
+              </Fragment>
             );
           }
 
           return (
-            <span
-              sx={{ textTransform: "capitalize" }}
+            <Text
+              sx={{ textTransform: "capitalize", display: 'inline-block' }}
               key={`document-path-${index}`}
             >
               {" "}
               {pathName}
-            </span>
+            </Text>
           );
         })}
       </div>

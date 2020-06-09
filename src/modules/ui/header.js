@@ -2,14 +2,20 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import { jsx } from "theme-ui";
+import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import Link from '@modules/utility/Link'
 import {usePage} from '@modules/layouts/PageContext'
 import Shortcodes from '@modules/ui/shortcodes'
+import Search from '@modules/search'
+
+const searchIndices = [
+  { name: `Pages`, title: `Pages`, hitComp: `SearchHit_Page` },
+];
 
 const Header = () => {
   const {locale} = usePage();
@@ -40,14 +46,44 @@ const Header = () => {
   const siteTitle = site.siteMetadata.title;
 
   return (
-    <header sx={{ marginBottom: "1.45rem" }}>
-      Header Header
-      <MDXProvider components={Shortcodes}>
-        <MDXRenderer>
+    <Flex as="header" sx={{ marginBottom: "1.45rem",
+          '& > ul': {
+            display: 'inline-flex',
+            alignItems: 'center',
+            p: 0, 
+            m: 0, 
+            'listStyleType': 'none',
+          },
+          '& > ul > li': {
+            mr: '40px'
+          },
+          '& > ul > li > a': {
+              textDecoration: 'none'
+          } }}>
+      <Link to={`/${locale}/`} sx={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        textDecoration: 'none',
+        marginRight: '40px'
+      }}>
+        <Icon name="maker" color="text" sx={{
+          width: '39px',
+          height: '100%',
+          mr: 2
+        }}/><Text>Home</Text>
+      </Link>
+      <MDXProvider components={Shortcodes} >
+        <MDXRenderer >
           {localizedHeader.body}
         </MDXRenderer>
       </MDXProvider>
-    </header>
+      <Search collapse indices={searchIndices} sx={{
+        ml: 'auto',
+        mr: 0,
+        width: '100%',
+        maxWidth: '347px'
+      }}/>
+    </Flex>
   );
 };
 

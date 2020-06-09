@@ -4,6 +4,7 @@ import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import Sidenav from "@modules/sidenav";
 import StatusBanner from '@modules/ui/StatusBanner';
 import Link from "@modules/utility/Link"
+import { Icon } from "@makerdao/dai-ui-icons";
 import {Image, Text, Divider, Button, Box} from 'theme-ui'
 
 export default {
@@ -20,5 +21,7 @@ export default {
 	Breadcrumbs,
 	StatusBanner,
 	Sidenav,
-	Box
+	Link,
+	Box,
+	Icon
 }; 
