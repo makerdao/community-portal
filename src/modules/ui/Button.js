@@ -7,11 +7,6 @@ import theme from "@src/gatsby-plugin-theme-ui/index.js";
 import Link from "@modules/utility/Link";
 
 const Button = (props) => {
-  console.log(`
-    variant=${props.variant}
-    to=${props.to}
-    link=${Link}
-  `);
   return(
     <ThemeProvider theme={theme}>
       <Link to={props.to}>

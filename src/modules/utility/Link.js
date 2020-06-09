@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link as GatsbyLink } from "gatsby"
 import { usePage } from '@modules/layouts/PageContext'
-import { jsx, ThemeProvider } from "theme-ui";
+import { jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import theme from "@src/gatsby-plugin-theme-ui/index.js";
 
@@ -29,26 +29,28 @@ const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }
     }
 
     return (
-      <ThemeProvider theme={theme}>
         <GatsbyLink
           to={to}
+          sx={theme.styles.a} //TODO: use ThemeProvider to automatically apply this style
           activeClassName={activeClassName}
           partiallyActive={partiallyActive}
           {...other}
         >
-          {<Icon name={icon}/>}
+          {<Icon name={icon} sx={{verticalAlign: 'middle'}}/>}
           {children}
         </GatsbyLink>
-      </ThemeProvider>
     )
   }
   return (
-    <ThemeProvider theme={theme}>
-      <a href={to} {...other}>
-        {<Icon name={icon}/>}
+      <a 
+        href={to}
+        sx={theme.styles.a}
+        {...other}
+      >
+        <Icon name={icon} sx={{verticalAlign: 'middle'}}/>
         {children}
+        <Icon name='increase'sx={{size: 2}}/>
       </a>
-    </ThemeProvider>
   )
 }
 export default Link
