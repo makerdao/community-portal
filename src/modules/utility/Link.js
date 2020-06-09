@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import React from 'react'
 import { Link as GatsbyLink } from "gatsby"
+import { Link as ThemeLink, jsx } from 'theme-ui'
 import {usePage} from '@modules/layouts/PageContext'
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
@@ -16,7 +18,7 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
     const hasLocale = /^\/([\w]{2})\//.test(to);
 
     //If it doesn't have the locale specified use the current locale.
-    //NOTE(Rejon): While I could also check if it has a locale and if it exists,
+    //NOTE(Réjon): While I could also check if it has a locale and if it exists,
     //             I think it could mess with the expectations of how links work. 
     //             If an invalid locale is passed, then it should go to a 404 page, unless the team specifies otherwise. 
     if (!hasLocale) {
@@ -30,14 +32,14 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
         partiallyActive={partiallyActive}
         {...other}
       >
-        {children}
+          {children}
       </GatsbyLink>
     )
   }
   return (
-    <a href={to} {...other}>
+    <ThemeLink href={to} {...other}>
       {children}
-    </a>
+    </ThemeLink>
   )
 }
 export default Link
