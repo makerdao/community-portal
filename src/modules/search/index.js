@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import React, {useState, useEffect, createRef} from 'react';
-import {InstantSearch, Index, Hits, connectStateResults} from 'react-instantsearch-dom';
+import {InstantSearch, Index, Hits, connectStateResults, PoweredBy} from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
-import {Box, Input, jsx} from 'theme-ui';
+import {Box, Input, Spinner, jsx} from 'theme-ui';
 
 import SearchInput from './SearchInput'
 import Root from './Root'
@@ -16,6 +16,10 @@ const Results = connectStateResults(
 const Stats = connectStateResults(
 	({searchResults: res}) =>
 		res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
+)
+
+const LoadingIndicator = connectStateResults(
+	({isSearchStalled}) => isSearchStalled ? <Spinner/> : null
 )
 
 const useClickOutside = (ref, handler, events) => {
@@ -32,15 +36,6 @@ const useClickOutside = (ref, handler, events) => {
   })
 }
 
-const PoweredBy = () => (
-  <span css="font-size: 0.6em; text-align: end; padding: 0;">
-    Powered by{` `}
-    <a href="https://algolia.com">
-      [ALGOLIA ICON GOES HERE] Algolia
-    </a>
-  </span>
-)
-
 export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
 	const ref = createRef()
 	const [query, setQuery] = useState(``)
@@ -53,7 +48,11 @@ export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
 	useClickOutside(ref, () => setFocus(false))
 
 	return (
-		<Box ref={ref} {...otherProps}>
+		<Box ref={ref} {...otherProps} sx={{
+			borderRadius: 0,
+			backgroundColor: 'body-5',
+			position: 'relative'	
+		}}>
 			<InstantSearch
 				searchClient={searchClient}
 				indexName={indices[0].name} //NOTE(Rejon): If we have more than 1 index, you'll have to manage the state for this somewhere.
@@ -61,16 +60,67 @@ export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
 			>	
 				<SearchInput onFocus={() => setFocus(true)} {...{ collapse, focus }}/>
 				<Box sx={{
-					display: (query.length > 0 && focus) ? 'grid' : 'none'
-				}}>
+					display: (query.length > 0 && focus) ? 'grid' : 'none',
+					position: 'absolute',
+					left: 0,
+					backgroundColor: 'body-5',
+					borderBottomLeftRadius: 'medium',
+					borderBottomRightRadius: 'medium',
+					borderTop: 'none',
+					width: "100%",
+					'::before': {
+						content: '""',
+						width: '100%',
+						height: '1px',
+						background: 'radial-gradient(rgba(83, 84, 106, 0.15), transparent)'
+					}
+				}}>	
+					<LoadingIndicator/>
 					{indices.map(({name, title, hitComp}) => (
 					<Index key={name} indexName={name}>
 						<Results>
-							<Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
+							<Hits hitComponent={hitComps[hitComp](() => setFocus(false))} sx={{
+								'& ul': {
+									m: 0, 
+									'list-style-type': 'none',
+									p: 2, //.46rem
+								},
+								'& ul > li': {
+									borderRadius: 'medium',
+									p: 2,
+									backgroundColor: 'transparent',
+									transition: 'all .2s ease',
+									cursor: 'pointer'
+								},
+								'& ul li:hover': {
+									backgroundColor: 'secondary',
+									transition: 'all .2s ease'
+								}
+							}}/>
 						</Results>
 					</Index>
 				))}
-				<PoweredBy/>
+				<PoweredBy sx={{
+					textAlign: 'right',
+					height: '18px',
+					display: 'flex',
+					justifyContent: 'flex-end',
+					alignItems: 'center',
+					mb: '5px',
+					pr: 2,
+					pl: 2,
+					'& span': {
+						fontSize: '.9rem',
+						mr:'6px'
+					},
+					'& a': {
+						height: '100%',
+						'& svg': {
+							height: '100%',
+							width: 'auto'
+						}
+					}
+				}}/>
 				</Box>
 				
 			</InstantSearch>

@@ -79,7 +79,9 @@ const Header = () => {
       </MDXProvider>
       <Search collapse indices={searchIndices} sx={{
         ml: 'auto',
-        mr: 0
+        mr: 0,
+        width: '100%',
+        maxWidth: '347px'
       }}/>
     </Flex>
   );

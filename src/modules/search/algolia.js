@@ -24,6 +24,7 @@ pages: allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/.*\/(?!index.
 //EX: I search "Hi" and the title or exerpt have "Hi". They will be returned. 
 const flatten = arr =>
   arr.map(({ node: { frontmatter, title, headings, fileAbsolutePath, ...rest } }) => {
+    
     const splitPath = fileAbsolutePath.split('/'); 
     let fileName = splitPath.pop().replace(/(.mdx)$/gm, '');
 
@@ -35,14 +36,18 @@ const flatten = arr =>
 
     //Classic title rule.
     const _title = frontmatter.title || (headings[0] ? headings[0].value : null) || fileName;
+    
+    //URL that looks for the content folder and then strips down the url based on it's path.
+    const url = fileAbsolutePath.slice(fileAbsolutePath.indexOf('/content/') + 8, fileAbsolutePath.length).replace(/(.mdx|index.mdx)$/gm, '');
 
     return  {
     ...frontmatter,
     title: _title,
+    url,
     ...rest,
   }
   })
-const settings = { attributesToSnippet: [`excerpt:20`] }
+const settings = { attributesToSnippet: [`excerpt:20`], searchableAttributes: [`title`, `excerpt`] }
 const queries = [
   {
     query: pageQuery,
