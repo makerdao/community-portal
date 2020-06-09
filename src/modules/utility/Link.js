@@ -1,10 +1,15 @@
+/** @jsx jsx */
 import React from 'react'
 import { Link as GatsbyLink } from "gatsby"
-import {usePage} from '@modules/layouts/PageContext'
+import { usePage } from '@modules/layouts/PageContext'
+import { jsx, ThemeProvider } from "theme-ui";
+import { Icon } from "@makerdao/dai-ui-icons";
+import theme from "@src/gatsby-plugin-theme-ui/index.js";
+
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
+const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }) => {
   const {locale} = usePage();
   
   // Tailor the following test to your environment.
@@ -24,20 +29,26 @@ const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
     }
 
     return (
-      <GatsbyLink
-        to={to}
-        activeClassName={activeClassName}
-        partiallyActive={partiallyActive}
-        {...other}
-      >
-        {children}
-      </GatsbyLink>
+      <ThemeProvider theme={theme}>
+        <GatsbyLink
+          to={to}
+          activeClassName={activeClassName}
+          partiallyActive={partiallyActive}
+          {...other}
+        >
+          {<Icon name={icon}/>}
+          {children}
+        </GatsbyLink>
+      </ThemeProvider>
     )
   }
   return (
-    <a href={to} {...other}>
-      {children}
-    </a>
+    <ThemeProvider theme={theme}>
+      <a href={to} {...other}>
+        {<Icon name={icon}/>}
+        {children}
+      </a>
+    </ThemeProvider>
   )
 }
 export default Link

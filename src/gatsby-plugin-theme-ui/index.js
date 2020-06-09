@@ -17,9 +17,7 @@ export default {
       p: 3,
       py: 2,
       color: "onPrimary",
-      fontWeight: "bold",
-      letterSpacing: "0.03em",
-      bg: "#36aa9a",
+      fontWeight: "bold", letterSpacing: "0.03em", bg: "#36aa9a",
       "&:hover": {
         bg: "#48bbaf",
       },
@@ -93,5 +91,5 @@ export default {
         opacity: 0.5,
       },
     },
-  }
+  },
 }

@@ -3,7 +3,7 @@
 import React from 'react'
 import { Button as ThemedButton} from 'theme-ui'
 import { jsx, ThemeProvider } from "theme-ui";
-import { default as theme } from "@src/gatsby-plugin-theme-ui/index.js";
+import theme from "@src/gatsby-plugin-theme-ui/index.js";
 import Link from "@modules/utility/Link";
 
 const Button = (props) => {

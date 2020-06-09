@@ -6,7 +6,7 @@ import StatusBanner from '@modules/ui/StatusBanner';
 import Link from "@modules/utility/Link";
 import Callout from "@modules/ui/Callout";
 import Button from "@modules/ui/Button";
-import {Image, Text, Divider} from 'theme-ui'
+import {Image, Text, Divider, Icon} from 'theme-ui'
 
 export default {
 	a: props => <Link to={props.href} {...props}/>,
@@ -22,5 +22,6 @@ export default {
 	StatusBanner,
   Sidenav, 
   Callout,
-  Button
+  Button,
+  Link
 }; 
