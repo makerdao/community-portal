@@ -43,8 +43,6 @@ const Header = () => {
   const localePathRegex = new RegExp(`/(${locale})/`)
   const localizedHeader = allMdx.nodes.find(n => localePathRegex.test(n.fileAbsolutePath))
 
-  const siteTitle = site.siteMetadata.title;
-
   return (
     <Flex as="header" sx={{ marginBottom: "1.45rem",
     p:4,

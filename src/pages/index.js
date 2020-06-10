@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from "react";
+import React, {useEffect} from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby";
@@ -25,7 +25,7 @@ const IndexPage = () => {
   `);
   
   //Navigate to locale index page. /en /es /de /fr ect...
-  useLayoutEffect(() => {
+  useEffect(() => {
     //Get list of locales from content directory top level folder paths. 
     const locales = allDirectory.nodes.map((n) => n.absolutePath.split("/").pop());
     let initialLocale = locale; 
@@ -47,7 +47,7 @@ const IndexPage = () => {
 
     //Replace current route with locale based index. 
     navigate(`/${initialLocale}/`, {replace: true});
-  })
+  },[])
 
   return (
     <Helmet>
