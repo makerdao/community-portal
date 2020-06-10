@@ -26,7 +26,6 @@ const Layout = ({ children, data }) => (
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-      {console.log(data)}
         <main>
           <MDXProvider components={Shortcodes}>
             {children}

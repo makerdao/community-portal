@@ -22,7 +22,7 @@ const Sidenav = (props) => {
       query={graphql`
         query GetSidenavMDX {
           # Regex for all files that are NOT header.mdx OR index.mdx
-          allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/(?!header.mdx|index.mdx)/"}}) {
+          allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/(?!header.mdx|index.mdx|404.mdx|.js|.json)/"}}) {
             edges {
               node {
                 headings(depth: h1) {

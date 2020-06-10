@@ -3,7 +3,6 @@ import SEO from "@modules/utility/seo";
 import Sidenav from "@modules/sidenav/";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import {Button} from 'theme-ui'
-import { useStaticQuery, graphql } from "gatsby";
 
 export default (props) => {
   const { children, pageContext, uri } = props;
@@ -17,7 +16,7 @@ export default (props) => {
     featuredImage
   } = pageContext.frontmatter;
 
-  console.log(children)
+  console.log(props)
   
   //For the sake of SEO we may want the page title to be based on the first h1 in our MDX file. 
   //if no title is specified in the metadata. 
@@ -42,7 +41,7 @@ export default (props) => {
     <>
       <SEO title={_pageTitle} description={description} keywords={keywords} />
       <Sidenav />
-      <Breadcrumbs />
+      <Breadcrumbs/>
       <article>{children}</article>
     </>
   );

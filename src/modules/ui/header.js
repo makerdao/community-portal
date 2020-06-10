@@ -48,12 +48,14 @@ const Header = () => {
   return (
     <Flex as="header" sx={{ marginBottom: "1.45rem",
     p:4,
+    maxWidth: '1364px',
+    margin: 'auto',
           '& > ul': {
             display: 'inline-flex',
             alignItems: 'center',
             p: 0, 
             m: 0, 
-            'listStyleType': 'none',
+            listStyleType: 'none',
           },
           '& > ul > li': {
             mr: '40px'

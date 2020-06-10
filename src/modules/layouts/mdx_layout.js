@@ -3,7 +3,6 @@ import SEO from "@modules/utility/seo";
 import Sidenav from "@modules/ui/Sidenav";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import {Button} from 'theme-ui'
-import { useStaticQuery, graphql } from "gatsby";
 
 const DefaultLayout = (props) => {
   const { children, pageContext, uri } = props;
