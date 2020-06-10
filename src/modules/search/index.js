@@ -11,8 +11,8 @@ import SearchInput from './SearchInput'
 import * as hitComps from './hit_components';
 
 const Results = connectStateResults(
-	({searchState: state, searchResults: res, children, t}) =>
-		res && res.nbHits > 0 ? children : t('No_Results',null,{stat.query})
+	({t, searchState: state, searchResults: res, children}) => 
+		res && res.nbHits > 0 ? children : t('No_Results',null,{searchText: state.query})
 )
 
 //NOTE(Rejon): Commented out unless they want result count included.
@@ -43,6 +43,7 @@ export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
 	const ref = createRef()
 	const [query, setQuery] = useState(``)
 	const [focus, setFocus] = useState(false)
+	const {t} = useTranslation();
 	const searchClient = algoliasearch(
 		process.env.GATSBY_ALGOLIA_APP_ID,
 		process.env.GATSBY_ALGOLIA_SEARCH_KEY
