@@ -4,7 +4,11 @@ import {connectSearchBox} from 'react-instantsearch-dom'
 import { Icon } from "@makerdao/dai-ui-icons";
 import {Box, Input, Flex, jsx} from 'theme-ui'
 
+import useTranslation from '@modules/utility/useTranslation'
+
 const SearchInput = ({refine, currentRefinement, delay, ...rest}) => {
+	const {t} = useTranslation();
+	
 	let timerID = null;
 	const bounceDelay = delay || 0; 
 	const [value, setValue] = useState(currentRefinement);
@@ -38,8 +42,8 @@ const SearchInput = ({refine, currentRefinement, delay, ...rest}) => {
 					id="search"  
 					type="text" 
 					value={value}
-					aria-label="Search"
-					placeholder="Search"
+					aria-label={t('Search')}
+					placeholder={t('Search')}
 					onChange={onChangeDebounce}
 					sx={{
 						border: 'none',

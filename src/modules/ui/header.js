@@ -9,7 +9,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Link from '@modules/utility/Link'
-import {usePage} from '@modules/layouts/PageContext'
+import useTranslation from '@modules/utility/useTranslation'
 import Shortcodes from '@modules/ui/shortcodes'
 import Search from '@modules/search'
 
@@ -18,7 +18,7 @@ const searchIndices = [
 ];
 
 const Header = () => {
-  const {locale} = usePage();
+  const {locale, t} = useTranslation();
 
   const { site, allMdx } = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -71,7 +71,7 @@ const Header = () => {
           width: '39px',
           height: '100%',
           mr: 2
-        }}/><Text>Home</Text>
+        }}/><Text>{t('Home')}</Text>
       </Link>
       <MDXProvider components={Shortcodes} >
         <MDXRenderer >

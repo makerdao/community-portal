@@ -5,12 +5,12 @@ import { jsx, Text } from "theme-ui";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
-import {usePage} from '@modules/layouts/PageContext'
+import useTranslation from '@modules/utility/useTranslation'
 import Link from "@modules/utility/Link";
 
 const Breadcrumbs = ({ children }) => {
   let {pathname} = useLocation();
-  const {locale} = usePage();
+  const {locale, t} = useTranslation();
   
   const {allMdx} = useStaticQuery(graphql`
     query GetBreadcrumbsTitles {
@@ -64,7 +64,7 @@ const Breadcrumbs = ({ children }) => {
   return (
     <>
       <div>
-        <Link to={`/${locale}/`} sx={{textDecoration: 'none'}} partiallyActive={true} activeClassName={'active'}>Home</Link>
+        <Link to={`/${locale}/`} sx={{textDecoration: 'none'}} partiallyActive={true} activeClassName={'active'}>{t('Home')}</Link>
         {' / '}
         {BreadcrumbData.map(({title, url}, index) => {
               //If this is the last crumb, then just render its name. 
