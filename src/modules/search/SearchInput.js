@@ -26,7 +26,9 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
     // }
 
     setValue(_value);
-    if (onSubmit) {onSubmit(_value);}
+    if (onSubmit) {
+      onSubmit(_value);
+    }
   };
 
   return (

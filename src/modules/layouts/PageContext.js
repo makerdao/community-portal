@@ -120,9 +120,9 @@ const PageDataProvider = ({ children, value }) => {
 
   useEffect(() => {
     if (window.__LUNR__) {
-      window.__LUNR__.__loaded.then(lunr => setLunr(lunr));
+      window.__LUNR__.__loaded.then((lunr) => setLunr(lunr));
     }
-  }, [])
+  }, []);
 
   return (
     <PageDataContext.Provider
@@ -131,7 +131,7 @@ const PageDataProvider = ({ children, value }) => {
         locale,
         localeStrings,
         DEFAULT_LOCALE_STRINGS: localeStrings["en"],
-        lunr
+        lunr,
       }}
     >
       {children}
