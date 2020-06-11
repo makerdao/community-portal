@@ -29,9 +29,9 @@ const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }
     }
 
     return (
-        <GatsbyLink
+      <GatsbyLink
           to={to}
-          sx={theme.styles.a} //TODO: use ThemeProvider to automatically apply this style
+          sx={theme.styles.a}
           activeClassName={activeClassName}
           partiallyActive={partiallyActive}
           {...other}
@@ -39,9 +39,10 @@ const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }
           {<Icon name={icon} sx={{verticalAlign: 'middle'}}/>}
           {icon ? '\u00A0': ''} {/*add space as workaround for svg padding resizing issue*/}
           {children}
-        </GatsbyLink>
+         </GatsbyLink>
     )
   }
+
   return (
       <a 
         href={to}

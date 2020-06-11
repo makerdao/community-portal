@@ -24,8 +24,17 @@ export default {
   styles: {
     ...maker.styles,
     a: {
-      color: "#36aa9a",
-      textDecoration: 'none'
+      color: "inherit",
+      textDecoration: 'none',
+      '&.active': {
+        color: '#36aa9a',
+      },
+      '&:hover': {
+        color: '#36aa9a'
+      },
+      '&:hover > svg': {
+        color: '#36aa9a'
+      } 
     }
   },
   buttons: {
