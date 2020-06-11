@@ -6,7 +6,7 @@ import { jsx, ThemeProvider } from "theme-ui";
 import theme from "@src/gatsby-plugin-theme-ui/index.js";
 import Link from "@modules/utility/Link";
 
-const Button = ({children, to, icon, primary, secondary, primaryOutline, secondaryOutline }) => {
+const Button = ({children, to, target, icon, primary, secondary, primaryOutline, secondaryOutline }) => {
   let variantStr;
   if (primary) {
     variantStr = 'primary';
@@ -21,7 +21,7 @@ const Button = ({children, to, icon, primary, secondary, primaryOutline, seconda
   return(
     <ThemeProvider theme={theme}>
       <ThemedButton variant={variantStr ? variantStr : 'primary'}>
-        <Link to={to} icon={icon}>
+        <Link to={to} target={target} isButton={true} icon={icon}>
           {children}
         </Link>
       </ThemedButton>

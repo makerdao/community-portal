@@ -20,21 +20,16 @@ export default {
   }, //<- Icon package
   colors: {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
+    'body': '#53546A',
+    'body-15':'rgba(83, 84, 106, 0.15)',
+    'body-5': 'rgba(83, 84, 106, 0.05)',
+    'body-40': 'rgba(83, 84, 106, 0.4)'
   },
   styles: {
     ...maker.styles,
     a: {
-      color: "inherit",
+      color: "#36aa9a",
       textDecoration: 'none',
-      '&.active': {
-        color: '#36aa9a',
-      },
-      '&:hover': {
-        color: '#36aa9a'
-      },
-      '&:hover > svg': {
-        color: '#36aa9a'
-      } 
     }
   },
   buttons: {

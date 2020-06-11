@@ -1,9 +1,8 @@
 import React from "react";
 import SEO from "@modules/utility/seo";
-import Sidenav from "@modules/ui/Sidenav";
+import Sidenav from "@modules/sidenav/";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
-
-import { useStaticQuery, graphql } from "gatsby";
+import {Button} from 'theme-ui'
 
 export default (props) => {
   const { children, pageContext, uri } = props;
@@ -32,16 +31,15 @@ export default (props) => {
 	  return undefined; 
   }
 
-  console.log(pageContext)
-
   //SEO page title priority is: frontmatter title -> First H1 in mdx -> Filename fallback from uri
+  //NOTE(Rejon): If the page is an index of a directory, the uri split will be the name of the directory. ie. /en/bounties -> bounties
   const _pageTitle = title || getFirstHeading() || uri.split("/").pop()
 
   return (
     <>
       <SEO title={_pageTitle} description={description} keywords={keywords} />
       <Sidenav />
-      <Breadcrumbs />
+      <Breadcrumbs/>
       <article>{children}</article>
     </>
   );
