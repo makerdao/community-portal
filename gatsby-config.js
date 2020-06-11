@@ -19,6 +19,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     {
@@ -57,7 +58,7 @@ module.exports = {
       options: {
         path: `${__dirname}/content`,
         ignore: {
-          patterns: [`**/header.mdx`,`**.js`,`**.json`,`**/404.mdx`],
+          patterns: [`**/header.mdx`,`**/**.js`,`**/**.json`,`**/404.mdx`],
           options: {nocase: true}
         }
       },
@@ -93,6 +94,7 @@ module.exports = {
           "@utils": path.resolve(__dirname, 'src/utils.js'),
           "@pages": path.resolve(__dirname, "src/pages"),
           "@images": path.resolve(__dirname, "public/images"),
+          "@content": path.resolve(__dirname, "content")
         },
         extensions: [
           //NOTE(Rejon): You don't have to write .js at the end of js files now.

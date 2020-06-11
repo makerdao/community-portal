@@ -2,13 +2,13 @@ import React, {useEffect} from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby";
-import {usePage} from '@modules/layouts/PageContext';
+import useTranslation from '@modules/utility/useTranslation'
 
 
 //This page doesn't exist and solely acts as a reroute for language. 
 const IndexPage = () => {
   const navigate = useNavigate();
-  const {locale} = usePage();
+  const {locale} = useTranslation();
 
   //Run a query to get top level directories in the content folder. 
   //ie. /content/en/  /content/es ect...

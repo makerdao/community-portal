@@ -5,11 +5,11 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import {usePage} from '@modules/layouts/PageContext'
+import useTranslation from '@modules/utility/useTranslation'
 import Shortcodes from '@modules/ui/shortcodes'
 
 const NotFoundPage = () => {
-  const {locale} = usePage();
+  const {locale} = useTranslation();
   //NOTE(Rejon): I could do a gatsby-node and programmatically create these pages. 
   //             But there's a chance that a missing 404 in the content folder will break the app. 
   //             I'll take the L.

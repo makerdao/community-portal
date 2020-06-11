@@ -19,7 +19,13 @@ const PageDataProvider = ({ children, value }) => {
   let {pathname} = useLocation();
   pathname = pathname.replace(/\/+$/, ""); //Remove trailing slashes
 
-  const { allDirectory } = useStaticQuery(graphql`
+  //NOTE(Rejon):This query gets our locales by using the path.
+  //            It also pulls down all UI or other JSON to be used for any frontend 
+  //            UI elements.
+  // TLDR: Gets our locales from the content folder. Pulls down our UI jsons.
+  // Sidenote(Rejon): This approach to locale for UI is ugly, but I don't want to unnecessarily add i18n
+  //                  for unnecessary bloat and friction.
+  const { allDirectory, ...internalLocale } = useStaticQuery(graphql`
     query getDefaultLocale {
       allDirectory(
         filter: { absolutePath: { regex: "/\/content\/([\\\\w{2}])[^/]$/" } }  
@@ -28,6 +34,46 @@ const PageDataProvider = ({ children, value }) => {
           absolutePath
         }
       }
+
+      #IMPORT t() translated UI JSON here.
+      #ENSURE that locale key matches locales of the content directory. 
+      en: allEnJson {
+        edges {
+          node {
+            UI {
+              Search
+              No_Results
+              Home
+            }
+          }
+        }
+      }
+
+      #IMPORT t() translated UI JSON here.
+      #ENSURE that locale key matches locales of the content directory.
+      es: allEsJson {
+        edges {
+          node {
+            UI {
+              Search
+              No_Results
+              Home
+            }
+          }
+        }
+      }
+
+      #IMPORT t() translated UI JSON you want here
+      #ENSURE that locale key matches locales of the content directory.
+      #EXAMPLE
+      # fr: allFrJson {
+      #   nodes {
+      #     UI {
+      #       No_Results
+      #       Search
+      #     }
+      #   }
+      # }
     }
   `);
 
@@ -35,7 +81,15 @@ const PageDataProvider = ({ children, value }) => {
   //NOTE(Rejon): This defaultLocale const may seem redundant, but it's ensure the site doesn't reload twice on mount.
   const defaultLocale = 'en';
   const [locale, setLocale] = useState(defaultLocale);
-  
+
+  //NOTE(Rejon): The object we get from the query is digusting. 
+  //This is so we can access our locale strings with ease.
+  const localeStrings = Object.assign({}, ...Object.keys(internalLocale).map((key) => {
+    let newObj = {}
+    newObj[key] = internalLocale[key].edges[0].node.UI;
+    return newObj;
+  }))
+
   //Update local storage if it doesn't match app state.
   useEffect(() => {
     if (locale !== localStorage.getItem('locale')) {
@@ -57,7 +111,9 @@ const PageDataProvider = ({ children, value }) => {
     <PageDataContext.Provider
       value={{
         setLocale,
-        locale
+        locale,
+        localeStrings,
+        DEFAULT_LOCALE_STRINGS: localeStrings['en']
       }}
     >
       {children}
