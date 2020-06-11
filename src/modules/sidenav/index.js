@@ -1,28 +1,36 @@
 /** @jsx jsx */
-import React from 'react';
+import React from "react";
 import { jsx } from "theme-ui";
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql } from "gatsby";
 
-import {useLocation} from '@reach/router'
-import useTranslation from '@modules/utility/useTranslation'
-import Tree from '@modules/sidenav/Tree'
-import {Box} from 'theme-ui'
+import { useLocation } from "@reach/router";
+import useTranslation from "@modules/utility/useTranslation";
+import Tree from "@modules/sidenav/Tree";
+import { Box } from "theme-ui";
 
 const Sidenav = (props) => {
-  const {locale} = useTranslation()
-  const {pathname} = useLocation();
-  const path = pathname.split('/');
+  const { locale } = useTranslation();
+  const { pathname } = useLocation();
+  const path = pathname.split("/");
   const currentTopSection = path[2];
 
   //Don't render the sidenav if there's no top section.
-  if (currentTopSection === undefined) {return <></>;}
+  if (currentTopSection === undefined) {
+    return <></>;
+  }
 
   return (
     <StaticQuery
       query={graphql`
         query GetSidenavMDX {
           # Regex for all files that are NOT header.mdx OR index.mdx
-          allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/(?!header.mdx|index.mdx|404.mdx|.js|.json)/"}}) {
+          allMdx(
+            filter: {
+              fileAbsolutePath: {
+                regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|404.mdx|.js|.json)/"
+              }
+            }
+          ) {
             edges {
               node {
                 headings(depth: h1) {
@@ -37,7 +45,7 @@ const Sidenav = (props) => {
           }
         }
       `}
-      render={({allMdx}) => (
+      render={({ allMdx }) => (
         <Box>
           <ul>
             <Tree edges={allMdx.edges} locale={locale} />
@@ -45,7 +53,6 @@ const Sidenav = (props) => {
         </Box>
       )}
     />
-    
   );
 };
 

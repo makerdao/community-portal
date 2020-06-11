@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { useLocation } from "@reach/router"
+import { useLocation } from "@reach/router";
 
 export const PageDataContext = createContext();
 
@@ -16,11 +16,11 @@ export const usePage = () => {
 };
 
 const PageDataProvider = ({ children, value }) => {
-  let {pathname} = useLocation();
+  let { pathname } = useLocation();
   pathname = pathname.replace(/\/+$/, ""); //Remove trailing slashes
 
   //NOTE(Rejon):This query gets our locales by using the path.
-  //            It also pulls down all UI or other JSON to be used for any frontend 
+  //            It also pulls down all UI or other JSON to be used for any frontend
   //            UI elements.
   // TLDR: Gets our locales from the content folder. Pulls down our UI jsons.
   // Sidenote(Rejon): This approach to locale for UI is ugly, but I don't want to unnecessarily add i18n
@@ -28,7 +28,7 @@ const PageDataProvider = ({ children, value }) => {
   const { allDirectory, ...internalLocale } = useStaticQuery(graphql`
     query getDefaultLocale {
       allDirectory(
-        filter: { absolutePath: { regex: "/\/content\/([\\\\w{2}])[^/]$/" } }  
+        filter: { absolutePath: { regex: "//content/([\\\\w{2}])[^/]$/" } }
       ) {
         nodes {
           absolutePath
@@ -36,7 +36,7 @@ const PageDataProvider = ({ children, value }) => {
       }
 
       #IMPORT t() translated UI JSON here.
-      #ENSURE that locale key matches locales of the content directory. 
+      #ENSURE that locale key matches locales of the content directory.
       en: allEnJson {
         edges {
           node {
@@ -77,35 +77,52 @@ const PageDataProvider = ({ children, value }) => {
     }
   `);
 
-  const locales = allDirectory.nodes.map((n) => n.absolutePath.split("/").pop());
+  const locales = allDirectory.nodes.map((n) =>
+    n.absolutePath.split("/").pop()
+  );
   //NOTE(Rejon): This defaultLocale const may seem redundant, but it's ensure the site doesn't reload twice on mount.
-  const defaultLocale = 'en';
+  const defaultLocale = "en";
   const [locale, setLocale] = useState(defaultLocale);
+  const [lunr, setLunr] = useState(null);
 
-  //NOTE(Rejon): The object we get from the query is digusting. 
+  //NOTE(Rejon): The object we get from the query is digusting.
   //This is so we can access our locale strings with ease.
-  const localeStrings = Object.assign({}, ...Object.keys(internalLocale).map((key) => {
-    let newObj = {}
-    newObj[key] = internalLocale[key].edges[0].node.UI;
-    return newObj;
-  }))
+  const localeStrings = Object.assign(
+    {},
+    ...Object.keys(internalLocale).map((key) => {
+      let newObj = {};
+      newObj[key] = internalLocale[key].edges[0].node.UI;
+      return newObj;
+    })
+  );
 
   //Update local storage if it doesn't match app state.
   useEffect(() => {
-    if (locale !== localStorage.getItem('locale')) {
-      localStorage.setItem('locale', locale);
+    if (locale !== localStorage.getItem("locale")) {
+      localStorage.setItem("locale", locale);
     }
-  }, [locale])
+  }, [locale]);
 
-  //Update app locale if our url locale route has changed. 
+  //Update app locale if our url locale route has changed.
   useEffect(() => {
-    const uriSplit = pathname.split('/'); //uri will be (/locale/path/to/file). We need the locale part.
+    const uriSplit = pathname.split("/"); //uri will be (/locale/path/to/file). We need the locale part.
     //NOTE(Rejon): Index 1 of the uriSplit should be the locale, but in the case it's not we check.
-    if (typeof uriSplit[1] === 'string' && locales.indexOf(uriSplit[1]) !== -1 && locale !== uriSplit[1] && uriSplit[1] !== '') {
+    if (
+      typeof uriSplit[1] === "string" &&
+      locales.indexOf(uriSplit[1]) !== -1 &&
+      locale !== uriSplit[1] &&
+      uriSplit[1] !== ""
+    ) {
       setLocale(uriSplit[1]);
-      localStorage.setItem('locale', uriSplit[1]);
+      localStorage.setItem("locale", uriSplit[1]);
     }
-  }, [pathname, locale, locales])
+  }, [pathname, locale, locales]);
+
+  useEffect(() => {
+    if (window.__LUNR__) {
+      window.__LUNR__.__loaded.then(lunr => setLunr(lunr));
+    }
+  }, [])
 
   return (
     <PageDataContext.Provider
@@ -113,7 +130,8 @@ const PageDataProvider = ({ children, value }) => {
         setLocale,
         locale,
         localeStrings,
-        DEFAULT_LOCALE_STRINGS: localeStrings['en']
+        DEFAULT_LOCALE_STRINGS: localeStrings["en"],
+        lunr
       }}
     >
       {children}
