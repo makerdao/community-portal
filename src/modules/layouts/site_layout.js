@@ -7,7 +7,8 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-
+import {graphql} from 'gatsby'
+import Img from 'gatsby-image'
 import { MDXProvider } from "@mdx-js/react";
 
 import Header from "../ui/header";
@@ -15,7 +16,7 @@ import Header from "../ui/header";
 import { PageDataProvider } from "@modules/layouts/PageContext";
 import Shortcodes from '@modules/ui/shortcodes';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, data }) => (
     <PageDataProvider>
       <Header />
       <div
@@ -31,11 +32,7 @@ const Layout = ({ children }) => (
           </MDXProvider>
         </main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-          {` `}
-          and <a href="https://github.com/makerdao/dai-ui">Dai-Ui</a>
+          Footer Goes Here
         </footer>
       </div>
     </PageDataProvider>
@@ -46,3 +43,15 @@ Layout.propTypes = {
 };
 
 export default Layout;
+
+export const query = graphql`
+query {
+  file(relativePath: {eq: "imgs/test.png"}) {
+    childImageSharp {
+        fixed(width: 537, height: 606) {
+          ...GatsbyImageSharpFixed
+        }
+    }
+  }
+}
+`

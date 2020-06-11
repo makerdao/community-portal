@@ -16,7 +16,7 @@ export default (edges, currentTopSection, DEFAULT_LOCALE, currentLocale) => {
 				//Do NOT include index file for the currentTopSection.
 		return edges.filter(({node}) => node.fileAbsolutePath.indexOf(`/${_locale}/${currentTopSection}/`) !== -1 && node.fileAbsolutePath.indexOf(`/${_locale}/${currentTopSection}/index.mdx`) === -1).flatMap(({node: {headings, frontmatter, fileAbsolutePath}}) => { 
 					//Remove index.mdx, .mdx, and trailing slashes from the end of the slug.
-					const slug = fileAbsolutePath.slice(fileAbsolutePath.indexOf(`/${_locale}/`),fileAbsolutePath.length).replace(/(.mdx|index.mdx)$/gm,'').replace(/\/$/, "");
+					const slug = fileAbsolutePath.slice(fileAbsolutePath.indexOf(`/${_locale}/`),fileAbsolutePath.length).replace(/(.mdx|index.mdx|.md)$/gm,'').replace(/\/$/, "");
 					const rawSlug = slug.replace(/^\/([\w]{2})\//, '/');
 					//Use frontmatter title, first heading, or file name from slug.
 					const title = frontmatter.title || (headings.length > 0 ? headings[0].value : null) || slug.split('/').pop();

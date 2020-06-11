@@ -2,12 +2,12 @@
 import React from 'react'
 import { Link as GatsbyLink } from "gatsby"
 import {jsx, Link as ThemeLink} from 'theme-ui'
-import {usePage} from '@modules/layouts/PageContext'
+import useTranslation from '@modules/utility/useTranslation'
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
 const Link = ({ children, to, activeClassName, partiallyActive, variant, ...other }) => {
-  const {locale} = usePage();
+  const {locale} = useTranslation();
   
   // Tailor the following test to your environment.
   // This assumes that any internal link (intended for Gatsby)

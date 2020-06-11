@@ -4,12 +4,12 @@ import { jsx } from "theme-ui";
 import { StaticQuery, graphql } from 'gatsby';
 
 import {useLocation} from '@reach/router'
-import {usePage} from '@modules/layouts/PageContext';
+import useTranslation from '@modules/utility/useTranslation'
 import Tree from '@modules/sidenav/Tree'
 import {Box} from 'theme-ui'
 
 const Sidenav = (props) => {
-  const {locale} = usePage();
+  const {locale} = useTranslation()
   const {pathname} = useLocation();
   const path = pathname.split('/');
   const currentTopSection = path[2];
@@ -22,7 +22,7 @@ const Sidenav = (props) => {
       query={graphql`
         query GetSidenavMDX {
           # Regex for all files that are NOT header.mdx OR index.mdx
-          allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/(?!header.mdx|index.mdx)/"}}) {
+          allMdx(filter: {fileAbsolutePath: {regex: "/\/([\\\\w]{2})\/(?!header.mdx|index.mdx|404.mdx|.js|.json)/"}}) {
             edges {
               node {
                 headings(depth: h1) {

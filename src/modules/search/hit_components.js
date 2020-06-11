@@ -6,7 +6,6 @@ import { Highlight, Snippet } from "react-instantsearch-dom"
 
 export const SearchHit_Page = clickHandler => ({hit}) => (
 		<div >	
-			{console.log(hit)}
 			<h4 sx={{
 				m: 0,
 				

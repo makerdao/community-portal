@@ -3,7 +3,6 @@ import SEO from "@modules/utility/seo";
 import Sidenav from "@modules/sidenav/";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import {Button} from 'theme-ui'
-import { useStaticQuery, graphql } from "gatsby";
 
 export default (props) => {
   const { children, pageContext, uri } = props;
@@ -40,7 +39,7 @@ export default (props) => {
     <>
       <SEO title={_pageTitle} description={description} keywords={keywords} />
       <Sidenav />
-      <Breadcrumbs />
+      <Breadcrumbs/>
       <article>{children}</article>
     </>
   );

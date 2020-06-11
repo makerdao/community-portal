@@ -1,14 +1,14 @@
-import React, {useLayoutEffect} from "react";
+import React, {useEffect} from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby";
-import {usePage} from '@modules/layouts/PageContext';
+import useTranslation from '@modules/utility/useTranslation'
 
 
 //This page doesn't exist and solely acts as a reroute for language. 
 const IndexPage = () => {
   const navigate = useNavigate();
-  const {locale} = usePage();
+  const {locale} = useTranslation();
 
   //Run a query to get top level directories in the content folder. 
   //ie. /content/en/  /content/es ect...
@@ -25,7 +25,7 @@ const IndexPage = () => {
   `);
   
   //Navigate to locale index page. /en /es /de /fr ect...
-  useLayoutEffect(() => {
+  useEffect(() => {
     //Get list of locales from content directory top level folder paths. 
     const locales = allDirectory.nodes.map((n) => n.absolutePath.split("/").pop());
     let initialLocale = locale; 
@@ -47,7 +47,7 @@ const IndexPage = () => {
 
     //Replace current route with locale based index. 
     navigate(`/${initialLocale}/`, {replace: true});
-  })
+  },[])
 
   return (
     <Helmet>

@@ -4,13 +4,15 @@ import {InstantSearch, Index, Hits, connectStateResults, PoweredBy} from 'react-
 import algoliasearch from 'algoliasearch/lite';
 import {Box, Input, Spinner, jsx} from 'theme-ui';
 
+import useTranslation from '@modules/utility/useTranslation'
+
 import SearchInput from './SearchInput'
 
 import * as hitComps from './hit_components';
 
 const Results = connectStateResults(
-	({searchState: state, searchResults: res, children}) =>
-		res && res.nbHits > 0 ? children : `No results for '${state.query}'`
+	({t, searchState: state, searchResults: res, children}) => 
+		res && res.nbHits > 0 ? children : t('No_Results',null,{searchText: state.query})
 )
 
 //NOTE(Rejon): Commented out unless they want result count included.
@@ -41,6 +43,7 @@ export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
 	const ref = createRef()
 	const [query, setQuery] = useState(``)
 	const [focus, setFocus] = useState(false)
+	const {t} = useTranslation();
 	const searchClient = algoliasearch(
 		process.env.GATSBY_ALGOLIA_APP_ID,
 		process.env.GATSBY_ALGOLIA_SEARCH_KEY
@@ -79,7 +82,7 @@ export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
 					<LoadingIndicator/>
 					{indices.map(({name, title, hitComp}) => (
 					<Index key={name} indexName={name}>
-						<Results>
+						<Results t={t}>
 							<Hits hitComponent={hitComps[hitComp](() => setFocus(false))} sx={{
 								'& ul': {
 									m: 0, 

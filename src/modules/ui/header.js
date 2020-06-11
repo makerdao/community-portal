@@ -9,7 +9,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Link from '@modules/utility/Link'
-import {usePage} from '@modules/layouts/PageContext'
+import useTranslation from '@modules/utility/useTranslation'
 import Shortcodes from '@modules/ui/shortcodes'
 import Search from '@modules/search'
 
@@ -18,7 +18,7 @@ const searchIndices = [
 ];
 
 const Header = () => {
-  const {locale} = usePage();
+  const {locale, t} = useTranslation();
 
   const { site, allMdx } = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -43,16 +43,17 @@ const Header = () => {
   const localePathRegex = new RegExp(`/(${locale})/`)
   const localizedHeader = allMdx.nodes.find(n => localePathRegex.test(n.fileAbsolutePath))
 
-  const siteTitle = site.siteMetadata.title;
-
   return (
     <Flex as="header" sx={{ marginBottom: "1.45rem",
+    p:4,
+    maxWidth: '1364px',
+    margin: 'auto',
           '& > ul': {
             display: 'inline-flex',
             alignItems: 'center',
             p: 0, 
             m: 0, 
-            'listStyleType': 'none',
+            listStyleType: 'none',
           },
           '& > ul > li': {
             mr: '40px'
@@ -70,7 +71,7 @@ const Header = () => {
           width: '39px',
           height: '100%',
           mr: 2
-        }}/><Text>Home</Text>
+        }}/><Text>{t('Home')}</Text>
       </Link>
       <MDXProvider components={Shortcodes} >
         <MDXRenderer >
