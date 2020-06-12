@@ -40,7 +40,7 @@ const Header = () => {
   const siteTitle = site.siteMetadata.title;
 
   return (
-    <header sx={{ marginBottom: "1.45rem" }}>
+    <header sx={{ marginBottom: "1.45rem", '& a.external-link > svg': {display: 'none'} }}>
       Header Header
       <MDXProvider components={Shortcodes}>
         <MDXRenderer>

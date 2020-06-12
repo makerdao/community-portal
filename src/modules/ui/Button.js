@@ -2,19 +2,25 @@
 
 import React from 'react'
 import { Button as ThemedButton} from 'theme-ui'
-import { jsx, ThemeProvider } from "theme-ui";
+import { jsx } from "theme-ui";
 import theme from "@src/gatsby-plugin-theme-ui/index.js";
 import Link from "@modules/utility/Link";
 
-const Button = (props) => {
+const Button = ({to, variant, secondary, outline, disabled, children, sx, ...otherProps}) => {
+
+  //NOTE(Rejon): This may seem outlandish, but we do this to ensure content creators write LESS code.
+  //ie. We write this so they write
+  //  <Button primaryOutline
+  let _variant = `${variant || secondary ? 'secondary' : null || 'primary'}${outline ? 'Outline' : ''}`;
+
+
+
   return(
-    <ThemeProvider theme={theme}>
-      <Link to={props.to}>
-        <ThemedButton variant={props.variant ? props.variant : 'primary'}>
-          {props.children}
+      <Link to={to} disabled={disabled}>
+        <ThemedButton variant={_variant} sx={{...sx, p:'24px', pt: '12px', pb:'12px', opacity: disabled ? '0.4' : '1', cursor: disabled ? 'not-allowed' : 'pointer', '&:hover': {transition: 'all .15s ease'}}} {...otherProps}>
+          {children}
         </ThemedButton>
       </Link>
-    </ThemeProvider>
   );
 };
 

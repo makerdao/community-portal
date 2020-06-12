@@ -2,14 +2,13 @@
 import React from 'react'
 import { Link as GatsbyLink } from "gatsby"
 import { usePage } from '@modules/layouts/PageContext'
-import { jsx } from "theme-ui";
+import { jsx, Link as ThemeLink } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
-import theme from "@src/gatsby-plugin-theme-ui/index.js";
 
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
-const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }) => {
+const Link = ({ children, to, icon, activeClassName, partiallyActive, disabled, ...other }) => {
   const {locale} = usePage();
   
   // Tailor the following test to your environment.
@@ -30,29 +29,44 @@ const Link = ({ children, to, icon, activeClassName, partiallyActive, ...other }
 
     return (
         <GatsbyLink
-          to={to}
-          sx={theme.styles.a} //TODO: use ThemeProvider to automatically apply this style
+          to={!disabled ? to : ''}
+          sx={{pointerEvents: disabled ? 'none' : 'initial'}} 
           activeClassName={activeClassName}
           partiallyActive={partiallyActive}
+          sx={{
+          color: "primary",
+          textDecoration: 'none',
+          "&.active": {
+            color: "primary",
+          },
+          "&:hover": {
+            color: "primary",
+          },
+          "&:hover > svg": {
+            color: "primary",
+          },
+        }}
           {...other}
         >
-          {<Icon name={icon} sx={{verticalAlign: 'middle'}}/>}
-          {icon ? '\u00A0': ''} {/*add space as workaround for svg padding resizing issue*/}
+          {/*add space as workaround for svg padding resizing issue*/}
+          {icon && <>{` ${<Icon name={icon} sx={{verticalAlign: 'middle'}}/>}`}</>}
           {children}
         </GatsbyLink>
     )
   }
   return (
-      <a 
-        href={to}
-        sx={theme.styles.a}
+      <ThemeLink 
+        href={!disabled ? to : ''}
+        sx={{pointerEvents: disabled ? 'none' : 'initial'}}
+        className="external-link"
         {...other}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
       >
-        <Icon name={icon} sx={{verticalAlign: 'middle'}}/>
-        {icon ? '\u00A0': ''}
+        {icon && <>{` ${<Icon name={icon} sx={{verticalAlign: 'middle'}}/>}`}</>}
         {children}
-        <Icon name='increase' sx={{paddingRight: '1'}}/>
-      </a>
+        <Icon name='increase' sx={{top: '2px', position: 'relative'}}/>
+      </ThemeLink>
   )
 }
 export default Link
