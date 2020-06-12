@@ -1,17 +1,20 @@
 /** @jsx jsx */
 import React from "react";
 import { Link as GatsbyLink } from "gatsby";
-import { jsx, Link as ThemeLink } from "theme-ui";
 import useTranslation from "@modules/utility/useTranslation";
+import { jsx, Link as ThemeLink } from "theme-ui";
+import { Icon } from "@makerdao/dai-ui-icons";
+
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
 const Link = ({
   children,
   to,
+  icon,
   activeClassName,
   partiallyActive,
-  variant,
+  disabled,
   ...other
 }) => {
   const { locale } = useTranslation();
@@ -35,7 +38,8 @@ const Link = ({
 
     return (
       <GatsbyLink
-        to={to}
+        to={!disabled ? to : ""}
+        sx={{ pointerEvents: disabled ? "none" : "initial" }}
         activeClassName={
           activeClassName || (to !== `/${locale}/` ? "active" : null)
         }
@@ -43,7 +47,9 @@ const Link = ({
           partiallyActive || (to !== `/${locale}/` ? true : null)
         }
         sx={{
-          color: "inherit",
+          color: "primary",
+          textDecoration: "none",
+          transition: "all .1s ease",
           "&.active": {
             color: "primary",
           },
@@ -56,19 +62,45 @@ const Link = ({
         }}
         {...other}
       >
+        {/*add space as workaround for svg padding resizing issue*/}
+        {icon && (
+          <>{` ${(<Icon name={icon} sx={{ verticalAlign: "middle" }} />)}`}</>
+        )}
         {children}
       </GatsbyLink>
     );
   }
+
   return (
     <ThemeLink
-      href={to}
-      variant="nav"
+      href={!disabled ? to : ""}
+      sx={{
+        pointerEvents: disabled ? "none" : "initial",
+        transition: "all .1s ease",
+        "&:hover": {
+          color: "primary",
+        },
+        "&:hover > svg": {
+          color: "primary",
+        },
+      }}
+      className="external-link"
       {...other}
       target="_blank"
       rel="nofollow noopener noreferrer"
     >
+      {icon && (
+        <>
+          {` `}
+          <Icon
+            name={icon}
+            size={"2rem"}
+            sx={{ verticalAlign: "middle", top: "-2px", position: "relative" }}
+          />
+        </>
+      )}
       {children}
+      <Icon name="increase" sx={{ top: "2px", position: "relative" }} />
     </ThemeLink>
   );
 };

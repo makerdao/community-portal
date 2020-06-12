@@ -4,7 +4,8 @@ import Sidenav from "@modules/sidenav";
 import StatusBanner from "@modules/ui/StatusBanner";
 import Link from "@modules/utility/Link";
 import { Icon } from "@makerdao/dai-ui-icons";
-import { Image, Text, Divider, Button, Box } from "theme-ui";
+import Button from "@modules/ui/Button";
+import { Image, Text, Divider, Box } from "theme-ui";
 
 export default {
   a: (props) => <Link to={props.href} {...props} />,

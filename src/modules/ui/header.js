@@ -53,6 +53,8 @@ const Header = () => {
         p: 4,
         maxWidth: "1364px",
         margin: "auto",
+        "& a": { color: "inherit" },
+        "& a.external-link > svg": { display: "none" },
         "& > ul": {
           display: "inline-flex",
           alignItems: "center",
@@ -70,6 +72,7 @@ const Header = () => {
     >
       <Link
         to={`/${locale}/`}
+        variant="nav"
         sx={{
           display: "inline-flex",
           alignItems: "center",
