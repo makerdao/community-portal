@@ -1,44 +1,41 @@
 /** @jsx jsx */
 import React from "react";
-import { MDXProvider } from '@mdx-js/react'
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import { jsx, ThemeProvider, Text, Flex, Box } from 'theme-ui';
+import { jsx, Box } from 'theme-ui';
 import { Icon } from "@makerdao/dai-ui-icons";
-import Shortcodes from '@modules/ui/shortcodes';
-import theme from "@src/gatsby-plugin-theme-ui/index.js";
 
-const Callout = ({secondary, icon, children}) => {
-  console.log(`
-    secondary: ${typeof(secondary)}
-    icon: ${typeof(icon)}
-    children: ${typeof(children)}
-  `);
+const Callout = ({icon, secondary, warning, children}) => {
   return(
-    <ThemeProvider theme={theme}>        
-      <Flex
+      <Box
+        p={1}
         sx={{
-          bg: secondary ? '#fdefd9' : '#eff0f2',
-          borderRadius: 'medium',
-          border: secondary ? '1px solid #f5b13d': 'none',
+          display: 'flex',
           padding: '1em',
-          margin: '1em'
+          margin: '1em',
+          borderRadius: 'medium',
+          bg: secondary ? '#fdefd9' : '#eff0f2',
+          border: secondary ? '1px solid #f5b13d': 'none',
         }}
       > 
+      { icon ? 
+        <Box 
+          p={1} 
+          sx= {{
+            display: 'flex',
+            flexBasis: '5%',
+            minWidth: "3em",
+            justifyContent: 'center',
+          }}>
+            <Icon name={typeof(icon) === "string" ? icon : 'warning'} sx={{size: '3em'}}/>
+        </Box> 
+      : ''}
         <Box p={1} sx= {{
           display: 'flex',
-          flexBasis: '7%',
+          flexDirection: 'column',
           justifyContent: 'center',
-          verticalAlign: 'middle'
-          }}>
-          <Icon name={icon} sx={{}}/>
-        </Box>
-        <Box p={1} sx={{
-          
         }}>
           {children}
         </Box>
-      </Flex>
-    </ThemeProvider>
+      </Box>
   );
 }
 
