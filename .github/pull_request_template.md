@@ -1,4 +1,4 @@
-_If you're unsure about any question, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your code._
+<!-- If you're unsure about any question, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your code. -->
 
 ### Attention (CC)
 

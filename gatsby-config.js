@@ -1,4 +1,6 @@
 const path = require("path");
+const queries = require('./src/modules/search/algolia')
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
@@ -9,8 +11,15 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `imgs`,
+        path: `./src/imgs`,
+      },
+    },
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     {
@@ -43,12 +52,13 @@ module.exports = {
         path: `${__dirname}/content/images`,
       },
     },
+    
     {
       resolve: "gatsby-plugin-page-creator",
       options: {
         path: `${__dirname}/content`,
         ignore: {
-          patterns: [`**/header.mdx`, `**/sidebar.mdx`],
+          patterns: [`**/header.mdx`,`**/**.js`,`**/**.json`,`**/404.mdx`],
           options: {nocase: true}
         }
       },
@@ -84,6 +94,7 @@ module.exports = {
           "@utils": path.resolve(__dirname, 'src/utils.js'),
           "@pages": path.resolve(__dirname, "src/pages"),
           "@images": path.resolve(__dirname, "public/images"),
+          "@content": path.resolve(__dirname, "content")
         },
         extensions: [
           //NOTE(Rejon): You don't have to write .js at the end of js files now.
@@ -91,6 +102,15 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY, 
+        queries, 
+        chunkSize: 10000
+      }
+    }
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

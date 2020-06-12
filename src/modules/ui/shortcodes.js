@@ -1,12 +1,11 @@
-
 import React from 'react'
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
-import Sidenav from "@modules/ui/Sidenav";
+import Sidenav from "@modules/sidenav";
 import StatusBanner from '@modules/ui/StatusBanner';
-import Link from "@modules/utility/Link";
-import Callout from "@modules/ui/Callout";
+import Link from "@modules/utility/Link"
+import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
-import {Image, Text, Divider, Icon} from 'theme-ui'
+import {Image, Text, Divider, Box} from 'theme-ui'
 
 export default {
 	a: props => <Link to={props.href} {...props}/>,
@@ -18,10 +17,11 @@ export default {
 	h5: props => <Text variant="h5" {...props}/>,
 	thematicBreak: props => <Divider/>,
 	p: props => <Text {...props}/>,
+	Button,
 	Breadcrumbs,
 	StatusBanner,
-  Sidenav, 
-  Callout,
-  Button,
-  Link
+	Sidenav,
+	Link,
+	Box,
+	Icon
 }; 
