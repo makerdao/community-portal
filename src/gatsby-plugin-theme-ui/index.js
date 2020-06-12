@@ -11,4 +11,7 @@ export default {
     'body-5': 'rgba(83, 84, 106, 0.05)',
     'body-40': 'rgba(83, 84, 106, 0.4)'
   },
+  styles: {
+    ...maker.styles,
+  }
 };

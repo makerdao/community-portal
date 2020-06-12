@@ -4,6 +4,7 @@ import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import Sidenav from "@modules/sidenav";
 import StatusBanner from '@modules/ui/StatusBanner';
 import Link from "@modules/utility/Link"
+import Callout from "@modules/ui/Callout";
 import { Icon } from "@makerdao/dai-ui-icons";
 import {Image, Text, Divider, Button, Box} from 'theme-ui'
 
@@ -19,6 +20,7 @@ export default {
 	p: props => <Text {...props}/>,
 	Button,
 	Breadcrumbs,
+  Callout,
 	StatusBanner,
 	Sidenav,
 	Link,
