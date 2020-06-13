@@ -2,6 +2,7 @@ import React from "react";
 import SEO from "@modules/utility/seo";
 import Sidenav from "@modules/sidenav/";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
+import StatusBanner from '@modules/ui/StatusBanner';
 import { Button } from "theme-ui";
 
 export default (props) => {
@@ -14,7 +15,10 @@ export default (props) => {
     keywords,
     hideSideNav,
     featuredImage,
+    status,
   } = pageContext.frontmatter;
+
+  const statusProps = typeof(status) === 'object' ? {children: status.text, ...status}: {children: status};
 
   //For the sake of SEO we may want the page title to be based on the first h1 in our MDX file.
   //if no title is specified in the metadata.
@@ -41,6 +45,7 @@ export default (props) => {
     <>
       <SEO title={_pageTitle} description={description} keywords={keywords} />
       <Sidenav />
+      {status && <StatusBanner sticky {...statusProps}/>}
       <Breadcrumbs />
       <article>{children}</article>
     </>
