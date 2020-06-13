@@ -1,134 +1,127 @@
 /** @jsx jsx */
-import React, {useState, useEffect, createRef} from 'react';
-import {InstantSearch, Index, Hits, connectStateResults, PoweredBy} from 'react-instantsearch-dom';
-import algoliasearch from 'algoliasearch/lite';
-import {Box, Input, Spinner, jsx} from 'theme-ui';
+import React, { useState, useEffect, createRef } from "react";
 
-import useTranslation from '@modules/utility/useTranslation'
+import { Box, Text, jsx } from "theme-ui";
 
-import SearchInput from './SearchInput'
+import useTranslation from "@modules/utility/useTranslation";
+import { usePage } from "@modules/layouts/PageContext";
 
-import * as hitComps from './hit_components';
-
-const Results = connectStateResults(
-	({t, searchState: state, searchResults: res, children}) => 
-		res && res.nbHits > 0 ? children : t('No_Results',null,{searchText: state.query})
-)
-
-//NOTE(Rejon): Commented out unless they want result count included.
-// const Stats = connectStateResults(
-// 	({searchResults: res}) =>
-// 		res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
-// )
-
-const LoadingIndicator = connectStateResults(
-	({isSearchStalled}) => isSearchStalled ? <Spinner/> : null
-)
+import SearchInput from "./SearchInput";
+import SearchHit from "./SearchHit";
 
 const useClickOutside = (ref, handler, events) => {
-  if (!events) events = [`mousedown`, `touchstart`]
-  const detectClickOutside = event =>
-    !ref.current.contains(event.target) && handler()
+  if (!events) events = [`mousedown`, `touchstart`];
+
   useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
+    const detectClickOutside = (event) =>
+      !ref.current.contains(event.target) && handler();
     for (const event of events)
-      document.addEventListener(event, detectClickOutside)
+      document.addEventListener(event, detectClickOutside);
     return () => {
       for (const event of events)
-        document.removeEventListener(event, detectClickOutside)
+        document.removeEventListener(event, detectClickOutside);
+    };
+  });
+};
+
+export default function Search({ ...otherProps }) {
+  const ref = createRef();
+  const [query, setQuery] = useState(``);
+  const [focus, setFocus] = useState(false);
+  const [results, setResults] = useState([]);
+
+  const { lunr } = usePage(); //Get Lunr instance.
+  const { locale, t } = useTranslation();
+
+  useClickOutside(ref, () => setFocus(false));
+
+  const onSubmit = (val) => {
+    if (lunr && val !== "") {
+      const refs = lunr[locale].index.search(`${val}*`);
+      const results = refs.map(({ ref }) => lunr[locale].store[ref]);
+      setResults(results);
     }
-  })
+
+    if (val === "") {
+      setResults([]);
+    }
+
+    setQuery(val);
+  };
+
+  return (
+    <Box
+      ref={ref}
+      {...otherProps}
+      sx={{
+        borderRadius: 0,
+        backgroundColor: "body-5",
+        position: "relative",
+      }}
+    >
+      <SearchInput
+        onFocus={() => setFocus(true)}
+        onSubmit={onSubmit}
+        {...{ focus }}
+      />
+
+      <Box
+        aria-label="Search results for the entire site"
+        as="section"
+        sx={{
+          display: query.length > 0 && focus ? "grid" : "none",
+          position: "absolute",
+          left: 0,
+          backgroundColor: "body-5",
+          borderBottomLeftRadius: "medium",
+          borderBottomRightRadius: "medium",
+          borderTop: "none",
+          width: "100%",
+          "::before": {
+            content: '""',
+            width: "100%",
+            height: "1px",
+            background: "radial-gradient(rgba(83, 84, 106, 0.15), transparent)",
+          },
+        }}
+      >
+        {results.length === 0 && query.length > 0 && (
+          <Text sx={{ p: 2, textAlign: "center" }}>
+            {t("No_Results", null, { query })}
+          </Text>
+        )}
+        <ul
+          sx={{
+            m: 0,
+            "list-style-type": "none",
+            p: 2, //.46rem
+            "& > li": {
+              borderRadius: "medium",
+              backgroundColor: "transparent",
+              transition: "all .2s ease",
+              cursor: "pointer",
+            },
+            "& > li > a": {
+              p: 2,
+              display: "block",
+            },
+            "& li:hover": {
+              backgroundColor: "secondary",
+              transition: "all .2s ease",
+            },
+          }}
+        >
+          {results.map((result, index) => (
+            <li>
+              <SearchHit {...result} onClick={() => setFocus(false)} />
+            </li>
+          ))}
+        </ul>
+      </Box>
+    </Box>
+  );
 }
-
-export default function Search({indices, collapse, hitsAsGrid, ...otherProps}) {
-	const ref = createRef()
-	const [query, setQuery] = useState(``)
-	const [focus, setFocus] = useState(false)
-	const {t} = useTranslation();
-	const searchClient = algoliasearch(
-		process.env.GATSBY_ALGOLIA_APP_ID,
-		process.env.GATSBY_ALGOLIA_SEARCH_KEY
-	)
-
-	useClickOutside(ref, () => setFocus(false))
-
-	return (
-		<Box ref={ref} {...otherProps} sx={{
-			borderRadius: 0,
-			backgroundColor: 'body-5',
-			position: 'relative'	
-		}}>
-			<InstantSearch
-				searchClient={searchClient}
-				indexName={indices[0].name} //NOTE(Rejon): If we have more than 1 index, you'll have to manage the state for this somewhere.
-				onSearchStateChange={({ query }) => setQuery(query)}
-			>	
-				<SearchInput onFocus={() => setFocus(true)} {...{ collapse, focus }}/>
-				<Box sx={{
-					display: (query.length > 0 && focus) ? 'grid' : 'none',
-					position: 'absolute',
-					left: 0,
-					backgroundColor: 'body-5',
-					borderBottomLeftRadius: 'medium',
-					borderBottomRightRadius: 'medium',
-					borderTop: 'none',
-					width: "100%",
-					'::before': {
-						content: '""',
-						width: '100%',
-						height: '1px',
-						background: 'radial-gradient(rgba(83, 84, 106, 0.15), transparent)'
-					}
-				}}>	
-					<LoadingIndicator/>
-					{indices.map(({name, title, hitComp}) => (
-					<Index key={name} indexName={name}>
-						<Results t={t}>
-							<Hits hitComponent={hitComps[hitComp](() => setFocus(false))} sx={{
-								'& ul': {
-									m: 0, 
-									'list-style-type': 'none',
-									p: 2, //.46rem
-								},
-								'& ul > li': {
-									borderRadius: 'medium',
-									p: 2,
-									backgroundColor: 'transparent',
-									transition: 'all .2s ease',
-									cursor: 'pointer'
-								},
-								'& ul li:hover': {
-									backgroundColor: 'secondary',
-									transition: 'all .2s ease'
-								}
-							}}/>
-						</Results>
-					</Index>
-				))}
-				<PoweredBy sx={{
-					textAlign: 'right',
-					height: '18px',
-					display: 'flex',
-					justifyContent: 'flex-end',
-					alignItems: 'center',
-					mb: '5px',
-					pr: 2,
-					pl: 2,
-					'& span': {
-						fontSize: '.9rem',
-						mr:'6px'
-					},
-					'& a': {
-						height: '100%',
-						'& svg': {
-							height: '100%',
-							width: 'auto'
-						}
-					}
-				}}/>
-				</Box>
-				
-			</InstantSearch>
-		</Box>
-	)
-}
-

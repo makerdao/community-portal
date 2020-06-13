@@ -3,8 +3,7 @@ name: Create an Epic
 about: Use this template for creating an Epic Issue to parent multiple issues.
 title: ' + "Epic" (Example: DIY Meetups Program Epic)'
 labels: Epic
-assignees: ''
-
+assignees: ""
 ---
 
 ## Description

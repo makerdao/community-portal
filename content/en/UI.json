@@ -1,8 +1,8 @@
 {
-	"UI": {
-		"Language": "English",
-		"Search": "Search",
-		"No_Results": "No results for '{{searchText}}'",
-		"Home": "Home"
-	}
+  "UI": {
+    "Language": "English",
+    "Search": "Search",
+    "No_Results": "No results for '{{query}}'",
+    "Home": "Home"
+  }
 }
