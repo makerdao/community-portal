@@ -17,8 +17,7 @@ const Callout = ({icon, secondary, warning, children}) => {
         }}
       > 
       { icon && <Icon name={typeof(icon) === "string" ? icon : 'warning'} sx={{minWidth: '32px', minHeight: '32px', mr:'10px'}}/>}
-        <Box sx= {{
-          display: 'flex',
+        <Flex sx= {{
           flexDirection: 'column',
           justifyContent: 'center',
           '& > *:first-child': {
@@ -26,7 +25,7 @@ const Callout = ({icon, secondary, warning, children}) => {
           }
         }}>
           {children}
-        </Box>
+        </Flex>
       </Flex>
   );
 }
