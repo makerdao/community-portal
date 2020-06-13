@@ -26,6 +26,9 @@ export default {
       color: "#36aa9a",
       textDecoration: "none",
     },
+    Link: {
+      color: "#36aa9a"
+    }
   },
   buttons: {
     primary: {
