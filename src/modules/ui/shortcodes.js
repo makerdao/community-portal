@@ -5,7 +5,8 @@ import StatusBanner from "@modules/ui/StatusBanner";
 import Link from "@modules/utility/Link";
 import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
-import { Image, Text, Divider, Box } from "theme-ui";
+import CTA from '@modules/ui/CTA';
+import { Image, AspectImage, Text, Divider, Box } from "theme-ui";
 
 export default {
   a: (props) => <Link to={props.href} {...props} />,
@@ -24,4 +25,7 @@ export default {
   Link,
   Box,
   Icon,
+  CTA,
+  Image,
+  AspectImage
 };

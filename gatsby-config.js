@@ -49,6 +49,11 @@ module.exports = {
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
+            options: {
+              backgroundColor: 'none',
+              disableBgImage: true,
+              showCaptions: ['Title']
+            }
           },
         ],
       },

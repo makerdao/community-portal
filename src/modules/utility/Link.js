@@ -100,7 +100,7 @@ const Link = ({
         </>
       )}
       {children}
-      <Icon name="increase" sx={{ top: "2px", position: "relative" }} />
+      <Icon name="increase" sx={{ top: "2px", position: "relative", ml:"2px" }} />
     </ThemeLink>
   );
 };
