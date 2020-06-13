@@ -16,6 +16,9 @@ export default {
     "body-15": "rgba(83, 84, 106, 0.15)",
     "body-5": "rgba(83, 84, 106, 0.05)",
     "body-40": "rgba(83, 84, 106, 0.4)",
+    callout: '#f4f4f7',
+    calloutSecondary: "#fdefd9",
+    calloutSecondaryBorder: "#F5B13D"
   },
   styles: {
     ...maker.styles,
@@ -111,4 +114,7 @@ export default {
       },
     },
   },
+  styles: {
+    ...maker.styles,
+  }
 };
