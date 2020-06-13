@@ -1,11 +1,11 @@
 {
-	"UI": {
-		"Language": "Español",
-		"Search": "Search",
-		"No_Results": "No results for '{{searchText}}'",
-		"Home": "Casa",
-		"Test": {
-			"LanguageSpace": "Hello"
-		}
-	}
+  "UI": {
+    "Language": "Español",
+    "Search": "Search",
+    "No_Results": "No results for '{{query}}'",
+    "Home": "Casa",
+    "Test": {
+      "LanguageSpace": "Hello"
+    }
+  }
 }
