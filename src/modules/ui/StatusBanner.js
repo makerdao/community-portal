@@ -1,6 +1,8 @@
+//** @jsx jsx */
 import React from "react";
-import { Box } from "theme-ui";
+import { Box, jsx } from "theme-ui";
 import {HexLuminanceCheck, colorToHex} from '@utils';
+import Sticky from 'react-sticky-el';
 
 const StatusBanner = ({ warning, error, notice, color, sticky, children, ...otherProps }) => {
   const variant = (error ? 'bear' : null) || (warning ? 'warning' : null) || (notice ? 'notice' : null) || 'primary';
@@ -19,7 +21,8 @@ const StatusBanner = ({ warning, error, notice, color, sticky, children, ...othe
     const copyColor = !color ? theme => luminCheck(theme.colors[variant], variant) : luminCheck(color, variant);
 
     return (
-      <Box sx={{
+      <Sticky dontUpdateHolderHeightWhenSticky={true}>
+             <Box sx={{
       p: '21px',
       pl: '40px',
       pr: '40px',
@@ -44,10 +47,15 @@ const StatusBanner = ({ warning, error, notice, color, sticky, children, ...othe
         },
 
       },
-      mb: '21px'
+      
     }}>
       {children}
+      
     </Box>
+    {/* NOTE(Rejon): Sticky acts weird when applying ANY margin. This spacer is here to keep the peace. */}
+     <div className="spacer" sx={{height: '24px'}}></div>
+      </Sticky>
+ 
     )
   }
 
