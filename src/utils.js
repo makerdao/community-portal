@@ -49,7 +49,9 @@ export const colorToRGBA = (color) => {
     // Examples:
     // colorToRGBA('red')  # [255, 0, 0, 255]
     // colorToRGBA('#f00') # [255, 0, 0, 255]
-
+    
+    //NOTE(Rejon): If the window doesn't exist, just return an empty array.
+    //             This is to get around build issues.
     if (typeof window === `undefined`) {return [0,0,0,0];}
 
     var cvs, ctx;
