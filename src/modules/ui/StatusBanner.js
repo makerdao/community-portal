@@ -11,6 +11,8 @@ const StatusBanner = ({ warning, error, notice, color, sticky, children, ...othe
   //If it returns true, it's light, so we use a DARK text color.
   //Else use a LIGHT text color.
   const luminCheck = (_color, _variant) => {
+    //The _color that comes in is from theme-ui below. It passes var(--theme-ui-color-variable, #000000);. 
+    //We just strip out the hex color. 
     const hexColor = _color.slice(_color.indexOf("#"), _color.length - 1);
 
     return HexLuminanceCheck(colorToHex(hexColor)) && _variant !== 'primary' ? 'text' : 'onPrimary';
