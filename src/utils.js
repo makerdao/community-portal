@@ -49,6 +49,9 @@ export const colorToRGBA = (color) => {
     // Examples:
     // colorToRGBA('red')  # [255, 0, 0, 255]
     // colorToRGBA('#f00') # [255, 0, 0, 255]
+
+    if (typeof window === `undefined`) {return [0,0,0,0];}
+
     var cvs, ctx;
     cvs = document.createElement('canvas');
     cvs.height = 1;
