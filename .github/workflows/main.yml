@@ -24,11 +24,9 @@ jobs:
         yarn build
         yarn test
    
-    - name: Prettify the JS Code
-      uses: creyD/prettier_action@v2.1
-      with:
-        prettier_options: 'prettier --no-bracket-spacing --trailing-comma none --jsx-bracket-same-line --write \"**/*.{js,jsx,json,md, mdx}\"'
-        branch: ${{ github.head_ref }}
+    - name: Making your code pretty. 
+      run: | 
+        yarn format
         
     - name: Label this PR with automerge
       uses: TimonVS/pr-labeler-action@v3
