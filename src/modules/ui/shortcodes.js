@@ -6,18 +6,19 @@ import Link from "@modules/utility/Link"
 import Callout from "@modules/ui/Callout";
 import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
-import { Image, Text, Divider, Box } from "theme-ui";
+import CTA from '@modules/ui/CTA';
+import { Image, AspectImage, Text, Divider, Box } from "theme-ui";
 
 export default {
 	a: props => <Link to={props.href} {...props}/>,
 	img: props => <Image {...props}/>,
-	h1: props => <Text variant="h1" {...props}/>,
-	h2: props => <Text variant="h2" {...props}/>,
-	h3: props => <Text variant="h3" {...props}/>,
+	h1: props => <Text variant="h1" sx={{mb: '24px'}} {...props}/>,
+	h2: props => <Text variant="h2" sx={{mb: '32px'}} {...props}/>,
+	h3: props => <Text variant="h3" sx={{mb: '16px'}} {...props}/>,
 	h4: props => <Text variant="h4" {...props}/>,
 	h5: props => <Text variant="h5" {...props}/>,
 	thematicBreak: props => <Divider/>,
-	p: props => <Text {...props}/>,
+	p: props => <Text sx={{mb: '16px'}} {...props}/>,
 	Button,
 	Breadcrumbs,
   Callout,
@@ -25,5 +26,8 @@ export default {
 	Sidenav,
 	Link,
 	Box,
-	Icon
+	Icon,
+  CTA,
+  Image,
+  AspectImage
 }; 
