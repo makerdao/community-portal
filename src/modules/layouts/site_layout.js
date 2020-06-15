@@ -11,6 +11,7 @@ import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { MDXProvider } from "@mdx-js/react";
 
+
 import Header from "../ui/header";
 
 import { PageDataProvider } from "@modules/layouts/PageContext";
