@@ -3,6 +3,7 @@ import { Box, useThemeUI } from "theme-ui";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
+import prismPreset from "./prismPreset";
 
 export default {
   ...maker, //<- Your default theme.
@@ -16,9 +17,11 @@ export default {
     "body-15": "rgba(83, 84, 106, 0.15)",
     "body-5": "rgba(83, 84, 106, 0.05)",
     "body-40": "rgba(83, 84, 106, 0.4)",
-    callout: '#f4f4f7',
+    callout: "#f4f4f7",
     calloutSecondary: "#fdefd9",
-    calloutSecondaryBorder: "#F5B13D"
+    calloutSecondaryBorder: "#F5B13D",
+    codeBG: "#002D59",
+    codeText: "#FFFFFF",
   },
   styles: {
     ...maker.styles,
@@ -27,8 +30,14 @@ export default {
       textDecoration: "none",
     },
     Link: {
-      color: "#36aa9a"
-    }
+      color: "#36aa9a",
+    },
+    pre: {
+      ...prismPreset,
+    },
+    code: {
+      ...prismPreset,
+    },
   },
   buttons: {
     primary: {
@@ -117,7 +126,4 @@ export default {
       },
     },
   },
-  styles: {
-    ...maker.styles,
-  }
 };

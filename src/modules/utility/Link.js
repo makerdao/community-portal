@@ -77,15 +77,15 @@ const Link = ({
       sx={{
         pointerEvents: disabled ? "none" : "initial",
         transition: "all .1s ease",
-        color: 'primary',
+        color: "primary",
         "&.active": {
-            color: "primary",
-          },
-          "&:hover": {
-            color: "primary",
-          },
-          "&:hover > svg": {
-            color: "primary",
+          color: "primary",
+        },
+        "&:hover": {
+          color: "primary",
+        },
+        "&:hover > svg": {
+          color: "primary",
         },
       }}
       className="external-link"
@@ -104,7 +104,11 @@ const Link = ({
         </>
       )}
       {children}
-      <Icon name="increase" className="increase" sx={{ top: "2px", position: "relative", ml:"2px" }} />
+      <Icon
+        name="increase"
+        className="increase"
+        sx={{ top: "2px", position: "relative", ml: "2px" }}
+      />
     </ThemeLink>
   );
 };

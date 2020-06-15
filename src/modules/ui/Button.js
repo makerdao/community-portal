@@ -24,26 +24,26 @@ const Button = ({
   }`;
 
   return (
-      <ThemedButton
-        to={to} 
-        disabled={disabled}
-        as={Link}
-        variant={_variant}
-        sx={{
-          ...sx,
-          p: "24px",
-          pt: "12px",
-          pb: "12px",
-          mb: '24px',
-          opacity: disabled ? "0.4" : "1",
-          cursor: disabled ? "not-allowed" : "pointer",
-          "&:hover": { color: 'onPrimary', transition: "all .15s ease" },
-          '& .increase' : {display: 'none'}
-        }}
-        {...otherProps}
-      >
-        {children}
-      </ThemedButton>
+    <ThemedButton
+      to={to}
+      disabled={disabled}
+      as={Link}
+      variant={_variant}
+      sx={{
+        ...sx,
+        p: "24px",
+        pt: "12px",
+        pb: "12px",
+        mb: "24px",
+        opacity: disabled ? "0.4" : "1",
+        cursor: disabled ? "not-allowed" : "pointer",
+        "&:hover": { color: "onPrimary", transition: "all .15s ease" },
+        "& .increase": { display: "none" },
+      }}
+      {...otherProps}
+    >
+      {children}
+    </ThemedButton>
   );
 };
 

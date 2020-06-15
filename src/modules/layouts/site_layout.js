@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import { MDXProvider } from "@mdx-js/react";
-
+import "../../../prismjs.css";
 
 import Header from "../ui/header";
 
