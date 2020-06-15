@@ -1,4 +1,4 @@
-//NOTE(Rejon): This context provider exists to pass context of page related props like locale, ect.
+//NOTE(Rejon): This context provider exists to pass context of page related props like locale, lunr, ect.
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
@@ -71,6 +71,8 @@ const PageDataProvider = ({ children, value }) => {
       #     UI {
       #       No_Results
       #       Search
+      #       NOTE: Rejon for every single new key you add you MUST update all other locales.
+      #             Just copy the schema from the GraphiQL tool at localhost:8000/__graphql
       #     }
       #   }
       # }
@@ -118,6 +120,8 @@ const PageDataProvider = ({ children, value }) => {
     }
   }, [pathname, locale, locales]);
 
+  //LUNR becomes available only via the window.
+  //To make it easier for our app to access it we just set it in our app context.
   useEffect(() => {
     if (window.__LUNR__) {
       window.__LUNR__.__loaded.then((lunr) => setLunr(lunr));

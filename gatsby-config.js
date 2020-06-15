@@ -50,10 +50,16 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              backgroundColor: 'none',
+              backgroundColor: "none",
               disableBgImage: true,
-              showCaptions: ['Title']
-            }
+              showCaptions: ["Title"],
+            },
+          },
+          {
+            resolve: "gatsby-remark-code-titles",
+            options: {
+              className: "prism-code-title",
+            },
           },
         ],
       },
@@ -74,7 +80,17 @@ module.exports = {
         preset: "@makerdao/dai-ui-theme-maker",
       },
     },
-
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: "Roboto Mono",
+            variants: ["400"],
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
