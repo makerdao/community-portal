@@ -18,7 +18,7 @@ const Tree = ({ edges, customSidenavs, locale }) => {
       locale,
       customSidenavs
     );
-    return { items: items[0].items, locale };
+    return { items: items[0] ? items[0].items : [], locale };
   });
 
   const defaultCollapsed = {};
@@ -49,7 +49,7 @@ const Tree = ({ edges, customSidenavs, locale }) => {
 
       updateTreeData({
         locale,
-        items: items[0],
+        items: items[0] ? items[0].items : [],
       });
     }
   }, [locale]);
