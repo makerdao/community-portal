@@ -5,7 +5,7 @@ import calculateTreeData from "@modules/sidenav/calculateTreeData";
 
 import Sidenav_Node from "@modules/sidenav/Sidenav_Node";
 
-const Tree = ({ edges, locale }) => {
+const Tree = ({ edges, customSidenavs, locale }) => {
   const { pathname } = useLocation();
   const path = pathname.split("/");
   const DEFAULT_LOCALE = "en";
@@ -15,9 +15,10 @@ const Tree = ({ edges, locale }) => {
       edges,
       currentTopSection,
       DEFAULT_LOCALE,
-      locale
+      locale,
+      customSidenavs
     );
-    return { items, locale };
+    return { items: items[0] ? items[0].items : [], locale };
   });
 
   const defaultCollapsed = {};
@@ -48,7 +49,7 @@ const Tree = ({ edges, locale }) => {
 
       updateTreeData({
         locale,
-        items,
+        items: items[0] ? items[0].items : [],
       });
     }
   }, [locale]);

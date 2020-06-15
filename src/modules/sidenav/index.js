@@ -27,7 +27,7 @@ const Sidenav = (props) => {
           allMdx(
             filter: {
               fileAbsolutePath: {
-                regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|404.mdx|.js|.json)/"
+                regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|sidenav.mdx|404.mdx|.js|.json)/"
               }
             }
           ) {
@@ -39,13 +39,14 @@ const Sidenav = (props) => {
                 fileAbsolutePath
                 frontmatter {
                   title
+                  order
                 }
               }
             }
           }
         }
       `}
-      render={({ allMdx }) => (
+      render={({ allMdx, sidenavs }) => (
         <Box>
           <ul>
             <Tree edges={allMdx.edges} locale={locale} />
