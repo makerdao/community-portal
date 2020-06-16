@@ -10,7 +10,7 @@ import { useLocation } from "@reach/router";
 
 export default (props) => {
   const { children, pageContext, uri } = props;
-  console.log(props);
+
   const {
     title,
     author,
@@ -31,7 +31,7 @@ export default (props) => {
   const path = pathname.split("/");
   const currentTopSection = path[2];
 
-  console.log(currentTopSection)
+
 
   //For the sake of SEO we may want the page title to be based on the first h1 in our MDX file.
   //if no title is specified in the metadata.
@@ -65,7 +65,7 @@ export default (props) => {
       
       <Flex sx={{flexGrow: 1, flexDirection: 'column', width: '80%'}}>
       {status && <StatusBanner sticky {...statusProps} sx={{width: '100%'}} hideSpacer/>}
-      <article sx={{pl: (currentTopSection !== undefined && currentTopSection !== '') ? '64px' : 0, mt: '74px', pr: 4}}>
+      <article sx={{pl: (currentTopSection !== undefined && currentTopSection !== '') ? '64px' : 0, mt: (currentTopSection !== undefined && currentTopSection !== '') ? '74px' : 0, pr: 4}}>
       
       <Breadcrumbs />
       {children}

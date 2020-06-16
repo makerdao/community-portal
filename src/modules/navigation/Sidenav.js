@@ -11,7 +11,6 @@ import { Box } from "theme-ui";
 const Sidenav = (props) => {
   const { locale } = useTranslation();
   
-
   return (
     <StaticQuery
       query={graphql`

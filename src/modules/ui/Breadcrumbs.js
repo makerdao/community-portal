@@ -50,7 +50,7 @@ const Breadcrumbs = ({ children }) => {
   //We also need them to include their TRUE title and url.
   const BreadcrumbData = pathDirs.map((pathDir) => {
     //Find the page that has it's filename match our pathDir.
-    const { node } = edges.find(
+    const {node} = edges.find(
       ({ node }) =>
         pathDir ===
         node.fileAbsolutePath

@@ -9,7 +9,7 @@ import { usePage } from "@modules/layouts/PageContext";
 // without ILS: useTranslation() -> t('error_code', 'errors')
 // with ILS: useTranslation('errors') -> t('error_code')
 export default function useTranslation(initialLangSpace) {
-  const { locale, localeStrings, DEFAULT_LOCALE_STRINGS } = usePage();
+  const { locale, localeStrings, DEFAULT_LOCALE, DEFAULT_LOCALE_STRINGS } = usePage();
 
   //key[String] - Key name of the text from the locale you want. Best practice is write it like you would english, replace all spaces with '_'
   //lang_space[String] - Language space keyname to access for your keys. ie. {'lang_space': {'key': 'Localized Text'}}
@@ -162,5 +162,6 @@ export default function useTranslation(initialLangSpace) {
   return {
     t,
     locale: locale,
+    DEFAULT_LOCALE
   };
 }

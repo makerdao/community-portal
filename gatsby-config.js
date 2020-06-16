@@ -37,8 +37,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
-
-    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
