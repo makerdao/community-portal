@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { Fragment } from "react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { jsx, Text } from "theme-ui";
+import { jsx, Text, Box } from "theme-ui";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
@@ -79,8 +79,7 @@ const Breadcrumbs = ({ children }) => {
   });
 
   return (
-    <>
-      <div>
+      <Box sx={{mb: '8px'}}>
         <Link
           to={`/${locale}/`}
           sx={{ textDecoration: "none" }}
@@ -112,8 +111,7 @@ const Breadcrumbs = ({ children }) => {
             </React.Fragment>
           );
         })}
-      </div>
-    </>
+      </Box>
   );
 };
 

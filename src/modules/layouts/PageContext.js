@@ -82,9 +82,9 @@ const PageDataProvider = ({ children, value }) => {
   const locales = allDirectory.nodes.map((n) =>
     n.absolutePath.split("/").pop()
   );
-  //NOTE(Rejon): This defaultLocale const may seem redundant, but it's ensure the site doesn't reload twice on mount.
-  const defaultLocale = "en";
-  const [locale, setLocale] = useState(defaultLocale);
+  //NOTE(Rejon): This DEFAULT_LOCALE const may seem redundant, but it's ensure the site doesn't reload twice on mount.
+  const DEFAULT_LOCALE = "en";
+  const [locale, setLocale] = useState(DEFAULT_LOCALE);
   const [lunr, setLunr] = useState(null);
 
   //NOTE(Rejon): The object we get from the query is digusting.
@@ -134,6 +134,7 @@ const PageDataProvider = ({ children, value }) => {
         setLocale,
         locale,
         localeStrings,
+        DEFAULT_LOCALE,
         DEFAULT_LOCALE_STRINGS: localeStrings["en"],
         lunr,
       }}

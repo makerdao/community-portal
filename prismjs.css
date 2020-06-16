@@ -4,17 +4,19 @@
 	-webkit-overflow-scrolling: touch;
   }
    pre[class*="language-"]::before {
-	background: black;
-	border-radius: 0 0 0.25rem 0.25rem;
-	color: white;
-	font-size: 12px;
-	letter-spacing: 0.025rem;
-	padding: 0.1rem 0.5rem;
-	position: absolute;
-	right: 1rem;
-	text-align: right;
-	text-transform: uppercase;
-	top: 0;
+	color: #232129;
+    font-size: 0.75rem;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	letter-spacing: 0.085em;
+	font-weight: bold;
+    line-height: 1;
+    position: absolute;
+    left: 1.5rem;
+    text-align: right;
+    text-transform: uppercase;
+    top: 0px;
+    border-radius: 0px 0px 4px 4px;
+    padding: 0.25rem 0.5rem;
   }
    pre[class~="language-javascript"]::before {
 	content: "js";
@@ -38,15 +40,29 @@
 	background: #ff9800;
 	color: white;
   }
+
+  pre[class~="language-markdown"]::before {
+	  content: "MD⇩";
+	  background: #586069;
+	  color: white;
+  }
+
   .gatsby-code-title {
-	display: inline-block;
-    position: relative;
-    top: 1.58rem;
     z-index: 1;
     background: hsla(0, 0%, 100%, 0.16);
-    left: 1rem;
-    border-radius: 0 0 0.25rem 0.25rem;
-    padding: 0.1rem 0.5rem;
-    font-size: 15px;
-    color: white;
+	color: white;
+	display: inline-block;
+	position: relative;
+	font-size: 0.75rem;
+    font-family: "Roboto Mono", monospace;
+    letter-spacing: 0.075em;
+    line-height: 0.9;
+    /* position: absolute; */
+    left: 3.1rem;
+    text-align: right;
+    /* text-transform: uppercase; */
+    top: 1.22rem;
+    border-radius: 0px 0px 4px 4px;
+    padding: 0.4rem 0.5rem;
+    padding-left: 0.9rem;
   }
