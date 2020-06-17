@@ -2,8 +2,6 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
 import { MDXProvider } from "@mdx-js/react";
 import {Flex, jsx} from 'theme-ui'
 import "@modules/utility/prismjs.css";

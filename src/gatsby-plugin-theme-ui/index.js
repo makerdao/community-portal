@@ -1,5 +1,3 @@
-import React from "react";
-import { Box, useThemeUI } from "theme-ui";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
@@ -14,9 +12,12 @@ export default {
   colors: {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
     body: "#53546A",
+    
     "body-15": "rgba(83, 84, 106, 0.15)",
     "body-5": "rgba(83, 84, 106, 0.05)",
+    "body-5-pure": "#eff0f2",
     "body-40": "rgba(83, 84, 106, 0.4)",
+    "body-01": "rgba(83, 84, 106, 0.1)",
     callout: "#f4f4f7",
     calloutSecondary: "#fdefd9",
     calloutSecondaryBorder: "#F5B13D",

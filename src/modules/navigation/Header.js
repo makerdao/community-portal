@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from "react";
 
-import PropTypes from "prop-types";
 import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
@@ -15,16 +14,10 @@ import Search from "@modules/search";
 import {UrlConverter, TitleConverter} from '@utils'
 
 const Header = () => {
-  const { locale, t, DEFAULT_LOCALE } = useTranslation();
+  const { locale, t } = useTranslation();
 
-  const { site, headerFiles, headerConfigFiles } = useStaticQuery(graphql`
+  const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-
       #Get files that have header/headerOrder frontmatter
        headerFiles: allMdx(filter: {frontmatter: {header: {in: true}}}) {
           edges {
@@ -92,13 +85,15 @@ const Header = () => {
       if (aNode.headerOrder > bNode.headerOrder) return 1;
       return 0;
     }
-  }).map(({node}) => {
+
+    return 0;
+  }).map(({node}, index) => {
     
     const title = TitleConverter(node);
     const url = UrlConverter(node);
     
     return (
-      <Link to={url}>
+      <Link to={url} key={`header-link-${index}`}>
         {title}
       </Link>
     );
@@ -130,7 +125,7 @@ const Header = () => {
           alignItems: "center",
           p: 0,
           m: 0,
-          listStyleType: "none",
+          "listStyleType": "none",
         },
         "& > ul > li": {
           mr: "40px",

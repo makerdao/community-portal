@@ -1,12 +1,10 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 
 import { useLocation } from "@reach/router";
 import {usePage} from '@modules/layouts/PageContext'
 import calculateTreeData from "@modules/navigation/calculateTreeData";
 
 import Sidenav_Node from "@modules/navigation/Sidenav_Node";
-
-const NavigationContext = React.createContext();
 
 const Tree = ({ edges, locale }) => {
   const { pathname } = useLocation();

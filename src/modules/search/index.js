@@ -59,7 +59,7 @@ export default function Search({ ...otherProps }) {
       {...otherProps}
       sx={{
         borderRadius: 0,
-        backgroundColor: "body-5",
+        backgroundColor: "body-5-pure",
         position: "relative",
       }}
     >
@@ -76,7 +76,7 @@ export default function Search({ ...otherProps }) {
           display: query.length > 0 && focus ? "grid" : "none",
           position: "absolute",
           left: 0,
-          backgroundColor: "body-5",
+          backgroundColor: "body-5-pure",
           borderBottomLeftRadius: "medium",
           borderBottomRightRadius: "medium",
           borderTop: "none",

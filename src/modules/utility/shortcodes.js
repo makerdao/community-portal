@@ -8,7 +8,6 @@ import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
 import CTA from "@modules/ui/CTA";
 import { Image, AspectImage, Text, Divider, Box } from "theme-ui";
-import Prism from "@theme-ui/prism";
 
 export default {
   a: (props) => <Link to={props.href} {...props} />,
