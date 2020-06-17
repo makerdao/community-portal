@@ -11,6 +11,7 @@ const StatusBanner = ({
   color,
   sticky,
   children,
+  hideSpacer,
   ...otherProps
 }) => {
   const variant =
@@ -39,7 +40,7 @@ const StatusBanner = ({
       : luminCheck(color, variant);
 
     return (
-      <Sticky dontUpdateHolderHeightWhenSticky={true}>
+      <Sticky dontUpdateHolderHeightWhenSticky={true} sx={{zIndex: '100'}}>
         <Box
           sx={{
             p: "21px",
@@ -70,7 +71,7 @@ const StatusBanner = ({
           {children}
         </Box>
         {/* NOTE(Rejon): Sticky acts weird when applying ANY margin. This spacer is here to keep the peace. */}
-        <div className="spacer" sx={{ height: "24px" }}></div>
+        {!hideSpacer && <div className="spacer" sx={{ height: "24px" }}></div>}
       </Sticky>
     );
   }

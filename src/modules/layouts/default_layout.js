@@ -1,12 +1,16 @@
+/** @jsx jsx */
 import React from "react";
 import SEO from "@modules/utility/seo";
-import Sidenav from "@modules/sidenav/";
+import Sidenav from "@modules/navigation/Sidenav";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import StatusBanner from "@modules/ui/StatusBanner";
-import { Button } from "theme-ui";
+import { Button, Flex, jsx } from "theme-ui";
+import Sticky from "react-sticky-el";
+import { useLocation } from "@reach/router";
 
 export default (props) => {
   const { children, pageContext, uri } = props;
+
   const {
     title,
     author,
@@ -22,6 +26,12 @@ export default (props) => {
     typeof status === "object"
       ? { children: status.text, ...status }
       : { children: status };
+
+  const { pathname } = useLocation();
+  const path = pathname.split("/");
+  const currentTopSection = path[2];
+
+
 
   //For the sake of SEO we may want the page title to be based on the first h1 in our MDX file.
   //if no title is specified in the metadata.
@@ -47,10 +57,56 @@ export default (props) => {
   return (
     <>
       <SEO title={_pageTitle} description={description} keywords={keywords} />
-      <Sidenav />
-      {status && <StatusBanner sticky {...statusProps} />}
+      {(currentTopSection !== undefined && currentTopSection !== '') &&
+        <Sticky boundaryElement=".content-boundary" sx={{width: '20%', minWidth: '260px'}} dontUpdateHolderHeightWhenSticky={true} style = {{position: 'relative'}} hideOnBoundaryHit={false}>
+          <Sidenav/>
+        </Sticky>
+      }
+      
+      <Flex sx={{flexGrow: 1, flexDirection: 'column', width: '80%'}}>
+      {status && <StatusBanner sticky {...statusProps} sx={{width: '100%'}} hideSpacer/>}
+      <article sx={{pl: (currentTopSection !== undefined && currentTopSection !== '') ? '64px' : 0, mt: (currentTopSection !== undefined && currentTopSection !== '') ? '74px' : 0, pr: 4}}>
+      
       <Breadcrumbs />
-      <article>{children}</article>
+      {children}
+      </article>
+      </Flex>
     </>
   );
 };
+
+export const pageQuery = graphql`
+  query($id: String!) {
+    mdx( id: { eq: $id } ) {
+      body
+      tableOfContents
+      parent {
+        ... on File {
+          relativePath
+        }
+      }
+      headings(depth: h1) {
+                  value
+                }
+                fileAbsolutePath
+                frontmatter {
+                  title
+                  order
+                }
+    }
+    allMdx {
+      edges {
+        node {
+          headings(depth: h1) {
+                  value
+                }
+                fileAbsolutePath
+                frontmatter {
+                  title
+                  order
+                }
+        }
+      }
+    }
+  }
+`;

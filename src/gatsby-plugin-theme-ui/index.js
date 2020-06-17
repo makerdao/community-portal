@@ -22,6 +22,7 @@ export default {
     calloutSecondaryBorder: "#F5B13D",
     codeBG: "#002D59",
     codeText: "#FFFFFF",
+    headline: '#291A42'
   },
   styles: {
     ...maker.styles,

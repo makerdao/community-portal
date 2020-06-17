@@ -5,20 +5,12 @@ import { StaticQuery, graphql } from "gatsby";
 
 import { useLocation } from "@reach/router";
 import useTranslation from "@modules/utility/useTranslation";
-import Tree from "@modules/sidenav/Tree";
+import Tree from "@modules/navigation/Sidenav_Tree";
 import { Box } from "theme-ui";
 
 const Sidenav = (props) => {
   const { locale } = useTranslation();
-  const { pathname } = useLocation();
-  const path = pathname.split("/");
-  const currentTopSection = path[2];
-
-  //Don't render the sidenav if there's no top section.
-  if (currentTopSection === undefined) {
-    return <></>;
-  }
-
+  
   return (
     <StaticQuery
       query={graphql`
@@ -47,8 +39,8 @@ const Sidenav = (props) => {
         }
       `}
       render={({ allMdx, sidenavs }) => (
-        <Box>
-          <ul>
+        <Box as="aside" sx={{flexGrow: 0, position: 'relative', maxHeight: '1012px', height: 'calc(100vh - 139px)', pt: '54px', pl: '8px', pr: '31px', boxShadow: 'inset -1px 0px 0px rgba(41, 26, 66, 0.1);'}}>
+          <ul sx={{m: 0, p: 0, listStyleType: 'none'}}>
             <Tree edges={allMdx.edges} locale={locale} />
           </ul>
         </Box>

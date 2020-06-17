@@ -1,6 +1,6 @@
 import React from "react";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
-import Sidenav from "@modules/sidenav";
+import Sidenav from "@modules/navigation/Sidenav";
 import StatusBanner from "@modules/ui/StatusBanner";
 import Link from "@modules/utility/Link";
 import Callout from "@modules/ui/Callout";

@@ -37,8 +37,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
-
-    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -102,7 +100,7 @@ module.exports = {
       options: {
         path: `${__dirname}/content`,
         ignore: {
-          patterns: [`**/header.mdx`, `**/**.js`, `**/**.json`, `**/404.mdx`],
+          patterns: [`**/header.mdx`, `**/**.js`, `**/**.json`, `**/404.mdx`, `**/example.mdx`],
           options: { nocase: true },
         },
       },

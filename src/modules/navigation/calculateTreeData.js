@@ -1,3 +1,4 @@
+
 //This is an algorithm that does a number of things:
 // - Takes mdx edge data and constructs usable sidenav objects.
 // - Creates sidenav objects for default language (en), and our current locale.
@@ -8,7 +9,7 @@
 //NOTE(Rejon): Parts of this solution was pulled from Hasura's gatsby-gitbook-starter.
 //             specifically the sidenav reducer. https://github.com/hasura/gatsby-gitbook-starter/blob/master/src/components/sidebar/tree.js
 export default (
-  edges,
+  edges = [],
   currentTopSection,
   DEFAULT_LOCALE = "en",
   currentLocale = "en"

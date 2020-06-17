@@ -6,7 +6,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import useTranslation from "@modules/utility/useTranslation";
-import Shortcodes from "@modules/ui/shortcodes";
+import Shortcodes from "@modules/utility/shortcodes";
 
 const NotFoundPage = () => {
   const { locale } = useTranslation();

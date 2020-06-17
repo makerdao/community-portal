@@ -21,6 +21,13 @@ export const TitleConverter = ({
   return frontMatterTitle || headingsTitle || fileName;
 };
 
+export const UrlConverter = ({ fileAbsolutePath }) => {
+  return fileAbsolutePath
+    .slice(fileAbsolutePath.indexOf("/content/") + 8, fileAbsolutePath.length)
+    .replace(/(.mdx|index.mdx)$/gm, "");
+};
+
+
 //Check if a Hex Color passes luminance check
 //TLDR: If text on a background (hex) should be white or black based on luminance.
 //Taken from: https://stackoverflow.com/a/41491220
