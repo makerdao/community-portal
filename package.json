@@ -40,6 +40,7 @@
     "react-helmet": "^6.0.0",
     "react-select": "^3.1.0",
     "react-sticky-el": "^2.0.5",
+    "remark-frontmatter": "^2.0.0",
     "snyk": "^1.336.0",
     "theme-ui": "^0.3.1"
   },
