@@ -1,143 +1,26 @@
-# Testing the List Component
+# Testing the Process Component
 
-- This should STILL be an unorderded list!
-- This should STILL be an unorderded list!
-- This should STILL be an unorderded list!
+<Process>
 
-1. This should STILL be an ordered list!
-2. This should STILL be an ordered list!
-3. This should STILL be an ordered list!
+## Hello world
 
-## Basic List
+Make sure you name versions, for example: **Dai_v0.**
 
-Anything goes...
-
-<List>
-
-# Howdy
-
-## HowdyHowdy 
-
-### What's up?
-
-This should rendering anything. And I mean <Text as="h3">ANYTHING!</Text>
-> This should be a CTA :)
-
-<StatusBanner sticky notice hideSpacer> 
-
-Here's a sticky example. 
-
-**Make sure to hide the spacer when using this in a list.**
-
-</StatusBanner>
-
-<Callout icon="rocketchat">
-How about this?
-</Callout>
-
-```js
-const variable = "this is a code element in a list.";
-```
-
-</List>
-
-## Resource List Example
-
-<List>
-
-<Link to="/">Writing style guide →</Link>
-
-<Link to="/">Visual style guide →</Link>
-
-<Link to="/">Code style guide →</Link>
-
-<Link to="https://rejontaylor.com">External Link</Link>
-
-</List>
-
-## Single Child Rule Example
-
-<List>
-
-Only child children that are seperated will always be centered vertically.
-<Link to="/"> Even though this element is written closely in mdx, it's counted a seperate child</Link>
-<StatusBanner>Keep this in mind when writing your MDX</StatusBanner>
-<StatusBanner sticky>Here's a sticky example without the spacer</StatusBanner>
+> Testing Testing
 
 <Box>
 
-If you need everything to be in **ONE** child. Use a Box component!
+# Actual Large Amounts of Content written in a very unique way
 
-<Link to="/"> Now everything is in one list row :) </Link>
-<br/>
-<br/>
+> This is content written in a CTA
 
-<StatusBanner>Keep this in mind when writing your MDX</StatusBanner>
+```js
+Some more content
+```
 
-<StatusBanner sticky warning>Here's a sticky example without the spacer</StatusBanner>
+![Starfox](../images/starfox.png)
 
 </Box>
 
-</List>
 
-## List Link Style
-
-<List>
-
-1. French
-	- No Link
-
-
-2. [French](/)
-	- Internal Link
-
-
-- [French](https://rejontaylor.com)
-	- External Link
-
-
-- <Link to="/">French Link Component</Link>
-
-	- Link Component
-
-
-- French
-	- <Box> 
-		With a ton of great great content
-		<CTA>Like this!</CTA>
-	  </Box>
-
-
-- [MakerDAO](https://makerdao.com)
-
-	- <Box> 
-
-		With a ton of great great content and an external website
-	
-		```js
-			const variable = "wow cool beans"
-		```
-	  </Box>
-
-- [Rejon Taylor-Foster](https://rejontaylor.com)
-
-	- <Box> 
-
-		### Let's get complex!
-
-		<Button to="/">A Button</Button>
-
-		<StatusBanner> 
-
-			## So far so good! 
-
-		</StatusBanner>
-
-		> Blockquotes are CTAs!
-
-		```js
-			const variable = "wow cool beans"
-		```
-	  </Box>
-
-</List>
+</Process>

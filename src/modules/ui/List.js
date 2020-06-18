@@ -103,7 +103,6 @@ const List = ({ children }) => {
   return (
     <Box sx={{ mb: 4 }}>
       {_Children.map((child, index) => {
-		  console.log(child)
 		//Check if the child is confirmed to be a UL or OL
         if (child.props.mdxType === "ul" || child.props.mdxType === "ol") {
           const ULChildren = React.Children.toArray(child.props.children);

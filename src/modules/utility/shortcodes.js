@@ -7,6 +7,7 @@ import Callout from "@modules/ui/Callout";
 import List from "@modules/ui/List";
 import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
+import Process from '@modules/ui/Process'
 import CTA from "@modules/ui/CTA";
 import { Image, AspectImage, Text, Divider, Box } from "theme-ui";
 
@@ -30,6 +31,7 @@ export default {
   Box,
   Icon,
   CTA,
+  Process,
   Image,
   List,
   AspectImage,

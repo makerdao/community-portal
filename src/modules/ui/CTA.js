@@ -9,6 +9,7 @@ const CTA = ({ children, ...otherProps }) => (
       width: "100%",
       borderColor: "primary",
       bg: "successAlt",
+      mb: '24px',
       "& > *:only-child": { m: 0 },
     }}
   >
