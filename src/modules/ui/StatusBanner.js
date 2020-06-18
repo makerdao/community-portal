@@ -40,7 +40,10 @@ const StatusBanner = ({
       : luminCheck(color, variant);
 
     return (
-      <Sticky dontUpdateHolderHeightWhenSticky={true} sx={{zIndex: '100'}}>
+      <Sticky
+        dontUpdateHolderHeightWhenSticky={true}
+        sx={{ zIndex: "100", width: "100%" }}
+      >
         <Box
           sx={{
             p: "21px",
@@ -101,6 +104,7 @@ const StatusBanner = ({
           height: "100%",
         },
         mb: "12px",
+        width: "100%",
       }}
     >
       {children}

@@ -1,0 +1,112 @@
+# Testing the List Component
+
+- This should STILL be an unorderded list!
+- This should STILL be an unorderded list!
+- This should STILL be an unorderded list!
+
+### Basic List
+
+Anything goes...
+
+<List>
+
+# Howdy
+
+## HowdyHowdy 
+
+### What's up?
+
+This should rendering anything. And I mean <Text as="h3">ANYTHING!</Text>
+> This should be a CTA :)
+
+<StatusBanner sticky notice hideSpacer> 
+
+Here's a sticky example. 
+
+**Make sure to hide the spacer when using this in a list.**
+
+</StatusBanner>
+
+<Callout icon="rocketchat">
+How about this?
+</Callout>
+
+```js
+const variable = "this is a code element in a list.";
+```
+
+</List>
+
+### Resource List Example
+
+<List>
+
+<Link to="/">Writing style guide →</Link>
+
+<Link to="/">Visual style guide →</Link>
+
+<Link to="/">Code style guide →</Link>
+
+<Link to="https://rejontaylor.com">External Link</Link>
+
+</List>
+
+### Single Child Rule Example
+
+<List>
+
+Only child children that are seperated will always be centered vertically.
+<Link to="/"> Even though this element is written closely in mdx, it's counted a seperate child</Link>
+<StatusBanner>Keep this in mind when writing your MDX</StatusBanner>
+<StatusBanner sticky notice>Here's a sticky example without the spacer</StatusBanner>
+
+<Box>
+
+If you need everything to be in **ONE** child. Use a Box component!
+
+<Link to="/"> Now everything is in one list row :) </Link>
+<br/>
+<br/>
+
+<StatusBanner>Keep this in mind when writing your MDX</StatusBanner>
+
+<StatusBanner sticky notice>Here's a sticky example without the spacer</StatusBanner>
+
+</Box>
+
+</List>
+
+### List Link Style
+
+<List>
+
+- French
+	- Optional sub Text
+
+
+- [French](/)
+	- Optional sub Text
+
+
+- [French](https://rejontaylor.com)
+	- Optional sub Text
+
+
+- French
+	- <Box> 
+		With a ton of great great content
+		<CTA>Like this!</CTA>
+	  </Box>
+
+
+- [French](https://rejontaylor.com)
+	- <Box> 
+
+		With a ton of great great content and an external website
+	
+		```js
+			const variable = "wow cool beans"
+		```
+	  </Box>
+
+</List>

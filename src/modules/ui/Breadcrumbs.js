@@ -48,7 +48,7 @@ const Breadcrumbs = ({ children }) => {
   //We also need them to include their TRUE title and url.
   const BreadcrumbData = pathDirs.map((pathDir) => {
     //Find the page that has it's filename match our pathDir.
-    const {node} = edges.find(
+    const { node } = edges.find(
       ({ node }) =>
         pathDir ===
         node.fileAbsolutePath
@@ -77,39 +77,36 @@ const Breadcrumbs = ({ children }) => {
   });
 
   return (
-      <Box sx={{mb: '8px'}}>
-        <Link
-          to={`/${locale}/`}
-          sx={{ textDecoration: "none" }}
-          partiallyActive={true}
-          activeClassName={"active"}
-        >
-          {t("Home")}
-        </Link>
-        {" / "}
-        {BreadcrumbData.map(({ title, url }, index) => {
-          //If this is the last crumb, then just render its name.
-          if (index === BreadcrumbData.length - 1) {
-            return (
-              <Text
-                sx={{ display: "inline-block" }}
-                key={`breadcrumb-${index}`}
-              >
-                {title}
-              </Text>
-            );
-          }
-
+    <Box sx={{ mb: "8px" }}>
+      <Link
+        to={`/${locale}/`}
+        sx={{ textDecoration: "none" }}
+        partiallyActive={true}
+        activeClassName={"active"}
+      >
+        {t("Home")}
+      </Link>
+      {" / "}
+      {BreadcrumbData.map(({ title, url }, index) => {
+        //If this is the last crumb, then just render its name.
+        if (index === BreadcrumbData.length - 1) {
           return (
-            <Fragment key={`breadcrumb-${index}`}>
-              <Link to={url} sx={{ textDecoration: "none" }}>
-                {index >= 2 ? <>...</> : title}
-              </Link>
-              {` / `}
-            </Fragment>
+            <Text sx={{ display: "inline-block" }} key={`breadcrumb-${index}`}>
+              {title}
+            </Text>
           );
-        })}
-      </Box>
+        }
+
+        return (
+          <Fragment key={`breadcrumb-${index}`}>
+            <Link to={url} sx={{ textDecoration: "none" }}>
+              {index >= 2 ? <>...</> : title}
+            </Link>
+            {` / `}
+          </Fragment>
+        );
+      })}
+    </Box>
   );
 };
 

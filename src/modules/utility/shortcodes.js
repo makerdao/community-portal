@@ -4,6 +4,7 @@ import Sidenav from "@modules/navigation/Sidenav";
 import StatusBanner from "@modules/ui/StatusBanner";
 import Link from "@modules/utility/Link";
 import Callout from "@modules/ui/Callout";
+import List from "@modules/ui/List";
 import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
 import CTA from "@modules/ui/CTA";
@@ -18,7 +19,8 @@ export default {
   h4: (props) => <Text variant="h4" {...props} />,
   h5: (props) => <Text variant="h5" {...props} />,
   thematicBreak: (props) => <Divider />,
-  p: (props) => <Text sx={{ mb: "16px" }} {...props} />,
+  p: (props) => <Text sx={{ mb: "16px" }} as="p" {...props} />,
+  blockquote: CTA,
   Button,
   Breadcrumbs,
   Callout,
@@ -29,5 +31,6 @@ export default {
   Icon,
   CTA,
   Image,
+  List,
   AspectImage,
 };

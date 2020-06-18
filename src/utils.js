@@ -27,7 +27,6 @@ export const UrlConverter = ({ fileAbsolutePath }) => {
     .replace(/(.mdx|index.mdx)$/gm, "");
 };
 
-
 //Check if a Hex Color passes luminance check
 //TLDR: If text on a background (hex) should be white or black based on luminance.
 //Taken from: https://stackoverflow.com/a/41491220

@@ -12,7 +12,7 @@ export default {
   colors: {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
     body: "#53546A",
-    
+
     "body-15": "rgba(83, 84, 106, 0.15)",
     "body-5": "rgba(83, 84, 106, 0.05)",
     "body-5-pure": "#eff0f2",
@@ -23,7 +23,7 @@ export default {
     calloutSecondaryBorder: "#F5B13D",
     codeBG: "#002D59",
     codeText: "#FFFFFF",
-    headline: '#291A42'
+    headline: "#291A42",
   },
   styles: {
     ...maker.styles,

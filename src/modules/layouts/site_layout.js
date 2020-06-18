@@ -3,7 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
-import {Flex, jsx} from 'theme-ui'
+import { Flex, jsx } from "theme-ui";
 import "@modules/utility/prismjs.css";
 
 import Header from "@modules/navigation/Header";
@@ -14,7 +14,18 @@ import Shortcodes from "@modules/utility/shortcodes";
 const Layout = ({ children }) => (
   <PageDataProvider>
     <Header />
-    <Flex as="main" sx={{maxWidth: '1364px', m: '0 auto', mt:'10px', pl: 4, pr: 0, position: 'relative'}} className="content-boundary">
+    <Flex
+      as="main"
+      sx={{
+        maxWidth: "1364px",
+        m: "0 auto",
+        mt: "10px",
+        pl: 4,
+        pr: 0,
+        position: "relative",
+      }}
+      className="content-boundary"
+    >
       <MDXProvider components={Shortcodes}>{children}</MDXProvider>
     </Flex>
     <footer>Footer Goes Here</footer>
