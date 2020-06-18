@@ -2,7 +2,7 @@
 import React from "react";
 import Link from '@modules/utility/Link'
 import { useLocation } from "@reach/router";
-import { Icon, jsx } from "theme-ui";
+import { jsx } from "theme-ui";
 
 const Sidenav_Node = ({
   url,
@@ -16,7 +16,7 @@ const Sidenav_Node = ({
   const hasChildren = items.length !== 0;
 
   //NOTE(Rejon): Regex check for subdirectory recursion.
-  const urlRegex = new RegExp(`\/${otherProps.slugPart}\/`);
+  const urlRegex = new RegExp(`/${otherProps.slugPart}/`);
   const active = pathname === url || urlRegex.test(pathname);
 
   const fontWeight = active ? 'bold' : null || parentActive ? '500' : 'body';
@@ -38,7 +38,7 @@ const Sidenav_Node = ({
       )}
 
       {(active && hasChildren) && (
-        <ul sx={{m: 0, mt:'24px', ml: '16px', pl: 0, maxWidth: '140px', listStyleType: 'none'}}>
+        <ul sx={{m: 0, mt:'24px', ml: '16px', pl: 0, maxWidth: '140px', "listStyleType": 'none'}}>
           {items.map((item, index) => (
             <Sidenav_Node
               key={`${item.url}-${item.index}`}

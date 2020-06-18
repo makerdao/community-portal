@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx, Box, Flex } from "theme-ui";
+import { jsx, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
 const Callout = ({ icon, secondary, warning, children }) => {
@@ -26,7 +26,7 @@ const Callout = ({ icon, secondary, warning, children }) => {
         sx={{
           flexDirection: "column",
           justifyContent: "center",
-          "& > *:first-child": {
+          "& > *:first-of-type": {
             mt: 0,
           },
         }}

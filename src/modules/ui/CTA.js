@@ -1,6 +1,5 @@
 import React from "react";
 import { Card } from "theme-ui";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 
 const CTA = ({ children, ...otherProps }) => (
   <Card

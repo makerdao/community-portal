@@ -102,7 +102,7 @@ export default (
 
       for (const part of slicedParts) {
         let tmp =
-          prevItems && prevItems.find(({ slugPart }) => slugPart == part);
+          prevItems && prevItems.find(({ slugPart }) => slugPart === part);
 
         if (tmp) {
           if (!tmp.items) {

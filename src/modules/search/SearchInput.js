@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState } from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
-import { Box, Input, Flex, Button, jsx } from "theme-ui";
+import { Input, Flex, jsx } from "theme-ui";
 
 import useTranslation from "@modules/utility/useTranslation";
 
@@ -9,7 +9,6 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
   const { t } = useTranslation();
 
   let timerID = null;
-  const bounceDelay = delay || 0;
   const [value, setValue] = useState("");
 
   const onChangeDebounce = (event) => {
@@ -18,12 +17,6 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
     if (timerID !== null) {
       clearTimeout(timerID);
     }
-
-    // if (bounceDelay > 0) {
-    //   timerID = setTimeout(() => refine(_value), bounceDelay);
-    // } else {
-    //   refine(_value);
-    // }
 
     setValue(_value);
     if (onSubmit) {

@@ -135,7 +135,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/en\/(?!header.mdx|index.mdx|404.mdx|.js|.json)/
+                /\/en\/(?!header.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
           {
@@ -144,7 +144,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/es\/(?!header.mdx|index.mdx|404.mdx|.js|.json)/
+                /\/es\/(?!header.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
         ],

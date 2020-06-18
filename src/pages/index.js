@@ -48,7 +48,7 @@ const IndexPage = () => {
 
     //Replace current route with locale based index.
     navigate(`/${initialLocale}/`, { replace: true });
-  }, []);
+  }, [allDirectory.nodes, locale, navigate]);
 
   return (
     <Helmet>
