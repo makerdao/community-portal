@@ -16,7 +16,7 @@ const Link = ({
   partiallyActive,
   disabled,
   hideExternalIcon,
-  originalType, 
+  originalType,
   mdxType,
   ...other
 }) => {
@@ -107,13 +107,13 @@ const Link = ({
         </>
       )}
       {children}
-      {!hideExternalIcon && 
+      {!hideExternalIcon && (
         <Icon
           name="increase"
           className="increase"
           sx={{ top: "2px", position: "relative", ml: "2px" }}
         />
-      }
+      )}
     </ThemeLink>
   );
 };

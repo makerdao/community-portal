@@ -4,7 +4,13 @@ import { Card } from "theme-ui";
 const CTA = ({ children, ...otherProps }) => (
   <Card
     {...otherProps}
-    sx={{ p: "24px", width: "100%", borderColor: "primary", bg: "successAlt" }}
+    sx={{
+      p: "24px",
+      width: "100%",
+      borderColor: "primary",
+      bg: "successAlt",
+      "& > *:only-child": { m: 0 },
+    }}
   >
     {children}
   </Card>
