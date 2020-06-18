@@ -6,27 +6,11 @@ import Link from "@modules/utility/Link";
 
 const List = ({ children }) => {
   const _Children = React.Children.toArray(children);
-  console.log(_Children);
 
-  return (
-    <Box sx={{ mb: 4 }}>
-      {_Children.map((child, index) => {
-        if (child.props.mdxType === "ul") {
-          const ULChildren = React.Children.toArray(child.props.children);
-
-          if (ULChildren[0].props.mdxType === "li") {
-            const LIChildren = React.Children.toArray(
-              ULChildren[0].props.children
-            );
-
-            console.log(LIChildren);
-            if (typeof LIChildren[0] === "object") {
-              const isLinkElement =
-                LIChildren[0].props.mdxType === "a" ||
-                LIChildren[0].props.mdxType === "Link" ||
-                LIChildren[0].props.children.props.mdxType === "a" ||
-                LIChildren[0].props.children.props.mdxType === "Link";
-
+  //What to render if a list element is a Link element.
+  const renderLink = (listChild, children, key) => {
+	  		  //Depending on whether the child is an actual Link or is a UL/LI with a Link 
+			  //we have to access it's props differently.
               const fetchLinkData = (LIChild) => {
                 if (
                   LIChild.props.mdxType === "a" ||
@@ -41,9 +25,8 @@ const List = ({ children }) => {
                 }
               };
 
-              if (isLinkElement) {
-                const linkProps = fetchLinkData(LIChildren[0]);
-                const linkChildren = LIChildren.slice(1); //Remove LIChildren[0] which would be our link.
+                const linkProps = fetchLinkData(listChild);
+				//NOTE(Rejon): The only inconsistency I've seen for MDX is sometimes it gives href and sometimes it gives us the "to" prop.
                 const isInternalLink =
                   /^\/(?!\/)/.test(linkProps.to) ||
                   /^\/(?!\/)/.test(linkProps.href);
@@ -51,7 +34,7 @@ const List = ({ children }) => {
                   <Link
                     {...linkProps}
                     hideExternalIcon
-                    key={`list-link-element${child.key}`}
+                    key={`list-link-element${key}`}
                     sx={{
                       p: "10px 8px",
                       minHeight: "60px",
@@ -96,7 +79,7 @@ const List = ({ children }) => {
                       }}
                     >
                       {linkProps.children}
-                      {linkChildren}
+                      {children}
                     </Flex>
                     <Icon
                       name={!isInternalLink ? "increase" : "arrow_right"}
@@ -116,10 +99,39 @@ const List = ({ children }) => {
                   </Link>
                 );
               }
+
+  return (
+    <Box sx={{ mb: 4 }}>
+      {_Children.map((child, index) => {
+		//Check if the child is confirmed to be a UL or OL
+        if (child.props.mdxType === "ul" || child.props.mdxType === "ol") {
+          const ULChildren = React.Children.toArray(child.props.children);
+		
+		  //Check if the FIRST child of the ULChildren is an LI element.
+		  //NOTE(Rejon): This should ALWAYS be the case!
+          if (ULChildren[0].props.mdxType === "li") {
+            const LIChildren = React.Children.toArray(
+              ULChildren[0].props.children
+            );
+			
+			//Check if the FIRST child of the LI element is an "object"
+			//NOTE(Rejon): If it is then we know we've got a react component.
+            if (typeof LIChildren[0] === "object") {
+				const isLinkElement =
+					LIChildren[0].props.mdxType === "a" ||
+					LIChildren[0].props.mdxType === "Link" || //<- If we're using a Link component, this will be it's component name we provided in shortcodes.js.
+					LIChildren[0].props.children.props.mdxType === "a" || //<- NOTE(Rejon): There are some cases MDX will translate an element with complex subchildren as another UL or LI, we want the children of THAT element. 
+					LIChildren[0].props.children.props.mdxType === "Link";
+				
+				//If the element we have meets our criteria (above) for a Link List Element then we can render it as so.
+				if (isLinkElement) {
+					return renderLink(LIChildren[0],LIChildren.slice(1), child.key); //NOTE(Rejon): We slice off the first child, because we don't want to render the link twice.
+				}
             }
           }
         }
 
+		//Render the regular old list element.
         return (
           <Flex
             sx={{
