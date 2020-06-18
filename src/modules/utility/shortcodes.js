@@ -19,7 +19,7 @@ export default {
   h4: (props) => <Text variant="h4" {...props} />,
   h5: (props) => <Text variant="h5" {...props} />,
   thematicBreak: (props) => <Divider />,
-  p: (props) => <Text sx={{ mb: "16px" }} as="p" {...props} />,
+  p: (props) => <Text sx={{ mb: "16px" }} {...props} />, //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
   blockquote: CTA,
   Button,
   Breadcrumbs,

@@ -15,6 +15,9 @@ const Link = ({
   activeClassName,
   partiallyActive,
   disabled,
+  hideExternalIcon,
+  originalType, 
+  mdxType,
   ...other
 }) => {
   const { locale } = useTranslation();
@@ -104,11 +107,13 @@ const Link = ({
         </>
       )}
       {children}
-      <Icon
-        name="increase"
-        className="increase"
-        sx={{ top: "2px", position: "relative", ml: "2px" }}
-      />
+      {!hideExternalIcon && 
+        <Icon
+          name="increase"
+          className="increase"
+          sx={{ top: "2px", position: "relative", ml: "2px" }}
+        />
+      }
     </ThemeLink>
   );
 };
