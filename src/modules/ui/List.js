@@ -103,6 +103,7 @@ const List = ({ children }) => {
   return (
     <Box sx={{ mb: 4 }}>
       {_Children.map((child, index) => {
+		  console.log(child)
 		//Check if the child is confirmed to be a UL or OL
         if (child.props.mdxType === "ul" || child.props.mdxType === "ol") {
           const ULChildren = React.Children.toArray(child.props.children);
@@ -147,12 +148,12 @@ const List = ({ children }) => {
               "& > *": {
                 width: "100%",
               },
-              "& > ul": { m: 0, p: 0, listStyleType: "none", width: "100%" },
-              "& > ul > li, & > ul > li > a, & > ul > li > a:hover": {
+              "& > ul, & > ol": { m: 0, p: 0, listStyleType: "none", width: "100%" },
+              "& > ul > li, & > ul > li > a, & > ul > li > a:hover, & > ol > li, & > ol > li > a, & > ol > li > a:hover": {
                 color: "headline",
               },
-              "& > ul > li > ul": { m: 0, mt: 2, p: 0, listStyleType: "none" },
-              "& > ul > li > ul > li": { color: "body" },
+              "& > ul > li > ul, & > ol > li > ul, & > ul > li > ol, & > ol > li > ol": { m: 0, mt: 2, p: 0, listStyleType: "none" },
+              "& > ul > li > ul > li, & > ol > li > ol > li, & > ol > li > ul > li, & > ul > li > ol > li": { color: "body" },
             }}
             key={`list-element${child.key}`}
           >
