@@ -13463,6 +13463,14 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
   integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
 
+react-smooth-collapse@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-smooth-collapse/-/react-smooth-collapse-2.1.0.tgz#64be7af94b61d6d203d9a09af0fba671f9b5983c"
+  integrity sha512-WXbYJ59wmLtcktW1TKPQPjirbJnkNOLbWWs/J8escMOArLpi4TVvcUKmSM9GIq6U5zKoK0RJIEasDwYsPFcfEg==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    prop-types "^15.6.0"
+
 react-sticky-el@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/react-sticky-el/-/react-sticky-el-2.0.5.tgz#db942dd3ed35a29429e92a947515a129c02d7e76"

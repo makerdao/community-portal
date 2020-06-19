@@ -9,6 +9,7 @@ import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
 import Process from '@modules/ui/Process'
 import CTA from "@modules/ui/CTA";
+import Accordion from '@modules/ui/Accordion'
 import { Image, AspectImage, Text, Divider, Box } from "theme-ui";
 
 export default {
@@ -35,4 +36,5 @@ export default {
   Image,
   List,
   AspectImage,
+  Accordion
 };

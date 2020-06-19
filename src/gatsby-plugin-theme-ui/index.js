@@ -26,6 +26,7 @@ export default {
     codeBG: "#002D59",
     codeText: "#FFFFFF",
     headline: "#291A42",
+    accordionBG: '#fcfcfc'
   },
   styles: {
     ...maker.styles,
