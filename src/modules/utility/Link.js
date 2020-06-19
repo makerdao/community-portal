@@ -51,27 +51,30 @@ const Link = ({
           partiallyActive || (linkHref !== `/${locale}/` ? true : null)
         }
         sx={{
-          color: (!linkHref) ? "bear" : "primary",
-          textDecoration: !linkHref ? 'line-through' : "none",
-          'text-shadow': theme => !linkHref ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}` : 'none',
-        border: !linkHref ? '4px dashed red' : '',
-          cursor: (!linkHref) ? 'not-allowed' : 'initial',
-           pointerEvents: disabled ? "none" : "initial",
+          color: !linkHref ? "bear" : "primary",
+          textDecoration: !linkHref ? "line-through" : "none",
+          "text-shadow": (theme) =>
+            !linkHref
+              ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
+              : "none",
+          border: !linkHref ? "4px dashed red" : "",
+          cursor: !linkHref ? "not-allowed" : "initial",
+          pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
-            color: (!linkHref) ? "bear" : "primary",
+            color: !linkHref ? "bear" : "primary",
           },
           "&:hover": {
-            color: (!linkHref) ? "bear" : "primary",
+            color: !linkHref ? "bear" : "primary",
           },
           "&:hover > svg": {
-            color: (!linkHref) ? "bear" : "primary",
+            color: !linkHref ? "bear" : "primary",
           },
         }}
         {...other}
       >
         {/*add space as workaround for svg padding resizing issue*/}
-        {(icon && linkHref) && (
+        {icon && linkHref && (
           <>{` ${(<Icon name={icon} sx={{ verticalAlign: "middle" }} />)}`}</>
         )}
         {children}
@@ -85,18 +88,21 @@ const Link = ({
       sx={{
         pointerEvents: disabled ? "none" : "initial",
         transition: "all .1s ease",
-        textDecoration: !linkHref ? 'line-through ' : "none",
-        'text-shadow': theme => !linkHref ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}` : 'none',
-        border: !linkHref ? '4px dashed red' : '',
-        color: (!linkHref) ? "bear" : "primary",
+        textDecoration: !linkHref ? "line-through " : "none",
+        "text-shadow": (theme) =>
+          !linkHref
+            ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
+            : "none",
+        border: !linkHref ? "4px dashed red" : "",
+        color: !linkHref ? "bear" : "primary",
         "&.active": {
-          color: (!linkHref) ? "bear" : "primary",
+          color: !linkHref ? "bear" : "primary",
         },
         "&:hover": {
-          color: (!linkHref) ? "bear" : "primary",
+          color: !linkHref ? "bear" : "primary",
         },
         "&:hover > svg": {
-          color: (!linkHref) ? "bear" : "primary",
+          color: !linkHref ? "bear" : "primary",
         },
       }}
       className="external-link"
@@ -104,7 +110,7 @@ const Link = ({
       target="_blank"
       rel="nofollow noopener noreferrer"
     >
-      {(icon && linkHref) && (
+      {icon && linkHref && (
         <>
           {` `}
           <Icon
