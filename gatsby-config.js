@@ -82,14 +82,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: "Roboto Mono",
-            variants: ["400"],
-          },
+          'Roboto Mono'
         ],
+        display: 'swap'
       },
     },
     {
