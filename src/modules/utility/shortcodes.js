@@ -2,19 +2,20 @@ import React from "react";
 import Breadcrumbs from "@modules/ui/Breadcrumbs";
 import Sidenav from "@modules/navigation/Sidenav";
 import StatusBanner from "@modules/ui/StatusBanner";
+import InfoBlock from '@modules/ui/InfoBlock';
 import Link from "@modules/utility/Link";
 import Callout from "@modules/ui/Callout";
 import List from "@modules/ui/List";
 import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
-import Process from '@modules/ui/Process'
+import Process from "@modules/ui/Process";
 import CTA from "@modules/ui/CTA";
-import Accordion from '@modules/ui/Accordion'
+import Accordion from "@modules/ui/Accordion";
 import { Image, AspectImage, Text, Divider, Box } from "theme-ui";
 
 export default {
   a: (props) => <Link to={props.href} {...props} />,
-  img: (props) => <Image {...props} />,
+  img: (props) => <Image className="TEST" {...props} />,
   h1: (props) => <Text variant="h1" sx={{ mb: "24px" }} {...props} />,
   h2: (props) => <Text variant="h2" sx={{ mb: "32px" }} {...props} />,
   h3: (props) => <Text variant="h3" sx={{ mb: "16px" }} {...props} />,
@@ -36,5 +37,6 @@ export default {
   Image,
   List,
   AspectImage,
-  Accordion
+  Accordion,
+  InfoBlock
 };

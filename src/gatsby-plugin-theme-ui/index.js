@@ -12,7 +12,7 @@ export default {
   colors: {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
     body: "#53546A",
-    background: '#FFFFFF',
+    background: "#FFFFFF",
     "body-15": "rgba(83, 84, 106, 0.15)",
     "body-5": "rgba(83, 84, 106, 0.05)",
     "body-5-pure": "#eff0f2",
@@ -26,7 +26,7 @@ export default {
     codeBG: "#002D59",
     codeText: "#FFFFFF",
     headline: "#291A42",
-    accordionBG: '#fcfcfc'
+    accordionBG: "#fcfcfc",
   },
   styles: {
     ...maker.styles,
