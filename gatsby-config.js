@@ -1,5 +1,8 @@
 const path = require("path");
 const remark = require("remark");
+const remarkFrontmatter = require("remark-frontmatter");
+const removeFrontmatter = () => (tree) =>
+  filter(tree, (node) => node.type !== "yaml");
 const visit = require("unist-util-visit");
 const { TitleConverter, UrlConverter } = require("./src/build-utils");
 require("dotenv").config();
@@ -79,14 +82,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: "Roboto Mono",
-            variants: ["400"],
-          },
+          'Roboto Mono'
         ],
+        display: 'swap'
       },
     },
     {
@@ -100,7 +101,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content`,
         ignore: {
-          patterns: [`**/header.mdx`, `**/**.js`, `**/**.json`, `**/404.mdx`, `**/example.mdx`],
+          patterns: [
+            `**/header.mdx`,
+            `**/**.js`,
+            `**/**.json`,
+            `**/404.mdx`,
+            `**/example.mdx`,
+          ],
           options: { nocase: true },
         },
       },
@@ -160,11 +167,19 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
+              //If this node's frontmatter has a description use THAT for excerpts.
+              if (node.frontmatter.description) {
+                return node.frontmatter.description;
+              }
+
               //NOTE(Rejon): We have to do excerpt this way because excerpt isn't available at the level that the lunr resolver is tapping Graphql.
               // TLDR: The excerpt node is undefined so we have to parse it ourselves.
               const excerptLength = 136; // Hard coded excerpt length
               let excerpt = "";
-              const tree = remark().parse(node.rawBody);
+              const tree = remark()
+                .use(remarkFrontmatter)
+                .use(removeFrontmatter)
+                .parse(node.rawBody);
               visit(tree, "text", (node) => {
                 excerpt += node.value;
               });

@@ -1,4 +1,3 @@
-
 //This is an algorithm that does a number of things:
 // - Takes mdx edge data and constructs usable sidenav objects.
 // - Creates sidenav objects for default language (en), and our current locale.

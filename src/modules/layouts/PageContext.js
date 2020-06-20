@@ -1,6 +1,11 @@
 //NOTE(Rejon): This context provider exists to pass context of page related props like locale, lunr, ect.
 
-import React, { createContext, useContext, useState, useLayoutEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useLayoutEffect,
+} from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useLocation } from "@reach/router";
 

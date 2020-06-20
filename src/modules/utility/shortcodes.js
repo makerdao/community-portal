@@ -4,9 +4,12 @@ import Sidenav from "@modules/navigation/Sidenav";
 import StatusBanner from "@modules/ui/StatusBanner";
 import Link from "@modules/utility/Link";
 import Callout from "@modules/ui/Callout";
+import List from "@modules/ui/List";
 import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
+import Process from '@modules/ui/Process'
 import CTA from "@modules/ui/CTA";
+import Accordion from '@modules/ui/Accordion'
 import { Image, AspectImage, Text, Divider, Box } from "theme-ui";
 
 export default {
@@ -18,7 +21,8 @@ export default {
   h4: (props) => <Text variant="h4" {...props} />,
   h5: (props) => <Text variant="h5" {...props} />,
   thematicBreak: (props) => <Divider />,
-  p: (props) => <Text sx={{ mb: "16px" }} {...props} />,
+  p: (props) => <Text sx={{ mb: "16px" }} {...props} />, //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
+  blockquote: CTA,
   Button,
   Breadcrumbs,
   Callout,
@@ -28,6 +32,9 @@ export default {
   Box,
   Icon,
   CTA,
+  Process,
   Image,
+  List,
   AspectImage,
+  Accordion
 };

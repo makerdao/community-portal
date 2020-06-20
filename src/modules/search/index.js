@@ -80,7 +80,7 @@ export default function Search({ ...otherProps }) {
           borderBottomLeftRadius: "medium",
           borderBottomRightRadius: "medium",
           borderTop: "none",
-          zIndex:"1000000000",
+          zIndex: "1000000000",
           width: "100%",
           "::before": {
             content: '""',

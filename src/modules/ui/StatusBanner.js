@@ -11,6 +11,7 @@ const StatusBanner = ({
   color,
   sticky,
   children,
+  tab,
   hideSpacer,
   ...otherProps
 }) => {
@@ -40,7 +41,10 @@ const StatusBanner = ({
       : luminCheck(color, variant);
 
     return (
-      <Sticky dontUpdateHolderHeightWhenSticky={true} sx={{zIndex: '100'}}>
+      <Sticky
+        dontUpdateHolderHeightWhenSticky={true}
+        sx={{ zIndex: "100", width: "100%" }}
+      >
         <Box
           sx={{
             p: "21px",
@@ -76,36 +80,72 @@ const StatusBanner = ({
     );
   }
 
+  if (tab) 
+  {
+    return (
+      <Box
+        sx={{
+          padding: "12px 31px",
+          position: "relative",
+          overflow: "hidden",
+          boxShadow: (theme) =>
+            `inset 0px 0 0 1px ${theme.colors.secondaryMuted}`,
+          borderRadius: "4px",
+
+          "& > *:last-child": {
+            mb: 0,
+          },
+          "::before": {
+            content: '""',
+            bg: color || variant,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "7px",
+            height: "100%",
+          },
+          mb: "12px",
+          width: "100%",
+        }}
+      >
+        {children}
+      </Box>
+    );
+  }
+
   return (
     <Box
-      sx={{
-        p: "12px",
-        pl: "31px",
-        pr: "31px",
-        position: "relative",
-        overflow: "hidden",
-        boxShadow: (theme) =>
-          `inset 0px 0 0 1px ${theme.colors.secondaryMuted}`,
-        borderRadius: "4px",
-
-        "& > *:last-child": {
-          mb: 0,
-        },
-        "::before": {
-          content: '""',
-          bg: color || variant,
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "7px",
-          height: "100%",
-        },
-        mb: "12px",
-      }}
-    >
-      {children}
-    </Box>
-  );
+        sx={{
+          padding: "10px 36px",
+          position: "relative",
+          overflow: "hidden",
+          backgroundColor: 'statusBG',
+          borderRadius: "100000px",
+          color: 'statusColor',
+          fontSize: '13px',
+          letterSpace: '0.3px',
+          "::before": {
+            content: '""',
+            bg: color || variant,
+            position: "absolute",
+            top: '50%',
+            left: '16px',
+            transform: 'translateY(-50%)',
+            borderRadius: '100%',
+            width: "8px",
+            height: "8px",
+          },
+          "& > *:last-child": {
+            mb: 0,
+          },
+          mb: "12px",
+          width: "100%",
+        }}
+      >
+        {children}
+      </Box>
+  )
+  
 };
 
 export default StatusBanner;

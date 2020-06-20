@@ -9,7 +9,7 @@ import { Box } from "theme-ui";
 
 const Sidenav = (props) => {
   const { locale } = useTranslation();
-  
+
   return (
     <StaticQuery
       query={graphql`
@@ -38,8 +38,20 @@ const Sidenav = (props) => {
         }
       `}
       render={({ allMdx, sidenavs }) => (
-        <Box as="aside" sx={{flexGrow: 0, position: 'relative', maxHeight: '1012px', height: 'calc(100vh - 139px)', pt: '54px', pl: '8px', pr: '31px', boxShadow: 'inset -1px 0px 0px rgba(41, 26, 66, 0.1);'}}>
-          <ul sx={{m: 0, p: 0, "listStyleType": 'none'}}>
+        <Box
+          as="aside"
+          sx={{
+            flexGrow: 0,
+            position: "relative",
+            maxHeight: "1012px",
+            height: "calc(100vh - 139px)",
+            pt: "54px",
+            pl: "8px",
+            pr: "31px",
+            boxShadow: "inset -1px 0px 0px rgba(41, 26, 66, 0.1);",
+          }}
+        >
+          <ul sx={{ m: 0, p: 0, listStyleType: "none" }}>
             <Tree edges={allMdx.edges} locale={locale} />
           </ul>
         </Box>

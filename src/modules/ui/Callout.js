@@ -10,6 +10,7 @@ const Callout = ({ icon, secondary, warning, children }) => {
       sx={{
         mb: "24px",
         mt: "24px",
+        width: "100%",
         borderRadius: "medium",
         bg: secondary ? "calloutSecondary" : "callout",
         border: secondary ? "1px solid" : "none",
