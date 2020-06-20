@@ -40,6 +40,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -54,6 +55,8 @@ module.exports = {
               backgroundColor: "none",
               disableBgImage: true,
               showCaptions: ["Title"],
+              maxWidth: 1000,
+              wrapperStyle: (result) => `width: 100%;margin-left: 0;`,
             },
           },
           {
@@ -84,10 +87,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          'Roboto Mono'
-        ],
-        display: 'swap'
+        fonts: ["Roboto Mono"],
+        display: "swap",
       },
     },
     {

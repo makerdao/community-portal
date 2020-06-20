@@ -80,8 +80,7 @@ const StatusBanner = ({
     );
   }
 
-  if (tab) 
-  {
+  if (tab) {
     return (
       <Box
         sx={{
@@ -115,37 +114,36 @@ const StatusBanner = ({
 
   return (
     <Box
-        sx={{
-          padding: "10px 36px",
-          position: "relative",
-          overflow: "hidden",
-          backgroundColor: 'statusBG',
-          borderRadius: "100000px",
-          color: 'statusColor',
-          fontSize: '13px',
-          letterSpace: '0.3px',
-          "::before": {
-            content: '""',
-            bg: color || variant,
-            position: "absolute",
-            top: '50%',
-            left: '16px',
-            transform: 'translateY(-50%)',
-            borderRadius: '100%',
-            width: "8px",
-            height: "8px",
-          },
-          "& > *:last-child": {
-            mb: 0,
-          },
-          mb: "12px",
-          width: "100%",
-        }}
-      >
-        {children}
-      </Box>
-  )
-  
+      sx={{
+        padding: "10px 36px",
+        position: "relative",
+        overflow: "hidden",
+        backgroundColor: "statusBG",
+        borderRadius: "100000px",
+        color: "statusColor",
+        fontSize: "13px",
+        letterSpace: "0.3px",
+        "::before": {
+          content: '""',
+          bg: color || variant,
+          position: "absolute",
+          top: "50%",
+          left: "16px",
+          transform: "translateY(-50%)",
+          borderRadius: "100%",
+          width: "8px",
+          height: "8px",
+        },
+        "& > *:last-child": {
+          mb: 0,
+        },
+        mb: "12px",
+        width: "100%",
+      }}
+    >
+      {children}
+    </Box>
+  );
 };
 
 export default StatusBanner;
