@@ -10,10 +10,11 @@ import Link from '@modules/utility/Link';
 
 const Categories = ({ children }) => {
   const lengthChildren = children.length;
-  // let width = 480;
   let columnString = '1fr 1fr';
   let columns = 2;
+  let width = '480px';
   if (lengthChildren === 3 || lengthChildren > 4) {
+    width = '361px';
     columnString = '1fr 1fr 1fr';
     columns = 3;
   } else if (lengthChildren === 1) {
@@ -21,10 +22,18 @@ const Categories = ({ children }) => {
     columns = 1;
   }
 
-  const boxStyle = { borderStyle: 'solid' };
+  const boxStyle = {
+    // width,
+    height: '260px',
+    background: '#FFFFFF',
+    border: '1px solid rgba(41, 26, 66, 0.1)',
+    boxSizing: 'border-box',
+    borderRadius: '4px'
+  };
+
   const childrenJSX = children.map((child, ind) => (
     <div style={boxStyle} key={ind} bg="muted">
-      Box
+      <div style={{ padding: '37px' }}>{child}</div>
     </div>
   ));
   return <Grid columns={[columns, columnString]}>{childrenJSX}</Grid>;
