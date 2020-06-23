@@ -58,7 +58,7 @@ const Link = ({
               ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
               : "none",
           border: !linkHref ? "4px dashed red" : "",
-          cursor: !linkHref ? "not-allowed" : "initial",
+          cursor: !linkHref ? "not-allowed" : "pointer",
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
@@ -80,6 +80,16 @@ const Link = ({
         {children}
       </GatsbyLink>
     );
+  }
+
+  ///HTTPS/HTTP checks
+  //Ensure ALL links are HTTPS
+  const hasHTTP = /^(http|https):\/\//i.test(linkHref)
+
+  if (!hasHTTP) {
+    linkHref = `https://${linkHref}`
+  } else if (!/^(https)?:\/\//i.test(linkHref)) {
+    linkHref = linkHref.replace(/^http?:\/\//, "https://")
   }
 
   return (
