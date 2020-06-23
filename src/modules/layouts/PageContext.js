@@ -1,6 +1,11 @@
-//NOTE(Rejon): This context provider exists to pass context of page related props like locale, ect.
+//NOTE(Rejon): This context provider exists to pass context of page related props like locale, lunr, ect.
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useLayoutEffect,
+} from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useLocation } from "@reach/router";
 
@@ -41,9 +46,16 @@ const PageDataProvider = ({ children, value }) => {
         edges {
           node {
             UI {
+              Language
               Search
               No_Results
               Home
+              Page_Language_Selector
+              Flag
+              Available_Languages
+              Need_Another_Language
+              Join_translation_team
+              Translations
             }
           }
         }
@@ -55,9 +67,35 @@ const PageDataProvider = ({ children, value }) => {
         edges {
           node {
             UI {
+              Language
               Search
               No_Results
               Home
+              Page_Language_Selector
+              Flag
+              Available_Languages
+              Need_Another_Language
+              Join_translation_team
+              Translations
+            }
+          }
+        }
+      }
+
+      fr: allFrJson {
+        edges {
+          node {
+            UI {
+              Language
+              Search
+              No_Results
+              Home
+              Page_Language_Selector
+              Flag
+              Available_Languages
+              Need_Another_Language
+              Join_translation_team
+              Translations
             }
           }
         }
@@ -71,6 +109,8 @@ const PageDataProvider = ({ children, value }) => {
       #     UI {
       #       No_Results
       #       Search
+      #       NOTE: Rejon for every single new key you add you MUST update all other locales.
+      #             Just copy the schema from the GraphiQL tool at localhost:8000/__graphql
       #     }
       #   }
       # }
@@ -80,9 +120,9 @@ const PageDataProvider = ({ children, value }) => {
   const locales = allDirectory.nodes.map((n) =>
     n.absolutePath.split("/").pop()
   );
-  //NOTE(Rejon): This defaultLocale const may seem redundant, but it's ensure the site doesn't reload twice on mount.
-  const defaultLocale = "en";
-  const [locale, setLocale] = useState(defaultLocale);
+  //NOTE(Rejon): This DEFAULT_LOCALE const may seem redundant, but it's ensure the site doesn't reload twice on mount.
+  const DEFAULT_LOCALE = "en";
+  const [locale, setLocale] = useState(DEFAULT_LOCALE);
   const [lunr, setLunr] = useState(null);
 
   //NOTE(Rejon): The object we get from the query is digusting.
@@ -97,14 +137,14 @@ const PageDataProvider = ({ children, value }) => {
   );
 
   //Update local storage if it doesn't match app state.
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (locale !== localStorage.getItem("locale")) {
       localStorage.setItem("locale", locale);
     }
   }, [locale]);
 
   //Update app locale if our url locale route has changed.
-  useEffect(() => {
+  useLayoutEffect(() => {
     const uriSplit = pathname.split("/"); //uri will be (/locale/path/to/file). We need the locale part.
     //NOTE(Rejon): Index 1 of the uriSplit should be the locale, but in the case it's not we check.
     if (
@@ -118,7 +158,9 @@ const PageDataProvider = ({ children, value }) => {
     }
   }, [pathname, locale, locales]);
 
-  useEffect(() => {
+  //LUNR becomes available only via the window.
+  //To make it easier for our app to access it we just set it in our app context.
+  useLayoutEffect(() => {
     if (window.__LUNR__) {
       window.__LUNR__.__loaded.then((lunr) => setLunr(lunr));
     }
@@ -129,7 +171,9 @@ const PageDataProvider = ({ children, value }) => {
       value={{
         setLocale,
         locale,
+        allLocales: locales,
         localeStrings,
+        DEFAULT_LOCALE,
         DEFAULT_LOCALE_STRINGS: localeStrings["en"],
         lunr,
       }}

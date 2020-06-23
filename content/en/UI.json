@@ -1,8 +1,14 @@
 {
   "UI": {
     "Language": "English",
+    "Flag": "🇺🇸",
     "Search": "Search",
     "No_Results": "No results for '{{query}}'",
-    "Home": "Home"
+    "Home": "Home",
+    "Page_Language_Selector": "Page Language Selector",
+    "Available_Languages": "Available Languages",
+    "Need_Another_Language": "Need another language?",
+    "Join_translation_team": "Join translation team",
+    "Translations": "Translations"
   }
 }

@@ -1,36 +1,34 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+//** @jsx jsx */
 
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
 import { MDXProvider } from "@mdx-js/react";
+import { Flex, jsx } from "theme-ui";
+import "@modules/utility/prismjs.css";
 
-import Header from "../ui/header";
+import Header from "@modules/navigation/Header";
 
 import { PageDataProvider } from "@modules/layouts/PageContext";
-import Shortcodes from "@modules/ui/shortcodes";
+import Shortcodes from "@modules/utility/shortcodes";
 
 const Layout = ({ children }) => (
   <PageDataProvider>
     <Header />
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `0 1.0875rem 1.45rem`,
+    <Flex
+      as="main"
+      sx={{
+        maxWidth: "1364px",
+        m: "0 auto",
+        mt: "10px",
+        pl: 4,
+        pr: 0,
+        position: "relative",
       }}
+      className="content-boundary"
     >
-      <main>
-        <MDXProvider components={Shortcodes}>{children}</MDXProvider>
-      </main>
-      <footer>Footer Goes Here</footer>
-    </div>
+      <MDXProvider components={Shortcodes}>{children}</MDXProvider>
+    </Flex>
+    <footer>Footer Goes Here</footer>
   </PageDataProvider>
 );
 

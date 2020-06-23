@@ -1,5 +1,8 @@
 const path = require("path");
 const remark = require("remark");
+const remarkFrontmatter = require("remark-frontmatter");
+const removeFrontmatter = () => (tree) =>
+  filter(tree, (node) => node.type !== "yaml");
 const visit = require("unist-util-visit");
 const { TitleConverter, UrlConverter } = require("./src/build-utils");
 require("dotenv").config();
@@ -37,7 +40,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
-
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -49,6 +51,19 @@ module.exports = {
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
+            options: {
+              backgroundColor: "none",
+              disableBgImage: true,
+              showCaptions: ["Title"],
+              maxWidth: 1000,
+              wrapperStyle: (result) => `width: 100%;margin-left: 0;`,
+            },
+          },
+          {
+            resolve: "gatsby-remark-code-titles",
+            options: {
+              className: "prism-code-title",
+            },
           },
         ],
       },
@@ -69,7 +84,13 @@ module.exports = {
         preset: "@makerdao/dai-ui-theme-maker",
       },
     },
-
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: ["Roboto Mono"],
+        display: "swap",
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -81,7 +102,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content`,
         ignore: {
-          patterns: [`**/header.mdx`, `**/**.js`, `**/**.json`, `**/404.mdx`],
+          patterns: [
+            `**/header.mdx`,
+            `**/**.js`,
+            `**/**.json`,
+            `**/404.mdx`,
+            `**/example.mdx`,
+          ],
           options: { nocase: true },
         },
       },
@@ -116,7 +143,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/en\/(?!header.mdx|index.mdx|404.mdx|.js|.json)/
+                /\/en\/(?!header.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
           {
@@ -125,7 +152,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/es\/(?!header.mdx|index.mdx|404.mdx|.js|.json)/
+                /\/es\/(?!header.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
         ],
@@ -141,11 +168,19 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
+              //If this node's frontmatter has a description use THAT for excerpts.
+              if (node.frontmatter.description) {
+                return node.frontmatter.description;
+              }
+
               //NOTE(Rejon): We have to do excerpt this way because excerpt isn't available at the level that the lunr resolver is tapping Graphql.
               // TLDR: The excerpt node is undefined so we have to parse it ourselves.
               const excerptLength = 136; // Hard coded excerpt length
               let excerpt = "";
-              const tree = remark().parse(node.rawBody);
+              const tree = remark()
+                .use(remarkFrontmatter)
+                .use(removeFrontmatter)
+                .parse(node.rawBody);
               visit(tree, "text", (node) => {
                 excerpt += node.value;
               });

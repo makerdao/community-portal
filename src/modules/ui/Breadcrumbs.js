@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React, { Fragment } from "react";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import { jsx, Text } from "theme-ui";
+import { jsx, Text, Box } from "theme-ui";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
@@ -17,7 +16,7 @@ const Breadcrumbs = ({ children }) => {
       allMdx(
         filter: {
           fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|404.mdx)/"
+            regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx)/"
           }
         }
       ) {
@@ -36,9 +35,8 @@ const Breadcrumbs = ({ children }) => {
     }
   `);
 
-  let { edges: edges } = allMdx;
   //Filter out all pages that aren't in our current locale.
-  edges = edges.filter(
+  let edges = allMdx.edges.filter(
     ({ node }) => node.fileAbsolutePath.indexOf(`/${locale}/`) !== -1
   );
 
@@ -79,41 +77,36 @@ const Breadcrumbs = ({ children }) => {
   });
 
   return (
-    <>
-      <div>
-        <Link
-          to={`/${locale}/`}
-          sx={{ textDecoration: "none" }}
-          partiallyActive={true}
-          activeClassName={"active"}
-        >
-          {t("Home")}
-        </Link>
-        {" / "}
-        {BreadcrumbData.map(({ title, url }, index) => {
-          //If this is the last crumb, then just render its name.
-          if (index === BreadcrumbData.length - 1) {
-            return (
-              <Text
-                sx={{ display: "inline-block" }}
-                key={`breadcrumb-${index}`}
-              >
-                {title}
-              </Text>
-            );
-          }
-
+    <Box sx={{ mb: "8px" }}>
+      <Link
+        to={`/${locale}/`}
+        sx={{ textDecoration: "none" }}
+        partiallyActive={true}
+        activeClassName={"active"}
+      >
+        {t("Home")}
+      </Link>
+      {" / "}
+      {BreadcrumbData.map(({ title, url }, index) => {
+        //If this is the last crumb, then just render its name.
+        if (index === BreadcrumbData.length - 1) {
           return (
-            <React.Fragment key={`breadcrumb-${index}`}>
-              <Link to={url} sx={{ textDecoration: "none" }}>
-                {index >= 2 ? <>...</> : title}
-              </Link>
-              {` / `}
-            </React.Fragment>
+            <Text sx={{ display: "inline-block" }} key={`breadcrumb-${index}`}>
+              {title}
+            </Text>
           );
-        })}
-      </div>
-    </>
+        }
+
+        return (
+          <Fragment key={`breadcrumb-${index}`}>
+            <Link to={url} sx={{ textDecoration: "none" }}>
+              {index >= 2 ? <>...</> : title}
+            </Link>
+            {` / `}
+          </Fragment>
+        );
+      })}
+    </Box>
   );
 };
 

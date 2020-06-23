@@ -1,35 +1,18 @@
----
-title: Work With Us
-status: "Testing a sticky status"
-description: This is the work with us description.
-header: true
-headerOrder: 2
----
+//This is an algorithm that does a number of things:
+// - Takes mdx edge data and constructs usable sidenav objects.
+// - Creates sidenav objects for default language (en), and our current locale.
+//     - NOTE: If our default is our current, no merging is needed.
+// - Merge overlaps defaultLocaleFiles with currentLocaleFiles to ensure complete tree.
+// - Reduces mergedTree items into usable sidenav object for rendering with sub directories.
 
-# Work With Us
-
-## Second heading
-
-### Third Heading
-
-<Callout secondary icon>
-  this is a callout! lorem ipsum
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin justo ante, porta vitae cursus non, placerat vitae est. In vitae libero mattis, rhoncus sapien a, porttitor nibh. Aliquam pretium sem lacus, et consequat enim euismod quis. Curabitur vitae lobortis metus. Phasellus molestie mauris ut tristique egestas. Quisque nec sollicitudin turpis, nec pulvinar lacus. Sed scelerisque dapibus neque, non eleifend tellus interdum a. Nullam malesuada ultricies sagittis. Nulla sed egestas massa, eget vehicula neque. Curabitur accumsan odio eu quam feugiat, a posuere orci semper.
-
-
-
-</Callout>
-
-```markdown
-
-# Markdown in code in code?
-
-## Hello
-
-```
-
-```js:title=calculateTreeData.js
-export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale = 'en') => {
+//NOTE(Rejon): Parts of this solution was pulled from Hasura's gatsby-gitbook-starter.
+//             specifically the sidenav reducer. https://github.com/hasura/gatsby-gitbook-starter/blob/master/src/components/sidebar/tree.js
+export default (
+  edges = [],
+  currentTopSection,
+  DEFAULT_LOCALE = "en",
+  currentLocale = "en"
+) => {
   //Generates a an object with {title[String], slug[String]}
   //by using the filePath and title requirments of an MDX node.
   const makeSidenavObjects = (edges, _locale) => {
@@ -42,8 +25,7 @@ export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale =
             -1 &&
           node.fileAbsolutePath.indexOf(
             `/${_locale}/${currentTopSection}/index.mdx`
-          ) === -1 
-          
+          ) === -1
       )
       .flatMap(({ node: { headings, frontmatter, fileAbsolutePath } }) => {
         //Remove index.mdx, .mdx, and trailing slashes from the end of the slug.
@@ -56,13 +38,14 @@ export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale =
           .replace(/\/$/, "");
         const rawSlug = slug.replace(/^\/([\w]{2})\//, "/");
 
-        const slugPart = slug.split("/").slice(-1)[0]
+        const slugPart = slug.split("/").slice(-1)[0];
         //Use frontmatter title, first heading, or file name from slug.
-        const title = frontmatter.title ||
+        const title =
+          frontmatter.title ||
           (headings.length > 0 ? headings[0].value : null) ||
           slugPart;
 
-        return { title, slug, rawSlug, slugPart, order: frontmatter.order};
+        return { title, slug, rawSlug, slugPart, order: frontmatter.order };
       });
   };
 
@@ -76,8 +59,6 @@ export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale =
     DEFAULT_LOCALE !== currentLocale
       ? makeSidenavObjects(edges, currentLocale)
       : [];
-
-  
 
   //Overlap merge our defaultLocaleFiles with our currentLocaleFiles
   const mergedLocaleFiles =
@@ -111,18 +92,16 @@ export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale =
 
   //Reduce all of our mergedLocaleFiles into a object structure that closely resembles our final sidenav.
   return mergedLocaleFiles.reduce(
-    (
-      accu,
-      { title, slug, rawSlug, slugPart, order }
-    ) => {
-      const parts = rawSlug.split('/');
+    (accu, { title, slug, rawSlug, slugPart, order }) => {
+      const parts = rawSlug.split("/");
 
       let { items: prevItems } = accu;
 
       const slicedParts = parts.slice(1, -1);
 
       for (const part of slicedParts) {
-        let tmp = prevItems && prevItems.find(({ slugPart }) => slugPart == part);
+        let tmp =
+          prevItems && prevItems.find(({ slugPart }) => slugPart === part);
 
         if (tmp) {
           if (!tmp.items) {
@@ -133,32 +112,36 @@ export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale =
           prevItems.push(tmp);
         }
 
-        //NOTE(Rejon): We sort at the top level here. 
-        prevItems = tmp.items.sort((a,b) => {
-        if (a.order === null && b.order !== null) {return 1;}
-        else if (a.order !== null && b.order === null) {return -1;}
+        //NOTE(Rejon): We sort at the top level here.
+        prevItems = tmp.items.sort((a, b) => {
+          if (a.order === null && b.order !== null) {
+            return 1;
+          } else if (a.order !== null && b.order === null) {
+            return -1;
+          }
 
-        if (a.order === null && b.order === null) {
-          if (a.title === b.title) return 0;
-          return a.title.localeCompare(b.title)
-        }
+          if (a.order === null && b.order === null) {
+            if (a.title === b.title) return 0;
+            return a.title.localeCompare(b.title);
+          }
 
-        if (a.order === b.order) {
-          if (a.title === b.title) return 0;
-          return a.title.localeCompare(b.title)
-        }
+          if (a.order === b.order) {
+            if (a.title === b.title) return 0;
+            return a.title.localeCompare(b.title);
+          }
 
-        if (a.order < b.order) return -1;
-        if (a.order > b.order) return 1;
-        return 0; 
-      });
-      
+          if (a.order < b.order) return -1;
+          if (a.order > b.order) return 1;
+          return 0;
+        });
       }
 
       const slicedLength = parts.length - 1;
 
-      const existingItem = prevItems.find(({ slugPart }) => slugPart === parts[slicedLength]);
- 
+      const existingItem = prevItems.find(
+        ({ slugPart }) => slugPart === parts[slicedLength]
+      );
+
       if (existingItem) {
         existingItem.url = slug;
         existingItem.title = title;
@@ -169,27 +152,30 @@ export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale =
           url: slug,
           items: [],
           title,
-          order
+          order,
         });
 
         //NOTE(Rejon): We MUST sort prevItems again for the case of recursive depth ordering
-        prevItems.sort((a,b) => {
-          if (a.order === null && b.order !== null) {return 1;}
-          else if (a.order !== null && b.order === null) {return -1;}
+        prevItems.sort((a, b) => {
+          if (a.order === null && b.order !== null) {
+            return 1;
+          } else if (a.order !== null && b.order === null) {
+            return -1;
+          }
 
           if (a.order === null && b.order === null) {
             if (a.title === b.title) return 0;
-            return a.title.localeCompare(b.title)
+            return a.title.localeCompare(b.title);
           }
 
           if (a.order === b.order) {
             if (a.title === b.title) return 0;
-            return a.title.localeCompare(b.title)
+            return a.title.localeCompare(b.title);
           }
 
           if (a.order < b.order) return -1;
           if (a.order > b.order) return 1;
-          return 0; 
+          return 0;
         });
       }
 
@@ -198,31 +184,3 @@ export default (edges, currentTopSection, DEFAULT_LOCALE = 'en', currentLocale =
     { items: [] }
   );
 };
-```
-
-<Callout icon>
-
-  ### What's the Scoop?
-
-  this is a callout! lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin justo ante, porta vitae cursus non, placerat vitae est. In vitae libero mattis, rhoncus sapien a, porttitor nibh. Aliquam pretium sem lacus, et consequat enim euismod quis. Curabitur vitae lobortis metus. Phasellus molestie mauris ut tristique egestas. Quisque nec sollicitudin turpis, nec pulvinar lacus. Sed scelerisque dapibus neque, non eleifend tellus interdum a. Nullam malesuada ultricies sagittis. Nulla sed egestas massa, eget vehicula neque. Curabitur accumsan odio eu quam feugiat, a posuere orci semper.
-
-  ![Starfox](../images/starfox.png)
-</Callout>
-
-### When
-
-The meetings are **every Thursday** at 4pm UTC (9am PST). We'd love to have you.
-
-<Button>Add to calendar</Button> 
-
-<CTA>
-
-### Suggest new content in chat
-
-To get started, let us know what you want to create in the community chat. A friendly community member will get get back to you and explain the next steps.
-
-<Link to="https://chat.makerdao.com/" icon="rocketchat">Community chat</Link>
-
-
-
-</CTA>

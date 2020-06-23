@@ -15,55 +15,66 @@ const Link = ({
   activeClassName,
   partiallyActive,
   disabled,
+  hideExternalIcon,
+  originalType,
+  mdxType,
+  href,
   ...other
 }) => {
   const { locale } = useTranslation();
+  let linkHref = to || href;
 
   // Tailor the following test to your environment.
   // This assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
-  const internal = /^\/(?!\/)/.test(to);
+  const internal = /^\/(?!\/)/.test(linkHref);
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
-    const hasLocale = /^\/([\w]{2})\//.test(to);
+    const hasLocale = /^\/([\w]{2})\//.test(linkHref);
 
     //If it doesn't have the locale specified use the current locale.
     //NOTE(Réjon): While I could also check if it has a locale and if it exists,
     //             I think it could mess with the expectations of how links work.
     //             If an invalid locale is passed, then it should go to a 404 page, unless the team specifies otherwise.
     //NOTE(Rejon): There's no slash in this string because CCs will write the md with a starting slash.
-    if (!hasLocale) {
-      to = `/${locale}${to}`;
+    if (!hasLocale && linkHref) {
+      linkHref = `/${locale}${linkHref}`;
     }
 
     return (
       <GatsbyLink
-        to={!disabled ? to : ""}
-        sx={{ pointerEvents: disabled ? "none" : "initial" }}
+        to={!disabled ? linkHref : ""}
         activeClassName={
-          activeClassName || (to !== `/${locale}/` ? "active" : null)
+          activeClassName || (linkHref !== `/${locale}/` ? "active" : null)
         }
         partiallyActive={
-          partiallyActive || (to !== `/${locale}/` ? true : null)
+          partiallyActive || (linkHref !== `/${locale}/` ? true : null)
         }
         sx={{
-          color: "primary",
-          textDecoration: "none",
+          color: !linkHref ? "bear" : "primary",
+          textDecoration: !linkHref ? "line-through" : "none",
+          "text-shadow": (theme) =>
+            !linkHref
+              ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
+              : "none",
+          border: !linkHref ? "4px dashed red" : "",
+          cursor: !linkHref ? "not-allowed" : "initial",
+          pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
-            color: "primary",
+            color: !linkHref ? "bear" : "primary",
           },
           "&:hover": {
-            color: "primary",
+            color: !linkHref ? "bear" : "primary",
           },
           "&:hover > svg": {
-            color: "primary",
+            color: !linkHref ? "bear" : "primary",
           },
         }}
         {...other}
       >
         {/*add space as workaround for svg padding resizing issue*/}
-        {icon && (
+        {icon && linkHref && (
           <>{` ${(<Icon name={icon} sx={{ verticalAlign: "middle" }} />)}`}</>
         )}
         {children}
@@ -73,15 +84,25 @@ const Link = ({
 
   return (
     <ThemeLink
-      href={!disabled ? to : ""}
+      href={!disabled ? linkHref : ""}
       sx={{
         pointerEvents: disabled ? "none" : "initial",
         transition: "all .1s ease",
+        textDecoration: !linkHref ? "line-through " : "none",
+        "text-shadow": (theme) =>
+          !linkHref
+            ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
+            : "none",
+        border: !linkHref ? "4px dashed red" : "",
+        color: !linkHref ? "bear" : "primary",
+        "&.active": {
+          color: !linkHref ? "bear" : "primary",
+        },
         "&:hover": {
-          color: "primary",
+          color: !linkHref ? "bear" : "primary",
         },
         "&:hover > svg": {
-          color: "primary",
+          color: !linkHref ? "bear" : "primary",
         },
       }}
       className="external-link"
@@ -89,7 +110,7 @@ const Link = ({
       target="_blank"
       rel="nofollow noopener noreferrer"
     >
-      {icon && (
+      {icon && linkHref && (
         <>
           {` `}
           <Icon
@@ -100,7 +121,13 @@ const Link = ({
         </>
       )}
       {children}
-      <Icon name="increase" sx={{ top: "2px", position: "relative" }} />
+      {!hideExternalIcon && (
+        <Icon
+          name="increase"
+          className="increase"
+          sx={{ top: "2px", position: "relative", ml: "2px" }}
+        />
+      )}
     </ThemeLink>
   );
 };

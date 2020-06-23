@@ -1,8 +1,7 @@
-import React from "react";
-import { Box, useThemeUI } from "theme-ui";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
+import prismPreset from "./prismPreset";
 
 export default {
   ...maker, //<- Your default theme.
@@ -13,18 +12,36 @@ export default {
   colors: {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
     body: "#53546A",
+    background: "#FFFFFF",
     "body-15": "rgba(83, 84, 106, 0.15)",
     "body-5": "rgba(83, 84, 106, 0.05)",
+    "body-5-pure": "#eff0f2",
     "body-40": "rgba(83, 84, 106, 0.4)",
-    callout: '#f4f4f7',
+    "body-01": "rgba(83, 84, 106, 0.1)",
+    statusBG: "#F9F9F9",
+    statusColor: "#666666",
+    callout: "#f4f4f7",
     calloutSecondary: "#fdefd9",
-    calloutSecondaryBorder: "#F5B13D"
+    calloutSecondaryBorder: "#F5B13D",
+    codeBG: "#002D59",
+    codeText: "#FFFFFF",
+    headline: "#291A42",
+    accordionBG: "#fcfcfc",
   },
   styles: {
     ...maker.styles,
     a: {
       color: "#36aa9a",
       textDecoration: "none",
+    },
+    Link: {
+      color: "#36aa9a",
+    },
+    pre: {
+      ...prismPreset,
+    },
+    code: {
+      ...prismPreset,
     },
   },
   buttons: {
@@ -114,7 +131,4 @@ export default {
       },
     },
   },
-  styles: {
-    ...maker.styles,
-  }
 };
