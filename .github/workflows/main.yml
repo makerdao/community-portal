@@ -1,7 +1,6 @@
 name: PoolParty Deploy
 
 on:
-  push:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
   release:
