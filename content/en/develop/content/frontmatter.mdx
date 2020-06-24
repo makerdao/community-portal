@@ -20,11 +20,16 @@ title[String] - Display title used for Header,Sidenav, and SEO.
 title: Frontmatter
 ```
 <CTA warning>
+
     **The Title Rule**  
+
     <Box>
+
         This specifies that we read and display the title in the frontmatter first, then the first h1 in the file,
         then we fall back to the name of the file. The Title Rule applies globally.
+
     </Box>
+
 </CTA>
 
 ## Order
@@ -34,10 +39,14 @@ order[Integer] - The order in which this file is displayed on the sidenav.
 order: 0
 ```
 <CTA warning>
-    ** Ordering **  
+
+    ** Ordering ** 
+
     <Box>
+
         Order in the sidenav is based on lowest number (TOP) to highest (BOTTOM). Files that don't have an order are applied AFTER files that 
         have order in alphabetical order. If this file isn't rendered on the sidenav (ie. Top section files) this won't matter.
+
     </Box>
 </CTA>
 
@@ -58,9 +67,11 @@ headerOrder[Integer] - The order in which this file will be displayed on the hea
 headerOrder: 0
 ```
 <CTA warning>
+
     The header options are an easy way of adding internal files to the global header. Files specified in header.mdx gets applied AFTER these. 
     Files are organised in the header based on lowest number (LEFT) to highest (RIGHT). "Home" is ALWAYS first, then files with headerOrder, 
     then links in header.mdx.
+
 </CTA>
 
 ## SEO
@@ -73,7 +84,9 @@ featuredImage: "../images/test.png"
 ```
 
 <CTA warning>
+
     Image must be a path to the images in content/images/
+
 </CTA>
 
 ```md:title=keywords-example.mdx
@@ -87,5 +100,7 @@ description: "The most complete guide to writing frontmatter in mdx files that y
 ```
 
 <CTA warning>
+
     "description" can ALSO used for the excerpt that gets rendered and indexed for searching articles on the site.
+    
 </CTA>
