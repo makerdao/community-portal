@@ -1,9 +1,12 @@
 name: PoolParty Deploy
 
 on:
+  push:
   pull_request:
-    types: [opened, reopened, synchronize]
-
+    types: [assigned, opened, synchronize, reopened]
+  release:
+    types: [published, created, edited]
+    
 jobs:
   test:
     runs-on: ubuntu-16.04
@@ -27,13 +30,6 @@ jobs:
     - name: Making your code pretty. 
       run: | 
         yarn format
-        
-    - name: Label this PR with automerge
-      uses: TimonVS/pr-labeler-action@v3
-      with:
-        configuration-path: .github/pr-labeler.yml # optional, .github/pr-labeler.yml is the default value
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         
 
