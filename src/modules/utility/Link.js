@@ -105,7 +105,7 @@ const Link = ({
             : "none",
         border: !linkHref ? "4px dashed red" : "",
         color: !linkHref ? "bear" : "primary",
-        "&.active": {
+        "&.active,": {
           color: !linkHref ? "bear" : "primary",
         },
         "&:hover": {

@@ -42,10 +42,8 @@ const Breadcrumbs = ({ children }) => {
 
   //Filter out all pages that aren't in our current locale AND aren't part of our current path directory.
   let edges = DEFAULT_LOCALE !== locale ? allMdx.edges.filter(
-    ({ node }) => (node.fileAbsolutePath.indexOf(`/${locale}/`) !== -1 && pathDirs.some(item => {console.log(node.fileAbsolutePath.includes(item), item); return node.fileAbsolutePath.includes(item)}))
+    ({ node }) => (node.fileAbsolutePath.indexOf(`/${locale}/`) !== -1 && pathDirs.some(item => { return node.fileAbsolutePath.includes(item)}))
   ) : [];
-
-  console.log(DEFAULT_LOCALE !== locale, locale, DEFAULT_LOCALE)
 
   let defaultLocaleEdges = allMdx.edges.filter (
     ({ node }) => node.fileAbsolutePath.indexOf(`/${DEFAULT_LOCALE}/`) !== -1 && pathDirs.some(item => node.fileAbsolutePath.includes(item))
@@ -58,7 +56,7 @@ const Breadcrumbs = ({ children }) => {
             file.fileAbsolutePath.length
           )
           .replace(/(.mdx|index.mdx|.md)$/gm, "").replace(/^\/([\w]{2})\//, "/")
-    console.log(rawSlug)
+  
     const localizedMatch = edges.find((el, index) => {
        const match = el.node.fileAbsolutePath.includes(rawSlug);
 
