@@ -30,7 +30,7 @@ const Tout = ({children, alt, stroke, fade, color, image}) => {
 
 	const copyColor = !color
       ? (theme) => luminCheck(theme.colors[variant], variant)
-      : luminCheck(color, variant);
+      : (theme) => luminCheck(color, variant);
 
 	const getImageData = () => {
     const checkIfElementIsImage = (el) => {
@@ -91,14 +91,18 @@ const Tout = ({children, alt, stroke, fade, color, image}) => {
 	  background: theme => `linear-gradient(180deg, ${color || theme.colors[variant]} 0%, transparent 100%)`
   } : {}
 
+  //NOTE(Rejon): Not a very elegant solution. But it works. 
+  const nonParagraphColor = (theme) => (fade && copyColor(theme) === 'body' ? 'text' : null) || (fade && copyColor(theme) !== 'body' ? copyColor(theme) : null) || (color && !stroke ? copyColor(theme) : null) || 'text'; 
+
+
 	if (isGrid) {
 		return (
 			<Grid columns={[2, '1fr 1fr']} gap={'21px'} sx={{gridAutoRows: '1fr', mb: '54px'}}>
 				{_Children.map((child, index) => (
 					<Flex key={`tout-child-${index}`} sx={{ flexDirection: 'column', justifyContent: 'space-between', overflow: 'hidden', backgroundColor: (!stroke && !fade) ? (color || variant) : null, borderRadius: '4px', border: stroke ? '1px solid' : null, borderColor: stroke ? (color || strokeVariant) : null, ...otherStyles}}>
 			<Box sx={{
-			'& > * > *:not(.md-body)': {
-				color: copyColor,
+			'& > * > *:not(p), & > *:not(p)': {
+				color: nonParagraphColor,
 			},
 			'& > * > .md-body': {
 				color: (!stroke || fade) ? copyColor : 'unset',
@@ -135,8 +139,8 @@ const Tout = ({children, alt, stroke, fade, color, image}) => {
 	return (
 		<Box sx={{mb: '54px', overflow: 'hidden', backgroundColor: (!stroke && !fade) ? (color || variant) : null, borderRadius: '4px', border: stroke ? '1px solid' : null, borderColor: stroke ? (color || strokeVariant) : null, ...otherStyles}}>
 			<Box sx={{
-			'& > * > *:not(p)': {
-				color: (!stroke || fade) ? 'text': copyColor,
+			'& > * > *:not(p), & > *:not(p)': {
+				color: nonParagraphColor ,
 			},
 			'& > * > p': {
 				color: (!stroke || fade) ? copyColor : 'unset',

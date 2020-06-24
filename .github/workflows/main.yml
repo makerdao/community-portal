@@ -27,14 +27,5 @@ jobs:
     - name: Making your code pretty. 
       run: | 
         yarn format
-        
-    - name: Label this PR with automerge
-      uses: TimonVS/pr-labeler-action@v3
-      with:
-        configuration-path: .github/pr-labeler.yml # optional, .github/pr-labeler.yml is the default value
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        
 
 
