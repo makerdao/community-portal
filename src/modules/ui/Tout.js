@@ -94,7 +94,6 @@ const Tout = ({children, alt, stroke, fade, color, image}) => {
   //NOTE(Rejon): Not a very elegant solution. But it works. 
   const nonParagraphColor = (theme) => (fade && copyColor(theme) === 'body' ? 'text' : null) || (fade && copyColor(theme) !== 'body' ? copyColor(theme) : null) || (color && !stroke ? copyColor(theme) : null) || 'text'; 
 
-
 	if (isGrid) {
 		return (
 			<Grid columns={[2, '1fr 1fr']} gap={'21px'} sx={{gridAutoRows: '1fr', mb: '54px'}}>
