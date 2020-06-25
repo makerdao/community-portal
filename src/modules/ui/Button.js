@@ -6,6 +6,7 @@ import Link from "@modules/utility/Link";
 
 const Button = ({
   to,
+  href,
   variant,
   secondary,
   outline,
@@ -27,7 +28,7 @@ const Button = ({
   return (
     <ThemedButton
       className="button"
-      to={to}
+      to={to || href}
       disabled={disabled}
       as={Link}
       variant={_variant}
