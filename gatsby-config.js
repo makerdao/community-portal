@@ -56,7 +56,8 @@ module.exports = {
               disableBgImage: true,
               showCaptions: ["Title"],
               maxWidth: 1000,
-              wrapperStyle: (result) => `width: 100%;margin-left: 0;`,
+              linkImagesToOriginal: false,
+              wrapperStyle: (result) => `margin: unset;`,
             },
           },
           {
