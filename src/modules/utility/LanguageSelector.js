@@ -91,7 +91,7 @@ const LanguageSelector = () => {
           }}
         >
           <Text>{t("Need_Another_Language")}</Text>
-          <Link to="/">{t("Translations")}</Link>
+          <Link to="/work_with_us/translations">{t("Translations")}</Link>
         </Box>
       </>
     );
@@ -152,7 +152,7 @@ const LanguageSelector = () => {
       </Text>
 
       <Text>{t("Need_Another_Language")}</Text>
-      <Link to="/">{t("Join_translation_team")}</Link>
+      <Link to="/work_with_us/translations">{t("Join_translation_team")}</Link>
     </Box>
   );
 };

@@ -20,6 +20,7 @@ export default (props) => {
     featuredImage,
     status,
     hideLanguageSelector,
+    hideSidenav
   } = pageContext.frontmatter;
 
   const statusProps =
@@ -60,7 +61,7 @@ export default (props) => {
         keywords={keywords}
         featuredImage={featuredImage}
       />
-      {currentTopSection !== undefined && currentTopSection !== "" && (
+      {currentTopSection !== undefined && currentTopSection !== "" && !hideSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
           sx={{ width: "20%", minWidth: "260px" }}
