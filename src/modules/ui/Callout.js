@@ -30,6 +30,9 @@ const Callout = ({ icon, secondary, warning, children }) => {
           "& > *:first-of-type": {
             mt: 0,
           },
+          '& > *:only-child': {
+            m: 0
+          }
         }}
       >
         {children}
