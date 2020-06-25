@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 ---
 
 # Basic
@@ -7,12 +7,11 @@ order: 2
 Not everyone wants to be a hardcore developer. Writing truly engaging content, 
 that both delights and educates people, is an underrated talent and you 
 shouldn't be required to learn all the intricacies of modern web frameworks 
-like React just to produce awesome pages. In the past, the best you could have done 
+just to produce awesome pages. In the past, the best you could have done 
 would be to write content in your editor of choice, export it into markdown 
-and then hope that some developer somewhere can incorporate it into the site you're 
-working on and add the styles, buttons, images and other visual features which are 
-required to make content transformational, rather than being presented as just 
-more boring information. 
+and then hope that some developer somewhere can incorporate it and add the styles, 
+buttons, images and other visual features which are required to make content transformational, 
+rather than just more boring information. 
 
 This site changes all that.
 
@@ -70,15 +69,15 @@ Which will still work exactly as you expect it to in `mdx` files. However, somet
 just isn't enough. Sometimes, we want to make things a bit more fancy, which is not possible 
 using plain old markdown. Happily, this as easy as specifying a proper React Image was:
 
-<Link to={"https://www.chat.makerdao.com"} icon={"rocketchat"}>link to with an icon.</Link>
+<Link to="https://www.chat.makerdao.com" icon="rocketchat">link to with an icon.</Link>
 
 ```mdx:title=react-link.mdx
-<Link to={"https://www.chat.makerdao.com"} icon={"rocketchat"}>link to with an icon.</Link>
+<Link to="https://www.chat.makerdao.com" icon="rocketchat">link to with an icon.</Link>
 ```
 
-Yeah, the weird {} syntax may seem a bit daunting at first, but this is where React components 
-begin to become more fun, and powerful, than the normal markdown you're used to. 
-This is becuase we can start adding properties to them, or `props` in developer-lingo.
+This is where React components begin to become more fun, and powerful, than the normal 
+markdown you're used to. This is becuase we can start adding properties to them, 
+or `props` in developer-lingo.
 
 Sometimes you really need to grab your reader's attention. You need more than even a fancy 
 icon. You need a button. We want to 
@@ -88,22 +87,28 @@ icon. You need a button. We want to
 Which is actually very straightforward:
 
 ```mdx:title=basic-button.mdx
-<Button to={"#"}>Do This!</Button>
+<Button to="#">Do This!</Button>
 ```
 
 But this is just the beginning. `Props` control the appearance of your chosen component. So, instead 
-of just having a normal icon with you link or an ordinary button, you can do all sorts of funky things:
+of just having a normal icon with your link or an ordinary button, you can do all sorts of funky things:
 
-<Button secondary to={"#"}>secondary</Button> or <Button primaryOutline to={"#"}>primaryOutline</Button> or <Button secondaryOutline to={"#"}>secondaryOutline</Button> or <Button icon={"rocketchat"} to={"#"}>Rocket Chat</Button>
+<Button secondary to="#">secondary</Button> 
+
+<Button primary outline to="#">primary outline</Button> 
+
+<Button secondary outline to="#">secondary outline</Button> 
+
+<Button to="#"><Icon name="rocketchat"/> Rocket Chat</Button>
 
 ```mdx:title=advanced-buttons.mdx
-<Button secondary to={"#"}>secondary</Button> or  
+<Button secondary to="#">secondary</Button> 
 
-<Button primaryOutline to={"#"}>primaryOutline</Button> or 
+<Button primary outline to="#">primary outline</Button> 
 
-<Button secondaryOutline to={"#"}>secondaryOutline</Button> or 
+<Button secondary outline to="#">secondary outline</Button> 
 
-<Button icon={"rocketchat"} to={"#"}>Maker Icon</Button>
+<Button to="#"><Icon name="rocketchat"/> Rocket Chat</Button>
 ```
 
 The big question here is where to go to see all the different property options, and icons, you could 
@@ -113,12 +118,38 @@ potentially add to your buttons and links? We've got you covered there too:
 
 <Link to={"https://design-system.mkr-js-prod.now.sh/"} icon={"dai"}>Icons</Link>
 
-## Callouts
+## Inline Code
 
-OK, so now we can handle images, links, and buttons - all fo which will make our content really pop 
+By now, you;re wondering how to write all these cool inline code blocks...
+Well, the basics are exactly the same as regular markdown: just use three backticks **\```**.
+
+```
+const variable = "hello";
+```
+
+If you'd like your code to be highlighted specifically just provide a language after the backticks, like **\```js**
+and a language tab will appear on the right.
+
+NOTE: We only support so many languages, and css, html, and js are coded to render their tabs. 
+See [here](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js) for languages supported.
+
+```js
+const variable = "hello"
+```
+
+If you'd like the code to have a filename attached, you need to add a title attribute, such as 
+**\```js:title=calculateTreeData.js**
+
+```js:title=calculateTreeData.js
+const variable = "hello";
+```
+
+## Callouts and CTAs
+
+OK, so now we can handle images, links, buttons, and inline code - all of which will make our content really pop 
 and we didn't have to ask a single developer to add anything to our work. What a relief... The last 
 basic tool we want to introduce you to, before moving on to more detailed use of React components, is the 
-Callout. Sometimes, you don't want to user to take action - you just need to draw attention to a very 
+Callout. Sometimes, you don't want the user to take action - you just need to draw attention to a very 
 specific and important part of your content - a note or summary or key takeaway. We've got you covered.
 
 <Callout icon>
@@ -141,6 +172,21 @@ This will render the header correctly, because there are newlines before and aft
 
 </Callout>
 
+In addition to callouts, we can do Calls To Action. CTAs are really just good-looking green boxes to be 
+used as shorthand when you want to draw attention to a particular piece of content. They do not change if 
+you pass them any props. Callouts are fully fleshed out and they support icons. 
+So, if you want colors and icons, use a Callout. If you just want a green box for attention, use a CTA. This 
+can be achieved either with a `<CTA>` React component tag, or the simply md blockquote syntax, i.e. `>`.
+
+<CTA>
+
+One important note is here is that you must ensure your content is on a separate line, with spaces 
+in between. This is because of what we call the "Child Rule", which we explain in the next section. 
+
+</CTA>
+
+> This is also a shorthand way of creating CTAs.
+
 ```mdx:title=callouts.mdx
 <Callout icon>
 
@@ -161,4 +207,12 @@ This is a callout with the (specified) secondary style and the "search' icon fro
 This will render the header correctly, because there are newlines before and after the .mdx child.
 
 </Callout>
+
+<CTA>
+
+Important note! 
+
+</CTA>
+
+> This is also an important note!
 ```
