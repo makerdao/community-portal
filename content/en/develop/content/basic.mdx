@@ -4,5 +4,161 @@ order: 2
 
 # Basic
 
-A very basic intro to what a component is, why you might want to use one in your writing (to attract attention etc) 
-and the most basic kinds - buttons, CTAs, images, headers etc.
+Not everyone wants to be a hardcore developer. Writing truly engaging content, 
+that both delights and educates people, is an underrated talent and you 
+shouldn't be required to learn all the intricacies of modern web frameworks 
+like React just to produce awesome pages. In the past, the best you could have done 
+would be to write content in your editor of choice, export it into markdown 
+and then hope that some developer somewhere can incorporate it into the site you're 
+working on and add the styles, buttons, images and other visual features which are 
+required to make content transformational, rather than being presented as just 
+more boring information. 
+
+This site changes all that.
+
+## What is Mdx anyway?
+
+In short: it's your normal markdown - `md` - with an added little `x` factor. 
+In practice, the `x` means that we can `extend` the capabilities of markdown 
+and, in fact, create entire React components directly in our content files. If you 
+don't know what a React component is, or why you would want to have them in your 
+content files, don't stress! This section is all about showing you how this is 
+actually a writing superpower, and how you can put it to best use when contributing. 
+
+You might have used a [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) 
+before to figure out how to handle headings, links, images, and other basic necessities. 
+The beauty of `mdx` is that all that stuff still works exactly the same. You'll still be 
+writing what appears - for the most part - to be normal markdown. It's just that 
+we can now do so much more...
+
+## Images
+
+Let's take images, for example. If you ever written markdown content before, you'll be 
+familiar with the way images are added, which remains the same with `mdx`:
+
+```md:title=basic-image.mdx
+![Basic image example](../../../images/starfox.png)
+```
+
+![Basic image example](../../../images/starfox.png)
+
+However, because we're extending markdown's capabilities, you could also choose to write:
+
+```md:title=react-image.mdx
+<Image src="../../../images/starfox.png"/>
+```
+
+<Image src="../../../images/starfox.png"/>
+
+In this case, the result is the same (except for the bottom margin, which we'll fix later). 
+Using the traditional markdown format defaults to how Gatsby generally processes images, 
+though learning how to use the `Image` tag will allow you to start doing more complicated 
+things later on, like specifying your own styles or passing specific properties to components 
+which come ready-made with many different options.
+
+## Buttons and links
+
+The same idea goes for links. You're likely used to writing markdown links like this:
+
+[Awesome video](https://www.youtube.com/watch?v=Qzm_1Tuor1A)
+
+```md:title=basic-link.md
+[Awesome video](https://www.youtube.com/watch?v=Qzm_1Tuor1A)
+```
+
+Which will still work exactly as you expect it to in `mdx` files. However, sometimes a link 
+just isn't enough. Sometimes, we want to make things a bit more fancy, which is not possible 
+using plain old markdown. Happily, this as easy as specifying a proper React Image was:
+
+<Link to={"https://www.chat.makerdao.com"} icon={"rocketchat"}>link to with an icon.</Link>
+
+```mdx:title=react-link.mdx
+<Link to={"https://www.chat.makerdao.com"} icon={"rocketchat"}>link to with an icon.</Link>
+```
+
+Yeah, the weird {} syntax may seem a bit daunting at first, but this is where React components 
+begin to become more fun, and powerful, than the normal markdown you're used to. 
+This is becuase we can start adding properties to them, or `props` in developer-lingo.
+
+Sometimes you really need to grab your reader's attention. You need more than even a fancy 
+icon. You need a button. We want to 
+
+<Button to="#">Do This!</Button>
+
+Which is actually very straightforward:
+
+```mdx:title=basic-button.mdx
+<Button to={"#"}>Do This!</Button>
+```
+
+But this is just the beginning. `Props` control the appearance of your chosen component. So, instead 
+of just having a normal icon with you link or an ordinary button, you can do all sorts of funky things:
+
+<Button secondary to={"#"}>secondary</Button> or <Button primaryOutline to={"#"}>primaryOutline</Button> or <Button secondaryOutline to={"#"}>secondaryOutline</Button> or <Button icon={"rocketchat"} to={"#"}>Rocket Chat</Button>
+
+```mdx:title=advanced-buttons.mdx
+<Button secondary to={"#"}>secondary</Button> or  
+
+<Button primaryOutline to={"#"}>primaryOutline</Button> or 
+
+<Button secondaryOutline to={"#"}>secondaryOutline</Button> or 
+
+<Button icon={"rocketchat"} to={"#"}>Maker Icon</Button>
+```
+
+The big question here is where to go to see all the different property options, and icons, you could 
+potentially add to your buttons and links? We've got you covered there too:
+
+<Link to={"https://design-system.mkr-js-prod.now.sh/"} icon={"eye"}>Colours</Link>
+
+<Link to={"https://design-system.mkr-js-prod.now.sh/"} icon={"dai"}>Icons</Link>
+
+## Callouts
+
+OK, so now we can handle images, links, and buttons - all fo which will make our content really pop 
+and we didn't have to ask a single developer to add anything to our work. What a relief... The last 
+basic tool we want to introduce you to, before moving on to more detailed use of React components, is the 
+Callout. Sometimes, you don't want to user to take action - you just need to draw attention to a very 
+specific and important part of your content - a note or summary or key takeaway. We've got you covered.
+
+<Callout icon>
+
+This is a callout with the (default) primary style and the default "warning" icon from dai-ui-icons!
+
+</Callout>
+
+<Callout icon="search" secondary>
+
+This is a callout with the (specified) secondary style and the "search' icon from dai-ui-icons!
+
+</Callout>
+
+<Callout>
+  
+## Header between line breaks  
+
+This will render the header correctly, because there are newlines before and after the .mdx child.
+
+</Callout>
+
+```mdx:title=callouts.mdx
+<Callout icon>
+
+This is a callout with the (default) primary style and the default "warning" icon from dai-ui-icons!
+
+</Callout>
+
+<Callout icon="search" secondary>
+
+This is a callout with the (specified) secondary style and the "search' icon from dai-ui-icons!
+
+</Callout>
+
+<Callout>
+  
+## Header between line breaks  
+
+This will render the header correctly, because there are newlines before and after the .mdx child.
+
+</Callout>
+```
