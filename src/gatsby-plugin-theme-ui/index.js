@@ -27,6 +27,7 @@ export default {
     codeText: "#FFFFFF",
     headline: "#291A42",
     accordionBG: "#fcfcfc",
+    checklistBorder: 'rgba(41, 26, 66, 0.1)'
   },
   styles: {
     ...maker.styles,
