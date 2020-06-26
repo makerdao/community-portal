@@ -75,11 +75,17 @@ const Link = ({
       >
         {/*add space as workaround for svg padding resizing issue*/}
         {icon && linkHref && (
-          <>{` ${(<Icon
-            name={icon}
-            size={"2rem"}
-            sx={{ verticalAlign: "middle", top: "-2px", position: "relative" }}
-          />)}`}</>
+          <>{` ${(
+            <Icon
+              name={icon}
+              size={"2rem"}
+              sx={{
+                verticalAlign: "middle",
+                top: "-2px",
+                position: "relative",
+              }}
+            />
+          )}`}</>
         )}
         {children}
       </GatsbyLink>
