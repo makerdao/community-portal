@@ -43,11 +43,6 @@ Hello World
 ```
 Both end up looking like this:
 
-<List>
-
-Hello World
-
-</List>
 
 If you want a list element with sub content, that's easy enough to organise:
 
@@ -62,25 +57,9 @@ If you want a list element with sub content, that's easy enough to organise:
 
 Which renders like this:
 
-<List>
-
-- Element Header
-   - Sub content
-
-</List>
 
 For more complex sub content, we recommend using a Box:
 
-<List>
-
-   - Header text
-       - <Box> 
-           
-        ### More complicated MD ... 
-           
-        </Box>
-
-</List>
 
 Want to render a few links? Easy! It's important to see, however, that 
 these are links that are only in content, and not a Link Element (see more on this below).
@@ -99,15 +78,7 @@ these are links that are only in content, and not a Link Element (see more on th
 
 Which ends up looking like this:
 
-<List>
- 
-<Link to="#">Writing style guide →</Link>
 
-<Link to="#">Visual style guide →</Link>
-
-<Link to="#">Code style guide →</Link>
-
-</List>
 
 <CTA>
 
@@ -151,23 +122,9 @@ otherwise mdx will only render the first item in your list and nothing else!
 
 Which both end up looking like this:
 
-<List>
-
-- [MakerDao](https://makerdao.com)
-
-
-- [Learn](/learn)
-
-</List>
 
 These links are also capable of having subcontent as well:
 
-<List>
-
-- [MakerDao](https://makerdao.com)
-     - Hello I would be subtext.
-
-</List>
 
 If all this isn't enough to blow your hair back, there's some extra flair:
 
