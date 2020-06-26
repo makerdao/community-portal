@@ -3,11 +3,12 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 import useTranslation from "@modules/utility/useTranslation";
+import {getInitialLocale} from '@utils';
 
 //This page doesn't exist and solely acts as a reroute for language.
 const IndexPage = () => {
   const navigate = useNavigate();
-  const { locale } = useTranslation();
+  const { DEFAULT_LOCALE } = useTranslation();
 
   //Run a query to get top level directories in the content folder.
   //ie. /content/en/  /content/es ect...
@@ -29,26 +30,12 @@ const IndexPage = () => {
     const locales = allDirectory.nodes.map((n) =>
       n.absolutePath.split("/").pop()
     );
-    let initialLocale = locale;
-    //Check if the locale is in local storage.
-    const localeSetting = localStorage.getItem("locale");
-
-    //If it is and it exists in the content directory, we've got a valid locale.
-    if (localeSetting && locales.indexOf(localeSetting) !== -1) {
-      initialLocale = localeSetting;
-    }
-
-    //Check browser settings for current language.
-    const [browserSetting] = navigator.language.split("-");
-
-    //If it is and it exists in the content directory, we've got a valid locale.
-    if (locales.indexOf(browserSetting) !== -1) {
-      initialLocale = browserSetting;
-    }
+    
+    let initialLocale = getInitialLocale(locales, DEFAULT_LOCALE)
 
     //Replace current route with locale based index.
     navigate(`/${initialLocale}/`, { replace: true });
-  }, [allDirectory.nodes, locale, navigate]);
+  }, [allDirectory.nodes, DEFAULT_LOCALE, navigate]);
 
   return (
     <Helmet>
