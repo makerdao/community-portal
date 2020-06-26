@@ -9,6 +9,10 @@
     "Available_Languages": "Available Languages",
     "Need_Another_Language": "Need another language?",
     "Join_translation_team": "Join translation team",
-    "Translations": "Translations"
+    "Translations": "Translations",
+    "Touts": {
+      "alt_defaultImage": "Default Tout Image",
+      "alt_altImage": "Alternate Tout Image"
+    }
   }
 }

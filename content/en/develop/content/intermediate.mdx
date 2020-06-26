@@ -1,8 +1,215 @@
 ---
-order: 3
+order: 4
 ---
 
 # Intermediate
 
-Some of the more picky components which require some degree of thought about which order you put things in, 
-a short description of children and how to think about them etc.
+We ended our Basic guide with Callouts and CTAs, which require each piece of content to start on a new line. 
+This is because each new mdx line is interpreted as a new **child** when it is passed to the magic box which 
+turns it into a React component. This means, when using more advanced components, you'll need to be aware not 
+just of the props you're specifying in the actual tag, like `primaryOutline` or `icon`, but also the order 
+in which you write the content in each component and **leaving new lines between each separate piece**.
+
+<Aligner xCenter sx={{marginBottom: 3}}>
+
+<Image src="../../../images/children.jpg"/>
+
+</Aligner>
+
+## Lists
+
+The list component is an example of why mdx having an opinion in how it renders components works 
+in our favor. With mdx, we can order our children consistently. 
+This allows us to create smart hooks for rendering each element, which is a fancy way of saying that 
+we can create really beautiful lists with more functionality and visual pizzaz than you could ever 
+dream of having in normal md files. Let's dive right in.
+
+The rule is **scripting and composition come FIRST**, which just means that you can use the list component 
+in the same way you'd write lists normally. Generally we write lists beginning with a hyphen in md. You can use the hyphen, 
+or not, when writing content in our `List` component - either way it will render the same thing:
+
+```md:title=basic-list.mdx
+<List>
+
+- Hello world
+
+</List> 
+
+<List>
+
+Hello World
+
+</List>
+```
+Both end up looking like this:
+
+
+If you want a list element with sub content, that's easy enough to organise:
+
+```md:title=subcontent-list.mdx
+<List>
+
+- Element Header
+   - Sub content
+
+</List>
+```
+
+Which renders like this:
+
+
+For more complex sub content, we recommend using a Box:
+
+
+Want to render a few links? Easy! It's important to see, however, that 
+these are links that are only in content, and not a Link Element (see more on this below).
+
+```md:title=list-of-links.mdx
+<List>
+ 
+<Link to="/">Writing style guide →</Link>
+
+<Link to="/">Visual style guide →</Link>
+
+<Link to="/">Code style guide →</Link>
+
+</List>
+```
+
+Which ends up looking like this:
+
+
+
+<CTA>
+
+NOTE: Mind the gap! There should be a gap between list elements that will be on the same level 
+or mdx will not recognize them as seperate elements.
+
+</CTA>
+
+It's possible to have an entire list element be a link in 2 ways.
+
+1. Providing a Link as a list element
+2. Providing a Link component for the first element of our List
+
+```md:title=list-as-link.mdx
+<List>
+
+- [MakerDao](https://makerdao.com)
+
+
+- [Learn] (/learn)
+
+</List>
+
+or
+
+<List>
+
+- <Link to="https://makerdao.com">Maker Dao Website</Link>
+
+
+- <Link to="/learn">Learn</Link>
+
+</List>
+```
+<CTA>
+
+NOTE: Mind the even bigger gap! There should be 2 new lines between each link as a list item 
+otherwise mdx will only render the first item in your list and nothing else!
+
+</CTA>
+
+Which both end up looking like this:
+
+
+These links are also capable of having subcontent as well:
+
+
+If all this isn't enough to blow your hair back, there's some extra flair:
+
+1. If the link is external, the arrow icon will point up-right to mimic the design language of other external links on the website.
+2. If you hover over the elements I added some minor juice to make the arrows move.
+
+### Differences between Ordered Lists and Unordered Lists
+
+There are none at the moment. The List component recognizes each type and renders 
+them the same. Check out [this PR](https://github.com/makerdao/community-portal/pull/45) for further 
+examples of all the crazy things you can put in our list component and to deepend your understanding 
+and appreciation of children.
+
+We also DO NOT want to replace the expected behavior of how unordered lists and ordered lists 
+written outside of the context of the list component or its sub-content.
+
+## Process Stepper
+
+The process stepper is a carbon copy of the list component, except shaved down to ignore the Link requirements. 
+This means the same mindset of scripting a process element is in place. The children dictate the content, 
+and how the children are seperated determine each step in the process.
+
+```md:title=process-stepper.mdx
+<Process>
+
+### Child 1
+
+Child 2 
+
+<Box>
+
+### Child 3
+
+Bunches and bunches of content can go in here. Anything you like, tbh.
+
+</Box>
+
+<Box>
+
+### Child 4
+
+> Even CTAs
+
+</Box>
+
+</Process>
+```
+
+
+<Process>
+
+### Child 1
+
+Child 2 
+
+<Box>
+
+### Child 3
+
+Bunches and bunches of content can go in here. Anything you like, tbh.
+
+</Box>
+
+<Box>
+
+### Child 4
+
+> Even CTAs
+
+```js 
+or inline code 
+```
+
+</Box>
+
+</Process>
+
+## Box
+
+You'll notice that we've begun wrapping our children in boxes. This is the way to overcome the child rule 
+and sneak in more content to one specific child should the need arise. If you wrap your multi-line content 
+into a `<Box>`, then this will be read and rendered as a single child. You can already see how useful this 
+is in the context of complex lists or process steppers, and it will become more apparent with other, more visual 
+components like Touts.
+
+Basically, a `<Box>` is just the old html `<div>` element updated for this brave new world we'll be building together. 
+Now it's time to head over to the Advanced tutorial and begin understanding our visual components and how to style everything.
+
