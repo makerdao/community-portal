@@ -26,6 +26,10 @@ export default {
   h4: (props) => <Text variant="h4" as="h4" {...props} />,
   h5: (props) => <Text variant="h5" as="h5" {...props} />,
   thematicBreak: (props) => <Divider />,
+<<<<<<< HEAD
+=======
+
+>>>>>>> d4af780d3ea5882fc45a33e33f521442fb15ff9e
   p: (props) => (
     <Text
       sx={{ mb: "16px", "& .button": { display: "inline-block" } }}
