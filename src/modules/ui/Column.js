@@ -11,8 +11,6 @@ const Column = ({children}) => {
 		<Grid gap={'27px'} sx={{mb:4}} columns={_Children.length > 1 ? [2, '1fr 1fr'] : [1, '1fr']}>
 			{_Children.map((child) => {
 
-				console.log(child)
-
 				const childChildren = React.Children.toArray(child.props.children);
 				
 				if ((child.props.mdxType === 'ul' || child.props.mdxType === 'ol') && childChildren[0] && childChildren[0].props.mdxType === 'li') {
