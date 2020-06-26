@@ -27,6 +27,31 @@ export const UrlConverter = ({ fileAbsolutePath }) => {
     .replace(/(.mdx|index.mdx)$/gm, "");
 };
 
+export const getInitialLocale = (locales, DEFAULT_LOCALE) => {
+
+    let initialLocale = DEFAULT_LOCALE;
+
+    if (typeof window === `undefined`) {return DEFAULT_LOCALE};
+
+    //Check if the locale is in local storage.
+    const localeSetting = localStorage.getItem("locale");
+
+    //If it is and it exists in the content directory, we've got a valid locale.
+    if (localeSetting && locales.indexOf(localeSetting) !== -1) {
+      initialLocale = localeSetting;
+    }
+
+    //Check browser settings for current language.
+    const [browserSetting] = navigator.language.split("-");
+
+    //If it is and it exists in the content directory, we've got a valid locale.
+    if (locales.indexOf(browserSetting) !== -1) {
+      initialLocale = browserSetting;
+    }
+    
+    return initialLocale; 
+}
+
 //Check if a Hex Color passes luminance check
 //TLDR: If text on a background (hex) should be white or black based on luminance.
 //Taken from: https://stackoverflow.com/a/41491220

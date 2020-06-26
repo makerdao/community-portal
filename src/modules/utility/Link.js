@@ -92,6 +92,16 @@ const Link = ({
     );
   }
 
+  ///HTTPS/HTTP checks
+  //Ensure ALL links are HTTPS
+  const hasHTTP = /^(http|https):\/\//i.test(linkHref)
+
+  if (!hasHTTP) {
+    linkHref = `https://${linkHref}`
+  } else if (!/^(https)?:\/\//i.test(linkHref)) {
+    linkHref = linkHref.replace(/^http?:\/\//, "https://")
+  }
+
   return (
     <ThemeLink
       href={!disabled ? linkHref : ""}
@@ -105,7 +115,7 @@ const Link = ({
             : "none",
         border: !linkHref ? "4px dashed red" : "",
         color: !linkHref ? "bear" : "primary",
-        "&.active": {
+        "&.active,": {
           color: !linkHref ? "bear" : "primary",
         },
         "&:hover": {
