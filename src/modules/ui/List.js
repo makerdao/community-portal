@@ -6,7 +6,7 @@ import Link from "@modules/utility/Link";
 
 const List = ({ children }) => {
   const _Children = React.Children.toArray(children);
-console.log(_Children)
+  console.log(_Children);
   //What to render if a list element is a Link element.
   const renderLink = (listChild, _children, key) => {
     //Depending on whether the child is an actual Link or is a UL/LI with a Link
@@ -96,44 +96,43 @@ console.log(_Children)
   };
 
   const renderListElement = (child) => (
-          <Flex
-            sx={{
-              p: "10px 8px",
-              minHeight: "60px",
-              borderBottom: "1px solid",
-              borderColor: "body-15",
-              alignItems: "center",
-              "& > *:only-child": {
-                margin:
-                  typeof child === "string" ? 0 : "initial",
-              },
-              "& > *": {
-                width: "100%",
-              },
-              "& > ul, & > ol": {
-                m: 0,
-                p: 0,
-                listStyleType: "none",
-                width: "100%",
-              },
-              "& > ul > li, & > ul > li > a, & > ul > li > a:hover, & > ol > li, & > ol > li > a, & > ol > li > a:hover": {
-                color: "headline",
-              },
-              "& > ul > li > ul, & > ol > li > ul, & > ul > li > ol, & > ol > li > ol": {
-                m: 0,
-                mt: 2,
-                p: 0,
-                listStyleType: "none",
-              },
-              "& > ul > li > ul > li, & > ol > li > ol > li, & > ol > li > ul > li, & > ul > li > ol > li": {
-                color: "body",
-              },
-            }}
-            key={`list-element${child.key}`}
-          >
-            {child}
-          </Flex>
-        )
+    <Flex
+      sx={{
+        p: "10px 8px",
+        minHeight: "60px",
+        borderBottom: "1px solid",
+        borderColor: "body-15",
+        alignItems: "center",
+        "& > *:only-child": {
+          margin: typeof child === "string" ? 0 : "initial",
+        },
+        "& > *": {
+          width: "100%",
+        },
+        "& > ul, & > ol": {
+          m: 0,
+          p: 0,
+          listStyleType: "none",
+          width: "100%",
+        },
+        "& > ul > li, & > ul > li > a, & > ul > li > a:hover, & > ol > li, & > ol > li > a, & > ol > li > a:hover": {
+          color: "headline",
+        },
+        "& > ul > li > ul, & > ol > li > ul, & > ul > li > ol, & > ol > li > ol": {
+          m: 0,
+          mt: 2,
+          p: 0,
+          listStyleType: "none",
+        },
+        "& > ul > li > ul > li, & > ol > li > ol > li, & > ol > li > ul > li, & > ul > li > ol > li": {
+          color: "body",
+        },
+      }}
+      key={`list-element${child.key}`}
+    >
+      {child}
+    </Flex>
+  );
 
   return (
     <Box sx={{ mb: 4 }}>
@@ -141,20 +140,19 @@ console.log(_Children)
         //Check if the child is confirmed to be a UL or OL
         if (child.props.mdxType === "ul" || child.props.mdxType === "ol") {
           const ULChildren = React.Children.toArray(child.props.children);
-          
+
           //Check if the FIRST child of the ULChildren is an LI element.
           //NOTE(Rejon): This should ALWAYS be the case!
-          console.log(ULChildren, );
-  
-          return ULChildren.filter((n) => n.props.mdxType === 'li').map((liChild) => {
-              const LIChildren = React.Children.toArray(
-                  liChild.props.children
-                );
+          console.log(ULChildren);
 
-                console.log(LIChildren);
+          return ULChildren.filter((n) => n.props.mdxType === "li").map(
+            (liChild) => {
+              const LIChildren = React.Children.toArray(liChild.props.children);
 
-              if (typeof LIChildren[0].props.children === 'object') {
-                  //Check if the FIRST child of the LI element is an "object"
+              console.log(LIChildren);
+
+              if (typeof LIChildren[0].props.children === "object") {
+                //Check if the FIRST child of the LI element is an "object"
                 //NOTE(Rejon): If it is then we know we've got a react component.
                 const isLinkElement =
                   LIChildren[0].props.mdxType === "a" ||
@@ -162,29 +160,27 @@ console.log(_Children)
                   LIChildren[0].props.children.props.mdxType === "a" || //<- NOTE(Rejon): There are some cases MDX will translate an element with complex subchildren as another UL or LI, we want the children of THAT element.
                   LIChildren[0].props.children.props.mdxType === "Link";
 
-                  //If the element we have meets our criteria (above) for a Link List Element then we can render it as so.
-                  if (isLinkElement) {
+                //If the element we have meets our criteria (above) for a Link List Element then we can render it as so.
+                if (isLinkElement) {
+                  return renderLink(
+                    LIChildren[0],
+                    LIChildren.slice(1),
+                    child.key
+                  ); //NOTE(Rejon): We slice off the first child, because we don't want to render the link twice.
+                } else {
+                  //If the LI's children aren't links, then just render the copy normally.
 
-                    return renderLink(
-                      LIChildren[0],
-                      LIChildren.slice(1),
-                      child.key
-                    ); //NOTE(Rejon): We slice off the first child, because we don't want to render the link twice.
-                  }
-                  else { //If the LI's children aren't links, then just render the copy normally.
-                  
-                    return renderListElement(LIChildren)
-                  }
+                  return renderListElement(LIChildren);
+                }
+              } else {
+                //If the element isn't a component, but a string just render it.
+                return renderListElement(LIChildren);
               }
-              else { //If the element isn't a component, but a string just render it. 
-                return renderListElement(LIChildren)
-              }
-          })
-        
-          
+            }
+          );
         }
 
-        return renderListElement(child)
+        return renderListElement(child);
       })}
     </Box>
   );

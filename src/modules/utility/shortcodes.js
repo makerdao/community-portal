@@ -11,7 +11,7 @@ import Button from "@modules/ui/Button";
 import Process from "@modules/ui/Process";
 import CTA from "@modules/ui/CTA";
 import Accordion from "@modules/ui/Accordion";
-import Aligner from '@modules/utility/Aligner';
+import Aligner from "@modules/utility/Aligner";
 import { AspectImage, Image, Text, Divider, Box } from "theme-ui";
 
 export default {
@@ -23,7 +23,12 @@ export default {
   h4: (props) => <Text variant="h4" {...props} />,
   h5: (props) => <Text variant="h5" {...props} />,
   thematicBreak: (props) => <Divider />,
-  p: (props) => <Text sx={{ mb: "16px", '& .button': {display: 'inline-block'} }} {...props} />, //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
+  p: (props) => (
+    <Text
+      sx={{ mb: "16px", "& .button": { display: "inline-block" } }}
+      {...props}
+    />
+  ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
   blockquote: CTA,
   Button,
   Breadcrumbs,
@@ -35,7 +40,7 @@ export default {
   Icon,
   CTA,
   Process,
-  Image, //<- NOTE(Rejon): This is necessary so remark doesn't auto-wrap our component instead of the other way around. 
+  Image, //<- NOTE(Rejon): This is necessary so remark doesn't auto-wrap our component instead of the other way around.
   List,
   Aligner,
   AspectImage,
