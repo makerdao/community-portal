@@ -12,7 +12,7 @@ import Process from "@modules/ui/Process";
 import CTA from "@modules/ui/CTA";
 import Accordion from "@modules/ui/Accordion";
 import Aligner from "@modules/utility/Aligner";
-import Checklist from '@modules/ui/Checklist';
+import Checklist from "@modules/ui/Checklist";
 import { AspectImage, Image, Text, Divider, Box } from "theme-ui";
 
 export default {
@@ -47,5 +47,5 @@ export default {
   AspectImage,
   Accordion,
   InfoBlock,
-  Checklist
+  Checklist,
 };
