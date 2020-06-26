@@ -43,7 +43,7 @@ const StatusBanner = ({
     return (
       <Sticky
         dontUpdateHolderHeightWhenSticky={true}
-        sx={{ zIndex: "100", width: "100%" }}
+        sx={{ '& > *': {zIndex: "100"}, width: "100%" }}
       >
         <Box
           sx={{
