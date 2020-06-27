@@ -14,7 +14,7 @@ const Checklist = ({ children }) => {
         mb: "24px",
         flexDirection: "column",
         border: "1px solid",
-        borderColor: "checklistBorder",
+        borderColor: "strokeFaded",
         bg: "background",
         borderRadius: "4px",
       }}

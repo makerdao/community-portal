@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import { Flex, jsx } from "theme-ui";
+import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
@@ -95,13 +95,15 @@ export default (props) => {
             pr: 4,
           }}
         >
-          <Flex sx={{ justifyContent: "space-between", position: "relative" }}>
+          <Flex sx={{ justifyContent: "space-between", position: "relative", mb: '28px', alignItems: 'center' }}>
             <Breadcrumbs sx={{ flexGrow: 1 }} />
             {currentTopSection !== undefined &&
               currentTopSection !== "" &&
               !hideLanguageSelector && <LanguageSelector />}
           </Flex>
+          <Box sx={{'& > *:first-child, & > *:nth-child(2)': {maxWidth: 'calc(100% - 211px)'}, '& > *:nth-child(2)': {mb: '32px'}}}>
           {children}
+          </Box>
         </article>
       </Flex>
     </>

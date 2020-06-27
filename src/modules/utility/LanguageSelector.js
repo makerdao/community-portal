@@ -81,7 +81,7 @@ const LanguageSelector = () => {
               content: '""',
               height: "1px",
               width: "90%",
-              position: "absolute",
+              position: "relative",
               top: 0,
               left: "50%",
               transform: "translateX(-50%)",
