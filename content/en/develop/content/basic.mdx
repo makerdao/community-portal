@@ -1,5 +1,6 @@
 ---
 order: 3
+status: {text: "You'll learn how to create a banner like this in the tutorial below!", notice: true, sticky: false}
 ---
 
 # Basic
@@ -120,7 +121,7 @@ potentially add to your buttons and links? We've got you covered there too:
 
 ## Inline Code
 
-By now, you;re wondering how to write all these cool inline code blocks...
+By now, you're likely wondering how to write all these cool inline code blocks...
 Well, the basics are exactly the same as regular markdown: just use three backticks **\```**.
 
 ```
@@ -143,6 +144,31 @@ If you'd like the code to have a filename attached, you need to add a title attr
 ```js:title=calculateTreeData.js
 const variable = "hello";
 ```
+
+## Inline Videos
+
+Inline code is not enough though, we want more cool inline tricks! Bring on those easily-embedded videos! This 
+isn't so much a "component" as it is an integration of gatsby-remark-embed-video for ease of use in mdx. You 
+can write some simple md to embed a responsive iframe from YouTube, vimeo, videoPress and twitch (though twitch is buggy 
+and we recommend you stay away from it). Please see [their docs](https://www.gatsbyjs.org/packages/gatsby-remark-embed-video/?=remark-embed) for more detail.
+
+```md:embed-video.mdx
+`video: [What is DAI?](https://vimeo.com/411464106)`
+
+`vimeo: [What is DAI?](411464106)`
+
+**A11Y support**
+
+`video: [Your love!](https://www.youtube.com/watch?v=mzDVaKRApcg)`
+
+`youtube: [Your love!](mzDVaKRApcg)`
+
+```
+`vimeo: 411464106`
+
+**A11Y support**
+
+`video: [Your love!](https://www.youtube.com/watch?v=mzDVaKRApcg)`
 
 ## Callouts and CTAs
 
@@ -216,3 +242,111 @@ Important note!
 
 > This is also an important note!
 ```
+
+## Status Banners
+
+At various stages in our docs, we need to be able to show the Status of a given project or process. This 
+requires something slightly different from either a Callout or a CTA, so we have the `<StatusBanner>` component 
+which comes replete with flexible color props and a bunch of other cool features for the enterprising writer.
+
+<StatusBanner sticky>
+
+**This will stick with us until the end...**
+
+</StatusBanner>
+
+```md:title=status-banners.mdx
+<StatusBanner>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner notice>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner warning>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner error>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner color="blue">
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner color="#523897">
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+```
+
+<StatusBanner>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner notice>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner warning>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner error>
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner color="blue">
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+<StatusBanner color="#523897">
+
+**You're becoming an mdx expert already! [Much wow](#)**
+
+</StatusBanner>
+
+It gets even better though, because StatusBanner not only give you the ability to control colors and set 
+your own should you require them. They can also receive the `sticky` prop, which means that they will stick 
+to the top of the screen as soon as the user scrolls past them, wherever they are in the page.
+
+```md:title=sticky-status.mdx
+<StatusBanner sticky>
+
+**This will stick with us until the end...**
+
+</StatusBanner>
+```
+And that's not all. You can even include a StatusBanner in your file's frontmatter, which means that it will 
+appear above the breadcrumbs on your page. You can leverage the same options there, defining both its color and 
+stickiness in the frontmatter itself. The one at the top of this page is defined below:
+
+```md:title=frontmatter-status.mdx
+---
+status: {text: "You'll learn how to create a banner like this in the tutorial below!", notice: true, sticky: false}
+---
+```
+
