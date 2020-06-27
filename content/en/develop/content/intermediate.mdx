@@ -4,7 +4,7 @@ order: 4
 
 # Intermediate
 
-We ended our Basic guide with Callouts and CTAs, which require each piece of content to start on a new line. 
+Our Basic guide showed how Callouts and CTAs require each piece of content to start on a new line. 
 This is because each new mdx line is interpreted as a new **child** when it is passed to the magic box which 
 turns it into a React component. This means, when using more advanced components, you'll need to be aware not 
 just of the props you're specifying in the actual tag, like `primaryOutline` or `icon`, but also the order 
@@ -183,6 +183,150 @@ and appreciation of children.
 
 We also DO NOT want to replace the expected behavior of how unordered lists and ordered lists 
 written outside of the context of the list component or its sub-content.
+
+## Accordion
+
+So you want to make a list, but with a lot of content, and you don't want to take up a lot of space 
+on the page? Sounds like you need a collapsible accordion menu... The Accordion component is ultra simple and 
+scripting works with the same Child Rule. Except this time:
+
+1. The first child that appears is the header of the accordion.
+2. Everything AFTER the first child will be included in the collapsable content.
+
+```md:title=accordion.mdx
+<Accordion>
+
+## Hello World
+
+Some other content
+
+</Accordion>
+
+<Accordion>
+
+## Am I eligible to receive a micro-grant if Maker and Dai are only one part of my agenda?
+
+Some other content inside of an accordion!
+
+> CTA content inside of Accordion
+
+![Starfox](../../../images/starfox.png)
+
+### Let's see how this works?
+
+</Accordion>
+
+<Accordion>
+
+## Some other content inside of an accordion!
+
+### Let's see how this works? 
+
+</Accordion>
+
+<Accordion openIcon="heart" closeIcon="brokenHeart">
+
+Of course, it's also possible to have your own icons for opening and closing
+
+</Accordion>
+
+<Accordion defaultOpen>
+
+And you can control whether the menu defaults to being open or closed...
+
+This content will show by default now.
+
+</Accordion>
+```
+
+<Accordion>
+
+## Hello World
+
+Some other content
+
+</Accordion>
+
+<Accordion>
+
+## Am I eligible to receive a micro-grant if Maker and Dai are only one part of my agenda?
+
+Some other content inside of an accordion!
+
+> CTA content inside of Accordion
+
+![Starfox](../../../images/starfox.png)
+
+### Let's see how this works?
+
+</Accordion>
+
+<Accordion>
+
+## Some other content inside of an accordion!
+
+### Let's see how this works? 
+
+</Accordion>
+
+<Accordion openIcon="heart" closeIcon="brokenHeart">
+
+Of course, it's also possible to have your own icons for opening and closing
+
+</Accordion>
+
+<Accordion defaultOpen>
+
+And you can control whether the menu defaults to being open or closed...
+
+This content will show by default now.
+
+</Accordion>
+
+## Checklist
+
+This is another simple component meant to be more visually engaging. It is **not** interactive - it's 
+just meant to organise content in a specific way, mostly for guide pages like preparing for hackathons etc.
+
+```md:title=checkbox.mdx
+<Checklist>
+
+   Checkbox 1
+
+   - Checkbox 2 Very conservative sponsorship requirements (under $5000)
+ 
+   - Checkbox 3 Located or targeted at Asia-Pacific (APAC), Latin America (LATAM), Eastern Europe, ect....
+
+   1. Checkbox 4 Direct connection to talent and hackathon attendees
+   
+    ### Checkbox 5
+
+    <Box>
+      Checkbox 6
+    </Box>
+
+</Checklist>
+```
+
+Which ends up looking like this:
+
+<Checklist>
+
+   Checkbox 1
+
+   - Checkbox 2 Very conservative sponsorship requirements (under $5000)
+ 
+   - Checkbox 3 Located or targeted at Asia-Pacific (APAC), Latin America (LATAM), Eastern Europe, ect....
+
+   1. Checkbox 4 Direct connection to talent and hackathon attendees
+   
+    ### Checkbox 5
+
+    <Box>
+      Checkbox 6
+    </Box>
+
+</Checklist>
 
 ## Process Stepper
 
