@@ -243,24 +243,25 @@ This content will show by default now.
 ## Checklist
 
 This is another simple component meant to be more visually engaging. It is **not** interactive - it's 
-just meant to organise content in a specific way, mostly for guide pages like preparing for hackathons etc.
+just meant to organise content in a specific way, mostly for guide pages like preparing for hackathons etc. 
+Like all the above, it too follows the Child Rule.
 
 ```md:title=checkbox.mdx
 <Checklist>
 
-   Checkbox 1
+We can put **anything** inside this component
 
-   - Checkbox 2 Very conservative sponsorship requirements (under $5000)
- 
-   - Checkbox 3 Located or targeted at Asia-Pacific (APAC), Latin America (LATAM), Eastern Europe, ect....
+> How about a CTA?
 
-   1. Checkbox 4 Direct connection to talent and hackathon attendees
-   
-    ### Checkbox 5
+<StatusBanner notice>
 
-    <Box>
-      Checkbox 6
-    </Box>
+Or a Status Banner...
+
+</StatusBanner>
+
+<Image src="../../../images/starfox.png" />
+
+#### Now we're talking!
 
 </Checklist>
 ```
@@ -269,19 +270,23 @@ Which ends up looking like this:
 
 <Checklist>
 
-   Checkbox 1
+We can put **anything** inside this component
 
-   - Checkbox 2 Very conservative sponsorship requirements (under $5000)
- 
-   - Checkbox 3 Located or targeted at Asia-Pacific (APAC), Latin America (LATAM), Eastern Europe, ect....
+> How about a CTA?
 
-   1. Checkbox 4 Direct connection to talent and hackathon attendees
-   
-    ### Checkbox 5
+<StatusBanner notice>
 
-    <Box>
-      Checkbox 6
-    </Box>
+Or a Status Banner...
+
+</StatusBanner>
+
+<Image src="../../../images/starfox.png" />
+
+```js:title=checkbox-code.js
+const variable = "Can't be shown in the code-block above because that's too meta..."
+```
+
+#### Now we're talking!
 
 </Checklist>
 
@@ -357,3 +362,124 @@ components like Touts.
 Basically, a `<Box>` is just the old html `<div>` element updated for this brave new world we'll be building together. 
 Now it's time to head over to the Advanced tutorial and begin understanding our visual components and how to style everything.
 
+## Column
+
+The column is a great example of where it is almost always necessary to wrap your children in boxes. Our specs 
+called for a "2 Column Comparison component" but we developers must implement every edge case including when there's only 1 element.
+
+This component follows the same principle as other advanced components in that each child is it's own column element. 
+
+```md:title=columns.mdx
+<Column>
+
+Hello World
+
+</Column>
+
+
+<Column>
+
+<Box>
+
+- Tools that directly benefit Dai users
+- Tools that increase Dai adoption
+- Tools that increase access to personal liquidity.
+
+</Box>
+
+- A Heading
+    - Tools that directly benefit Dai users
+    - Tools that increase Dai adoption
+    - Tools that increase access to personal liquidity.
+
+</Column>
+```
+
+<Column>
+
+Hello World
+
+</Column>
+
+
+<Column>
+
+<Box>
+
+- Tools that directly benefit Dai users
+- Tools that increase Dai adoption
+- Tools that increase access to personal liquidity.
+
+</Box>
+
+- A Heading
+    - Tools that directly benefit Dai users
+    - Tools that increase Dai adoption
+    - Tools that increase access to personal liquidity.
+
+</Column>
+
+> MIND THE GAPS: If there's only 1 new line between "-" element it will count them 
+as part of the same UL instead of as seperate children.
+
+There is a unique case: if you want a column with a header, follow this pattern:
+
+```md:title=columns-headers.mdx
+<Column>
+
+- ## What we fund
+	- <Box>
+
+		- Tools that directly benefit Dai users
+		- Tools that increase Dai adoption
+		- Tools that increase access to personal liquidity.
+
+	  </Box>
+
+
+- ## What we don't fund
+	- <Box>
+
+		- Pure R&D
+		- Information gathering 
+		- Additional runway
+		- Ethereum ecosystem improvements
+		<br/>
+		<br/>
+		
+		We also do not allocate grants that contain large marketing budgets and/or Dai giveaways and airdrops.
+
+	  </Box>
+
+
+</Column>
+```
+
+<Column>
+
+- ## What we fund
+	- <Box>
+
+		- Tools that directly benefit Dai users
+		- Tools that increase Dai adoption
+		- Tools that increase access to personal liquidity.
+
+	  </Box>
+
+
+- ## What we don't fund
+	- <Box>
+
+		- Pure R&D
+		- Information gathering 
+		- Additional runway
+		- Ethereum ecosystem improvements
+		<br/>
+		<br/>
+		
+		We also do not allocate grants that contain large marketing budgets and/or Dai giveaways and airdrops.
+
+	  </Box>
+
+
+</Column>
