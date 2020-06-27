@@ -14,6 +14,8 @@ import CTA from "@modules/ui/CTA";
 import Tout from '@modules/ui/Tout';
 import Accordion from "@modules/ui/Accordion";
 import Aligner from "@modules/utility/Aligner";
+import Checklist from "@modules/ui/Checklist";
+import Column from '@modules/ui/Column';
 import { AspectImage, Image, Text, Divider, Box } from "theme-ui";
 
 export default {
@@ -48,6 +50,8 @@ export default {
   AspectImage,
   Accordion,
   InfoBlock,
+  Checklist,
   Categories,
-  Tout
+  Tout,
+  Column
 };

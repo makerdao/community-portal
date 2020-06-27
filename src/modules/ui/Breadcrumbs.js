@@ -113,7 +113,7 @@ const Breadcrumbs = ({ children }) => {
   });
 
   return (
-    <Box sx={{ mb: "28px" }}>
+    <Box>
       <Link
         to={`/${locale}/`}
         sx={{ textDecoration: "none" }}
