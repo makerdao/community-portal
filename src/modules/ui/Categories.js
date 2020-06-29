@@ -36,6 +36,10 @@ const Categories = ({ children }) => {
           position: 'absolute',
           right: '10px',
           top: '10px'
+        },
+        '& .statusBanner ~ .statusBanner': {
+          position: 'relative',
+          width: '50%'
         }
       }}
       key={ind}
