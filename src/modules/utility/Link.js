@@ -58,7 +58,7 @@ const Link = ({
               ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
               : "none",
           border: !linkHref ? "4px dashed red" : "",
-          cursor: !linkHref ? "not-allowed" : "initial",
+          cursor: !linkHref ? "not-allowed" : "pointer",
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
@@ -75,11 +75,31 @@ const Link = ({
       >
         {/*add space as workaround for svg padding resizing issue*/}
         {icon && linkHref && (
-          <>{` ${(<Icon name={icon} sx={{ verticalAlign: "middle" }} />)}`}</>
+          <>{` ${(
+            <Icon
+              name={icon}
+              size={"2rem"}
+              sx={{
+                verticalAlign: "middle",
+                top: "-2px",
+                position: "relative",
+              }}
+            />
+          )}`}</>
         )}
         {children}
       </GatsbyLink>
     );
+  }
+
+  ///HTTPS/HTTP checks
+  //Ensure ALL links are HTTPS
+  const hasHTTP = /^(http|https):\/\//i.test(linkHref)
+
+  if (!hasHTTP) {
+    linkHref = `https://${linkHref}`
+  } else if (!/^(https)?:\/\//i.test(linkHref)) {
+    linkHref = linkHref.replace(/^http?:\/\//, "https://")
   }
 
   return (
@@ -95,7 +115,7 @@ const Link = ({
             : "none",
         border: !linkHref ? "4px dashed red" : "",
         color: !linkHref ? "bear" : "primary",
-        "&.active": {
+        "&.active,": {
           color: !linkHref ? "bear" : "primary",
         },
         "&:hover": {

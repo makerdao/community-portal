@@ -28,7 +28,9 @@
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-remark-autolink-headers": "^2.3.5",
     "gatsby-remark-code-titles": "^1.1.0",
+    "gatsby-remark-embed-video": "^3.0.10",
     "gatsby-remark-images": "^3.3.9",
+    "gatsby-remark-responsive-iframe": "^2.4.7",
     "gatsby-source-filesystem": "^2.3.4",
     "gatsby-transformer-json": "^2.4.5",
     "gatsby-transformer-remark": "^2.8.15",
@@ -53,10 +55,10 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build --prefix-paths",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md, mdx}\"",
-    "start": "npm run develop --prefix-paths",
+    "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0"
