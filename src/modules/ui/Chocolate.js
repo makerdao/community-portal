@@ -13,7 +13,7 @@ const Chocolate = ({ children, iconSize = "52px" }) => {
     <Grid
       gap="58px"
       columns={`minmax(${minBoxSize}px, 1fr) minmax(${minBoxSize}px, 1fr) minmax(${minBoxSize}px, 1fr)`}
-      sx={{'& > * > svg:first-child': {width: '52px', height: '52px'}}}
+      sx={{'& > * > svg:first-child': {width: iconSize, height: iconSize}}}
     >
       {children}
     </Grid>
