@@ -3,21 +3,14 @@ import React from "react";
 import { jsx, Box, Grid } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-const Chocolate = ({ children, iconSize = "52px" }) => {
-  const _Children = React.Children.toArray(children); // convert children to array
-
-  // grid column values
-  const minBoxSize = 100;
-
-  return (
+const Chocolate = ({ children, iconSize = "52px", minBoxSize= "100px", gapSize = "58px" }) => (
     <Grid
-      gap="58px"
-      columns={`minmax(${minBoxSize}px, 1fr) minmax(${minBoxSize}px, 1fr) minmax(${minBoxSize}px, 1fr)`}
+      gap={gapSize}
+      columns={`minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr)`}
       sx={{'& > * > svg:first-child': {width: iconSize, height: iconSize}}}
     >
       {children}
     </Grid>
-  )
-};
+  );
 
 export default Chocolate;
