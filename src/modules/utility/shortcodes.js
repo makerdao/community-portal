@@ -6,6 +6,7 @@ import Categories from '@modules/ui/Categories';
 import InfoBlock from "@modules/ui/InfoBlock";
 import Link from "@modules/utility/Link";
 import Callout from "@modules/ui/Callout";
+import Chocolate from "@modules/ui/Chocolate"
 import List from "@modules/ui/List";
 import { Icon } from "@makerdao/dai-ui-icons";
 import Button from "@modules/ui/Button";
@@ -50,6 +51,7 @@ export default {
   AspectImage,
   Accordion,
   InfoBlock,
+  Chocolate,
   Checklist,
   Categories,
   Tout,
