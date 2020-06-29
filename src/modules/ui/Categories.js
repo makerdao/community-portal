@@ -2,11 +2,6 @@
 import React, { Fragment } from 'react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { jsx } from 'theme-ui';
-import { useLocation } from '@reach/router';
-import { useStaticQuery, graphql } from 'gatsby';
-
-import useTranslation from '@modules/utility/useTranslation';
-import Link from '@modules/utility/Link';
 
 const Categories = ({ children }) => {
   const lengthChildren = children.length;
@@ -30,11 +25,18 @@ const Categories = ({ children }) => {
     <div
       sx={{
         width,
+        position: 'relative',
         height: '260px',
         background: '#FFFFFF',
         border: '1px solid rgba(41, 26, 66, 0.1)',
         boxSizing: 'border-box',
-        borderRadius: '4px'
+        borderRadius: '4px',
+        '& .statusBanner': {
+          width: '50%',
+          position: 'absolute',
+          right: '10px',
+          top: '10px'
+        }
       }}
       key={ind}
       bg="muted"
