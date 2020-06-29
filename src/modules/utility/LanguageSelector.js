@@ -141,6 +141,7 @@ const LanguageSelector = () => {
         bg: "surface",
         position: "absolute",
         right: 0,
+        top: 0
       }}
     >
       <Text>{t("Available_Languages")}</Text>
