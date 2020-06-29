@@ -181,7 +181,7 @@ Some other content inside of an accordion!
 
 </Accordion>
 
-<Accordion openIcon="heart" closeIcon="brokenHeart">
+<Accordion openIcon="chevron_down" closeIcon="chevron_up">
 
 Of course, it's also possible to have your own icons for opening and closing
 
@@ -483,3 +483,148 @@ There is a unique case: if you want a column with a header, follow this pattern:
 
 
 </Column>
+
+## Chocolate Box
+
+The Chocolate component is a 3 column component. It's the equivalent of using a Grid, 
+except that it's opinionated on its sizing and gaps. The "Box" part of chocolate boxes comes from the combined use of the Box component 
+to render content in each grid cell.
+
+```md:title=chocolate-box.mdx
+<Chocolate>
+
+<Box>
+
+content
+
+</Box>
+
+</Chocolate>
+```
+
+<Chocolate>
+
+<Box>
+
+content
+
+</Box>
+
+</Chocolate>
+
+The child rule here works the same. Each child is 1 grid cell (Box) in the Chocolate component. 
+We recommend that you use the Box component for more detailed content.
+
+> **NOTE**: if the first child is an icon, we will set its size to 52px (default), otherwise it will be smaller.
+
+```md:title=chocolate-icons.mdx
+<Chocolate>
+
+<Box>
+   
+<Icon name="eye"/>
+
+Measure community sentiment about issues affecting the MakerDAO ecosystem.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+// This will appear smaller as it is not given the default iconSize
+<Icon name="search"/>
+
+</Box>
+
+<Box>
+
+// This will be given the default iconSize of 52px
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+</Chocolate>
+```
+
+<Chocolate>
+
+<Box>
+   
+<Icon name="eye"/>
+
+Measure community sentiment about issues affecting the MakerDAO ecosystem.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+<Icon name="search"/>
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+</Chocolate>
