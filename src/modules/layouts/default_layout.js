@@ -20,7 +20,7 @@ export default (props) => {
     featuredImage,
     status,
     hideLanguageSelector,
-    hideSidenav
+    hideSidenav,
   } = pageContext.frontmatter;
 
   const statusProps =
@@ -61,17 +61,19 @@ export default (props) => {
         keywords={keywords}
         featuredImage={featuredImage}
       />
-      {currentTopSection !== undefined && currentTopSection !== "" && !hideSidenav && (
-        <Sticky
-          boundaryElement=".content-boundary"
-          sx={{ width: "20%", minWidth: "260px" }}
-          dontUpdateHolderHeightWhenSticky={true}
-          style={{ position: "relative" }}
-          hideOnBoundaryHit={false}
-        >
-          <Sidenav />
-        </Sticky>
-      )}
+      {currentTopSection !== undefined &&
+        currentTopSection !== "" &&
+        !hideSidenav && (
+          <Sticky
+            boundaryElement=".content-boundary"
+            sx={{ width: "20%", minWidth: "260px" }}
+            dontUpdateHolderHeightWhenSticky={true}
+            style={{ position: "relative" }}
+            hideOnBoundaryHit={false}
+          >
+            <Sidenav />
+          </Sticky>
+        )}
 
       <Flex sx={{ flexGrow: 1, flexDirection: "column", width: "80%" }}>
         {status && (
@@ -95,14 +97,28 @@ export default (props) => {
             pr: 4,
           }}
         >
-          <Flex sx={{ justifyContent: "space-between", position: "relative", mb: '28px', alignItems: 'center' }}>
+          <Flex
+            sx={{
+              justifyContent: "space-between",
+              position: "relative",
+              mb: "28px",
+              alignItems: "center",
+            }}
+          >
             <Breadcrumbs sx={{ flexGrow: 1 }} />
             {currentTopSection !== undefined &&
               currentTopSection !== "" &&
               !hideLanguageSelector && <LanguageSelector />}
           </Flex>
-          <Box sx={{'& > *:first-child, & > *:nth-child(2)': {maxWidth: 'calc(100% - 211px)'}, '& > *:nth-child(2)': {mb: '32px'}}}>
-          {children}
+          <Box
+            sx={{
+              "& > *:first-child, & > *:nth-child(2)": {
+                maxWidth: "calc(100% - 211px)",
+              },
+              "& > *:nth-child(2)": { mb: "32px" },
+            }}
+          >
+            {children}
           </Box>
         </article>
       </Flex>
