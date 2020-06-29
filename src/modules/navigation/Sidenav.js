@@ -48,7 +48,7 @@ const Sidenav = (props) => {
             pt: "54px",
             pl: "8px",
             pr: "31px",
-            boxShadow: "inset -1px 0px 0px rgba(41, 26, 66, 0.1);",
+            boxShadow: theme => `inset -1px 0px 0px ${theme.colors.strokeFaded};`,
           }}
         >
           <ul sx={{ m: 0, p: 0, listStyleType: "none" }}>
