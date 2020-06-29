@@ -56,7 +56,7 @@ though learning how to use the `Image` tag will allow you to start doing more co
 things later on, like specifying your own styles or passing specific properties to components 
 which come ready-made with many different options.
 
-## Buttons and links
+## Links
 
 The same idea goes for links. You're likely used to writing markdown links like this:
 
@@ -75,6 +75,17 @@ using plain old markdown. Happily, this as easy as specifying a proper React Ima
 ```mdx:title=react-link.mdx
 <Link to="https://www.chat.makerdao.com" icon="rocketchat">link to with an icon.</Link>
 ```
+
+> When writing relative links, be aware that you must write out the full route from after the locale, 
+i.e. the [Intermediate tutorial](/develop/content/intermediate) is linked to like this: `[Intermediate tutorial](/develop/content/intermediate)`. 
+If you want to link to other internal locales, then specify the locale as well, i.e. `es/develop/content/intermediate`
+
+The Link component will check whether the link is internal/external; 
+if the internal has a locale appened (`fr/work_with_us/bounties`); and if external links have `https` 
+(http://google.com will automatically be transformed). Internal links are not directory based, like images, 
+but route based as this is a more robust solution for a site with many different contributors.
+
+## Buttons
 
 This is where React components begin to become more fun, and powerful, than the normal 
 markdown you're used to. This is becuase we can start adding properties to them, 
