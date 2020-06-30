@@ -39,42 +39,54 @@ const Breadcrumbs = ({ children }) => {
   let pathDirs = pathname.replace(/\/+$/, "").split("/");
   pathDirs = pathDirs.slice(2, pathDirs.length); //We only need everything after the locale.
 
-
   //Filter out all pages that aren't in our current locale AND aren't part of our current path directory.
-  let edges = DEFAULT_LOCALE !== locale ? allMdx.edges.filter(
-    ({ node }) => (node.fileAbsolutePath.indexOf(`/${locale}/`) !== -1 && pathDirs.some(item => { return node.fileAbsolutePath.includes(item)}))
-  ) : [];
+  let edges =
+    DEFAULT_LOCALE !== locale
+      ? allMdx.edges.filter(
+          ({ node }) =>
+            node.fileAbsolutePath.indexOf(`/${locale}/`) !== -1 &&
+            pathDirs.some((item) => {
+              return node.fileAbsolutePath.includes(item);
+            })
+        )
+      : [];
 
-  let defaultLocaleEdges = allMdx.edges.filter (
-    ({ node }) => node.fileAbsolutePath.indexOf(`/${DEFAULT_LOCALE}/`) !== -1 && pathDirs.some(item => node.fileAbsolutePath.includes(item))
-  )
+  let defaultLocaleEdges = allMdx.edges.filter(
+    ({ node }) =>
+      node.fileAbsolutePath.indexOf(`/${DEFAULT_LOCALE}/`) !== -1 &&
+      pathDirs.some((item) => node.fileAbsolutePath.includes(item))
+  );
 
-  const mergedEdges = edges.length <= 0 ? defaultLocaleEdges : defaultLocaleEdges.map((file) => {
-    const rawSlug = file.fileAbsolutePath
-          .slice(
-            file.fileAbsolutePath.indexOf(`/${DEFAULT_LOCALE}/`),
-            file.fileAbsolutePath.length
-          )
-          .replace(/(.mdx|index.mdx|.md)$/gm, "").replace(/^\/([\w]{2})\//, "/")
-  
-    const localizedMatch = edges.find((el, index) => {
-       const match = el.node.fileAbsolutePath.includes(rawSlug);
+  const mergedEdges =
+    edges.length <= 0
+      ? defaultLocaleEdges
+      : defaultLocaleEdges
+          .map((file) => {
+            const rawSlug = file.fileAbsolutePath
+              .slice(
+                file.fileAbsolutePath.indexOf(`/${DEFAULT_LOCALE}/`),
+                file.fileAbsolutePath.length
+              )
+              .replace(/(.mdx|index.mdx|.md)$/gm, "")
+              .replace(/^\/([\w]{2})\//, "/");
 
-       if (match) {
-         edges.splice(index, 1);
-       } 
+            const localizedMatch = edges.find((el, index) => {
+              const match = el.node.fileAbsolutePath.includes(rawSlug);
 
-       return match;
-    })
+              if (match) {
+                edges.splice(index, 1);
+              }
 
-    if (localizedMatch !== null && localizedMatch !== undefined) {
-      return localizedMatch;
-    }
+              return match;
+            });
 
-    return file;
-  }).concat(edges);
+            if (localizedMatch !== null && localizedMatch !== undefined) {
+              return localizedMatch;
+            }
 
-
+            return file;
+          })
+          .concat(edges);
 
   //Using our MDX data, we need our breadcrumbs to be in the order they appear in our path.
   //We also need them to include their TRUE title and url.
@@ -90,13 +102,19 @@ const Breadcrumbs = ({ children }) => {
     );
 
     //ie. ___currentDirectory/locale/path/to/file
-    const dirSlug = node.fileAbsolutePath.replace(/(.mdx|index.mdx|.md)$/gm, "");
+    const dirSlug = node.fileAbsolutePath.replace(
+      /(.mdx|index.mdx|.md)$/gm,
+      ""
+    );
 
     //ie. locale/path/to/file
     const url = dirSlug.slice(dirSlug.indexOf(`/${locale}/`), dirSlug.length);
-    
+
     //ie. path/to/file
-    const baseSlug = url.slice(url.indexOf(`/${locale}/`) + (locale.length + 2), url.length);
+    const baseSlug = url.slice(
+      url.indexOf(`/${locale}/`) + (locale.length + 2),
+      url.length
+    );
 
     //TRUE title rule (Frontmatter -> First H1 -> Filename from URL)
     const title =
