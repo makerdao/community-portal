@@ -94,12 +94,12 @@ const Link = ({
 
   ///HTTPS/HTTP checks
   //Ensure ALL links are HTTPS
-  const hasHTTP = /^(http|https):\/\//i.test(linkHref)
+  const hasHTTP = /^(http|https):\/\//i.test(linkHref);
 
   if (!hasHTTP) {
-    linkHref = `https://${linkHref}`
+    linkHref = `https://${linkHref}`;
   } else if (!/^(https)?:\/\//i.test(linkHref)) {
-    linkHref = linkHref.replace(/^http?:\/\//, "https://")
+    linkHref = linkHref.replace(/^http?:\/\//, "https://");
   }
 
   return (

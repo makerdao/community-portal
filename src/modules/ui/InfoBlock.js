@@ -96,9 +96,9 @@ const InfoBlock = ({ children, alt, backgroundImage, minImageWidth, sx }) => {
         <Box
           sx={{
             order: imageData.first ? 0 : 1,
-            mr: (imageData.first && !alt) ? 4 : 0,
+            mr: imageData.first && !alt ? 4 : 0,
             flex: alt ? "1" : "1 0 0%",
-            flexGrow: '0',
+            flexGrow: "0",
             minWidth: alt ? "50%" : imageData.minWidth,
             maxWidth: alt ? "50%" : "40%",
             "& > *": { m: 0 },

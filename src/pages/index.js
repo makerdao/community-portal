@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 import useTranslation from "@modules/utility/useTranslation";
-import {getInitialLocale} from '@utils';
+import { getInitialLocale } from "@utils";
 
 //This page doesn't exist and solely acts as a reroute for language.
 const IndexPage = () => {
@@ -30,8 +30,8 @@ const IndexPage = () => {
     const locales = allDirectory.nodes.map((n) =>
       n.absolutePath.split("/").pop()
     );
-    
-    let initialLocale = getInitialLocale(locales, DEFAULT_LOCALE)
+
+    let initialLocale = getInitialLocale(locales, DEFAULT_LOCALE);
 
     //Replace current route with locale based index.
     navigate(`/${initialLocale}/`, { replace: true });
