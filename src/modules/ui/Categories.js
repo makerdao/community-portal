@@ -21,14 +21,17 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
     return (`minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr)`)
   }
 
-  //5 Children case should be centered properly. We have to use Flexbox for this case. 
-  if (_Children.length === 5) {
+  //Odd Children case should be centered properly. We have to use Flexbox for this case.
+  //The logic is: Child count is greater than 4 AND Child count is NOT divisible by 3.
+  //NOTE(Rejon): We want to isolate counts with leftovers in 3x3 grids like 5, 7, 8, 10, 11, 13, ect.  
+  //NOTE(Rejon): our nth-child(3n) selector ensures that every 3rd child doesn't have a margin right. 
+  if (_Children.length > 4 && _Children.length % 3 !== 0) {
     return (
       <Flex sx={{alignItems: 'center', justifyContent: 'center', width: '107.58%', ml: 'calc(-7.58% / 2)', flexDirection: 'row', flexWrap: 'wrap'}}>
         {
         _Children.map((child, index) => {
           return (
-            <Flex sx={{...childElementStyles, '&:not(:nth-child(3))': {mr: '16px'}, mb: '21px', maxWidth: 'calc(33% - 8px)'}}>
+            <Flex sx={{...childElementStyles, '&:not(:nth-child(3n))': {mr: '16px'}, mb: '21px', maxWidth: 'calc(33% - 8px)'}}>
               {child}
             </Flex>
           )
