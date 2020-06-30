@@ -1,85 +1,57 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box, Flex, Grid } from "theme-ui";
 
-const Categories = ({ children }) => {
-  const lengthChildren = children.length;
-  let columns = 1;
-  let columns2 = 0;
+const Categories = ({ children, minBoxSize = "321px" }) => {
+  const _Children = React.Children.toArray(children);
 
-  let width = "480px";
-  if (lengthChildren === 3 || lengthChildren > 4) {
-    width = "361px";
-    columns = 3;
-    columns2 = lengthChildren % 3;
-  } else if (lengthChildren === 4) {
-    columns = 2;
-    columns2 = 2;
+  const childElementStyles = {position: 'relative', alignItems: 'center', minHeight: '260px', border: '1px solid', borderColor: 'strokeFaded', bg: 'background', '& > * > div': {color: 'body'}, padding: '19px 33px', borderRadius: '4px', '& > * > div': {mb: '9px'}, '& > * > div:nth-child(3) > a': {fontWeight: '500', fontSize: '24px'}, '& > * > .statusBanner:first-child': {position: 'absolute', maxWidth: '65.29%', right: '16px', top: '16px', width: 'auto'},'& > * > *:only-child': {m: 0},'& > * > svg:first-child, & > * > svg:nth-child(2)': { width: '64px', height: 'auto'}};
+
+  //Column Widths based on item count
+  const columnWidth = () => {
+    if (_Children.length === 1) { //1 item, full width
+      return (`minmax(${minBoxSize}, 1fr)`)
+    }
+
+    if (_Children.length === 2 || _Children.length === 4) { // 2 or 4 items (2 x 2)
+      return (`minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr)`)
+    }
+
+    //3 - Infinity Items (3 x 3)
+    return (`minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr)`)
   }
 
-  const gridString = "auto ".repeat(columns - 1) + "auto";
-  const grid2String = columns2 ? "auto ".repeat(columns2 - 1) + "auto" : "";
+  //5 Children case should be centered properly. We have to use Flexbox for this case. 
+  if (_Children.length === 5) {
+    return (
+      <Flex sx={{alignItems: 'center', justifyContent: 'center', width: '107.58%', ml: 'calc(-7.58% / 2)', flexDirection: 'row', flexWrap: 'wrap'}}>
+        {
+        _Children.map((child, index) => {
+          return (
+            <Flex sx={{...childElementStyles, '&:not(:nth-child(3))': {mr: '16px'}, mb: '21px', maxWidth: 'calc(33% - 8px)'}}>
+              {child}
+            </Flex>
+          )
+        })
+      }
+      </Flex>
+    )
+  }
 
-  const childrenJSX = children.map((child, ind) => (
-    <div
-      sx={{
-        width,
-        position: "relative",
-        background: "#FFFFFF",
-        border: "1px solid rgba(41, 26, 66, 0.1)",
-        boxSizing: "border-box",
-        borderRadius: "4px",
-        minHeight: "260px",
-        "& .statusBanner": {
-          width: "50%",
-          position: "absolute",
-          right: "10px",
-          top: "10px",
-        },
-        "& .statusBanner ~ .statusBanner": {
-          position: "relative",
-          width: "50%",
-          right: 0,
-          top: 0,
-        },
-      }}
-      key={ind}
-      bg="muted"
-    >
-      <div sx={{ padding: "37px" }}>{child}</div>
-    </div>
-  ));
-
-  const containerStyles = {
-    display: "grid",
-    gridGap: "10px",
-    justifyContent: "center",
-  };
 
   return (
-    <>
-      <div
-        sx={{
-          ...containerStyles,
-          gridTemplateColumns: gridString,
-          gridTemplateRows: gridString,
-        }}
-      >
-        {childrenJSX.slice(0, lengthChildren - columns2)}
-      </div>
-      {columns2 && (
-        <div
-          sx={{
-            ...containerStyles,
-            gridTemplateColumns: grid2String,
-            gridTemplateRows: grid2String,
-          }}
-        >
-          {childrenJSX.slice(lengthChildren - columns2)}
-        </div>
-      )}
-    </>
-  );
+    <Grid gap="21px 16px" columns={columnWidth()} sx={{margin: 'auto', width: '107.58%', ml: 'calc(-7.58% / 2)', mb: '68px'}}> 
+    {
+      _Children.map((child, index) => {
+        return (
+          <Flex sx={childElementStyles}>
+            {child}
+          </Flex>
+        )
+      })
+    }
+    </Grid>
+  )
 };
 
 export default Categories;

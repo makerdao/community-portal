@@ -87,6 +87,7 @@ const StatusBanner = ({
         className="statusBanner"
         sx={{
           padding: "12px 31px",
+          pr: 3,
           position: "relative",
           overflow: "hidden",
           boxShadow: (theme) =>
@@ -119,6 +120,7 @@ const StatusBanner = ({
       className="statusBanner"
       sx={{
         padding: "10px 36px",
+        pr: 3,
         position: "relative",
         overflow: "hidden",
         backgroundColor: "statusBG",
