@@ -19,8 +19,8 @@ export default function useTranslation(initialLangSpace) {
   const DEFAULT_LOCALE_STRINGS = localeStrings[DEFAULT_LOCALE];
 
   //NOTE(Rejon): We trust the path for locale. If it doesn't exist fallback to DEFAULT LOCALE
-  const {pathname} = useLocation();
-  const localeFromPath = pathname.replace(/\/+$/, "").split("/")[1];
+  const {pathname} = useLocation(); 
+  const localeFromPath = pathname.replace(/\/+$/, "").split("/")[1]; 
   const locale = (localeFromPath && allLocales.includes(localeFromPath)) ? localeFromPath : DEFAULT_LOCALE;
 
   //key[String] - Key name of the text from the locale you want. Best practice is write it like you would english, replace all spaces with '_'
