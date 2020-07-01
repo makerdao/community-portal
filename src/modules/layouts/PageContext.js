@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useLocation } from "@reach/router";
-import { getInitialLocale } from "@utils";
 
 export const PageDataContext = createContext();
 
@@ -22,9 +21,6 @@ export const usePage = () => {
 };
 
 const PageDataProvider = ({ children, value }) => {
-  let { pathname } = useLocation();
-  pathname = pathname.replace(/\/+$/, ""); //Remove trailing slashes
-
   //NOTE(Rejon):This query gets our locales by using the path.
   //            It also pulls down all UI or other JSON to be used for any frontend
   //            UI elements.

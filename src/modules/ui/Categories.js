@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx, Box, Flex, Grid } from "theme-ui";
+import { jsx, Flex, Grid } from "theme-ui";
 
 const Categories = ({ children, minBoxSize = "321px" }) => {
   const _Children = React.Children.toArray(children);
@@ -12,10 +12,9 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
     border: "1px solid",
     borderColor: "strokeFaded",
     bg: "background",
-    "& > * > div": { color: "body" },
+    "& > * > div": { color: "body", mb: "9px"  },
     padding: "19px 33px",
     borderRadius: "4px",
-    "& > * > div": { mb: "9px" },
     "& > * > div:nth-of-type(3) > a": { fontWeight: "500", fontSize: "24px" },
     "& > * > .statusBanner:first-of-type": {
       position: "absolute",

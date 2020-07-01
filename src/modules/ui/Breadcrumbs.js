@@ -58,6 +58,8 @@ const Breadcrumbs = ({ children }) => {
       pathDirs.some((item) => node.fileAbsolutePath.includes(item))
   );
 
+  let editableEdges = edges; //<- So we don't directly edit the edges array as we traverse it.
+
   const mergedEdges =
     edges.length <= 0
       ? defaultLocaleEdges
@@ -82,7 +84,7 @@ const Breadcrumbs = ({ children }) => {
               const match = locRawSlug === rawSlug;
 
               if (match) {
-                edges.splice(index, 1);
+                editableEdges.splice(index, 1);
               }
 
               return match;
@@ -95,7 +97,7 @@ const Breadcrumbs = ({ children }) => {
 
             return edge;
           })
-          .concat(edges);
+          .concat(editableEdges);
 
   //Using our MDX data, we need our breadcrumbs to be in the order they appear in our path.
   //We also need them to include their TRUE title and url.

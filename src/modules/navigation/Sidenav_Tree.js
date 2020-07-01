@@ -12,7 +12,7 @@ const Tree = ({ edges, locale }) => {
   const path = pathname.split("/");
 
   const currentTopSection = path[2];
-  const [treeData, updateTreeData] = useState(() => {
+  const [treeData] = useState(() => {
     const { items } = calculateTreeData(
       edges,
       currentTopSection,

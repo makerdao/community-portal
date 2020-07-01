@@ -16,10 +16,9 @@ const LanguageSelector = () => {
   const navigate = useNavigate();
   const { setLocale } = usePage();
   const { locale, t, allLocales } = useTranslation();
-  const pathStripRGX = new RegExp(`^/${locale}/|/$`, "g");
+  const pathStripRGX = new RegExp(`/${locale}/|/$`, "g");
   
   let pathnameStripped = pathname.replace(pathStripRGX, "");
-  console.log(pathnameStripped)
 
   const { languagePages } = useStaticQuery(graphql`
     query GetLanguagePages {
@@ -41,18 +40,17 @@ const LanguageSelector = () => {
 
 //Check against our current path with an optional trailing slash (for index pages)
   const pageLocaleRegex = new RegExp(
-    `(([\\w]{2})\/${pathnameStripped})(\/?)$`,
+    `(/([\\w]{2})/${pathnameStripped})((\/\w+)+|\/?)$`,
     "gm"
   );
 
-  console.log(pageLocaleRegex)
   const existingLanguages = languagePages.edges
     .filter(
       ({ node }) =>
         {
           //Clean up the file path to drop file names and endings.
+          //NOTE(Rejon): Our Regex fails if this doesn't pass!
           const pathWithoutFile = node.fileAbsolutePath.replace(/(.mdx|index.mdx|.md)$/gm, "").replace(/\/$/, "");
-          console.log(pathWithoutFile, pageLocaleRegex.test(pathWithoutFile),!node.fileAbsolutePath.includes(`/${locale}/`))
 
           return pageLocaleRegex.test(pathWithoutFile) && !node.fileAbsolutePath.includes(`/${locale}/`)
         }
@@ -73,8 +71,6 @@ const LanguageSelector = () => {
         label,
       };
     });
-
-    console.log(existingLanguages)
 
   const onChange = ({ value }) => {
     //Update local storage on switch

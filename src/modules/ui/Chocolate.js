@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx, Box, Grid } from "theme-ui";
-import { Icon } from "@makerdao/dai-ui-icons";
+import { jsx, Grid } from "theme-ui";
 
 const Chocolate = ({
   children,
