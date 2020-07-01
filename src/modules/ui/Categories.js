@@ -15,7 +15,7 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
     "& > * > div": { color: "body", mb: "9px"  },
     padding: "19px 33px",
     borderRadius: "4px",
-    "& > * > div:nth-of-type(3) > a": { fontWeight: "500", fontSize: "24px" },
+    "& > * > div:nth-of-type(2) > a, & > * > div:nth-of-type(3) > a": { fontWeight: "500", fontSize: "24px" },
     "& > * > .statusBanner:first-of-type": {
       position: "absolute",
       maxWidth: "65.29%",

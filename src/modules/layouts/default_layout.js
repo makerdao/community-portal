@@ -111,12 +111,14 @@ export default (props) => {
               !hideLanguageSelector && <LanguageSelector />}
           </Flex>
           <Box
-            sx={{
+            sx={currentTopSection !== undefined &&
+        currentTopSection !== "" &&
+        !hideSidenav ?{
               "& > *:first-of-type, & > *:nth-of-type(2)": {
                 maxWidth: "calc(100% - 211px)",
               },
               "& > *:nth-of-type(2)": { mb: "32px" },
-            }}
+            } : {}}
           >
             {children}
           </Box>

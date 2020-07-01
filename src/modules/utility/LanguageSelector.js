@@ -7,14 +7,12 @@ import { Box, jsx, Text, useThemeUI } from "theme-ui";
 
 import { UrlConverter } from "@utils";
 import Link from "@modules/utility/Link";
-import { usePage } from "@modules/layouts/PageContext";
 import useTranslation from "@modules/utility/useTranslation";
 
 const LanguageSelector = () => {
-  const { theme, colorMode } = useThemeUI();
+  const { theme } = useThemeUI();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { setLocale } = usePage();
   const { locale, t, allLocales } = useTranslation();
   const pathStripRGX = new RegExp(`/${locale}/|/$`, "g");
   
@@ -40,7 +38,7 @@ const LanguageSelector = () => {
 
 //Check against our current path with an optional trailing slash (for index pages)
   const pageLocaleRegex = new RegExp(
-    `(/([\\w]{2})/${pathnameStripped})((\/\w+)+|\/?)$`,
+    `(/([\\w]{2})/${pathnameStripped})((/w+)+|/?)$`,
     "gm"
   );
 

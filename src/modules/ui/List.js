@@ -154,24 +154,24 @@ const List = ({ children }) => {
               if (typeof LIChildren[0].props.children === "object") {
                 //Check if the FIRST child of the LI element is an "object"
                 //NOTE(Rejon): If it is then we know we've got a react component.
-                const isLinkElement =
-                  LIChildren[0].props.mdxType === "a" ||
-                  LIChildren[0].props.mdxType === "Link" || //<- If we're using a Link component, this will be it's component name we provided in shortcodes.js.
-                  LIChildren[0].props.children.props.mdxType === "a" || //<- NOTE(Rejon): There are some cases MDX will translate an element with complex subchildren as another UL or LI, we want the children of THAT element.
-                  LIChildren[0].props.children.props.mdxType === "Link";
+                // const isLinkElement =
+                //   LIChildren[0].props.mdxType === "a" ||
+                //   LIChildren[0].props.mdxType === "Link" || //<- If we're using a Link component, this will be it's component name we provided in shortcodes.js.
+                //   (LIChildren[0].props.children ? (LIChildren[0].props.children.props.mdxType === "a" || //<- NOTE(Rejon): There are some cases MDX will translate an element with complex subchildren as another UL or LI, we want the children of THAT element.
+                //   LIChildren[0].props.children.props.mdxType === "Link") : false);
 
-                //If the element we have meets our criteria (above) for a Link List Element then we can render it as so.
-                if (isLinkElement) {
-                  return renderLink(
-                    LIChildren[0],
-                    LIChildren.slice(1),
-                    child.key
-                  ); //NOTE(Rejon): We slice off the first child, because we don't want to render the link twice.
-                } else {
-                  //If the LI's children aren't links, then just render the copy normally.
+                // //If the element we have meets our criteria (above) for a Link List Element then we can render it as so.
+                // if (isLinkElement) {
+                //   return renderLink(
+                //     LIChildren[0],
+                //     LIChildren.slice(1),
+                //     child.key
+                //   ); //NOTE(Rejon): We slice off the first child, because we don't want to render the link twice.
+                // } else {
+                //   //If the LI's children aren't links, then just render the copy normally.
 
-                  return renderListElement(LIChildren);
-                }
+                //   return renderListElement(LIChildren);
+                // }
               } else {
                 //If the element isn't a component, but a string just render it.
                 return renderListElement(LIChildren);
