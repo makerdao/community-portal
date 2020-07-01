@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useLocation } from "@reach/router";
+import { getInitialLocale } from "@utils";
 
 export const PageDataContext = createContext();
 
@@ -56,6 +57,10 @@ const PageDataProvider = ({ children, value }) => {
               Need_Another_Language
               Join_translation_team
               Translations
+              Touts {
+                alt_defaultImage
+                alt_altImage
+              }
             }
           }
         }
@@ -77,6 +82,10 @@ const PageDataProvider = ({ children, value }) => {
               Need_Another_Language
               Join_translation_team
               Translations
+              Touts {
+                alt_defaultImage
+                alt_altImage
+              }
             }
           }
         }
@@ -96,6 +105,10 @@ const PageDataProvider = ({ children, value }) => {
               Need_Another_Language
               Join_translation_team
               Translations
+              Touts {
+                alt_defaultImage
+                alt_altImage
+              }
             }
           }
         }
@@ -122,7 +135,9 @@ const PageDataProvider = ({ children, value }) => {
   );
   //NOTE(Rejon): This DEFAULT_LOCALE const may seem redundant, but it's ensure the site doesn't reload twice on mount.
   const DEFAULT_LOCALE = "en";
-  const [locale, setLocale] = useState(DEFAULT_LOCALE);
+  const [locale, setLocale] = useState(
+    getInitialLocale(locales, DEFAULT_LOCALE)
+  );
   const [lunr, setLunr] = useState(null);
 
   //NOTE(Rejon): The object we get from the query is digusting.

@@ -18,6 +18,7 @@ export default {
     "body-5-pure": "#eff0f2",
     "body-40": "rgba(83, 84, 106, 0.4)",
     "body-01": "rgba(83, 84, 106, 0.1)",
+    strokeFaded: "rgba(41, 26, 66, 0.1)",
     statusBG: "#F9F9F9",
     statusColor: "#666666",
     callout: "#f4f4f7",

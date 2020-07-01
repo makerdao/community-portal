@@ -42,8 +42,9 @@ const StatusBanner = ({
 
     return (
       <Sticky
+        className="statusBanner"
         dontUpdateHolderHeightWhenSticky={true}
-        sx={{ zIndex: "100", width: "100%" }}
+        sx={{ "& > *": { zIndex: "100" }, width: "100%" }}
       >
         <Box
           sx={{
@@ -83,8 +84,10 @@ const StatusBanner = ({
   if (tab) {
     return (
       <Box
+        className="statusBanner"
         sx={{
           padding: "12px 31px",
+          pr: 3,
           position: "relative",
           overflow: "hidden",
           boxShadow: (theme) =>
@@ -114,8 +117,10 @@ const StatusBanner = ({
 
   return (
     <Box
+      className="statusBanner"
       sx={{
         padding: "10px 36px",
+        pr: 3,
         position: "relative",
         overflow: "hidden",
         backgroundColor: "statusBG",
