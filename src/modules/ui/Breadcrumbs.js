@@ -110,7 +110,7 @@ const Breadcrumbs = ({ children }) => {
           .pop()
     );
 
-    const isFallback = node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`);
+    const isFallback = node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`) && (DEFAULT_LOCALE !== locale);
 
     //ie. ___currentDirectory/locale/path/to/file
     const dirSlug = node.fileAbsolutePath.replace(
