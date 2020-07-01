@@ -16,6 +16,7 @@ import { UrlConverter, TitleConverter } from "@utils";
 const Header = () => {
   const { locale, t } = useTranslation();
 
+
   const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
     query SiteTitleQuery {
       #Get files that have header/headerOrder frontmatter

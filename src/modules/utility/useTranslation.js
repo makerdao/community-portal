@@ -1,4 +1,5 @@
 import { usePage } from "@modules/layouts/PageContext";
+import { useLocation } from "@reach/router";
 
 //NOTE(Rejon): This is a react hook I pulled inspiration from: https://w11i.me/how-to-build-multilingual-website-in-next-js
 // 			   I've expanded to add some features like plurals, secondary level spaces (dubbed langspace), variables, and secondary locales.
@@ -10,12 +11,17 @@ import { usePage } from "@modules/layouts/PageContext";
 // with ILS: useTranslation('errors') -> t('error_code')
 export default function useTranslation(initialLangSpace) {
   const {
-    locale,
     localeStrings,
     allLocales,
-    DEFAULT_LOCALE,
-    DEFAULT_LOCALE_STRINGS,
   } = usePage();
+
+  const DEFAULT_LOCALE = "en";
+  const DEFAULT_LOCALE_STRINGS = localeStrings[DEFAULT_LOCALE];
+
+  //NOTE(Rejon): We trust the path for locale. If it doesn't exist fallback to DEFAULT LOCALE
+  const {pathname} = useLocation();
+  const localeFromPath = pathname.replace(/\/+$/, "").split("/")[1];
+  const locale = (localeFromPath && allLocales.includes(localeFromPath)) ? localeFromPath : DEFAULT_LOCALE;
 
   //key[String] - Key name of the text from the locale you want. Best practice is write it like you would english, replace all spaces with '_'
   //lang_space[String] - Language space keyname to access for your keys. ie. {'lang_space': {'key': 'Localized Text'}}

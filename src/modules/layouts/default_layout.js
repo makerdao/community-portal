@@ -112,10 +112,10 @@ export default (props) => {
           </Flex>
           <Box
             sx={{
-              "& > *:first-child, & > *:nth-child(2)": {
+              "& > *:first-of-type, & > *:nth-of-type(2)": {
                 maxWidth: "calc(100% - 211px)",
               },
-              "& > *:nth-child(2)": { mb: "32px" },
+              "& > *:nth-of-type(2)": { mb: "32px" },
             }}
           >
             {children}

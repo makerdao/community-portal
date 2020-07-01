@@ -12,7 +12,7 @@ const Chocolate = ({
   <Grid
     gap={gapSize}
     columns={`minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr)`}
-    sx={{ "& > * > svg:first-child": { width: iconSize, height: iconSize } }}
+    sx={{ "& > * > svg:first-of-type": { width: iconSize, height: iconSize } }}
   >
     {children}
   </Grid>

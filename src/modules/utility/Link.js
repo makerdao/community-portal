@@ -53,7 +53,7 @@ const Link = ({
         sx={{
           color: !linkHref ? "bear" : "primary",
           textDecoration: !linkHref ? "line-through" : "none",
-          "text-shadow": (theme) =>
+          "textShadow": (theme) =>
             !linkHref
               ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
               : "none",
@@ -109,7 +109,7 @@ const Link = ({
         pointerEvents: disabled ? "none" : "initial",
         transition: "all .1s ease",
         textDecoration: !linkHref ? "line-through " : "none",
-        "text-shadow": (theme) =>
+        "textShadow": (theme) =>
           !linkHref
             ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
             : "none",

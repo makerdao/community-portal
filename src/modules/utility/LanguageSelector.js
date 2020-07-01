@@ -64,6 +64,11 @@ const LanguageSelector = () => {
     });
 
   const onChange = ({ value }) => {
+    //Update local storage on switch
+    if (typeof window !== "undefined") {
+      localStorage.setItem("locale", value.split("/")[1]);
+    }
+
     navigate(value);
   };
 

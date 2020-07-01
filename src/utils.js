@@ -34,14 +34,6 @@ export const getInitialLocale = (locales, DEFAULT_LOCALE) => {
     return DEFAULT_LOCALE;
   }
 
-  //Check if the locale is in local storage.
-  const localeSetting = localStorage.getItem("locale");
-
-  //If it is and it exists in the content directory, we've got a valid locale.
-  if (localeSetting && locales.indexOf(localeSetting) !== -1) {
-    initialLocale = localeSetting;
-  }
-
   //Check browser settings for current language.
   const [browserSetting] = navigator.language.split("-");
 
