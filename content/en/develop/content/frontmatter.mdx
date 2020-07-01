@@ -1,6 +1,6 @@
 ---
 title: Frontmatter
-order: 1
+order: 2
 hideLanguageSelector: true
 keywords: "frontmatter, guide, markdown, help, technical"
 description: "The most complete guide to writing frontmatter in mdx files that you've ever read."
@@ -50,6 +50,14 @@ order: 0
 
 Order in the sidenav is based on lowest number (TOP) to highest (BOTTOM). Files that don't have an order are applied AFTER files that 
 have order in alphabetical order. If this file isn't rendered on the sidenav (ie. Top section files) this won't matter.
+
+</Box>
+
+<Box sx={{backgroundColor: 'notice', padding: 3, marginBottom: 4}}>
+
+The "order" is **relative to the current directory**, so it's not possible to take a page deeper in the directory 
+and put it on the top level of the sidebar. For example, `/work_with_us/bounties/test.mdx` with an order of 0 will 
+just appear at the top of the `bounties` dropdown in the sidenav and not at the top of the `work_with_us` sidenav.
 
 </Box>
 
