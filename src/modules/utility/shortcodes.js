@@ -18,7 +18,8 @@ import Aligner from "@modules/utility/Aligner";
 import Checklist from "@modules/ui/Checklist";
 import Column from "@modules/ui/Column";
 import Video from "@modules/utility/Video";
-
+import Prism from "@theme-ui/prism";
+import Code from '@modules/ui/Code';
 import { AspectImage, Image, Text, Divider, Box } from "theme-ui";
 
 export default {
@@ -37,6 +38,7 @@ export default {
     />
   ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
   blockquote: CTA,
+  inlineCode: Code,
   Text,
   Button,
   Breadcrumbs,
