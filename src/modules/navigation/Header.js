@@ -17,13 +17,13 @@ const Header = () => {
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
 
   const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query HeaderQuery {
       #Get files that have header/headerOrder frontmatter
       headerFiles: allMdx(
         filter: {
           frontmatter: { header: { in: true } }
           fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx)/"
+            regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx|footer.mdx)/"
           }
         }
       ) {

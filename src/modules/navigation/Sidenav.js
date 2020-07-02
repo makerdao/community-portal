@@ -18,7 +18,7 @@ const Sidenav = (props) => {
           allMdx(
             filter: {
               fileAbsolutePath: {
-                regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|sidenav.mdx|example.mdx|404.mdx|.js|.json)/"
+                regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|sidenav.mdx|example.mdx|footer.mdx|404.mdx|.js|.json)/"
               }
             }
           ) {

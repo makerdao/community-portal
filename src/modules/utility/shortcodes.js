@@ -18,7 +18,6 @@ import Aligner from "@modules/utility/Aligner";
 import Checklist from "@modules/ui/Checklist";
 import Column from "@modules/ui/Column";
 import Video from "@modules/utility/Video";
-import Prism from "@theme-ui/prism";
 import Code from '@modules/ui/Code';
 import { AspectImage, Image, Text, Divider, Box } from "theme-ui";
 

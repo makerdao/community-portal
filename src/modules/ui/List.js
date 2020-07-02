@@ -139,7 +139,7 @@ const List = ({ children }) => {
           color: "body",
         },
       }}
-      key={`list-element${child.key}`}
+      key={`list-element-${child.key}`}
     >
       {child}
     </Flex>

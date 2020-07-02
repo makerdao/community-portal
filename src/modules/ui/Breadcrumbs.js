@@ -17,7 +17,7 @@ const Breadcrumbs = ({ children }) => {
       allMdx(
         filter: {
           fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx)/"
+            regex: "//([\\\\w]{2})/(?!header.mdx|footer.mdx|example.mdx|index.mdx|404.mdx)/"
           }
         }
       ) {

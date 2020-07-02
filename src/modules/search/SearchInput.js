@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Input, Flex, jsx } from "theme-ui";
 
@@ -7,6 +7,7 @@ import useTranslation from "@modules/utility/useTranslation";
 
 const SearchInput = ({ delay, onSubmit, ...rest }) => {
   const { t } = useTranslation();
+  const searchRef = useRef();
 
   let timerID = null;
   const [value, setValue] = useState("");
@@ -23,6 +24,27 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
       onSubmit(_value);
     }
   };
+
+  const onKeyDown = (e) => {
+    
+    if (typeof window !== undefined) 
+    {
+      if (e.key === "/" && searchRef.current && document.activeElement !== searchRef.current) {
+        e.preventDefault();
+        searchRef.current.focus();
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      document.addEventListener('keydown', onKeyDown)
+
+      return (() => {
+        document.removeEventListener('keydown', onKeyDown )
+      })
+    }
+  }, [])
 
   return (
     <Flex
@@ -44,6 +66,7 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
         name="keywords"
         id="search-input"
         type="search"
+        ref={searchRef}
         value={value}
         aria-label={t("Search")}
         placeholder={t("Search")}
