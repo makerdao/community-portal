@@ -39,6 +39,7 @@ export default {
   ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
   blockquote: CTA,
   inlineCode: Code,
+  Code, 
   Text,
   Button,
   Breadcrumbs,
