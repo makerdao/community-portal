@@ -181,6 +181,21 @@ and we recommend you stay away from it). Please see [their docs](https://www.gat
 
 `video: [Your love!](https://www.youtube.com/watch?v=mzDVaKRApcg)`
 
+Sometimes, we'll need to embed a video which also links to a specific playlist. Inline videos do not allow 
+us to do this, which is an issue for our Governance and Risk call series, amongst others. Therefore, if you're 
+wanting to embed a video and link it within a specific YouTube playlist, we do have a bespoke `<Video />` component for you. 
+This serves as a helper for getting around youtube playlists, but we still recommend using the inline video spec 
+(ie. video: https://urltoyoutubevideo.com) for regular inline videos.
+
+```md:title=video-playlist.mdx
+<Video src="https://www.youtube.com/embed/videoseries?list=PLLzkWCj8ywWNq5-90-Id6VPSsrk4OWVan"/>
+```
+
+<Video src="https://www.youtube.com/embed/videoseries?list=PLLzkWCj8ywWNq5-90-Id6VPSsrk4OWVan" />
+
+> NOTE: Embedding a youtube video from a specific playlist requires that you use a url with 
+**videoseries?list=**, NOT **playlist?=**. See [here](https://support.google.com/youtube/answer/171780?hl=en) for more info.
+
 ## Callouts and CTAs
 
 OK, so now we can handle images, links, buttons, and inline code - all of which will make our content really pop 

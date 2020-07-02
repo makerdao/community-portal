@@ -17,6 +17,8 @@ import Accordion from "@modules/ui/Accordion";
 import Aligner from "@modules/utility/Aligner";
 import Checklist from "@modules/ui/Checklist";
 import Column from "@modules/ui/Column";
+import Video from '@modules/utility/Video';
+
 import { AspectImage, Image, Text, Divider, Box } from "theme-ui";
 
 export default {
@@ -56,4 +58,5 @@ export default {
   Categories,
   Tout,
   Column,
+  Video
 };
