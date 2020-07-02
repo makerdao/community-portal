@@ -30,7 +30,7 @@ _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-
   *This project makes use of `yarn`. You'll likely need to use npm to get everything setup once cloned.*
 
     ```shell
-    npm install
+    # This project makes use of yarn.
     yarn
     ```
 
