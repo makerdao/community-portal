@@ -6,10 +6,9 @@ import { StaticQuery, graphql } from "gatsby";
 import useTranslation from "@modules/utility/useTranslation";
 import Tree from "@modules/navigation/Sidenav_Tree";
 import { Box } from "theme-ui";
-import { useLocation } from "@reach/router";
 
 const Sidenav = (props) => {
-  const {locale} = useTranslation();
+  const { locale } = useTranslation();
 
   return (
     <StaticQuery

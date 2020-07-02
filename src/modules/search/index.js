@@ -98,7 +98,7 @@ export default function Search({ ...otherProps }) {
         <ul
           sx={{
             m: 0,
-            "listStyleType": "none",
+            listStyleType: "none",
             p: 2, //.46rem
             "& > li": {
               borderRadius: "medium",

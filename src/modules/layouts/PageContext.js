@@ -1,5 +1,5 @@
 //NOTE(Rejon): This context provider exists to pass context of page related props like locale, lunr, ect.
-//TODO: Start moving away from using the context api. It is becoming less useful as we come up with better solutions. 
+//TODO: Start moving away from using the context api. It is becoming less useful as we come up with better solutions.
 import React, {
   createContext,
   useContext,
@@ -7,7 +7,6 @@ import React, {
   useLayoutEffect,
 } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { useLocation } from "@reach/router";
 
 export const PageDataContext = createContext();
 
@@ -133,7 +132,7 @@ const PageDataProvider = ({ children, value }) => {
 
   const [lunr, setLunr] = useState(null); //TODO(Rejon): Will be removed with LUNR search changes.
 
-  //TODO(Rejon): Find a better way to get localeStrings from UI.jsons loaded into useTranslation. 
+  //TODO(Rejon): Find a better way to get localeStrings from UI.jsons loaded into useTranslation.
   //NOTE(Rejon): The object we get from the query is digusting.
   //This is so we can access our locale strings with ease.
   const localeStrings = Object.assign(
@@ -145,8 +144,7 @@ const PageDataProvider = ({ children, value }) => {
     })
   );
 
-
-  //TODO(Rejon): Will be removed with LUNR search changes. 
+  //TODO(Rejon): Will be removed with LUNR search changes.
   //LUNR becomes available only via the window.
   //To make it easier for our app to access it we just set it in our app context.
   useLayoutEffect(() => {

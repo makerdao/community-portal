@@ -19,6 +19,8 @@ const Tree = ({ edges, locale }) => {
       DEFAULT_LOCALE,
       locale
     );
+
+    console.log(items);
     return { items: items[0] ? items[0].items : [], locale };
   });
 

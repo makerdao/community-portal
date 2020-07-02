@@ -16,14 +16,17 @@ import { UrlConverter, TitleConverter } from "@utils";
 const Header = () => {
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
 
-
   const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
     query SiteTitleQuery {
       #Get files that have header/headerOrder frontmatter
-      headerFiles: allMdx(filter: { frontmatter: { header: { in: true } }, 
+      headerFiles: allMdx(
+        filter: {
+          frontmatter: { header: { in: true } }
           fileAbsolutePath: {
             regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx)/"
-          } }) {
+          }
+        }
+      ) {
         edges {
           node {
             frontmatter {
@@ -53,12 +56,15 @@ const Header = () => {
     }
   `);
 
-  const edges = DEFAULT_LOCALE !== locale ? headerFiles.edges.filter(
-    ({node}) =>  node.fileAbsolutePath.includes(`/${locale}/`) 
-  ): [];
+  const edges =
+    DEFAULT_LOCALE !== locale
+      ? headerFiles.edges.filter(({ node }) =>
+          node.fileAbsolutePath.includes(`/${locale}/`)
+        )
+      : [];
 
-  const defaultLocaleEdges =  headerFiles.edges.filter(
-    ({node}) =>  node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`) 
+  const defaultLocaleEdges = headerFiles.edges.filter(({ node }) =>
+    node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`)
   );
 
   const headerLinkEdges = edges.length !== 0 ? edges : defaultLocaleEdges;

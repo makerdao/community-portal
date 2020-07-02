@@ -12,10 +12,13 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
     border: "1px solid",
     borderColor: "strokeFaded",
     bg: "background",
-    "& > * > div": { color: "body", mb: "9px"  },
+    "& > * > div": { color: "body", mb: "9px" },
     padding: "19px 33px",
     borderRadius: "4px",
-    "& > * > div:nth-of-type(2) > a, & > * > div:nth-of-type(3) > a": { fontWeight: "500", fontSize: "24px" },
+    "& > * > div:nth-of-type(2) > a, & > * > div:nth-of-type(3) > a": {
+      fontWeight: "500",
+      fontSize: "24px",
+    },
     "& > * > .statusBanner:first-of-type": {
       position: "absolute",
       maxWidth: "65.29%",
@@ -71,7 +74,7 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
                 "&:not(:nth-of-type(3n))": { mr: "16px" },
                 mb: "21px",
                 maxWidth: "calc(33% - 8px)",
-                minWidth: minBoxSize
+                minWidth: minBoxSize,
               }}
             >
               {child}
@@ -94,7 +97,11 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
       }}
     >
       {_Children.map((child, index) => {
-        return <Flex sx={childElementStyles} key={`category-child-${index}`}>{child}</Flex>;
+        return (
+          <Flex sx={childElementStyles} key={`category-child-${index}`}>
+            {child}
+          </Flex>
+        );
       })}
     </Grid>
   );
