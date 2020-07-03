@@ -2,6 +2,154 @@
 
 ## This is me testing the Categories component 
 
-HELLO?
+<List>
 
-<Video/>
+   - Header text
+       - <Box> 
+           
+        ### More complicated MD ... 
+           
+        </Box>
+
+</List>
+
+<List>
+
+   - Header text
+
+       - <Box> 
+           
+        ### More complicated MD ... 
+           
+        </Box>
+
+</List>
+
+<List>
+
+# Howdy
+
+## HowdyHowdy 
+
+### What's up?
+
+This should rendering anything. And I mean <Text as="h3">ANYTHING!</Text>
+> This should be a CTA :)
+
+<StatusBanner sticky notice hideSpacer> 
+
+Here's a sticky example. 
+
+**Make sure to hide the spacer when using this in a list.**
+
+</StatusBanner>
+
+<Callout icon="rocketchat">
+How about this?
+</Callout>
+
+    `````js
+    const variable = "this is a code element in a list.";
+    `````
+
+</List>
+
+<List>
+
+<Link to="/">Writing style guide →</Link>
+
+<Link to="/">Visual style guide →</Link>
+
+<Link to="/">Code style guide →</Link>
+
+<Link to="https://rejontaylor.com">External Link</Link>
+
+</List>
+
+<List>
+
+Only child children that are seperated will always be centered vertically.
+<Link to="/"> Even though this element is written closely in mdx, it's counted a seperate child</Link>
+<StatusBanner>Keep this in mind when writing your MDX</StatusBanner>
+<StatusBanner sticky>Here's a sticky example without the spacer</StatusBanner>
+
+<Box>
+
+If you need everything to be in **ONE** child. Use a Box component!
+
+<Link to="/"> Now everything is in one list row :) </Link>
+<br/>
+<br/>
+
+<StatusBanner>Keep this in mind when writing your MDX</StatusBanner>
+
+<StatusBanner sticky warning>Here's a sticky example without the spacer</StatusBanner>
+
+</Box>
+
+</List>
+
+<List>
+
+- French
+
+   - No Link
+
+
+- [French](/)
+
+   - Internal Link
+
+
+- [French](https://rejontaylor.com)
+
+   - External Link
+
+
+- <Link to="/">French Link Component</Link>
+
+
+- Link Component
+
+
+- French
+   - <Box> 
+      With a ton of great great content
+      <CTA>Like this!</CTA>
+     </Box>
+
+
+- [MakerDAO](https://makerdao.com)
+
+    - <Box> 
+
+      With a ton of great great content and an external website
+
+      ```js
+         const variable = "wow cool beans"
+      ```
+    </Box>
+
+- [Rejon Taylor-Foster](https://rejontaylor.com)
+
+- <Box> 
+
+   ### Let's get complex!
+
+   <Button to="/">A Button</Button>
+
+   <StatusBanner> 
+
+    ## So far so good! 
+
+   </StatusBanner>
+
+   > Blockquotes are CTAs!
+
+   ```js
+   const variable = "wow cool beans"
+   ```
+
+   </Box>
+
+</List>

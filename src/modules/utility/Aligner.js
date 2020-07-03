@@ -1,6 +1,6 @@
 //** @jsx jsx */
 import React from "react";
-import { Image as ThemeImage, Box, jsx } from "theme-ui";
+import { Box, jsx } from "theme-ui";
 
 const Aligner = ({ children, center, right, bottom, yCenter, xCenter, sx }) => {
   const xAlignment = () => {

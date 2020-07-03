@@ -14,12 +14,16 @@ import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
 
 const Header = () => {
-  const { locale, t } = useTranslation();
+  const { locale, DEFAULT_LOCALE, t } = useTranslation();
+
 
   const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
     query SiteTitleQuery {
       #Get files that have header/headerOrder frontmatter
-      headerFiles: allMdx(filter: { frontmatter: { header: { in: true } } }) {
+      headerFiles: allMdx(filter: { frontmatter: { header: { in: true } }, 
+          fileAbsolutePath: {
+            regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx)/"
+          } }) {
         edges {
           node {
             frontmatter {
@@ -49,10 +53,19 @@ const Header = () => {
     }
   `);
 
+  const edges = DEFAULT_LOCALE !== locale ? headerFiles.edges.filter(
+    ({node}) =>  node.fileAbsolutePath.includes(`/${locale}/`) 
+  ): [];
+
+  const defaultLocaleEdges =  headerFiles.edges.filter(
+    ({node}) =>  node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`) 
+  );
+
+  const headerLinkEdges = edges.length !== 0 ? edges : defaultLocaleEdges;
+
   //allMDX will return all header.mdx files at top level locale folders.
   //Find only the one we need for our current locale and use it's body in the MDX renderer below.
-  const HeaderLinks = headerFiles.edges
-    .filter(({ node }) => node.fileAbsolutePath.includes(`/${locale}/`))
+  const HeaderLinks = headerLinkEdges
     .sort((a, b) => {
       const aNode = {
         ...a.node,

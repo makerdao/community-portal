@@ -59,6 +59,8 @@ export default (
     DEFAULT_LOCALE !== currentLocale
       ? makeSidenavObjects(edges, currentLocale)
       : [];
+  
+  const editableLocaleFiles = [...currentLocaleFiles];
 
   //Overlap merge our defaultLocaleFiles with our currentLocaleFiles
   const mergedLocaleFiles =
@@ -73,22 +75,23 @@ export default (
               //We found the localized file in our default locale files.
               //Remove it from our current locale files it'll be merged in.
               if (fileMatch) {
-                currentLocaleFiles.splice(index, 1);
+                editableLocaleFiles.splice(index, 1);
               }
-
+              
               //Return the localized file.
               return fileMatch;
             });
 
             //If we found a localized file to merge overlap, then return IT.
             if (findLocalizedFile !== null && findLocalizedFile !== undefined) {
+              
               return findLocalizedFile;
             }
 
             //No localized file found, keep current defaultLocale file.
             return file;
           })
-          .concat(currentLocaleFiles); //Concat the rest of the locale files AFTER it's been spliced.
+          .concat(editableLocaleFiles); //Concat the rest of the locale files AFTER it's been spliced.
 
   //Reduce all of our mergedLocaleFiles into a object structure that closely resembles our final sidenav.
   return mergedLocaleFiles.reduce(

@@ -1,5 +1,5 @@
 //NOTE(Rejon): This context provider exists to pass context of page related props like locale, lunr, ect.
-
+//TODO: Start moving away from using the context api. It is becoming less useful as we come up with better solutions. 
 import React, {
   createContext,
   useContext,
@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { useLocation } from "@reach/router";
-import { getInitialLocale } from "@utils";
 
 export const PageDataContext = createContext();
 
@@ -22,9 +21,6 @@ export const usePage = () => {
 };
 
 const PageDataProvider = ({ children, value }) => {
-  let { pathname } = useLocation();
-  pathname = pathname.replace(/\/+$/, ""); //Remove trailing slashes
-
   //NOTE(Rejon):This query gets our locales by using the path.
   //            It also pulls down all UI or other JSON to be used for any frontend
   //            UI elements.
@@ -130,16 +126,14 @@ const PageDataProvider = ({ children, value }) => {
     }
   `);
 
+  //NOTE(Rejon): Find a way to pull these down without the need for context api state management.
   const locales = allDirectory.nodes.map((n) =>
     n.absolutePath.split("/").pop()
   );
-  //NOTE(Rejon): This DEFAULT_LOCALE const may seem redundant, but it's ensure the site doesn't reload twice on mount.
-  const DEFAULT_LOCALE = "en";
-  const [locale, setLocale] = useState(
-    getInitialLocale(locales, DEFAULT_LOCALE)
-  );
-  const [lunr, setLunr] = useState(null);
 
+  const [lunr, setLunr] = useState(null); //TODO(Rejon): Will be removed with LUNR search changes.
+
+  //TODO(Rejon): Find a better way to get localeStrings from UI.jsons loaded into useTranslation. 
   //NOTE(Rejon): The object we get from the query is digusting.
   //This is so we can access our locale strings with ease.
   const localeStrings = Object.assign(
@@ -151,28 +145,8 @@ const PageDataProvider = ({ children, value }) => {
     })
   );
 
-  //Update local storage if it doesn't match app state.
-  useLayoutEffect(() => {
-    if (locale !== localStorage.getItem("locale")) {
-      localStorage.setItem("locale", locale);
-    }
-  }, [locale]);
 
-  //Update app locale if our url locale route has changed.
-  useLayoutEffect(() => {
-    const uriSplit = pathname.split("/"); //uri will be (/locale/path/to/file). We need the locale part.
-    //NOTE(Rejon): Index 1 of the uriSplit should be the locale, but in the case it's not we check.
-    if (
-      typeof uriSplit[1] === "string" &&
-      locales.indexOf(uriSplit[1]) !== -1 &&
-      locale !== uriSplit[1] &&
-      uriSplit[1] !== ""
-    ) {
-      setLocale(uriSplit[1]);
-      localStorage.setItem("locale", uriSplit[1]);
-    }
-  }, [pathname, locale, locales]);
-
+  //TODO(Rejon): Will be removed with LUNR search changes. 
   //LUNR becomes available only via the window.
   //To make it easier for our app to access it we just set it in our app context.
   useLayoutEffect(() => {
@@ -184,12 +158,8 @@ const PageDataProvider = ({ children, value }) => {
   return (
     <PageDataContext.Provider
       value={{
-        setLocale,
-        locale,
         allLocales: locales,
         localeStrings,
-        DEFAULT_LOCALE,
-        DEFAULT_LOCALE_STRINGS: localeStrings["en"],
         lunr,
       }}
     >

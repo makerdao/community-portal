@@ -127,7 +127,6 @@ export default {
         pointerEvents: "none",
         cursor: "not-allowed",
         borderColor: "#a9a3b3",
-        bg: "#a9a3b3",
         opacity: 0.5,
       },
     },
