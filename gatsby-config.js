@@ -183,14 +183,15 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
+              const excerptLength = 64; // Hard coded excerpt length
+
               //If this node's frontmatter has a description use THAT for excerpts.
               if (node.frontmatter.description) {
-                return node.frontmatter.description;
+                return node.frontmatter.description.slice(0, excerptLength);
               }
 
               //NOTE(Rejon): We have to do excerpt this way because excerpt isn't available at the level that the lunr resolver is tapping Graphql.
               // TLDR: The excerpt node is undefined so we have to parse it ourselves.
-              const excerptLength = 136; // Hard coded excerpt length
               let excerpt = "";
               const tree = remark()
                 .use(remarkFrontmatter)

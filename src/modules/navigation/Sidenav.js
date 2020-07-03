@@ -2,10 +2,11 @@
 import React from "react";
 import { jsx } from "theme-ui";
 import { StaticQuery, graphql } from "gatsby";
+import { Box } from "theme-ui";
 
 import useTranslation from "@modules/utility/useTranslation";
 import Tree from "@modules/navigation/Sidenav_Tree";
-import { Box } from "theme-ui";
+
 
 const Sidenav = (props) => {
   const { locale } = useTranslation();

@@ -5,7 +5,7 @@ import { Input, Flex, jsx } from "theme-ui";
 
 import useTranslation from "@modules/utility/useTranslation";
 
-const SearchInput = ({ delay, onSubmit, ...rest }) => {
+const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
   const { t } = useTranslation();
   const searchRef = useRef();
 
@@ -20,10 +20,18 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
     }
 
     setValue(_value);
-    if (onSubmit) {
-      onSubmit(_value);
+    if (onChange) {
+      onChange(_value);
     }
   };
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (onSubmit) {
+      onSubmit(e.currentTarget.value);
+    }
+  }
 
   const onKeyDown = (e) => {
     
@@ -51,6 +59,7 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
       as="form"
       method="GET"
       role="search"
+      onSubmit={onFormSubmit}
       sx={{ p: "4px", alignItems: "center", pl: "10px" }}
     >
       <Icon
@@ -78,6 +87,9 @@ const SearchInput = ({ delay, onSubmit, ...rest }) => {
           "::placeholder": {
             color: "body",
           },
+          "::-webkit-search-cancel-button": {
+              WebkitAppearance: "none",
+            },
         }}
         {...rest}
       />
