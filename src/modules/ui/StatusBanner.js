@@ -6,7 +6,7 @@ import Sticky from "react-sticky-el";
 
 const StatusBanner = ({
   warning,
-  error,
+  bear,
   notice,
   color,
   sticky,
@@ -16,7 +16,7 @@ const StatusBanner = ({
   ...otherProps
 }) => {
   const variant =
-    (error ? "bear" : null) ||
+    (bear ? "bear" : null) ||
     (warning ? "warning" : null) ||
     (notice ? "notice" : null) ||
     "primary";
