@@ -148,9 +148,10 @@ const List = ({ children }) => {
   //Logic check for rendering a link element vs a list element.
   const childListLinkRenderCheck = (child, index) => {
     if (
-      child.props.mdxType === "ul" ||
+      child.props &&
+      (child.props.mdxType === "ul" ||
       child.props.mdxType === "ol" ||
-      child.props.mdxType === "li"
+      child.props.mdxType === "li")
     ) {
       //Check if we've got a list container
       const ULChildren = React.Children.toArray(child.props.children);

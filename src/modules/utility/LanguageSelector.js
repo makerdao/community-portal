@@ -8,6 +8,7 @@ import { Box, jsx, Text, useThemeUI } from "theme-ui";
 import { UrlConverter } from "@utils";
 import Link from "@modules/utility/Link";
 import useTranslation from "@modules/utility/useTranslation";
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const LanguageSelector = () => {
   const { theme } = useThemeUI();
@@ -72,11 +73,18 @@ const LanguageSelector = () => {
       };
     });
 
-  const onChange = ({ value }) => {
+  const onChange = ({value, label}) => {
     //Update local storage on switch
     if (typeof window !== "undefined") {
       localStorage.setItem("locale", value.split("/")[1]);
     }
+
+    //Google Analytics Tracking
+    trackCustomEvent({
+      category: "Language Selector",
+      action: `Switch Page to ${label}`,
+      label: `From Page: ${pathname} (${locale}) |  To Page: ${value} (${value.split("/")[1]})`
+    });
 
     navigate(value);
   };

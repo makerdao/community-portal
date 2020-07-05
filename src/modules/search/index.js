@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Box, Text, jsx } from "theme-ui";
 import LUNR from "lunr"
 import { useNavigate } from "@reach/router";
-
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 import useTranslation from "@modules/utility/useTranslation";
 import SearchInput from "./SearchInput";
@@ -93,6 +93,7 @@ export default function Search({ ...otherProps }) {
   const onSubmit = () => {
     if (results.length > 0) {
       navigate(results[0].url)
+      setFocus(false);
     }
   }
 
@@ -176,7 +177,16 @@ export default function Search({ ...otherProps }) {
         >
           {results.map((result, index) => (
             <li>
-              <SearchHit {...result} onClick={() => setFocus(false)} />
+              <SearchHit {...result} query={query} onClick={() => {
+                setFocus(false)
+
+                //Google Analytics Tracking
+                trackCustomEvent({
+                  category: "Internal Search",
+                  action: `Click Result`,
+                  label: `Query: ${query} | To Page: ${result.url}`
+                });
+              }} />
             </li>
           ))}
         </ul>

@@ -84,6 +84,7 @@ const Footer = () => {
         <MDXRenderer>{footerLinks}</MDXRenderer>
       </MDXProvider>
     </Box>}
+    <a href="javascript:gaOptout();">Deactivate Google Analytics</a>
   </Flex>);
 };
 

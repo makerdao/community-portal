@@ -116,10 +116,10 @@ export default (props) => {
               currentTopSection !== "" &&
               !hideSidenav
                 ? {
-                    "& > *:first-of-type, & > *:nth-of-type(2)": {
+                    "& > *:first-child, & > *:nth-child(2)": {
                       maxWidth: "calc(100% - 211px)",
                     },
-                    "& > *:nth-of-type(2)": { mb: "32px" },
+                    "& > *:nth-child(2)": { mb: "32px" },
                   }
                 : {}
             }
