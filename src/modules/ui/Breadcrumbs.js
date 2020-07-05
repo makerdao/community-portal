@@ -1,23 +1,23 @@
 /** @jsx jsx */
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { jsx, Text, Box } from "theme-ui";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
 import useTranslation from "@modules/utility/useTranslation";
 import Link from "@modules/utility/Link";
+import { titleCase } from "@utils";
 
 const Breadcrumbs = ({ children }) => {
   let { pathname } = useLocation();
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
-  
 
   const { allMdx } = useStaticQuery(graphql`
     query GetBreadcrumbsTitles {
       allMdx(
         filter: {
           fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx)/"
+            regex: "//([\\\\w]{2})/(?!header.mdx|footer.mdx|example.mdx|index.mdx|404.mdx)/"
           }
         }
       ) {
@@ -74,12 +74,13 @@ const Breadcrumbs = ({ children }) => {
               .replace(/^\/([\w]{2})\//, "/");
 
             const localizedMatch = edges.find((el, index) => {
-              const locRawSlug = el.node.fileAbsolutePath.slice(
-                                  el.node.fileAbsolutePath.indexOf(`/${locale}/`),
-                                  el.node.fileAbsolutePath.length
-                                )
-                                .replace(/(.mdx|index.mdx|.md)$/gm, "")
-                                .replace(/^\/([\w]{2})\//, "/")
+              const locRawSlug = el.node.fileAbsolutePath
+                .slice(
+                  el.node.fileAbsolutePath.indexOf(`/${locale}/`),
+                  el.node.fileAbsolutePath.length
+                )
+                .replace(/(.mdx|index.mdx|.md)$/gm, "")
+                .replace(/^\/([\w]{2})\//, "/");
 
               const match = locRawSlug === rawSlug;
 
@@ -93,7 +94,7 @@ const Breadcrumbs = ({ children }) => {
             if (localizedMatch !== null && localizedMatch !== undefined) {
               return localizedMatch;
             }
-            edge.node = {...edge.node, rawSlug};
+            edge.node = { ...edge.node, rawSlug };
 
             return edge;
           })
@@ -103,16 +104,29 @@ const Breadcrumbs = ({ children }) => {
   //We also need them to include their TRUE title and url.
   const BreadcrumbData = pathDirs.map((pathDir) => {
     //Find the page that has it's filename match our pathDir.
-    const {node} = mergedEdges.find(
-      ({ node }) =>
+    const _edge = mergedEdges.find(
+      (e) =>
+        e.node &&
         pathDir ===
-        node.fileAbsolutePath
-          .replace(/(.mdx|\/index.mdx|.md)$/gm, "")
-          .split("/")
-          .pop()
+          e.node.fileAbsolutePath
+            .replace(/(.mdx|\/index.mdx|.md)$/gm, "")
+            .split("/")
+            .pop()
     );
 
-    const isFallback = node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`) && (DEFAULT_LOCALE !== locale);
+    //In the case we're in a directory that DOESNT have a file with a path,
+    // just return the path name with NO link.
+    if (!_edge) {
+      return {
+        title: titleCase(pathDir.replace(/-|_|\./g, " ")),
+      };
+    }
+
+    const { node } = _edge;
+
+    const isFallback =
+      node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`) &&
+      DEFAULT_LOCALE !== locale;
 
     //ie. ___currentDirectory/locale/path/to/file
     const dirSlug = node.fileAbsolutePath.replace(
@@ -122,7 +136,7 @@ const Breadcrumbs = ({ children }) => {
 
     //ie. locale/path/to/file
     const url = dirSlug.slice(
-      dirSlug.indexOf(`/${isFallback ? DEFAULT_LOCALE : locale}/`), 
+      dirSlug.indexOf(`/${isFallback ? DEFAULT_LOCALE : locale}/`),
       dirSlug.length
     );
 
@@ -136,7 +150,7 @@ const Breadcrumbs = ({ children }) => {
       ...node,
       url,
       title,
-      isFallback
+      isFallback,
     };
   });
 
@@ -152,8 +166,9 @@ const Breadcrumbs = ({ children }) => {
       </Link>
       {" / "}
       {BreadcrumbData.map(({ title, url, isFallback }, index) => {
-
-        const fallbackString = isFallback ? ` (${t("Language", null, null, DEFAULT_LOCALE)})` : '';
+        const fallbackString = isFallback
+          ? ` (${t("Language", null, null, DEFAULT_LOCALE)})`
+          : "";
         //If this is the last crumb, then just render its name.
         if (index === BreadcrumbData.length - 1) {
           return (
@@ -165,9 +180,23 @@ const Breadcrumbs = ({ children }) => {
 
         return (
           <Fragment key={`breadcrumb-${index}`}>
-            <Link to={url} sx={{ textDecoration: "none" }}>
-              {index >= 2 ? <>{`...${fallbackString}`}</> : `${title}${fallbackString}`}
-            </Link>
+            {url ? (
+              <Link to={url} sx={{ textDecoration: "none" }}>
+                {index >= 2 ? (
+                  <>{`...${fallbackString}`}</>
+                ) : (
+                  `${title}${fallbackString}`
+                )}
+              </Link>
+            ) : (
+              <>
+                {index >= 2 ? (
+                  <>{`...${fallbackString}`}</>
+                ) : (
+                  `${title}${fallbackString}`
+                )}
+              </>
+            )}
             {` / `}
           </Fragment>
         );

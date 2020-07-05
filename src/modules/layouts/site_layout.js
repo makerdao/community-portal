@@ -9,11 +9,10 @@ import "@modules/utility/prismjs.css";
 import Header from "@modules/navigation/Header";
 import Footer from "@modules/navigation/Footer";
 
-import { PageDataProvider } from "@modules/layouts/PageContext";
 import Shortcodes from "@modules/utility/shortcodes";
 
 const Layout = ({ children }) => (
-  <PageDataProvider>
+  <>
     <Header />
     <Flex
       as="main"
@@ -30,7 +29,7 @@ const Layout = ({ children }) => (
       <MDXProvider components={Shortcodes}>{children}</MDXProvider>
     </Flex>
     <Footer />
-  </PageDataProvider>
+  </>
 );
 
 Layout.propTypes = {

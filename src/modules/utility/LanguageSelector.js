@@ -15,7 +15,7 @@ const LanguageSelector = () => {
   const navigate = useNavigate();
   const { locale, t, allLocales } = useTranslation();
   const pathStripRGX = new RegExp(`/${locale}/|/$`, "g");
-  
+
   let pathnameStripped = pathname.replace(pathStripRGX, "");
 
   const { languagePages } = useStaticQuery(graphql`
@@ -23,7 +23,7 @@ const LanguageSelector = () => {
       languagePages: allMdx(
         filter: {
           fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|404.mdx)/"
+            regex: "//([\\\\w]{2})/(?!header.mdx|footer.mdx|example.mdx|index.mdx|404.mdx)/"
           }
         }
       ) {
@@ -36,23 +36,25 @@ const LanguageSelector = () => {
     }
   `);
 
-//Check against our current path with an optional trailing slash (for index pages)
+  //Check against our current path with an optional trailing slash (for index pages)
   const pageLocaleRegex = new RegExp(
     `(/([\\w]{2})/${pathnameStripped})((/w+)+|/?)$`,
     "gm"
   );
 
   const existingLanguages = languagePages.edges
-    .filter(
-      ({ node }) =>
-        {
-          //Clean up the file path to drop file names and endings.
-          //NOTE(Rejon): Our Regex fails if this doesn't pass!
-          const pathWithoutFile = node.fileAbsolutePath.replace(/(.mdx|index.mdx|.md)$/gm, "").replace(/\/$/, "");
+    .filter(({ node }) => {
+      //Clean up the file path to drop file names and endings.
+      //NOTE(Rejon): Our Regex fails if this doesn't pass!
+      const pathWithoutFile = node.fileAbsolutePath
+        .replace(/(.mdx|index.mdx|.md)$/gm, "")
+        .replace(/\/$/, "");
 
-          return pageLocaleRegex.test(pathWithoutFile) && !node.fileAbsolutePath.includes(`/${locale}/`)
-        }
-    )
+      return (
+        pageLocaleRegex.test(pathWithoutFile) &&
+        !node.fileAbsolutePath.includes(`/${locale}/`)
+      );
+    })
     .map(({ node }) => {
       const value = UrlConverter(node);
       const _locale = node.fileAbsolutePath

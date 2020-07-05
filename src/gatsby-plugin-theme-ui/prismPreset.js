@@ -26,7 +26,7 @@ export default {
   fontFamily: "Roboto Mono",
   overflow: "auto",
   p: 3,
-  pt: 4,
+  pt: 0,
   mt: 0,
   borderRadius: "4px",
 };

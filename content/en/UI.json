@@ -2,7 +2,7 @@
   "UI": {
     "Language": "English",
     "Flag": "🇺🇸",
-    "Search": "Search",
+    "Search": "Search the portal (Press \"/\" to focus)",
     "No_Results": "No results for '{{query}}'",
     "Home": "Home",
     "Page_Language_Selector": "Page Language Selector",
