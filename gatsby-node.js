@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const {UrlConverter} = require('./src/build-utils');
-const {DEFAULT_LOCALE} = require('@modules/localization');
+const FALLBACK_LOCALE = "en";
 
 //TODO(Rejon): Add in support for the case similar pages exist outside of the locale folders.
 //			   We don't want to override pages at the top level if they exist. 
@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
   pages.pages.edges.map(({node}) => {
 	  const noLocalePath = UrlConverter(node).replace(/^\/([\w]{2})\//, "/");
 	  
-	  createRedirect({ fromPath: noLocalePath, toPath: `/${DEFAULT_LOCALE}${noLocalePath}`, isPermanent: true });
+	  createRedirect({ fromPath: noLocalePath, toPath: `/${FALLBACK_LOCALE}${noLocalePath}`, isPermanent: true });
   }); 
  
 }
