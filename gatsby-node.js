@@ -6,6 +6,9 @@
 const {UrlConverter} = require('./src/build-utils');
 const {DEFAULT_LOCALE} = require('@modules/localization');
 
+//TODO(Rejon): Add in support for the case similar pages exist outside of the locale folders.
+//			   We don't want to override pages at the top level if they exist. 
+
 //Create redirect fallbacks to default locales.
 //ie If the user types /work_with_us and it exists in our default locale, take us to that page.
 exports.createPages = async ({ graphql, actions }) => {

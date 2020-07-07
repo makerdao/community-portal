@@ -8,7 +8,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import {useTranslation} from "@modules/localization";
 import Shortcodes from "@modules/ui/shortcodes";
 
-const browser = typeof window !== "undefined" && window;
+const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
 
 const NotFoundPage = () => {
   const { locale } = useTranslation();
