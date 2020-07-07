@@ -96,7 +96,7 @@ export default function useTranslation(initialLangSpace) {
       ) {
         lang_space = null;
       }
-    } else if (!localeStrings[key] && !otherLocale) {
+    } else if (!localeStrings[locale] && !otherLocale) {
       //Check for common base key in locale. For example: en:{settings:"string"}
       console.warn(`Translation of '${key}' for locale '${locale}' not found.`);
       return key;
