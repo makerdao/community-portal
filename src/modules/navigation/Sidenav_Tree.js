@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useLocation } from "@reach/router";
 
 import calculateTreeData from "@modules/navigation/calculateTreeData";
-import useTranslation from '@modules/utility/useTranslation'
+import {useTranslation} from '@modules/localization'
 import Sidenav_Node from "@modules/navigation/Sidenav_Node";
 
 const Tree = ({ edges, locale }) => {

@@ -48,7 +48,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve("./src/modules/layouts/default_layout.js"),
+          default: require.resolve("./src/modules/layouts/mdx_layout.js"),
         },
         gatsbyRemarkPlugins: [
           {
@@ -129,7 +129,7 @@ module.exports = {
         },
       },
     },
-
+    
     {
       //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
       resolve: `gatsby-plugin-alias-imports`,
@@ -247,5 +247,7 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
+    `gatsby-plugin-catch-links`
   ],
 };

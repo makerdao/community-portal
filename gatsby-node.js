@@ -3,3 +3,29 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const {UrlConverter} = require('./src/build-utils');
+const {DEFAULT_LOCALE} = require('@modules/localization');
+
+//Create redirect fallbacks to default locales.
+//ie If the user types /work_with_us and it exists in our default locale, take us to that page.
+exports.createPages = async ({ graphql, actions }) => {
+  const {createRedirect} = actions //actions is collection of many actions - https://www.gatsbyjs.org/docs/actions
+  const {data: pages} = await graphql(`
+	query redirects {
+		pages: allMdx(filter: {fileAbsolutePath: {regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|sidenav.mdx|example.mdx|footer.mdx|404.mdx|.js|.json)/"}}) {
+			edges {
+				node {
+					fileAbsolutePath
+				}
+			}
+		}
+	}
+  `)
+  
+  pages.pages.edges.map(({node}) => {
+	  const noLocalePath = UrlConverter(node).replace(/^\/([\w]{2})\//, "/");
+	  
+	  createRedirect({ fromPath: noLocalePath, toPath: `/${DEFAULT_LOCALE}${noLocalePath}`, isPermanent: true });
+  }); 
+ 
+}

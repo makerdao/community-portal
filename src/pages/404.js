@@ -1,12 +1,14 @@
 import React from "react";
 
-import SEO from "../modules/utility/seo";
+import {SEO} from "@modules/utility";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import useTranslation from "@modules/utility/useTranslation";
-import Shortcodes from "@modules/utility/shortcodes";
+import {useTranslation} from "@modules/localization";
+import Shortcodes from "@modules/ui/shortcodes";
+
+const browser = typeof window !== "undefined" && window;
 
 const NotFoundPage = () => {
   const { locale } = useTranslation();
@@ -31,6 +33,13 @@ const NotFoundPage = () => {
       }
     }
   `);
+
+  if (!browser) {
+    return (
+      <>
+      </>
+    )
+  }
 
   const page = nodes.nodes.find(
     ({ fileAbsolutePath }) => fileAbsolutePath.indexOf(`/${locale}/`) !== -1

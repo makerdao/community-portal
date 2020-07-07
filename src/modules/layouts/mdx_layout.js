@@ -4,11 +4,10 @@ import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-import SEO from "@modules/utility/seo";
-import LanguageSelector from "@modules/utility/LanguageSelector";
-import Sidenav from "@modules/navigation/Sidenav";
-import Breadcrumbs from "@modules/ui/Breadcrumbs";
-import StatusBanner from "@modules/ui/StatusBanner";
+import {SEO} from "@modules/utility";
+import {LanguageSelector} from "@modules/localization";
+import {Sidenav, Breadcrumbs} from "@modules/navigation";
+import {StatusBanner} from "@modules/ui";
 
 export default (props) => {
   const { children, pageContext, uri } = props;

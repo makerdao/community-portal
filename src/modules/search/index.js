@@ -6,7 +6,7 @@ import LUNR from "lunr"
 import { useNavigate } from "@reach/router";
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
-import useTranslation from "@modules/utility/useTranslation";
+import {useTranslation} from "@modules/localization";
 import SearchInput from "./SearchInput";
 import SearchHit from "./SearchHit";
 

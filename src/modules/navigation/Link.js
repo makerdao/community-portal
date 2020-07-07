@@ -2,7 +2,7 @@
 import React from "react";
 
 import { Link as GatsbyLink } from "gatsby";
-import useTranslation from "@modules/utility/useTranslation";
+import {useTranslation} from "@modules/localization";
 import { jsx, Link as ThemeLink } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { OutboundLink } from 'gatsby-plugin-google-analytics';

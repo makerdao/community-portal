@@ -6,8 +6,8 @@ import { useLocation, useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";
 
 import { UrlConverter } from "@utils";
-import Link from "@modules/utility/Link";
-import useTranslation from "@modules/utility/useTranslation";
+import {Link} from "@modules/navigation";
+import {useTranslation} from "@modules/localization";
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const LanguageSelector = () => {
