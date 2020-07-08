@@ -2,7 +2,8 @@
 import React from "react";
 import { Box, Flex, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
-import Link from "@modules/utility/Link";
+
+import {Link} from "@modules/navigation";
 
 const List = ({ children }) => {
   const _Children = React.Children.toArray(children);

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Input, Flex, jsx } from "theme-ui";
 
-import useTranslation from "@modules/utility/useTranslation";
+import {useTranslation} from "@modules/localization";
 
 const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
   const { t } = useTranslation();

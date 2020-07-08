@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import Link from "@modules/utility/Link";
+import {Link} from "@modules/navigation";
 import { useLocation } from "@reach/router";
 import { jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";

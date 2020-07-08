@@ -5,8 +5,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import useTranslation from "@modules/utility/useTranslation";
-import Shortcodes from "@modules/utility/shortcodes";
+import {useTranslation} from "@modules/localization";
+import Shortcodes from "@modules/ui/shortcodes";
 
 const Footer = () => {
   const { locale, DEFAULT_LOCALE } = useTranslation();
@@ -84,7 +84,7 @@ const Footer = () => {
         <MDXRenderer>{footerLinks}</MDXRenderer>
       </MDXProvider>
     </Box>}
-    <a href="javascript:gaOptout();">Deactivate Google Analytics</a>
+    {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
   </Flex>);
 };
 

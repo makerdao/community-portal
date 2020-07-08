@@ -7,9 +7,9 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Link from "@modules/utility/Link";
-import useTranslation from "@modules/utility/useTranslation";
-import Shortcodes from "@modules/utility/shortcodes";
+import {Link} from "@modules/navigation";
+import {useTranslation} from "@modules/localization";
+import Shortcodes from "@modules/ui/shortcodes";
 import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
 
