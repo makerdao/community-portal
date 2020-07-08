@@ -4,36 +4,33 @@ import { Icon } from "@makerdao/dai-ui-icons";
 import { Image, Text, Divider, Box, Flex } from "theme-ui";
 
 import {
-	Accordion,
-	Button, 
-	Categories, 
-	Callout, 
-	Chocolate, 
-	Checklist, 
-	Code, 
-	Column, 
-	CTA, 
-	StatusBanner, 
-	InfoBlock, 
-	List,
-	Process, 
-	Tout, 
-} from '@modules/ui/';
+  Accordion,
+  Button,
+  Categories,
+  Callout,
+  Chocolate,
+  Checklist,
+  Code,
+  Column,
+  CTA,
+  StatusBanner,
+  InfoBlock,
+  List,
+  Process,
+  Tout,
+} from "@modules/ui/";
+
+import { Link } from "@modules/navigation/";
+
+import { Aligner, Video } from "@modules/utility/";
 
 import {
-  Link
-} from '@modules/navigation/';
-
-import {
-  Aligner, 
-  Video
-} from '@modules/utility/';
-
-import TDRegion from '@modules/transparency_dash/Region'
-import TDStat from '@modules/transparency_dash/Stat'
-import TDDonut from '@modules/transparency_dash/Donut'
-import TDPie from '@modules/transparency_dash/Pie'
-import TDRadial from '@modules/transparency_dash/Radial'
+  TDRegion,
+  TDStat,
+  TDDonut,
+  TDPie,
+  TDRadial,
+} from "@modules/transparency_dash";
 
 //Markdown Component overrides
 //Replace MDX html defaults with our custom implementation.
@@ -56,13 +53,13 @@ const MD_Overrides = {
   ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
   blockquote: CTA,
   inlineCode: Code,
-}
+};
 
-//Custom component fragments to be used in MDX. 
+//Custom component fragments to be used in MDX.
 //If you want to use a component, but want it's MDX fragment name to be different
 //provide a key: Component (ie: {Carousel: CarouselComponent})
 const Custom_Components = {
-  Code, 
+  Code,
   Text,
   Button,
   Callout,
@@ -88,10 +85,10 @@ const Custom_Components = {
   TDStat,
   TDDonut,
   TDPie,
-  TDRadial
-}
+  TDRadial,
+};
 
 export default {
-  ...MD_Overrides, 
-  ...Custom_Components
+  ...MD_Overrides,
+  ...Custom_Components,
 };

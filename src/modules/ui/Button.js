@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button as ThemedButton, jsx } from "theme-ui";
-import {Link} from "@modules/navigation";
+import { Link } from "@modules/navigation";
 
 const Button = ({
   to,
