@@ -1,5 +1,4 @@
 {
-  "UI": {
     "Language": "Español",
     "Flag": "🇲🇽",
     "Search": "Search",
@@ -14,5 +13,4 @@
       "alt_defaultImage": "Default Tout Image",
       "alt_altImage": "Alternate Tout Image"
     }
-  }
 }

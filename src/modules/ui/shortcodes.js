@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Icon } from "@makerdao/dai-ui-icons";
-import { Image, Text, Divider, Box } from "theme-ui";
+import { Image, Text, Divider, Box, Flex } from "theme-ui";
 
 import {
 	Accordion,
@@ -29,6 +29,11 @@ import {
   Video
 } from '@modules/utility/';
 
+import TDRegion from '@modules/transparency_dash/Region'
+import TDStat from '@modules/transparency_dash/Stat'
+import TDDonut from '@modules/transparency_dash/Donut'
+import TDPie from '@modules/transparency_dash/Pie'
+import TDRadial from '@modules/transparency_dash/Radial'
 
 //Markdown Component overrides
 //Replace MDX html defaults with our custom implementation.
@@ -64,6 +69,7 @@ const Custom_Components = {
   StatusBanner,
   Link,
   Box,
+  Flex,
   Icon,
   CTA,
   Process,
@@ -78,6 +84,11 @@ const Custom_Components = {
   Tout,
   Column,
   Video,
+  TDRegion,
+  TDStat,
+  TDDonut,
+  TDPie,
+  TDRadial
 }
 
 export default {

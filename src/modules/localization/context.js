@@ -26,7 +26,7 @@ const TranslationProvider = ({children}) => {
       const uiData = require(`@content/${loc}/UI.json`);
       
       if (uiData) {
-        localeStrings[loc] = {...uiData.UI};
+        localeStrings[loc] = {...uiData};
       }
 
       return loc; 

@@ -1,5 +1,4 @@
 {
-  "UI": {
     "Language": "English",
     "Flag": "🇺🇸",
     "Search": "Search the portal (Press \"/\" to focus)",
@@ -14,5 +13,4 @@
       "alt_defaultImage": "Default Tout Image",
       "alt_altImage": "Alternate Tout Image"
     }
-  }
 }
