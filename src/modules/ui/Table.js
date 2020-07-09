@@ -15,12 +15,11 @@ const Table = ({
         textAlign: "left",
       },
       "tr:nth-child(even)": {
-        backgroundColor: "#f2f2f2",
+        backgroundColor: "#f6f8fa",
       },
       "& th": {
         border: "1px solid black",
-        padding: "20px",
-        fontSize: "18px",
+        padding: "10px",
         textAlign: "center",
       },
     }}
