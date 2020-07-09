@@ -17,6 +17,7 @@ import {
   InfoBlock,
   List,
   Process,
+  Table,
   Tout,
 } from "@modules/ui/";
 
@@ -44,6 +45,7 @@ const MD_Overrides = {
   h3: (props) => <Text variant="h3" as="h3" sx={{ mb: "16px" }} {...props} />,
   h4: (props) => <Text variant="h4" as="h4" {...props} />,
   h5: (props) => <Text variant="h5" as="h5" {...props} />,
+  table: (props) => <Table {...props} />,
   thematicBreak: (props) => <Divider />,
   p: (props) => (
     <Text

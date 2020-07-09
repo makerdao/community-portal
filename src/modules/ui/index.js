@@ -10,6 +10,7 @@ export { default as Button } from "./Button";
 export { default as Process } from "./Process";
 export { default as CTA } from "./CTA";
 export { default as Tout } from "./Tout";
+export { default as Table } from "./Table";
 export { default as Accordion } from "./Accordion";
 export { default as Checklist } from "./Checklist";
 export { default as Column } from "./Column";
