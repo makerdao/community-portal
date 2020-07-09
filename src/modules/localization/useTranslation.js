@@ -1,10 +1,9 @@
-import {useContext} from 'react';
+import { useContext } from "react";
 import { useLocation } from "@reach/router";
 
+import { TranslationContext } from "./context";
+import { DEFAULT_LOCALE } from "./index";
 
-import {TranslationContext} from './context'
-import {DEFAULT_LOCALE} from './index';
- 
 //NOTE(Rejon): This is a react hook I pulled inspiration from: https://w11i.me/how-to-build-multilingual-website-in-next-js
 // 			   I've expanded to add some features like plurals, secondary level spaces (dubbed langspace), variables, and secondary locales.
 
@@ -14,7 +13,7 @@ import {DEFAULT_LOCALE} from './index';
 // without ILS: useTranslation() -> t('error_code', 'errors')
 // with ILS: useTranslation('errors') -> t('error_code')
 export default function useTranslation(initialLangSpace) {
-  const {allLocales, localeStrings} = useContext(TranslationContext);
+  const { allLocales, localeStrings } = useContext(TranslationContext);
 
   //NOTE(Rejon): We trust the path for locale. If it doesn't exist fallback to DEFAULT LOCALE
   const { pathname } = useLocation();
@@ -24,7 +23,6 @@ export default function useTranslation(initialLangSpace) {
       ? localeFromPath
       : DEFAULT_LOCALE;
 
-  
   //key[String] - Key name of the text from the locale you want. Best practice is write it like you would english, replace all spaces with '_'
   //lang_space[String] - Language space keyname to access for your keys. ie. {'lang_space': {'key': 'Localized Text'}}
   //variables[Object] - Object of variables to insert into the string. Replaces {{value}} with variable value. ie. {value: 123} -> '123'
@@ -130,9 +128,7 @@ export default function useTranslation(initialLangSpace) {
     //Add plural key if necessary.
     key += pluralString;
 
-    let finalString = key
-      ? localeStrings[locale][key] || ""
-      : "";
+    let finalString = key ? localeStrings[locale][key] || "" : "";
 
     if (
       lang_space !== null &&
@@ -158,13 +154,10 @@ export default function useTranslation(initialLangSpace) {
         localeStrings[otherLocale][lang_space] !== undefined
       ) {
         finalString = key
-          ? localeStrings[otherLocale][lang_space][key] ||
-            ""
+          ? localeStrings[otherLocale][lang_space][key] || ""
           : "";
       } else {
-        finalString = key
-          ? localeStrings[otherLocale][key] || ""
-          : "";
+        finalString = key ? localeStrings[otherLocale][key] || "" : "";
       }
     }
 

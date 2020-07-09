@@ -29,13 +29,6 @@ module.exports = {
         path: `${__dirname}/content/images`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `imgs`,
-        path: `./src/imgs`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
@@ -123,13 +116,13 @@ module.exports = {
             `**/**.json`,
             `**/404.mdx`,
             `**/example.mdx`,
-            `**/footer.mdx`
+            `**/footer.mdx`,
           ],
           options: { nocase: true },
         },
       },
     },
-    
+
     {
       //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
       resolve: `gatsby-plugin-alias-imports`,
@@ -248,6 +241,6 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
-    `gatsby-plugin-catch-links`
+    `gatsby-plugin-catch-links`,
   ],
 };

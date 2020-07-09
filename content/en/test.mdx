@@ -1,21 +1,201 @@
-# Testing Categories 
+import data from '@modules/transparency_dash/data/publicData.json'
+import regions from '@modules/transparency_dash/data/regions'
 
-## This is me testing the Categories component 
+export const getNoOfCountries = Object.keys(regions).map(reg => {
+		const _numberOfCountries = data.acceptedProjects.filter(p => p.region === regions[reg].label).length;
+		return { [reg]: _numberOfCountries }
+}).reduce((acc, curr) => Object.assign(acc, curr));
 
-Hello `world`
 
-Hello `world?`
+# Transparancy Dashboard Components
 
-How about `const variable = "Hello World"`
+## This is me testing Transparancy Dashboard Components with Data imports
 
-`How about this?`
+### This is an **expert** level example of importing data, creating a variable, and using it to display data. 
+
+**If you're writing MDX like this I trust you know what you're doing.**
+
+## Region Component (Grants page data example)
+
+```js:title=transparency_dash/data/regions.js
+import northamerica from '@images/transparency_dash/northamerica.svg';
+import africa from '@images/transparency_dash/africa.svg';
+import asia from '@images/transparency_dash/asia.svg';
+import europe from '@images/transparency_dash/europe.svg';
+import oceania from '@images/transparency_dash/oceania.svg';
+import southamerica from '@images/transparency_dash/southamerica.svg';
+import virtual from '@images/transparency_dash/virtual.svg';
+
+export default {
+	"northamerica": {label:"North America", image: northamerica},
+	"southamerica": {label:"South America", image: southamerica},
+	"africa": {label: "Africa", image: africa},
+	"europe": {label: "Europe", image: europe},
+	"asia": {label: 'Asia', image: asia},
+	"oceania": {label: "Oceania", image: oceania},
+	"virtual": {label: "Virtual", image: virtual}
+}
 
 ```
 
-Helllo? 
+```json:title=transparency_dash/data/index.json
+{
+	...JSON Above
+	"acceptedProjects": [
+		{
+			"name": "Balance.io",
+			"description": "Mobile wallet with tight MakerDAO ecosystem integration",
+			"learnMoreLink": "http://balance.io/",
+			"github": "https://github.com/balance-io/balance-ios",
+			"twitter": "https://twitter.com/Balance_io",
+			"medium": "https://medium.com/balance-io",
+			"status": "Inactive",
+			"type": "Hold Dai",
+			"country": "US",
+			"region": "North America",
+			"audited": false,
+			"auditReport": null
+		},
+	...More Projects
+}
+```
 
-How about this?
+```js:title=test.mdx
+import data from '@modules/transparency_dash/data/publicData.json'
+import regions from '@modules/transparency_dash/data/regions'
 
-Or this?
+export const getNoOfCountries = Object.keys(regions).map(reg => {
+		const _numberOfCountries = data.acceptedProjects.filter(p => p.region === regions[reg].label).length;
+		return { [reg]: _numberOfCountries }
+}).reduce((acc, curr) => Object.assign(acc, curr));
 
+//...MDX we render below
+```
+
+<TDRegion data={getNoOfCountries} region="northamerica"/>
+<TDRegion data={getNoOfCountries} region="oc"/>
+<TDRegion data={getNoOfCountries} region="af"/>
+<TDRegion data={getNoOfCountries} region="europe"/>
+<TDRegion data={getNoOfCountries} region="asia"/>
+<TDRegion data={getNoOfCountries} region="sa"/>
+
+**Notice: Virtual doesn't have data in this set. So it renders like so**
+<TDRegion data={getNoOfCountries} region="virtual"/>
+
+### To get them to render in a scrollable box flex the SX muscle
+
+```jsx:test.mdx
+<Box sx={{overflow: 'auto', whiteSpace:'nowrap'}}>
+	<TDRegion data={getNoOfCountries} region="northamerica"/>
+	...otherRegions
+</Box>
+```
+
+<Box sx={{overflow: 'auto', whiteSpace:'nowrap', mb: 4}}>
+
+<TDRegion data={getNoOfCountries} region="oc"/>
+<TDRegion data={getNoOfCountries} region="af"/>
+<TDRegion data={getNoOfCountries} region="europe"/>
+<TDRegion data={getNoOfCountries} region="asia"/>
+<TDRegion data={getNoOfCountries} region="sa"/>
+</Box>
+
+## Stat Component
+
+***Disclaimer: I'm using a Flex component with some SX to center these properly.***
+
+<Flex sx={{alignItems: 'center', justifyContent: 'space-evenly'}}>
+<TDStat data={data.grants.totalMoneyAwarded}>
+Dai Awarded
+</TDStat>
+<TDStat data={data.grants.totalMoneyDispersed}>
+Dai Dispersed
+</TDStat>
+<TDStat data={data.grants.totalMoneyAwarded / data.acceptedProjects.length}>
+Average Dai Award
+</TDStat>
+<TDStat alt data={data.grants.applicationsSubmitted}>
+Grant Applications Submitted
+</TDStat>
+</Flex>
+
+```jsx:test.mdx
+<Flex sx={{alignItems: 'center', justifyContent: 'space-evenly'}}>
+	<TDStat data={data.grants.totalMoneyAwarded}>
+		Dai Awarded
+	</TDStat>
+	<TDStat data={data.grants.totalMoneyDispersed}>
+		Dai Dispersed
+	</TDStat>
+	<TDStat data={data.grants.totalMoneyAwarded / data.acceptedProjects.length}>
+		Average Dai Award
+	</TDStat>
+	<TDStat alt data={data.grants.applicationsSubmitted}>
+		Grant Applications Submitted
+	</TDStat>
+</Flex>
+```
+
+
+## Donut Component
+<Button sx={{mb: 0}}> Hello </Button>
+**Value must be between 0 and 1 for defaults. But you can set the maximum and minimum values too.**
+
+```
+<TDDonut value={0.4}/>
+
+<TDDonut value={0.64}/>
+
+<TDDonut value={0.04}/>
+
+<TDDonut value={0.84} size={100}/>
+```
+
+<TDDonut value={0.4}/>
+
+<TDDonut value={0.64}/>
+
+<TDDonut value={0.04}/>
+
+<TDDonut value={0.84} size={100}/>
+
+## Pie Component 
+
+**Value must be between 0 and 1 for defaults. But you can set the maximum and minimum values too.**
+
+<TDPie value={0.5} />
+<TDPie value={0.25} />
+<TDPie value={0.75} />
+<TDPie value={0.2} bear size={100} />
+
+```
+<TDPie value={0.5} />
+
+<TDPie value={0.25} />
+
+<TDPie value={0.75} />
+
+<TDPie value={0.2} bear size={100}/>
+```
+
+## Radial Component 
+
+**Value must be between 0 and 1 for defaults. But you can set the maximum and minimum values too.**
+
+<TDRadial value={0.4} />
+
+<TDRadial value={0.765} />
+
+<TDRadial value={0.1} />
+
+<TDRadial value={0.8} size={100} />
+
+```
+<TDRadial value={0.4} />
+
+<TDRadial value={0.765} />
+
+<TDRadial value={0.1} />
+
+<TDRadial value={0.8} size={100} />
 ```
