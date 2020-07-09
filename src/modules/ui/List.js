@@ -2,7 +2,8 @@
 import React from "react";
 import { Box, Flex, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
-import Link from "@modules/utility/Link";
+
+import { Link } from "@modules/navigation";
 
 const List = ({ children }) => {
   const _Children = React.Children.toArray(children);
@@ -150,8 +151,8 @@ const List = ({ children }) => {
     if (
       child.props &&
       (child.props.mdxType === "ul" ||
-      child.props.mdxType === "ol" ||
-      child.props.mdxType === "li")
+        child.props.mdxType === "ol" ||
+        child.props.mdxType === "li")
     ) {
       //Check if we've got a list container
       const ULChildren = React.Children.toArray(child.props.children);
