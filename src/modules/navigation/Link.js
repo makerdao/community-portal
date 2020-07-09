@@ -2,11 +2,11 @@
 import React from "react";
 
 import { Link as GatsbyLink } from "gatsby";
-import {useTranslation} from "@modules/localization";
+import { useTranslation } from "@modules/localization";
 import { jsx, Link as ThemeLink } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
+import { OutboundLink } from "gatsby-plugin-google-analytics";
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and
@@ -54,12 +54,15 @@ const Link = ({
         partiallyActive={
           partiallyActive || (linkHref !== `/${locale}/` ? true : null)
         }
-        onClick={e => {
-          const eventProps = Object.assign({
-            category: "Internal Link",
-            action: 'Click',
-            label: linkHref
-          }, gaProps);
+        onClick={(e) => {
+          const eventProps = Object.assign(
+            {
+              category: "Internal Link",
+              action: "Click",
+              label: linkHref,
+            },
+            gaProps
+          );
 
           trackCustomEvent(eventProps);
         }}
@@ -122,10 +125,10 @@ const Link = ({
     <ThemeLink
       href={!disabled ? linkHref : ""}
       as={OutboundLink}
-      eventCategory={gaProps ? gaProps['category'] : null}
-      eventAction={gaProps ? gaProps['action'] : null}
-      eventLabel={gaProps ? gaProps['label'] : null}
-      eventValue={gaProps ? gaProps['value'] : null}
+      eventCategory={gaProps ? gaProps["category"] : null}
+      eventAction={gaProps ? gaProps["action"] : null}
+      eventLabel={gaProps ? gaProps["label"] : null}
+      eventValue={gaProps ? gaProps["value"] : null}
       sx={{
         pointerEvents: disabled ? "none" : "initial",
         transition: "all .1s ease",

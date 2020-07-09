@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button as ThemedButton, jsx } from "theme-ui";
-import {Link} from "@modules/navigation";
+import { Link } from "@modules/navigation";
 
 const Button = ({
   to,
@@ -13,9 +13,11 @@ const Button = ({
   disabled,
   children,
   inline,
+  test,
   sx,
   ...otherProps
 }) => {
+  console.log(test);
   //NOTE(Rejon): This may seem outlandish, but we do this to ensure content creators write LESS code.
   //ie. We write this so they write
   //  <Button primary outline />
@@ -33,7 +35,6 @@ const Button = ({
       as={Link}
       variant={_variant}
       sx={{
-        ...sx,
         p: "24px",
         pt: "8px",
         pb: "8px",
@@ -57,6 +58,7 @@ const Button = ({
           position: "relative",
           "&:hover": { color: "onPrimary", transition: "all .15s ease" },
         },
+        ...sx,
       }}
       {...otherProps}
     >
