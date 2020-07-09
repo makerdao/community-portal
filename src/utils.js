@@ -119,3 +119,10 @@ export const titleCase = (str) => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 };
+
+// helper-function to insert comma as separators every 3 digits
+export const formatNumber = (num) => {
+  return Math.round(num)
+    .toString()
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+};
