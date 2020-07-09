@@ -1,5 +1,7 @@
 {
   "UI": {
+    "Bug_Report": "Report a Bug",
+    "Go_Back": "Go back",
     "Language": "English",
     "Flag": "🇺🇸",
     "Search": "Search the portal (Press \"/\" to focus)",

@@ -5,19 +5,21 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
+import Button from "@modules/ui/Button";
+import Link from "@modules/navigation/Link";
+
 import {useTranslation} from "@modules/localization";
 import Shortcodes from "@modules/ui/shortcodes";
 
 const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
 
 const NotFoundPage = () => {
-  const { locale } = useTranslation();
+  const { locale, t } = useTranslation();
   //NOTE(Rejon): I could do a gatsby-node and programmatically create these pages.
   //             But there's a chance that a missing 404 in the content folder will break the app.
   //             I'll take the L.
   const { allMdx: nodes } = useStaticQuery(graphql`
-    query Get404Pages {
-      allMdx(
+    query Get404Pages { allMdx(
         filter: { fileAbsolutePath: { regex: "//([\\\\w]{2})/404.mdx$/" } }
       ) {
         nodes {
@@ -58,6 +60,8 @@ const NotFoundPage = () => {
         <SEO title={_title} />
         <MDXProvider components={Shortcodes}>
           <MDXRenderer>{page.body}</MDXRenderer>
+          <Button to={"https://github.com/makerdao/community-portal/issues"}>{t("Bug_Report")}</Button>
+          <Link>{t("Go_Back")}</Link>
         </MDXProvider>
       </>
     );
