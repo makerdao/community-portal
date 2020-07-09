@@ -35,7 +35,6 @@ const Button = ({
       as={Link}
       variant={_variant}
       sx={{
-        ...sx,
         p: "24px",
         pt: "8px",
         pb: "8px",
@@ -59,6 +58,7 @@ const Button = ({
           position: "relative",
           "&:hover": { color: "onPrimary", transition: "all .15s ease" },
         },
+        ...sx,
       }}
       {...otherProps}
     >
