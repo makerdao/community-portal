@@ -23,7 +23,7 @@ import {
 
 import { Link } from "@modules/navigation/";
 
-import { Aligner, Video } from "@modules/utility/";
+import { Aligner, Video, Authors } from "@modules/utility/";
 
 import {
   TDRegion,
@@ -88,6 +88,7 @@ const Custom_Components = {
   TDDonut,
   TDPie,
   TDRadial,
+  Authors,
 };
 
 export default {

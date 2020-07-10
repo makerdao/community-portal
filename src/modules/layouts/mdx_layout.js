@@ -4,14 +4,15 @@ import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-import { SEO } from "@modules/utility";
+import { SEO, Authors } from "@modules/utility";
 import { LanguageSelector } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
+//TODO(Rejon): Add end of article Author Component and support for "authors"
+
 export default (props) => {
   const { children, pageContext, uri } = props;
-
   const {
     title,
     description,
@@ -20,6 +21,7 @@ export default (props) => {
     status,
     hideLanguageSelector,
     hideSidenav,
+    authors
   } = pageContext.frontmatter;
 
   const statusProps =

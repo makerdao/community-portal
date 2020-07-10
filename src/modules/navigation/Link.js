@@ -82,6 +82,7 @@ const Link = ({
           },
           "&:hover": {
             color: !linkHref ? "bear" : "primary",
+            textDecoration: 'underline'
           },
           "&:hover > svg": {
             color: !linkHref ? "bear" : "primary",
@@ -144,6 +145,7 @@ const Link = ({
         },
         "&:hover": {
           color: !linkHref ? "bear" : "primary",
+          textDecoration: 'underline'
         },
         "&:hover > svg": {
           color: !linkHref ? "bear" : "primary",
