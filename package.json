@@ -6,7 +6,7 @@
   "author": "Réjon Taylor-Foster (@Maximum_Crash)",
   "dependencies": {
     "@makerdao/dai-ui-icons": "^0.0.47",
-    "@makerdao/dai-ui-icons-branding": "^0.0.56",
+    "@makerdao/dai-ui-icons-branding": "^0.0.57",
     "@makerdao/dai-ui-theme-maker": "^0.0.38",
     "@mdx-js/mdx": "^1.6.5",
     "@mdx-js/react": "^1.6.5",
