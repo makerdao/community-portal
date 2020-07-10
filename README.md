@@ -1,4 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
@@ -107,3 +110,22 @@ Dai-UI - MakerDAO's Dai-UI Team
 This Starter - <a href="https://github.com/MaximumCrash" target="_blank">@Maximum_Crash</a> and <a href="https://github.com/andytudhope" target="_blank">@andytudhope</a>
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://rejontaylor.com"><img src="https://avatars1.githubusercontent.com/u/9157341?v=4" width="100px;" alt=""/><br /><sub><b>Réjon Taylor-Foster</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=MaximumCrash" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
