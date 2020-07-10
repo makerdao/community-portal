@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 
 import { useLocation } from "@reach/router";
-import { usePage } from "@modules/layouts/PageContext";
-import calculateTreeData from "@modules/navigation/calculateTreeData";
 
+import calculateTreeData from "@modules/navigation/calculateTreeData";
+import { useTranslation } from "@modules/localization";
 import Sidenav_Node from "@modules/navigation/Sidenav_Node";
 
 const Tree = ({ edges, locale }) => {
   const { pathname } = useLocation();
-  const { DEFAULT_LOCALE } = usePage();
+  const { DEFAULT_LOCALE } = useTranslation();
   const path = pathname.split("/");
 
   const currentTopSection = path[2];
-  const [treeData, updateTreeData] = useState(() => {
+  const [treeData] = useState(() => {
     const { items } = calculateTreeData(
       edges,
       currentTopSection,
       DEFAULT_LOCALE,
       locale
     );
+
     return { items: items[0] ? items[0].items : [], locale };
   });
 

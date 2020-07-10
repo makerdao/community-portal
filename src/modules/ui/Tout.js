@@ -5,7 +5,7 @@ import { Box, Flex, Grid, jsx } from "theme-ui";
 import { HexLuminanceCheck, colorToHex } from "@utils";
 import defaultImage from "@content/images/section2.png";
 import altImage from "@content/images/section1.png";
-import useTranslation from "@modules/utility/useTranslation";
+import { useTranslation } from "@modules/localization";
 
 const Tout = ({ children, alt, stroke, fade, color, image }) => {
   const { t } = useTranslation("Touts");

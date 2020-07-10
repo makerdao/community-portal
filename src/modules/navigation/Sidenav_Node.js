@@ -1,13 +1,18 @@
 /** @jsx jsx */
 import React from "react";
-import Link from "@modules/utility/Link";
+import { Link } from "@modules/navigation";
 import { useLocation } from "@reach/router";
 import { jsx } from "theme-ui";
+import { Icon } from "@makerdao/dai-ui-icons";
 
 const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
   const { pathname } = useLocation();
 
   const hasChildren = items.length !== 0;
+
+  if (!url && hasChildren) {
+    url = items[0].url;
+  }
 
   //NOTE(Rejon): Regex check for subdirectory recursion.
   const urlRegex = new RegExp(`/${otherProps.slugPart}/`);
@@ -21,6 +26,8 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
         color: active ? "primary" : "headline",
         fontWeight: active ? "bold" : "body",
         mb: "32px",
+        position: "relative",
+        pr: 3,
       }}
     >
       {title && (
@@ -31,9 +38,29 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
           sx={{
             color: active ? "primary" : "body",
             fontWeight,
+            "&:hover > svg": {
+              transform: active
+                ? "translate(0, -50%) rotate(0deg)"
+                : "translate(0, -50%) rotate(90deg)",
+              transition: "all .164s ease",
+            },
           }}
         >
           {title}
+
+          {hasChildren && (
+            <Icon
+              name={active ? "chevron_down" : "chevron_right"}
+              sx={{
+                position: "absolute",
+                right: 0,
+                top: !active ? "50%" : ".8em",
+                transform: "translate(0, -50%) rotate(0deg)",
+                transformOrigin: "center",
+                transition: "all .164s ease",
+              }}
+            />
+          )}
         </Link>
       )}
 
@@ -44,7 +71,6 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
             mt: "24px",
             ml: "16px",
             pl: 0,
-            maxWidth: "140px",
             listStyleType: "none",
           }}
         >

@@ -1,4 +1,8 @@
-import { usePage } from "@modules/layouts/PageContext";
+import { useContext } from "react";
+import { useLocation } from "@reach/router";
+
+import { TranslationContext } from "./context";
+import { DEFAULT_LOCALE } from "./index";
 
 //NOTE(Rejon): This is a react hook I pulled inspiration from: https://w11i.me/how-to-build-multilingual-website-in-next-js
 // 			   I've expanded to add some features like plurals, secondary level spaces (dubbed langspace), variables, and secondary locales.
@@ -9,13 +13,15 @@ import { usePage } from "@modules/layouts/PageContext";
 // without ILS: useTranslation() -> t('error_code', 'errors')
 // with ILS: useTranslation('errors') -> t('error_code')
 export default function useTranslation(initialLangSpace) {
-  const {
-    locale,
-    localeStrings,
-    allLocales,
-    DEFAULT_LOCALE,
-    DEFAULT_LOCALE_STRINGS,
-  } = usePage();
+  const { allLocales, localeStrings } = useContext(TranslationContext);
+
+  //NOTE(Rejon): We trust the path for locale. If it doesn't exist fallback to DEFAULT LOCALE
+  const { pathname } = useLocation();
+  const localeFromPath = pathname.replace(/\/+$/, "").split("/")[1];
+  const locale =
+    localeFromPath && allLocales.includes(localeFromPath)
+      ? localeFromPath
+      : DEFAULT_LOCALE;
 
   //key[String] - Key name of the text from the locale you want. Best practice is write it like you would english, replace all spaces with '_'
   //lang_space[String] - Language space keyname to access for your keys. ie. {'lang_space': {'key': 'Localized Text'}}
@@ -122,9 +128,7 @@ export default function useTranslation(initialLangSpace) {
     //Add plural key if necessary.
     key += pluralString;
 
-    let finalString = key
-      ? localeStrings[locale][key] || DEFAULT_LOCALE_STRINGS[key] || ""
-      : "";
+    let finalString = key ? localeStrings[locale][key] || "" : "";
 
     if (
       lang_space !== null &&
@@ -135,8 +139,6 @@ export default function useTranslation(initialLangSpace) {
       finalString = key
         ? localeStrings[locale][lang_space][key] ||
           localeStrings[locale][key] ||
-          DEFAULT_LOCALE_STRINGS[lang_space][key] ||
-          DEFAULT_LOCALE_STRINGS[key] ||
           ""
         : "";
     }
@@ -152,19 +154,15 @@ export default function useTranslation(initialLangSpace) {
         localeStrings[otherLocale][lang_space] !== undefined
       ) {
         finalString = key
-          ? localeStrings[otherLocale][lang_space][key] ||
-            DEFAULT_LOCALE_STRINGS[lang_space][key] ||
-            ""
+          ? localeStrings[otherLocale][lang_space][key] || ""
           : "";
       } else {
-        finalString = key
-          ? localeStrings[otherLocale][key] || DEFAULT_LOCALE_STRINGS[key] || ""
-          : "";
+        finalString = key ? localeStrings[otherLocale][key] || "" : "";
       }
     }
 
     //Variable Replacement
-    if (variables && typeof variables == "object") {
+    if (variables && typeof variables === "object") {
       Object.keys(variables).forEach((key) => {
         let variableToReplace = `{{${key}}}`;
 

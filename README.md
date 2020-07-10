@@ -26,8 +26,8 @@ _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-
     ```
 
 2.  **Install**
- _dai-ui-theme-maker and dai-ui-icons are pre-installed._
-  *This project makes use of `yarn`. You'll likely need to use npm to get everything setup once cloned.*
+    _dai-ui-theme-maker and dai-ui-icons are pre-installed._
+    _This project makes use of `yarn`. You'll likely need to use npm to get everything setup once cloned._
 
     ```shell
     # This project makes use of yarn.

@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx, Box, Grid } from "theme-ui";
-import { Icon } from "@makerdao/dai-ui-icons";
+import { jsx, Grid } from "theme-ui";
 
 const Chocolate = ({
   children,
@@ -12,7 +11,7 @@ const Chocolate = ({
   <Grid
     gap={gapSize}
     columns={`minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr) minmax(${minBoxSize}, 1fr)`}
-    sx={{ "& > * > svg:first-child": { width: iconSize, height: iconSize } }}
+    sx={{ "& > * > svg:first-of-type": { width: iconSize, height: iconSize } }}
   >
     {children}
   </Grid>

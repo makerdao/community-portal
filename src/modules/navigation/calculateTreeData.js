@@ -1,3 +1,5 @@
+import { titleCase } from "@utils";
+
 //This is an algorithm that does a number of things:
 // - Takes mdx edge data and constructs usable sidenav objects.
 // - Creates sidenav objects for default language (en), and our current locale.
@@ -60,6 +62,8 @@ export default (
       ? makeSidenavObjects(edges, currentLocale)
       : [];
 
+  const editableLocaleFiles = [...currentLocaleFiles];
+
   //Overlap merge our defaultLocaleFiles with our currentLocaleFiles
   const mergedLocaleFiles =
     currentLocaleFiles.length <= 0
@@ -73,7 +77,7 @@ export default (
               //We found the localized file in our default locale files.
               //Remove it from our current locale files it'll be merged in.
               if (fileMatch) {
-                currentLocaleFiles.splice(index, 1);
+                editableLocaleFiles.splice(index, 1);
               }
 
               //Return the localized file.
@@ -88,7 +92,7 @@ export default (
             //No localized file found, keep current defaultLocale file.
             return file;
           })
-          .concat(currentLocaleFiles); //Concat the rest of the locale files AFTER it's been spliced.
+          .concat(editableLocaleFiles); //Concat the rest of the locale files AFTER it's been spliced.
 
   //Reduce all of our mergedLocaleFiles into a object structure that closely resembles our final sidenav.
   return mergedLocaleFiles.reduce(
@@ -108,7 +112,11 @@ export default (
             tmp.items = [];
           }
         } else {
-          tmp = { slugPart: part, items: [] };
+          tmp = {
+            slugPart: part,
+            title: titleCase(part.replace(/-|_|\./g, " ")),
+            items: [],
+          };
           prevItems.push(tmp);
         }
 

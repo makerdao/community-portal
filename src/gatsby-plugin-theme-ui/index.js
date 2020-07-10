@@ -28,6 +28,18 @@ export default {
     codeText: "#FFFFFF",
     headline: "#291A42",
     accordionBG: "#fcfcfc",
+    transDash_bodyColor: "#333",
+    transDash_headlineColor: "#291A42",
+    transDash_makerOrange: "#F5B13D",
+    transDash_pieBG: "hsl(152, 45%, 94%)",
+    transDash_radialOrangeBG: "rgba(245, 177, 61, 0.3)",
+    transDash_radialTealBG: "rgba(28, 172, 156, 0.6)",
+    transDash_regionBG:
+      "linear-gradient(rgb(248, 237, 216), rgb(244, 227, 194))",
+  },
+  fonts: {
+    ...maker.fonts,
+    transparencyDashboard: 'system-ui,"Helvetica Neue",sans-serif',
   },
   styles: {
     ...maker.styles,
@@ -127,7 +139,6 @@ export default {
         pointerEvents: "none",
         cursor: "not-allowed",
         borderColor: "#a9a3b3",
-        bg: "#a9a3b3",
         opacity: 0.5,
       },
     },

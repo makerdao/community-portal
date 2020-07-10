@@ -6,17 +6,17 @@ import { useLocation, useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";
 
 import { UrlConverter } from "@utils";
-import Link from "@modules/utility/Link";
-import { usePage } from "@modules/layouts/PageContext";
-import useTranslation from "@modules/utility/useTranslation";
+import { Link } from "@modules/navigation";
+import { useTranslation } from "@modules/localization";
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 const LanguageSelector = () => {
-  const { theme, colorMode } = useThemeUI();
+  const { theme } = useThemeUI();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { setLocale } = usePage();
   const { locale, t, allLocales } = useTranslation();
-  const pathStripRGX = new RegExp(`^/|/$|${locale}/`, "g");
+  const pathStripRGX = new RegExp(`/${locale}/|/$`, "g");
+
   let pathnameStripped = pathname.replace(pathStripRGX, "");
 
   const { languagePages } = useStaticQuery(graphql`
@@ -24,7 +24,7 @@ const LanguageSelector = () => {
       languagePages: allMdx(
         filter: {
           fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|404.mdx)/"
+            regex: "//([\\\\w]{2})/(?!header.mdx|footer.mdx|example.mdx|index.mdx|404.mdx)/"
           }
         }
       ) {
@@ -36,16 +36,26 @@ const LanguageSelector = () => {
       }
     }
   `);
+
+  //Check against our current path with an optional trailing slash (for index pages)
   const pageLocaleRegex = new RegExp(
-    `(/([\\w]{2})/${pathnameStripped})/([^/]+)$`,
+    `(/([\\w]{2})/${pathnameStripped})((/w+)+|/?)$`,
     "gm"
   );
+
   const existingLanguages = languagePages.edges
-    .filter(
-      ({ node }) =>
-        pageLocaleRegex.test(node.fileAbsolutePath) &&
+    .filter(({ node }) => {
+      //Clean up the file path to drop file names and endings.
+      //NOTE(Rejon): Our Regex fails if this doesn't pass!
+      const pathWithoutFile = node.fileAbsolutePath
+        .replace(/(.mdx|index.mdx|.md)$/gm, "")
+        .replace(/\/$/, "");
+
+      return (
+        pageLocaleRegex.test(pathWithoutFile) &&
         !node.fileAbsolutePath.includes(`/${locale}/`)
-    )
+      );
+    })
     .map(({ node }) => {
       const value = UrlConverter(node);
       const _locale = node.fileAbsolutePath
@@ -63,7 +73,21 @@ const LanguageSelector = () => {
       };
     });
 
-  const onChange = ({ value }) => {
+  const onChange = ({ value, label }) => {
+    //Update local storage on switch
+    if (typeof window !== "undefined") {
+      localStorage.setItem("locale", value.split("/")[1]);
+    }
+
+    //Google Analytics Tracking
+    trackCustomEvent({
+      category: "Language Selector",
+      action: `Switch Page to ${label}`,
+      label: `From Page: ${pathname} (${locale}) |  To Page: ${value} (${
+        value.split("/")[1]
+      })`,
+    });
+
     navigate(value);
   };
 
