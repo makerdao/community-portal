@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { useLocation } from "@reach/router";
-import { useStaticQuery, graphql } from "gatsby";
+
+import { TranslationContext } from "./context";
+import { DEFAULT_LOCALE } from "./index";
 
 //NOTE(Rejon): This is a react hook I pulled inspiration from: https://w11i.me/how-to-build-multilingual-website-in-next-js
 // 			   I've expanded to add some features like plurals, secondary level spaces (dubbed langspace), variables, and secondary locales.
@@ -10,36 +13,7 @@ import { useStaticQuery, graphql } from "gatsby";
 // without ILS: useTranslation() -> t('error_code', 'errors')
 // with ILS: useTranslation('errors') -> t('error_code')
 export default function useTranslation(initialLangSpace) {
-  const {allDirectory} = useStaticQuery(graphql`
-    query getDefaultLocale {
-      allDirectory(
-        filter: { absolutePath: { regex: "//content/([\\\\w{2}])[^/]$/" } }
-      ) {
-        nodes {
-          absolutePath
-        }
-      }
-    }
-  `)
-
-  const DEFAULT_LOCALE = "en"; //<- Set your default locale for the application. Make sure it matches the locale folder.
-
-  const localeStrings = {};
-
-  //TODO(Rejon): This will cause problems at a larger scale. Consider better state consistency for json loading. 
-  const allLocales = allDirectory.nodes.map((n) =>
-    {
-      const loc = n.absolutePath.split("/").pop(); 
-
-      const uiData = require(`@content/${loc}/UI.json`);
-      
-      if (uiData) {
-        localeStrings[loc] = {...uiData.UI};
-      }
-
-      return loc; 
-    }
-  );
+  const { allLocales, localeStrings } = useContext(TranslationContext);
 
   //NOTE(Rejon): We trust the path for locale. If it doesn't exist fallback to DEFAULT LOCALE
   const { pathname } = useLocation();
@@ -49,17 +23,6 @@ export default function useTranslation(initialLangSpace) {
       ? localeFromPath
       : DEFAULT_LOCALE;
 
-  
-  allLocales.map((_loc) => {
-    const uiData = require(`@content/${_loc}/UI.json`);
-
-    if (uiData) {
-      const returnObj = {};
-      returnObj[_loc] = {...uiData.UI};
-      return returnObj;
-    }
-  }).filter((n) => n !== undefined && n !== null);
-  
   //key[String] - Key name of the text from the locale you want. Best practice is write it like you would english, replace all spaces with '_'
   //lang_space[String] - Language space keyname to access for your keys. ie. {'lang_space': {'key': 'Localized Text'}}
   //variables[Object] - Object of variables to insert into the string. Replaces {{value}} with variable value. ie. {value: 123} -> '123'
@@ -96,7 +59,7 @@ export default function useTranslation(initialLangSpace) {
       ) {
         lang_space = null;
       }
-    } else if (!localeStrings[locale] && !otherLocale) {
+    } else if (!localeStrings[locale][key] && !otherLocale) {
       //Check for common base key in locale. For example: en:{settings:"string"}
       console.warn(`Translation of '${key}' for locale '${locale}' not found.`);
       return key;
@@ -165,9 +128,7 @@ export default function useTranslation(initialLangSpace) {
     //Add plural key if necessary.
     key += pluralString;
 
-    let finalString = key
-      ? localeStrings[locale][key] || ""
-      : "";
+    let finalString = key ? localeStrings[locale][key] || "" : "";
 
     if (
       lang_space !== null &&
@@ -193,18 +154,15 @@ export default function useTranslation(initialLangSpace) {
         localeStrings[otherLocale][lang_space] !== undefined
       ) {
         finalString = key
-          ? localeStrings[otherLocale][lang_space][key] ||
-            ""
+          ? localeStrings[otherLocale][lang_space][key] || ""
           : "";
       } else {
-        finalString = key
-          ? localeStrings[otherLocale][key] || ""
-          : "";
+        finalString = key ? localeStrings[otherLocale][key] || "" : "";
       }
     }
 
     //Variable Replacement
-    if (variables && typeof variables == "object") {
+    if (variables && typeof variables === "object") {
       Object.keys(variables).forEach((key) => {
         let variableToReplace = `{{${key}}}`;
 

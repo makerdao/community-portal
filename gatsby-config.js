@@ -29,13 +29,6 @@ module.exports = {
         path: `${__dirname}/content/images`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `imgs`,
-        path: `./src/imgs`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
@@ -48,7 +41,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve("./src/modules/layouts/default_layout.js"),
+          default: require.resolve("./src/modules/layouts/mdx_layout.js"),
         },
         gatsbyRemarkPlugins: [
           {
@@ -123,7 +116,7 @@ module.exports = {
             `**/**.json`,
             `**/404.mdx`,
             `**/example.mdx`,
-            `**/footer.mdx`
+            `**/footer.mdx`,
           ],
           options: { nocase: true },
         },
@@ -247,5 +240,7 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
+    `gatsby-plugin-catch-links`,
   ],
 };

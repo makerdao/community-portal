@@ -4,8 +4,8 @@ import { jsx, Text, Box } from "theme-ui";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
-import useTranslation from "@modules/utility/useTranslation";
-import Link from "@modules/utility/Link";
+import { useTranslation } from "@modules/localization/";
+import { Link } from "@modules/navigation";
 import { titleCase } from "@utils";
 
 const Breadcrumbs = ({ children }) => {

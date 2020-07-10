@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Input, Flex, jsx } from "theme-ui";
 
-import useTranslation from "@modules/utility/useTranslation";
+import { useTranslation } from "@modules/localization";
 
 const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
   const { t } = useTranslation();
@@ -31,28 +31,30 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
     if (onSubmit) {
       onSubmit(e.currentTarget.value);
     }
-  }
+  };
 
   const onKeyDown = (e) => {
-    
-    if (typeof window !== undefined) 
-    {
-      if (e.key === "/" && searchRef.current && document.activeElement !== searchRef.current) {
+    if (typeof window !== undefined) {
+      if (
+        e.key === "/" &&
+        searchRef.current &&
+        document.activeElement !== searchRef.current
+      ) {
         e.preventDefault();
         searchRef.current.focus();
       }
     }
-  }
+  };
 
   useEffect(() => {
     if (typeof window !== undefined) {
-      document.addEventListener('keydown', onKeyDown)
+      document.addEventListener("keydown", onKeyDown);
 
-      return (() => {
-        document.removeEventListener('keydown', onKeyDown )
-      })
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+      };
     }
-  }, [])
+  }, []);
 
   return (
     <Flex
@@ -88,8 +90,8 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
             color: "body",
           },
           "::-webkit-search-cancel-button": {
-              WebkitAppearance: "none",
-            },
+            WebkitAppearance: "none",
+          },
         }}
         {...rest}
       />
