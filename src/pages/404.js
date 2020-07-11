@@ -1,6 +1,7 @@
 import React from "react";
 
 import {SEO} from "@modules/utility";
+import { Box, Flex, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -51,27 +52,29 @@ const NotFoundPage = () => {
     page !== undefined && page !== null
       ? page.frontmatter.title ||
         (page.headings.length > 0 ? page.headings[0].value : null) ||
-        "404: Page Not Found"
-      : "404: Page Not Found";
+        "404"
+      : "404";
 
   if (page) {
     return (
       <>
         <SEO title={_title} />
+      <Flex sx={{ flexGrow: 1, flexDirection: "column", p: "10%", width: "100%" }}>
         <MDXProvider components={Shortcodes}>
-          <MDXRenderer>{page.body}</MDXRenderer>
-          <Button to={"https://github.com/makerdao/community-portal/issues"}>{t("Bug_Report")}</Button>
-          <Link>{t("Go_Back")}</Link>
+          <Box>
+            <MDXRenderer>{page.body}</MDXRenderer>
+            <Button>heieiie</Button>
+            <Button to={"https://github.com/makerdao/community-portal/issues"} sx={{display: "inline-block", margin: "0px"}}>{t("Bug_Report")}</Button> <Link sx={{display: "inline-block"}}>{t("Go_Back")}</Link>
+          </Box>  
         </MDXProvider>
+      </Flex>
       </>
     );
   }
 
   return (
     <>
-      <SEO title="404: Not found" />
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <SEO title="404" />
     </>
   );
 };
