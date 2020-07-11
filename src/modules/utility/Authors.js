@@ -5,6 +5,7 @@ import { Icon } from "@makerdao/dai-ui-icons";
 
 import {Link} from '@modules/navigation'
 import allContributors from '@content/all-contributors.json'
+import githubDark from "@images/githubDark.svg";
 
 const repoUrl  = `${allContributors.repoHost}/${allContributors.projectOwner}/${allContributors.projectName}`
 
@@ -115,7 +116,31 @@ const AuthorGrid = ({login, name, avatar_url, profile, contributions, hideContri
 	</Box>
 )
 
-const AuthorList = ({login, name, avatar_url, profile, contributions, hideContributions}) => {
+const AuthorList = ({login, name, avatar_url, profile, contributions, hideContributions, description}) => {
+const getLinkIcon = (url) => {
+	if (url.includes("github")) {
+		return (
+			<Link hideExternalIcon to={url}>
+				<Image src={githubDark} sx={{width: '23px'}}/>
+			</Link>
+		)
+	}
+	else if (url.includes("twitter")) {
+		return (
+			<Link hideExternalIcon to={url}>
+				<Icon name="twitter" size={"23px"}/>
+			</Link>
+		)
+	}
+	else {
+		return (
+			<Link hideExternalIcon to={url}>
+				<Icon name="open_in_new_tab" size={"23px"}/>
+			</Link>
+		)
+	}
+}
+
  return (<Flex>
 		<Box sx={{minWidth: '75px', flex: 'auto'}}>
 		{avatar_url && avatar_url !== '' ?
@@ -142,20 +167,26 @@ const AuthorList = ({login, name, avatar_url, profile, contributions, hideContri
 		}
 		</Box>
 
-		<Box sx={{marginLeft: '1rem'}}>
+		<Box sx={{marginLeft: '1rem', marginTop: '10px'}}>
 			<Text sx={{fontWeight: 'bold', fontSize: '1.32rem'}}>
 				{name || ''}
-				<Box as="ul">
-					{/* Clickable Link Icons go Here */}
+				<Box as="ul" sx={{display: 'inline-block', marginLeft: '.5rem', p: 0, verticalAlign: 'middle'}}>
+					{Array.isArray(profile) ?
+						<>
+						{/* NOTE(Rejon): I'm not fleshing this out on purpose. This doesn't need a robust solution. */}
+						{profile.map((url) => getLinkIcon(url))}
+						</>
+					:
+						getLinkIcon(profile)
+					}
 				</Box>
 			</Text>
 			<Text sx={{fontSize: '15px'}}>
-				@MaximumCrash
-				{/* @Username goes here */}
+				{`@${login}`}
 			</Text>
 			<Text sx={{marginTop: '5px'}}>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pharetra quam augue. Nulla facilisi. Ut sed volutpat nisl. Cras eget nunc sed erat malesuada faucibus. Donec non vehicula elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed blandit imperdiet maximus. In hac habitasse platea dictumst. Sed id luctus justo. Morbi in tortor et quam lacinia finibus ac in quam. Suspendisse mollis efficitur dui eu laoreet.
-				{/* Description Goes here */}
+				{description}
 			</Text>
 		</Box>
  </Flex>)
