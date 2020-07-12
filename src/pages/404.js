@@ -9,7 +9,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import Button from "@modules/ui/Button";
 import Link from "@modules/navigation/Link";
 
-import {useTranslation} from "@modules/localization";
+import { useTranslation } from "@modules/localization";
 import Shortcodes from "@modules/ui/shortcodes";
 
 const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
@@ -38,10 +38,7 @@ const NotFoundPage = () => {
   `);
 
   if (!browser) {
-    return (
-      <>
-      </>
-    )
+    return <></>;
   }
 
   const page = nodes.nodes.find(

@@ -1,34 +1,37 @@
 import React from "react";
 
 import { Icon } from "@makerdao/dai-ui-icons";
-import { Image, Text, Divider, Box } from "theme-ui";
+import { Image, Text, Divider, Box, Flex } from "theme-ui";
 
 import {
-	Accordion,
-	Button, 
-	Categories, 
-	Callout, 
-	Chocolate, 
-	Checklist, 
-	Code, 
-	Column, 
-	CTA, 
-	StatusBanner, 
-	InfoBlock, 
-	List,
-	Process, 
-	Tout, 
-} from '@modules/ui/';
+  Accordion,
+  Button,
+  Categories,
+  Callout,
+  Chocolate,
+  Checklist,
+  Code,
+  Column,
+  CTA,
+  StatusBanner,
+  InfoBlock,
+  List,
+  Process,
+  Table,
+  Tout,
+} from "@modules/ui/";
+
+import { Link } from "@modules/navigation/";
+
+import { Aligner, Video } from "@modules/utility/";
 
 import {
-  Link
-} from '@modules/navigation/';
-
-import {
-  Aligner, 
-  Video
-} from '@modules/utility/';
-
+  TDRegion,
+  TDStat,
+  TDDonut,
+  TDPie,
+  TDRadial,
+} from "@modules/transparency_dash";
 
 //Markdown Component overrides
 //Replace MDX html defaults with our custom implementation.
@@ -42,6 +45,7 @@ const MD_Overrides = {
   h3: (props) => <Text variant="h3" as="h3" sx={{ mb: "16px" }} {...props} />,
   h4: (props) => <Text variant="h4" as="h4" {...props} />,
   h5: (props) => <Text variant="h5" as="h5" {...props} />,
+  table: (props) => <Table {...props} />,
   thematicBreak: (props) => <Divider />,
   p: (props) => (
     <Text
@@ -51,19 +55,20 @@ const MD_Overrides = {
   ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
   blockquote: CTA,
   inlineCode: Code,
-}
+};
 
-//Custom component fragments to be used in MDX. 
+//Custom component fragments to be used in MDX.
 //If you want to use a component, but want it's MDX fragment name to be different
 //provide a key: Component (ie: {Carousel: CarouselComponent})
 const Custom_Components = {
-  Code, 
+  Code,
   Text,
   Button,
   Callout,
   StatusBanner,
   Link,
   Box,
+  Flex,
   Icon,
   CTA,
   Process,
@@ -78,9 +83,14 @@ const Custom_Components = {
   Tout,
   Column,
   Video,
-}
+  TDRegion,
+  TDStat,
+  TDDonut,
+  TDPie,
+  TDRadial,
+};
 
 export default {
-  ...MD_Overrides, 
-  ...Custom_Components
+  ...MD_Overrides,
+  ...Custom_Components,
 };

@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
 import { Flex, jsx } from "theme-ui";
 
-import {Header, Footer} from "@modules/navigation";
-import {shortcodes} from "@modules/ui";
-import {TranslationProvider} from '@modules/localization'
+import { Header, Footer } from "@modules/navigation";
+import { shortcodes } from "@modules/ui";
+import { TranslationProvider } from "@modules/localization";
 
 import "./prismjs.css"; //<- Load in Prismjs css. Our custom styles have to be loaded this way cause Prismjs is blackboxed from our own code.
 

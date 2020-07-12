@@ -1,11 +1,10 @@
-import React, {createContext} from 'react';
+import React, { createContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 export const TranslationContext = createContext();
 
-
-const TranslationProvider = ({children}) => {
-	const {allDirectory} = useStaticQuery(graphql`
+const TranslationProvider = ({ children }) => {
+  const { allDirectory } = useStaticQuery(graphql`
     query getDefaultLocale {
       allDirectory(
         filter: { absolutePath: { regex: "//content/([\\\\w{2}])[^/]$/" } }
@@ -15,34 +14,33 @@ const TranslationProvider = ({children}) => {
         }
       }
     }
-  `)
+  `);
 
   const localeStrings = {};
 
-  const allLocales = allDirectory.nodes.map((n) =>
-    {
-      const loc = n.absolutePath.split("/").pop(); 
+  const allLocales = allDirectory.nodes.map((n) => {
+    const loc = n.absolutePath.split("/").pop();
 
-      const uiData = require(`@content/${loc}/UI.json`);
-      
-      if (uiData) {
-        localeStrings[loc] = {...uiData.UI};
-      }
+    const uiData = require(`@content/${loc}/UI.json`);
 
-      return loc; 
+    if (uiData) {
+      localeStrings[loc] = { ...uiData };
     }
+
+    return loc;
+  });
+
+  return (
+    <TranslationContext.Provider
+      value={{
+        allLocales,
+        localeStrings,
+      }}
+    >
+      {children}
+    </TranslationContext.Provider>
   );
-
-	return (
-		<TranslationContext.Provider value={{
-			allLocales, 
-			localeStrings,
-		}}>
-			{children}
-		</TranslationContext.Provider>
-	)
-
-}
+};
 
 export default TranslationContext;
-export {TranslationProvider}
+export { TranslationProvider };
