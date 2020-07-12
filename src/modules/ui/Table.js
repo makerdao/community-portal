@@ -2,9 +2,7 @@
 import React from "react";
 import { jsx } from "theme-ui";
 
-const Table = ({
-  children,
-}) => (
+const Table = ({ children }) => (
   <table
     sx={{
       borderCollapse: "collapse",

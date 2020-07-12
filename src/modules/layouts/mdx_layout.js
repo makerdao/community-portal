@@ -21,7 +21,7 @@ export default (props) => {
     status,
     hideLanguageSelector,
     hideSidenav,
-    authors
+    authors,
   } = pageContext.frontmatter;
 
   const statusProps =
