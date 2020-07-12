@@ -64,7 +64,7 @@ const AuthorRenderer = ({
       contributionFilters.length <= 0
         ? contributors
         : contributors.filter(({ contributions }) =>
-            contributions.some((c) => contributionFilters.includes(c))
+            contributions.all((c) => contributionFilters.includes(c))
           );
 
     //Return either a list element or grid cell
