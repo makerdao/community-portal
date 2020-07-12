@@ -15,17 +15,6 @@
         "design",
         "example"
       ]
-    },
-    {
-      "login": "SomeOtherGuy",
-      "name": "Retsof Rolyat-Nojer",
-      "avatar_url": "https://scontent-bos3-1.xx.fbcdn.net/v/t1.0-9/13592161_10205005605098722_7051952060200002750_n.jpg?_nc_cat=101&_nc_sid=7aed08&_nc_ohc=1sr1elcsRYMAX9djdmI&_nc_ht=scontent-bos3-1.xx&oh=9ffac7caf02ef4fb2d10ec9a1dd4343d&oe=5F2F814C",
-      "profile": "https://rejontaylor.com",
-      "contributions": [
-        "infra",
-        "plugin",
-        "tool"
-      ]
     }
   ],
   "contributorsPerLine": 7,
