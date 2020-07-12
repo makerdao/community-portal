@@ -15,6 +15,15 @@
         "design",
         "example"
       ]
+    },
+    {
+      "login": "isaacpearl",
+      "name": "isaacpearl",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/21342523?v=4",
+      "profile": "https://www.isaacpearl.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
