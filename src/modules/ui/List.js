@@ -80,18 +80,20 @@ const List = ({ children }) => {
             }}
           >
             {linkProps.children}
-            <Box sx={{
-              color: "body",
-              "& > *": {
-                width: "100%",
-              },
-              "& > ul": {
-                m: 0,
-                p: 0,
-                listStyleType: "none",
-                width: "100%",
-              },
-            }}>
+            <Box
+              sx={{
+                color: "body",
+                "& > *": {
+                  width: "100%",
+                },
+                "& > ul": {
+                  m: 0,
+                  p: 0,
+                  listStyleType: "none",
+                  width: "100%",
+                },
+              }}
+            >
               {_children.map((child) => child)}
             </Box>
           </Flex>
