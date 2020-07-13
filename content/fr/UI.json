@@ -14,5 +14,6 @@
   "Touts": {
     "alt_defaultImage": "Default Tout Image",
     "alt_altImage": "Alternate Tout Image"
-  }
+  },
+  "404": "404 Page Not Found"
 }
