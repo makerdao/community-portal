@@ -1,11 +1,11 @@
 import React from "react";
 
 import {SEO} from "@modules/utility";
-import { Box, Flex, jsx } from "theme-ui";
+import { Box, Flex, Text, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-
+import { navigate } from "@reach/router"
 import Button from "@modules/ui/Button";
 import Link from "@modules/navigation/Link";
 
@@ -55,15 +55,36 @@ const NotFoundPage = () => {
   if (page) {
     return (
       <>
-        <SEO title={_title} />
-      <Flex sx={{ flexGrow: 1, flexDirection: "column", p: "10%", width: "100%" }}>
-        <MDXProvider components={Shortcodes}>
-          <Box>
+      <SEO title={_title} />
+      <Flex sx={{ flexGrow: 1, flexDirection: "column", p: "5%", width: "100%" }}>
+        <Box>
+          <MDXProvider components={Shortcodes}>
             <MDXRenderer>{page.body}</MDXRenderer>
-            <Button>heieiie</Button>
-            <Button to={"https://github.com/makerdao/community-portal/issues"} sx={{display: "inline-block", margin: "0px"}}>{t("Bug_Report")}</Button> <Link sx={{display: "inline-block"}}>{t("Go_Back")}</Link>
-          </Box>  
-        </MDXProvider>
+            <Button 
+              to={"https://github.com/makerdao/community-portal/issues"} 
+              sx={{
+                display: "inline-block", 
+                mt: "5px"
+              }}
+            >
+              {t("Bug_Report")}
+            </Button> 
+            <Link 
+              onClick={() => {
+                navigate(-1);
+              }} 
+              disabled={true} 
+              hideExternalIcon={true}
+              sx={{ 
+                fontWeight: "bold", 
+                display:"inline-block", 
+                ml: "15px"
+              }}
+            >
+              {t("Go_Back")}
+            </Link>
+          </MDXProvider>
+        </Box>  
       </Flex>
       </>
     );
@@ -72,6 +93,41 @@ const NotFoundPage = () => {
   return (
     <>
       <SEO title="404" />
+      <Flex sx={{ flexGrow: 1, flexDirection: "column", p: "5%", width: "100%" }}>
+        <Box>
+          <Box sx={{fontSize:"1.5em"}}>
+            <Text sx={{fontSize:"2em", mt: "1em", mb: ".75em"}}>404</Text>
+            <Box sx={{mt:"1em", mb:"1em"}}>
+              Uh oh, the page you're looking for doesn't exist.
+              <br/><br/> 
+              Think something's broken on our end?
+            </Box>
+          </Box>
+          <Button 
+            to={"https://github.com/makerdao/community-portal/issues"} 
+            sx={{
+              display: "inline-block", 
+              mt: "5px"
+            }}
+          >
+            {t("Bug_Report")}
+          </Button> 
+          <Link 
+            onClick={() => {
+              navigate(-1);
+            }} 
+            disabled={true} 
+            hideExternalIcon={true}
+            sx={{ 
+              fontWeight: "bold", 
+              display:"inline-block", 
+              ml: "15px"
+            }}
+          >
+            {t("Go_Back")}
+          </Link>
+        </Box>  
+      </Flex>
     </>
   );
 };
