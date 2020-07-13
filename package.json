@@ -5,12 +5,13 @@
   "version": "0.1.0",
   "author": "Réjon Taylor-Foster (@Maximum_Crash)",
   "dependencies": {
-    "@makerdao/dai-ui-icons": "^0.0.47",
+    "@makerdao/dai-ui-icons": "^0.0.57",
     "@makerdao/dai-ui-icons-branding": "^0.0.57",
     "@makerdao/dai-ui-theme-maker": "^0.0.38",
     "@mdx-js/mdx": "^1.6.5",
     "@mdx-js/react": "^1.6.5",
     "@theme-ui/prism": "^0.3.0",
+    "del": "^5.1.0",
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.2",
     "gatsby-image": "^2.4.4",
@@ -57,10 +58,11 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm run acrollout && gatsby build",
     "develop": "gatsby develop",
+    "acrollout": "node scripts/allcontributors-transformer.js",
     "format": "prettier --write \"**/*.{js,jsx,json,md, mdx}\"",
-    "start": "npm run develop",
+    "start": "npm run acrollout && npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0"

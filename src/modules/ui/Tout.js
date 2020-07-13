@@ -3,8 +3,8 @@ import React from "react";
 import { Box, Flex, Grid, jsx } from "theme-ui";
 
 import { HexLuminanceCheck, colorToHex } from "@utils";
-import defaultImage from "@content/images/section2.png";
-import altImage from "@content/images/section1.png";
+import defaultImage from "@images/section2.png";
+import altImage from "@images/section1.png";
 import { useTranslation } from "@modules/localization";
 
 const Tout = ({ children, alt, stroke, fade, color, image }) => {

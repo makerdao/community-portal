@@ -25,6 +25,8 @@ import { Link } from "@modules/navigation/";
 
 import { Aligner, Video } from "@modules/utility/";
 
+import { AuthorRenderer } from "@modules/authors";
+
 import {
   TDRegion,
   TDStat,
@@ -88,6 +90,7 @@ const Custom_Components = {
   TDDonut,
   TDPie,
   TDRadial,
+  Authors: AuthorRenderer,
 };
 
 export default {
