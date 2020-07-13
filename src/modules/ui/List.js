@@ -80,7 +80,22 @@ const List = ({ children }) => {
             }}
           >
             {linkProps.children}
-            {_children}
+            <Box
+              sx={{
+                color: "body",
+                "& > *": {
+                  width: "100%",
+                },
+                "& > ul": {
+                  m: 0,
+                  p: 0,
+                  listStyleType: "none",
+                  width: "100%",
+                },
+              }}
+            >
+              {_children.map((child) => child)}
+            </Box>
           </Flex>
           <Icon
             name={!isInternalLink ? "increase" : "arrow_right"}
