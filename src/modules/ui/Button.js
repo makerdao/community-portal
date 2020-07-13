@@ -17,7 +17,6 @@ const Button = ({
   sx,
   ...otherProps
 }) => {
-  console.log(test);
   //NOTE(Rejon): This may seem outlandish, but we do this to ensure content creators write LESS code.
   //ie. We write this so they write
   //  <Button primary outline />

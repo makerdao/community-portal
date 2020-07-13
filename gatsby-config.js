@@ -79,23 +79,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-theme-ui",
-      options: {
-        prismPreset: "night-owl",
-        preset: "@makerdao/dai-ui-theme-maker",
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: ["Roboto Mono"],
         display: "swap",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/modules/layouts/site_layout.js`),
       },
     },
     {

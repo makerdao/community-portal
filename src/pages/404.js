@@ -3,13 +3,12 @@ import React from "react";
 import { SEO } from "@modules/utility";
 import { Box, Flex, Text, Image, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
-import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { navigate } from "@reach/router";
 import Button from "@modules/ui/Button";
 import Link from "@modules/navigation/Link";
 
-import { useTranslation } from "@modules/localization";
+import { useTranslation, TranslationProvider } from "@modules/localization";
 import Shortcodes from "@modules/ui/shortcodes";
 
 const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
@@ -43,7 +42,7 @@ const browser = typeof window !== "undefined" && window; //<- This is to stop 40
           </Button>
           <Link
             onClick={() => {
-              navigate(-1);
+              window.history.back()
             }}
             disabled={true}
             hideExternalIcon={true}
@@ -108,9 +107,7 @@ const NotFoundPage = () => {
   return (
     <PageLayout seoTitle={seoTitle} t={t}>
       {page ? (
-        <MDXProvider components={Shortcodes}>
           <MDXRenderer>{page.body}</MDXRenderer>
-        </MDXProvider>
       ) : (
         <Box sx={{ fontSize: "1.5em" }}>
           <Text sx={{ fontSize: "2em", mt: "1em", mb: ".75em" }}>404</Text>
@@ -125,4 +122,8 @@ const NotFoundPage = () => {
     </PageLayout>
   );
 };
-export default NotFoundPage;
+export default () => (
+  <TranslationProvider>
+    <NotFoundPage/>
+  </TranslationProvider>  
+);

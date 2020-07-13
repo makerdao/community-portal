@@ -4,7 +4,6 @@ import React from "react";
 import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
-import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import { Link } from "@modules/navigation";
@@ -178,9 +177,7 @@ const Header = () => {
         <Text>{t("Home")}</Text>
       </Link>
       {HeaderLinks}
-      <MDXProvider components={Shortcodes}>
         <MDXRenderer>{headerConfigLinks}</MDXRenderer>
-      </MDXProvider>
       <Search
         collapse
         sx={{

@@ -1,8 +1,8 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
-import { useTranslation } from "@modules/localization";
+import { useTranslation, TranslationProvider } from "@modules/localization";
 import { getInitialLocale } from "@utils";
 
 //This page doesn't exist and solely acts as a reroute for language.
@@ -25,7 +25,7 @@ const IndexPage = () => {
   `);
 
   //Navigate to locale index page. /en /es /de /fr ect...
-  useLayoutEffect(() => {
+  useEffect(() => {
     //Get list of locales from content directory top level folder paths.
     const locales = allDirectory.nodes.map((n) =>
       n.absolutePath.split("/").pop()
@@ -44,4 +44,8 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default () => (
+  <TranslationProvider>
+    <IndexPage/>
+  </TranslationProvider>
+);
