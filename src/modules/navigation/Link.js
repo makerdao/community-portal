@@ -9,8 +9,7 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 // Since DOM elements <a> cannot receive activeClassName
-// and partiallyActive, destructure the prop here and
-// pass it only to GatsbyLink
+// and partiallyActive, destructure the prop here and // pass it only to GatsbyLink
 const Link = ({
   children,
   to,
@@ -124,7 +123,7 @@ const Link = ({
 
   return (
     <ThemeLink
-      href={!disabled ? linkHref : ""}
+      href={!disabled ? linkHref : "#"}
       as={OutboundLink}
       eventCategory={gaProps ? gaProps["category"] : null}
       eventAction={gaProps ? gaProps["action"] : null}
@@ -156,7 +155,7 @@ const Link = ({
       }}
       className="external-link"
       {...other}
-      target="_blank"
+      target={!disabled && "_blank"}
       rel="nofollow noopener noreferrer"
     >
       {icon && linkHref && (
