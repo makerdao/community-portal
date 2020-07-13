@@ -122,8 +122,4 @@ const NotFoundPage = () => {
     </PageLayout>
   );
 };
-export default () => (
-  <TranslationProvider>
-    <NotFoundPage/>
-  </TranslationProvider>  
-);
+export default NotFoundPage

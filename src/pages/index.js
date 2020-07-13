@@ -44,8 +44,4 @@ const IndexPage = () => {
   );
 };
 
-export default () => (
-  <TranslationProvider>
-    <IndexPage/>
-  </TranslationProvider>
-);
+export default IndexPage
