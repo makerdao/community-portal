@@ -11,10 +11,10 @@ const components = {
 };
 
 const prismPreset = {
-  color: "codeText",
+  color: "background",
   backgroundColor: "codeBG",
   ".selector, .attr-name, .string, .char, .builtin, .inserted": {
-    color: "primary",
+    color: "primaryEmphasis",
   },
   // comments and characters like <, =>, (), etc
   ".prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url": {
@@ -22,16 +22,16 @@ const prismPreset = {
   },
   ".comment": {
     fontStyle: "italic",
-    color: "textMuted",
+    color: "primaryMuted",
   },
   // class names, functions and numbers
   ".property, .tag, .boolean, .number, .constant, .symbol, .deleted, .function, .class-name, .maybe-class-name, .regex, .important, .variable": {
-    color: "onNotice",
+    color: "secondary",
   },
 
   // keywords like const, return
   ".atrule, .attr-value, .keyword": {
-    color: "success",
+    color: "primaryEmphasis",
   },
 
   fontSize: 3,
@@ -52,23 +52,63 @@ const theme = {
   }, //<- Icon package
   colors: {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
-    body: "#53546A",
+    primary: "#5AE2CA",
+    primaryEmphasis: "#68FEE3",
+    primaryAlt: "#1AAA9B", 
+    primaryMuted: "#E7FCFA",
+    secondary: "#FFBA44",
+    secondaryEmphasis: "#FFE1A8",
+    secondaryAlt: '#FBA615',
+    secondaryMuted: "#FFF3DD",
     background: "#FFFFFF",
-    "body-15": "rgba(83, 84, 106, 0.15)",
-    "body-5": "rgba(83, 84, 106, 0.05)",
-    "body-5-pure": "#eff0f2",
-    "body-40": "rgba(83, 84, 106, 0.4)",
-    "body-01": "rgba(83, 84, 106, 0.1)",
-    strokeFaded: "rgba(41, 26, 66, 0.1)",
-    statusBG: "#F9F9F9",
-    statusColor: "#666666",
+    backgroundDark:'#291A42',
+    surface: "#E7FCFA",
+    surfaceDark: '#4D4968',
+    muted: "#D0D3D7",
+    mutedAlt: "#90969C",
+    error: "#FF6948",
+    success: "#5AE2CA",
+    successAlt: "#68FEE3",
+    notice: "#FF78F2",
+    noticeAlt: "#F2B9FF",
+    warning: "#FFBA44",
+    warningAlt: "#FFBA44",
+    text: "#291A42",
+    textMuted: "#4D4968",
+    strawberry: "#FF78F2",
+    bubblegum: "#F2B9FF",
+    grape: "#9B9FFF",
+    lemon: "#F3FF64",
+    modes: {
+      galaxy: {
+        primary: "#68FEE3",
+        primaryEmphasis: "#A6FFEF",
+        primaryMuted: "#00585E",
+        secondary: "#F2B9FF",
+        secondaryEmphasis: "#FF78F2",
+        secondaryMuted: "#94008E",
+        text: "#FFFFFF",
+        textMuted: "#E1DFEC",
+        background: "#291A42",
+        surface: "#4D4968",
+        statusBG: "#291A42",
+        statusColor: "#FFFFFF",
+        codeBG: "#00585E"
+      }
+    },
+
+    statusBG: "#291A42",
+    statusColor: "#FFFFFF",
+
     callout: "#f4f4f7",
     calloutSecondary: "#fdefd9",
     calloutSecondaryBorder: "#F5B13D",
-    codeBG: "#002D59",
+
+    codeBG: "#4D4968",
     codeText: "#FFFFFF",
-    headline: "#291A42",
-    accordionBG: "#fcfcfc",
+
+   
+    accordionBG: "#fcfcfc", //<-- What should this be?
     transDash_bodyColor: "#333",
     transDash_headlineColor: "#291A42",
     transDash_makerOrange: "#F5B13D",
@@ -78,6 +118,14 @@ const theme = {
     transDash_regionBG:
       "linear-gradient(rgb(248, 237, 216), rgb(244, 227, 194))",
   },
+  shadows: {
+    type1: "0px 1px 2px rgba(90, 90, 90, 0.06)",
+    type2: "0px 1px 2px rgba(90, 90, 90, 0.06)"
+  },
+  radii: {
+    ...maker.radii,
+    round: '32px'
+  },
   fonts: {
     ...maker.fonts,
     transparencyDashboard: 'system-ui,"Helvetica Neue",sans-serif',
@@ -85,11 +133,11 @@ const theme = {
   styles: {
     ...maker.styles,
     a: {
-      color: "#36aa9a",
+      color: "primary",
       textDecoration: "none",
     },
     Link: {
-      color: "#36aa9a",
+      color: "primary",
     },
     pre: {
       ...prismPreset,
@@ -103,45 +151,48 @@ const theme = {
       borderRadius: "small",
       cursor: "pointer",
       outline: "none",
-      fontFamily: "body",
+      fontFamily: "text",
       fontSize: 2,
+      borderRadius: "round",
       p: 3,
       py: 2,
-      color: "onPrimary",
+      color: "text",
       fontWeight: "bold",
       letterSpacing: "0.03em",
-      bg: "#36aa9a",
+      bg: "primary",
       "&:hover": {
-        bg: "#48bbaf",
+        bg: "primaryEmphasis",
       },
       "&:active": {
-        bg: "#309989",
+        bg: "primaryEmphasis",
       },
       "&:disabled": {
-        bg: "#a3ddd7",
+        bg: "primaryMuted",
+        color: "muted",
         pointerEvents: "none",
         cursor: "not-allowed",
       },
     },
 
-    primaryOutline: {
+    outline: {
       variant: "buttons.primary",
-      bg: "surface",
-      color: "#309989",
+      bg: "background",
+      color: "text",
       border: "1px solid",
-      borderColor: "#309989",
+      borderColor: "text",
+      borderRadius: 'round',
       "&:hover": {
-        bg: "successAlt",
+        bg: "primaryMuted",
       },
       "&:active": {
-        bg: "#d9f7f2",
+        bg: "#primaryMuted",
       },
       "&:disabled": {
         bg: "surface",
         pointerEvents: "none",
         cursor: "not-allowed",
-        color: "#aaccc9",
-        borderColor: "#aaccc9",
+        color: "muted",
+        borderColor: "muted",
         opacity: 0.5,
       },
     },
@@ -150,6 +201,7 @@ const theme = {
       variant: "buttons.primary",
       color: "textAlt",
       bg: "#291a41",
+      borderRadius: 'round',
       "&:hover": {
         bg: "#534868",
       },
@@ -163,26 +215,6 @@ const theme = {
       },
     },
 
-    secondaryOutline: {
-      variant: "buttons.primary",
-      bg: "surface",
-      color: "#291a41",
-      border: "1px solid",
-      borderColor: "#291a41",
-      "&:hover": {
-        bg: "#eae9ed",
-      },
-      "&:active": {
-        bg: "#c9c5ce",
-      },
-      "&:disabled": {
-        bg: "surface",
-        pointerEvents: "none",
-        cursor: "not-allowed",
-        borderColor: "#a9a3b3",
-        opacity: 0.5,
-      },
-    },
   },
 };
 

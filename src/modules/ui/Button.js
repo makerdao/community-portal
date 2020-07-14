@@ -44,7 +44,7 @@ const Button = ({
         width: "max-content",
         "&:hover, &:hover > svg": {
           color: "onPrimary",
-          transition: "all .15s ease",
+          transition: "all .1s ease",
         },
         "& .increase": { display: "none" },
         "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
@@ -55,7 +55,7 @@ const Button = ({
           height: "auto",
           mr: "4px",
           position: "relative",
-          "&:hover": { color: "onPrimary", transition: "all .15s ease" },
+          "&:hover": { color: "onPrimary", transition: "all .1s ease" },
         },
         ...sx,
       }}

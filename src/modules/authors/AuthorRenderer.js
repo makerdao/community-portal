@@ -122,7 +122,7 @@ const AuthorRenderer = ({
       columns={list ? [1, "1fr"] : [6, "1fr 1fr 1fr 1fr 1fr 1fr"]}
       sx={{
         borderLeft: !list ? "1px solid" : "unset",
-        borderColor: "strokeFaded",
+        borderColor: "muted",
         gridRowGap: list ? "2rem" : "unset",
         marginBottom: "1rem",
       }}

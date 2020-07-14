@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 
-import { jsx, Text, Flex } from "theme-ui";
+import { jsx, Text, Box, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -124,14 +124,15 @@ const Header = () => {
   ).body;
 
   return (
-    <Flex
+    <Box
       as="header"
       sx={{
         marginBottom: "1.45rem",
-        p: 4,
-        maxWidth: "1364px",
-        margin: "auto",
-        "& a": { color: "inherit" },
+        bg: 'backgroundDark',
+        
+      }}
+    >
+    <Flex sx={{maxWidth: "1364px", margin: "auto", p: 4, "& a": { color: "background" },
         "& a.external-link > svg": { display: "none" },
         "& a:not(:first-of-type)": {
           display: "inline-flex",
@@ -152,9 +153,7 @@ const Header = () => {
         },
         "& > ul > li > a": {
           textDecoration: "none",
-        },
-      }}
-    >
+        },}}>
       <Link
         to={`/${locale}/`}
         variant="nav"
@@ -163,15 +162,18 @@ const Header = () => {
           alignItems: "center",
           textDecoration: "none",
           marginRight: "40px",
+          color: 'background'
         }}
       >
         <Icon
           name="maker"
-          color="text"
+          color="primary"
           sx={{
-            width: "39px",
+            width: "52px",
             height: "100%",
             mr: 2,
+            position: 'relative',
+            left:'-45%'
           }}
         />
         <Text>{t("Home")}</Text>
@@ -187,7 +189,8 @@ const Header = () => {
           maxWidth: "347px",
         }}
       />
-    </Flex>
+      </Flex>
+    </Box>
   );
 };
 

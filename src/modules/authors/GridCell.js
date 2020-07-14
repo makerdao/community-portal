@@ -27,7 +27,7 @@ const AuthorGridCell = ({
       border: "1px solid",
       borderLeft: "none",
       borderTop: index >= 6 ? "none" : "1px solid",
-      borderColor: "strokeFaded",
+      borderColor: "muted",
       textAlign: "center",
     }}
   >

@@ -21,13 +21,13 @@ const getLinkIcon = (url) => {
   } else if (url.includes("twitter")) {
     return (
       <Link hideExternalIcon to={url} sx={{ mr: "6px" }}>
-        <Icon name="twitter" size={"23px"} sx={{ color: "headline" }} />
+        <Icon name="twitter" size={"23px"} sx={{ color: "text" }} />
       </Link>
     );
   } else if (url.includes("medium")) {
     return (
       <Link hideExternalIcon to={url} sx={{ mr: "6px" }}>
-        <Icon name="medium" size={"23px"} sx={{ color: "headline" }} />
+        <Icon name="medium" size={"23px"} sx={{ color: "text" }} />
       </Link>
     );
   } else {

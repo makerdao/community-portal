@@ -160,7 +160,7 @@ const LanguageSelector = () => {
       sx={{
         p: 3,
         border: "1px solid",
-        borderColor: "body",
+        borderColor: "text",
         borderRadius: "4px",
         bg: "surface",
         position: "absolute",

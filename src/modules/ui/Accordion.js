@@ -18,7 +18,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
     <Box
       sx={{
         borderBottom: "1px solid",
-        borderColor: "body-15",
+        borderColor: "text",
         backgroundColor: "accordionBG",
         padding: "12px 16px",
         mb: "16px",
@@ -39,7 +39,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         {!expanded ? (
           <Icon
             name={expanded ? CloseIcon : OpenIcon}
-            color={"headline"}
+            color={"text"}
             size={4}
           />
         ) : (
@@ -55,7 +55,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
           >
             {/* TEMPORARY UNTIL MINUS ICON ADDED TO DAI-UI */}
             {CloseIcon !== "minus" ? (
-              <Icon name={CloseIcon} color={"headline"} size={4} />
+              <Icon name={CloseIcon} color={"text"} size={4} />
             ) : (
               <>{"-"}</>
             )}
@@ -67,7 +67,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         allowOverflowWhenOpen={true}
         expanded={expanded}
       >
-        <Box sx={{ pt: "16px", color: "body", "& > *:only-child": { m: 0 } }}>
+        <Box sx={{ pt: "16px", color: "text", "& > *:only-child": { m: 0 } }}>
           {_Children}
         </Box>
       </SmoothCollapse>

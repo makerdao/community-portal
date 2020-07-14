@@ -116,8 +116,10 @@ export default function Search({ ...otherProps }) {
       ref={ref}
       {...otherProps}
       sx={{
-        borderRadius: 0,
-        backgroundColor: "body-5-pure",
+        borderRadius: "round",
+        border: '1px solid',
+        borderColor: 'primary',
+        backgroundColor: "surfaceDark",
         position: "relative",
       }}
     >
@@ -135,18 +137,13 @@ export default function Search({ ...otherProps }) {
           display: query.length > 0 && focus ? "grid" : "none",
           position: "absolute",
           left: 0,
-          backgroundColor: "body-5-pure",
-          borderBottomLeftRadius: "medium",
-          borderBottomRightRadius: "medium",
-          borderTop: "none",
+          backgroundColor: "surfaceDark",
           zIndex: "1000000000",
+          mt: 1,
+          borderRadius: 'roundish',
+          boxShadow: 'type1',
+          overflow: 'hidden',
           width: "100%",
-          "::before": {
-            content: '""',
-            width: "100%",
-            height: "1px",
-            background: "radial-gradient(rgba(83, 84, 106, 0.15), transparent)",
-          },
         }}
       >
         {results.length === 0 && query.length > 0 && (
@@ -157,24 +154,30 @@ export default function Search({ ...otherProps }) {
         <ul
           ref={resultList}
           sx={{
+            
             m: 0,
             listStyleType: "none",
             p: 2, //.46rem
             overflow: "auto",
             maxHeight: "464px",
             "& > li": {
-              borderRadius: "medium",
+              borderRadius: "roundish",
               backgroundColor: "transparent",
-              transition: "all .2s ease",
+              transition: "all .1s ease",
               cursor: "pointer",
+              color: 'muted'
             },
             "& > li > a": {
               p: 2,
+              color: 'muted',
               display: "block",
             },
             "& li:hover": {
-              backgroundColor: "secondary",
-              transition: "all .2s ease",
+              backgroundColor: "primary",
+              color: 'text',
+              '& > a': {
+                color: 'text'
+              }
             },
           }}
         >

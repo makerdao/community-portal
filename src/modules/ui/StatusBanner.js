@@ -123,9 +123,9 @@ const StatusBanner = ({
         pr: 3,
         position: "relative",
         overflow: "hidden",
-        backgroundColor: "statusBG",
+        backgroundColor: "backgroundDark",
         borderRadius: "100000px",
-        color: "statusColor",
+        color: "background",
         fontSize: "13px",
         letterSpace: "0.3px",
         "::before": {

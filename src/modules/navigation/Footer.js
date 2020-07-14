@@ -48,14 +48,23 @@ const Footer = () => {
     <Flex
       as="footer"
       sx={{
-        p: 4,
+        
+        width:'100%',
         py: "3rem",
-        maxWidth: "1364px",
-        margin: "auto",
+        
+        bg: 'backgroundDark',
+        
+       
+      }}
+    >
+      <Flex sx={{margin: "auto",
+      maxWidth: "1364px",
+      p: 4,
+      width: '100%',
         "& > * > ul": {
           m: 0,
           p: 0,
-          color: "headline",
+          color: "text",
           listStyleType: "none",
           display: "grid",
           gridGap: "20px",
@@ -68,6 +77,7 @@ const Footer = () => {
           "& > li": {
             fontWeight: "bold",
             fontSize: "0.88rem",
+            color: "background",
             "& > ul": {
               mt: "0.7rem",
               fontSize: "1rem",
@@ -78,7 +88,7 @@ const Footer = () => {
                 mb: "10px",
               },
               "& a": {
-                color: "body",
+                color: "background",
                 fontWeight: "normal",
                 "& svg": {
                   display: "none",
@@ -86,15 +96,14 @@ const Footer = () => {
               },
             },
           },
-        },
-      }}
-    >
-      {footerLinks && (
-        <Box sx={{ flex: 1 }}>
-            <MDXRenderer>{footerLinks}</MDXRenderer>
-        </Box>
-      )}
-      {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
+        },}}>
+        {footerLinks && (
+          <Box sx={{ flex: 1 }}>
+              <MDXRenderer>{footerLinks}</MDXRenderer>
+          </Box>
+        )}
+        {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
+      </Flex>
     </Flex>
   );
 };
