@@ -22,13 +22,6 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/content/images`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
@@ -132,7 +125,7 @@ module.exports = {
           "@src": path.resolve(__dirname, "src"),
           "@utils": path.resolve(__dirname, "src/utils.js"),
           "@pages": path.resolve(__dirname, "src/pages"),
-          "@images": path.resolve(__dirname, "public/images"),
+          "@images": path.resolve(__dirname, "static/images"),
           "@content": path.resolve(__dirname, "content"),
         },
         extensions: [

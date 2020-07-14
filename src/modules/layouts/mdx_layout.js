@@ -11,7 +11,6 @@ import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
   const { children, pageContext, uri } = props;
-
   const {
     title,
     description,
