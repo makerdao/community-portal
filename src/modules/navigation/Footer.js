@@ -90,6 +90,7 @@ const Footer = () => {
               "& a": {
                 color: "background",
                 fontWeight: "normal",
+                textDecoration: "none",
                 "& svg": {
                   display: "none",
                 },

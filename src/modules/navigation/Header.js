@@ -127,12 +127,11 @@ const Header = () => {
     <Box
       as="header"
       sx={{
-        marginBottom: "1.45rem",
         bg: 'backgroundDark',
         
       }}
     >
-    <Flex sx={{maxWidth: "1364px", margin: "auto", p: 4, "& a": { color: "background" },
+    <Flex sx={{maxWidth: "1364px", margin: "auto", p: 4, "& a": { color: "background", textDecoration: "none", },
         "& a.external-link > svg": { display: "none" },
         "& a:not(:first-of-type)": {
           display: "inline-flex",
