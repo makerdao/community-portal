@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 
-import { jsx, Text, Box, Flex } from "theme-ui";
+import { jsx, Text, Box, Flex, useColorMode } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -14,6 +14,7 @@ import { UrlConverter, TitleConverter } from "@utils";
 
 const Header = () => {
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
+  const [colorMode, setColorMode] = useColorMode()
 
   const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
     query HeaderQuery {
@@ -194,6 +195,11 @@ const Header = () => {
             maxWidth: "347px",
           }}
         />
+        <Flex sx={{cursor: 'pointer', marginLeft: '1rem', fontSize: '1.6rem', display: 'inlineBlock', alignItems: 'center'}} onClick={e => {
+          setColorMode(colorMode === 'default' ? 'dark' : 'default')
+        }}>
+          {colorMode === 'default' ? '🌙': '☀️'}
+        </Flex>
       </Flex>
     </Box>
   );

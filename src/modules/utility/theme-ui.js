@@ -79,7 +79,7 @@ const theme = {
     grape: "#9B9FFF",
     lemon: "#F3FF64",
     modes: {
-      galaxy: {
+      dark: {
         primary: "#68FEE3",
         primaryEmphasis: "#A6FFEF",
         primaryMuted: "#00585E",
