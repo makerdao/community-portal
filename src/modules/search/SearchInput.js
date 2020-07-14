@@ -86,9 +86,9 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
           border: "none",
           borderRadius: "0",
           letterSpacing: "0.3px",
-          color: 'muted',
-          '&:focus': {
-            color: 'muted'
+          color: "muted",
+          "&:focus": {
+            color: "muted",
           },
           "::placeholder": {
             color: "muted",

@@ -22,7 +22,7 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
     "& > * > .statusBanner:first-of-type": {
       position: "absolute",
       maxWidth: "65.29%",
-      color: 'background',
+      color: "background",
       right: "16px",
       top: "16px",
       width: "auto",

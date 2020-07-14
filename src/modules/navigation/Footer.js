@@ -48,59 +48,60 @@ const Footer = () => {
     <Flex
       as="footer"
       sx={{
-        
-        width:'100%',
+        width: "100%",
         py: "3rem",
-        
-        bg: 'backgroundDark',
-        
-       
+
+        bg: "backgroundDark",
       }}
     >
-      <Flex sx={{margin: "auto",
-      maxWidth: "1364px",
-      p: 4,
-      width: '100%',
-        "& > * > ul": {
-          m: 0,
-          p: 0,
-          color: "text",
-          listStyleType: "none",
-          display: "grid",
-          gridGap: "20px",
-          gridTemplateColumns: "auto",
-          gridAutoFlow: "column",
-          flex: 1,
-          "& > li:not(:last-of-type)": {
-            mr: "5%",
-          },
-          "& > li": {
-            fontWeight: "bold",
-            fontSize: "0.88rem",
-            color: "background",
-            "& > ul": {
-              mt: "0.7rem",
-              fontSize: "1rem",
-              p: 0,
+      <Flex
+        sx={{
+          margin: "auto",
+          maxWidth: "1364px",
+          p: 4,
+          width: "100%",
+          "& > * > ul": {
+            m: 0,
+            p: 0,
+            color: "text",
+            listStyleType: "none",
+            display: "grid",
+            gridGap: "20px",
+            gridTemplateColumns: "auto",
+            gridAutoFlow: "column",
+            flex: 1,
+            "& > li:not(:last-of-type)": {
+              mr: "5%",
+            },
+            "& > li": {
+              fontWeight: "bold",
+              fontSize: "0.88rem",
+              color: "background",
+              "& > ul": {
+                mt: "0.7rem",
+                fontSize: "1rem",
+                p: 0,
 
-              listStyleType: "none",
-              "& li:not(:last-of-type)": {
-                mb: "10px",
-              },
-              "& a": {
-                color: "background",
-                fontWeight: "normal",
-                textDecoration: "none",
-                "& svg": {
-                  display: "none",
+                listStyleType: "none",
+                "& li:not(:last-of-type)": {
+                  mb: "10px",
+                },
+                "& a": {
+                  color: "background",
+                  fontWeight: "normal",
+                  textDecoration: "none",
+                  "& svg": {
+                    display: "none",
+                  },
                 },
               },
             },
           },
-        },}}>
+        }}
+      >
         {footerLinks && (
           <Box sx={{ flex: 1 }}>
-              <MDXRenderer>{footerLinks}</MDXRenderer>
+            <MDXRenderer>{footerLinks}</MDXRenderer>
           </Box>
         )}
         {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}

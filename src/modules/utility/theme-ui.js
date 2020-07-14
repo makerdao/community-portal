@@ -1,5 +1,5 @@
 import React from "react";
-import {merge} from 'theme-ui';
+import { merge } from "theme-ui";
 import Prism from "@theme-ui/prism";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
@@ -43,7 +43,6 @@ const prismPreset = {
   borderRadius: "4px",
 };
 
-
 const theme = {
   ...maker, //<- Your default theme.
   icons: {
@@ -54,16 +53,16 @@ const theme = {
     ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
     primary: "#5AE2CA",
     primaryEmphasis: "#68FEE3",
-    primaryAlt: "#1AAA9B", 
+    primaryAlt: "#1AAA9B",
     primaryMuted: "#E7FCFA",
     secondary: "#FFBA44",
     secondaryEmphasis: "#FFE1A8",
-    secondaryAlt: '#FBA615',
+    secondaryAlt: "#FBA615",
     secondaryMuted: "#FFF3DD",
     background: "#FFFFFF",
-    backgroundDark:'#291A42',
+    backgroundDark: "#291A42",
     surface: "#E7FCFA",
-    surfaceDark: '#4D4968',
+    surfaceDark: "#4D4968",
     muted: "#D0D3D7",
     mutedAlt: "#90969C",
     error: "#FF6948",
@@ -93,8 +92,8 @@ const theme = {
         surface: "#4D4968",
         statusBG: "#291A42",
         statusColor: "#FFFFFF",
-        codeBG: "#00585E"
-      }
+        codeBG: "#00585E",
+      },
     },
 
     statusBG: "#291A42",
@@ -107,7 +106,6 @@ const theme = {
     codeBG: "#4D4968",
     codeText: "#FFFFFF",
 
-   
     accordionBG: "#fcfcfc", //<-- What should this be?
     transDash_bodyColor: "#333",
     transDash_headlineColor: "#291A42",
@@ -120,11 +118,11 @@ const theme = {
   },
   shadows: {
     type1: "0px 1px 2px rgba(90, 90, 90, 0.06)",
-    type2: "0px 1px 2px rgba(90, 90, 90, 0.06)"
+    type2: "0px 1px 2px rgba(90, 90, 90, 0.06)",
   },
   radii: {
     ...maker.radii,
-    round: '32px'
+    round: "32px",
   },
   fonts: {
     ...maker.fonts,
@@ -180,7 +178,7 @@ const theme = {
       color: "text",
       border: "1px solid",
       borderColor: "text",
-      borderRadius: 'round',
+      borderRadius: "round",
       "&:hover": {
         bg: "primaryMuted",
       },
@@ -201,7 +199,7 @@ const theme = {
       variant: "buttons.primary",
       color: "textAlt",
       bg: "#291a41",
-      borderRadius: 'round',
+      borderRadius: "round",
       "&:hover": {
         bg: "#534868",
       },
@@ -214,8 +212,7 @@ const theme = {
         cursor: "not-allowed",
       },
     },
-
   },
 };
 
-export default {theme: merge(prismPreset, theme), components};
+export default { theme: merge(prismPreset, theme), components };

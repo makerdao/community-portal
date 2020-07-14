@@ -127,67 +127,73 @@ const Header = () => {
     <Box
       as="header"
       sx={{
-        bg: 'backgroundDark',
-        
+        bg: "backgroundDark",
       }}
     >
-    <Flex sx={{maxWidth: "1364px", margin: "auto", p: 4, "& a": { color: "background", textDecoration: "none", },
-        "& a.external-link > svg": { display: "none" },
-        "& a:not(:first-of-type)": {
-          display: "inline-flex",
-          alignItems: "center",
-          p: 0,
-          mr: "40px",
-          textDecoration: "none",
-        },
-        "& > ul": {
-          display: "inline-flex",
-          alignItems: "center",
-          p: 0,
-          m: 0,
-          listStyleType: "none",
-        },
-        "& > ul > li": {
-          mr: "40px",
-        },
-        "& > ul > li > a": {
-          textDecoration: "none",
-        },}}>
-      <Link
-        to={`/${locale}/`}
-        variant="nav"
+      <Flex
         sx={{
-          display: "inline-flex",
-          alignItems: "center",
-          textDecoration: "none",
-          marginRight: "40px",
-          color: 'background'
+          maxWidth: "1364px",
+          margin: "auto",
+          p: 4,
+          "& a": { color: "background", textDecoration: "none" },
+          "& a.external-link > svg": { display: "none" },
+          "& a:not(:first-of-type)": {
+            display: "inline-flex",
+            alignItems: "center",
+            p: 0,
+            mr: "40px",
+            textDecoration: "none",
+          },
+          "& > ul": {
+            display: "inline-flex",
+            alignItems: "center",
+            p: 0,
+            m: 0,
+            listStyleType: "none",
+          },
+          "& > ul > li": {
+            mr: "40px",
+          },
+          "& > ul > li > a": {
+            textDecoration: "none",
+          },
         }}
       >
-        <Icon
-          name="maker"
-          color="primary"
+        <Link
+          to={`/${locale}/`}
+          variant="nav"
           sx={{
-            width: "52px",
-            height: "100%",
-            mr: 2,
-            position: 'relative',
-            left:'-45%'
+            display: "inline-flex",
+            alignItems: "center",
+            textDecoration: "none",
+            marginRight: "40px",
+            color: "background",
+          }}
+        >
+          <Icon
+            name="maker"
+            color="primary"
+            sx={{
+              width: "52px",
+              height: "100%",
+              mr: 2,
+              position: "relative",
+              left: "-45%",
+            }}
+          />
+          <Text>{t("Home")}</Text>
+        </Link>
+        {HeaderLinks}
+        <MDXRenderer>{headerConfigLinks}</MDXRenderer>
+        <Search
+          collapse
+          sx={{
+            ml: "auto",
+            mr: 0,
+            width: "100%",
+            maxWidth: "347px",
           }}
         />
-        <Text>{t("Home")}</Text>
-      </Link>
-      {HeaderLinks}
-        <MDXRenderer>{headerConfigLinks}</MDXRenderer>
-      <Search
-        collapse
-        sx={{
-          ml: "auto",
-          mr: 0,
-          width: "100%",
-          maxWidth: "347px",
-        }}
-      />
       </Flex>
     </Box>
   );

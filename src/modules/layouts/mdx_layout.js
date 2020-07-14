@@ -10,7 +10,7 @@ import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
-  console.log(props)
+  console.log(props);
   const { children, pageContext, uri } = props;
   const {
     title,

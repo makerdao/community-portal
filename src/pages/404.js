@@ -14,56 +14,54 @@ import Shortcodes from "@modules/ui/shortcodes";
 const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
 
 //404Page Wrapper
-  const PageLayout = ({ children, seoTitle, t }) => (
+const PageLayout = ({ children, seoTitle, t }) => (
+  <Flex sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+    <SEO title={seoTitle} />
     <Flex
-      sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        flexGrow: 1,
+        flexDirection: "column",
+        maxWidth: "46%",
+        p: "5%",
+        width: "100%",
+        display: "inline-block",
+      }}
     >
-      <SEO title={seoTitle} />
-      <Flex
-        sx={{
-          flexGrow: 1,
-          flexDirection: "column",
-          maxWidth: "46%",
-          p: "5%",
-          width: "100%",
-          display: "inline-block",
-        }}
-      >
-          {children}
-          <Box>
-            <Button
-            to={"https://github.com/makerdao/community-portal/issues"}
-            sx={{
-              display: "inline-block",
-              mt: "5px",
-            }}
-          >
-            {t("Bug_Report")}
-          </Button>
-          <Link
-            onClick={() => {
-              window.history.back()
-            }}
-            disabled={true}
-            hideExternalIcon={true}
-            sx={{
-              fontWeight: "bold",
-              display: "inline-block",
-              ml: "15px",
-            }}
-          >
-            {t("Go_Back")}
-          </Link>
-          </Box>
-      </Flex>
-      <Image
-        sx={{ width: "400px", height: "400px", display: "inline-block" }}
-        src={
-          "https://cdn.shopify.com/s/files/1/0010/0994/2575/products/2046-60-mistyteal_3472a883-658e-4f06-b350-387a8eafa4ae_2000x.png"
-        }
-      />
+      {children}
+      <Box>
+        <Button
+          to={"https://github.com/makerdao/community-portal/issues"}
+          sx={{
+            display: "inline-block",
+            mt: "5px",
+          }}
+        >
+          {t("Bug_Report")}
+        </Button>
+        <Link
+          onClick={() => {
+            window.history.back();
+          }}
+          disabled={true}
+          hideExternalIcon={true}
+          sx={{
+            fontWeight: "bold",
+            display: "inline-block",
+            ml: "15px",
+          }}
+        >
+          {t("Go_Back")}
+        </Link>
+      </Box>
     </Flex>
-  );
+    <Image
+      sx={{ width: "400px", height: "400px", display: "inline-block" }}
+      src={
+        "https://cdn.shopify.com/s/files/1/0010/0994/2575/products/2046-60-mistyteal_3472a883-658e-4f06-b350-387a8eafa4ae_2000x.png"
+      }
+    />
+  </Flex>
+);
 
 const NotFoundPage = () => {
   const { locale, t } = useTranslation();
@@ -107,7 +105,7 @@ const NotFoundPage = () => {
   return (
     <PageLayout seoTitle={seoTitle} t={t}>
       {page ? (
-          <MDXRenderer>{page.body}</MDXRenderer>
+        <MDXRenderer>{page.body}</MDXRenderer>
       ) : (
         <Box sx={{ fontSize: "1.5em" }}>
           <Text sx={{ fontSize: "2em", mt: "1em", mb: ".75em" }}>404</Text>
@@ -122,4 +120,4 @@ const NotFoundPage = () => {
     </PageLayout>
   );
 };
-export default NotFoundPage
+export default NotFoundPage;

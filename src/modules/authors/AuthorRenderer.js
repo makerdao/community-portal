@@ -101,14 +101,15 @@ const AuthorRenderer = ({
   if (all && allContributors.contributors && _children.length === 0) {
     authorsToRender = renderAuthorData(allContributors.contributors);
   } else if (!all && allContributors.contributors && author) {
-    const specificAuthors = Array.isArray(author) ?
-    author.map((a) => allContributors.contributors.find(
-      (n) => n.login && n.login === a.replace(/@/g, "")
-    ))
-    :
-     allContributors.contributors.find(
-      (n) => n.login && n.login === author.replace(/@/g, "")
-    );
+    const specificAuthors = Array.isArray(author)
+      ? author.map((a) =>
+          allContributors.contributors.find(
+            (n) => n.login && n.login === a.replace(/@/g, "")
+          )
+        )
+      : allContributors.contributors.find(
+          (n) => n.login && n.login === author.replace(/@/g, "")
+        );
     authorsToRender = specificAuthors
       ? renderAuthorData([specificAuthors])
       : null;

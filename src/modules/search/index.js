@@ -117,8 +117,8 @@ export default function Search({ ...otherProps }) {
       {...otherProps}
       sx={{
         borderRadius: "round",
-        border: '1px solid',
-        borderColor: 'primary',
+        border: "1px solid",
+        borderColor: "primary",
         backgroundColor: "surfaceDark",
         position: "relative",
       }}
@@ -140,9 +140,9 @@ export default function Search({ ...otherProps }) {
           backgroundColor: "surfaceDark",
           zIndex: "1000000000",
           mt: 1,
-          borderRadius: 'roundish',
-          boxShadow: 'type1',
-          overflow: 'hidden',
+          borderRadius: "roundish",
+          boxShadow: "type1",
+          overflow: "hidden",
           width: "100%",
         }}
       >
@@ -154,7 +154,6 @@ export default function Search({ ...otherProps }) {
         <ul
           ref={resultList}
           sx={{
-            
             m: 0,
             listStyleType: "none",
             p: 2, //.46rem
@@ -165,19 +164,19 @@ export default function Search({ ...otherProps }) {
               backgroundColor: "transparent",
               transition: "all .1s ease",
               cursor: "pointer",
-              color: 'muted'
+              color: "muted",
             },
             "& > li > a": {
               p: 2,
-              color: 'muted',
+              color: "muted",
               display: "block",
             },
             "& li:hover": {
               backgroundColor: "primary",
-              color: 'text',
-              '& > a': {
-                color: 'text'
-              }
+              color: "text",
+              "& > a": {
+                color: "text",
+              },
             },
           }}
         >
