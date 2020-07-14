@@ -1456,10 +1456,10 @@
   resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.57.tgz#729805ca7a5a0b1e1f19348dbb401eb9496fb24b"
   integrity sha512-KflmXIUTlLbpfOBDK7wNJjyGToiHRxcWamsgLR7I5qXwBl3cC3vp99w5RrIFf2jfByza05nXCL12DScmGHKJPA==
 
-"@makerdao/dai-ui-icons@^0.0.57":
-  version "0.0.57"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.57.tgz#32f70ab0f27d8c1e324b7335dcf71ed71d1433c6"
-  integrity sha512-Zu2JTMG5bdtssBUJYNMFI1jzfSViy6jXVYHFvhYnWK0a4K5IbA3PAwqb1A999DaWCaC8bsCC4+HC/2vmLgV+xw==
+"@makerdao/dai-ui-icons@^0.0.58":
+  version "0.0.58"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.58.tgz#6ef2dac126c88d7c8be2e2c3a28b2639056c1847"
+  integrity sha512-4wofIOgbwkus8LzOD8qetGHPXOO41oyPWHIX7chNIbMqFeP9KbIBqa+1b0VYK/7mSu2LLRUHSluCJKstCW2qyA==
 
 "@makerdao/dai-ui-theme-maker@^0.0.38":
   version "0.0.38"
