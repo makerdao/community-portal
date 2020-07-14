@@ -24,14 +24,23 @@
       "contributions": [
         "code"
       ]
-     },
-     {
+    },
+    {
       "login": "befitsandpiper",
       "name": "Be Fit Sandpiper",
       "avatar_url": "https://avatars3.githubusercontent.com/u/7257527?v=4",
       "profile": "https://github.com/befitsandpiper",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "twblack88",
+      "name": "Tim Black",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/8991325?v=4",
+      "profile": "https://github.com/twblack88",
+      "contributions": [
+        "doc"
       ]
     }
   ],

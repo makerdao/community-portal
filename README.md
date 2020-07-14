@@ -1,8 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -125,12 +123,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://rejontaylor.com"><img src="https://avatars1.githubusercontent.com/u/9157341?v=4" width="100px;" alt=""/><br /><sub><b>Réjon Taylor-Foster</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=MaximumCrash" title="Code">💻</a> <a href="#design-MaximumCrash" title="Design">🎨</a> <a href="#example-MaximumCrash" title="Examples">💡</a></td>
     <td align="center"><a href="https://www.isaacpearl.com"><img src="https://avatars1.githubusercontent.com/u/21342523?v=4" width="100px;" alt=""/><br /><sub><b>isaacpearl</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=isaacpearl" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/befitsandpiper"><img src="https://avatars3.githubusercontent.com/u/7257527?v=4" width="100px;" alt=""/><br /><sub><b>Be Fit Sandpiper</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=befitsandpiper" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/twblack88"><img src="https://avatars3.githubusercontent.com/u/8991325?v=4" width="100px;" alt=""/><br /><sub><b>Tim Black</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=twblack88" title="Documentation">📖</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
