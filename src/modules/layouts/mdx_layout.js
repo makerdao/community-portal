@@ -5,11 +5,12 @@ import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
 import { SEO } from "@modules/utility";
-import { LanguageSelector } from "@modules/localization";
+import { LanguageSelector, TranslationProvider } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
+  console.log(props)
   const { children, pageContext, uri } = props;
   const {
     title,
@@ -52,7 +53,7 @@ export default (props) => {
   const _pageTitle = title || getFirstHeading() || uri.split("/").pop();
 
   return (
-    <>
+    <TranslationProvider>
       <SEO
         title={_pageTitle}
         description={description}
@@ -126,6 +127,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </>
+    </TranslationProvider>
   );
 };

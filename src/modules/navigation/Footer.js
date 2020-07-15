@@ -2,11 +2,9 @@
 import React from "react";
 import { Flex, Box, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
-import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import { useTranslation } from "@modules/localization";
-import Shortcodes from "@modules/ui/shortcodes";
 
 const Footer = () => {
   const { locale, DEFAULT_LOCALE } = useTranslation();
@@ -93,9 +91,7 @@ const Footer = () => {
     >
       {footerLinks && (
         <Box sx={{ flex: 1 }}>
-          <MDXProvider components={Shortcodes}>
             <MDXRenderer>{footerLinks}</MDXRenderer>
-          </MDXProvider>
         </Box>
       )}
       {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
