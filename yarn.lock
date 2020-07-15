@@ -1451,10 +1451,10 @@
     core-js "^3.4.1"
     regenerator-runtime "^0.13.3"
 
-"@makerdao/dai-ui-icons-branding@^0.0.57":
-  version "0.0.57"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.57.tgz#729805ca7a5a0b1e1f19348dbb401eb9496fb24b"
-  integrity sha512-KflmXIUTlLbpfOBDK7wNJjyGToiHRxcWamsgLR7I5qXwBl3cC3vp99w5RrIFf2jfByza05nXCL12DScmGHKJPA==
+"@makerdao/dai-ui-icons-branding@^0.0.58":
+  version "0.0.58"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.58.tgz#ca19cc046015248f27019a6a69aead1573172987"
+  integrity sha512-P7hzpEj60/NDYzuTthY/Y/wayqCgT8XaaTMvbjL4rtuUzBTVe48B4gBVw5DEn7poejykCFj6D5p4vJya4KkAuQ==
 
 "@makerdao/dai-ui-icons@^0.0.58":
   version "0.0.58"
@@ -6564,15 +6564,15 @@ gatsby-remark-embed-video@^3.0.10:
     remark-burger "^1.0.1"
     unist-util-visit "^2.0.2"
 
-gatsby-remark-images@^3.3.9:
-  version "3.3.16"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.3.16.tgz#101b6b1ebe03b03e4b38712746be1d26eca80320"
-  integrity sha512-xts1nLBfgch1z9DcmogFS7HkV76nJX5+ZRHxRLjIU7Qhseu6ciUGlXhHLJKqjFEiIxRAVbYNhR6f8MyS21IufA==
+gatsby-remark-images@^3.3.18:
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.3.18.tgz#0403befbfb24ddd33bb9326a1f356bb3a26b6496"
+  integrity sha512-VdujNSdwwCYkGoOwGkfn810zbl5R2gF99o6CYsi6ZUZ5iooWklSgndTu0bzP5tDRmKLXOK4L4Gjm+QzbLkM3lA==
   dependencies:
     "@babel/runtime" "^7.10.3"
     chalk "^2.4.2"
     cheerio "^1.0.0-rc.3"
-    gatsby-core-utils "^1.3.10"
+    gatsby-core-utils "^1.3.12"
     is-relative-url "^3.0.0"
     lodash "^4.17.15"
     mdast-util-definitions "^1.2.5"
