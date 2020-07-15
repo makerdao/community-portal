@@ -1,9 +1,50 @@
+import React from "react";
+import {merge} from 'theme-ui';
+import Prism from "@theme-ui/prism";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
-import prismPreset from "./prismPreset";
 
-export default {
+const components = {
+  pre: (props) => props.children,
+  code: Prism,
+};
+
+const prismPreset = {
+  color: "codeText",
+  backgroundColor: "codeBG",
+  ".selector, .attr-name, .string, .char, .builtin, .inserted": {
+    color: "primary",
+  },
+  // comments and characters like <, =>, (), etc
+  ".prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url": {
+    color: "background",
+  },
+  ".comment": {
+    fontStyle: "italic",
+    color: "textMuted",
+  },
+  // class names, functions and numbers
+  ".property, .tag, .boolean, .number, .constant, .symbol, .deleted, .function, .class-name, .maybe-class-name, .regex, .important, .variable": {
+    color: "onNotice",
+  },
+
+  // keywords like const, return
+  ".atrule, .attr-value, .keyword": {
+    color: "success",
+  },
+
+  fontSize: 3,
+  fontFamily: "Roboto Mono",
+  overflow: "auto",
+  p: 3,
+  pt: 0,
+  mt: 0,
+  borderRadius: "4px",
+};
+
+
+const theme = {
   ...maker, //<- Your default theme.
   icons: {
     ...themeIcons,
@@ -144,3 +185,5 @@ export default {
     },
   },
 };
+
+export default {theme: merge(prismPreset, theme), components};
