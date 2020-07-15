@@ -1451,10 +1451,10 @@
     core-js "^3.4.1"
     regenerator-runtime "^0.13.3"
 
-"@makerdao/dai-ui-icons-branding@^0.0.57":
-  version "0.0.57"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.57.tgz#729805ca7a5a0b1e1f19348dbb401eb9496fb24b"
-  integrity sha512-KflmXIUTlLbpfOBDK7wNJjyGToiHRxcWamsgLR7I5qXwBl3cC3vp99w5RrIFf2jfByza05nXCL12DScmGHKJPA==
+"@makerdao/dai-ui-icons-branding@^0.0.58":
+  version "0.0.58"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.58.tgz#ca19cc046015248f27019a6a69aead1573172987"
+  integrity sha512-P7hzpEj60/NDYzuTthY/Y/wayqCgT8XaaTMvbjL4rtuUzBTVe48B4gBVw5DEn7poejykCFj6D5p4vJya4KkAuQ==
 
 "@makerdao/dai-ui-icons@^0.0.58":
   version "0.0.58"
@@ -4441,15 +4441,6 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-cwebp-bin@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/cwebp-bin/-/cwebp-bin-5.1.0.tgz#d5bea87c127358558e7bf7a90a6d440d42dcb074"
-  integrity sha512-BsPKStaNr98zfxwejWWLIGELbPERULJoD2v5ijvpeutSAGsegX7gmABgnkRK7MUucCPROXXfaPqkLAwI509JzA==
-  dependencies:
-    bin-build "^3.0.0"
-    bin-wrapper "^4.0.1"
-    logalot "^2.1.0"
-
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
@@ -5511,17 +5502,6 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
-exec-buffer@^3.0.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/exec-buffer/-/exec-buffer-3.2.0.tgz#b1686dbd904c7cf982e652c1f5a79b1e5573082b"
-  integrity sha512-wsiD+2Tp6BWHoVv3B+5Dcx6E7u5zky+hUwOHjuH2hKSLR3dvRmX8fk8UD8uqQixHs4Wk6eDmiegVrMPjKj7wpA==
-  dependencies:
-    execa "^0.7.0"
-    p-finally "^1.0.0"
-    pify "^3.0.0"
-    rimraf "^2.5.4"
-    tempfile "^2.0.0"
-
 execa@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-0.10.0.tgz#ff456a8f53f90f8eccc71a96d11bdfc7f082cb50"
@@ -5898,7 +5878,7 @@ file-type@^3.8.0:
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-3.9.0.tgz#257a078384d1db8087bc449d107d52a52672b9e9"
   integrity sha1-JXoHg4TR24CHvESdEH1SpSZyuek=
 
-file-type@^4.2.0, file-type@^4.3.0:
+file-type@^4.2.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-4.4.0.tgz#1b600e5fca1fbdc6e80c0a70c71c8dba5f7906c5"
   integrity sha1-G2AOX8ofvcboDApwxxyNul95BsU=
@@ -6266,10 +6246,10 @@ gatsby-graphiql-explorer@^0.4.11:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
-gatsby-image@^2.4.4:
-  version "2.4.11"
-  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.4.11.tgz#ed4e2dc961d4bb9aa6f30d1743c78772e9c41e85"
-  integrity sha512-s9L48uMoIGUg9WRt0mDKD4FA6tJo3Bmoxzojckmc58wJdQ/5WvbDnMw5jl+oYjzUQRLRGBco+70Mj9/3c0KBWw==
+gatsby-image@^2.4.13:
+  version "2.4.13"
+  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.4.13.tgz#21ea2d062952406aba3d34c0bc45752df6b8a554"
+  integrity sha512-j9FIH+EUY6oWQdcNr5Xb87VGsdT/dztqB0wKkMqboIIqPoK/Zdzvd2cUbLIYVOI9zOSsFNDoVsHqe/M0bfu4HA==
   dependencies:
     "@babel/runtime" "^7.10.3"
     object-fit-images "^3.2.4"
@@ -6440,21 +6420,20 @@ gatsby-plugin-react-helmet@^3.3.10:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
-gatsby-plugin-sharp@^2.6.4:
-  version "2.6.16"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.6.16.tgz#f9ec6538ae31a4ffb402ab2fb436b090ddd31c57"
-  integrity sha512-U5k+2d4GkHaH2w/7umYoHZ9/5JvRsrWPDAPAl7oNjnnJ7YGIzkoiOUroH4ihUIosGVfiXmw3f4wM7SYBC3D5mA==
+gatsby-plugin-sharp@^2.6.19:
+  version "2.6.19"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.6.19.tgz#027e9a55e44fafff80e1c4c4811242a2fae8d12c"
+  integrity sha512-0SVP2xk8Ml+hml30+oBP/SRm/ztGV6sDOlOUoEHuv6SssxkDcKc9aSScn0qB1HsKGDYDm1gcmDmw48Bq4U78rA==
   dependencies:
     "@babel/runtime" "^7.10.3"
     async "^2.6.3"
     bluebird "^3.7.2"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^1.3.10"
+    gatsby-core-utils "^1.3.12"
     got "^8.3.2"
     imagemin "^6.1.0"
     imagemin-mozjpeg "^8.0.0"
     imagemin-pngquant "^6.0.1"
-    imagemin-webp "^5.1.0"
     lodash "^4.17.15"
     mini-svg-data-uri "^1.2.3"
     potrace "^2.1.6"
@@ -6585,15 +6564,15 @@ gatsby-remark-embed-video@^3.0.10:
     remark-burger "^1.0.1"
     unist-util-visit "^2.0.2"
 
-gatsby-remark-images@^3.3.9:
-  version "3.3.16"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.3.16.tgz#101b6b1ebe03b03e4b38712746be1d26eca80320"
-  integrity sha512-xts1nLBfgch1z9DcmogFS7HkV76nJX5+ZRHxRLjIU7Qhseu6ciUGlXhHLJKqjFEiIxRAVbYNhR6f8MyS21IufA==
+gatsby-remark-images@^3.3.18:
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.3.18.tgz#0403befbfb24ddd33bb9326a1f356bb3a26b6496"
+  integrity sha512-VdujNSdwwCYkGoOwGkfn810zbl5R2gF99o6CYsi6ZUZ5iooWklSgndTu0bzP5tDRmKLXOK4L4Gjm+QzbLkM3lA==
   dependencies:
     "@babel/runtime" "^7.10.3"
     chalk "^2.4.2"
     cheerio "^1.0.0-rc.3"
-    gatsby-core-utils "^1.3.10"
+    gatsby-core-utils "^1.3.12"
     is-relative-url "^3.0.0"
     lodash "^4.17.15"
     mdast-util-definitions "^1.2.5"
@@ -6602,10 +6581,10 @@ gatsby-remark-images@^3.3.9:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-gatsby-remark-responsive-iframe@^2.4.7:
-  version "2.4.9"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-responsive-iframe/-/gatsby-remark-responsive-iframe-2.4.9.tgz#0defe44952a1c1b0da14adcfe90de961cfd2b024"
-  integrity sha512-5iuKqckvc+UYtBbw8JwblkLpx3q9XiUDZJNWCh8iEKRw8kNSjlGDLG5ZBfxAbEQkvUeanDbMts9lWDkWZ0ngsw==
+gatsby-remark-responsive-iframe@^2.4.11:
+  version "2.4.11"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-responsive-iframe/-/gatsby-remark-responsive-iframe-2.4.11.tgz#13fb7d91eddca5e448b40a9c3d6d14d7d3df3ff6"
+  integrity sha512-LJwMffpKMVrn3OkFjH3FiTjlt5NresUKIHSCZs5RLKGta8zd4I1vd/uMnjuO7EI5csIRkr0iHS7iCMQeC4oXbQ==
   dependencies:
     "@babel/runtime" "^7.10.3"
     cheerio "^1.0.0-rc.3"
@@ -7848,15 +7827,6 @@ imagemin-pngquant@^6.0.1:
     is-stream "^1.1.0"
     pngquant-bin "^5.0.0"
 
-imagemin-webp@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/imagemin-webp/-/imagemin-webp-5.1.0.tgz#ddb1307ad97aff97293c5a600e384e40c07f68a7"
-  integrity sha512-BsPTpobgbDPFBBsI3UflnU/cpIVa15qInEDBcYBw16qI/6XiB4vDF/dGp9l4aM3pfFDDYqR0mANMcKpBD7wbCw==
-  dependencies:
-    cwebp-bin "^5.0.0"
-    exec-buffer "^3.0.0"
-    is-cwebp-readable "^2.0.1"
-
 imagemin@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/imagemin/-/imagemin-6.1.0.tgz#62508b465728fea36c03cdc07d915fe2d8cf9e13"
@@ -8237,13 +8207,6 @@ is-color-stop@^1.0.0:
     hsla-regex "^1.0.0"
     rgb-regex "^1.0.1"
     rgba-regex "^1.0.0"
-
-is-cwebp-readable@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/is-cwebp-readable/-/is-cwebp-readable-2.0.1.tgz#afb93b0c0abd0a25101016ae33aea8aedf926d26"
-  integrity sha1-r7k7DAq9CiUQEBauM66ort+SbSY=
-  dependencies:
-    file-type "^4.3.0"
 
 is-data-descriptor@^0.1.4:
   version "0.1.4"
