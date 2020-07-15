@@ -1451,10 +1451,10 @@
     core-js "^3.4.1"
     regenerator-runtime "^0.13.3"
 
-"@makerdao/dai-ui-icons-branding@^0.0.57":
-  version "0.0.57"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.57.tgz#729805ca7a5a0b1e1f19348dbb401eb9496fb24b"
-  integrity sha512-KflmXIUTlLbpfOBDK7wNJjyGToiHRxcWamsgLR7I5qXwBl3cC3vp99w5RrIFf2jfByza05nXCL12DScmGHKJPA==
+"@makerdao/dai-ui-icons-branding@^0.0.58":
+  version "0.0.58"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.58.tgz#ca19cc046015248f27019a6a69aead1573172987"
+  integrity sha512-P7hzpEj60/NDYzuTthY/Y/wayqCgT8XaaTMvbjL4rtuUzBTVe48B4gBVw5DEn7poejykCFj6D5p4vJya4KkAuQ==
 
 "@makerdao/dai-ui-icons@^0.0.58":
   version "0.0.58"
