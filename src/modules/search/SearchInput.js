@@ -62,7 +62,7 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
       method="GET"
       role="search"
       onSubmit={onFormSubmit}
-      sx={{ p: "4px", alignItems: "center", pl: "10px" }}
+      sx={{ p: "4px", alignItems: "center", pl: "10px", width: "100%" }}
     >
       <Icon
         name="search"
@@ -86,6 +86,7 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
           border: "none",
           borderRadius: "0",
           letterSpacing: "0.3px",
+          padding: "9px",
           color: "muted",
           "&:focus": {
             color: "muted",

@@ -1,3 +1,4 @@
+//** @jsx jsx */
 import React from "react";
 
 import { SEO } from "@modules/utility";
@@ -8,8 +9,7 @@ import { navigate } from "@reach/router";
 import Button from "@modules/ui/Button";
 import Link from "@modules/navigation/Link";
 
-import { useTranslation, TranslationProvider } from "@modules/localization";
-import Shortcodes from "@modules/ui/shortcodes";
+import { useTranslation } from "@modules/localization";
 
 const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
 
@@ -40,7 +40,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
         </Button>
         <Link
           onClick={() => {
-            window.history.back();
+            navigate(-1);
           }}
           disabled={true}
           hideExternalIcon={true}

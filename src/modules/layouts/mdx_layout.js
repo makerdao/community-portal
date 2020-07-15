@@ -51,8 +51,9 @@ export default (props) => {
   //NOTE(Rejon): If the page is an index of a directory, the uri split will be the name of the directory. ie. /en/bounties -> bounties
   const _pageTitle = title || getFirstHeading() || uri.split("/").pop();
 
-  const hasTopSection = currentTopSection !== undefined && currentTopSection !== "";
-  const renderSidenav = hasTopSection && !hideSidenav
+  const hasTopSection =
+    currentTopSection !== undefined && currentTopSection !== "";
+  const renderSidenav = hasTopSection && !hideSidenav;
 
   return (
     <TranslationProvider>
@@ -63,16 +64,16 @@ export default (props) => {
         featuredImage={featuredImage}
       />
       {renderSidenav && (
-          <Sticky
-            boundaryElement=".content-boundary"
-            sx={{ width: "20%", minWidth: "260px" }}
-            dontUpdateHolderHeightWhenSticky={true}
-            style={{ position: "relative" }}
-            hideOnBoundaryHit={false}
-          >
-            <Sidenav />
-          </Sticky>
-        )}
+        <Sticky
+          boundaryElement=".content-boundary"
+          sx={{ width: "20%", minWidth: "260px" }}
+          dontUpdateHolderHeightWhenSticky={true}
+          style={{ position: "relative" }}
+          hideOnBoundaryHit={false}
+        >
+          <Sidenav />
+        </Sticky>
+      )}
 
       <Flex sx={{ flexGrow: 1, flexDirection: "column", width: "80%" }}>
         {status && (
@@ -85,15 +86,9 @@ export default (props) => {
         )}
         <article
           sx={{
-            pl:
-              hasTopSection
-                ? "64px"
-                : 0,
-            mt:
-              hasTopSection
-                ? "74px"
-                : 0,
-            
+            pl: hasTopSection ? "64px" : 0,
+            mt: hasTopSection ? "74px" : 0,
+
             pr: 4,
           }}
         >
@@ -103,11 +98,11 @@ export default (props) => {
               position: "relative",
               mb: "28px",
               alignItems: "center",
-              mt: !renderSidenav ? '2rem' : '',
+              mt: !renderSidenav ? "2rem" : "",
             }}
           >
-            <Breadcrumbs sx={{ flexGrow: 1, }} />
-            {(hasTopSection && !hideLanguageSelector) && <LanguageSelector />}
+            <Breadcrumbs sx={{ flexGrow: 1 }} />
+            {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
           </Flex>
           <Box
             sx={

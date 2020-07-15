@@ -38,7 +38,10 @@ const AuthorGridCell = ({
         sx={{ fontSize: "13px", fontWeight: "bold" }}
       >
         {avatar_url ? (
-          <Image src={avatar_url} sx={{ width: "100px", height: "100px" }} />
+          <Image
+            src={avatar_url}
+            sx={{ width: "100%", height: "100px", objectFit: "contain" }}
+          />
         ) : (
           <Flex
             sx={{
@@ -61,7 +64,10 @@ const AuthorGridCell = ({
     ) : (
       <Box sx={{ fontSize: "13px", fontWeight: "bold" }}>
         {avatar_url ? (
-          <Image src={avatar_url} sx={{ width: "100px", height: "100px" }} />
+          <Image
+            src={avatar_url}
+            sx={{ width: "100%", height: "100px", objectFit: "contain" }}
+          />
         ) : (
           <Flex
             sx={{

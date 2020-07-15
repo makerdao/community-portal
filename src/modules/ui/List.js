@@ -120,7 +120,7 @@ const List = ({ children }) => {
 
   const renderListElement = (child, key) => (
     <Flex
-      key={key || ""}
+      key={key || child.key || "list-element"}
       sx={{
         p: "10px 8px",
         minHeight: "60px",
@@ -155,7 +155,6 @@ const List = ({ children }) => {
           color: "text",
         },
       }}
-      key={`list-element-${child.key}`}
     >
       {child}
     </Flex>

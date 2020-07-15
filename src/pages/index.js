@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
-import { useTranslation, TranslationProvider } from "@modules/localization";
+import { useTranslation } from "@modules/localization";
 import { getInitialLocale } from "@utils";
 
 //This page doesn't exist and solely acts as a reroute for language.

@@ -8,13 +8,12 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
-import Shortcodes from "@modules/ui/shortcodes";
 import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
 
 const Header = () => {
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
-  const [colorMode, setColorMode] = useColorMode()
+  const [colorMode, setColorMode] = useColorMode();
 
   const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
     query HeaderQuery {
@@ -195,10 +194,19 @@ const Header = () => {
             maxWidth: "347px",
           }}
         />
-        <Flex sx={{cursor: 'pointer', marginLeft: '1rem', fontSize: '1.6rem', display: 'inlineBlock', alignItems: 'center'}} onClick={e => {
-          setColorMode(colorMode === 'default' ? 'dark' : 'default')
-        }}>
-          {colorMode === 'default' ? '🌙': '☀️'}
+        <Flex
+          sx={{
+            cursor: "pointer",
+            marginLeft: "1rem",
+            fontSize: "1.6rem",
+            display: "inlineBlock",
+            alignItems: "center",
+          }}
+          onClick={(e) => {
+            setColorMode(colorMode === "default" ? "dark" : "default");
+          }}
+        >
+          {colorMode === "default" ? "🌙" : "☀️"}
         </Flex>
       </Flex>
     </Box>

@@ -90,6 +90,10 @@ const theme = {
         textMuted: "#E1DFEC",
         background: "#291A42",
         surface: "#4D4968",
+        warning: "#FFBA44",
+        warningAlt: "#FBA615",
+        success: "#68FEE3",
+        successAlt: "#A6FFEF",
         statusBG: "#291A42",
         statusColor: "#FFFFFF",
         codeBG: "#00585E",
@@ -146,7 +150,6 @@ const theme = {
   },
   buttons: {
     primary: {
-      borderRadius: "small",
       cursor: "pointer",
       outline: "none",
       fontFamily: "text",
