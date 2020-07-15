@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -124,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.isaacpearl.com"><img src="https://avatars1.githubusercontent.com/u/21342523?v=4" width="100px;" alt=""/><br /><sub><b>isaacpearl</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=isaacpearl" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/befitsandpiper"><img src="https://avatars3.githubusercontent.com/u/7257527?v=4" width="100px;" alt=""/><br /><sub><b>Be Fit Sandpiper</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=befitsandpiper" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/twblack88"><img src="https://avatars3.githubusercontent.com/u/8991325?v=4" width="100px;" alt=""/><br /><sub><b>Tim Black</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=twblack88" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/amy-jung"><img src="https://avatars1.githubusercontent.com/u/26228406?v=4" width="100px;" alt=""/><br /><sub><b>Amy Jung</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=amy-jung" title="Documentation">📖</a></td>
   </tr>
 </table>
 
