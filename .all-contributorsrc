@@ -42,6 +42,24 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "amy-jung",
+      "name": "Amy Jung",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/26228406?v=4",
+      "profile": "https://github.com/amy-jung",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "shea-fitz",
+      "name": "shea-fitz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/59940380?v=4",
+      "profile": "https://github.com/shea-fitz",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
