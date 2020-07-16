@@ -1,225 +1,135 @@
 //** @jsx jsx */
 import React from "react";
-import { Box, Flex, jsx } from "theme-ui";
+import { Box, Flex, Text, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
 import { Link } from "@modules/navigation";
 
+const ListElement = ({children, ...props}) => (
+  <Flex
+    sx={{
+      p: "10px 8px",
+      pt: '23px',
+      minHeight: "60px",
+      borderTop: "1px solid",
+      borderColor: "muted",
+      flexDirection: 'column',
+      alignItems: "flex-start",
+      '& > * > *:only-child, & > * > *:first-child': {
+        fontWeight: 'normal',
+        fontSize: 3,
+        color: 'text',
+        lineHeight: 'normal'
+      },
+      '& > * > *:only-child': {
+        mb: 0,
+      },
+      '& > * > *:not(:only-child):first-child': {
+        mb: '8px'
+      },
+      '& > * > *:not(:first-child)': {
+        fontWeight: 'normal',
+        fontSize: '14px',
+        color: 'textMuted'
+      }
+    }}>
+    {children}
+  </Flex>
+)
+
+const AdvancedListElement = ({childData: {heading, _children}, linkData, index}) => {
+  
+  const ListEl = ({children}) => (
+    <ListElement sx={{flexDirection: children ? 'row' : ''}}>
+      {children ?
+        <Flex sx={{flexDirection: 'row'}}>
+          {children}
+          <Flex className="content-container" sx={{
+            flexDirection: 'column',
+            alignItems: 'flex-start', 
+            '& > *:only-child, & > *:first-child': {
+              fontWeight: 'normal',
+              fontSize: 3,
+              color: 'text',
+              lineHeight: 'normal'
+            },
+            '& > *:not(:first-child)': {
+              fontWeight: 'normal',
+              fontSize: '14px',
+              color: 'textMuted'
+            }}}>
+            {heading && <Box sx={{m: 0, '& > *': {m: 0, mb: '8px', lineHeight: 'normal'}}}>{heading}</Box>}
+            <Box>
+              {_children}
+            </Box>
+          </Flex>
+        </Flex>
+        :
+        <>
+          {heading && <Box  sx={{m: 0, '& > *': {m: 0, mb:'8px', lineHeight: 'normal'}}}>heading</Box>}
+          <Box>
+            {_children}
+          </Box>
+        </>
+      }
+    </ListElement>
+  )
+  
+  if (linkData) {
+    delete linkData.children;
+
+    const destination = linkData.to || linkData.href;
+
+    return (
+      <Link hideExternalIcon {...linkData} sx={{'& > *': {width: '100%', '&:hover': {bg: 'primary'}, '&:hover *, &:hover .content-container > *': {color: 'backgroundDark'}, '&:active': {bg: 'primaryEmphasis'}, transition: 'all .1s ease'}, '&:not(:hover) .content-container > *:only-child, &:not(:hover):not(:active) .content-container > *:first-child': {color: 'text'}, '&:not(:hover):not(:active) .content-container > *:not(:first-child)': {color: 'textMuted'}}}>
+        <ListEl>
+          <Icon name={'increase'} size={3} sx={{mr:'29px', ml: '5px'}} />
+        </ListEl>
+      </Link>
+    )
+  }
+
+  return ListEl;
+}
+
 const List = ({ children }) => {
   const _Children = React.Children.toArray(children);
 
-  //What to render if a list element is a Link element.
-  const renderLink = ({ listChild, _children, key, siblings }) => {
-    const siblingArray = siblings ? React.Children.toArray(siblings) : [];
-    //Depending on whether the child is an actual Link or is a UL/LI with a Link
-    //we have to access it's props differently.
-    const fetchLinkData = (LIChild) => {
-      if (LIChild.props.mdxType === "a" || LIChild.props.mdxType === "Link") {
-        return LIChild.props;
-      } else if (
-        LIChild.props.children.props.mdxType === "a" ||
-        LIChild.props.children.props.mdxType === "Link"
-      ) {
-        return LIChild.props.children.props;
-      }
-    };
-
-    const linkProps = fetchLinkData(listChild);
-
-    //NOTE(Rejon): The only inconsistency I've seen for MDX is sometimes it gives href and sometimes it gives us the "to" prop.
-    const isInternalLink =
-      /^\/(?!\/)/.test(linkProps.to) || /^\/(?!\/)/.test(linkProps.href);
-
-    return (
-      <>
-        <Link
-          {...linkProps}
-          hideExternalIcon
-          key={`list-link-element${key}`}
-          sx={{
-            p: "10px 8px",
-            minHeight: "60px",
-            borderBottom: "1px solid",
-            borderColor: "text",
-            alignItems: "center",
-            display: "flex",
-            ":hover": {
-              bg: "successAlt",
-            },
-            ":active": {
-              bg: "primaryMuted",
-            },
-            ":hover .list-internal-icon": {
-              transform: "translate(4px, 0px)",
-            },
-            ":hover .list-external-icon": {
-              transform: "translate(3px,-3px)",
-            },
-            transition: "all .1s ease-in-out",
-            color: (theme) => `${theme.colors.headline} !important`, //NOTE(Rejon): I use !important here to override the Link color styling.
-          }}
-        >
-          <Flex
-            sx={{
-              flexGrow: 1,
-              pr: 4,
-              flexDirection: "column",
-              "& > *": {
-                width: "100%",
-              },
-              "& > ul": {
-                m: 0,
-                p: 0,
-                listStyleType: "none",
-                width: "100%",
-              },
-              "& > ul > li, & > ul > li > a, & > ul > li > a:hover": {
-                color: "text",
-                mt: 2,
-              },
-            }}
-          >
-            {linkProps.children}
-            <Box
-              sx={{
-                color: "text",
-                "& > *": {
-                  width: "100%",
-                },
-                "& > ul": {
-                  m: 0,
-                  p: 0,
-                  listStyleType: "none",
-                  width: "100%",
-                },
-              }}
-            >
-              {_children.map((child) => child)}
-            </Box>
-          </Flex>
-          <Icon
-            name={!isInternalLink ? "increase" : "arrow_right"}
-            size={4}
-            sx={{
-              position: "relative",
-              transition: "all .1s ease-in-out",
-              transform: "translate(0px, 0px)",
-            }}
-            className={
-              isInternalLink ? "list-internal-icon" : "list-external-icon"
-            }
-            color="primary"
-          />
-        </Link>
-        {siblingArray.map((sibling, index) =>
-          childListLinkRenderCheck(sibling, `sibling-element-${index}`)
-        )}
-      </>
-    );
-  };
-
-  const renderListElement = (child, key) => (
-    <Flex
-      key={key || child.key || "list-element"}
-      sx={{
-        p: "10px 8px",
-        minHeight: "60px",
-        borderBottom: "1px solid",
-        borderColor: "text",
-        alignItems: "center",
-        "& > *:only-child": {
-          margin: typeof child === "string" ? 0 : "initial",
-        },
-        "& > *": {
-          width: "100%",
-        },
-        "& > li:only-child, & > li:only-child > *, & > *:only-child, & > *:only-child > *": {
-          m: 0,
-        },
-        "& > ul, & > ol, & > li": {
-          m: 0,
-          p: 0,
-          listStyleType: "none",
-          width: "100%",
-        },
-        "& > ul > li, & > ul > li > a, & > ul > li > a:hover, & > ol > li, & > ol > li > a, & > ol > li > a:hover": {
-          color: "text",
-        },
-        "& > ul > li > ul, & > ol > li > ul, & > ul > li > ol, & > ol > li > ol": {
-          m: 0,
-          mt: 2,
-          p: 0,
-          listStyleType: "none",
-        },
-        "& > ul > li > ul > li, & > ol > li > ol > li, & > ol > li > ul > li, & > ul > li > ol > li": {
-          color: "text",
-        },
-      }}
-    >
-      {child}
-    </Flex>
-  );
-
   //Logic check for rendering a link element vs a list element.
   const childListLinkRenderCheck = (child, index) => {
-    if (
-      child.props &&
-      (child.props.mdxType === "ul" ||
-        child.props.mdxType === "ol" ||
-        child.props.mdxType === "li")
-    ) {
-      //Check if we've got a list container
-      const ULChildren = React.Children.toArray(child.props.children);
+    if (child.props && (child.props.mdxType === "Box" || child.props.mdxType === "Link" || child.props.mdxType === 'a')) {
+      const boxChildren = React.Children.toArray(child.props.children);
+      const isLink = child.props.mdxType === "Link" || child.props.mdxType === 'a';
+      const childData = {};
 
-      if (ULChildren.length > 0 && typeof ULChildren[0] === "object") {
-        //Check if the list container has child and that the first child is an object.
-        const LIChildren = React.Children.toArray(ULChildren[0].props.children);
+      const linkData = isLink ? {...child.props} : null; //If this element is a Link grab it's href. 
 
-        if (LIChildren.length > 0 && typeof LIChildren[0] === "object") {
-          //Check if the LIchildren of the ul list element has children and it's first element is an object.
-          let linkChild = LIChildren[0];
-
-          //Check if the link child, which SHOULD be the first element is
-          //an anchor link or a Link component.
-          //NOTE(Rejon): This consistency comes from the Markdown Spec.
-          let isLinkElement =
-            linkChild &&
-            (linkChild.props.mdxType === "a" ||
-              linkChild.props.mdxType === "Link");
-
-          //If the element isn't a link element, but we have a linkChild
-          //we should also check ITS children.
-          //NOTE(Rejon): This is because of weird MD spacing and containerizing of content
-          //             into random divs. We can't predict this so we check if ITS inner
-          //             content is a link or not.
-          if (!isLinkElement && linkChild) {
-            linkChild = React.Children.toArray(linkChild)[0];
-
-            isLinkElement =
-              linkChild &&
-              (linkChild.props.mdxType === "a" ||
-                linkChild.props.mdxType === "Link");
-          }
-
-          //We've got a link element. Render it like one!
-          if (isLinkElement) {
-            return renderLink({
-              listChild: linkChild,
-              _children: LIChildren.slice(1),
-              key: child.key,
-              siblings: ULChildren.slice(1),
-            });
-          }
-        }
+      if (boxChildren.length > 1) {
+        childData.heading = boxChildren[0]; //<- First child is heading
+        childData._children = boxChildren.slice(1, boxChildren.length); //<- Render other children as sub content
       }
+      else if (boxChildren.length === 1) {
+        childData._children = boxChildren[0];
+      }
+
+      const advancedElementProps = {childData, linkData, index};
+
+      return (
+        <AdvancedListElement key={`list-element-${index}`} {...advancedElementProps} />
+      );
     }
 
-    return renderListElement(child);
+    return (
+      <ListElement key={`list-element-${index}`}>
+        {child}
+      </ListElement>
+    );
   };
 
   return (
     <Box sx={{ mb: 4 }}>
-      {_Children.map((child, index) => childListLinkRenderCheck(child, index))}
+      {_Children.map((child, index) => childListLinkRenderCheck(child, index)
+      )}
     </Box>
   );
 };
