@@ -1461,10 +1461,10 @@
   resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.58.tgz#6ef2dac126c88d7c8be2e2c3a28b2639056c1847"
   integrity sha512-4wofIOgbwkus8LzOD8qetGHPXOO41oyPWHIX7chNIbMqFeP9KbIBqa+1b0VYK/7mSu2LLRUHSluCJKstCW2qyA==
 
-"@makerdao/dai-ui-theme-maker@^0.0.38":
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.38.tgz#b48f11cc6ae0f5040cc8761cacbc02cd1c4895ec"
-  integrity sha512-paSgGIc2onxlE0p0tr4jpa/N7IrGst0zcktGiKdrhl33HmYV1DXScGm4dWzLBFHPU7moq12herP5q6HWWrS1XQ==
+"@makerdao/dai-ui-theme-maker@^0.0.58":
+  version "0.0.58"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.58.tgz#1dbb40602eaaf5c582f37a27afe0504afe00ddfc"
+  integrity sha512-94+Go7KMelHKwGa/QIwY+rODtZQvu5ssxtTXzJfa0mD8L8ddZnFPglxcYuMSgbEIgUVFQ8qa+0Dlt+xh6b1OPg==
   dependencies:
     "@theme-ui/color" "^0.3.1"
 
