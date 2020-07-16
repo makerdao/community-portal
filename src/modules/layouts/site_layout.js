@@ -6,7 +6,6 @@ import { Flex, jsx } from "theme-ui";
 
 import { Header, Footer } from "@modules/navigation";
 
-import "./prismjs.css"; //<- Load in Prismjs css. Our custom styles have to be loaded this way cause Prismjs is blackboxed from our own code.
 
 const Layout = ({ children }) => (
   <>

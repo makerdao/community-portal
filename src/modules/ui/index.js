@@ -1,5 +1,3 @@
-export { default as shortcodes } from "./shortcodes";
-
 export { default as StatusBanner } from "./StatusBanner";
 export { default as Categories } from "./Categories";
 export { default as InfoBlock } from "./InfoBlock";

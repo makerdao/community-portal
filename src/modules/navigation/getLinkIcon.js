@@ -4,8 +4,6 @@ import { Icon } from "@makerdao/dai-ui-icons";
 import { Image, jsx } from "theme-ui";
 import { Link } from "@modules/navigation";
 
-import githubDark from "@images/githubDark.svg";
-
 //More of a Utility
 //Specifically used for Author links but I imagine it will have it's own use else where.
 
@@ -15,7 +13,7 @@ const getLinkIcon = (url) => {
   if (url.includes("github")) {
     return (
       <Link hideExternalIcon to={url} sx={{ mr: "6px" }}>
-        <Image src={githubDark} sx={{ width: "23px" }} />
+        <Icon name="github" size={"23px"} sx={{ color: "text" }} />
       </Link>
     );
   } else if (url.includes("twitter")) {

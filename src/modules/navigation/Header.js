@@ -201,12 +201,13 @@ const Header = () => {
             fontSize: "1.6rem",
             display: "inlineBlock",
             alignItems: "center",
+            color: 'background'
           }}
           onClick={(e) => {
             setColorMode(colorMode === "default" ? "dark" : "default");
           }}
         >
-          {colorMode === "default" ? "🌙" : "☀️"}
+          <Icon size={4} name={colorMode === 'default' ? "moon" : "sun"} />
         </Flex>
       </Flex>
     </Box>

@@ -53,12 +53,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
               fontWeight: "bold",
             }}
           >
-            {/* TEMPORARY UNTIL MINUS ICON ADDED TO DAI-UI */}
-            {CloseIcon !== "minus" ? (
-              <Icon name={CloseIcon} color={"text"} size={4} />
-            ) : (
-              <>{"-"}</>
-            )}
+            <Icon name={CloseIcon} color={"text"} size={4} />
           </Box>
         )}
       </Flex>
