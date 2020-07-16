@@ -144,7 +144,7 @@ export default function Search({ ...otherProps }) {
           zIndex: "1000000000",
           top: "3.5rem",
           borderRadius: "roundish",
-          boxShadow: "type1",
+          boxShadow: "high",
           overflow: "hidden",
           width: "100%",
         }}

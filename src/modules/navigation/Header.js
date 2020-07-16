@@ -134,80 +134,95 @@ const Header = () => {
         sx={{
           maxWidth: "1364px",
           margin: "auto",
-          p: 4,
-          "& a": { color: "background", textDecoration: "none" },
+          p: '22px',
+          py:'19px',
+          alignItems: 'center',
+          "& a": { color: "onBackgroundDark", textDecoration: "none" },
           "& a.external-link > svg": { display: "none" },
-          "& a:not(:first-of-type)": {
-            display: "inline-flex",
-            alignItems: "center",
-            p: 0,
-            mr: "40px",
+          "& a:hover": {
             textDecoration: "none",
           },
           "& > ul": {
-            display: "inline-flex",
-            alignItems: "center",
             p: 0,
             m: 0,
             listStyleType: "none",
+            display: 'inline-flex'
           },
-          "& > ul > li": {
-            mr: "40px",
-          },
+          // "& > ul > li": {
+          //   mr: "40px",
+          // },
           "& > ul > li > a": {
             textDecoration: "none",
           },
         }}
       >
-        <Link
+      <Link
           to={`/${locale}/`}
           variant="nav"
           sx={{
-            display: "inline-flex",
-            alignItems: "center",
             textDecoration: "none",
-            marginRight: "40px",
-            color: "background",
+            color: "onBackgroundDark",
+            width: '52px',
+            height: '52px'
           }}
         >
-          <Icon
+        <Icon
             name="maker"
             color="primary"
-            sx={{
-              width: "52px",
-              height: "100%",
-              mr: 2,
-              position: "relative",
-              left: "-45%",
-            }}
+            size={'52px'}
           />
+        </Link>
+        <Flex sx={{flex: '1 1 auto', justifyContent: 'center', '& > a': {fontSize: '16px'}, '& > a:not(:last-child)': {mr: 5}}}>
+        <Link
+          to={`/${locale}/`}
+          variant="nav"
+          sx={{ 
+            textDecoration: "none",
+            color: "onBackgroundDark",
+          }}
+        >
+          
           <Text>{t("Home")}</Text>
         </Link>
         {HeaderLinks}
-        <MDXRenderer>{headerConfigLinks}</MDXRenderer>
+        {/* <MDXRenderer>{headerConfigLinks}</MDXRenderer> */}
+        </Flex>
+        <Flex
+          sx={{
+            display: "inlineBlock",
+            alignItems: "center",
+            color: 'onBackgroundDark',
+            width: '36%',
+            flexDirection: 'row'
+          }}
+          
+        >
         <Search
           collapse
           sx={{
-            ml: "auto",
-            mr: 0,
             width: "100%",
-            maxWidth: "347px",
+            maxWidth: "337px",
+            minWidth: '227px',
+            mr: '25px',
+            flex: '1 1 auto',
+            fontFamily: 'body',
+            display: 'inline-block',
+            fontSize: '15px'
           }}
         />
-        <Flex
-          sx={{
-            cursor: "pointer",
-            marginLeft: "1rem",
-            fontSize: "1.6rem",
-            display: "inlineBlock",
-            alignItems: "center",
-            color: 'background'
-          }}
-          onClick={(e) => {
-            setColorMode(colorMode === "default" ? "dark" : "default");
-          }}
-        >
-          <Icon size={4} name={colorMode === 'default' ? "moon" : "sun"} />
+
+        <Icon size={'32px'} name={"sun"} sx={{borderRadius: '100%', p: '2px', bg: colorMode !== 'default' ? 'transparent' : 'primary', color: colorMode !== 'default' ? 'onBackground' : 'text', mr: '21px', minWidth: '32px', minHeight: '32px', cursor: 'pointer', '&:hover': {bg: colorMode !== 'default' ?  'background' : ''}}} onClick={(e) => {
+            if (colorMode !== 'default') {
+              setColorMode("default");
+            }
+          }}/>
+
+          <Icon size={'32px'} name={"moon"} sx={{borderRadius: '100%', p: '2px', bg: colorMode !== 'dark' ? 'transparent' : 'primary', color: colorMode !== 'dark' ? 'onBackgroundDark' : 'background', minWidth: '32px', minHeight: '32px', cursor: 'pointer', '&:hover': {bg: colorMode !== 'dark' ? 'surfaceDark' : ''}}} onClick={(e) => {
+            if (colorMode !== 'dark') {
+              setColorMode("dark");
+            }
+          }}/>
+          
         </Flex>
       </Flex>
     </Box>

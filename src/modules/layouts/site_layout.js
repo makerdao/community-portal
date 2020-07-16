@@ -6,7 +6,6 @@ import { Flex, jsx } from "theme-ui";
 
 import { Header, Footer } from "@modules/navigation";
 
-
 const Layout = ({ children }) => (
   <>
     <Header />

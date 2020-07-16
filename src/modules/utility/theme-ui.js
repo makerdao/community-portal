@@ -45,6 +45,7 @@ const prismPreset = {
 
 const theme = {
   ...maker, //<- Your default theme.
+  breakpoints: ['640px', '1000px', 'infinity'],
   icons: {
     ...themeIcons,
     ...brandingIcons,
@@ -113,6 +114,7 @@ const theme = {
     warning: "#FFBA44",
     warningAlt: "#FFBA44",
     text: "#291A42",
+    onBackgroundDark: '#FFFFFF',
     textMuted: "#4D4968",
     strawberry: "#FF78F2",
     bubblegum: "#F2B9FF",
@@ -125,8 +127,10 @@ const theme = {
         primaryMuted: "#00585E",
         secondary: "#F2B9FF",
         secondaryEmphasis: "#FF78F2",
+        backgroundDark: "#4D4968",
         secondaryMuted: "#94008E",
         text: "#FFFFFF",
+        onBackgroundDark: '#FFFFFF',
         textMuted: "#E1DFEC",
         background: "#291A42",
         surface: "#4D4968",
@@ -161,6 +165,7 @@ const theme = {
       "linear-gradient(rgb(248, 237, 216), rgb(244, 227, 194))",
   },
   shadows: {
+    high: '0px 2px 17px rgba(35, 21, 54, 0.46)',
     raised: "0px 2px 15px rgba(35, 21, 54, 0.15)",
     float: "0px 2px 10px rgba(35, 21, 54, 0.05)",
   },

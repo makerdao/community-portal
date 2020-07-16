@@ -9,6 +9,7 @@ const SearchHit = ({ title, excerpt, url, query, ...props }) => (
     partiallyActive={false}
     activeClassName="not-active"
     {...props}
+    sx={{fontSize: 3}}
   >
     <Text
       variant="h4"
