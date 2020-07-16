@@ -33,7 +33,7 @@ const getLinkIcon = (url) => {
       <Link hideExternalIcon to={url} sx={{ mr: "6px" }}>
         <Icon name="open_in_new_tab" size={"23px"} />
       </Link>
-    );
+    );          
   }
 };
 
