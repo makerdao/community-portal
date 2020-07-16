@@ -51,6 +51,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "shea-fitz",
+      "name": "shea-fitz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/59940380?v=4",
+      "profile": "https://github.com/shea-fitz",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
