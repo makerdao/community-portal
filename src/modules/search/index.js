@@ -100,6 +100,7 @@ export default function Search({ ...otherProps }) {
     if (results.length > 0) {
       navigate(results[0].url);
       setFocus(false);
+      setQuery('');
     }
   };
 
@@ -178,9 +179,9 @@ export default function Search({ ...otherProps }) {
             },
             "& li:hover": {
               backgroundColor: "primary",
-              color: "text",
+              color: "backgroundDark",
               "& > a": {
-                color: "text",
+                color: "backgroundDark",
               },
             },
           }}
@@ -192,7 +193,7 @@ export default function Search({ ...otherProps }) {
                 query={query}
                 onClick={() => {
                   setFocus(false);
-
+                  setQuery('');
                   //Google Analytics Tracking
                   trackCustomEvent({
                     category: "Internal Search",
