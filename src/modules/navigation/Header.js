@@ -180,7 +180,7 @@ const Header = () => {
             size={'52px'}
           />
         </Link>
-        <Flex sx={{flex: '1 1 auto', justifyContent: 'center', '& > a': {fontSize: '16px', p: 2}, '& > a:not(:last-child)': {mr: 5}}}>
+        <Flex sx={{flex: '1 1 auto', justifyContent: 'center', '& > a': {fontSize: '16px', p: 2}, '& > a:not(:last-child)': {mr: '5%'}}}>
         <Link
           to={`/${locale}/`}
           variant="nav"

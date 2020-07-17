@@ -19,6 +19,7 @@ export default (props) => {
     status,
     hideLanguageSelector,
     hideSidenav,
+    hideBreadcrumbs,
   } = pageContext.frontmatter;
 
   const statusProps =
@@ -101,7 +102,7 @@ export default (props) => {
               mt: !renderSidenav ? "2rem" : "",
             }}
           >
-            <Breadcrumbs sx={{ flexGrow: 1 }} />
+            {!hideBreadcrumbs && <Breadcrumbs sx={{ flexGrow: 1 }} />}
             {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
           </Flex>
           <Box
