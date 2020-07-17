@@ -78,78 +78,86 @@ const Footer = () => {
 
 
   return (
-    <Flex
+    <Box
       as="footer"
       sx={{
-        width: "100%",
+        width: "100%",   
+        bg: "backgroundDark",
+      }}>
+      <Flex sx={{
         py: '54px',
         px: '52px',
-        bg: "backgroundDark",
-      }}
-    >
-      <Box sx={{color: 'onBackgroundDark', width: '26%', '& > a:not(:last-of-type)': {mr: '24px'}, '& > *, & svg': {color: 'onBackgroundDark', }}}>
-        <Link to="/">
-          <Icon name="makerLogo" sx={{width: '215px', height:'30px', display: 'block', mb: 4}} />
-        </Link>
-        {_socialLinks.map((s, index) => {
-          const link = s.match(/\(([^)]+)\)/)[1];
+        maxWidth: '1364px',
+        margin: 'auto'
 
-          return link ? getLinkIcon(link, `footer-social-link-${index}`) : null;
-        })}
-      </Box>
-      <Flex
-        sx={{
-          ml: '106px',
-          maxWidth: "1364px",
-          
-          width: "100%",
-          "& > * > ul": {
-            m: 0,
-            p: 0,
-            color: "text",
-            listStyleType: "none",
-            flex: 1,
-            display: 'flex',
-            "& > li:not(:last-of-type)": {
-              mr: "80px",
-            },
-            "& > li": {
-              fontWeight: "bold",
-              fontSize: "1rem",
-              color: "onBackgroundDark",
-              '& > *:first-child:not(ul)': {
-                mb: '8px'
+      }}>
+        <Box sx={{color: 'onBackgroundDark', display: 'inline-block', width: '217px', '& > *, & svg': {color: 'onBackgroundDark', }}}>
+          <Link to="/" sx={{display: 'inline-block', mb: '31px'}}>
+            <Icon name="makerLogo" sx={{width: '217px', height:'30px', display: 'block'}} />
+          </Link>
+          <Box sx={{'& > a:not(:last-of-type)': {mr: '24px'}}}>
+            {_socialLinks.map((s, index) => {
+            const link = s.match(/\(([^)]+)\)/)[1];
+
+            return link ? getLinkIcon(link, `footer-social-link-${index}`) : null;
+          })}
+          {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            ml: '106px',
+            display: 'inline-block',
+            width: "calc(100% - 106px - 217px)",
+            verticalAlign: 'top',
+            "& > * > ul": {
+              m: 0,
+              p: 0,
+              color: "text",
+              listStyleType: "none",
+              flex: 1,
+              display: 'flex',
+              "& > li:not(:last-of-type)": {
+                mr: "80px",
               },
-              "& > ul": {
-              
+              "& > li": {
+                fontWeight: "bold",
                 fontSize: "1rem",
-                p: 0,
-
-                listStyleType: "none",
-                "& li:not(:last-of-type)": {
-                  mb: "10px",
+                color: "onBackgroundDark",
+                '& > *:first-child:not(ul)': {
+                  mb: '8px'
                 },
-                "& a": {
-                  color: "onBackgroundDark",
-                  fontWeight: "normal",
-                  textDecoration: "none",
-                  "& svg": {
-                    display: "none",
+                "& > ul": {
+                
+                  fontSize: "1rem",
+                  p: 0,
+
+                  listStyleType: "none",
+                  "& li:not(:last-of-type)": {
+                    mb: "10px",
+                  },
+                  "& a": {
+                    color: "onBackgroundDark",
+                    fontWeight: "normal",
+                    textDecoration: "none",
+                    "& svg": {
+                      display: "none",
+                    },
                   },
                 },
               },
             },
-          },
-        }}
-      >
-        {footerLinks && (
-          <Box sx={{ flex: 1 }}>
-            <MDXRenderer>{footerLinks}</MDXRenderer>
-          </Box>
-        )}
-        {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
+          }}
+        >
+          {footerLinks && (
+            <Box sx={{ flex: 1 }}>
+              <MDXRenderer>{footerLinks}</MDXRenderer>
+            </Box>
+          )}
+          
+        </Box>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
 
