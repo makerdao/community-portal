@@ -49,7 +49,9 @@ const Header = () => {
       ) {
         nodes {
           fileAbsolutePath
-          body
+          internal {
+            content
+          }
         }
       }
     }
@@ -121,13 +123,22 @@ const Header = () => {
 
   const headerConfigLinks = headerConfigFiles.nodes.find((n) =>
     n.fileAbsolutePath.includes(`/${locale}/`)
-  ).body;
+  ).internal.content.trim().split('\n').map((l,index) => {
+    const url = l.match(/\(([^)]+)\)/)[1];
+    const title = l.match(/\[([^)]+)\]/)[1];
+   
+    return (
+        <Link to={url} key={`header-config-link-${index}`}>
+          {title}
+        </Link>
+      );
+  });
 
   return (
     <Box
       as="header"
       sx={{
-        bg: "backgroundDark",
+        bg: "backgroundAlt",
       }}
     >
       <Flex
@@ -137,7 +148,7 @@ const Header = () => {
           p: '22px',
           py:'19px',
           alignItems: 'center',
-          "& a": { color: "onBackgroundDark", textDecoration: "none" },
+          "& a": { color: "onBackgroundAlt", textDecoration: "none" },
           "& a.external-link > svg": { display: "none" },
           "& a:hover": {
             textDecoration: "none",
@@ -148,9 +159,6 @@ const Header = () => {
             listStyleType: "none",
             display: 'inline-flex'
           },
-          // "& > ul > li": {
-          //   mr: "40px",
-          // },
           "& > ul > li > a": {
             textDecoration: "none",
           },
@@ -161,7 +169,7 @@ const Header = () => {
           variant="nav"
           sx={{
             textDecoration: "none",
-            color: "onBackgroundDark",
+            color: "onBackgroundAlt",
             width: '52px',
             height: '52px'
           }}
@@ -172,26 +180,27 @@ const Header = () => {
             size={'52px'}
           />
         </Link>
-        <Flex sx={{flex: '1 1 auto', justifyContent: 'center', '& > a': {fontSize: '16px'}, '& > a:not(:last-child)': {mr: 5}}}>
+        <Flex sx={{flex: '1 1 auto', justifyContent: 'center', '& > a': {fontSize: '16px', p: 2}, '& > a:not(:last-child)': {mr: 5}}}>
         <Link
           to={`/${locale}/`}
           variant="nav"
           sx={{ 
             textDecoration: "none",
-            color: "onBackgroundDark",
+            color: "onBackgroundAlt",
           }}
         >
           
           <Text>{t("Home")}</Text>
         </Link>
         {HeaderLinks}
+        {headerConfigLinks}
         {/* <MDXRenderer>{headerConfigLinks}</MDXRenderer> */}
         </Flex>
         <Flex
           sx={{
             display: "inlineBlock",
             alignItems: "center",
-            color: 'onBackgroundDark',
+            color: 'onBackgroundAlt',
             width: '36%',
             flexDirection: 'row'
           }}
@@ -202,7 +211,7 @@ const Header = () => {
           sx={{
             width: "100%",
             maxWidth: "337px",
-            minWidth: '227px',
+            minWidth: '250px',
             mr: '25px',
             flex: '1 1 auto',
             fontFamily: 'body',
@@ -217,7 +226,7 @@ const Header = () => {
             }
           }}/>
 
-          <Icon size={'32px'} name={"moon"} sx={{borderRadius: '100%', p: '2px', bg: colorMode !== 'dark' ? 'transparent' : 'primary', color: colorMode !== 'dark' ? 'onBackgroundDark' : 'background', minWidth: '32px', minHeight: '32px', cursor: 'pointer', '&:hover': {bg: colorMode !== 'dark' ? 'surfaceDark' : ''}}} onClick={(e) => {
+          <Icon size={'32px'} name={"moon"} sx={{borderRadius: '100%', p: '2px', bg: colorMode !== 'dark' ? 'transparent' : 'primary', color: colorMode !== 'dark' ? 'onBackgroundAlt' : 'background', minWidth: '32px', minHeight: '32px', cursor: 'pointer', '&:hover': {bg: colorMode !== 'dark' ? 'surfaceDark' : ''}}} onClick={(e) => {
             if (colorMode !== 'dark') {
               setColorMode("dark");
             }

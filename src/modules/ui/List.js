@@ -81,7 +81,7 @@ const AdvancedListElement = ({childData: {heading, _children}, linkData, index})
     const destination = linkData.to || linkData.href;
 
     return (
-      <Link hideExternalIcon {...linkData} sx={{'& > *': {width: '100%', '&:hover': {bg: 'primary'}, '&:hover *, &:hover .content-container > *': {color: 'backgroundDark'}, '&:active': {bg: 'primaryEmphasis'}, transition: 'all .1s ease'}, '&:not(:hover) .content-container > *:only-child, &:not(:hover):not(:active) .content-container > *:first-child': {color: 'text'}, '&:not(:hover):not(:active) .content-container > *:not(:first-child)': {color: 'textMuted'}}}>
+      <Link hideExternalIcon {...linkData} sx={{'& > *': {width: '100%', '&:hover': {bg: 'primaryMuted'}, transition: 'all .1s ease'}}}>
         <ListEl>
           <Icon name={'increase'} size={3} sx={{mr:'29px', ml: '5px'}} />
         </ListEl>

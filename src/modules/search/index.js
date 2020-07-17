@@ -179,9 +179,9 @@ export default function Search({ ...otherProps }) {
             },
             "& li:hover": {
               backgroundColor: "primary",
-              color: "backgroundDark",
+              color: "backgroundAlt",
               "& > a": {
-                color: "backgroundDark",
+                color: "backgroundAlt",
               },
             },
           }}

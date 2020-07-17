@@ -82,7 +82,7 @@ const Footer = () => {
       as="footer"
       sx={{
         width: "100%",   
-        bg: "backgroundDark",
+        bg: "backgroundAlt",
       }}>
       <Flex sx={{
         py: '54px',
@@ -91,7 +91,7 @@ const Footer = () => {
         margin: 'auto'
 
       }}>
-        <Box sx={{color: 'onBackgroundDark', display: 'inline-block', width: '217px', '& > *, & svg': {color: 'onBackgroundDark', }}}>
+        <Box sx={{color: 'onBackgroundAlt', display: 'inline-block', width: '217px', '& > *, & svg': {color: 'onBackgroundAlt', }}}>
           <Link to="/" sx={{display: 'inline-block', mb: '31px'}}>
             <Icon name="makerLogo" sx={{width: '217px', height:'30px', display: 'block'}} />
           </Link>
@@ -123,7 +123,7 @@ const Footer = () => {
               "& > li": {
                 fontWeight: "bold",
                 fontSize: "1rem",
-                color: "onBackgroundDark",
+                color: "onBackgroundAlt",
                 '& > *:first-child:not(ul)': {
                   mb: '8px'
                 },
@@ -137,12 +137,15 @@ const Footer = () => {
                     mb: "10px",
                   },
                   "& a": {
-                    color: "onBackgroundDark",
+                    color: "onBackgroundAlt",
                     fontWeight: "normal",
                     textDecoration: "none",
                     "& svg": {
                       display: "none",
                     },
+                    "&:hover": {
+                      textDecoration: 'none'
+                    }
                   },
                 },
               },
@@ -150,7 +153,7 @@ const Footer = () => {
           }}
         >
           {footerLinks && (
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 1, }}>
               <MDXRenderer>{footerLinks}</MDXRenderer>
             </Box>
           )}
