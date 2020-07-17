@@ -40,7 +40,7 @@ const List = ({ children }) => {
             p: "10px 8px",
             minHeight: "60px",
             borderBottom: "1px solid",
-            borderColor: "body-15",
+            borderColor: "text",
             alignItems: "center",
             display: "flex",
             ":hover": {
@@ -55,7 +55,7 @@ const List = ({ children }) => {
             ":hover .list-external-icon": {
               transform: "translate(3px,-3px)",
             },
-            transition: "all .16s ease-in-out",
+            transition: "all .1s ease-in-out",
             color: (theme) => `${theme.colors.headline} !important`, //NOTE(Rejon): I use !important here to override the Link color styling.
           }}
         >
@@ -74,7 +74,7 @@ const List = ({ children }) => {
                 width: "100%",
               },
               "& > ul > li, & > ul > li > a, & > ul > li > a:hover": {
-                color: "body",
+                color: "text",
                 mt: 2,
               },
             }}
@@ -82,7 +82,7 @@ const List = ({ children }) => {
             {linkProps.children}
             <Box
               sx={{
-                color: "body",
+                color: "text",
                 "& > *": {
                   width: "100%",
                 },
@@ -102,7 +102,7 @@ const List = ({ children }) => {
             size={4}
             sx={{
               position: "relative",
-              transition: "all .16s ease-in-out",
+              transition: "all .1s ease-in-out",
               transform: "translate(0px, 0px)",
             }}
             className={
@@ -120,12 +120,12 @@ const List = ({ children }) => {
 
   const renderListElement = (child, key) => (
     <Flex
-      key={key || ""}
+      key={key || child.key || "list-element"}
       sx={{
         p: "10px 8px",
         minHeight: "60px",
         borderBottom: "1px solid",
-        borderColor: "body-15",
+        borderColor: "text",
         alignItems: "center",
         "& > *:only-child": {
           margin: typeof child === "string" ? 0 : "initial",
@@ -143,7 +143,7 @@ const List = ({ children }) => {
           width: "100%",
         },
         "& > ul > li, & > ul > li > a, & > ul > li > a:hover, & > ol > li, & > ol > li > a, & > ol > li > a:hover": {
-          color: "headline",
+          color: "text",
         },
         "& > ul > li > ul, & > ol > li > ul, & > ul > li > ol, & > ol > li > ol": {
           m: 0,
@@ -152,10 +152,9 @@ const List = ({ children }) => {
           listStyleType: "none",
         },
         "& > ul > li > ul > li, & > ol > li > ol > li, & > ol > li > ul > li, & > ul > li > ol > li": {
-          color: "body",
+          color: "text",
         },
       }}
-      key={`list-element-${child.key}`}
     >
       {child}
     </Flex>

@@ -1,5 +1,5 @@
 //** @jsx jsx */
-import React, { useState } from "react";
+import React from "react";
 import { Flex, Image, Text, jsx } from "theme-ui";
 
 import Regions from "./data/regions";

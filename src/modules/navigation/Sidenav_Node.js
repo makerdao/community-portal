@@ -18,13 +18,13 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
   const urlRegex = new RegExp(`/${otherProps.slugPart}/`);
   const active = pathname === url || urlRegex.test(pathname);
 
-  const fontWeight = active ? "bold" : null || parentActive ? "500" : "body";
+  const fontWeight = active ? "bold" : null || parentActive ? "500" : "text";
 
   return (
     <li
       sx={{
-        color: active ? "primary" : "headline",
-        fontWeight: active ? "bold" : "body",
+        color: active ? "primary" : "text",
+        fontWeight: active ? "bold" : "text",
         mb: "32px",
         position: "relative",
         pr: 3,
@@ -36,13 +36,13 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
           partiallyActive={active}
           activeClassName={active ? "active" : " "}
           sx={{
-            color: active ? "primary" : "body",
+            color: active ? "primary" : "text",
             fontWeight,
             "&:hover > svg": {
               transform: active
                 ? "translate(0, -50%) rotate(0deg)"
                 : "translate(0, -50%) rotate(90deg)",
-              transition: "all .164s ease",
+              transition: "all .1s ease",
             },
           }}
         >
@@ -57,7 +57,7 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
                 top: !active ? "50%" : ".8em",
                 transform: "translate(0, -50%) rotate(0deg)",
                 transformOrigin: "center",
-                transition: "all .164s ease",
+                transition: "all .1s ease",
               }}
             />
           )}

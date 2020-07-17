@@ -101,14 +101,15 @@ const AuthorRenderer = ({
   if (all && allContributors.contributors && _children.length === 0) {
     authorsToRender = renderAuthorData(allContributors.contributors);
   } else if (!all && allContributors.contributors && author) {
-    const specificAuthors = Array.isArray(author) ?
-    author.map((a) => allContributors.contributors.find(
-      (n) => n.login && n.login === a.replace(/@/g, "")
-    ))
-    :
-     allContributors.contributors.find(
-      (n) => n.login && n.login === author.replace(/@/g, "")
-    );
+    const specificAuthors = Array.isArray(author)
+      ? author.map((a) =>
+          allContributors.contributors.find(
+            (n) => n.login && n.login === a.replace(/@/g, "")
+          )
+        )
+      : allContributors.contributors.find(
+          (n) => n.login && n.login === author.replace(/@/g, "")
+        );
     authorsToRender = specificAuthors
       ? renderAuthorData([specificAuthors])
       : null;
@@ -122,7 +123,7 @@ const AuthorRenderer = ({
       columns={list ? [1, "1fr"] : [6, "1fr 1fr 1fr 1fr 1fr 1fr"]}
       sx={{
         borderLeft: !list ? "1px solid" : "unset",
-        borderColor: "strokeFaded",
+        borderColor: "muted",
         gridRowGap: list ? "2rem" : "unset",
         marginBottom: "1rem",
       }}

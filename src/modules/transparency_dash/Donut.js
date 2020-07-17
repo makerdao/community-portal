@@ -27,9 +27,6 @@ const Donut = ({
       fill="none"
       stroke="currentcolor"
       role="img"
-      aria-valuenow={_value}
-      aria-valuemin={min}
-      aria-valuemax={max}
       {...props}
       __css={{
         color: "primary",
