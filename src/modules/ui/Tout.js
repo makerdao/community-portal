@@ -24,7 +24,7 @@ const Tout = ({ children, alt, stroke, fade, color, image }) => {
     const hexColor = _color.slice(_color.indexOf("#"), _color.length - 1);
 
     return HexLuminanceCheck(colorToHex(hexColor)) && _variant !== "primary"
-      ? "body"
+      ? "text"
       : "onPrimary";
   };
 
@@ -98,8 +98,8 @@ const Tout = ({ children, alt, stroke, fade, color, image }) => {
 
   //NOTE(Rejon): Not a very elegant solution. But it works.
   const nonParagraphColor = (theme) =>
-    (fade && copyColor(theme) === "body" ? "text" : null) ||
-    (fade && copyColor(theme) !== "body" ? copyColor(theme) : null) ||
+    (fade && copyColor(theme) === "text" ? "text" : null) ||
+    (fade && copyColor(theme) !== "text" ? copyColor(theme) : null) ||
     (color && !stroke ? copyColor(theme) : null) ||
     "text";
 

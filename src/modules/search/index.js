@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { useState, useEffect, useRef } from "react";
 
-import { Box, Text, jsx } from "theme-ui";
+import { Box, Flex, Text, jsx } from "theme-ui";
 import LUNR from "lunr";
 import { useNavigate } from "@reach/router";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
@@ -10,6 +10,8 @@ import { useTranslation } from "@modules/localization";
 import SearchInput from "./SearchInput";
 import SearchHit from "./SearchHit";
 
+//Hook mostly to detect if there's a click outside of the results element.
+//If a click is detected we hide the results.
 const useClickOutside = (ref, handler, events) => {
   if (!events) events = [`mousedown`, `touchstart`];
 
@@ -112,13 +114,16 @@ export default function Search({ ...otherProps }) {
   }, []);
 
   return (
-    <Box
+    <Flex
       ref={ref}
       {...otherProps}
       sx={{
-        borderRadius: 0,
-        backgroundColor: "body-5-pure",
+        borderRadius: "round",
+        border: "1px solid",
+        borderColor: "primary",
+        backgroundColor: "surfaceDark",
         position: "relative",
+        alignItems: "center",
       }}
     >
       <SearchInput
@@ -135,23 +140,20 @@ export default function Search({ ...otherProps }) {
           display: query.length > 0 && focus ? "grid" : "none",
           position: "absolute",
           left: 0,
-          backgroundColor: "body-5-pure",
-          borderBottomLeftRadius: "medium",
-          borderBottomRightRadius: "medium",
-          borderTop: "none",
+          backgroundColor: "surfaceDark",
           zIndex: "1000000000",
+          top: "3.5rem",
+          borderRadius: "roundish",
+          boxShadow: "type1",
+          overflow: "hidden",
           width: "100%",
-          "::before": {
-            content: '""',
-            width: "100%",
-            height: "1px",
-            background: "radial-gradient(rgba(83, 84, 106, 0.15), transparent)",
-          },
         }}
       >
         {results.length === 0 && query.length > 0 && (
-          <Text sx={{ p: 2, textAlign: "center" }}>
-            {t("No_Results", null, { query })}
+          <Text sx={{ p: 3, textAlign: "center", color: "muted" }}>
+            {t("No_Results", null, {
+              query: `${query.slice(0, 30)}${query.length > 30 ? "..." : ""}`,
+            })}
           </Text>
         )}
         <ul
@@ -159,22 +161,27 @@ export default function Search({ ...otherProps }) {
           sx={{
             m: 0,
             listStyleType: "none",
-            p: 2, //.46rem
+            p: results.length === 0 && query.length > 0 ? 0 : 2,
             overflow: "auto",
             maxHeight: "464px",
             "& > li": {
-              borderRadius: "medium",
+              borderRadius: "roundish",
               backgroundColor: "transparent",
-              transition: "all .2s ease",
+              transition: "all .1s ease",
               cursor: "pointer",
+              color: "muted",
             },
             "& > li > a": {
               p: 2,
+              color: "muted",
               display: "block",
             },
             "& li:hover": {
-              backgroundColor: "secondary",
-              transition: "all .2s ease",
+              backgroundColor: "primary",
+              color: "text",
+              "& > a": {
+                color: "text",
+              },
             },
           }}
         >
@@ -198,6 +205,6 @@ export default function Search({ ...otherProps }) {
           ))}
         </ul>
       </Box>
-    </Box>
+    </Flex>
   );
 }
