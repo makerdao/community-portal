@@ -6,19 +6,21 @@ const Table = ({ children }) => (
   <table
     sx={{
       borderCollapse: "collapse",
-      borderSpacing: "5px",
+      borderSpacing: "10px",
+      fontFamily: "FT Base Trial",
+      fontSize: "16px",
+      textAlign: "center",
       "& td": {
-        border: "1px solid black",
-        padding: "5px",
-        textAlign: "left",
-      },
-      "tr:nth-child(even)": {
-        backgroundColor: "#f6f8fa",
+        color: '#4D4968',
+        border: "1px solid #D0D3D7",
+        padding: "10px",
       },
       "& th": {
-        border: "1px solid black",
+        color: '#291A42',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        border: "1px solid #D0D3D7",
         padding: "10px",
-        textAlign: "center",
       },
     }}
   >
