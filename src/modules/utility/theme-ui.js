@@ -223,6 +223,7 @@ const theme = {
       borderRadius: "round",
       "&:hover": {
         bg: "primaryMuted",
+        transition: ".1s ease",
       },
       "&:active": {
         bg: "#primaryMuted",
@@ -244,6 +245,7 @@ const theme = {
       borderRadius: "round",
       "&:hover": {
         bg: "#534868",
+        transition: ".1s ease",
       },
       "&:active": {
         bg: "#150332",
@@ -253,6 +255,16 @@ const theme = {
         pointerEvents: "none",
         cursor: "not-allowed",
       },
+    },
+    
+    primarySmall: {
+      variant: "buttons.primary",
+      bg: "red",
+    },
+
+    outlineSmall: {
+      variant: "buttons.primary",
+      bg: "green",
     },
   },
 };

@@ -30,7 +30,7 @@ const Button = ({
         ? "outline"
         : "primary"
   }${small ? "Small": ""}`;
-  
+  console.log(_variant); 
   return (
     <ThemedButton
       className="button"
