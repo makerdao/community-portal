@@ -76,7 +76,7 @@ export default (props) => {
         </Sticky>
       )}
 
-      <Flex sx={{ flexGrow: 1, flexDirection: "column", width: "80%"}}>
+      <Flex sx={{ flexGrow: 1, flexDirection: "column", width: "80%" }}>
         {status && (
           <StatusBanner
             sticky
@@ -89,7 +89,7 @@ export default (props) => {
           sx={{
             pl: hasTopSection ? "64px" : 0,
             mt: hasTopSection ? "74px" : 0,
-            
+
             pr: 4,
           }}
         >

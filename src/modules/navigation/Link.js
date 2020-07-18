@@ -77,7 +77,7 @@ const Link = ({
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
-            fontWeight: '600'
+            fontWeight: "600",
           },
           "&:hover": {
             color: !linkHref ? "bear" : "primary",

@@ -6,7 +6,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Icon } from "@makerdao/dai-ui-icons";
 
 import { useTranslation } from "@modules/localization";
-import {getLinkIcon, Link} from '@modules/navigation';
+import { getLinkIcon, Link } from "@modules/navigation";
 
 const Footer = () => {
   const { locale, DEFAULT_LOCALE } = useTranslation();
@@ -27,7 +27,7 @@ const Footer = () => {
 
       socialLinks: allMdx(
         filter: {
-          fileAbsolutePath: {regex: "//content/([^/]+)/?/(social.mdx)$/"}
+          fileAbsolutePath: { regex: "//content/([^/]+)/?/(social.mdx)$/" }
         }
       ) {
         nodes {
@@ -59,79 +59,100 @@ const Footer = () => {
       ? defaultLocaleFooterLinks.body
       : null;
 
-  const socialConfigLinks = 
+  const socialConfigLinks =
     DEFAULT_LOCALE !== locale
       ? socialLinks.nodes.find((n) =>
-        n.fileAbsolutePath.includes(`/${locale}/`)
-      )
+          n.fileAbsolutePath.includes(`/${locale}/`)
+        )
       : [];
 
   const defaultSocialConfigLinks = socialLinks.nodes.find((n) =>
     n.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`)
   );
 
-  const _socialLinks = socialConfigLinks && socialConfigLinks.length !== 0
-    ? socialConfigLinks.internal.content.trim().split('\n')
-    : defaultSocialConfigLinks
-    ? defaultSocialConfigLinks.internal.content.trim().split('\n')
-    : null;
-
+  const _socialLinks =
+    socialConfigLinks && socialConfigLinks.length !== 0
+      ? socialConfigLinks.internal.content.trim().split("\n")
+      : defaultSocialConfigLinks
+      ? defaultSocialConfigLinks.internal.content.trim().split("\n")
+      : null;
 
   return (
     <Box
       as="footer"
       sx={{
-        width: "100%",   
+        width: "100%",
         bg: "backgroundAlt",
-      }}>
-      <Flex sx={{
-        py: '54px',
-        px: '52px',
-        maxWidth: '1364px',
-        margin: 'auto'
-
-      }}>
-        <Box sx={{color: 'onBackgroundAlt', display: 'inline-block', width: '217px', '& > *, & svg': {color: 'onBackgroundAlt', }}}>
-          <Link to="/" sx={{display: 'inline-block', mb: '31px'}}>
-            <Icon name="makerLogo" sx={{width: '217px', height:'30px', display: 'block'}} />
+      }}
+    >
+      <Flex
+        sx={{
+          px: ["26px", "26px", "52px"],
+          pt: ["40px", "40px", "54px"],
+          pb: ["119px", "119px", "54px"],
+          flexDirection: ["column", "column", "unset"],
+          maxWidth: "1364px",
+          margin: "auto",
+        }}
+      >
+        <Box
+          sx={{
+            color: "onBackgroundAlt",
+            display: "inline-block",
+            width: "217px",
+            "& > *, & svg": { color: "onBackgroundAlt" },
+          }}
+        >
+          <Link to="/" sx={{ display: "inline-block", mb: "31px" }}>
+            <Icon
+              name="makerLogo"
+              sx={{ width: "217px", height: "30px", display: "block" }}
+            />
           </Link>
-          <Box sx={{'& > a:not(:last-of-type)': {mr: '24px'}}}>
+          <Box sx={{ "& > a:not(:last-of-type)": { mr: "24px" } }}>
             {_socialLinks.map((s, index) => {
-            const link = s.match(/\(([^)]+)\)/)[1];
+              const link = s.match(/\(([^)]+)\)/)[1];
 
-            return link ? getLinkIcon(link, `footer-social-link-${index}`) : null;
-          })}
-          {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
+              return link
+                ? getLinkIcon(link, `footer-social-link-${index}`)
+                : null;
+            })}
+            {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
           </Box>
         </Box>
         <Box
           sx={{
-            ml: '106px',
-            display: 'inline-block',
-            width: "calc(100% - 106px - 217px)",
-            verticalAlign: 'top',
+            ml: ["unset", "unset", "5vw"],
+            mt: ["56px", "56px", "unset"],
+            display: "inline-block",
+            width: ["100%", "100%", "calc(100% - 106px - 217px)"],
+            verticalAlign: "top",
             "& > * > ul": {
               m: 0,
               p: 0,
               color: "text",
               listStyleType: "none",
-              flex: 1,
-              display: 'flex',
+
+              display: "flex",
+              flexWrap: ["wrap", "wrap", "unset"],
               "& > li:not(:last-of-type)": {
-                mr: "80px",
+                mr: ["unset", "unset", "5vw"],
               },
               "& > li": {
                 fontWeight: "bold",
                 fontSize: "1rem",
+                flexShrink: 0,
+                flex: ["0 50%", "0 50%", 1],
+                width: ["calc(50% - 66px)", "calc(50% - 66px)", "unset"],
+                pr: ["66px", "66px", "unset"],
+                mb: ["64px", "64px", "unset"],
                 color: "onBackgroundAlt",
-                '& > *:first-child:not(ul)': {
-                  mb: '8px'
+                "& > *:first-child:not(ul)": {
+                  mb: "8px",
                 },
                 "& > ul": {
-                
                   fontSize: "1rem",
                   p: 0,
-
                   listStyleType: "none",
                   "& li:not(:last-of-type)": {
                     mb: "10px",
@@ -144,8 +165,8 @@ const Footer = () => {
                       display: "none",
                     },
                     "&:hover": {
-                      textDecoration: 'none'
-                    }
+                      textDecoration: "none",
+                    },
                   },
                 },
               },
@@ -153,11 +174,10 @@ const Footer = () => {
           }}
         >
           {footerLinks && (
-            <Box sx={{ flex: 1, }}>
+            <Box sx={{ flex: 1 }}>
               <MDXRenderer>{footerLinks}</MDXRenderer>
             </Box>
           )}
-          
         </Box>
       </Flex>
     </Box>

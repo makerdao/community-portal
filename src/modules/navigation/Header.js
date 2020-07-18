@@ -115,24 +115,26 @@ const Header = () => {
       const url = UrlConverter(node);
 
       return (
-        <Link to={url} key={`header-link-${index}`}>
+        <Link to={url} key={`header-link-${index}`} hideExternalIcon>
           {title}
         </Link>
       );
     });
 
-  const headerConfigLinks = headerConfigFiles.nodes.find((n) =>
-    n.fileAbsolutePath.includes(`/${locale}/`)
-  ).internal.content.trim().split('\n').map((l,index) => {
-    const url = l.match(/\(([^)]+)\)/)[1];
-    const title = l.match(/\[([^)]+)\]/)[1];
-   
-    return (
-        <Link to={url} key={`header-config-link-${index}`}>
+  const headerConfigLinks = headerConfigFiles.nodes
+    .find((n) => n.fileAbsolutePath.includes(`/${locale}/`))
+    .internal.content.trim()
+    .split("\n")
+    .map((l, index) => {
+      const url = l.match(/\(([^)]+)\)/)[1];
+      const title = l.match(/\[([^)]+)\]/)[1];
+
+      return (
+        <Link to={url} key={`header-config-link-${index}`} hideExternalIcon>
           {title}
         </Link>
       );
-  });
+    });
 
   return (
     <Box
@@ -145,9 +147,9 @@ const Header = () => {
         sx={{
           maxWidth: "1364px",
           margin: "auto",
-          p: '22px',
-          py:'19px',
-          alignItems: 'center',
+          p: "22px",
+          py: "19px",
+          alignItems: "center",
           "& a": { color: "onBackgroundAlt", textDecoration: "none" },
           "& a.external-link > svg": { display: "none" },
           "& a:hover": {
@@ -157,82 +159,132 @@ const Header = () => {
             p: 0,
             m: 0,
             listStyleType: "none",
-            display: 'inline-flex'
+            display: "inline-flex",
           },
           "& > ul > li > a": {
             textDecoration: "none",
           },
         }}
       >
-      <Link
-          to={`/${locale}/`}
-          variant="nav"
-          sx={{
-            textDecoration: "none",
-            color: "onBackgroundAlt",
-            width: '52px',
-            height: '52px'
-          }}
-        >
-        <Icon
-            name="maker"
-            color="primary"
-            size={'52px'}
-          />
-        </Link>
-        <Flex sx={{flex: '1 1 auto', justifyContent: 'center', '& > a': {fontSize: '16px', p: 2}, '& > a:not(:last-child)': {mr: '5%'}}}>
         <Link
           to={`/${locale}/`}
           variant="nav"
-          sx={{ 
+          sx={{
             textDecoration: "none",
             color: "onBackgroundAlt",
+            width: "52px",
+            height: "52px",
           }}
         >
-          
-          <Text>{t("Home")}</Text>
+          <Icon name="maker" color="primary" size={"52px"} />
         </Link>
-        {HeaderLinks}
-        {headerConfigLinks}
-        {/* <MDXRenderer>{headerConfigLinks}</MDXRenderer> */}
+        <Flex
+          sx={{
+            display: ["none", "none", "flex"],
+            flex: "auto",
+            ml: 3,
+            alignItems: "center",
+            justifyContent: "center",
+            "& > a": { fontSize: "16px", p: 2, textAlign: "center" },
+            "& > a:not(:last-child)": { mr: "3%" },
+          }}
+        >
+          <Link
+            to={`/${locale}/`}
+            variant="nav"
+            sx={{
+              textDecoration: "none",
+              color: "onBackgroundAlt",
+            }}
+          >
+            <Text>{t("Home")}</Text>
+          </Link>
+          {HeaderLinks}
+          {headerConfigLinks}
+          {/* <MDXRenderer>{headerConfigLinks}</MDXRenderer> */}
         </Flex>
         <Flex
           sx={{
-            display: "inlineBlock",
+            width: ["100%", "100%", "auto"],
+            ml: "1rem",
             alignItems: "center",
-            color: 'onBackgroundAlt',
-            width: '36%',
-            flexDirection: 'row'
+            color: "onBackgroundAlt",
+            flexDirection: "row",
           }}
-          
         >
-        <Search
-          collapse
+          <Search
+            collapse
+            sx={{
+              width: "100%",
+              minWidth: "270px",
+              mr: ["1rem", "1rem", "1vw"],
+
+              fontFamily: "body",
+              display: "inline-block",
+              fontSize: "15px",
+            }}
+          />
+
+          <Icon
+            size={"32px"}
+            name={"sun"}
+            sx={{
+              borderRadius: "100%",
+              display: ["none", "none", "inline-block"],
+              p: "2px",
+              bg: colorMode !== "default" ? "transparent" : "primary",
+              color: colorMode !== "default" ? "onBackgroundAlt" : "text",
+              mr: "21px",
+              minWidth: "32px",
+              minHeight: "32px",
+              cursor: "pointer",
+              "&:hover": {
+                bg: colorMode !== "default" ? "background" : "",
+              },
+            }}
+            onClick={(e) => {
+              if (colorMode !== "default") {
+                setColorMode("default");
+              }
+            }}
+          />
+
+          <Icon
+            size={"32px"}
+            name={"moon"}
+            sx={{
+              borderRadius: "100%",
+              display: ["none", "none", "inline-block"],
+              p: "2px",
+              bg: colorMode !== "dark" ? "transparent" : "primary",
+              color: colorMode !== "dark" ? "onBackgroundAlt" : "background",
+              minWidth: "32px",
+              minHeight: "32px",
+              cursor: "pointer",
+              "&:hover": {
+                bg: colorMode !== "dark" ? "surfaceDark" : "",
+              },
+            }}
+            onClick={(e) => {
+              if (colorMode !== "dark") {
+                setColorMode("dark");
+              }
+            }}
+          />
+        </Flex>
+
+        <Icon
+          size={"39px"}
+          onClick={(e) => {
+            console.log("ok");
+          }}
+          name={"menu"}
           sx={{
-            width: "100%",
-            maxWidth: "337px",
-            minWidth: '250px',
-            mr: '25px',
-            flex: '1 1 auto',
-            fontFamily: 'body',
-            display: 'inline-block',
-            fontSize: '15px'
+            color: "onBackgroundAlt",
+            cursor: "pointer",
+            display: ["initial", "initial", "none"],
           }}
         />
-
-        <Icon size={'32px'} name={"sun"} sx={{borderRadius: '100%', p: '2px', bg: colorMode !== 'default' ? 'transparent' : 'primary', color: colorMode !== 'default' ? 'onBackground' : 'text', mr: '21px', minWidth: '32px', minHeight: '32px', cursor: 'pointer', '&:hover': {bg: colorMode !== 'default' ?  'background' : ''}}} onClick={(e) => {
-            if (colorMode !== 'default') {
-              setColorMode("default");
-            }
-          }}/>
-
-          <Icon size={'32px'} name={"moon"} sx={{borderRadius: '100%', p: '2px', bg: colorMode !== 'dark' ? 'transparent' : 'primary', color: colorMode !== 'dark' ? 'onBackgroundAlt' : 'background', minWidth: '32px', minHeight: '32px', cursor: 'pointer', '&:hover': {bg: colorMode !== 'dark' ? 'surfaceDark' : ''}}} onClick={(e) => {
-            if (colorMode !== 'dark') {
-              setColorMode("dark");
-            }
-          }}/>
-          
-        </Flex>
       </Flex>
     </Box>
   );

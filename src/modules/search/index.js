@@ -37,7 +37,7 @@ const useClickOutside = (ref, handler, events) => {
 };
 
 export default function Search({ ...otherProps }) {
-  const MAX_RESULT_COUNT = 10; //<- Return 10 results maximum.
+  const MAX_RESULT_COUNT = 5; //<- Return 10 results maximum.
   const ref = useRef();
   const resultList = useRef();
   const [query, setQuery] = useState(``);
@@ -100,7 +100,7 @@ export default function Search({ ...otherProps }) {
     if (results.length > 0) {
       navigate(results[0].url);
       setFocus(false);
-      setQuery('');
+      setQuery("");
     }
   };
 
@@ -164,7 +164,7 @@ export default function Search({ ...otherProps }) {
             listStyleType: "none",
             p: results.length === 0 && query.length > 0 ? 0 : 2,
             overflow: "auto",
-            maxHeight: "464px",
+            maxHeight: "490px",
             "& > li": {
               borderRadius: "roundish",
               backgroundColor: "transparent",
@@ -193,7 +193,7 @@ export default function Search({ ...otherProps }) {
                 query={query}
                 onClick={() => {
                   setFocus(false);
-                  setQuery('');
+                  setQuery("");
                   //Google Analytics Tracking
                   trackCustomEvent({
                     category: "Internal Search",

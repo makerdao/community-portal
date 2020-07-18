@@ -33,37 +33,37 @@ const getLinkIcon = (url, key) => {
       <Link hideExternalIcon to={url} key={key} sx={{ mr: "6px" }}>
         <Icon name="youtube" size={"23px"} sx={{ color: "text" }} />
       </Link>
-    )
+    );
   } else if (url.includes("wechat")) {
     return (
       <Link hideExternalIcon to={url} key={key} sx={{ mr: "6px" }}>
         <Icon name="wechat" size={"23px"} sx={{ color: "text" }} />
       </Link>
-    )
-  } else if (url.includes('t.me')) {
+    );
+  } else if (url.includes("t.me")) {
     return (
       <Link hideExternalIcon to={url} key={key} sx={{ mr: "6px" }}>
         <Icon name="telegram" size={"23px"} sx={{ color: "text" }} />
       </Link>
-    )
-  } else if (url.includes('reddit')) {
+    );
+  } else if (url.includes("reddit")) {
     return (
       <Link hideExternalIcon to={url} key={key} sx={{ mr: "6px" }}>
         <Icon name="reddit" size={"23px"} sx={{ color: "text" }} />
       </Link>
-    )
-  } else if (url.includes('chat.')) {
+    );
+  } else if (url.includes("chat.")) {
     return (
       <Link hideExternalIcon to={url} key={key} sx={{ mr: "6px" }}>
         <Icon name="rocketchat" size={"23px"} sx={{ color: "text" }} />
       </Link>
-    )
-  } else { 
+    );
+  } else {
     return (
       <Link hideExternalIcon to={url} key={key} sx={{ mr: "6px" }}>
         <Icon name="open_in_new_tab" size={"23px"} />
       </Link>
-    );          
+    );
   }
 };
 
