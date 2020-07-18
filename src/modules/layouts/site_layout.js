@@ -14,7 +14,7 @@ const Layout = ({ children }) => (
       sx={{
         maxWidth: "1364px",
         m: "0 auto",
-        pl: 4,
+        pl: ['0', '0', 4],
         pr: 0,
         pt: ["90px", "90px", "unset"],
         position: "relative",

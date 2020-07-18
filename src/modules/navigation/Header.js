@@ -199,10 +199,10 @@ const Header = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      window.addEventListener("scroll", throttle(onScroll, 160));
+      window.addEventListener("scroll", onScroll);
 
       return () => {
-        window.removeEventListener("scroll", throttle(onScroll, 160));
+        window.removeEventListener("scroll", onScroll);
       };
     }
   }, []);
@@ -375,8 +375,8 @@ const Header = () => {
             right: '23px', 
             top: '25px', 
             position: 'fixed', 
-            width: '25px', 
-            height: '25px', 
+            width: '100px', 
+            height: '100px', 
             borderRadius:'10000px', 
             zIndex: 0, 
             transform: 'scale(0)', 
