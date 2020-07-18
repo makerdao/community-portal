@@ -39,6 +39,15 @@ const Button = ({
       as={Link}
       variant={_variant}
       sx={{
+        ...sx,
+      }}
+      {...otherProps}
+    >
+      {children}
+    </ThemedButton>
+  );
+};
+/*
         p: "24px",
         pt: "8px",
         pb: "8px",
@@ -63,13 +72,5 @@ const Button = ({
           position: "relative",
           "&:hover": { color: "onPrimary", transition: "all .1s ease" },
         },
-        ...sx,
-      }}
-      {...otherProps}
-    >
-      {children}
-    </ThemedButton>
-  );
-};
-
+*/
 export default Button;

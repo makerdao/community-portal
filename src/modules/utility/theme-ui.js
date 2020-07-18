@@ -240,7 +240,7 @@ const theme = {
     secondary: {
       variant: "buttons.primary",
       color: "textAlt",
-      bg: "#291a41",
+      bg: "red",
       borderRadius: "round",
       "&:hover": {
         bg: "#534868",
