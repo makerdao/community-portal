@@ -44,9 +44,10 @@ const Sidenav = (props) => {
             flexGrow: 0,
             position: "relative",
             maxHeight: "1012px",
-            height: "calc(100vh - 139px)",
+            height: "calc(100vh)",
             pt: "54px",
             pl: "8px",
+            pb: '90px',
             pr: "31px",
             boxShadow: (theme) => `inset -1px 0px 0px ${theme.colors.muted};`,
           }}
