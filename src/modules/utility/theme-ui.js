@@ -4,15 +4,11 @@ import Prism from "@theme-ui/prism";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
-
-const components = {
-  pre: (props) => props.children,
-  code: Prism,
+const components = { pre: (props) => props.children, code: Prism,
 };
 
 const prismPreset = {
-  color: "background",
-  backgroundColor: "codeBG",
+  color: "background", backgroundColor: "codeBG",
   ".selector, .attr-name, .string, .char, .builtin, .inserted": {
     color: "primaryEmphasis",
   },
@@ -204,6 +200,8 @@ const theme = {
       bg: "primary",
       "&:hover": {
         bg: "primaryEmphasis",
+        color: "text",
+        transition: ".1s ease",
       },
       "&:active": {
         bg: "primaryEmphasis",

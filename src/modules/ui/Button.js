@@ -10,6 +10,7 @@ const Button = ({
   variant,
   secondary,
   outline,
+  small,
   disabled,
   children,
   inline,
@@ -22,10 +23,14 @@ const Button = ({
   //  <Button primary outline />
   // Instead of
   // <Button variant="primaryOutline" />
-  let _variant = `${variant || secondary ? "secondary" : null || "primary"}${
-    outline ? "Outline" : ""
-  }`;
-
+  let _variant = `${
+    variant || secondary
+      ? "secondary"
+      : outline
+        ? "outline"
+        : "primary"
+  }${small ? "Small": ""}`;
+  
   return (
     <ThemedButton
       className="button"
