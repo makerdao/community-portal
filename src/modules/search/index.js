@@ -9,6 +9,7 @@ import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 import { useTranslation } from "@modules/localization";
 import SearchInput from "./SearchInput";
 import SearchHit from "./SearchHit";
+import debounce from "lodash.debounce";
 
 //Hook mostly to detect if there's a click outside of the results element.
 //If a click is detected we hide the results.
@@ -52,6 +53,7 @@ export default function Search({ ...otherProps }) {
 
   //On input change, run the search query and update our results state.
   const onChange = (val) => {
+    console.log("on Change!");
     if (lunr && val !== "") {
       const query = val
         .trim() // remove trailing and leading spaces
@@ -129,7 +131,7 @@ export default function Search({ ...otherProps }) {
     >
       <SearchInput
         onFocus={() => setFocus(true)}
-        onChange={onChange}
+        onChange={debounce(onChange, 200)}
         onSubmit={onSubmit}
         {...{ focus }}
       />

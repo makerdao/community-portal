@@ -1,17 +1,25 @@
 /** @jsx jsx */
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
-import { jsx, Text, Box, Flex, useColorMode } from "theme-ui";
+import { jsx, Text, Box, Flex, useColorMode, useThemeUI } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import throttle from "lodash.throttle";
 
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
 
+var lastScroll = 0; //<- Last scroll top of window. Defined outside because we don't want to re-render for scrolling.
+var delta = 5; //<- Rate of change in scroll needed to hide the header.
+
 const Header = () => {
+  const headerContainer = useRef(null);
+  const { theme } = useThemeUI();
+  const breakpoints = theme.breakpoints.slice(0, -1); //NOTE(Rejon): The last element of the break point array SHOULD be infinity.
+
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
   const [colorMode, setColorMode] = useColorMode();
 
@@ -136,11 +144,61 @@ const Header = () => {
       );
     });
 
+  //TODO(Rejon): THROTTLE THIS
+  const onScroll = () => {
+    if (headerContainer.current) {
+      const inMobileRange = breakpoints.some(
+        (n) => window.innerWidth <= parseInt(n)
+      );
+
+      if (inMobileRange) {
+        const headerHeight = headerContainer.current.offsetHeight;
+        const currentScroll = window.scrollY;
+
+        //Scroll must be more than the delta.
+        if (Math.abs(lastScroll - currentScroll) <= delta) return;
+
+        //If you scroll down AND our scroll top is greater than our header,
+        //hide it.
+        if (currentScroll > lastScroll && currentScroll > headerHeight) {
+          headerContainer.current.classList.add("hide-nav");
+        } else {
+          //We've scrolled up OR our scrollTop is less than the header.
+          headerContainer.current.classList.remove("hide-nav");
+        }
+
+        lastScroll = currentScroll;
+      } else {
+        //Render the header as normal without the "show/hide logic"
+        headerContainer.current.classList.remove("hide-nav");
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", throttle(onScroll, 300));
+
+      return () => {
+        window.removeEventListener("scroll", throttle(onScroll, 300));
+      };
+    }
+  }, []);
+
   return (
     <Box
       as="header"
+      ref={headerContainer}
       sx={{
         bg: "backgroundAlt",
+        position: ["fixed", "fixed", "unset"],
+        width: "100%",
+        zIndex: "1",
+        transition: "all .32s ease-in-out",
+        transform: "translateY(0px)",
+        "&.hide-nav": {
+          transform: "translateY(-190px)",
+        },
       }}
     >
       <Flex

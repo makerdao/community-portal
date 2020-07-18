@@ -5,25 +5,9 @@ import { Input, Flex, jsx } from "theme-ui";
 
 import { useTranslation } from "@modules/localization";
 
-const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
+const SearchInput = ({ onChange, onSubmit, ...rest }) => {
   const { t } = useTranslation();
   const searchRef = useRef();
-
-  let timerID = null;
-  const [value, setValue] = useState("");
-
-  const onChangeDebounce = (event) => {
-    const _value = event.currentTarget.value;
-
-    if (timerID !== null) {
-      clearTimeout(timerID);
-    }
-
-    setValue(_value);
-    if (onChange) {
-      onChange(_value);
-    }
-  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -78,10 +62,9 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
         id="search-input"
         type="search"
         ref={searchRef}
-        value={value}
         aria-label={t("Search")}
         placeholder={t("Search")}
-        onChange={onChangeDebounce}
+        onChange={(e) => onChange(e.currentTarget.value)}
         sx={{
           border: "none",
           borderRadius: "0",
