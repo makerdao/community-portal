@@ -31,6 +31,7 @@ const Button = ({
         : "primary"
   }${small ? "Small": ""}`;
   console.log(_variant); 
+  console.log(disabled);
   return (
     <ThemedButton
       className="button"
@@ -40,6 +41,12 @@ const Button = ({
       variant={_variant}
       sx={{
         ...sx,
+        // small button sizing/spacing
+        padding: small ? "8px 24px" : "16px 32px",
+        fontSize: small ? "10px" : "16px",
+        letterSpacing: small ? "1px" : null,
+        textTransform: small ? "uppercase": null,
+        lineHeight: small ? "12px" : "19px",
       }}
       {...otherProps}
     >

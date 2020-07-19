@@ -190,24 +190,51 @@ const theme = {
       cursor: "pointer",
       outline: "none",
       fontFamily: "body",
-      fontSize: 2,
-      borderRadius: "round",
-      p: 3,
+      borderRadius: "32px",
+      padding: "16px 32px", //TODO: find out why this isn't changing anything
       py: 2,
       color: "text",
-      fontWeight: "bold",
+      fontWeight: "600",
       letterSpacing: "0.03em",
+      lineHeight: "19px",
       bg: "primary",
       "&:hover": {
         bg: "primaryEmphasis",
+        textDecoration: "none",
         color: "text",
         transition: ".1s ease",
       },
       "&:active": {
-        bg: "primaryEmphasis",
+        color: "text",
+        textDecoration: "none",
+        boxShadow: "0px 2px 15px rgba(35, 21, 54, 0.15)",
+        transition: ".1s ease",
+      },
+      "&:disabled": { //TODO: find out why this isn't changing anything (for all styles)
+        bg: "primaryMuted",
+        color: "muted",
+        pointerEvents: "none",
+        cursor: "not-allowed",
+      },
+    },
+
+    secondary: {
+      variant: "buttons.primary",
+      bg: "secondary",
+      "&:hover": {
+        color: "text",
+        textDecoration: "none",
+        bg: "secondaryEmphasis",
+        transition: ".1s ease",
+      },
+      "&:active": {
+        color: "text",
+        textDecoration: "none",
+        boxShadow: "0px 2px 15px rgba(35, 21, 54, 0.15)",
+        transition: ".1s ease",
       },
       "&:disabled": {
-        bg: "primaryMuted",
+        bg: "secondaryMuted",
         color: "muted",
         pointerEvents: "none",
         cursor: "not-allowed",
@@ -220,51 +247,32 @@ const theme = {
       color: "text",
       border: "1px solid",
       borderColor: "text",
-      borderRadius: "round",
       "&:hover": {
+        color: "text",
+        textDecoration: "none",
         bg: "primaryMuted",
         transition: ".1s ease",
       },
       "&:active": {
-        bg: "#primaryMuted",
+        color: "text",
+        textDecoration: "none",
+        boxShadow: "0px 2px 15px rgba(35, 21, 54, 0.15)",
+        transition: ".1s ease",
       },
       "&:disabled": {
-        bg: "surface",
+        borderColor: "muted",
+        color: "muted",
         pointerEvents: "none",
         cursor: "not-allowed",
-        color: "muted",
-        borderColor: "muted",
-        opacity: 0.5,
       },
     },
 
-    secondary: {
-      variant: "buttons.primary",
-      color: "textAlt",
-      bg: "red",
-      borderRadius: "round",
-      "&:hover": {
-        bg: "#534868",
-        transition: ".1s ease",
-      },
-      "&:active": {
-        bg: "#150332",
-      },
-      "&:disabled": {
-        bg: "#a9a3b3",
-        pointerEvents: "none",
-        cursor: "not-allowed",
-      },
-    },
-    
     primarySmall: {
       variant: "buttons.primary",
-      bg: "red",
     },
 
     outlineSmall: {
-      variant: "buttons.primary",
-      bg: "green",
+      variant: "buttons.outline",
     },
   },
 };
