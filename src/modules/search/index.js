@@ -180,10 +180,10 @@ export default function Search({ ...otherProps }) {
               display: "block",
             },
             "& li:hover": {
-              backgroundColor: "primary",
-              color: "backgroundAlt",
+              backgroundColor: "primaryMuted",
+              color: "text",
               "& > a": {
-                color: "backgroundAlt",
+                color: "text",
               },
             },
           }}

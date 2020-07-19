@@ -213,9 +213,9 @@ const Header = () => {
       ref={headerContainer}
       sx={{
         bg: "backgroundAlt",
-        position: ["fixed", "fixed", "unset"],
+        position: ["fixed", "fixed", "relative"],
         width: "100%",
-        zIndex: "1",
+        zIndex: "10",
         transition: "all .32s ease-in-out",
         transform: "translateY(0px)",
         top: 0,
