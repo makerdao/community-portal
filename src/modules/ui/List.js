@@ -1,6 +1,6 @@
 //** @jsx jsx */
 import React from "react";
-import { Box, Flex, Text, jsx } from "theme-ui";
+import { Box, Flex, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
 import { Link } from "@modules/navigation";
@@ -96,8 +96,6 @@ const AdvancedListElement = ({
 
   if (linkData) {
     delete linkData.children;
-
-    const destination = linkData.to || linkData.href;
 
     return (
       <Link

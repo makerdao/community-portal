@@ -6,7 +6,7 @@ import { useLocation } from "@reach/router";
 
 import { SEO } from "@modules/utility";
 import { LanguageSelector } from "@modules/localization";
-import { Sidenav, Breadcrumbs } from "@modules/navigation";
+import { Sidenav, Breadcrumbs, NavigationProvider } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
@@ -57,7 +57,7 @@ export default (props) => {
   const renderSidenav = hasTopSection && !hideSidenav;
 
   return (
-    <>
+    <NavigationProvider>
       <SEO
         title={_pageTitle}
         description={description}
@@ -80,7 +80,7 @@ export default (props) => {
         </Sticky>
       )}
 
-      <Flex sx={{ flexGrow: 1, flexDirection: "column", width: "80%" }}>
+      <Flex sx={{ flexGrow: 1, flexDirection: "column", minWidth: '80%' }}>
         {status && (
           <StatusBanner
             sticky
@@ -125,6 +125,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </>
+    </NavigationProvider>
   );
 };

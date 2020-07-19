@@ -22,7 +22,13 @@ const Breadcrumbs = ({ children }) => {
       </Link>
       {" / "}
       {pathDirs.map((p, index) => {
-        const { title, url } = breadcrumbData.find((n) => n.part === p);
+        const _data = breadcrumbData.find((n) => n.part === p);
+
+        if (!_data) {
+          return null;
+        }
+
+        const { title, url } = _data;
 
         //Render "Title (LOCALE)" if the breadcrumb is a fallback route to EN.
         //NOTE(Rejon): This is a super rare case where in-between files of a director don't

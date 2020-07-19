@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import { useTranslation } from "@modules/localization/";
 import calculateTreeData from '@modules/navigation/calculateTreeData';
+import {UrlConverter, getLocaleFromPath} from '@utils'
 
 export const NavigationContext = createContext();
 
@@ -39,6 +40,14 @@ const NavigationProvider = ({ children }) => {
 
   let pathDirs = pathname.replace(/\/+$/, "").split("/");
   pathDirs = pathDirs.slice(2, pathDirs.length);
+  
+  //NOTE(Rejon): Must be in the shape that React Select expects for it's options.  
+  const languageSelectorData = allMdx.edges
+  								.filter(({node}) => UrlConverter(node).split("/").pop() === pathDirs.slice(-1)[0] && getLocaleFromPath(node.fileAbsolutePath) !== locale)
+								.map(({node}) => ({
+									value: UrlConverter(node),
+									label: t("Language", null, null, getLocaleFromPath(node.fileAbsolutePath))
+								}));
 
   const {sidenavData, breadcrumbData} = calculateTreeData(
     allMdx.edges,
@@ -51,9 +60,10 @@ const NavigationProvider = ({ children }) => {
   return (
     <NavigationContext.Provider
       value={{
-        sidenavData,
-        breadcrumbData,
-		pathDirs
+        sidenavData: sidenavData || null,
+        breadcrumbData: breadcrumbData || null,
+		pathDirs,
+		languageSelectorData
       }}
     >
       {children}

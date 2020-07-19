@@ -4,8 +4,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { jsx, Text, Box, Flex, useColorMode, useThemeUI } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
-import throttle from "lodash.throttle";
 
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
@@ -205,7 +203,7 @@ const Header = () => {
         window.removeEventListener("scroll", onScroll);
       };
     }
-  }, []);
+  }, [onScroll]);
 
   return (
     <Box
@@ -284,7 +282,6 @@ const Header = () => {
           </Link>
           {HeaderLinks}
           {headerConfigLinks}
-          {/* <MDXRenderer>{headerConfigLinks}</MDXRenderer> */}
         </Flex>
         <Flex
           sx={{

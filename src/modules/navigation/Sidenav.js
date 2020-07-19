@@ -21,20 +21,21 @@ const Sidenav = (props) => {
         pt: "54px",
         pl: "8px",
         pb: "90px",
-        pr: "31px",
         borderRight: "1px solid",
         borderColor: "muted",
       }}
     >
-      <ul sx={{ m: 0, p: 0, listStyleType: "none" }}>
-        {sidenavData.items[0].items.map((item, index) => (
-          <Sidenav_Node
-            key={`${item.url}-${index}`}
-            currentPath={pathname}
-            {...item}
-          />
-        ))}
-      </ul>
+      {(sidenavData && sidenavData.items[0]) &&
+        <ul sx={{ m: 0, p: 0, listStyleType: "none" }}>
+          {sidenavData.items[0].items.map((item, index) => (
+            <Sidenav_Node
+              key={`${item.url}-${index}`}
+              currentPath={pathname}
+              {...item}
+            />
+          ))}
+        </ul>
+      }
     </Box>
   );
 };

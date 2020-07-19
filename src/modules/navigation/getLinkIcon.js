@@ -1,7 +1,7 @@
 //** @jsx jsx */
 import React from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
-import { Image, jsx } from "theme-ui";
+import { jsx } from "theme-ui";
 import { Link } from "@modules/navigation";
 
 //More of a Utility

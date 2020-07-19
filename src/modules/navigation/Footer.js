@@ -1,6 +1,6 @@
 //** */ @jsx jsx */
 import React from "react";
-import { Flex, Box, Image, jsx } from "theme-ui";
+import { Flex, Box, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Icon } from "@makerdao/dai-ui-icons";

@@ -29,9 +29,10 @@ const Sidenav_Node = ({
     <li
       sx={{
         color: active ? "primary" : "text",
-        mb: "32px",
         position: "relative",
-        pr: 3,
+        '&:not(:last-of-type)': {
+          mb: "14px",
+        }
       }}
     >
       {title && (
@@ -42,11 +43,16 @@ const Sidenav_Node = ({
           sx={{
             color: active ? "primary" : "text",
             fontWeight,
-            "&:hover > svg": {
-              transform: active
-                ? "translate(0, -50%) rotate(0deg)"
-                : "translate(0, -50%) rotate(90deg)",
-              transition: "all .1s ease",
+            py: '6px',
+            display: 'block',
+            "&:hover ": {
+              textDecoration: 'none',
+              '& > svg': {
+                transform: active
+                  ? "translate(0, -50%) rotate(0deg)"
+                  : "translate(0, -50%) rotate(90deg)",
+                transition: "all .1s ease",
+              }
             },
           }}
         >
@@ -57,8 +63,8 @@ const Sidenav_Node = ({
               name={active ? "chevron_down" : "chevron_right"}
               sx={{
                 position: "absolute",
-                right: 0,
-                top: !active ? "50%" : ".8em",
+                right: '31px',
+                top: !active ? "50%" : "calc(.8em + 6px)",
                 transform: "translate(0, -50%) rotate(0deg)",
                 transformOrigin: "center",
                 transition: "all .1s ease",
@@ -72,9 +78,10 @@ const Sidenav_Node = ({
         <ul
           sx={{
             m: 0,
-            mt: "24px",
             ml: "16px",
+            mt: '6px',
             pl: 0,
+            pr: '31px',
             listStyleType: "none",
           }}
         >
