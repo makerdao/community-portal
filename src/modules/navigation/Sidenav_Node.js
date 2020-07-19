@@ -1,30 +1,34 @@
 /** @jsx jsx */
 import React from "react";
 import { Link } from "@modules/navigation";
-import { useLocation } from "@reach/router";
+
 import { jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
-  const { pathname } = useLocation();
-
+const Sidenav_Node = ({
+  url,
+  title,
+  items,
+  parentActive,
+  currentPath,
+  ...otherProps
+}) => {
   const hasChildren = items.length !== 0;
 
+  //URL fallback for directories that have children, but don't have an index file.
   if (!url && hasChildren) {
     url = items[0].url;
   }
 
-  //NOTE(Rejon): Regex check for subdirectory recursion.
-  const urlRegex = new RegExp(`/${otherProps.slugPart}/`);
-  const active = pathname === url || urlRegex.test(pathname);
-
+  //Regex check for subdirectory recursion.
+  const active =
+    currentPath === url || currentPath.includes(otherProps.slugPart);
   const fontWeight = active ? "bold" : null || parentActive ? "500" : "text";
 
   return (
     <li
       sx={{
         color: active ? "primary" : "text",
-        fontWeight: active ? "bold" : "text",
         mb: "32px",
         position: "relative",
         pr: 3,
@@ -78,6 +82,7 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
             <Sidenav_Node
               key={`${item.url}-${item.index}`}
               parentActive={active}
+              currentPath={currentPath}
               {...item}
             />
           ))}

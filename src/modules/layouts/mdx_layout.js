@@ -5,7 +5,7 @@ import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
 import { SEO } from "@modules/utility";
-import { LanguageSelector, TranslationProvider } from "@modules/localization";
+import { LanguageSelector } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
@@ -57,7 +57,7 @@ export default (props) => {
   const renderSidenav = hasTopSection && !hideSidenav;
 
   return (
-    <TranslationProvider>
+    <>
       <SEO
         title={_pageTitle}
         description={description}
@@ -67,7 +67,11 @@ export default (props) => {
       {renderSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
-          sx={{ width: "20%", minWidth: "260px", display: ['none', 'none', 'initial'] }}
+          sx={{
+            width: "20%",
+            minWidth: "260px",
+            display: ["none", "none", "initial"],
+          }}
           dontUpdateHolderHeightWhenSticky={true}
           style={{ position: "relative" }}
           hideOnBoundaryHit={false}
@@ -121,6 +125,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </TranslationProvider>
+    </>
   );
 };

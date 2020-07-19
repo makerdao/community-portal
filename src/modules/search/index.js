@@ -9,7 +9,6 @@ import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 import { useTranslation } from "@modules/localization";
 import SearchInput from "./SearchInput";
 import SearchHit from "./SearchHit";
-import debounce from "lodash.debounce";
 
 //Hook mostly to detect if there's a click outside of the results element.
 //If a click is detected we hide the results.
@@ -38,7 +37,7 @@ const useClickOutside = (ref, handler, events) => {
 };
 
 export default function Search({ ...otherProps }) {
-  const MAX_RESULT_COUNT = 5; //<- Return 10 results maximum.
+  const MAX_RESULT_COUNT = 10; //<- Return 10 results maximum.
   const ref = useRef();
   const resultList = useRef();
   const [query, setQuery] = useState(``);
@@ -53,7 +52,6 @@ export default function Search({ ...otherProps }) {
 
   //On input change, run the search query and update our results state.
   const onChange = (val) => {
-    console.log("on Change!");
     if (lunr && val !== "") {
       const query = val
         .trim() // remove trailing and leading spaces
@@ -102,7 +100,6 @@ export default function Search({ ...otherProps }) {
     if (results.length > 0) {
       navigate(results[0].url);
       setFocus(false);
-      setQuery("");
     }
   };
 
@@ -131,7 +128,7 @@ export default function Search({ ...otherProps }) {
     >
       <SearchInput
         onFocus={() => setFocus(true)}
-        onChange={debounce(onChange, 200)}
+        onChange={onChange}
         onSubmit={onSubmit}
         {...{ focus }}
       />
@@ -147,7 +144,7 @@ export default function Search({ ...otherProps }) {
           zIndex: "1000000000",
           top: "3.5rem",
           borderRadius: "roundish",
-          boxShadow: "high",
+          boxShadow: "type1",
           overflow: "hidden",
           width: "100%",
         }}
@@ -166,7 +163,7 @@ export default function Search({ ...otherProps }) {
             listStyleType: "none",
             p: results.length === 0 && query.length > 0 ? 0 : 2,
             overflow: "auto",
-            maxHeight: "490px",
+            maxHeight: "464px",
             "& > li": {
               borderRadius: "roundish",
               backgroundColor: "transparent",
@@ -180,7 +177,7 @@ export default function Search({ ...otherProps }) {
               display: "block",
             },
             "& li:hover": {
-              backgroundColor: "primaryMuted",
+              backgroundColor: "primary",
               color: "text",
               "& > a": {
                 color: "text",
@@ -195,7 +192,7 @@ export default function Search({ ...otherProps }) {
                 query={query}
                 onClick={() => {
                   setFocus(false);
-                  setQuery("");
+
                   //Google Analytics Tracking
                   trackCustomEvent({
                     category: "Internal Search",

@@ -70,7 +70,7 @@ const SearchInput = ({ onChange, onSubmit, ...rest }) => {
           borderRadius: "0",
           letterSpacing: "0.3px",
           minWidth: "auto",
-          width: ['100%', '100%', "300px"],
+          width: ["100%", "100%", "300px"],
           padding: "9px",
           pl: "5px",
           color: "muted",

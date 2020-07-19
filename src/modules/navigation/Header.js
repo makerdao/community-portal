@@ -14,7 +14,7 @@ import { UrlConverter, TitleConverter } from "@utils";
 
 var lastScroll = 0; //<- Last scroll top of window. Defined outside because we don't want to re-render for scrolling.
 var delta = 5; //<- Rate of change in scroll needed to hide the header.
-var scrollBeforeMenuOpen = 0; //<- Scroll position of window prior to 
+var scrollBeforeMenuOpen = 0; //<- Scroll position of window prior to
 var isShowingMenu = false; //<- For document  event listeners to know if the menu is being shown or not.
 
 const Header = () => {
@@ -179,23 +179,23 @@ const Header = () => {
 
   const onMenuClick = (e) => {
     if (typeof window !== "undefined") {
-      
       //Solution from: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
-      if (showMenu) { //We're hiding the menu. Remove the fixed styling, put scroll position back. 
-        document.body.style.position = '';
-        document.body.style.top = '';
+      if (showMenu) {
+        //We're hiding the menu. Remove the fixed styling, put scroll position back.
+        document.body.style.position = "";
+        document.body.style.top = "";
         window.scrollTo(0, scrollBeforeMenuOpen);
-      } 
-      else { //We're showing the menu. Add fixed styling so the user doesn't scroll the window when in the menu.
-        scrollBeforeMenuOpen = window.scrollY; 
-        document.body.style.position = 'fixed';
+      } else {
+        //We're showing the menu. Add fixed styling so the user doesn't scroll the window when in the menu.
+        scrollBeforeMenuOpen = window.scrollY;
+        document.body.style.position = "fixed";
         document.body.style.top = `-${scrollBeforeMenuOpen}px`;
       }
 
       isShowingMenu = !showMenu;
       setShowMenu(!showMenu);
     }
-  }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -227,8 +227,8 @@ const Header = () => {
       <Flex
         sx={{
           maxWidth: "1364px",
-          zIndex: 2, 
-          position: 'relative',
+          zIndex: 2,
+          position: "relative",
           margin: "auto",
           p: "22px",
           py: "19px",
@@ -358,41 +358,46 @@ const Header = () => {
         <Icon
           size={"39px"}
           onClick={onMenuClick}
-          name={showMenu ? 'close' : "menu"}
+          name={showMenu ? "close" : "menu"}
           sx={{
-            p: showMenu ? '7px' : '0px', //NOTE(Rejon): Close and Menu have different viewbox sizes in the dai-ui spec.
+            p: showMenu ? "7px" : "0px", //NOTE(Rejon): Close and Menu have different viewbox sizes in the dai-ui spec.
             color: "onBackgroundAlt",
             cursor: "pointer",
             display: ["initial", "initial", "none"],
           }}
         />
       </Flex>
-      <Box sx={{display: ['initial', 'initial', 'none']}}>
-        <Box 
-          className={showMenu ? 'visible' : ''} 
+      <Box sx={{ display: ["initial", "initial", "none"] }}>
+        <Box
+          className={showMenu ? "visible" : ""}
           sx={{
-            bg: 'backgroundAlt', 
-            right: '23px', 
-            top: '25px', 
-            position: 'fixed', 
-            width: '100px', 
-            height: '100px', 
-            borderRadius:'10000px', 
-            opacity: 0.9, 
-            zIndex: 1, 
-            transform: 'scale(0)',
-            transformOrigin: 'center', 
-            transition: 'all .5s cubic-bezier(0.65, 0, 0.35, 1)', 
-            '&.visible': {transform: 'scale(100)', opacity: 1, transition: 'all .5s cubic-bezier(0.65, 0, 0.35, 1)'}
+            bg: "backgroundAlt",
+            right: "23px",
+            top: "25px",
+            position: "fixed",
+            width: "100px",
+            height: "100px",
+            borderRadius: "10000px",
+            opacity: 0.9,
+            zIndex: 1,
+            transform: "scale(0)",
+            transformOrigin: "center",
+            transition: "all .5s cubic-bezier(0.65, 0, 0.35, 1)",
+            "&.visible": {
+              transform: "scale(100)",
+              opacity: 1,
+              transition: "all .5s cubic-bezier(0.65, 0, 0.35, 1)",
+            },
           }}
-        >
-        </Box>
-        <Box sx={{
-          zIndex: 2, 
-          position: 'fixed', 
-          width: '100%', 
-          height: 'calc(100vh - 90px)', 
-          display: showMenu ? ['block', 'block', 'none'] : 'none'}}
+        ></Box>
+        <Box
+          sx={{
+            zIndex: 2,
+            position: "fixed",
+            width: "100%",
+            height: "calc(100vh - 90px)",
+            display: showMenu ? ["block", "block", "none"] : "none",
+          }}
         >
           Hi!
         </Box>
