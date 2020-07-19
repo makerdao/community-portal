@@ -1,5 +1,6 @@
+//** @jsx jsx */
 import React from "react";
-import { Flex, Box, jsx } from "theme-ui";
+import { Box, jsx } from "theme-ui";
 
 const Radial = ({ size = 200, value = 0, min = 0, max = 1, ...props }) => {
   const _value = value < min ? 0 : value;

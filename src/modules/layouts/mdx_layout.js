@@ -10,7 +10,6 @@ import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
-  console.log(props)
   const { children, pageContext, uri } = props;
   const {
     title,
@@ -52,6 +51,10 @@ export default (props) => {
   //NOTE(Rejon): If the page is an index of a directory, the uri split will be the name of the directory. ie. /en/bounties -> bounties
   const _pageTitle = title || getFirstHeading() || uri.split("/").pop();
 
+  const hasTopSection =
+    currentTopSection !== undefined && currentTopSection !== "";
+  const renderSidenav = hasTopSection && !hideSidenav;
+
   return (
     <TranslationProvider>
       <SEO
@@ -60,19 +63,17 @@ export default (props) => {
         keywords={keywords}
         featuredImage={featuredImage}
       />
-      {currentTopSection !== undefined &&
-        currentTopSection !== "" &&
-        !hideSidenav && (
-          <Sticky
-            boundaryElement=".content-boundary"
-            sx={{ width: "20%", minWidth: "260px" }}
-            dontUpdateHolderHeightWhenSticky={true}
-            style={{ position: "relative" }}
-            hideOnBoundaryHit={false}
-          >
-            <Sidenav />
-          </Sticky>
-        )}
+      {renderSidenav && (
+        <Sticky
+          boundaryElement=".content-boundary"
+          sx={{ width: "20%", minWidth: "260px" }}
+          dontUpdateHolderHeightWhenSticky={true}
+          style={{ position: "relative" }}
+          hideOnBoundaryHit={false}
+        >
+          <Sidenav />
+        </Sticky>
+      )}
 
       <Flex sx={{ flexGrow: 1, flexDirection: "column", width: "80%" }}>
         {status && (
@@ -85,14 +86,9 @@ export default (props) => {
         )}
         <article
           sx={{
-            pl:
-              currentTopSection !== undefined && currentTopSection !== ""
-                ? "64px"
-                : 0,
-            mt:
-              currentTopSection !== undefined && currentTopSection !== ""
-                ? "74px"
-                : 0,
+            pl: hasTopSection ? "64px" : 0,
+            mt: hasTopSection ? "74px" : 0,
+
             pr: 4,
           }}
         >
@@ -102,18 +98,15 @@ export default (props) => {
               position: "relative",
               mb: "28px",
               alignItems: "center",
+              mt: !renderSidenav ? "2rem" : "",
             }}
           >
             <Breadcrumbs sx={{ flexGrow: 1 }} />
-            {currentTopSection !== undefined &&
-              currentTopSection !== "" &&
-              !hideLanguageSelector && <LanguageSelector />}
+            {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
           </Flex>
           <Box
             sx={
-              currentTopSection !== undefined &&
-              currentTopSection !== "" &&
-              !hideSidenav
+              renderSidenav
                 ? {
                     "& > *:first-child, & > *:nth-child(2)": {
                       maxWidth: "calc(100% - 211px)",

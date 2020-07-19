@@ -1,4 +1,61 @@
+/* Font Loading */
+@font-face {
+  font-family: 'FT Base';
+  src: url('/fonts/FTBase-Medium.woff2') format('woff2'),
+      url('/fonts/FTBase-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'FT Base';
+  src: url('/fonts/FTBase-Thin.woff2') format('woff2'),
+      url('/fonts/FTBase-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT Base';
+  src: url('/fonts/FTBase-Bold.woff2') format('woff2'),
+      url('/fonts/FTBase-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT Base Book';
+  src: url('/fonts/FTBase-Book.woff2') format('woff2'),
+      url('/fonts/FTBase-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT Base';
+  src: url('/fonts/FTBase-Regular.woff2') format('woff2'),
+      url('/fonts/FTBase-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT Base';
+  src: url('/fonts/FTBase-Light.woff2') format('woff2'),
+      url('/fonts/FTBase-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+/* PrismJS Styles - Add your Language Tabs Here */
    pre[class*="language-"] {
 	position: relative;
 	-webkit-overflow-scrolling: touch;

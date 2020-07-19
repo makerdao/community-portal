@@ -62,11 +62,11 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
       method="GET"
       role="search"
       onSubmit={onFormSubmit}
-      sx={{ p: "4px", alignItems: "center", pl: "10px" }}
+      sx={{ p: "4px", alignItems: "center", pl: "10px", width: "100%" }}
     >
       <Icon
         name="search"
-        color="body-40"
+        color="muted"
         viewBox="-5 -5 24 24"
         sx={{
           width: "33px",
@@ -86,8 +86,13 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
           border: "none",
           borderRadius: "0",
           letterSpacing: "0.3px",
+          padding: "9px",
+          color: "muted",
+          "&:focus": {
+            color: "muted",
+          },
           "::placeholder": {
-            color: "body",
+            color: "muted",
           },
           "::-webkit-search-cancel-button": {
             WebkitAppearance: "none",

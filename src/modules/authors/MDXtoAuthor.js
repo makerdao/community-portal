@@ -71,7 +71,7 @@ const converter = (mdxObj) => {
   if (mdxObj.props.mdxType === "ul" || mdxObj.props.mdxType === "ol") {
     const contribList = React.Children.toArray(mdxObj.props.children);
 
-    contribList.map((li) => {
+    contribList.forEach((li) => {
       if (!contributorData["contributions"]) {
         contributorData["contributions"] = [];
       }
@@ -98,16 +98,14 @@ const MDXtoAuthor = (children, isList) => {
       const outObj = {};
 
       if (Array.isArray(child.props.children)) {
-        child.props.children.map((ch) => {
+        child.props.children.forEach((ch) => {
           const cData = converter(ch);
 
           const key = Object.keys(cData);
 
-          if (key.length != 0) {
+          if (key.length !== 0) {
             // If our outObj[key] has data and we're rendering in list format.
             if (outObj[key] !== undefined && isList) {
-              const existingData = outObj[key];
-
               //NOTE(Rejon): This looks funky, but it's only because we have cases where the data can be a string OR an array.
               outObj[key] = !Array.isArray(outObj[key])
                 ? [outObj[key], cData[key]]
@@ -121,7 +119,7 @@ const MDXtoAuthor = (children, isList) => {
         const cData = converter(child);
         const key = Object.keys(cData);
 
-        if (key.length != 0) {
+        if (key.length !== 0) {
           outObj[key] = cData[key];
         }
       }

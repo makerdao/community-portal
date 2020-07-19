@@ -34,7 +34,7 @@ const Process = ({ children }) => {
                 ml: "16px",
                 mb: "16px",
                 borderBottom: "1px solid",
-                borderColor: "body-15",
+                borderColor: "text",
                 width: "100%",
                 pb: "24px",
                 "& > *:only-child": { m: 0 },
