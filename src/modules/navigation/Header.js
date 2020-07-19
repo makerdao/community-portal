@@ -227,7 +227,7 @@ const Header = () => {
       <Flex
         sx={{
           maxWidth: "1364px",
-          zIndex: 1, 
+          zIndex: 2, 
           position: 'relative',
           margin: "auto",
           p: "22px",
@@ -378,10 +378,12 @@ const Header = () => {
             width: '100px', 
             height: '100px', 
             borderRadius:'10000px', 
-            zIndex: 0, 
-            transform: 'scale(0)', 
-            transition: 'all .32s cubic-bezier(0.65, 0, 0.35, 1)', 
-            '&.visible': {transform: 'scale(202)'}
+            opacity: 0.9, 
+            zIndex: 1, 
+            transform: 'scale(0)',
+            transformOrigin: 'center', 
+            transition: 'all .5s cubic-bezier(0.65, 0, 0.35, 1)', 
+            '&.visible': {transform: 'scale(100)', opacity: 1, transition: 'all .5s cubic-bezier(0.65, 0, 0.35, 1)'}
           }}
         >
         </Box>
