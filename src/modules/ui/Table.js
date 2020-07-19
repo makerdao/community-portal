@@ -12,7 +12,8 @@ const Table = ({ children }) => (
         color: 'textMuted',
         border: '1px solid',
         borderColor: 'muted',
-        padding: "10px",
+        py: 3,
+        px: '24px',
       },
       "& th": {
         color: 'text',
@@ -20,7 +21,8 @@ const Table = ({ children }) => (
         fontWeight: 600,
         border: '1px solid',
         borderColor: 'muted',
-        padding: "10px",
+        py: 3, 
+        px: '24px'
       },
     }}
   >
