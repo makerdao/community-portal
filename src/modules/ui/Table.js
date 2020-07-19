@@ -11,15 +11,19 @@ const Table = ({ children }) => (
       fontSize: "16px",
       textAlign: "center",
       "& td": {
-        color: '#4D4968',
-        border: "1px solid #D0D3D7",
+        color: 'textMuted',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'muted',
         padding: "10px",
       },
       "& th": {
-        color: '#291A42',
+        color: 'text',
         fontStyle: 'normal',
         fontWeight: 600,
-        border: "1px solid #D0D3D7",
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'muted',
         padding: "10px",
       },
     }}
