@@ -6,14 +6,11 @@ const Table = ({ children }) => (
   <table
     sx={{
       borderCollapse: "collapse",
-      borderSpacing: "10px",
-      fontFamily: "FT Base Trial",
-      fontSize: "16px",
+      fontSize: 3,
       textAlign: "center",
       "& td": {
         color: 'textMuted',
-        borderWidth: '1px',
-        borderStyle: 'solid',
+        border: '1px solid',
         borderColor: 'muted',
         padding: "10px",
       },
@@ -21,8 +18,7 @@ const Table = ({ children }) => (
         color: 'text',
         fontStyle: 'normal',
         fontWeight: 600,
-        borderWidth: '1px',
-        borderStyle: 'solid',
+        border: '1px solid',
         borderColor: 'muted',
         padding: "10px",
       },
