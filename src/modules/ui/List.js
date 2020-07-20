@@ -184,14 +184,14 @@ const List = ({ children }) => {
       (child.props.mdxType === "Box" ||
         child.props.mdxType === "Link" ||
         child.props.mdxType === "a" ||
-        (child.props.mdxType === 'p' && child.props.children && child.props.children.props.mdxType === 'a')
+        (child.props.mdxType === 'p' && child.props.children && child.props.children.props && child.props.children.props.mdxType === 'a')
         )
     ) {
       console.log(child);
       const boxChildren = React.Children.toArray(child.props.children);
       const isLink =
         child.props.mdxType === "Link" || child.props.mdxType === "a";
-      const isMDLink = (child.props.mdxType === 'p' && child.props.children && child.props.children.props.mdxType === 'a')
+      const isMDLink = (child.props.mdxType === 'p' && child.props.children && child.props.children.props && child.props.children.props.mdxType === 'a')
       const childData = {};
 
       let linkData = isLink ? { ...child.props } : null; //If this element is a Link grab it's href.
