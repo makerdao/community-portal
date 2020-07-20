@@ -7,7 +7,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { navigate } from "@reach/router";
 import Button from "@modules/ui/Button";
-import Link from "@modules/navigation/Link";
 
 import { useTranslation } from "@modules/localization";
 

@@ -147,7 +147,7 @@ const Footer = () => {
                 pr: ["66px", "66px", "unset"],
                 mb: ["64px", "64px", "unset"],
                 color: "onBackgroundAlt",
-                "& > *:first-child:not(ul)": {
+                "& > *nth-child(1):not(ul)": {
                   mb: "8px",
                 },
                 "& > ul": {

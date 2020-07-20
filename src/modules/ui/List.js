@@ -15,7 +15,7 @@ const ListElement = ({ children, ...props }) => (
       borderColor: "muted",
       flexDirection: "column",
       alignItems: "flex-start",
-      "& > * > *:only-child, & > * > *:first-child": {
+      "& > * > *:only-child, & > * > *nth-child(1)": {
         fontWeight: "normal",
         fontSize: 3,
         color: "text",
@@ -24,10 +24,10 @@ const ListElement = ({ children, ...props }) => (
       "& > * > *:only-child": {
         mb: 0,
       },
-      "& > * > *:not(:only-child):first-child": {
+      "& > * > *:not(:only-child)nth-child(1)": {
         mb: "8px",
       },
-      "& > * > *:not(:first-child)": {
+      "& > * > *:not(nth-child(1))": {
         fontWeight: "normal",
         fontSize: "14px",
         color: "textMuted",
@@ -53,13 +53,13 @@ const AdvancedListElement = ({
             sx={{
               flexDirection: "column",
               alignItems: "flex-start",
-              "& > *:only-child, & > *:first-child": {
+              "& > *:only-child, & > *nth-child(1)": {
                 fontWeight: "normal",
                 fontSize: 3,
                 color: "text",
                 lineHeight: "normal",
               },
-              "& > *:not(:first-child)": {
+              "& > *:not(nth-child(1))": {
                 fontWeight: "normal",
                 fontSize: "14px",
                 color: "textMuted",

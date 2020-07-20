@@ -113,7 +113,7 @@ export default (props) => {
             sx={
               renderSidenav
                 ? {
-                    "& > *:first-child, & > *:nth-child(2)": {
+                    "& > *nth-child(1), & > *:nth-child(2)": {
                       maxWidth: "calc(100% - 211px)",
                     },
                     "& > *:nth-child(2)": { mb: "32px" },

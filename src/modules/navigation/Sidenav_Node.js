@@ -20,7 +20,7 @@ const Sidenav_Node = ({
     url = items[0].url;
   }
 
-  //Regex check for subdirectory recursion.
+  //Check if element is active or not based on current path. 
   const active =
     currentPath === url || currentPath.includes(otherProps.slugPart);
   const fontWeight = active ? "bold" : null || parentActive ? "500" : "text";

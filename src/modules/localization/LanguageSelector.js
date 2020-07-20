@@ -6,7 +6,6 @@ import { Box, jsx, Text, useThemeUI } from "theme-ui";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 import { NavigationContext } from "@modules/navigation/context";
-import { UrlConverter } from "@utils";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 

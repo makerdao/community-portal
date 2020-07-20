@@ -57,13 +57,15 @@ const NavigationProvider = ({ children }) => {
 	pathDirs
   );
 
+  console.log(sidenavData)
+
   return (
     <NavigationContext.Provider
       value={{
         sidenavData: sidenavData || null,
         breadcrumbData: breadcrumbData || null,
-		pathDirs,
-		languageSelectorData
+        pathDirs,
+        languageSelectorData
       }}
     >
       {children}

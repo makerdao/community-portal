@@ -5,7 +5,7 @@ import { jsx, Text, Box, Flex, useColorMode, useThemeUI } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
 
-import { Link } from "@modules/navigation";
+import { Link, MobileNav} from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
@@ -20,7 +20,7 @@ const Header = () => {
   const { theme } = useThemeUI();
   const breakpoints = theme.breakpoints.slice(0, -1); //NOTE(Rejon): The last element of the break point array SHOULD be infinity.
 
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
   const [colorMode, setColorMode] = useColorMode();
 
@@ -81,7 +81,7 @@ const Header = () => {
 
   //allMDX will return all header.mdx files at top level locale folders.
   //Find only the one we need for our current locale and use it's body in the MDX renderer below.
-  const HeaderLinks = headerLinkEdges
+  const headerDataLinks = headerLinkEdges
     .sort((a, b) => {
       const aNode = {
         ...a.node,
@@ -123,27 +123,27 @@ const Header = () => {
       const title = TitleConverter(node);
       const url = UrlConverter(node);
 
-      return (
-        <Link to={url} key={`header-link-${index}`} hideExternalIcon>
-          {title}
-        </Link>
-      );
+      return ({
+        url, 
+        title
+      });
     });
 
-  const headerConfigLinks = headerConfigFiles.nodes
-    .find((n) => n.fileAbsolutePath.includes(`/${locale}/`))
-    .internal.content.trim()
-    .split("\n")
-    .map((l, index) => {
-      const url = l.match(/\(([^)]+)\)/)[1];
-      const title = l.match(/\[([^)]+)\]/)[1];
+  const headerConfigLinks =  headerConfigFiles.nodes
+      .find((n) => n.fileAbsolutePath.includes(`/${locale}/`))
+      .internal.content.trim()
+      .split("\n")
+      .map((l, index) => {
+        const url = l.match(/\(([^)]+)\)/)[1];
+        const title = l.match(/\[([^)]+)\]/)[1];
 
-      return (
-        <Link to={url} key={`header-config-link-${index}`} hideExternalIcon>
-          {title}
-        </Link>
-      );
-    });
+        return ({
+          url,
+          title
+        })
+      });
+
+  const headerLinks = headerDataLinks.concat(headerConfigLinks);
 
   const onScroll = () => {
     if (headerContainer.current && !isShowingMenu) {
@@ -182,11 +182,13 @@ const Header = () => {
         //We're hiding the menu. Remove the fixed styling, put scroll position back.
         document.body.style.position = "";
         document.body.style.top = "";
+        document.body.style.width = "";
         window.scrollTo(0, scrollBeforeMenuOpen);
       } else {
         //We're showing the menu. Add fixed styling so the user doesn't scroll the window when in the menu.
         scrollBeforeMenuOpen = window.scrollY;
         document.body.style.position = "fixed";
+        document.body.style.width = "100vw";
         document.body.style.top = `-${scrollBeforeMenuOpen}px`;
       }
 
@@ -203,7 +205,7 @@ const Header = () => {
         window.removeEventListener("scroll", onScroll);
       };
     }
-  }, [onScroll]);
+  }, []);
 
   return (
     <Box
@@ -273,6 +275,7 @@ const Header = () => {
           <Link
             to={`/${locale}/`}
             variant="nav"
+            onClick={() => setShowMenu(false)}
             sx={{
               textDecoration: "none",
               color: "onBackgroundAlt",
@@ -280,8 +283,11 @@ const Header = () => {
           >
             <Text>{t("Home")}</Text>
           </Link>
-          {HeaderLinks}
-          {headerConfigLinks}
+          {headerLinks.map(({url, title}, index) => 
+            <Link to={url} hideExternalIcon key={`header-link-${index}`}>
+              {title}
+            </Link>
+          )}
         </Flex>
         <Flex
           sx={{
@@ -294,10 +300,11 @@ const Header = () => {
         >
           <Search
             collapse
+            onClick={() => setShowMenu(false)}
             sx={{
               width: "100%",
-              minWidth: "270px",
-              mr: ["1rem", "1rem", "1vw"],
+              minWidth: ["unset", "270px", "270px"],
+              mr: ["unset", "unset", "1vw"],
 
               fontFamily: "body",
               display: "inline-block",
@@ -360,11 +367,33 @@ const Header = () => {
             p: showMenu ? "7px" : "0px", //NOTE(Rejon): Close and Menu have different viewbox sizes in the dai-ui spec.
             color: "onBackgroundAlt",
             cursor: "pointer",
+            ml: '1rem',
             display: ["initial", "initial", "none"],
           }}
         />
       </Flex>
-      <Box sx={{ display: ["initial", "initial", "none"] }}>
+      <Box 
+      className={showMenu ? "visible" : ""}
+      sx={{ 
+        display: ["initial", "initial", "none"], 
+        '&::after': {
+          content: `""`,
+          height: '1px',
+          width: '100%',
+          bg: 'surfaceDark',
+          position: 'absolute',
+          zIndex: 1,
+          opacity: 0,
+          transformOrigin: 'center',
+          transform: 'scaleX(0)',
+          transition: "all .1s cubic-bezier(0.65, 0, 0.35, 1)",
+        },
+        '&.visible::after': {
+          opacity: 1, 
+          transform: 'scaleX(1)',
+          transition: "all .5s cubic-bezier(0.65, 0, 0.35, 1)",
+        }
+      }}>
         <Box
           className={showMenu ? "visible" : ""}
           sx={{
@@ -387,17 +416,10 @@ const Header = () => {
             },
           }}
         ></Box>
-        <Box
-          sx={{
-            zIndex: 2,
-            position: "fixed",
-            width: "100%",
-            height: "calc(100vh - 90px)",
-            display: showMenu ? ["block", "block", "none"] : "none",
-          }}
-        >
-          Hi!
-        </Box>
+
+        {showMenu &&
+          <MobileNav onLinkClick={() => setShowMenu(false)} headerLinks={headerLinks}/>
+        }
       </Box>
     </Box>
   );

@@ -36,7 +36,7 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
-export default function Search({ ...otherProps }) {
+export default function Search({ onClick, ...otherProps }) {
   const MAX_RESULT_COUNT = 10; //<- Return 10 results maximum.
   const ref = useRef();
   const resultList = useRef();
@@ -100,6 +100,7 @@ export default function Search({ ...otherProps }) {
     if (results.length > 0) {
       navigate(results[0].url);
       setFocus(false);
+      onClick();
     }
   };
 
@@ -139,14 +140,15 @@ export default function Search({ ...otherProps }) {
         sx={{
           display: query.length > 0 && focus ? "grid" : "none",
           position: "absolute",
-          left: 0,
+          left: ["calc(50% - .5rem)", "calc(50% - .5rem)", 0],
           backgroundColor: "surfaceDark",
           zIndex: "1000000000",
-          top: "3.5rem",
+          top: ["5rem", "5rem", "3.5rem"],
           borderRadius: "roundish",
           boxShadow: "type1",
           overflow: "hidden",
-          width: "100%",
+          transform: ['translateX(-50%)','translateX(-50%)','unset'],
+          width: ["calc(100vw - 48px)","calc(100vw - 48px)","100%"],
         }}
       >
         {results.length === 0 && query.length > 0 && (
@@ -163,7 +165,7 @@ export default function Search({ ...otherProps }) {
             listStyleType: "none",
             p: results.length === 0 && query.length > 0 ? 0 : 2,
             overflow: "auto",
-            maxHeight: "464px",
+            maxHeight: ["calc(64vh - 90px - 2rem)", "calc(64vh - 90px - 2rem)","464px"],
             "& > li": {
               borderRadius: "roundish",
               backgroundColor: "transparent",
@@ -192,7 +194,7 @@ export default function Search({ ...otherProps }) {
                 query={query}
                 onClick={() => {
                   setFocus(false);
-
+                  onClick();
                   //Google Analytics Tracking
                   trackCustomEvent({
                     category: "Internal Search",
