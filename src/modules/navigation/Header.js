@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React, { useEffect, useState, useRef } from "react";
-
+import { motion } from "framer-motion";
 import { jsx, Text, Box, Flex, useColorMode, useThemeUI } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
@@ -20,7 +20,7 @@ const Header = () => {
   const { theme } = useThemeUI();
   const breakpoints = theme.breakpoints.slice(0, -1); //NOTE(Rejon): The last element of the break point array SHOULD be infinity.
 
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
   const [colorMode, setColorMode] = useColorMode();
 
@@ -197,6 +197,33 @@ const Header = () => {
     }
   };
 
+  const hideMenu = () => {
+    if (showMenu) {
+      if (typeof window !== "undefined") {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, 0);
+
+        isShowingMenu = false;
+        setShowMenu(false);
+      }
+    }
+  };
+
+  const mobileNavBGVariant = {
+    hidden: {
+      opacity: 0.9,
+      scale: 0,
+      transition: { ease: "easeInOut", duration: 0.1 },
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { ease: "easeInOut", duration: 0.1 },
+    },
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", onScroll);
@@ -227,6 +254,7 @@ const Header = () => {
       <Flex
         sx={{
           maxWidth: "1364px",
+          height: ["90px", "90px", "unset"],
           zIndex: 2,
           position: "relative",
           margin: "auto",
@@ -252,7 +280,7 @@ const Header = () => {
         <Link
           to={`/${locale}/`}
           variant="nav"
-          onClick={() => setShowMenu(false)}
+          onClick={hideMenu}
           sx={{
             textDecoration: "none",
             color: "onBackgroundAlt",
@@ -276,7 +304,7 @@ const Header = () => {
           <Link
             to={`/${locale}/`}
             variant="nav"
-            onClick={() => setShowMenu(false)}
+            onClick={hideMenu}
             sx={{
               textDecoration: "none",
               color: "onBackgroundAlt",
@@ -301,7 +329,7 @@ const Header = () => {
         >
           <Search
             collapse
-            onClick={() => setShowMenu(false)}
+            onClick={hideMenu}
             sx={{
               width: "100%",
               minWidth: ["unset", "270px", "270px"],
@@ -313,52 +341,62 @@ const Header = () => {
             }}
           />
 
-          <Icon
-            size={"32px"}
-            name={"sun"}
-            sx={{
-              borderRadius: "100%",
-              display: ["none", "none", "inline-block"],
-              p: "2px",
-              bg: colorMode !== "default" ? "transparent" : "primary",
-              color: colorMode !== "default" ? "onBackgroundAlt" : "text",
-              mr: "21px",
-              minWidth: "32px",
-              minHeight: "32px",
-              cursor: "pointer",
-              "&:hover": {
-                bg: colorMode !== "default" ? "background" : "",
-              },
-            }}
-            onClick={(e) => {
-              if (colorMode !== "default") {
-                setColorMode("default");
-              }
-            }}
-          />
+          <motion.div
+            sx={{ display: ["none", "none", "inline-block"] }}
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            <Icon
+              size={"32px"}
+              name={"sun"}
+              sx={{
+                borderRadius: "100%",
+                p: "2px",
+                bg: colorMode !== "default" ? "transparent" : "primary",
+                color: colorMode !== "default" ? "onBackgroundAlt" : "text",
+                mr: "21px",
+                minWidth: "32px",
+                minHeight: "32px",
+                cursor: "pointer",
+                "&:hover": {
+                  bg: colorMode !== "default" ? "background" : "",
+                },
+              }}
+              onClick={(e) => {
+                if (colorMode !== "default") {
+                  setColorMode("default");
+                }
+              }}
+            />
+          </motion.div>
 
-          <Icon
-            size={"32px"}
-            name={"moon"}
-            sx={{
-              borderRadius: "100%",
-              display: ["none", "none", "inline-block"],
-              p: "2px",
-              bg: colorMode !== "dark" ? "transparent" : "primary",
-              color: colorMode !== "dark" ? "onBackgroundAlt" : "background",
-              minWidth: "32px",
-              minHeight: "32px",
-              cursor: "pointer",
-              "&:hover": {
-                bg: colorMode !== "dark" ? "surfaceDark" : "",
-              },
-            }}
-            onClick={(e) => {
-              if (colorMode !== "dark") {
-                setColorMode("dark");
-              }
-            }}
-          />
+          <motion.div
+            sx={{ display: ["none", "none", "inline-block"] }}
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            <Icon
+              size={"32px"}
+              name={"moon"}
+              sx={{
+                borderRadius: "100%",
+                p: "2px",
+                bg: colorMode !== "dark" ? "transparent" : "primary",
+                color: colorMode !== "dark" ? "onBackgroundAlt" : "background",
+                minWidth: "32px",
+                minHeight: "32px",
+                cursor: "pointer",
+                "&:hover": {
+                  bg: colorMode !== "dark" ? "surfaceDark" : "",
+                },
+              }}
+              onClick={(e) => {
+                if (colorMode !== "dark") {
+                  setColorMode("dark");
+                }
+              }}
+            />
+          </motion.div>
         </Flex>
         <Icon
           size={"39px"}
@@ -396,34 +434,25 @@ const Header = () => {
           },
         }}
       >
-        <Box
-          className={showMenu ? "visible" : ""}
+        <motion.div
+          initial="hidden"
+          animate={showMenu ? "visible" : "hidden"}
+          variants={mobileNavBGVariant}
           sx={{
             bg: "backgroundAlt",
-            right: "23px",
-            top: "25px",
+            right: "-2500px",
+            top: "-2500px",
             position: "fixed",
-            width: "100px",
-            height: "100px",
+            width: "5000px",
+            height: "5000px",
             borderRadius: "10000px",
-            opacity: 0.9,
             zIndex: 1,
-            transform: "scale(0)",
             transformOrigin: "center",
-            transition: "all .5s cubic-bezier(0.65, 0, 0.35, 1)",
-            "&.visible": {
-              transform: "scale(100)",
-              opacity: 1,
-              transition: "all .5s cubic-bezier(0.65, 0, 0.35, 1)",
-            },
           }}
-        ></Box>
+        ></motion.div>
 
         {showMenu && (
-          <MobileNav
-            onLinkClick={() => setShowMenu(false)}
-            headerLinks={headerLinks}
-          />
+          <MobileNav onLinkClick={hideMenu} headerLinks={headerLinks} />
         )}
       </Box>
     </Box>

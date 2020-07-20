@@ -71,8 +71,10 @@ const SearchInput = ({ onChange, onSubmit, ...rest }) => {
           letterSpacing: "0.3px",
           minWidth: "auto",
           width: ["100%", "100%", "300px"],
-          padding: "9px",
+          pr: "9px",
           pl: "5px",
+          py: ["1vw", "1vw", "9px"],
+          fontSize: [3, "3vw", "inherit"],
           color: "muted",
           "&:focus": {
             color: "muted",
