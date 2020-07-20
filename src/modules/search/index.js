@@ -157,11 +157,13 @@ export default function Search({ onClick, ...otherProps }) {
         animate={query.length > 0 && focus ? "visible" : "hidden"}
         sx={{
           position: "absolute",
-          boxShadow: "type1",
+          boxShadow: "high",
           left: ["calc(50% - .5rem)", "calc(50% - .5rem)", "50%"],
           top: ["5rem", "5rem", "3.5rem"],
           width: ["calc(100vw - 48px)", "calc(100vw - 48px)", "100%"],
           minHeight: 4,
+          borderRadius: "roundish",
+          overflow: "hidden",
         }}
       >
         <Box
@@ -171,9 +173,6 @@ export default function Search({ onClick, ...otherProps }) {
             display: "grid",
             backgroundColor: "surfaceDark",
             zIndex: "1000000000",
-            borderRadius: "roundish",
-
-            overflow: "hidden",
           }}
         >
           {results.length === 0 && query.length > 0 && (
@@ -206,7 +205,7 @@ export default function Search({ onClick, ...otherProps }) {
                 p: 2,
                 color: "muted",
                 display: "block",
-                fontSize: [3, "3vw", 3],
+                fontSize: [3, 5, 3],
               },
               "& li:hover": {
                 backgroundColor: "primary",

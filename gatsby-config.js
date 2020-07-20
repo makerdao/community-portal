@@ -157,7 +157,7 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
-              const excerptLength = 64; // Hard coded excerpt length
+              const excerptLength = 90; // Hard coded excerpt length
 
               //If this node's frontmatter has a description use THAT for excerpts.
               if (node.frontmatter.description) {

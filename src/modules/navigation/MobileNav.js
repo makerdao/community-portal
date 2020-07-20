@@ -186,6 +186,8 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                     mr: "30px",
                     minWidth: "32px",
                     minHeight: "32px",
+                    maxWidth: '60px',
+                    maxHeight: '60px',
                     cursor: "pointer",
                     "&:hover": {
                       bg: colorMode !== "default" ? "background" : "",
@@ -211,6 +213,8 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                       colorMode !== "dark" ? "onBackgroundAlt" : "background",
                     minWidth: "32px",
                     minHeight: "32px",
+                    maxWidth: '60px',
+                    maxHeight: '60px',
                     cursor: "pointer",
                     "&:hover": {
                       bg: colorMode !== "dark" ? "surfaceDark" : "",

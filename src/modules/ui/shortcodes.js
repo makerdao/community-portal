@@ -2,6 +2,7 @@ import React from "react";
 
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Image, Text, Divider, Box, Flex } from "theme-ui";
+import {motion} from 'framer-motion'
 
 import {
   Accordion,
@@ -91,6 +92,9 @@ const Custom_Components = {
   TDPie,
   TDRadial,
   Authors: AuthorRenderer,
+  motionDiv: motion.div,
+  motionUL: motion.ul, 
+  motionLI: motion.li
 };
 
 export default {
