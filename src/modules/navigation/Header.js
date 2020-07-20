@@ -258,7 +258,7 @@ const Header = () => {
           zIndex: 2,
           position: "relative",
           margin: "auto",
-          p: ["10px", "22px", "22px"],
+          px: [3, "30px", "22px"],
           py: "19px",
           alignItems: "center",
           "& a": { color: "onBackgroundAlt", textDecoration: "none" },
