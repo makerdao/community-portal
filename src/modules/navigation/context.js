@@ -3,8 +3,8 @@ import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { useTranslation } from "@modules/localization/";
-import calculateTreeData from '@modules/navigation/calculateTreeData';
-import {UrlConverter, getLocaleFromPath} from '@utils'
+import calculateTreeData from "@modules/navigation/calculateTreeData";
+import { UrlConverter, getLocaleFromPath } from "@utils";
 
 export const NavigationContext = createContext();
 
@@ -40,24 +40,31 @@ const NavigationProvider = ({ children }) => {
 
   let pathDirs = pathname.replace(/\/+$/, "").split("/");
   pathDirs = pathDirs.slice(2, pathDirs.length);
-  
-  //NOTE(Rejon): Must be in the shape that React Select expects for it's options.  
-  const languageSelectorData = allMdx.edges
-  								.filter(({node}) => UrlConverter(node).split("/").pop() === pathDirs.slice(-1)[0] && getLocaleFromPath(node.fileAbsolutePath) !== locale)
-								.map(({node}) => ({
-									value: UrlConverter(node),
-									label: t("Language", null, null, getLocaleFromPath(node.fileAbsolutePath))
-								}));
 
-  const {sidenavData, breadcrumbData} = calculateTreeData(
+  //NOTE(Rejon): Must be in the shape that React Select expects for it's options.
+  const languageSelectorData = allMdx.edges
+    .filter(
+      ({ node }) =>
+        UrlConverter(node).split("/").pop() === pathDirs.slice(-1)[0] &&
+        getLocaleFromPath(node.fileAbsolutePath) !== locale
+    )
+    .map(({ node }) => ({
+      value: UrlConverter(node),
+      label: t(
+        "Language",
+        null,
+        null,
+        getLocaleFromPath(node.fileAbsolutePath)
+      ),
+    }));
+
+  const { sidenavData, breadcrumbData } = calculateTreeData(
     allMdx.edges,
     pathDirs[0],
     DEFAULT_LOCALE,
     locale,
-	pathDirs
+    pathDirs
   );
-
-  console.log(sidenavData)
 
   return (
     <NavigationContext.Provider
@@ -65,7 +72,7 @@ const NavigationProvider = ({ children }) => {
         sidenavData: sidenavData || null,
         breadcrumbData: breadcrumbData || null,
         pathDirs,
-        languageSelectorData
+        languageSelectorData,
       }}
     >
       {children}

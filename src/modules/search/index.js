@@ -147,8 +147,8 @@ export default function Search({ onClick, ...otherProps }) {
           borderRadius: "roundish",
           boxShadow: "type1",
           overflow: "hidden",
-          transform: ['translateX(-50%)','translateX(-50%)','unset'],
-          width: ["calc(100vw - 48px)","calc(100vw - 48px)","100%"],
+          transform: ["translateX(-50%)", "translateX(-50%)", "unset"],
+          width: ["calc(100vw - 48px)", "calc(100vw - 48px)", "100%"],
         }}
       >
         {results.length === 0 && query.length > 0 && (
@@ -165,7 +165,11 @@ export default function Search({ onClick, ...otherProps }) {
             listStyleType: "none",
             p: results.length === 0 && query.length > 0 ? 0 : 2,
             overflow: "auto",
-            maxHeight: ["calc(64vh - 90px - 2rem)", "calc(64vh - 90px - 2rem)","464px"],
+            maxHeight: [
+              "calc(64vh - 90px - 2rem)",
+              "calc(64vh - 90px - 2rem)",
+              "464px",
+            ],
             "& > li": {
               borderRadius: "roundish",
               backgroundColor: "transparent",

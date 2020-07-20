@@ -25,7 +25,7 @@ const Sidenav = (props) => {
         borderColor: "muted",
       }}
     >
-      {(sidenavData && sidenavData.items[0]) &&
+      {sidenavData && sidenavData.items[0] && (
         <ul sx={{ m: 0, p: 0, listStyleType: "none" }}>
           {sidenavData.items[0].items.map((item, index) => (
             <Sidenav_Node
@@ -35,7 +35,7 @@ const Sidenav = (props) => {
             />
           ))}
         </ul>
-      }
+      )}
     </Box>
   );
 };

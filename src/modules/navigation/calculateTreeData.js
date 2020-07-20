@@ -95,13 +95,15 @@ export default (
           })
           .concat(editableLocaleFiles); //Concat the rest of the locale files AFTER it's been spliced.
 
-  let breadcrumbData = currentTopSection ? [
-    {
-      part: currentTopSection,
-      title: titleCase(currentTopSection.replace(/-|_|\./g, " ")),
-      url: `/${currentLocale}/${currentTopSection}`,
-    },
-  ] : [];
+  let breadcrumbData = currentTopSection
+    ? [
+        {
+          part: currentTopSection,
+          title: titleCase(currentTopSection.replace(/-|_|\./g, " ")),
+          url: `/${currentLocale}/${currentTopSection}`,
+        },
+      ]
+    : [];
 
   //Reduce all of our mergedLocaleFiles into a object structure that closely resembles our final sidenav.
   const sidenavData = mergedLocaleFiles.reduce(

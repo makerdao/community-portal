@@ -14,7 +14,14 @@ const browser = typeof window !== "undefined" && window; //<- This is to stop 40
 
 //404Page Wrapper
 const PageLayout = ({ children, seoTitle, t }) => (
-  <Flex sx={{ width: "100%", justifyContent: "center", alignItems: "center", py: '77px' }}>
+  <Flex
+    sx={{
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      py: "77px",
+    }}
+  >
     <SEO title={seoTitle} />
     <Flex
       sx={{
@@ -46,7 +53,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
             fontWeight: "bold",
             display: "inline-block",
             ml: "15px",
-            cursor: 'pointer'
+            cursor: "pointer",
           }}
         >
           {t("Go_Back")}

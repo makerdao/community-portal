@@ -15,9 +15,7 @@ import "@modules/layouts/global.css"; //<- Load in Prismjs css. Our custom style
 export const wrapRootElement = ({ element }) => (
   <ThemeProvider {...ThemeUIConfig}>
     <MDXProvider components={shortcodes}>
-      <TranslationProvider>
-        {element}
-      </TranslationProvider>
+      <TranslationProvider>{element}</TranslationProvider>
     </MDXProvider>
   </ThemeProvider>
 );

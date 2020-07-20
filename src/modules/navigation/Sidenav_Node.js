@@ -11,6 +11,7 @@ const Sidenav_Node = ({
   items,
   parentActive,
   currentPath,
+  onClick,
   ...otherProps
 }) => {
   const hasChildren = items.length !== 0;
@@ -20,19 +21,23 @@ const Sidenav_Node = ({
     url = items[0].url;
   }
 
-  //Check if element is active or not based on current path. 
+  //Check if element is active or not based on current path.
   const active =
     currentPath === url || currentPath.includes(otherProps.slugPart);
-  const fontWeight = active ? "bold" : null || parentActive ? "500" : "text";
+  const fontWeight = [
+    active ? "bold" : null,
+    active ? "bold" : null,
+    active ? "bold" : null || parentActive ? "500" : "text",
+  ];
 
   return (
     <li
       sx={{
         color: active ? "primary" : "text",
         position: "relative",
-        '&:not(:last-of-type)': {
+        "&:not(:last-of-type)": {
           mb: "14px",
-        }
+        },
       }}
     >
       {title && (
@@ -40,19 +45,20 @@ const Sidenav_Node = ({
           to={url}
           partiallyActive={active}
           activeClassName={active ? "active" : " "}
+          onClick={onClick}
           sx={{
             color: active ? "primary" : "text",
             fontWeight,
-            py: '6px',
-            display: 'block',
+            py: "6px",
+            display: "block",
             "&:hover ": {
-              textDecoration: 'none',
-              '& > svg': {
+              textDecoration: "none",
+              "& > svg": {
                 transform: active
                   ? "translate(0, -50%) rotate(0deg)"
                   : "translate(0, -50%) rotate(90deg)",
                 transition: "all .1s ease",
-              }
+              },
             },
           }}
         >
@@ -63,8 +69,12 @@ const Sidenav_Node = ({
               name={active ? "chevron_down" : "chevron_right"}
               sx={{
                 position: "absolute",
-                right: '31px',
-                top: !active ? "50%" : "calc(.8em + 6px)",
+                right: "31px",
+                top: [
+                  "calc(1.5em)",
+                  "calc(1.5em)",
+                  !active ? "50%" : "calc(.8em + 6px)",
+                ],
                 transform: "translate(0, -50%) rotate(0deg)",
                 transformOrigin: "center",
                 transition: "all .1s ease",
@@ -79,9 +89,9 @@ const Sidenav_Node = ({
           sx={{
             m: 0,
             ml: "16px",
-            mt: '6px',
+            mt: "6px",
             pl: 0,
-            pr: '31px',
+            pr: "31px",
             listStyleType: "none",
           }}
         >
@@ -89,6 +99,7 @@ const Sidenav_Node = ({
             <Sidenav_Node
               key={`${item.url}-${item.index}`}
               parentActive={active}
+              onClick={onClick}
               currentPath={currentPath}
               {...item}
             />

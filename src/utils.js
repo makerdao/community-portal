@@ -27,11 +27,10 @@ export const UrlConverter = ({ fileAbsolutePath }) => {
     .replace(/(.mdx.md|.md|.mdx|index.mdx)$/gm, "");
 };
 
-export const getLocaleFromPath = (path) => path.slice(
-          path.indexOf("/content/") + 8,
-          path.indexOf("/content/") + 11
-        )
-        .replace(/^\//g, "");
+export const getLocaleFromPath = (path) =>
+  path
+    .slice(path.indexOf("/content/") + 8, path.indexOf("/content/") + 11)
+    .replace(/^\//g, "");
 
 export const getInitialLocale = (locales, DEFAULT_LOCALE) => {
   let initialLocale = DEFAULT_LOCALE;

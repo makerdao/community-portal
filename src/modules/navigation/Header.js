@@ -5,7 +5,7 @@ import { jsx, Text, Box, Flex, useColorMode, useThemeUI } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
 
-import { Link, MobileNav} from "@modules/navigation";
+import { Link, MobileNav } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
@@ -123,25 +123,25 @@ const Header = () => {
       const title = TitleConverter(node);
       const url = UrlConverter(node);
 
-      return ({
-        url, 
-        title
-      });
+      return {
+        url,
+        title,
+      };
     });
 
-  const headerConfigLinks =  headerConfigFiles.nodes
-      .find((n) => n.fileAbsolutePath.includes(`/${locale}/`))
-      .internal.content.trim()
-      .split("\n")
-      .map((l, index) => {
-        const url = l.match(/\(([^)]+)\)/)[1];
-        const title = l.match(/\[([^)]+)\]/)[1];
+  const headerConfigLinks = headerConfigFiles.nodes
+    .find((n) => n.fileAbsolutePath.includes(`/${locale}/`))
+    .internal.content.trim()
+    .split("\n")
+    .map((l, index) => {
+      const url = l.match(/\(([^)]+)\)/)[1];
+      const title = l.match(/\[([^)]+)\]/)[1];
 
-        return ({
-          url,
-          title
-        })
-      });
+      return {
+        url,
+        title,
+      };
+    });
 
   const headerLinks = headerDataLinks.concat(headerConfigLinks);
 
@@ -252,6 +252,7 @@ const Header = () => {
         <Link
           to={`/${locale}/`}
           variant="nav"
+          onClick={() => setShowMenu(false)}
           sx={{
             textDecoration: "none",
             color: "onBackgroundAlt",
@@ -283,11 +284,11 @@ const Header = () => {
           >
             <Text>{t("Home")}</Text>
           </Link>
-          {headerLinks.map(({url, title}, index) => 
+          {headerLinks.map(({ url, title }, index) => (
             <Link to={url} hideExternalIcon key={`header-link-${index}`}>
               {title}
             </Link>
-          )}
+          ))}
         </Flex>
         <Flex
           sx={{
@@ -367,33 +368,34 @@ const Header = () => {
             p: showMenu ? "7px" : "0px", //NOTE(Rejon): Close and Menu have different viewbox sizes in the dai-ui spec.
             color: "onBackgroundAlt",
             cursor: "pointer",
-            ml: '1rem',
+            ml: "1rem",
             display: ["initial", "initial", "none"],
           }}
         />
       </Flex>
-      <Box 
-      className={showMenu ? "visible" : ""}
-      sx={{ 
-        display: ["initial", "initial", "none"], 
-        '&::after': {
-          content: `""`,
-          height: '1px',
-          width: '100%',
-          bg: 'surfaceDark',
-          position: 'absolute',
-          zIndex: 1,
-          opacity: 0,
-          transformOrigin: 'center',
-          transform: 'scaleX(0)',
-          transition: "all .1s cubic-bezier(0.65, 0, 0.35, 1)",
-        },
-        '&.visible::after': {
-          opacity: 1, 
-          transform: 'scaleX(1)',
-          transition: "all .5s cubic-bezier(0.65, 0, 0.35, 1)",
-        }
-      }}>
+      <Box
+        className={showMenu ? "visible" : ""}
+        sx={{
+          display: ["initial", "initial", "none"],
+          "&::after": {
+            content: `""`,
+            height: "1px",
+            width: "100%",
+            bg: "surfaceDark",
+            position: "absolute",
+            zIndex: 1,
+            opacity: 0,
+            transformOrigin: "center",
+            transform: "scaleX(0)",
+            transition: "all .1s cubic-bezier(0.65, 0, 0.35, 1)",
+          },
+          "&.visible::after": {
+            opacity: 1,
+            transform: "scaleX(1)",
+            transition: "all .5s cubic-bezier(0.65, 0, 0.35, 1)",
+          },
+        }}
+      >
         <Box
           className={showMenu ? "visible" : ""}
           sx={{
@@ -417,9 +419,12 @@ const Header = () => {
           }}
         ></Box>
 
-        {showMenu &&
-          <MobileNav onLinkClick={() => setShowMenu(false)} headerLinks={headerLinks}/>
-        }
+        {showMenu && (
+          <MobileNav
+            onLinkClick={() => setShowMenu(false)}
+            headerLinks={headerLinks}
+          />
+        )}
       </Box>
     </Box>
   );

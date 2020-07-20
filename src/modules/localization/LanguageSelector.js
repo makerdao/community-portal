@@ -1,5 +1,5 @@
 //** @jsx jsx */
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Select, { components } from "react-select";
 import { useLocation, useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";
@@ -14,7 +14,7 @@ const LanguageSelector = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { locale, t, allLocales } = useTranslation();
-  const {languageSelectorData} = useContext(NavigationContext);
+  const { languageSelectorData } = useContext(NavigationContext);
 
   const onChange = ({ value, label }) => {
     //Update local storage on switch
