@@ -5,6 +5,7 @@ import { Box, Flex, Text, jsx } from "theme-ui";
 import LUNR from "lunr";
 import { useNavigate } from "@reach/router";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+import { motion } from "framer-motion";
 
 import { useTranslation } from "@modules/localization";
 import SearchInput from "./SearchInput";
@@ -36,7 +37,7 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
-export default function Search({ ...otherProps }) {
+export default function Search({ onClick, ...otherProps }) {
   const MAX_RESULT_COUNT = 10; //<- Return 10 results maximum.
   const ref = useRef();
   const resultList = useRef();
@@ -100,7 +101,25 @@ export default function Search({ ...otherProps }) {
     if (results.length > 0) {
       navigate(results[0].url);
       setFocus(false);
+      onClick();
     }
+  };
+
+  const resultsVariant = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: "-50%",
+      scaleY: 1,
+      tranisition: { ease: "easeOut" },
+    },
+    hidden: {
+      opacity: 0,
+      y: "32px",
+      x: "-50%",
+      scaleY: 0,
+      tranisition: { ease: "easeOut" },
+    },
   };
 
   //LUNR becomes available only via the window.
@@ -132,79 +151,92 @@ export default function Search({ ...otherProps }) {
         onSubmit={onSubmit}
         {...{ focus }}
       />
-
-      <Box
-        aria-label="Search results for the entire site"
-        as="section"
+      <motion.div
+        initial="hidden"
+        variants={resultsVariant}
+        animate={query.length > 0 && focus ? "visible" : "hidden"}
         sx={{
-          display: query.length > 0 && focus ? "grid" : "none",
           position: "absolute",
-          left: 0,
-          backgroundColor: "surfaceDark",
-          zIndex: "1000000000",
-          top: "3.5rem",
+          boxShadow: "high",
+          left: ["calc(50% - .5rem)", "calc(50% - .5rem)", "50%"],
+          top: ["5rem", "5rem", "3.5rem"],
+          width: ["calc(100vw - 48px)", "calc(100vw - 48px)", "100%"],
+          minHeight: 4,
           borderRadius: "roundish",
-          boxShadow: "type1",
           overflow: "hidden",
-          width: "100%",
         }}
       >
-        {results.length === 0 && query.length > 0 && (
-          <Text sx={{ p: 3, textAlign: "center", color: "muted" }}>
-            {t("No_Results", null, {
-              query: `${query.slice(0, 30)}${query.length > 30 ? "..." : ""}`,
-            })}
-          </Text>
-        )}
-        <ul
-          ref={resultList}
+        <Box
+          aria-label="Search results for the entire site"
+          as="section"
           sx={{
-            m: 0,
-            listStyleType: "none",
-            p: results.length === 0 && query.length > 0 ? 0 : 2,
-            overflow: "auto",
-            maxHeight: "464px",
-            "& > li": {
-              borderRadius: "roundish",
-              backgroundColor: "transparent",
-              transition: "all .1s ease",
-              cursor: "pointer",
-              color: "muted",
-            },
-            "& > li > a": {
-              p: 2,
-              color: "muted",
-              display: "block",
-            },
-            "& li:hover": {
-              backgroundColor: "primary",
-              color: "text",
-              "& > a": {
-                color: "text",
-              },
-            },
+            display: "grid",
+            backgroundColor: "surfaceDark",
+            zIndex: "1000000000",
           }}
         >
-          {results.map((result, index) => (
-            <li>
-              <SearchHit
-                {...result}
-                query={query}
-                onClick={() => {
-                  setFocus(false);
-
-                  //Google Analytics Tracking
-                  trackCustomEvent({
-                    category: "Internal Search",
-                    action: `Click Result`,
-                    label: `Query: ${query} | To Page: ${result.url}`,
-                  });
-                }}
-              />
-            </li>
-          ))}
-        </ul>
-      </Box>
+          {results.length === 0 && query.length > 0 && (
+            <Text sx={{ p: 3, textAlign: "center", color: "muted" }}>
+              {t("No_Results", null, {
+                query: `${query.slice(0, 30)}${query.length > 30 ? "..." : ""}`,
+              })}
+            </Text>
+          )}
+          <ul
+            ref={resultList}
+            sx={{
+              m: 0,
+              listStyleType: "none",
+              p: results.length === 0 && query.length > 0 ? 0 : 2,
+              overflow: "auto",
+              maxHeight: [
+                "calc(80vh - 90px - 2rem)",
+                "calc(80vh - 90px - 2rem)",
+                "464px",
+              ],
+              "& > li": {
+                borderRadius: "roundish",
+                backgroundColor: "transparent",
+                transition: "all .1s ease",
+                cursor: "pointer",
+                color: "muted",
+              },
+              "& > li > a": {
+                p: 2,
+                color: "muted",
+                display: "block",
+                fontSize: [3, 5, 3],
+              },
+              "& li:hover": {
+                backgroundColor: "primary",
+                color: "text",
+                "& > a": {
+                  color: "text",
+                },
+              },
+            }}
+          >
+            {results.map((result, index) => (
+              <li>
+                <SearchHit
+                  {...result}
+                  query={query}
+                  onClick={() => {
+                    setFocus(false);
+                    onClick();
+                    //Google Analytics Tracking
+                    trackCustomEvent({
+                      category: "Internal Search",
+                      action: `Click Result`,
+                      label: `Query: ${query} | To Page: ${result.url}`,
+                    });
+                  }}
+                />
+              </li>
+            ))}
+          </ul>
+        </Box>
+      </motion.div>
     </Flex>
   );
 }

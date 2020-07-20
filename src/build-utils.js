@@ -21,7 +21,7 @@ const TitleConverter = ({ frontmatter, title, rawBody, fileAbsolutePath }) => {
 const UrlConverter = ({ fileAbsolutePath }) => {
   return fileAbsolutePath
     .slice(fileAbsolutePath.indexOf("/content/") + 8, fileAbsolutePath.length)
-    .replace(/(.mdx|index.mdx)$/gm, "");
+    .replace(/(.mdx.md|.md|.mdx|index.mdx)$/gm, "");
 };
 
 module.exports = {

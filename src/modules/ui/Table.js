@@ -9,20 +9,20 @@ const Table = ({ children }) => (
       fontSize: 3,
       textAlign: "center",
       "& td": {
-        color: 'textMuted',
-        border: '1px solid',
-        borderColor: 'muted',
+        color: "textMuted",
+        border: "1px solid",
+        borderColor: "muted",
         py: 3,
-        px: '24px',
+        px: "24px",
       },
       "& th": {
-        color: 'text',
-        fontStyle: 'normal',
+        color: "text",
+        fontStyle: "normal",
         fontWeight: 600,
-        border: '1px solid',
-        borderColor: 'muted',
-        py: 3, 
-        px: '24px'
+        border: "1px solid",
+        borderColor: "muted",
+        py: 3,
+        px: "24px",
       },
     }}
   >

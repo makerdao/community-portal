@@ -1,4 +1,9 @@
 /* Font Loading */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @font-face {
   font-family: 'FT Base';
   src: url('/fonts/FTBase-Medium.woff2') format('woff2'),

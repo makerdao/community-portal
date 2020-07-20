@@ -1,29 +1,13 @@
 /** @jsx jsx */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Input, Flex, jsx } from "theme-ui";
 
 import { useTranslation } from "@modules/localization";
 
-const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
+const SearchInput = ({ onChange, onSubmit, ...rest }) => {
   const { t } = useTranslation();
   const searchRef = useRef();
-
-  let timerID = null;
-  const [value, setValue] = useState("");
-
-  const onChangeDebounce = (event) => {
-    const _value = event.currentTarget.value;
-
-    if (timerID !== null) {
-      clearTimeout(timerID);
-    }
-
-    setValue(_value);
-    if (onChange) {
-      onChange(_value);
-    }
-  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -78,15 +62,19 @@ const SearchInput = ({ delay, onChange, onSubmit, ...rest }) => {
         id="search-input"
         type="search"
         ref={searchRef}
-        value={value}
         aria-label={t("Search")}
         placeholder={t("Search")}
-        onChange={onChangeDebounce}
+        onChange={(e) => onChange(e.currentTarget.value)}
         sx={{
           border: "none",
           borderRadius: "0",
           letterSpacing: "0.3px",
-          padding: "9px",
+          minWidth: "auto",
+          width: ["100%", "100%", "300px"],
+          pr: "9px",
+          pl: "5px",
+          py: ["1vw", "1vw", "9px"],
+          fontSize: [3, 5, "inherit"],
           color: "muted",
           "&:focus": {
             color: "muted",
