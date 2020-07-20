@@ -49,7 +49,8 @@ const MD_Overrides = {
   h4: (props) => <Text variant="h4" as="h4" {...props} />,
   h5: (props) => <Text variant="h5" as="h5" {...props} />,
   table: (props) => <Table {...props} />,
-  thematicBreak: (props) => <Divider />,
+  thematicBreak: (props) => <Divider sx={{my: 4}}/>,
+  hr: (props) => <Divider sx={{my: 4}}/>,
   p: (props) => (
     <Text
       sx={{ mb: "16px", "& .button": { display: "inline-block" } }}

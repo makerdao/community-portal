@@ -31,27 +31,55 @@ or not, when writing content in our `List` component - either way it will render
 ```md:title=basic-list.mdx
 <List>
 
-- Hello world
+Hello World
 
 </List> 
 
 <List>
 
+Header
+
+Sub Content
+
+</List>
+
+<List>
+
+<Link to="/">
+
 Hello World
+
+</Link>
 
 </List>
 ```
-Both end up looking like this:
+All end up looking like this:
 
 <List>
 
-- Hello world
+Hello World
 
 </List> 
 
 <List>
 
+<Box>
+
+Header
+
+Sub Content
+
+</Box>
+
+</List>
+
+<List>
+
+<Link to="/">
+
 Hello World
+
+</Link>
 
 </List>
 
@@ -61,8 +89,13 @@ If you want a list element with sub content, that's easy enough to organise:
 ```md:title=subcontent-list.mdx
 <List>
 
-- Element Header
-   - Sub content
+<Box>
+
+Header
+
+Sub content
+
+</Box>
 
 </List>
 ```
@@ -71,8 +104,13 @@ Which renders like this:
 
 <List>
 
-- Element Header
-   - Sub content
+<Box>
+
+Header
+
+Sub content
+
+</Box>
 
 </List>
 
@@ -81,16 +119,41 @@ For more complex sub content, we recommend using a Box:
 
 <List>
 
-- Element Header
-   - <Box>
+Element Header
+
+<Box>
       
-      <CTA> How About? </CTA>
+<CTA> How About This? </CTA>
 
-       <List>
-         A list in a list?!
-       </List>
+<List>
+	A list in a list?!
+</List>
 
-    </Box>
+</Box>
+
+</List>
+
+---
+
+<List>
+
+<Box>
+
+Element Header
+
+<Box>
+
+<CTA> How About? </CTA>
+
+<List>
+
+A list in a list?!
+
+</List>
+
+</Box>
+
+</Box>
 
 </List>
 
@@ -101,11 +164,25 @@ these are links that are only in content, and not a Link Element (see more on th
 ```md:title=list-of-links.mdx
 <List>
  
+<Box>
+
 <Link to="/">Writing style guide →</Link>
 
-<Link to="/">Visual style guide →</Link>
+</Box>
 
-<Link to="/">Code style guide →</Link>
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
 
 </List>
 ```
@@ -114,11 +191,25 @@ Which ends up looking like this:
 
 <List>
  
+<Box>
+
 <Link to="/">Writing style guide →</Link>
 
-<Link to="/">Visual style guide →</Link>
+</Box>
 
-<Link to="/">Code style guide →</Link>
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
 
 </List>
 
@@ -129,31 +220,27 @@ or mdx will not recognize them as seperate elements.
 
 </CTA>
 
-It's possible to have an entire list element be a link in 2 ways.
-
-1. Providing a Link as a list element
-2. Providing a Link component for the first element of our List
+It's possible to have an entire list element be a link by providing the Link component like so:
 
 ```md:title=list-as-link.mdx
 <List>
 
-- [MakerDao](https://makerdao.com)
+<Link to="https://makerdao.com">
+
+MakerDao
+
+</Link>
 
 
-- [Learn] (/learn)
+<Link to="/learn">
 
-</List>
+Learn
 
-or
-
-<List>
-
-- <Link to="https://makerdao.com">Maker Dao Website</Link>
-
-
-- <Link to="/learn">Learn</Link>
+</Link>
 
 </List>
+
+
 ```
 <CTA>
 
@@ -164,9 +251,45 @@ otherwise mdx will only render the first item in your list and nothing else!
 
 Which both end up looking like this:
 
+<List>
+
+<Link to="https://makerdao.com">
+
+MakerDao
+
+</Link>
+
+
+<Link to="/learn">
+
+Learn
+
+</Link>
+
+</List>
 
 These links are also capable of having subcontent as well:
 
+<List>
+
+<Link to="https://makerdao.com">
+
+MakerDao
+
+Sub content
+
+</Link>
+
+
+<Link to="/learn">
+
+Learn
+
+subcontent
+
+</Link>
+
+</List>
 
 If all this isn't enough to blow your hair back, there's some extra flair:
 

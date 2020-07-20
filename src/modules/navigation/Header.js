@@ -342,7 +342,7 @@ const Header = () => {
           />
 
           <motion.div
-            sx={{ display: ["none", "none", "inline-block"] }}
+            sx={{ display: ["none", "none", "inline-block"], height: '32px', width: '32px', mr: "21px",}}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
           >
@@ -354,7 +354,7 @@ const Header = () => {
                 p: "2px",
                 bg: colorMode !== "default" ? "transparent" : "primary",
                 color: colorMode !== "default" ? "onBackgroundAlt" : "text",
-                mr: "21px",
+                
                 minWidth: "32px",
                 minHeight: "32px",
                 cursor: "pointer",
@@ -371,7 +371,7 @@ const Header = () => {
           </motion.div>
 
           <motion.div
-            sx={{ display: ["none", "none", "inline-block"] }}
+            sx={{ display: ["none", "none", "inline-block"], height: '32px', width: '32px', }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
           >

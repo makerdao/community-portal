@@ -8,8 +8,8 @@ import { Link } from "@modules/navigation";
 const ListElement = ({ children, ...props }) => (
   <Flex
     sx={{
-      p: "10px 8px",
-      pt: "23px",
+      px: "8px",
+      py: "23px",
       minHeight: "60px",
       borderTop: "1px solid",
       borderColor: "muted",
@@ -21,7 +21,7 @@ const ListElement = ({ children, ...props }) => (
         color: "text",
         lineHeight: "normal",
       },
-      "& > * > *:only-child": {
+      "& > * > *:only-child, & > *:only-child": {
         mb: 0,
       },
       "& > * > *:not(:only-child)nth-child(1)": {
@@ -53,17 +53,20 @@ const AdvancedListElement = ({
             sx={{
               flexDirection: "column",
               alignItems: "flex-start",
-              "& > *:only-child, & > *nth-child(1)": {
+              "& > *:only-child, & > *:nth-child(1)": {
                 fontWeight: "normal",
                 fontSize: 3,
                 color: "text",
                 lineHeight: "normal",
               },
-              "& > *:not(nth-child(1))": {
+              "& > *:not(:nth-child(1))": {
                 fontWeight: "normal",
                 fontSize: "14px",
                 color: "textMuted",
               },
+              '& > *:only-child, & > *:only-child > *:last-child': {
+                mb: 0
+              }
             }}
           >
             {heading && (
@@ -76,25 +79,61 @@ const AdvancedListElement = ({
                 {heading}
               </Box>
             )}
-            <Box>{_children}</Box>
+            <Box sx={{
+              width: '100%',
+              '& > *:only-child': {
+                  mb: 0
+                }
+            }}>{_children}</Box>
           </Flex>
         </Flex>
       ) : (
-        <>
+        <Box sx={{
+          width: '100%',
+          '& > *:only-child, & > *:only-child > *:last-child': {
+            mb: 0
+          }
+        }}>
           {heading && (
             <Box
-              sx={{ m: 0, "& > *": { m: 0, mb: "8px", lineHeight: "normal" } }}
+              sx={{ 
+                'p': {
+                  fontWeight: "normal", 
+                  fontSize: 3, 
+                  color: "text", 
+                  lineHeight: "normal"
+                }, 
+                'ol,ul': {
+                  p: 0,
+                  pl: 3,
+                  m: 0
+                },
+                m: 0, 
+                mb: '8px', 
+                "& > *": { 
+                  m: 0, 
+                  lineHeight: "normal" 
+                } 
+              }}
             >
-              heading
+              {heading}
             </Box>
           )}
-          <Box>{_children}</Box>
-        </>
+          <Box sx={{
+                width: '100%',
+                fontWeight: "normal",
+                fontSize: "14px",
+                color: "textMuted",
+                '& > *:only-child': {
+                  mb: 0
+                }
+              }}>{_children}</Box>
+        </Box>
       )}
     </ListElement>
   );
 
-  if (linkData) {
+  if (linkData !== null) {
     delete linkData.children;
 
     return (
@@ -102,11 +141,22 @@ const AdvancedListElement = ({
         hideExternalIcon
         {...linkData}
         sx={{
+          display: 'block',
           "& > *": {
             width: "100%",
-            "&:hover": { bg: "primaryMuted" },
             transition: "all .1s ease",
+            color: 'text',
+            '&:hover': {
+              color: 'text',
+              bg: "primaryMuted",
+              textDecoration: 'none'
+            }
           },
+          textDecoration: 'none',
+          '&:hover': {
+            
+            textDecoration: 'none'
+          }
         }}
       >
         <ListEl>
@@ -115,36 +165,53 @@ const AdvancedListElement = ({
       </Link>
     );
   }
-
-  return ListEl;
+  else {
+    return (
+      <ListEl/>
+    )
+  }
 };
 
 const List = ({ children }) => {
   const _Children = React.Children.toArray(children);
 
+
   //Logic check for rendering a link element vs a list element.
   const childListLinkRenderCheck = (child, index) => {
+    console.log(child)
     if (
       child.props &&
       (child.props.mdxType === "Box" ||
         child.props.mdxType === "Link" ||
-        child.props.mdxType === "a")
+        child.props.mdxType === "a" ||
+        (child.props.mdxType === 'p' && child.props.children && child.props.children.props.mdxType === 'a')
+        )
     ) {
+      console.log(child);
       const boxChildren = React.Children.toArray(child.props.children);
       const isLink =
         child.props.mdxType === "Link" || child.props.mdxType === "a";
+      const isMDLink = (child.props.mdxType === 'p' && child.props.children && child.props.children.props.mdxType === 'a')
       const childData = {};
 
-      const linkData = isLink ? { ...child.props } : null; //If this element is a Link grab it's href.
-
-      if (boxChildren.length > 1) {
-        childData.heading = boxChildren[0]; //<- First child is heading
-        childData._children = boxChildren.slice(1, boxChildren.length); //<- Render other children as sub content
-      } else if (boxChildren.length === 1) {
-        childData._children = boxChildren[0];
+      let linkData = isLink ? { ...child.props } : null; //If this element is a Link grab it's href.
+      
+      if (isMDLink) { //For when MD spec links are used (ie. [Heading](https://website.com))
+        childData.heading = child.props.children.props.children;
+        linkData = {...child.props.children.props};
+      }
+      else {
+        if (boxChildren.length > 1) {
+          childData.heading = boxChildren[0]; //<- First child is heading
+          childData._children = boxChildren.slice(1, boxChildren.length); //<- Render other children as sub content
+        } else if (boxChildren.length === 1) {
+          childData._children = boxChildren[0];
+        }
       }
 
       const advancedElementProps = { childData, linkData, index };
+
+      console.log(advancedElementProps)
 
       return (
         <AdvancedListElement
@@ -154,11 +221,20 @@ const List = ({ children }) => {
       );
     }
 
-    return <ListElement key={`list-element-${index}`}>{child}</ListElement>;
+    return (
+          <ListElement 
+            key={`list-element-${index}`} >
+            {child}
+          </ListElement>
+        );
   };
 
   return (
-    <Box sx={{ mb: 4 }}>
+    <Box sx={{
+      '& > *:last-child': {
+        mb: 4
+      }
+    }}>
       {_Children.map((child, index) => childListLinkRenderCheck(child, index))}
     </Box>
   );
