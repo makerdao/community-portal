@@ -102,6 +102,7 @@ const LanguageSelector = () => {
     <Box
       sx={{
         p: 3,
+        width: '234px',
         border: "1px solid",
         borderColor: "text",
         borderRadius: "4px",

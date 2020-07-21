@@ -11,6 +11,7 @@ const Sidenav_Node = ({
   items,
   parentActive,
   currentPath,
+  parentDepth = 0,
   onClick,
   ...otherProps
 }) => {
@@ -25,9 +26,9 @@ const Sidenav_Node = ({
   const active =
     currentPath === url || currentPath.includes(otherProps.slugPart);
   const fontWeight = [
-    active ? "bold" : null,
-    active ? "bold" : null,
-    active ? "bold" : null || parentActive ? "500" : "text",
+    active ? "bold" : 'normal',
+    active ? "bold" : 'normal',
+    active ? "bold" : null || parentDepth !== 0 ? "bold" : 'normal',
   ];
 
   return (
@@ -50,7 +51,11 @@ const Sidenav_Node = ({
             color: active ? "primary" : "text",
             fontWeight,
             py: "6px",
-            display: "block",
+            pr: '30px',
+            width: '100%',
+            overflowWrap: 'break-word',
+            wordWrap: 'break-word',
+            display: "inline-block",
             "&:hover ": {
               textDecoration: "none",
               "& > svg": {
@@ -69,7 +74,7 @@ const Sidenav_Node = ({
               name={active ? "chevron_down" : "chevron_right"}
               sx={{
                 position: "absolute",
-                right: "31px",
+                right: "5%",
                 top: [
                   "calc(1.5em)",
                   "calc(1.5em)",
@@ -88,9 +93,10 @@ const Sidenav_Node = ({
         <ul
           sx={{
             m: 0,
-            ml: "16px",
+            ml: parentDepth < 3 ? 3 : 0, //NOTE(Rejon): Don't let the margin left continue for more than 3 depth. It just looks wrong.
             mt: "6px",
             pl: 0,
+            minWidth: '200px',
             pr: "31px",
             listStyleType: "none",
           }}
@@ -101,6 +107,7 @@ const Sidenav_Node = ({
               parentActive={active}
               onClick={onClick}
               currentPath={currentPath}
+              parentDepth={parentDepth + 1}
               {...item}
             />
           ))}

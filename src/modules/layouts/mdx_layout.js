@@ -102,11 +102,11 @@ export default (props) => {
               justifyContent: "space-between",
               position: "relative",
               mb: "28px",
-              alignItems: "center",
+              alignItems: "flex-start",
               mt: !renderSidenav ? "2rem" : "",
             }}
           >
-            {!hideBreadcrumbs && <Breadcrumbs sx={{ flexGrow: 1 }} />}
+            {!hideBreadcrumbs && <Breadcrumbs />}
             {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
           </Flex>
           <Box
