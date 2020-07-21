@@ -39,6 +39,12 @@ _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-
     yarn
     ```
 
+PREREQUISITES: You need to have these dependencies installed. npm is latest
+
+		○ https://brew.sh/
+		○ https://nodejs.org/en/
+      https://yarnpkg.com/
+
 3.  **Start**
 
     ```shell
