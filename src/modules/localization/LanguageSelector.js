@@ -1,77 +1,20 @@
 //** @jsx jsx */
-import React from "react";
+import React, { useContext } from "react";
 import Select, { components } from "react-select";
-import { useStaticQuery, graphql } from "gatsby";
 import { useLocation, useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
-import { UrlConverter } from "@utils";
+import { NavigationContext } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 const LanguageSelector = () => {
   const { theme } = useThemeUI();
-  const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { locale, t, allLocales } = useTranslation();
-  const pathStripRGX = new RegExp(`/${locale}/|/$`, "g");
-
-  let pathnameStripped = pathname.replace(pathStripRGX, "");
-
-  const { languagePages } = useStaticQuery(graphql`
-    query GetLanguagePages {
-      languagePages: allMdx(
-        filter: {
-          fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|footer.mdx|example.mdx|index.mdx|404.mdx)/"
-          }
-        }
-      ) {
-        edges {
-          node {
-            fileAbsolutePath
-          }
-        }
-      }
-    }
-  `);
-
-  //Check against our current path with an optional trailing slash (for index pages)
-  const pageLocaleRegex = new RegExp(
-    `(/([\\w]{2})/${pathnameStripped})((/w+)+|/?)$`,
-    "gm"
-  );
-
-  const existingLanguages = languagePages.edges
-    .filter(({ node }) => {
-      //Clean up the file path to drop file names and endings.
-      //NOTE(Rejon): Our Regex fails if this doesn't pass!
-      const pathWithoutFile = node.fileAbsolutePath
-        .replace(/(.mdx|index.mdx|.md)$/gm, "")
-        .replace(/\/$/, "");
-
-      return (
-        pageLocaleRegex.test(pathWithoutFile) &&
-        !node.fileAbsolutePath.includes(`/${locale}/`)
-      );
-    })
-    .map(({ node }) => {
-      const value = UrlConverter(node);
-      const _locale = node.fileAbsolutePath
-        .slice(
-          node.fileAbsolutePath.indexOf("/content/") + 8,
-          node.fileAbsolutePath.indexOf("/content/") + 11
-        )
-        .replace(/^\//g, "");
-
-      const label = t("Language", null, null, _locale);
-
-      return {
-        value,
-        label,
-      };
-    });
+  const { languageSelectorData } = useContext(NavigationContext);
 
   const onChange = ({ value, label }) => {
     //Update local storage on switch
@@ -122,7 +65,7 @@ const LanguageSelector = () => {
   };
 
   //If we have existing languages or we're swapping, show the select.
-  if (existingLanguages.length > 0) {
+  if (languageSelectorData.length > 0) {
     //Override select component theme with our theme since it's not connected to theme-ui
     const uiSelectTheme = {
       primary: theme.colors.primary,
@@ -143,7 +86,7 @@ const LanguageSelector = () => {
             colors: { ...selectTheme.colors, ...uiSelectTheme },
           })}
           components={{ MenuList }}
-          options={existingLanguages}
+          options={languageSelectorData}
           onChange={onChange}
           aria-label={t("Page_Language_Selector")}
           value={{

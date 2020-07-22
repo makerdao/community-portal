@@ -5,8 +5,8 @@ import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
 import { SEO } from "@modules/utility";
-import { LanguageSelector, TranslationProvider } from "@modules/localization";
-import { Sidenav, Breadcrumbs } from "@modules/navigation";
+import { LanguageSelector } from "@modules/localization";
+import { Sidenav, Breadcrumbs, NavigationProvider } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
@@ -19,6 +19,7 @@ export default (props) => {
     status,
     hideLanguageSelector,
     hideSidenav,
+    hideBreadcrumbs,
   } = pageContext.frontmatter;
 
   const statusProps =
@@ -56,7 +57,7 @@ export default (props) => {
   const renderSidenav = hasTopSection && !hideSidenav;
 
   return (
-    <TranslationProvider>
+    <NavigationProvider>
       <SEO
         title={_pageTitle}
         description={description}
@@ -66,7 +67,11 @@ export default (props) => {
       {renderSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
-          sx={{ width: "20%", minWidth: "260px" }}
+          sx={{
+            width: "20%",
+            minWidth: "260px",
+            display: ["none", "none", "initial"],
+          }}
           dontUpdateHolderHeightWhenSticky={true}
           style={{ position: "relative" }}
           hideOnBoundaryHit={false}
@@ -75,7 +80,7 @@ export default (props) => {
         </Sticky>
       )}
 
-      <Flex sx={{ flexGrow: 1, flexDirection: "column", width: "80%" }}>
+      <Flex sx={{ flexGrow: 1, flexDirection: "column", minWidth: "80%" }}>
         {status && (
           <StatusBanner
             sticky
@@ -86,9 +91,9 @@ export default (props) => {
         )}
         <article
           sx={{
-            pl: hasTopSection ? "64px" : 0,
-            mt: hasTopSection ? "74px" : 0,
-
+            pl: hasTopSection ? [4, 4, "64px"] : 0,
+            mt: hasTopSection ? [4, 4, "74px"] : 0,
+            pb: 4,
             pr: 4,
           }}
         >
@@ -101,14 +106,14 @@ export default (props) => {
               mt: !renderSidenav ? "2rem" : "",
             }}
           >
-            <Breadcrumbs sx={{ flexGrow: 1 }} />
+            {!hideBreadcrumbs && <Breadcrumbs sx={{ flexGrow: 1 }} />}
             {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
           </Flex>
           <Box
             sx={
               renderSidenav
                 ? {
-                    "& > *:first-child, & > *:nth-child(2)": {
+                    "& > *nth-child(1), & > *:nth-child(2)": {
                       maxWidth: "calc(100% - 211px)",
                     },
                     "& > *:nth-child(2)": { mb: "32px" },
@@ -120,6 +125,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </TranslationProvider>
+    </NavigationProvider>
   );
 };

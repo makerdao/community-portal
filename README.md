@@ -1,6 +1,8 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -36,6 +38,11 @@ _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-
     # This project makes use of yarn.
     yarn
     ```
+
+    PREREQUISITES: You need to have these dependencies installed before the "yarn" command. 
+    ○ https://brew.sh/
+    ○ https://nodejs.org/en/
+    ○ https://yarnpkg.com/
 
 3.  **Start**
 

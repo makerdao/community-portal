@@ -58,7 +58,7 @@ const Button = ({
         p: "24px",
         pt: "8px",
         pb: "8px",
-        boxShadow: 'raised',
+        boxShadow: "raised",
         mb: "24px",
         opacity: disabled ? "0.4" : "1",
         cursor: disabled ? "not-allowed" : "pointer",

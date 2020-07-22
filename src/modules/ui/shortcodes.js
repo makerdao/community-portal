@@ -2,6 +2,7 @@ import React from "react";
 
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Image, Text, Divider, Box, Flex } from "theme-ui";
+import {motion} from 'framer-motion'
 
 import {
   Accordion,
@@ -48,7 +49,8 @@ const MD_Overrides = {
   h4: (props) => <Text variant="h4" as="h4" {...props} />,
   h5: (props) => <Text variant="h5" as="h5" {...props} />,
   table: (props) => <Table {...props} />,
-  thematicBreak: (props) => <Divider />,
+  thematicBreak: (props) => <Divider sx={{my: 4}}/>,
+  hr: (props) => <Divider sx={{my: 4}}/>,
   p: (props) => (
     <Text
       sx={{ mb: "16px", "& .button": { display: "inline-block" } }}
@@ -91,6 +93,9 @@ const Custom_Components = {
   TDPie,
   TDRadial,
   Authors: AuthorRenderer,
+  motionDiv: motion.div,
+  motionUL: motion.ul, 
+  motionLI: motion.li
 };
 
 export default {

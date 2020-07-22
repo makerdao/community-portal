@@ -3,13 +3,15 @@ import React from "react";
 import { Flex, Box, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { Icon } from "@makerdao/dai-ui-icons";
 
 import { useTranslation } from "@modules/localization";
+import { getLinkIcon, Link } from "@modules/navigation";
 
 const Footer = () => {
   const { locale, DEFAULT_LOCALE } = useTranslation();
 
-  const { footerFiles } = useStaticQuery(graphql`
+  const { footerFiles, socialLinks } = useStaticQuery(graphql`
     query FooterQuery {
       #Get header.mdx files from only the top level locale folders. (ie. /content/en/header.mdx)
       footerFiles: allMdx(
@@ -20,6 +22,19 @@ const Footer = () => {
         nodes {
           fileAbsolutePath
           body
+        }
+      }
+
+      socialLinks: allMdx(
+        filter: {
+          fileAbsolutePath: { regex: "//content/([^/]+)/?/(social.mdx)$/" }
+        }
+      ) {
+        nodes {
+          fileAbsolutePath
+          internal {
+            content
+          }
         }
       }
     }
@@ -44,69 +59,128 @@ const Footer = () => {
       ? defaultLocaleFooterLinks.body
       : null;
 
+  const socialConfigLinks =
+    DEFAULT_LOCALE !== locale
+      ? socialLinks.nodes.find((n) =>
+          n.fileAbsolutePath.includes(`/${locale}/`)
+        )
+      : [];
+
+  const defaultSocialConfigLinks = socialLinks.nodes.find((n) =>
+    n.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`)
+  );
+
+  const _socialLinks =
+    socialConfigLinks && socialConfigLinks.length !== 0
+      ? socialConfigLinks.internal.content.trim().split("\n")
+      : defaultSocialConfigLinks
+      ? defaultSocialConfigLinks.internal.content.trim().split("\n")
+      : null;
+
   return (
-    <Flex
+    <Box
       as="footer"
       sx={{
         width: "100%",
-        py: "3rem",
-
-        bg: "backgroundDark",
+        bg: "backgroundAlt",
       }}
     >
       <Flex
         sx={{
-          margin: "auto",
+          px: ["26px", "26px", "52px"],
+          pt: ["40px", "40px", "54px"],
+          pb: ["119px", "119px", "54px"],
+          flexDirection: ["column", "column", "unset"],
           maxWidth: "1364px",
-          p: 4,
-          width: "100%",
-          "& > * > ul": {
-            m: 0,
-            p: 0,
-            color: "text",
-            listStyleType: "none",
-            display: "grid",
-            gridGap: "20px",
-            gridTemplateColumns: "auto",
-            gridAutoFlow: "column",
-            flex: 1,
-            "& > li:not(:last-of-type)": {
-              mr: "5%",
-            },
-            "& > li": {
-              fontWeight: "bold",
-              fontSize: "0.88rem",
-              color: "background",
-              "& > ul": {
-                mt: "0.7rem",
-                fontSize: "1rem",
-                p: 0,
+          margin: "auto",
+        }}
+      >
+        <Box
+          sx={{
+            color: "onBackgroundAlt",
+            display: "inline-block",
+            width: "217px",
+            "& > *, & svg": { color: "onBackgroundAlt" },
+          }}
+        >
+          <Link to="/" sx={{ display: "inline-block", mb: "31px" }}>
+            <Icon
+              name="makerLogo"
+              sx={{ width: "217px", height: "30px", display: "block" }}
+            />
+          </Link>
+          <Box sx={{ "& > a:not(:last-of-type)": { mr: "24px" } }}>
+            {_socialLinks.map((s, index) => {
+              const link = s.match(/\(([^)]+)\)/)[1];
 
-                listStyleType: "none",
-                "& li:not(:last-of-type)": {
-                  mb: "10px",
+              return link
+                ? getLinkIcon(link, `footer-social-link-${index}`)
+                : null;
+            })}
+            {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            ml: ["unset", "unset", "5vw"],
+            mt: ["56px", "56px", "unset"],
+            display: "inline-block",
+            width: ["100%", "100%", "calc(100% - 106px - 217px)"],
+            verticalAlign: "top",
+            "& > * > ul": {
+              m: 0,
+              p: 0,
+              color: "text",
+              listStyleType: "none",
+
+              display: "flex",
+              flexWrap: ["wrap", "wrap", "unset"],
+              "& > li:not(:last-of-type)": {
+                mr: ["unset", "unset", "5vw"],
+              },
+              "& > li": {
+                fontWeight: "bold",
+                fontSize: "1rem",
+                flexShrink: 0,
+                flex: ["0 50%", "0 50%", 1],
+                width: ["calc(50% - 66px)", "calc(50% - 66px)", "unset"],
+                pr: ["66px", "66px", "unset"],
+                mb: ["64px", "64px", "unset"],
+                color: "onBackgroundAlt",
+                "& > *nth-child(1):not(ul)": {
+                  mb: "8px",
                 },
-                "& a": {
-                  color: "background",
-                  fontWeight: "normal",
-                  textDecoration: "none",
-                  "& svg": {
-                    display: "none",
+                "& > ul": {
+                  fontSize: "1rem",
+                  p: 0,
+                  listStyleType: "none",
+                  "& li:not(:last-of-type)": {
+                    mb: "10px",
+                  },
+                  "& a": {
+                    color: "onBackgroundAlt",
+                    fontWeight: "normal",
+                    textDecoration: "none",
+                    "& svg": {
+                      display: "none",
+                    },
+                    "&:hover": {
+                      textDecoration: "none",
+                    },
                   },
                 },
               },
             },
-          },
-        }}
-      >
-        {footerLinks && (
-          <Box sx={{ flex: 1 }}>
-            <MDXRenderer>{footerLinks}</MDXRenderer>
-          </Box>
-        )}
-        {/* <a href="javascript:gaOptout();">Deactivate Google Analytics</a> */}
+          }}
+        >
+          {footerLinks && (
+            <Box sx={{ flex: 1 }}>
+              <MDXRenderer>{footerLinks}</MDXRenderer>
+            </Box>
+          )}
+        </Box>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
 

@@ -132,7 +132,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
+                /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
           {
@@ -141,7 +141,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
+                /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
         ],
@@ -157,7 +157,7 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
-              const excerptLength = 64; // Hard coded excerpt length
+              const excerptLength = 90; // Hard coded excerpt length
 
               //If this node's frontmatter has a description use THAT for excerpts.
               if (node.frontmatter.description) {

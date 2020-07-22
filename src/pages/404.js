@@ -7,7 +7,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { navigate } from "@reach/router";
 import Button from "@modules/ui/Button";
-import Link from "@modules/navigation/Link";
 
 import { useTranslation } from "@modules/localization";
 
@@ -15,13 +14,19 @@ const browser = typeof window !== "undefined" && window; //<- This is to stop 40
 
 //404Page Wrapper
 const PageLayout = ({ children, seoTitle, t }) => (
-  <Flex sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+  <Flex
+    sx={{
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      py: "77px",
+    }}
+  >
     <SEO title={seoTitle} />
     <Flex
       sx={{
-        flexGrow: 1,
+        flex: 2,
         flexDirection: "column",
-        maxWidth: "46%",
         p: "5%",
         width: "100%",
         display: "inline-block",
@@ -38,7 +43,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
         >
           {t("Bug_Report")}
         </Button>
-        <Link
+        <Text
           onClick={() => {
             navigate(-1);
           }}
@@ -48,10 +53,11 @@ const PageLayout = ({ children, seoTitle, t }) => (
             fontWeight: "bold",
             display: "inline-block",
             ml: "15px",
+            cursor: "pointer",
           }}
         >
           {t("Go_Back")}
-        </Link>
+        </Text>
       </Box>
     </Flex>
     <Image
