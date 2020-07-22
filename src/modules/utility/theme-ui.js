@@ -268,7 +268,6 @@ const theme = {
       outline: "none",
       fontFamily: "body",
       borderRadius: "32px",
-      padding: "16px 32px", //TODO: find out why this isn't changing anything
       py: 2,
       color: "text",
       fontWeight: "600",

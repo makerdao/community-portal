@@ -43,7 +43,6 @@ const Link = ({
     if (!hasLocale && linkHref) {
       linkHref = `/${locale}${linkHref}`;
     }
-
     return (
       <GatsbyLink
         to={!disabled ? linkHref : ""}
