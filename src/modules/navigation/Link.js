@@ -68,12 +68,12 @@ const Link = ({
         sx={{
           color: "link",
           cursor: "pointer",
-          fontWeight: '600',
+          fontWeight: "600",
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
             color: "linkAlt",
-            fontWeight: '600'
+            fontWeight: "600",
           },
           "&:hover": {
             color: "linkAlt",
@@ -128,10 +128,10 @@ const Link = ({
         pointerEvents: disabled ? "none" : "initial",
         transition: "all .1s ease",
         color: "link",
-        fontWeight: '600',
+        fontWeight: "600",
         "&.active": {
           color: "linkAlt",
-          fontWeight: '600'
+          fontWeight: "600",
         },
         "&:hover": {
           color: "linkAlt",

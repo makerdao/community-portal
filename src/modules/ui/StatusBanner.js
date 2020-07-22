@@ -12,10 +12,7 @@ const StatusBanner = ({
   variant,
   ...otherProps
 }) => {
-  const _variantKey = 
-    variant ||
-    (warning ? "warning" : null) ||
-    "successAlt";
+  const _variantKey = variant || (warning ? "warning" : null) || "successAlt";
 
   //Check if the color of the BG (for sticky), passes our luminance test.
   //If it returns true, it's light, so we use a DARK text color.
@@ -25,20 +22,22 @@ const StatusBanner = ({
     //We just strip out the hex color.
     const hexColor = _color.slice(_color.indexOf("#"), _color.length - 1);
 
-    return HexLuminanceCheck(colorToHex(hexColor)) && _variant !== "successAlt" && _variant !== 'warning'
+    return HexLuminanceCheck(colorToHex(hexColor)) &&
+      _variant !== "successAlt" &&
+      _variant !== "warning"
       ? "text"
       : "onPrimary";
   };
 
   //If a  custom color is passed in, set it's text color if it passes the luminance test.
-  console.log(_variantKey)
-  const copyColor = (theme) => luminCheck(theme.colors[_variantKey], _variantKey);
+  const copyColor = (theme) =>
+    luminCheck(theme.colors[_variantKey], _variantKey);
 
   const SBElement = () => (
     <Box
       className="statusBanner"
       sx={{
-        px: '24px',
+        px: "24px",
         py: 2,
         position: "relative",
         overflow: "hidden",
@@ -51,25 +50,25 @@ const StatusBanner = ({
           mb: 0,
         },
         "& a": {
-              textDecoration: "underline",
-              color: copyColor,
-              "&.active": {
-                color: copyColor,
-              },
-              "&:hover": {
-                color: copyColor,
-              },
-              "&:hover > svg": {
-                color: copyColor,
-              },
-            },
+          textDecoration: "underline",
+          color: copyColor,
+          "&.active": {
+            color: copyColor,
+          },
+          "&:hover": {
+            color: copyColor,
+          },
+          "&:hover > svg": {
+            color: copyColor,
+          },
+        },
         mb: "12px",
         width: "100%",
       }}
     >
       {children}
     </Box>
-  )
+  );
 
   if (sticky) {
     return (
@@ -77,11 +76,16 @@ const StatusBanner = ({
         className="statusBanner"
         stickyClassName="sticking"
         dontUpdateHolderHeightWhenSticky={true}
-        sx={{ "& > *": { zIndex: "100" }, width: "100%", '.sticking > .spacer:first-of-type:not(:last-child)': {
-          height: '24px'
-        }, '.sticking > .statusBanner': {
-          boxShadow: 'float'
-        } }}
+        sx={{
+          "& > *": { zIndex: "100" },
+          width: "100%",
+          ".sticking > .spacer:first-of-type:not(:last-child)": {
+            height: "24px",
+          },
+          ".sticking > .statusBanner": {
+            boxShadow: "float",
+          },
+        }}
       >
         {!hideSpacer && <div className="spacer"></div>}
         <SBElement />
@@ -91,7 +95,7 @@ const StatusBanner = ({
     );
   }
 
-  return (<SBElement/>);
+  return <SBElement />;
 };
 
 export default StatusBanner;

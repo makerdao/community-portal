@@ -22,17 +22,16 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         borderBottom: "1px solid",
         borderColor: "muted",
         backgroundColor: "background",
-
       }}
     >
       <Flex
         sx={{
           justifyContent: "space-between",
-          alignItems: 'flex-start',
+          alignItems: "flex-start",
           cursor: "pointer",
           position: "relative",
-          px: '12px',
-          py: '24px',
+          px: "12px",
+          py: "24px",
         }}
         onClick={() => setExpanded(!expanded)}
       >
@@ -41,11 +40,26 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
           <Icon
             name={OpenIcon}
             color="text"
-            sx={{width: "20px", height: "20px", position: 'relative', top: '5px'}}
+            sx={{
+              width: "20px",
+              height: "20px",
+              position: "relative",
+              top: "5px",
+            }}
             size={3}
           />
         ) : (
-          <Icon name={CloseIcon} sx={{width: "20px", height: "20px", position:'relative', top:'5px'}} color="text" size={3} />
+          <Icon
+            name={CloseIcon}
+            sx={{
+              width: "20px",
+              height: "20px",
+              position: "relative",
+              top: "5px",
+            }}
+            color="text"
+            size={3}
+          />
         )}
       </Flex>
       <SmoothCollapse
@@ -53,7 +67,15 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         allowOverflowWhenOpen={true}
         expanded={expanded}
       >
-        <Box sx={{ pb: '24px', px: '12px', fontSize: "16px", color: "textMuted", "& > *:only-child": { m: 0 } }}>
+        <Box
+          sx={{
+            pb: "24px",
+            px: "12px",
+            fontSize: "16px",
+            color: "textMuted",
+            "& > *:only-child": { m: 0 },
+          }}
+        >
           {_Children}
         </Box>
       </SmoothCollapse>

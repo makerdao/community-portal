@@ -120,15 +120,12 @@ export default function useTranslation(initialLangSpace) {
           }
         }
       } else {
-
         //Not strict, use general "_plural"/"_none"
         if (variables.count === 0) {
-          pluralString = "_none" 
+          pluralString = "_none";
+        } else if (variables.count !== 1) {
+          pluralString = "_plural";
         }
-        else if (variables.count !== 1) {
-          pluralString = "_plural"
-        }
-        
       }
     }
 

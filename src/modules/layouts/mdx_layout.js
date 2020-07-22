@@ -80,8 +80,7 @@ export default (props) => {
         </Sticky>
       )}
 
-      <Flex sx={{ flexGrow: 1, flexDirection: "column"}}>
-        
+      <Flex sx={{ flexGrow: 1, flexDirection: "column" }}>
         <article
           sx={{
             pl: hasTopSection ? [4, 4, "64px"] : 0,
@@ -91,36 +90,35 @@ export default (props) => {
           }}
         >
           {status && (
-            <Box sx={{marginTop: hasTopSection ? 2 : 0}}>
-            <StatusBanner
-              sticky
-              {...statusProps}
-              sx={{ width: "100%"}}
-            />
+            <Box sx={{ marginTop: hasTopSection ? 2 : 0 }}>
+              <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
             </Box>
           )}
-          {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) &&
+          {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) && (
             <Flex
               sx={{
                 justifyContent: "space-between",
                 position: "relative",
                 alignItems: "flex-start",
-                flexWrap: ['wrap', 'wrap', 'unset'],
+                flexWrap: ["wrap", "wrap", "unset"],
                 mt: !renderSidenav ? "2rem" : "",
-                px: !hasTopSection ? [3,3,0] : 0
+                px: !hasTopSection ? [3, 3, 0] : 0,
               }}
             >
               {!hideBreadcrumbs && <Breadcrumbs />}
               {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
             </Flex>
-          }
+          )}
           <Box
-            sx={(hasTopSection && !hideLanguageSelector )? {
+            sx={
+              hasTopSection && !hideLanguageSelector
+                ? {
                     "& > *:nth-child(1), & > *:nth-child(2)": {
                       maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
                     },
                     "& > *:nth-child(2)": { mb: "32px" },
-                  } : {}
+                  }
+                : {}
             }
           >
             {children}

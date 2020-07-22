@@ -97,7 +97,7 @@ module.exports = {
             `**/404.mdx`,
             `**/example.mdx`,
             `**/footer.mdx`,
-            `**/**.pptx`
+            `**/**.pptx`,
           ],
           options: { nocase: true },
         },
