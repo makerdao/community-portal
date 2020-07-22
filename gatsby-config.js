@@ -135,6 +135,7 @@ module.exports = {
                 /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
+          /* Note from Isaac: This is commented out to avoid es/UI.json not found error
           {
             name: "es",
             filterNodes: (node) =>
@@ -144,6 +145,7 @@ module.exports = {
                 /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
+          */
         ],
         fields: [
           { name: "title", store: true, attributes: { boost: 20 } },
