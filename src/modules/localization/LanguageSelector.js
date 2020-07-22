@@ -95,7 +95,7 @@ const LanguageSelector = () => {
     
 
     return (
-      <Box sx={{width: ['100%','100%','205px'], mb: [3, 3, 'unset']}}>
+      <Box sx={{width: ['100%','100%','205px'], mb: [3, 3, 'unset'], position: ['initial', 'initial', 'absolute'], top: 0, right: 0}}>
         <Select
           isSearchable={false}
           theme={(selectTheme) => ({
@@ -114,7 +114,7 @@ const LanguageSelector = () => {
         />
         <Box sx={{textAlign: ['left', 'left', 'right'], fontSize: [3, 3, '15px'], mt: 2}}>
           <Text sx={{lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset']}}>{t("Need_Another_Language")}</Text>
-          <Link to="/work_with_us/translations" sx={{color: 'text', textDecoration: 'underline', fontWeight: 'bold', lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset'], ml: 2}}>{t("Join_translation_team")}</Link>
+          <Link to="/work_with_us/translations" sx={{color: 'text', textDecoration: 'underline', fontWeight: 'bold', lineHeight: 'normal', display: ['inline-block', 'inline-block', 'block'], ml: 2}}>{t("Join_translation_team")}</Link>
         </Box>
       </Box>
     );
@@ -156,7 +156,9 @@ const LanguageSelector = () => {
             label: t("Language"),
           }}
         />
-        <Text sx={{display: ['inline-block', 'inline-block', 'block'], mr: [2, 2, 'unset']}}>{t("Available_Languages",null, {count: availableLanguages.length})}</Text>
+        <Text sx={{display: ['inline-block', 'inline-block', 'block'], mr: [2, 2, 'unset']}}>
+          {t("Available_Languages",null, {count: availableLanguages.length})}
+        </Text>
 
         <Text sx={{ mb: [1,1,2], letterSpacing: ".7rem" , display:['inline-block', 'inline-block', 'block']}}>
           {availableLanguages.length > 0 &&
@@ -167,8 +169,12 @@ const LanguageSelector = () => {
         </Text>
 
       <Box>
-        <Text sx={{lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset']}}>{t("Need_Another_Language")}</Text>
-          <Link to="/work_with_us/translations" sx={{color: 'text', textDecoration: 'underline', fontWeight: 'bold', lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset'], ml: 2}}>{t("Join_translation_team")}</Link>
+        <Text sx={{lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset']}}>
+          {`${t("Need_Another_Language")}  `} 
+          <Link to="/work_with_us/translations" sx={{color: 'text', textDecoration: 'underline', fontWeight: 'bold', mt: 1, lineHeight: 'normal', display: ['inline-block', 'inline-block', 'block']}}>
+            {t("Join_translation_team")}
+          </Link>
+        </Text> 
       </Box>
     </Box>
   );

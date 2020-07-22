@@ -213,14 +213,14 @@ const Header = () => {
 
   const mobileNavBGVariant = {
     hidden: {
-      opacity: 0.9,
+      opacity: 0.46,
       scale: 0,
-      transition: { ease: "easeInOut", duration: 0.1 },
+      transition: { ease: [0.65, 0, 0.35, 1], duration: 0.1 },
     },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { ease: "easeInOut", duration: 0.1 },
+      transition: { ease: [0.65, 0, 0.35, 1], duration: 0.32 },
     },
   };
 

@@ -61,10 +61,9 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run acrollout && gatsby build",
-    "develop": "gatsby develop",
     "acrollout": "node scripts/allcontributors-transformer.js",
     "format": "prettier --write \"**/*.{js,jsx,json,md, mdx}\"",
-    "start": "npm run acrollout && npm run develop",
+    "start": "npm run acrollout && gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0"

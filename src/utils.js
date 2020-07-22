@@ -27,6 +27,7 @@ export const UrlConverter = ({ fileAbsolutePath }) => {
     .replace(/(.mdx.md|.md|.mdx|index.mdx)$/gm, "");
 };
 
+//NOTE(Rejon): This won't work if the locale is more than 2 characters (en vs enGB)
 export const getLocaleFromPath = (path) =>
   path
     .slice(path.indexOf("/content/") + 8, path.indexOf("/content/") + 11)

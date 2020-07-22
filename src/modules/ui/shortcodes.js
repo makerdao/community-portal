@@ -43,8 +43,8 @@ import {
 const MD_Overrides = {
   a: (props) => <Link to={props.href} {...props} />,
   img: Image,
-  h1: (props) => <Text variant="h1" sx={{ mb: "24px" }} {...props} />,
-  h2: (props) => <Text variant="h2" as="h2" sx={{ mb: "32px" }} {...props} />,
+  h1: (props) => <Text variant="h1" sx={{ mb: "24px", fontSize: ['48px', '48px', '64px'], letterSpace: '64px', fontWeight: ['600', '600', 'bold'] }} {...props} />,
+  h2: (props) => <Text variant="h2" as="h2" sx={{ mb: "32px", fontSize: '20px', fontWeight: 'normal'}} {...props} />,
   h3: (props) => <Text variant="h3" as="h3" sx={{ mb: "16px" }} {...props} />,
   h4: (props) => <Text variant="h4" as="h4" {...props} />,
   h5: (props) => <Text variant="h5" as="h5" {...props} />,
