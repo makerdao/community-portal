@@ -25,6 +25,7 @@ const Breadcrumbs = ({ children }) => {
         sx={{ 
           textDecoration: "none", 
           color: 'textMuted',
+          fontWeight: 'normal',
           '&:hover': {
             textDecoration: 'none'
           } 

@@ -81,14 +81,7 @@ export default (props) => {
       )}
 
       <Flex sx={{ flexGrow: 1, flexDirection: "column"}}>
-        {status && (
-          <StatusBanner
-            sticky
-            {...statusProps}
-            sx={{ width: "100%" }}
-            hideSpacer
-          />
-        )}
+        
         <article
           sx={{
             pl: hasTopSection ? [4, 4, "64px"] : 0,
@@ -97,6 +90,16 @@ export default (props) => {
             pr: hasTopSection ? 4 : 0,
           }}
         >
+          {status && (
+            <Box sx={{marginTop: hasTopSection ? 2 : 0}}>
+            <StatusBanner
+              sticky
+              variant={'bear'}
+              {...statusProps}
+              sx={{ width: "100%"}}
+            />
+            </Box>
+          )}
           {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) &&
             <Flex
               sx={{
@@ -113,15 +116,12 @@ export default (props) => {
             </Flex>
           }
           <Box
-            sx={
-              renderSidenav
-                ? {
-                    "& > *nth-child(1), & > *:nth-child(2)": {
-                      maxWidth: "calc(100% - 211px)",
+            sx={(hasTopSection && !hideLanguageSelector )? {
+                    "& > *:nth-child(1), & > *:nth-child(2)": {
+                      maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
                     },
                     "& > *:nth-child(2)": { mb: "32px" },
-                  }
-                : {}
+                  } : {}
             }
           >
             {children}

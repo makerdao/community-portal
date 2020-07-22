@@ -242,7 +242,7 @@ const Header = () => {
         bg: "backgroundAlt",
         position: ["fixed", "fixed", "relative"],
         width: "100%",
-        zIndex: "10",
+        zIndex: "1000",
         transition: "all .32s ease-in-out",
         transform: "translateY(0px)",
         top: 0,
@@ -307,13 +307,16 @@ const Header = () => {
             onClick={hideMenu}
             sx={{
               textDecoration: "none",
+              fontWeight: 'normal',
               color: "onBackgroundAlt",
             }}
           >
             <Text>{t("Home")}</Text>
           </Link>
           {headerLinks.map(({ url, title }, index) => (
-            <Link to={url} hideExternalIcon key={`header-link-${index}`}>
+            <Link to={url} hideExternalIcon key={`header-link-${index}`} sx={{
+              fontWeight: 'normal'
+            }}>
               {title}
             </Link>
           ))}
