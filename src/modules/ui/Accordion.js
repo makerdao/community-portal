@@ -17,6 +17,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
   return (
     <Box
       sx={{
+        color: "text",
         fontFamily: "FT Base Trial",
         fontSize: "20px",
         borderBottom: "1px solid",
@@ -37,7 +38,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         {!expanded ? (
           <Icon
             name={expanded ? CloseIcon : OpenIcon}
-            color={"text"}
+            color="text"
             sx={{width: "20px", height: "20px"}}
             size={3}
           />
