@@ -110,15 +110,13 @@ export default function Search({ onClick, ...otherProps }) {
       opacity: 1,
       y: 0,
       x: "-50%",
-      scaleY: 1,
-      tranisition: { ease: "easeOut" },
+      transition: { ease: "easeOut" },
     },
     hidden: {
       opacity: 0,
       y: "32px",
       x: "-50%",
-      scaleY: 0,
-      tranisition: { ease: "easeOut" },
+      transition: { ease: "easeOut" },
     },
   };
 

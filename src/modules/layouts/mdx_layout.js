@@ -80,7 +80,7 @@ export default (props) => {
         </Sticky>
       )}
 
-      <Flex sx={{ flexGrow: 1, flexDirection: "column", minWidth: "80%" }}>
+      <Flex sx={{ flexGrow: 1, flexDirection: "column"}}>
         {status && (
           <StatusBanner
             sticky
@@ -94,21 +94,24 @@ export default (props) => {
             pl: hasTopSection ? [4, 4, "64px"] : 0,
             mt: hasTopSection ? [4, 4, "74px"] : 0,
             pb: 4,
-            pr: 4,
+            pr: hasTopSection ? 4 : 0,
           }}
         >
-          <Flex
-            sx={{
-              justifyContent: "space-between",
-              position: "relative",
-              mb: "28px",
-              alignItems: "flex-start",
-              mt: !renderSidenav ? "2rem" : "",
-            }}
-          >
-            {!hideBreadcrumbs && <Breadcrumbs />}
-            {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
-          </Flex>
+          {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) &&
+            <Flex
+              sx={{
+                justifyContent: "space-between",
+                position: "relative",
+                alignItems: "flex-start",
+                flexWrap: ['wrap', 'wrap', 'unset'],
+                mt: !renderSidenav ? "2rem" : "",
+                px: !hasTopSection ? [3,3,0] : 0
+              }}
+            >
+              {!hideBreadcrumbs && <Breadcrumbs />}
+              {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
+            </Flex>
+          }
           <Box
             sx={
               renderSidenav

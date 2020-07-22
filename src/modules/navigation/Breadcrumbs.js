@@ -14,9 +14,11 @@ const Breadcrumbs = ({ children }) => {
   return (
     <Flex sx={{
       alignItems: 'center',
-      width: 'calc(100% - 234px)',
+      width: ['100%', '100%', 'calc(100% - 234px)'],
+      mb: '28px',
       flexWrap: 'wrap',
-      pr: '1.5rem'
+      fontSize: 3,
+      pr: [0,0,'1.5rem']
     }}>
       <Link
         to={`/${locale}/`}
@@ -31,7 +33,7 @@ const Breadcrumbs = ({ children }) => {
       >
         {t("Home")}
       </Link>
-      <Icon name="chevron_right" size={3} sx={{mx: '13px'}}/>
+      <Icon name="chevron_right" size={3} sx={{mx: ['10px', '10px', '13px']}}/>
       {pathDirs.map((p, index) => {
         const _data = breadcrumbData.find((n) => n.part === p);
 

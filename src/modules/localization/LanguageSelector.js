@@ -34,39 +34,53 @@ const LanguageSelector = () => {
     navigate(value);
   };
 
-  const MenuList = (props) => {
-    return (
-      <>
-        <components.MenuList {...props}>{props.children}</components.MenuList>
-        <Box
-          sx={{
-            position: "relative",
-            p: 2,
-            pl: "12px",
-            pr: "12px",
-            "::before": {
-              content: '""',
-              height: "1px",
-              width: "90%",
-              position: "relative",
-              top: 0,
-              left: "50%",
-              transform: "translateX(-50%)",
-              background:
-                "radial-gradient(rgba(83, 84, 106, 0.15), transparent)",
-            },
-          }}
-        >
-          <Text>{t("Need_Another_Language")}</Text>
-          <Link to="/work_with_us/translations">{t("Translations")}</Link>
-        </Box>
-      </>
-    );
-  };
+  const Menu = (props) => (
+    <components.Menu {...props} sx={{marginTop: 0, borderRadius: '12px', border: '1px solid', borderColor: 'muted', overflow: 'hidden'}}/>
+  )
 
-  //If we have existing languages or we're swapping, show the select.
-  if (languageSelectorData.length > 0) {
-    //Override select component theme with our theme since it's not connected to theme-ui
+  const MenuList = (props) => (
+        <components.MenuList {...props} sx={{py: 0, borderRadius: '12px'}}/>
+  );
+
+  const Option = (props) => (
+    <components.Option {...props} sx={{px: '18px', cursor:'pointer', fontSize: ['18px', '18px', 3]}} />
+  )
+
+  const IndicatorsContainer = (props) => (
+    <Box sx={{
+      width: 'auto',
+      pr: 2,
+      '& > * >span': {
+        display: 'none'
+      },
+      '& svg, &:hover svg': {
+        color: props.isDisabled ? 'muted' : 'backgroundAlt'
+      }
+    }}>
+      <components.IndicatorsContainer {...props} />
+    </Box>
+  )
+
+  const ValueContainer = (props) => (
+      <components.ValueContainer  sx={{
+      fontFamily: 'body',
+      color: 'text',
+      pl: 3
+    }} {...props} />
+  )
+
+  const Control = (props) => (
+      <components.Control sx={{
+        border: '1px solid',
+        borderColor: 'muted',
+        borderRadius: '12px',
+        fontSize: ['18px', '18px', 3],
+        pr:0,
+        p: ['2px','2px',0]
+    }} {...props} />
+  )
+
+  //Override select component theme with our theme since it's not connected to theme-ui
     const uiSelectTheme = {
       primary: theme.colors.primary,
       primary75: theme.colors.success,
@@ -76,16 +90,20 @@ const LanguageSelector = () => {
       dangerLight: theme.colors.bearAlt,
     };
 
+  //If we have existing languages or we're swapping, show the select.
+  if (languageSelectorData.length > 0) {
+    
+
     return (
-      <>
+      <Box sx={{width: ['100%','100%','205px'], mb: [3, 3, 'unset']}}>
         <Select
-          sx={{ width: "262px" }}
+          isSearchable={false}
           theme={(selectTheme) => ({
             ...selectTheme,
             fontFamily: theme.fonts.body,
             colors: { ...selectTheme.colors, ...uiSelectTheme },
           })}
-          components={{ MenuList }}
+          components={{ Menu, MenuList, IndicatorsContainer,ValueContainer, Control, Option }}
           options={languageSelectorData}
           onChange={onChange}
           aria-label={t("Page_Language_Selector")}
@@ -94,34 +112,64 @@ const LanguageSelector = () => {
             label: t("Language"),
           }}
         />
-      </>
+        <Box sx={{textAlign: ['left', 'left', 'right'], fontSize: [3, 3, '15px'], mt: 2}}>
+          <Text sx={{lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset']}}>{t("Need_Another_Language")}</Text>
+          <Link to="/work_with_us/translations" sx={{color: 'text', textDecoration: 'underline', fontWeight: 'bold', lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset'], ml: 2}}>{t("Join_translation_team")}</Link>
+        </Box>
+      </Box>
     );
   }
+  const availableLanguages = allLocales.filter((loc) => loc !== locale)
 
   return (
     <Box
       sx={{
-        p: 3,
-        width: '234px',
-        border: "1px solid",
+        p: [0,0,3],
+        width: ['100%', '100%','234px'],
+        border: ["unset", "unset","1px solid"],
         borderColor: "text",
-        borderRadius: "4px",
-        bg: "surface",
-        position: "absolute",
+        borderRadius: "12px",
+        bg: "background",
+        mb: 2,
+        position: ['relative', 'relative', 'absolute'],
         right: 0,
-        top: 0,
+        top: 0
       }}
     >
-      <Text>{t("Available_Languages")}</Text>
+      
 
-      <Text sx={{ mb: 2, letterSpacing: ".7rem" }}>
-        {allLocales
-          .filter((loc) => loc !== locale)
-          .map((loc) => t("Flag", null, null, loc))}
-      </Text>
+      <Select
+          isSearchable={false}
+          theme={(selectTheme) => ({
+            ...selectTheme,
+            fontFamily: theme.fonts.body,
+            colors: { ...selectTheme.colors, ...uiSelectTheme },
+          })}
+          isDisabled={true}
+          sx={{display: ['block', 'block','none'], width: '100%', mb: 2}}
+          components={{ Menu, MenuList, IndicatorsContainer,ValueContainer, Control, Option }}
+          options={languageSelectorData}
+          onChange={onChange}
+          aria-label={t("Page_Language_Selector")}
+          value={{
+            value: pathname,
+            label: t("Language"),
+          }}
+        />
+        <Text sx={{display: ['inline-block', 'inline-block', 'block'], mr: [2, 2, 'unset']}}>{t("Available_Languages",null, {count: availableLanguages.length})}</Text>
 
-      <Text>{t("Need_Another_Language")}</Text>
-      <Link to="/work_with_us/translations">{t("Join_translation_team")}</Link>
+        <Text sx={{ mb: [1,1,2], letterSpacing: ".7rem" , display:['inline-block', 'inline-block', 'block']}}>
+          {availableLanguages.length > 0 &&
+            <>
+              {availableLanguages.map((loc) => t("Flag", null, null, loc))}
+            </>
+          }
+        </Text>
+
+      <Box>
+        <Text sx={{lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset']}}>{t("Need_Another_Language")}</Text>
+          <Link to="/work_with_us/translations" sx={{color: 'text', textDecoration: 'underline', fontWeight: 'bold', lineHeight: 'normal', display: ['inline-block', 'inline-block', 'unset'], ml: 2}}>{t("Join_translation_team")}</Link>
+      </Box>
     </Box>
   );
 };
