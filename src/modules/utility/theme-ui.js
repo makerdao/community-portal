@@ -260,7 +260,6 @@ const theme = {
     ...maker.styles,
     a: {
       color: "primary",
-      textDecoration: "none",
     },
     Link: {
       color: "primary",
