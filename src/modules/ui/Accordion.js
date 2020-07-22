@@ -17,11 +17,12 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
   return (
     <Box
       sx={{
+        fontFamily: "FT Base Trial",
+        fontSize: "20px",
         borderBottom: "1px solid",
-        borderColor: "text",
-        backgroundColor: "accordionBG",
-        padding: "12px 16px",
-        mb: "16px",
+        borderColor: "muted",
+        backgroundColor: "background",
+        padding: "24px 12px",
       }}
     >
       <Flex
@@ -33,14 +34,11 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         onClick={() => setExpanded(!expanded)}
       >
         <Box sx={{ "& > *:only-child": { m: 0 } }}>{Header}</Box>
-        {/* TODO(Rejon): This Icon set up is ultra temporary. It's only because DAI-UI does not inlcude a minus icon in their icon pack.
-								 Replace the Icon when they add it in. 
-				 */}
         {!expanded ? (
           <Icon
             name={expanded ? CloseIcon : OpenIcon}
             color={"text"}
-            size={4}
+            size={3}
           />
         ) : (
           <Box
@@ -50,10 +48,9 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
               height: "32px",
               textAlign: "center",
               lineHeight: "32px",
-              fontWeight: "bold",
             }}
           >
-            <Icon name={CloseIcon} color={"text"} size={4} />
+            <Icon name={CloseIcon} color="text" size={3} />
           </Box>
         )}
       </Flex>
@@ -62,7 +59,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         allowOverflowWhenOpen={true}
         expanded={expanded}
       >
-        <Box sx={{ pt: "16px", color: "text", "& > *:only-child": { m: 0 } }}>
+        <Box sx={{ pt: "16px", fontSize: "16px", color: "textMuted", "& > *:only-child": { m: 0 } }}>
           {_Children}
         </Box>
       </SmoothCollapse>
