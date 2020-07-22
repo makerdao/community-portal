@@ -94,7 +94,6 @@ export default (props) => {
             <Box sx={{marginTop: hasTopSection ? 2 : 0}}>
             <StatusBanner
               sticky
-              variant={'bear'}
               {...statusProps}
               sx={{ width: "100%"}}
             />

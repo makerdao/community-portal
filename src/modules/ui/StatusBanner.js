@@ -79,6 +79,8 @@ const StatusBanner = ({
         dontUpdateHolderHeightWhenSticky={true}
         sx={{ "& > *": { zIndex: "100" }, width: "100%", '.sticking > .spacer:first-of-type:not(:last-child)': {
           height: '24px'
+        }, '.sticking > .statusBanner': {
+          boxShadow: 'float'
         } }}
       >
         {!hideSpacer && <div className="spacer"></div>}
