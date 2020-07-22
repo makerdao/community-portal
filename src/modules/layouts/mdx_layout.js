@@ -113,6 +113,9 @@ export default (props) => {
             sx={
               hasTopSection && !hideLanguageSelector
                 ? {
+                    "& > *:nth-child(1)": {
+                      lineHeight: '4rem'
+                    },
                     "& > *:nth-child(1), & > *:nth-child(2)": {
                       maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
                     },
