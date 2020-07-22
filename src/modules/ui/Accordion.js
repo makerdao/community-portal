@@ -38,19 +38,12 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
           <Icon
             name={expanded ? CloseIcon : OpenIcon}
             color={"text"}
+            sx={{width: "20px", height: "20px"}}
             size={3}
           />
         ) : (
-          <Box
-            sx={{
-              fontSize: "3rem",
-              width: "32px",
-              height: "32px",
-              textAlign: "center",
-              lineHeight: "32px",
-            }}
-          >
-            <Icon name={CloseIcon} color="text" size={3} />
+          <Box>
+            <Icon name={CloseIcon} sx={{width: "20px", height: "20px"}} color="text" size={3} />
           </Box>
         )}
       </Flex>
