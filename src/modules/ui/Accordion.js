@@ -28,26 +28,24 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
       <Flex
         sx={{
           justifyContent: "space-between",
-          alignItems: 'center',
+          alignItems: 'flex-start',
           cursor: "pointer",
           position: "relative",
           px: '12px',
-          py: '24px'
+          py: '24px',
         }}
         onClick={() => setExpanded(!expanded)}
       >
-        <Box sx={{ "& > *:only-child": { m: 0 } }}>{Header}</Box>
+        <Box sx={{ "& > *:only-child": { m: 0 }, pr: 3 }}>{Header}</Box>
         {!expanded ? (
           <Icon
-            name={expanded ? CloseIcon : OpenIcon}
+            name={OpenIcon}
             color="text"
-            sx={{width: "20px", height: "20px"}}
+            sx={{width: "20px", height: "20px", position: 'relative', top: '5px'}}
             size={3}
           />
         ) : (
-          <Box>
-            <Icon name={CloseIcon} sx={{width: "20px", height: "20px"}} color="text" size={3} />
-          </Box>
+          <Icon name={CloseIcon} sx={{width: "20px", height: "20px", position:'relative', top:'5px'}} color="text" size={3} />
         )}
       </Flex>
       <SmoothCollapse
