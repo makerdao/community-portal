@@ -18,19 +18,21 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
     <Box
       sx={{
         color: "text",
-        fontFamily: "FT Base Trial",
         fontSize: "20px",
         borderBottom: "1px solid",
         borderColor: "muted",
         backgroundColor: "background",
-        padding: "24px 12px",
+
       }}
     >
       <Flex
         sx={{
           justifyContent: "space-between",
+          alignItems: 'center',
           cursor: "pointer",
           position: "relative",
+          px: '12px',
+          py: '24px'
         }}
         onClick={() => setExpanded(!expanded)}
       >
@@ -53,7 +55,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         allowOverflowWhenOpen={true}
         expanded={expanded}
       >
-        <Box sx={{ pt: "16px", fontSize: "16px", color: "textMuted", "& > *:only-child": { m: 0 } }}>
+        <Box sx={{ pb: '24px', px: '12px', fontSize: "16px", color: "textMuted", "& > *:only-child": { m: 0 } }}>
           {_Children}
         </Box>
       </SmoothCollapse>
