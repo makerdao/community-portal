@@ -3,6 +3,7 @@
 import React from "react";
 import { Button as ThemedButton, jsx } from "theme-ui";
 import { Link } from "@modules/navigation";
+import { Icon } from "@makerdao/dai-ui-icons";
 
 const Button = ({
   to,
@@ -30,35 +31,38 @@ const Button = ({
         ? "outline"
         : "primary"
   }${small ? "Small": ""}`;
-  console.log(_variant); 
-  console.log(disabled);
+
+  const internal = (/^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to));
+
   return (
-    <ThemedButton
-      className="button"
-      to={to || href}
-      disabled={disabled}
-      as={Link}
-      variant={_variant}
-      sx={{
-        ...sx,
-        // small button sizing/spacing
-        padding: small ? "8px 24px" : "16px 32px",
-        fontSize: small ? "10px" : "16px",
-        letterSpacing: small ? "1px" : null,
-        textTransform: small ? "uppercase": null,
-        lineHeight: small ? "12px" : "19px",
-        //display: inline ? "inline-block" : "block",
-        "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
-      }}
-      {...otherProps}
-    >
-      {children}
-    </ThemedButton>
+    <Link to={to || href} disabled={disabled} isButton={true} hideExternalIcon={true}>
+      <ThemedButton
+        className="button"
+        disabled={disabled}
+        variant={_variant}
+        sx={{
+          ...sx,
+          // small button sizing/spacing
+          padding: small ? "8px 24px" : "16px 32px",
+          fontSize: small ? "10px" : "16px",
+          letterSpacing: small ? "1px" : null,
+          textTransform: small ? "uppercase": null,
+          lineHeight: small ? "12px" : "19px",
+          //display: inline ? "inline-block" : "block", //NOTE(Isaac) enabling this breaks link styling
+          "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
+        }}
+        {...otherProps}
+      >
+        {!internal && !small && (
+          <Icon
+            name="increase"
+            className="increase"
+            sx={{ top: "2px", position: "relative", ml: "2px", mr: ".5em" }}
+          />
+        )}
+        {children}
+      </ThemedButton>
+    </Link>
   );
 };
-/*
-        opacity: disabled ? "0.4" : "1",
-        cursor: disabled ? "not-allowed" : "pointer",
-        width: "max-content",
-*/
 export default Button;

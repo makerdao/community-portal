@@ -22,6 +22,7 @@ const Link = ({
   mdxType,
   href,
   gaProps,
+  isButton,
   ...other
 }) => {
   const { locale } = useTranslation();
