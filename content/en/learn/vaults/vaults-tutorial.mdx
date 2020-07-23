@@ -1,6 +1,6 @@
 ---
 title: Vaults Tutorial
-order: 3
+order: 1
 hideLanguageSelector: true
 keywords: "format, event, events, meetup, meetups, guide, agenda"
 description: "Vaults are a tool that let the owner deposit collateral and generate Dai."
@@ -19,7 +19,7 @@ For a current list of Collateral types and Vault types, please visit [Oasis Borr
 
 ## Collateralization
 
-Vaults are required to be overcollateralized and have a [Liquidation Ratio](liquidation.mdx#liquidation_ratio) that Vault owners need to uphold to avoid the Liquidation of their positions.
+Vaults are required to be overcollateralized and have a [Liquidation Ratio](/learn/vaults/liquidation/) that Vault owners need to uphold to avoid the Liquidation of their positions.
 
 Additionally, a Debt Ceiling is imposed on the Maker Protocol as well as each Vault type. The Debt Ceiling is the maximum amount of Dai that can be generated.
 
@@ -27,7 +27,7 @@ The Global Debt Ceiling limits the amount of Dai that can be generated across th
 
 ## Stability Fees
 
-The [Stability Fee](stability-fee.mdx) is a variable-rate fee continuously added to a Vault owner’s generated Dai balance.
+The [Stability Fee](/learn/vaults/stability-fees/) is a variable-rate fee continuously added to a Vault owner’s generated Dai balance.
 
 
 ## Emergency Shutdown Module
@@ -35,8 +35,7 @@ The Emergency Shutdown Module(ESM) provides a process for shutting down the Make
 
 To trigger an Emergency Shutdown, a minimum threshold of 50,000 MKR must be placed into the ESM. All MKR placed in the ESM can only be retrieved after redeployment as a decision of MKR governors.
 
-![Imgur](https://i.imgur.com/QM63vjM.png)
-![Emergency Shutdown Module](./.png)
+![Emergency Shutdown Module](https://i.imgur.com/QM63vjM.png)
 
 Activating an Emergency Shutdown:
 
