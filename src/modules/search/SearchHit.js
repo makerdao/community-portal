@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx, Text } from "theme-ui";
-import Link from "@modules/utility/Link";
+import { Link } from "@modules/navigation";
 
-const SearchHit = ({ title, excerpt, url, ...props }) => (
+const SearchHit = ({ title, excerpt, url, query, ...props }) => (
   <Link
     to={url}
     partiallyActive={false}

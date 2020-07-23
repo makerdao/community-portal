@@ -2,35 +2,39 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { MDXProvider } from "@mdx-js/react";
 import { Flex, jsx } from "theme-ui";
-import "@modules/utility/prismjs.css";
 
-import Header from "@modules/navigation/Header";
-import Footer from "@modules/navigation/Footer";
-
-import { PageDataProvider } from "@modules/layouts/PageContext";
-import Shortcodes from "@modules/utility/shortcodes";
+import { Header, Footer } from "@modules/navigation";
+import NavigationProvider from "@modules/navigation/context";
 
 const Layout = ({ children }) => (
-  <PageDataProvider>
-    <Header />
+  <NavigationProvider>
     <Flex
-      as="main"
       sx={{
-        maxWidth: "1364px",
-        m: "0 auto",
-        mt: "10px",
-        pl: 4,
-        pr: 0,
-        position: "relative",
+        flexDirection: "column",
+        minHeight: "100vh",
+        height: "100%",
       }}
-      className="content-boundary"
     >
-      <MDXProvider components={Shortcodes}>{children}</MDXProvider>
+      <Header />
+      <Flex
+        as="main"
+        sx={{
+          maxWidth: "1364px",
+          flex: "1 0 auto",
+          width: "100%",
+          m: "0 auto",
+          pr: 0,
+          pt: ["90px", "90px", "unset"],
+          position: "relative",
+        }}
+        className="content-boundary"
+      >
+        {children}
+      </Flex>
+      <Footer />
     </Flex>
-    <Footer />
-  </PageDataProvider>
+  </NavigationProvider>
 );
 
 Layout.propTypes = {

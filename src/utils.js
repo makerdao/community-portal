@@ -24,22 +24,20 @@ export const TitleConverter = ({
 export const UrlConverter = ({ fileAbsolutePath }) => {
   return fileAbsolutePath
     .slice(fileAbsolutePath.indexOf("/content/") + 8, fileAbsolutePath.length)
-    .replace(/(.mdx|index.mdx)$/gm, "");
+    .replace(/(.mdx.md|.md|.mdx|index.mdx)$/gm, "");
 };
+
+//NOTE(Rejon): This won't work if the locale is more than 2 characters (en vs enGB)
+export const getLocaleFromPath = (path) =>
+  path
+    .slice(path.indexOf("/content/") + 8, path.indexOf("/content/") + 11)
+    .replace(/^\//g, "");
 
 export const getInitialLocale = (locales, DEFAULT_LOCALE) => {
   let initialLocale = DEFAULT_LOCALE;
 
   if (typeof window === `undefined`) {
     return DEFAULT_LOCALE;
-  }
-
-  //Check if the locale is in local storage.
-  const localeSetting = localStorage.getItem("locale");
-
-  //If it is and it exists in the content directory, we've got a valid locale.
-  if (localeSetting && locales.indexOf(localeSetting) !== -1) {
-    initialLocale = localeSetting;
   }
 
   //Check browser settings for current language.
@@ -117,4 +115,20 @@ export const colorToHex = (color) => {
     })
     .join("");
   return "#" + hex;
+};
+
+// Capitalize each word
+export const titleCase = (str) => {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
+// helper-function to insert comma as separators every 3 digits
+export const formatNumber = (num) => {
+  return Math.round(num)
+    .toString()
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 };

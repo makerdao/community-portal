@@ -22,20 +22,6 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/content/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `imgs`,
-        path: `./src/imgs`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
@@ -48,7 +34,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve("./src/modules/layouts/default_layout.js"),
+          default: require.resolve("./src/modules/layouts/mdx_layout.js"),
         },
         gatsbyRemarkPlugins: [
           {
@@ -93,23 +79,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-theme-ui",
-      options: {
-        prismPreset: "night-owl",
-        preset: "@makerdao/dai-ui-theme-maker",
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: ["Roboto Mono"],
         display: "swap",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/modules/layouts/site_layout.js`),
       },
     },
     {
@@ -123,6 +96,8 @@ module.exports = {
             `**/**.json`,
             `**/404.mdx`,
             `**/example.mdx`,
+            `**/footer.mdx`,
+            `**/**.pptx`,
           ],
           options: { nocase: true },
         },
@@ -138,7 +113,7 @@ module.exports = {
           "@src": path.resolve(__dirname, "src"),
           "@utils": path.resolve(__dirname, "src/utils.js"),
           "@pages": path.resolve(__dirname, "src/pages"),
-          "@images": path.resolve(__dirname, "public/images"),
+          "@images": path.resolve(__dirname, "static/images"),
           "@content": path.resolve(__dirname, "content"),
         },
         extensions: [
@@ -158,7 +133,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/en\/(?!header.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
+                /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
           {
@@ -167,7 +142,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/es\/(?!header.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
+                /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
         ],
@@ -183,14 +158,15 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
+              const excerptLength = 90; // Hard coded excerpt length
+
               //If this node's frontmatter has a description use THAT for excerpts.
               if (node.frontmatter.description) {
-                return node.frontmatter.description;
+                return node.frontmatter.description.slice(0, excerptLength);
               }
 
               //NOTE(Rejon): We have to do excerpt this way because excerpt isn't available at the level that the lunr resolver is tapping Graphql.
               // TLDR: The excerpt node is undefined so we have to parse it ourselves.
-              const excerptLength = 136; // Hard coded excerpt length
               let excerpt = "";
               const tree = remark()
                 .use(remarkFrontmatter)
@@ -212,9 +188,40 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+        // Avoids sending pageview hits from custom paths
+        exclude: ["/"],
+        // Delays sending pageview hits on route update (in milliseconds)
+        pageTransitionDelay: 0,
+        // Enables Google Optimize using your container Id
+        optimizeId: process.env.GOOGLE_ANALYTICS_OPTIMIZE_ID,
+        // Enables Google Optimize Experiment ID
+        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
+        // Set Variation ID. 0 for original 1,2,3....
+        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
+        // Defers execution of google analytics script after page load
+        defer: true,
+        // Any additional optional fields
+        // sampleRate: 5,
+        // siteSpeedSampleRate: 10,
+        // cookieDomain: "makerdao.com",
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
+    `gatsby-plugin-catch-links`,
   ],
 };

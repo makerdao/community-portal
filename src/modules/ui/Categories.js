@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx, Box, Flex, Grid } from "theme-ui";
+import { jsx, Flex, Grid } from "theme-ui";
 
 const Categories = ({ children, minBoxSize = "321px" }) => {
   const _Children = React.Children.toArray(children);
@@ -10,22 +10,25 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
     alignItems: "center",
     minHeight: "260px",
     border: "1px solid",
-    borderColor: "strokeFaded",
+    borderColor: "muted",
     bg: "background",
-    "& > * > div": { color: "body" },
+    "& > * > div": { color: "text", mb: "9px" },
     padding: "19px 33px",
     borderRadius: "4px",
-    "& > * > div": { mb: "9px" },
-    "& > * > div:nth-child(3) > a": { fontWeight: "500", fontSize: "24px" },
-    "& > * > .statusBanner:first-child": {
+    "& > * > div:nth-of-type(2) > a, & > * > div:nth-of-type(3) > a": {
+      fontWeight: "500",
+      fontSize: "24px",
+    },
+    "& > * > .statusBanner:first-of-type": {
       position: "absolute",
       maxWidth: "65.29%",
+      color: "background",
       right: "16px",
       top: "16px",
       width: "auto",
     },
     "& > * > *:only-child": { m: 0 },
-    "& > * > svg:first-child, & > * > svg:nth-child(2)": {
+    "& > * > svg:first-of-type, & > * > svg:nth-of-type(2)": {
       width: "64px",
       height: "auto",
     },
@@ -66,12 +69,13 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
         {_Children.map((child, index) => {
           return (
             <Flex
+              key={`category-child-${index}`}
               sx={{
                 ...childElementStyles,
-                "&:not(:nth-child(3n))": { mr: "16px" },
+                "&:not(:nth-of-type(3n))": { mr: "16px" },
                 mb: "21px",
                 maxWidth: "calc(33% - 8px)",
-                minWidth: minBoxSize
+                minWidth: minBoxSize,
               }}
             >
               {child}
@@ -94,7 +98,11 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
       }}
     >
       {_Children.map((child, index) => {
-        return <Flex sx={childElementStyles}>{child}</Flex>;
+        return (
+          <Flex sx={childElementStyles} key={`category-child-${index}`}>
+            {child}
+          </Flex>
+        );
       })}
     </Grid>
   );
