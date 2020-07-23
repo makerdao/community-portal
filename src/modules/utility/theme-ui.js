@@ -286,7 +286,7 @@ const theme = {
         boxShadow: "0px 2px 15px rgba(35, 21, 54, 0.15)",
         transition: ".1s ease",
       },
-      "&:disabled": { //TODO: find out why this isn't changing anything (for all styles)
+      "&:disabled": { 
         bg: "primaryMuted",
         color: "muted",
         pointerEvents: "none",

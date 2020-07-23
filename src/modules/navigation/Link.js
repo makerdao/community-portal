@@ -1,4 +1,5 @@
 /** @jsx jsx */
+
 import React from "react";
 
 import { Link as GatsbyLink } from "gatsby";
@@ -145,7 +146,7 @@ const Link = ({
         },
         "&:hover": {
           color: !linkHref ? "bear" : "primary",
-          textDecoration: "underline",
+          textDecoration: !isButton ? "underline" : "none",
         },
         "&:hover > svg": {
           color: !linkHref ? "bear" : "primary",

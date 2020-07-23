@@ -35,7 +35,15 @@ const Button = ({
   const internal = (/^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to));
 
   return (
-    <Link to={to || href} disabled={disabled} isButton={true} hideExternalIcon={true}>
+    <Link 
+      to={to || href} 
+      disabled={disabled} 
+      isButton={true} 
+      hideExternalIcon={true}
+      sx = {{
+        display: inline ? "inline-block" : "block", 
+      }}
+    >
       <ThemedButton
         className="button"
         disabled={disabled}
@@ -48,7 +56,7 @@ const Button = ({
           letterSpacing: small ? "1px" : null,
           textTransform: small ? "uppercase": null,
           lineHeight: small ? "12px" : "19px",
-          //display: inline ? "inline-block" : "block", //NOTE(Isaac) enabling this breaks link styling
+          display: inline ? "inline-block" : "block", 
           "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
         }}
         {...otherProps}
