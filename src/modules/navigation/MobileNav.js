@@ -176,6 +176,9 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                 key="subnav"
                 whileTap={{ scale: 0.9 }}
                 whileHover={{ scale: 1.1 }}
+                sx={{
+                  backfaceVisibility: 'hidden'
+                }}
               >
                 <Icon
                   size={"9vw"}
@@ -203,7 +206,13 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                 />
               </motion.div>
 
-              <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+              <motion.div 
+                whileTap={{ scale: 0.9 }} 
+                whileHover={{ scale: 1.1 }}
+                sx={{
+                  backfaceVisibility: 'hidden'
+                }}
+              >
                 <Icon
                   size={"9vw"}
                   name={"moon"}
