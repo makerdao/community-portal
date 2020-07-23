@@ -84,7 +84,7 @@ export default (props) => {
         <article
           sx={{
             pl: hasTopSection ? [4, 4, "64px"] : 0,
-            mt: hasTopSection ? [4, 4, "74px"] : 0,
+            mt: hasTopSection ? [4, 4, "59px"] : 0,
             pb: 4,
             pr: hasTopSection ? 4 : 0,
           }}
@@ -113,6 +113,9 @@ export default (props) => {
             sx={
               hasTopSection && !hideLanguageSelector
                 ? {
+                    "& > *:nth-child(1)": {
+                      lineHeight: 'normal'
+                    },
                     "& > *:nth-child(1), & > *:nth-child(2)": {
                       maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
                     },

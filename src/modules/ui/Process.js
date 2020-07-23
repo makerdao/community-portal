@@ -9,7 +9,9 @@ const Process = ({ children }) => {
     <Box sx={{ mt: "34px", mb: "34px" }}>
       {_Children.map((child, index) => {
         return (
-          <Flex>
+          <Flex sx={{
+            flexDirection: ['column', 'column', 'row']
+          }}>
             <Box
               sx={{
                 fontSize: "24px",
@@ -17,27 +19,25 @@ const Process = ({ children }) => {
                 width: "40px",
                 minWidth: "40px",
                 height: "40px",
+                mb: ["18px", "18px", 0],
                 minHeight: "40px",
                 borderRadius: "100%",
-                border: "1px solid",
-                borderColor: "primary",
-                color: "primary",
+                color: "onPrimary",
                 textAlign: "center",
-                backgroundColor: "background",
+                backgroundColor: "primary",
               }}
             >
               {`${index + 1}`}
             </Box>
             <Box
               sx={{
-                mt: "4px",
-                ml: "16px",
-                mb: "16px",
+                ml: [0, 0, 3],
+                mb: ["23px", "23px", "36px"],
                 borderBottom: "1px solid",
-                borderColor: "text",
+                borderColor: "muted",
                 width: "100%",
-                pb: "24px",
-                "& > *:only-child": { m: 0 },
+                pb: "32px",
+                "& > *:only-child, & > *:last-child": { m: 0 },
               }}
             >
               {child}
