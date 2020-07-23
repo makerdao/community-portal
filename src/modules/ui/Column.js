@@ -6,10 +6,10 @@ const Column = ({ children }) => {
   const _Children = React.Children.toArray(children);
   const containerStyles = {
     borderRadius: "4px",
-    color: "body",
+    color: "text",
     p: 3,
     border: "1px solid",
-    borderColor: "strokeFaded",
+    borderColor: "muted",
     "& > ul, & > ol, & > *:not(ul) > ul, & > *:not(ol) > ul": { p: 0, pl: 3 },
     "& > *:only-child, & >*:only-child > *": { m: 0 },
   };
@@ -40,17 +40,17 @@ const Column = ({ children }) => {
                 borderRadius: "4px",
                 overflow: "hidden",
                 border: "1px solid",
-                borderColor: "strokeFaded",
+                borderColor: "muted",
               }}
             >
               <Box
                 className="headerElement"
                 sx={{
-                  color: "headline",
-                  bg: "body-5",
+                  color: "text",
+                  bg: "text",
                   padding: "8px 16px",
                   borderBottom: "1px solid",
-                  borderColor: "strokeFaded",
+                  borderColor: "muted",
                   "& > *:only-child, & > *:only-child > *": { m: 0 },
                 }}
               >

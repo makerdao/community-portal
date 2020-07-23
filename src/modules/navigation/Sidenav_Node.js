@@ -1,33 +1,44 @@
 /** @jsx jsx */
 import React from "react";
-import Link from "@modules/utility/Link";
-import { useLocation } from "@reach/router";
+import { Link } from "@modules/navigation";
+
 import { jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
-  const { pathname } = useLocation();
-
+const Sidenav_Node = ({
+  url,
+  title,
+  items,
+  parentActive,
+  currentPath,
+  parentDepth = 0,
+  onClick,
+  ...otherProps
+}) => {
   const hasChildren = items.length !== 0;
 
+  //URL fallback for directories that have children, but don't have an index file.
   if (!url && hasChildren) {
     url = items[0].url;
   }
 
-  //NOTE(Rejon): Regex check for subdirectory recursion.
-  const urlRegex = new RegExp(`/${otherProps.slugPart}/`);
-  const active = pathname === url || urlRegex.test(pathname);
-
-  const fontWeight = active ? "bold" : null || parentActive ? "500" : "body";
+  //Check if element is active or not based on current path.
+  const active =
+    currentPath === url || currentPath.includes(otherProps.slugPart);
+  const fontWeight = [
+    active ? "bold" : "normal",
+    active ? "bold" : "normal",
+    active ? "bold" : null || parentDepth !== 0 ? "bold" : "normal",
+  ];
 
   return (
     <li
       sx={{
-        color: active ? "primary" : "headline",
-        fontWeight: active ? "bold" : "body",
-        mb: "32px",
+        color: active ? "primary" : "text",
         position: "relative",
-        pr: 3,
+        "&:not(:last-of-type)": {
+          mb: "14px",
+        },
       }}
     >
       {title && (
@@ -35,14 +46,26 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
           to={url}
           partiallyActive={active}
           activeClassName={active ? "active" : " "}
+          onClick={onClick}
           sx={{
-            color: active ? "primary" : "body",
+            color: active ? "primary" : "text",
             fontWeight,
-            "&:hover > svg": {
-              transform: active
-                ? "translate(0, -50%) rotate(0deg)"
-                : "translate(0, -50%) rotate(90deg)",
-              transition: "all .164s ease",
+            py: "6px",
+            pr: "36px",
+            textDecoration: "none",
+            width: "100%",
+            fontSize: 3,
+            overflowWrap: "break-word",
+            wordWrap: "break-word",
+            display: "inline-block",
+            "&:hover ": {
+              textDecoration: "none",
+              "& > svg": {
+                transform: active
+                  ? "translate(0, -50%) rotate(0deg)"
+                  : "translate(0, -50%) rotate(90deg)",
+                transition: "all .1s ease",
+              },
             },
           }}
         >
@@ -53,11 +76,15 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
               name={active ? "chevron_down" : "chevron_right"}
               sx={{
                 position: "absolute",
-                right: 0,
-                top: !active ? "50%" : ".8em",
+                right: "5%",
+                top: [
+                  "calc(1.5em)",
+                  "calc(1.5em)",
+                  !active ? "50%" : "calc(.8em + 6px)",
+                ],
                 transform: "translate(0, -50%) rotate(0deg)",
                 transformOrigin: "center",
-                transition: "all .164s ease",
+                transition: "all .1s ease",
               }}
             />
           )}
@@ -68,9 +95,11 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
         <ul
           sx={{
             m: 0,
-            mt: "24px",
-            ml: "16px",
+            ml: parentDepth < 3 ? 3 : 0, //NOTE(Rejon): Don't let the margin left continue for more than 3 depth. It just looks wrong.
+            mt: "6px",
             pl: 0,
+            minWidth: "200px",
+            pr: "31px",
             listStyleType: "none",
           }}
         >
@@ -78,6 +107,9 @@ const Sidenav_Node = ({ url, title, items, parentActive, ...otherProps }) => {
             <Sidenav_Node
               key={`${item.url}-${item.index}`}
               parentActive={active}
+              onClick={onClick}
+              currentPath={currentPath}
+              parentDepth={parentDepth + 1}
               {...item}
             />
           ))}

@@ -13,7 +13,8 @@ export default (
   edges = [],
   currentTopSection,
   DEFAULT_LOCALE = "en",
-  currentLocale = "en"
+  currentLocale = "en",
+  path
 ) => {
   //Generates a an object with {title[String], slug[String]}
   //by using the filePath and title requirments of an MDX node.
@@ -94,8 +95,18 @@ export default (
           })
           .concat(editableLocaleFiles); //Concat the rest of the locale files AFTER it's been spliced.
 
+  let breadcrumbData = currentTopSection
+    ? [
+        {
+          part: currentTopSection,
+          title: titleCase(currentTopSection.replace(/-|_|\./g, " ")),
+          url: `/${currentLocale}/${currentTopSection}`,
+        },
+      ]
+    : [];
+
   //Reduce all of our mergedLocaleFiles into a object structure that closely resembles our final sidenav.
-  return mergedLocaleFiles.reduce(
+  const sidenavData = mergedLocaleFiles.reduce(
     (accu, { title, slug, rawSlug, slugPart, order }) => {
       const parts = rawSlug.split("/");
 
@@ -154,6 +165,14 @@ export default (
         existingItem.url = slug;
         existingItem.title = title;
         existingItem.order = order;
+
+        if (path.includes(existingItem.slugPart)) {
+          breadcrumbData.push({
+            part: existingItem.slugPart,
+            title: existingItem.title,
+            url: slug,
+          });
+        }
       } else {
         prevItems.push({
           slugPart: parts[slicedLength],
@@ -162,6 +181,14 @@ export default (
           title,
           order,
         });
+
+        if (path.includes(parts[slicedLength])) {
+          breadcrumbData.push({
+            part: parts[slicedLength],
+            title,
+            url: slug,
+          });
+        }
 
         //NOTE(Rejon): We MUST sort prevItems again for the case of recursive depth ordering
         prevItems.sort((a, b) => {
@@ -191,4 +218,6 @@ export default (
     },
     { items: [] }
   );
+
+  return { sidenavData, breadcrumbData };
 };
