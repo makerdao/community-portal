@@ -22,20 +22,6 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/content/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `imgs`,
-        path: `./src/imgs`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
@@ -48,7 +34,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve("./src/modules/layouts/default_layout.js"),
+          default: require.resolve("./src/modules/layouts/mdx_layout.js"),
         },
         gatsbyRemarkPlugins: [
           {
@@ -93,23 +79,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-theme-ui",
-      options: {
-        prismPreset: "night-owl",
-        preset: "@makerdao/dai-ui-theme-maker",
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: ["Roboto Mono"],
         display: "swap",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/modules/layouts/site_layout.js`),
       },
     },
     {
@@ -123,7 +96,8 @@ module.exports = {
             `**/**.json`,
             `**/404.mdx`,
             `**/example.mdx`,
-            `**/footer.mdx`
+            `**/footer.mdx`,
+            `**/**.pptx`,
           ],
           options: { nocase: true },
         },
@@ -139,7 +113,7 @@ module.exports = {
           "@src": path.resolve(__dirname, "src"),
           "@utils": path.resolve(__dirname, "src/utils.js"),
           "@pages": path.resolve(__dirname, "src/pages"),
-          "@images": path.resolve(__dirname, "public/images"),
+          "@images": path.resolve(__dirname, "static/images"),
           "@content": path.resolve(__dirname, "content"),
         },
         extensions: [
@@ -159,7 +133,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
+                /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
           {
@@ -168,7 +142,7 @@ module.exports = {
               node.frontmatter !== undefined &&
               node.fileAbsolutePath &&
               node.fileAbsolutePath.match(
-                /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|404.mdx|.js|.json)/
+                /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
         ],
@@ -184,7 +158,7 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
-              const excerptLength = 64; // Hard coded excerpt length
+              const excerptLength = 90; // Hard coded excerpt length
 
               //If this node's frontmatter has a description use THAT for excerpts.
               if (node.frontmatter.description) {
@@ -247,5 +221,7 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
+    `gatsby-plugin-catch-links`,
   ],
 };
