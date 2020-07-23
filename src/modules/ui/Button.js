@@ -40,8 +40,8 @@ const Button = ({
       disabled={disabled} 
       isButton={true} 
       hideExternalIcon={true}
-      sx = {{
-        display: inline ? "inline-block" : "block", 
+      sx={{
+        whiteSpace: "nowrap"
       }}
     >
       <ThemedButton

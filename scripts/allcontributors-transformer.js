@@ -16,7 +16,7 @@ const main = async () => {
 
   fs.readFile(contributorORIGINAL, "utf8", (err, out) => {
     if (err) {
-      console.log(err);
+      console.error(err);
       return;
     }
 

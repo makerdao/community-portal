@@ -37,17 +37,28 @@ const NavigationProvider = ({ children }) => {
       }
     }
   `);
+  const urlDropEndSlash = pathname.replace(/^\/|\/$/g, "").split("/");
 
-  let pathDirs = pathname.replace(/\/+$/, "").split("/");
-  pathDirs = pathDirs.slice(2, pathDirs.length);
+  let pathDirs = urlDropEndSlash.slice(1);
+
+  const urlNoLocale = pathDirs.join("/");
 
   //NOTE(Rejon): Must be in the shape that React Select expects for it's options.
   const languageSelectorData = allMdx.edges
-    .filter(
-      ({ node }) =>
-        UrlConverter(node).split("/").pop() === pathDirs.slice(-1)[0] &&
+    .filter(({ node }) => {
+      //Drop the end slash, remove the locale, compare the string
+      //TODO(Rejon): This works for now, but can probably be optimized with a Regex solution.
+      const nodeURL = UrlConverter(node)
+        .replace(/^\/|\/$/g, "")
+        .split("/")
+        .slice(1)
+        .join("/");
+
+      return (
+        nodeURL === urlNoLocale &&
         getLocaleFromPath(node.fileAbsolutePath) !== locale
-    )
+      );
+    })
     .map(({ node }) => ({
       value: UrlConverter(node),
       label: t(

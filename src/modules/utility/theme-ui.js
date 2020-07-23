@@ -169,6 +169,8 @@ const theme = {
     surface: "#E7FCFA",
     surfaceDark: "#4D4968",
     muted: "#D0D3D7",
+    link: "#291A42",
+    linkAlt: "#5AE2CA",
     mutedAlt: "#90969C",
     error: "#FF6948",
     success: "#5AE2CA",
@@ -183,6 +185,7 @@ const theme = {
     strawberry: "#FF78F2",
     bubblegum: "#F2B9FF",
     grape: "#9B9FFF",
+    onPrimary: "#291A42",
     lemon: "#F3FF64",
     modes: {
       dark: {
@@ -201,6 +204,8 @@ const theme = {
         background: "#291A42",
         surface: "#4D4968",
         warning: "#FFBA44",
+        link: "#68FEE3",
+        linkAlt: "#A6FFEF",
         warningAlt: "#FBA615",
         notice: "#F2B9FF",
         noticeAlt: "#FF78F2",
@@ -209,6 +214,7 @@ const theme = {
         statusBG: "#291A42",
         statusColor: "#FFFFFF",
         codeBG: "#00585E",
+        onPrimary: "#291A42",
       },
     },
 
@@ -250,7 +256,6 @@ const theme = {
     ...maker.styles,
     a: {
       color: "primary",
-      textDecoration: "none",
     },
     Link: {
       color: "primary",
