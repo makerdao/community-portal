@@ -27,7 +27,8 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
     `gatsby-remark-responsive-iframe`,
-    "gatsby-remark-embed-video", `gatsby-remark-images`,
+    "gatsby-remark-embed-video", 
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
