@@ -275,22 +275,25 @@ const theme = {
       outline: "none",
       fontFamily: "body",
       borderRadius: "32px",
-      py: 2,
-      color: "text",
+      py: '15px',
+      px: 4,
+      color: "onPrimary",
       fontWeight: "600",
+      fontSize: 3,
       letterSpacing: "0.03em",
       lineHeight: "19px",
       bg: "primary",
       "&:hover": {
         bg: "primaryEmphasis",
         textDecoration: "none",
-        color: "text",
+        color: "onPrimary",
         transition: ".1s ease",
       },
       "&:active": {
-        color: "text",
+        color: "onPrimary",
         textDecoration: "none",
-        boxShadow: "0px 2px 15px rgba(35, 21, 54, 0.15)",
+        boxShadow: "raised",
+        bg: "primaryEmphasis",
         transition: ".1s ease",
       },
       "&:disabled": { 
@@ -304,15 +307,15 @@ const theme = {
       variant: "buttons.primary",
       bg: "secondary",
       "&:hover": {
-        color: "text",
+        color: "onPrimary",
         textDecoration: "none",
         bg: "secondaryEmphasis",
         transition: ".1s ease",
       },
       "&:active": {
-        color: "text",
+        color: "onPrimary",
         textDecoration: "none",
-        boxShadow: "0px 2px 15px rgba(35, 21, 54, 0.15)",
+        boxShadow: "raised",
         transition: ".1s ease",
       },
       "&:disabled": {
@@ -337,7 +340,8 @@ const theme = {
       "&:active": {
         color: "text",
         textDecoration: "none",
-        boxShadow: "0px 2px 15px rgba(35, 21, 54, 0.15)",
+        bg: "primaryMuted",
+        boxShadow: "raised",
         transition: ".1s ease",
       },
       "&:disabled": {
@@ -349,10 +353,32 @@ const theme = {
     },
     primarySmall: {
       variant: "buttons.primary",
+      py: 2,
+      px: '24px',
+      fontSize: '10px',
+      letterSpacing: '1px',
+      textTransform: 'uppercase',
+      lineHeight: '12px',
     },
     outlineSmall: {
       variant: "buttons.outline",
+      py: 2,
+      px: '24px',
+      fontSize: '10px',
+      letterSpacing: '1px',
+      textTransform: 'uppercase',
+      lineHeight: '12px',
     },
+    icon_primary: {
+      variant: "buttons.primary"
+    },
+    icon_secondary: {
+      variant: "buttons.secondary"
+    },
+    icon_outline: {
+      variant: "buttons.outline"
+    }
+
   },
 };
 

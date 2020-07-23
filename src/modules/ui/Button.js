@@ -1,9 +1,11 @@
 /** @jsx jsx */
 
 import React from "react";
-import { Button as ThemedButton, jsx } from "theme-ui";
-import { Link } from "@modules/navigation";
+import { Button as ThemedButton, Text, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
+import {motion} from 'framer-motion'
+
+import { Link } from "@modules/navigation";
 
 const Button = ({
   to,
@@ -16,6 +18,7 @@ const Button = ({
   children,
   inline,
   test,
+  icon,
   sx,
   ...otherProps
 }) => {
@@ -24,7 +27,7 @@ const Button = ({
   //  <Button primary outline />
   // Instead of
   // <Button variant="primaryOutline" />
-  let _variant = `${
+  let _variant = `${icon ? 'icon_' : ""}${
     variant || secondary
       ? "secondary"
       : outline
@@ -34,6 +37,8 @@ const Button = ({
 
   const internal = (/^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to));
 
+  const willHaveIcon = icon || (!internal && !small);
+
   return (
     <Link 
       to={to || href} 
@@ -41,35 +46,42 @@ const Button = ({
       isButton={true} 
       hideExternalIcon={true}
       sx={{
-        whiteSpace: "nowrap"
+        whiteSpace: "nowrap",
+        display: inline ? "inline-block" : "block",
       }}
     >
+    <motion.div whileTap={{scale: 0.9}} whileHover={{scale: 1.064}} sx={{mb: 3, backfaceVisibility: 'hidden'}}>
       <ThemedButton
         className="button"
         disabled={disabled}
         variant={_variant}
         sx={{
           ...sx,
-          // small button sizing/spacing
-          padding: small ? "8px 24px" : "16px 32px",
-          fontSize: small ? "10px" : "16px",
-          letterSpacing: small ? "1px" : null,
-          textTransform: small ? "uppercase": null,
-          lineHeight: small ? "12px" : "19px",
-          display: inline ? "inline-block" : "block", 
+           
+          p: willHaveIcon ? '13px 32px' : '',
+          
           "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
         }}
         {...otherProps}
       >
-        {!internal && !small && (
+        {willHaveIcon && (
           <Icon
-            name="increase"
+            name={icon || "increase"}
             className="increase"
-            sx={{ top: "2px", position: "relative", ml: "2px", mr: ".5em" }}
+            size={'20px'}
+            sx={{ 
+              ml: "2px", 
+              mr: ".5em",
+              verticalAlign: 'middle'
+            }}
           />
         )}
-        {children}
+        
+        <Text sx={{verticalAlign: willHaveIcon ? 'middle' : ''}}>
+          {children}
+        </Text>
       </ThemedButton>
+      </motion.div>
     </Link>
   );
 };
