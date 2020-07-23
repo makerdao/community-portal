@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React, { Fragment, useContext } from "react";
-import { jsx, Text, Box, Flex } from "theme-ui";
+import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
 import { NavigationContext } from "@modules/navigation/context";

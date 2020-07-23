@@ -10,7 +10,7 @@ const InfoBlock = ({ children, sx }) => {
 
   //NOTE(Rejon): In the future when css4 comes out this will be replaced by the :has() selector!
   const hasImage = _Children.find((n, index) => {
-    const _isTrue = n.props.mdxType === 'Image' || (n.props.children && !Array.isArray(n.props.children) && n.props.children.props.mdxType === 'img');
+    const _isTrue = n.props.mdxType === 'Image' || (n.props.children && !Array.isArray(n.props.children) && n.props.children.props && n.props.children.props.mdxType === 'img');
 
     if (_isTrue) {
       imageIndex = index; 
@@ -28,7 +28,6 @@ const InfoBlock = ({ children, sx }) => {
     }
   }
 
-  console.log(hasImage, hasImageMobileOrdering);
   return (
     <Flex
       sx={{

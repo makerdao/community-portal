@@ -1,14 +1,8 @@
 //** @jsx jsx */
 import React from "react";
-import { Box, Flex, Grid, jsx } from "theme-ui";
-
-import { HexLuminanceCheck, colorToHex } from "@utils";
-import defaultImage from "@images/section2.png";
-import altImage from "@images/section1.png";
-import { useTranslation } from "@modules/localization";
+import { Box, Grid, jsx } from "theme-ui";
 
 const Tout = ({ children, }) => {
-  const { t } = useTranslation("Touts");
 
   const _Children = React.Children.toArray(children);
   const isGrid = _Children.length > 1;

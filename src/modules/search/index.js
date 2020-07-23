@@ -203,14 +203,12 @@ export default function Search({ onClick, ...otherProps }) {
                 p: 2,
                 color: "muted",
                 display: "block",
+                borderRadius: "roundish",
                 fontSize: [3, 5, 3],
               },
-              "& li:hover": {
-                backgroundColor: "primary",
-                color: "text",
-                "& > a": {
-                  color: "text",
-                },
+              "& li:hover > a": {
+                backgroundColor: "primaryMuted",
+                color: "text"
               },
             }}
           >
