@@ -1,7 +1,10 @@
 /** @jsx jsx */
 
 import React from "react";
-import { Button as ThemedButton, jsx } from "theme-ui";
+import { Button as ThemedButton, Text, jsx } from "theme-ui";
+import { Icon } from "@makerdao/dai-ui-icons";
+import {motion} from 'framer-motion'
+
 import { Link } from "@modules/navigation";
 
 const Button = ({
@@ -10,10 +13,12 @@ const Button = ({
   variant,
   secondary,
   outline,
+  small,
   disabled,
   children,
   inline,
   test,
+  icon,
   sx,
   ...otherProps
 }) => {
@@ -22,49 +27,62 @@ const Button = ({
   //  <Button primary outline />
   // Instead of
   // <Button variant="primaryOutline" />
-  let _variant = `${variant || secondary ? "secondary" : null || "primary"}${
-    outline ? "Outline" : ""
-  }`;
+  let _variant = `${icon ? 'icon_' : ""}${
+    variant || secondary
+      ? "secondary"
+      : outline
+        ? "outline"
+        : "primary"
+  }${small ? "Small": ""}`;
+
+  const internal = (/^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to));
+
+  const willHaveIcon = icon || (!internal && !small);
 
   return (
-    <ThemedButton
-      className="button"
-      to={to || href}
-      disabled={disabled}
-      as={Link}
-      variant={_variant}
+    <Link 
+      to={to || href} 
+      disabled={disabled} 
+      isButton={true} 
+      hideExternalIcon={true}
       sx={{
-        p: "24px",
-        pt: "8px",
-        pb: "8px",
-        boxShadow: "raised",
-        mb: "24px",
-        opacity: disabled ? "0.4" : "1",
-        cursor: disabled ? "not-allowed" : "pointer",
+        whiteSpace: "nowrap",
         display: inline ? "inline-block" : "block",
-        width: "max-content",
-        "&:hover, &:hover > svg": {
-          color: "onPrimary",
-          transition: "all .1s ease",
-        },
-        "& .increase": { display: "none" },
-        "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
-        "& > svg": {
-          verticalAlign: "middle",
-          top: "-2px",
-          width: "1.8rem",
-          height: "auto",
-          mr: "4px",
-          position: "relative",
-          "&:hover": { color: "onPrimary", transition: "all .1s ease" },
-        },
-        ...sx,
       }}
-      {...otherProps}
     >
-      {children}
-    </ThemedButton>
+    <motion.div whileTap={{scale: 0.9}} whileHover={{scale: 1.064}} sx={{mb: 3, backfaceVisibility: 'hidden'}}>
+      <ThemedButton
+        className="button"
+        disabled={disabled}
+        variant={_variant}
+        sx={{
+          ...sx,
+           
+          p: willHaveIcon ? '13px 32px' : '',
+          
+          "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
+        }}
+        {...otherProps}
+      >
+        {willHaveIcon && (
+          <Icon
+            name={icon || "increase"}
+            className="increase"
+            size={'20px'}
+            sx={{ 
+              ml: "2px", 
+              mr: ".5em",
+              verticalAlign: 'middle'
+            }}
+          />
+        )}
+        
+        <Text sx={{verticalAlign: willHaveIcon ? 'middle' : ''}}>
+          {children}
+        </Text>
+      </ThemedButton>
+      </motion.div>
+    </Link>
   );
 };
-
 export default Button;
