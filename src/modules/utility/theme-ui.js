@@ -4,7 +4,9 @@ import Prism from "@theme-ui/prism";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
-const components = { pre: (props) => props.children, code: Prism,
+const components = { 
+  pre: (props) => props.children, 
+  code: Prism,
 };
 
 const prismPreset = {
@@ -298,7 +300,6 @@ const theme = {
         cursor: "not-allowed",
       },
     },
-
     secondary: {
       variant: "buttons.primary",
       bg: "secondary",
@@ -321,7 +322,6 @@ const theme = {
         cursor: "not-allowed",
       },
     },
-
     outline: {
       variant: "buttons.primary",
       bg: "background",
@@ -347,11 +347,9 @@ const theme = {
         cursor: "not-allowed",
       },
     },
-
     primarySmall: {
       variant: "buttons.primary",
     },
-
     outlineSmall: {
       variant: "buttons.outline",
     },
