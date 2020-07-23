@@ -1,4 +1,5 @@
 /** @jsx jsx */
+
 import React from "react";
 
 import { Link as GatsbyLink } from "gatsby";
@@ -22,6 +23,7 @@ const Link = ({
   mdxType,
   href,
   gaProps,
+  isButton,
   ...other
 }) => {
   const { locale } = useTranslation();
@@ -69,6 +71,7 @@ const Link = ({
           color: "link",
           cursor: "pointer",
           fontWeight: "600",
+          textDecoration: isButton && "none",
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
@@ -129,6 +132,7 @@ const Link = ({
         transition: "all .1s ease",
         color: "link",
         fontWeight: "600",
+        textDecoration: isButton && "none",
         "&.active": {
           color: "linkAlt",
           fontWeight: "600",
