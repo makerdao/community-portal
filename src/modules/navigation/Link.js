@@ -66,25 +66,20 @@ const Link = ({
           trackCustomEvent(eventProps);
         }}
         sx={{
-          color: !linkHref ? "bear" : "primary",
-          textDecoration: !linkHref ? "line-through" : "none",
-          textShadow: (theme) =>
-            !linkHref
-              ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
-              : "none",
-          border: !linkHref ? "4px dashed red" : "",
-          cursor: !linkHref ? "not-allowed" : "pointer",
+          color: "link",
+          cursor: "pointer",
+          fontWeight: "600",
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
+            color: "linkAlt",
             fontWeight: "600",
           },
           "&:hover": {
-            color: !linkHref ? "bear" : "primary",
-            textDecoration: "underline",
+            color: "linkAlt",
           },
           "&:hover > svg": {
-            color: !linkHref ? "bear" : "primary",
+            color: "linkAlt",
           },
           "& > *": {
             display: "inline-block",
@@ -132,22 +127,17 @@ const Link = ({
       sx={{
         pointerEvents: disabled ? "none" : "initial",
         transition: "all .1s ease",
-        textDecoration: !linkHref ? "line-through " : "none",
-        textShadow: (theme) =>
-          !linkHref
-            ? `0px 0px 10px ${theme.colors.bear}, 1px 1px 5px ${theme.colors.warning}`
-            : "none",
-        border: !linkHref ? "4px dashed red" : "",
-        color: !linkHref ? "bear" : "primary",
-        "&.active,": {
-          color: !linkHref ? "bear" : "primary",
+        color: "link",
+        fontWeight: "600",
+        "&.active": {
+          color: "linkAlt",
+          fontWeight: "600",
         },
         "&:hover": {
-          color: !linkHref ? "bear" : "primary",
-          textDecoration: "underline",
+          color: "linkAlt",
         },
         "&:hover > svg": {
-          color: !linkHref ? "bear" : "primary",
+          color: "linkAlt",
         },
         "& > *": {
           display: "inline-block",

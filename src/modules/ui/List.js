@@ -64,9 +64,9 @@ const AdvancedListElement = ({
                 fontSize: "14px",
                 color: "textMuted",
               },
-              '& > *:only-child, & > *:only-child > *:last-child': {
-                mb: 0
-              }
+              "& > *:only-child, & > *:only-child > *:last-child": {
+                mb: 0,
+              },
             }}
           >
             {heading && (
@@ -79,55 +79,65 @@ const AdvancedListElement = ({
                 {heading}
               </Box>
             )}
-            <Box sx={{
-              width: '100%',
-              '& > *:only-child': {
-                  mb: 0
-                }
-            }}>{_children}</Box>
+            <Box
+              sx={{
+                width: "100%",
+                "& > *:only-child": {
+                  mb: 0,
+                },
+              }}
+            >
+              {_children}
+            </Box>
           </Flex>
         </Flex>
       ) : (
-        <Box sx={{
-          width: '100%',
-          '& > *:only-child, & > *:only-child > *:last-child': {
-            mb: 0
-          }
-        }}>
+        <Box
+          sx={{
+            width: "100%",
+            "& > *:only-child, & > *:only-child > *:last-child": {
+              mb: 0,
+            },
+          }}
+        >
           {heading && (
             <Box
-              sx={{ 
-                'p': {
-                  fontWeight: "normal", 
-                  fontSize: 3, 
-                  color: "text", 
-                  lineHeight: "normal"
-                }, 
-                'ol,ul': {
+              sx={{
+                p: {
+                  fontWeight: "normal",
+                  fontSize: 3,
+                  color: "text",
+                  lineHeight: "normal",
+                },
+                "ol,ul": {
                   p: 0,
                   pl: 3,
-                  m: 0
+                  m: 0,
                 },
-                m: 0, 
-                mb: '8px', 
-                "& > *": { 
-                  m: 0, 
-                  lineHeight: "normal" 
-                } 
+                m: 0,
+                mb: "8px",
+                "& > *": {
+                  m: 0,
+                  lineHeight: "normal",
+                },
               }}
             >
               {heading}
             </Box>
           )}
-          <Box sx={{
-                width: '100%',
-                fontWeight: "normal",
-                fontSize: "14px",
-                color: "textMuted",
-                '& > *:only-child': {
-                  mb: 0
-                }
-              }}>{_children}</Box>
+          <Box
+            sx={{
+              width: "100%",
+              fontWeight: "normal",
+              fontSize: "14px",
+              color: "textMuted",
+              "& > *:only-child": {
+                mb: 0,
+              },
+            }}
+          >
+            {_children}
+          </Box>
         </Box>
       )}
     </ListElement>
@@ -141,22 +151,21 @@ const AdvancedListElement = ({
         hideExternalIcon
         {...linkData}
         sx={{
-          display: 'block',
+          display: "block",
           "& > *": {
             width: "100%",
             transition: "all .1s ease",
-            color: 'text',
-            '&:hover': {
-              color: 'text',
+            color: "text",
+            "&:hover": {
+              color: "text",
               bg: "primaryMuted",
-              textDecoration: 'none'
-            }
+              textDecoration: "none",
+            },
           },
-          textDecoration: 'none',
-          '&:hover': {
-            
-            textDecoration: 'none'
-          }
+          textDecoration: "none",
+          "&:hover": {
+            textDecoration: "none",
+          },
         }}
       >
         <ListEl>
@@ -164,43 +173,43 @@ const AdvancedListElement = ({
         </ListEl>
       </Link>
     );
-  }
-  else {
-    return (
-      <ListEl/>
-    )
+  } else {
+    return <ListEl />;
   }
 };
 
 const List = ({ children }) => {
   const _Children = React.Children.toArray(children);
 
-
   //Logic check for rendering a link element vs a list element.
   const childListLinkRenderCheck = (child, index) => {
-    console.log(child)
     if (
       child.props &&
       (child.props.mdxType === "Box" ||
         child.props.mdxType === "Link" ||
         child.props.mdxType === "a" ||
-        (child.props.mdxType === 'p' && child.props.children && child.props.children.props && child.props.children.props.mdxType === 'a')
-        )
+        (child.props.mdxType === "p" &&
+          child.props.children &&
+          child.props.children.props &&
+          child.props.children.props.mdxType === "a"))
     ) {
-      console.log(child);
       const boxChildren = React.Children.toArray(child.props.children);
       const isLink =
         child.props.mdxType === "Link" || child.props.mdxType === "a";
-      const isMDLink = (child.props.mdxType === 'p' && child.props.children && child.props.children.props && child.props.children.props.mdxType === 'a')
+      const isMDLink =
+        child.props.mdxType === "p" &&
+        child.props.children &&
+        child.props.children.props &&
+        child.props.children.props.mdxType === "a";
       const childData = {};
 
       let linkData = isLink ? { ...child.props } : null; //If this element is a Link grab it's href.
-      
-      if (isMDLink) { //For when MD spec links are used (ie. [Heading](https://website.com))
+
+      if (isMDLink) {
+        //For when MD spec links are used (ie. [Heading](https://website.com))
         childData.heading = child.props.children.props.children;
-        linkData = {...child.props.children.props};
-      }
-      else {
+        linkData = { ...child.props.children.props };
+      } else {
         if (boxChildren.length > 1) {
           childData.heading = boxChildren[0]; //<- First child is heading
           childData._children = boxChildren.slice(1, boxChildren.length); //<- Render other children as sub content
@@ -211,8 +220,6 @@ const List = ({ children }) => {
 
       const advancedElementProps = { childData, linkData, index };
 
-      console.log(advancedElementProps)
-
       return (
         <AdvancedListElement
           key={`list-element-${index}`}
@@ -221,20 +228,17 @@ const List = ({ children }) => {
       );
     }
 
-    return (
-          <ListElement 
-            key={`list-element-${index}`} >
-            {child}
-          </ListElement>
-        );
+    return <ListElement key={`list-element-${index}`}>{child}</ListElement>;
   };
 
   return (
-    <Box sx={{
-      '& > *:last-child': {
-        mb: 4
-      }
-    }}>
+    <Box
+      sx={{
+        "& > *:last-child": {
+          mb: 4,
+        },
+      }}
+    >
       {_Children.map((child, index) => childListLinkRenderCheck(child, index))}
     </Box>
   );

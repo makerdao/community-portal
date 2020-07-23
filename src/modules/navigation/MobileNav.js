@@ -63,7 +63,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
             <Flex
               sx={{
                 flexDirection: "column",
-                fontSize: ['5vw', "5vw", null],
+                fontSize: ["5vw", "5vw", null],
                 mb: "33px",
               }}
             >
@@ -75,7 +75,8 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                   textDecoration: "none",
                   color: "onBackgroundAlt",
                   py: "2vh",
-                  px: [3,"30px",null],
+                  fontWeight: "normal",
+                  px: [3, "30px", null],
                 }}
               >
                 <Text>{t("Home")}</Text>
@@ -97,7 +98,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                       <Box
                         sx={{
                           py: "2vh",
-                          px: [3,"30px",null],
+                          px: [3, "30px", null],
                           textDecoration: "none",
                           color: "onBackgroundAlt",
                           position: "relative",
@@ -137,7 +138,8 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                       textDecoration: "none",
                       color: "onBackgroundAlt",
                       position: "relative",
-                      px: [3,"30px",null],
+                      fontWeight: "normal",
+                      px: [3, "30px", null],
                       "&:hover": {
                         textDecoration: "none",
                       },
@@ -167,7 +169,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
             <Flex
               sx={{
                 flexDirection: "row",
-                px: [3,"30px",null],
+                px: [3, "30px", null],
               }}
             >
               <motion.div
@@ -186,8 +188,8 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                     mr: "30px",
                     minWidth: "32px",
                     minHeight: "32px",
-                    maxWidth: '60px',
-                    maxHeight: '60px',
+                    maxWidth: "60px",
+                    maxHeight: "60px",
                     cursor: "pointer",
                     "&:hover": {
                       bg: colorMode !== "default" ? "background" : "",
@@ -213,8 +215,8 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                       colorMode !== "dark" ? "onBackgroundAlt" : "background",
                     minWidth: "32px",
                     minHeight: "32px",
-                    maxWidth: '60px',
-                    maxHeight: '60px',
+                    maxWidth: "60px",
+                    maxHeight: "60px",
                     cursor: "pointer",
                     "&:hover": {
                       bg: colorMode !== "dark" ? "surfaceDark" : "",
@@ -252,7 +254,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
             <Flex
               sx={{
                 color: "primary",
-                px: [3,"30px",null],
+                px: [3, "30px", null],
                 pt: "30px",
                 pb: "37px",
                 borderBottom: "1px solid",
@@ -283,9 +285,9 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                     onClick={onLinkClick}
                     sx={{
                       pb: "2vh",
-                      fontSize: ['5vw', "5vw", null],
+                      fontSize: ["5vw", "5vw", null],
                       textDecoration: "none",
-                      px: [3,"30px",null],
+                      px: [3, "30px", null],
                       color: "primary",
                       display: "block",
                       mb: 3,
@@ -308,7 +310,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                     "& li > a": {
                       color: "onBackgroundAlt",
                       py: "2vh",
-                      fontSize: ['5vw', "5vw", null],
+                      fontSize: ["5vw", "5vw", null],
                       textDecoration: "none",
                       position: "relative",
                       px: "30px",

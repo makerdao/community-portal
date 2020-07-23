@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React, { Fragment, useContext } from "react";
-import { jsx, Text, Box } from "theme-ui";
+import { jsx, Text, Box, Flex } from "theme-ui";
+import { Icon } from "@makerdao/dai-ui-icons";
 
 import { NavigationContext } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
@@ -11,16 +12,35 @@ const Breadcrumbs = ({ children }) => {
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
 
   return (
-    <Box>
+    <Flex
+      sx={{
+        alignItems: "center",
+        width: ["100%", "100%", "calc(100% - 234px)"],
+        mb: "28px",
+        flexWrap: "wrap",
+        fontSize: 3,
+        pr: [0, 0, "1.5rem"],
+      }}
+    >
       <Link
         to={`/${locale}/`}
-        sx={{ textDecoration: "none" }}
-        partiallyActive={true}
-        activeClassName={"active"}
+        sx={{
+          textDecoration: "none",
+          color: "textMuted",
+          fontWeight: "normal",
+          "&:hover": {
+            textDecoration: "none",
+          },
+        }}
+        partiallyActive={false}
       >
         {t("Home")}
       </Link>
-      {" / "}
+      <Icon
+        name="chevron_right"
+        size={3}
+        sx={{ mx: ["10px", "10px", "13px"] }}
+      />
       {pathDirs.map((p, index) => {
         const _data = breadcrumbData.find((n) => n.part === p);
 
@@ -42,7 +62,14 @@ const Breadcrumbs = ({ children }) => {
         //If this is the last crumb, then just render its name.
         if (index === breadcrumbData.length - 1) {
           return (
-            <Text sx={{ display: "inline-block" }} key={`breadcrumb-${index}`}>
+            <Text
+              sx={{
+                display: "inline-block",
+                fontWeight: "bold",
+                color: "text",
+              }}
+              key={`breadcrumb-${index}`}
+            >
               {`${title}${fallbackString}`}
             </Text>
           );
@@ -51,11 +78,36 @@ const Breadcrumbs = ({ children }) => {
         return (
           <Fragment key={`breadcrumb-${index}`}>
             {url ? (
-              <Link to={url} sx={{ textDecoration: "none" }}>
+              <Link
+                to={url}
+                sx={{
+                  textDecoration: "none",
+                  color: "textMuted",
+                  fontWeight: "normal",
+                  "&:hover": {
+                    textDecoration: "none",
+                  },
+                  lineHeight: "normal",
+                }}
+                partiallyActive={false}
+                activeClassName="breadcrumb-no-active"
+              >
                 {index >= 2 ? (
                   <>{`...${fallbackString}`}</>
                 ) : (
-                  `${title}${fallbackString}`
+                  <>
+                    <span
+                      sx={{
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        maxWidth: "250px",
+                      }}
+                    >
+                      {title}
+                    </span>
+                    {fallbackString}
+                  </>
                 )}
               </Link>
             ) : (
@@ -67,11 +119,11 @@ const Breadcrumbs = ({ children }) => {
                 )}
               </>
             )}
-            {` / `}
+            <Icon name="chevron_right" size={3} sx={{ mx: "13px" }} />
           </Fragment>
         );
       })}
-    </Box>
+    </Flex>
   );
 };
 
