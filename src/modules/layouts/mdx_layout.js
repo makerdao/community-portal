@@ -80,41 +80,44 @@ export default (props) => {
         </Sticky>
       )}
 
-      <Flex sx={{ flexGrow: 1, flexDirection: "column", minWidth: "80%" }}>
-        {status && (
-          <StatusBanner
-            sticky
-            {...statusProps}
-            sx={{ width: "100%" }}
-            hideSpacer
-          />
-        )}
+      <Flex sx={{ flexGrow: 1, flexDirection: "column" }}>
         <article
           sx={{
             pl: hasTopSection ? [4, 4, "64px"] : 0,
-            mt: hasTopSection ? [4, 4, "74px"] : 0,
+            mt: hasTopSection ? [4, 4, "59px"] : 0,
             pb: 4,
-            pr: 4,
+            pr: hasTopSection ? 4 : 0,
           }}
         >
-          <Flex
-            sx={{
-              justifyContent: "space-between",
-              position: "relative",
-              mb: "28px",
-              alignItems: "center",
-              mt: !renderSidenav ? "2rem" : "",
-            }}
-          >
-            {!hideBreadcrumbs && <Breadcrumbs sx={{ flexGrow: 1 }} />}
-            {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
-          </Flex>
+          {status && (
+            <Box sx={{ marginTop: hasTopSection ? 2 : 0 }}>
+              <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
+            </Box>
+          )}
+          {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) && (
+            <Flex
+              sx={{
+                justifyContent: "space-between",
+                position: "relative",
+                alignItems: "flex-start",
+                flexWrap: ["wrap", "wrap", "unset"],
+                mt: !renderSidenav ? "2rem" : "",
+                px: !hasTopSection ? [3, 3, 0] : 0,
+              }}
+            >
+              {!hideBreadcrumbs && <Breadcrumbs />}
+              {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
+            </Flex>
+          )}
           <Box
             sx={
-              renderSidenav
+              hasTopSection && !hideLanguageSelector
                 ? {
-                    "& > *nth-child(1), & > *:nth-child(2)": {
-                      maxWidth: "calc(100% - 211px)",
+                    "& > *:nth-child(1)": {
+                      lineHeight: 'normal'
+                    },
+                    "& > *:nth-child(1), & > *:nth-child(2)": {
+                      maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
                     },
                     "& > *:nth-child(2)": { mb: "32px" },
                   }

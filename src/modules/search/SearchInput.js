@@ -73,8 +73,8 @@ const SearchInput = ({ onChange, onSubmit, ...rest }) => {
           width: ["100%", "100%", "300px"],
           pr: "9px",
           pl: "5px",
-          py: ["1vw", "1vw", "9px"],
-          fontSize: [3, 5, "inherit"],
+          py: "9px",
+          fontSize: [3, 3, "inherit"],
           color: "muted",
           "&:focus": {
             color: "muted",

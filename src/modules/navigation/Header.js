@@ -213,14 +213,14 @@ const Header = () => {
 
   const mobileNavBGVariant = {
     hidden: {
-      opacity: 0.9,
+      opacity: 0.46,
       scale: 0,
-      transition: { ease: "easeInOut", duration: 0.1 },
+      transition: { ease: [0.65, 0, 0.35, 1], duration: 0.1 },
     },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { ease: "easeInOut", duration: 0.1 },
+      transition: { ease: [0.65, 0, 0.35, 1], duration: 0.32 },
     },
   };
 
@@ -242,7 +242,7 @@ const Header = () => {
         bg: "backgroundAlt",
         position: ["fixed", "fixed", "relative"],
         width: "100%",
-        zIndex: "10",
+        zIndex: "1000",
         transition: "all .32s ease-in-out",
         transform: "translateY(0px)",
         top: 0,
@@ -307,13 +307,21 @@ const Header = () => {
             onClick={hideMenu}
             sx={{
               textDecoration: "none",
+              fontWeight: "normal",
               color: "onBackgroundAlt",
             }}
           >
             <Text>{t("Home")}</Text>
           </Link>
           {headerLinks.map(({ url, title }, index) => (
-            <Link to={url} hideExternalIcon key={`header-link-${index}`}>
+            <Link
+              to={url}
+              hideExternalIcon
+              key={`header-link-${index}`}
+              sx={{
+                fontWeight: "normal",
+              }}
+            >
               {title}
             </Link>
           ))}
@@ -342,7 +350,12 @@ const Header = () => {
           />
 
           <motion.div
-            sx={{ display: ["none", "none", "inline-block"], height: '32px', width: '32px', mr: "21px",}}
+            sx={{
+              display: ["none", "none", "inline-block"],
+              height: "32px",
+              width: "32px",
+              mr: "21px",
+            }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
           >
@@ -354,7 +367,7 @@ const Header = () => {
                 p: "2px",
                 bg: colorMode !== "default" ? "transparent" : "primary",
                 color: colorMode !== "default" ? "onBackgroundAlt" : "text",
-                
+
                 minWidth: "32px",
                 minHeight: "32px",
                 cursor: "pointer",
@@ -371,7 +384,11 @@ const Header = () => {
           </motion.div>
 
           <motion.div
-            sx={{ display: ["none", "none", "inline-block"], height: '32px', width: '32px', }}
+            sx={{
+              display: ["none", "none", "inline-block"],
+              height: "32px",
+              width: "32px",
+            }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
           >
