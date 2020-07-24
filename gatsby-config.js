@@ -48,6 +48,7 @@ module.exports = {
               showInfo: false, // Optional: Hides video title and player actions.
             },
           },
+          
           `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-images`,
