@@ -21,6 +21,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         fontSize: "20px",
         borderBottom: "1px solid",
         borderColor: "muted",
+        mb: 4,
         backgroundColor: "background",
       }}
     >
