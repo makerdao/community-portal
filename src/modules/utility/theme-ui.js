@@ -4,9 +4,8 @@ import Prism from "@theme-ui/prism";
 import maker from "@makerdao/dai-ui-theme-maker";
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
-
-const components = {
-  pre: (props) => props.children,
+const components = { 
+  pre: (props) => props.children, 
   code: Prism,
 };
 
@@ -278,68 +277,111 @@ const theme = {
       cursor: "pointer",
       outline: "none",
       fontFamily: "body",
-      fontSize: 2,
-      borderRadius: "round",
-      p: 3,
-      py: 2,
-      color: "text",
-      fontWeight: "bold",
+      borderRadius: "32px",
+      py: '15px',
+      px: 4,
+      color: "onPrimary",
+      fontWeight: "600",
+      fontSize: 3,
       letterSpacing: "0.03em",
+      lineHeight: "19px",
       bg: "primary",
       "&:hover": {
         bg: "primaryEmphasis",
+        textDecoration: "none",
+        color: "onPrimary",
+        transition: ".1s ease",
       },
       "&:active": {
+        color: "onPrimary",
+        textDecoration: "none",
+        boxShadow: "raised",
         bg: "primaryEmphasis",
+        transition: ".1s ease",
       },
-      "&:disabled": {
+      "&:disabled": { 
         bg: "primaryMuted",
         color: "muted",
         pointerEvents: "none",
         cursor: "not-allowed",
       },
     },
-
+    secondary: {
+      variant: "buttons.primary",
+      bg: "secondary",
+      "&:hover": {
+        color: "onPrimary",
+        textDecoration: "none",
+        bg: "secondaryEmphasis",
+        transition: ".1s ease",
+      },
+      "&:active": {
+        color: "onPrimary",
+        textDecoration: "none",
+        boxShadow: "raised",
+        transition: ".1s ease",
+      },
+      "&:disabled": {
+        bg: "secondaryMuted",
+        color: "muted",
+        pointerEvents: "none",
+        cursor: "not-allowed",
+      },
+    },
     outline: {
       variant: "buttons.primary",
       bg: "background",
       color: "text",
       border: "1px solid",
       borderColor: "text",
-      borderRadius: "round",
       "&:hover": {
+        color: "text",
+        textDecoration: "none",
         bg: "primaryMuted",
+        transition: ".1s ease",
       },
       "&:active": {
-        bg: "#primaryMuted",
+        color: "text",
+        textDecoration: "none",
+        bg: "primaryMuted",
+        boxShadow: "raised",
+        transition: ".1s ease",
       },
       "&:disabled": {
-        bg: "surface",
-        pointerEvents: "none",
-        cursor: "not-allowed",
-        color: "muted",
         borderColor: "muted",
-        opacity: 0.5,
-      },
-    },
-
-    secondary: {
-      variant: "buttons.primary",
-      color: "textAlt",
-      bg: "#291a41",
-      borderRadius: "round",
-      "&:hover": {
-        bg: "#534868",
-      },
-      "&:active": {
-        bg: "#150332",
-      },
-      "&:disabled": {
-        bg: "#a9a3b3",
+        color: "muted",
         pointerEvents: "none",
         cursor: "not-allowed",
       },
     },
+    primarySmall: {
+      variant: "buttons.primary",
+      py: 2,
+      px: '24px',
+      fontSize: '10px',
+      letterSpacing: '1px',
+      textTransform: 'uppercase',
+      lineHeight: '12px',
+    },
+    outlineSmall: {
+      variant: "buttons.outline",
+      py: 2,
+      px: '24px',
+      fontSize: '10px',
+      letterSpacing: '1px',
+      textTransform: 'uppercase',
+      lineHeight: '12px',
+    },
+    icon_primary: {
+      variant: "buttons.primary"
+    },
+    icon_secondary: {
+      variant: "buttons.secondary"
+    },
+    icon_outline: {
+      variant: "buttons.outline"
+    }
+
   },
 };
 

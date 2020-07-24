@@ -355,6 +355,7 @@ const Header = () => {
               height: "32px",
               width: "32px",
               mr: "21px",
+              backfaceVisibility: 'hidden'
             }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
@@ -388,6 +389,7 @@ const Header = () => {
               display: ["none", "none", "inline-block"],
               height: "32px",
               width: "32px",
+              backfaceVisibility: 'hidden'
             }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
