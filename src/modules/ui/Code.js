@@ -5,13 +5,14 @@ import { jsx, Box } from "theme-ui";
 
 const Code = ({ children }) => {
   return (
-    <pre sx={{ display: "inline-block", width: "100%" }}>
+    <pre sx={{ display: "inline-block" }}>
       <Box
         as="code"
         sx={{
           color: "codeText",
           bg: "codeBG",
           fontSize: 3,
+          fontWeight: 600,
           fontFamily: "Roboto Mono",
           p: 1,
           px: 2,
