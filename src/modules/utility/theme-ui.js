@@ -10,13 +10,14 @@ const components = {
 };
 
 const prismPreset = {
-  color: "background", backgroundColor: "codeBG",
+  color: "codeText",
+  backgroundColor: "codeBG",
   ".selector, .attr-name, .string, .char, .builtin, .inserted": {
     color: "primaryEmphasis",
   },
   // comments and characters like <, =>, (), etc
   ".prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url": {
-    color: "background",
+    color: "codeText",
   },
   ".comment": {
     fontStyle: "italic",
@@ -33,6 +34,7 @@ const prismPreset = {
   },
 
   fontSize: 3,
+  fontWeight: '600',
   fontFamily: "Roboto Mono",
   overflow: "auto",
   p: 3,
@@ -216,6 +218,7 @@ const theme = {
         statusBG: "#291A42",
         statusColor: "#FFFFFF",
         codeBG: "#00585E",
+        codeText: "#FFFFFF",
         onPrimary: "#291A42",
       },
     },
