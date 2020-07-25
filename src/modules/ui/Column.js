@@ -8,10 +8,12 @@ const Column = ({ children }) => {
   const containerStyles = {
     borderRadius: "12px",
     color: "textMuted",
-    bg: 'surface',
+    bg: 'surfaceAlt',
     px: '27px',
     py: '10px',
     boxShadow: 'raised',
+    border: '1px solid',
+    borderColor: 'muted',
     "& > *:only-child, & >*:only-child > *": { m: 0 },
   };
 
@@ -37,6 +39,8 @@ const Column = ({ children }) => {
                 borderRadius: "12px",
                 overflow: "hidden",
                 boxShadow: 'raised',
+                border: '1px solid',
+                borderColor: 'muted',
               }}
             >
               <Box
@@ -58,7 +62,7 @@ const Column = ({ children }) => {
                   px: '27px',
                   pt: 3,
                   pb: '27px',
-                  bg: 'surface',
+                  bg: 'surfaceAlt',
                   color: 'textMuted',
                   "& > *:only-child, & > *:last-child": {
                     m: 0,
