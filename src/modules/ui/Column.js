@@ -4,53 +4,49 @@ import { Box, Grid, jsx } from "theme-ui";
 
 const Column = ({ children }) => {
   const _Children = React.Children.toArray(children);
+
   const containerStyles = {
-    borderRadius: "4px",
-    color: "text",
-    p: 3,
-    border: "1px solid",
-    borderColor: "muted",
-    "& > ul, & > ol, & > *:not(ul) > ul, & > *:not(ol) > ul": { p: 0, pl: 3 },
+    borderRadius: "12px",
+    color: "textMuted",
+    bg: 'surface',
+    px: '27px',
+    py: '10px',
+    boxShadow: 'raised',
     "& > *:only-child, & >*:only-child > *": { m: 0 },
   };
 
+  const desktopColumns = _Children.length > 1 ? [2, "1fr 1fr"] : [1, "1fr"];
+
   return (
     <Grid
-      gap={"27px"}
+      gap={"24px"}
       sx={{ mb: 4 }}
-      columns={_Children.length > 1 ? [2, "1fr 1fr"] : [1, "1fr"]}
+      columns={[[1, "1fr"], [1, "1fr"], desktopColumns]}
     >
-      {_Children.map((child) => {
+      {_Children.map((child, index) => {
         const childChildren = React.Children.toArray(child.props.children);
+        if (typeof child.props.children !== 'string' && childChildren.length > 0) {
 
-        if (
-          (child.props.mdxType === "ul" || child.props.mdxType === "ol") &&
-          childChildren[0] &&
-          childChildren[0].props.mdxType === "li"
-        ) {
-          const LIChild = childChildren[0];
-          const LIChildren = React.Children.toArray(LIChild.props.children);
 
-          const headerElement = LIChildren[0];
-          const childElements = LIChildren.slice(1);
+          const headerElement = childChildren[0];
+          const childElements = childChildren.slice(1);
 
           return (
             <Box
               sx={{
-                borderRadius: "4px",
+                borderRadius: "12px",
                 overflow: "hidden",
-                border: "1px solid",
-                borderColor: "muted",
+                boxShadow: 'raised',
               }}
             >
               <Box
                 className="headerElement"
                 sx={{
-                  color: "text",
-                  bg: "text",
-                  padding: "8px 16px",
-                  borderBottom: "1px solid",
-                  borderColor: "muted",
+                  color: "onPrimary",
+                  bg: "primary",
+                  pt: '15px',
+                  pb: 2,
+                  px: '27px',
                   "& > *:only-child, & > *:only-child > *": { m: 0 },
                 }}
               >
@@ -59,16 +55,15 @@ const Column = ({ children }) => {
 
               <Box
                 sx={{
-                  p: 3,
-                  "& > *:only-child, & >*:only-child > *, & >ul>li > * > *:last-child": {
+                  px: '27px',
+                  pt: 3,
+                  pb: '27px',
+                  bg: 'surface',
+                  color: 'textMuted',
+                  "& > *:only-child, & > *:last-child": {
                     m: 0,
-                  },
-                  "& > ul > li > * > ul": {
-                    listStyleType: "disc",
-                    p: 0,
-                    pl: 3,
-                  },
-                  "& > ul, & > ol": { p: 0, listStyleType: "none" },
+                    
+                  }
                 }}
               >
                 {childElements}
