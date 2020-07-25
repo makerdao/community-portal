@@ -33,7 +33,7 @@
     "gatsby-remark-embed-video": "^3.0.10",
     "gatsby-remark-images": "^3.3.19",
     "gatsby-remark-responsive-iframe": "^2.4.11",
-    "gatsby-source-filesystem": "^2.3.19",
+    "gatsby-source-filesystem": "^2.3.23",
     "gatsby-transformer-json": "^2.4.11",
     "gatsby-transformer-remark": "^2.8.25",
     "gatsby-transformer-sharp": "^2.5.11",
