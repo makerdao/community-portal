@@ -289,7 +289,9 @@ const Header = () => {
           }}
           aria-label={t("aria_MakerLogo")}
         >
-          <Icon name="maker" color="primary" size={"52px"} />
+          <motion.div whileTap={{scale: 0.9}} whileHover={{scale: 1.064}} sx={{backfaceVisibility: 'hidden'}}>
+            <Icon name="maker" color="primary" size={"52px"} />
+          </motion.div>
         </Link>
         <Flex
           sx={{

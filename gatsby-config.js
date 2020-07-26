@@ -11,8 +11,9 @@ module.exports = {
   siteMetadata: {
     title: `MakerDAO Community Portal`,
     description: `A Community of developers, designers, innovators, and just about everything cool under the sun. Come join our team!`,
-    author: `Réjon Taylor-Foster (@Maximum_Crash) & MakerDAO Commuminty Development Team`,
+    author: `MakerDAO Commuminty Development Team`,
     copyright: "",
+    websiteURL: ""
   },
   plugins: [
     {
@@ -22,12 +23,28 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/content`,
+        ignore: {
+          patterns: [
+            `**/header.mdx`,
+            `**/**.js`,
+            `**/**.json`,
+            `**/404.mdx`,
+            `**/example.mdx`,
+            `**/footer.mdx`,
+            `**/**.pptx`,
+          ],
+          options: { nocase: true },
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-responsive-iframe`,
-    "gatsby-remark-embed-video",
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -79,47 +96,47 @@ module.exports = {
         display: `standalone`,
         "icons": [
           {
-            "src": "images/icons/icon-72x72.png",
+            "src": "../static/images/icons/icon-72x72.png",
             "sizes": "72x72",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-96x96.png",
+            "src": "../static/images/icons/icon-96x96.png",
             "sizes": "96x96",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-128x128.png",
+            "src": "../static/images/icons/icon-128x128.png",
             "sizes": "128x128",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-144x144.png",
+            "src": "../static/images/icons/icon-144x144.png",
             "sizes": "144x144",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-152x152.png",
+            "src": "../static/images/icons/icon-152x152.png",
             "sizes": "152x152",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-192x192.png",
+            "src": "../static/images/icons/icon-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-384x384.png",
+            "src": "../static/images/icons/icon-384x384.png",
             "sizes": "384x384",
             "type": "image/png"
           },
           {
-            "src": "images/icons/icon-512x512.png",
+            "src": "../static/images/icons/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
           },
           {
-            "src": "images/icons/maskable_icon.png",
+            "src": "../static/images/icons/maskable_icon.png",
             "sizes": "640x640",
             "type": "image/png",
             "purpose": "any maskable"
@@ -127,32 +144,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: ["Roboto Mono"],
-        display: "swap",
-      },
-    },
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: `${__dirname}/content`,
-        ignore: {
-          patterns: [
-            `**/header.mdx`,
-            `**/**.js`,
-            `**/**.json`,
-            `**/404.mdx`,
-            `**/example.mdx`,
-            `**/footer.mdx`,
-            `**/**.pptx`,
-          ],
-          options: { nocase: true },
-        },
-      },
-    },
-
     {
       //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
       resolve: `gatsby-plugin-alias-imports`,
@@ -266,7 +257,7 @@ module.exports = {
         // cookieDomain: "makerdao.com",
       },
     },
-
+    'gatsby-plugin-preload-link-crossorigin',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,

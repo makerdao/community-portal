@@ -4,9 +4,9 @@ import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-import { SEO } from "@modules/utility";
+import Layout from '@modules/layouts/site_layout'
 import { LanguageSelector } from "@modules/localization";
-import { Sidenav, Breadcrumbs, NavigationProvider } from "@modules/navigation";
+import { Sidenav, Breadcrumbs} from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
@@ -56,14 +56,16 @@ export default (props) => {
     currentTopSection !== undefined && currentTopSection !== "";
   const renderSidenav = hasTopSection && !hideSidenav;
 
+  const seo = {
+    title: _pageTitle,
+    description, 
+    keywords,
+    featuredImage
+  };
+
+
   return (
-    <NavigationProvider>
-      <SEO
-        title={_pageTitle}
-        description={description}
-        keywords={keywords}
-        featuredImage={featuredImage}
-      />
+    <Layout seo={seo}>
       {renderSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
@@ -128,6 +130,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </NavigationProvider>
+    </Layout>
   );
 };

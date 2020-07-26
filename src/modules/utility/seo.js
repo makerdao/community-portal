@@ -11,7 +11,9 @@ import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import { useThemeUI } from "theme-ui";
 
-function SEO({ description, lang, meta, title, keywords }) {
+import favicon from '@modules/utility/favicon.ico';
+
+function SEO({ description, lang, meta, title, keywords, url }) {
   const { theme } = useThemeUI();
   const { site } = useStaticQuery(
     graphql`
@@ -60,7 +62,15 @@ function SEO({ description, lang, meta, title, keywords }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          property: "og:url",
+          content: url || site.siteMetadata.websiteURL
+        },
+        {
+          property: `twitter:url`,
+          content: url || site.siteMetadata.websiteURL
         },
         {
           name: `twitter:creator`,
@@ -79,7 +89,9 @@ function SEO({ description, lang, meta, title, keywords }) {
           content: theme.colors.primary,
         },
       ].concat(meta)}
-    />
+    >
+      <link rel="icon" href={favicon} />
+    </Helmet>
   );
 }
 
