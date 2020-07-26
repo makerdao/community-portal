@@ -17,5 +17,16 @@
     "alt_altImage": "Alternate Tout Image"
   },
   "404": "404 Page Not Found",
-  "Back_To_Main_Menu": "Back to Main Menu"
+  "Back_To_Main_Menu": "Back to Main Menu",
+  "aria_MakerHomeIcon": "MakerDao Home Icon",
+  "aria_MakerFooterLogo": "MakerDao Footer Logo",
+  "aria_GithubIcon": "Github",
+  "aria_TwitterIcon": "Twitter",
+  "aria_MediumIcon": "Medium",
+  "aria_YoutubeIcon": "Youtube",
+  "aria_WeChatIcon": "WeChat",
+  "aria_TelegramIcon": "Telegram",
+  "aria_RedditIcon": "Reddit",
+  "aria_RocketChatIcon": "Rocket Chat",
+  "aria_ExternalWebsite": "External Website"
 }

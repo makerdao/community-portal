@@ -287,6 +287,7 @@ const Header = () => {
             width: "52px",
             height: "52px",
           }}
+          aria-label={t("aria_MakerLogo")}
         >
           <Icon name="maker" color="primary" size={"52px"} />
         </Link>

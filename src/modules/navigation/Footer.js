@@ -9,7 +9,7 @@ import { useTranslation } from "@modules/localization";
 import { getLinkIcon, Link } from "@modules/navigation";
 
 const Footer = () => {
-  const { locale, DEFAULT_LOCALE } = useTranslation();
+  const { locale, DEFAULT_LOCALE, t } = useTranslation();
 
   const { footerFiles, socialLinks } = useStaticQuery(graphql`
     query FooterQuery {
@@ -103,7 +103,14 @@ const Footer = () => {
             "& > *, & svg": { color: "onBackgroundAlt" },
           }}
         >
-          <Link to="/" sx={{ display: "inline-block", mb: "31px" }}>
+          <Link 
+            to="/" 
+            sx={{ 
+              display: "inline-block", 
+              mb: "31px",
+            }}
+            aria-label={t("aria_MakerFooterLogo")}
+          >
             <Icon
               name="makerLogo"
               sx={{ width: "217px", height: "30px", display: "block" }}

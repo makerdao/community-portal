@@ -10,8 +10,8 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `MakerDAO Community Portal`,
-    description: `Gatsby DaiUI Starter`,
-    author: `Réjon Taylor-Foster (@Maximum_Crash)`,
+    description: `A Community of developers, designers, innovators, and just about everything cool under the sun. Come join our team!`,
+    author: `Réjon Taylor-Foster (@Maximum_Crash) & MakerDAO Commuminty Development Team`,
     copyright: "",
   },
   plugins: [
@@ -53,9 +53,6 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              backgroundColor: "none",
-              disableBgImage: true,
-              showCaptions: ["Title"],
               maxWidth: 1000,
               linkImagesToOriginal: false,
               wrapperStyle: (result) => `margin: unset;`,
@@ -73,10 +70,61 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby + Dai-Ui Starter`,
-        short_name: `Gatsby + Dai-Ui`,
+        name: `MakerDAO Community Portal`,
+        short_name: `MKD Comm Portal`,
         start_url: `/`,
-        display: `minimal-ui`, // This path is relative to the root of the site.
+        background_color: "#291a42", 
+        theme_color: "#5AE2CA",
+        Scope: "/",
+        display: `standalone`,
+        "icons": [
+          {
+            "src": "images/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          },
+          {
+            "src": "images/icons/maskable_icon.png",
+            "sizes": "640x640",
+            "type": "image/png",
+            "purpose": "any maskable"
+          }
+        ],
       },
     },
     {
@@ -221,7 +269,7 @@ module.exports = {
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
     `gatsby-plugin-catch-links`,
   ],
