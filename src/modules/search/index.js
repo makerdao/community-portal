@@ -167,20 +167,20 @@ export default function Search({ onClick, ...otherProps }) {
         prevState < results.length - 1 ? prevState + 1 : prevState
       );
     }
-  }, [downPress]);
+  }, [downPress, results.length]);
 
   useEffect(() => {
     if (results.length > 0 && upPress) {
       setCursor(prevState => (prevState > 0 ? prevState - 1 : prevState));
     }
-  }, [upPress]);
+  }, [upPress, results.length]);
 
   useEffect(() => {
     if (results.length > 0 && enterPress) {
       navigate(results[cursor].url);
       setFocus(false);
     }
-  }, [cursor, enterPress]);
+  }, [cursor, enterPress, results, navigate]);
 
   return (
     <Flex

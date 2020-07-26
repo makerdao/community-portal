@@ -35,10 +35,9 @@ const prismPreset = {
 
   fontSize: 3,
   fontWeight: '600',
-  fontFamily: "Roboto Mono",
+  fontFamily: "monospace",
   overflow: "auto",
   p: 3,
-  pt: 0,
   mt: 0,
   borderRadius: "4px",
 };

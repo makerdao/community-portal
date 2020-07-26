@@ -3,12 +3,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Flex, jsx } from "theme-ui";
+import { SEO } from "@modules/utility";
 
-import { Header, Footer } from "@modules/navigation";
-import NavigationProvider from "@modules/navigation/context";
+import { Header, Footer, NavigationProvider } from "@modules/navigation";
 
-const Layout = ({ children }) => (
-  <NavigationProvider>
+const Layout = ({ children, seo }) => (
+    <NavigationProvider>
     <Flex
       sx={{
         flexDirection: "column",
@@ -16,6 +16,7 @@ const Layout = ({ children }) => (
         height: "100%",
       }}
     >
+      <SEO {...seo} />
       <Header />
       <Flex
         as="main"
@@ -34,7 +35,7 @@ const Layout = ({ children }) => (
       </Flex>
       <Footer />
     </Flex>
-  </NavigationProvider>
+    </NavigationProvider>
 );
 
 Layout.propTypes = {

@@ -13,7 +13,7 @@ const Code = ({ children }) => {
           bg: "codeBG",
           fontSize: 3,
           fontWeight: 600,
-          fontFamily: "Roboto Mono",
+          fontFamily: "monospace",
           p: 1,
           px: 2,
           mt: 0,

@@ -10,9 +10,10 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `MakerDAO Community Portal`,
-    description: `Gatsby DaiUI Starter`,
-    author: `Réjon Taylor-Foster (@Maximum_Crash)`,
+    description: `A Community of developers, designers, innovators, and just about everything cool under the sun. Come join our team!`,
+    author: `MakerDAO Commuminty Development Team`,
     copyright: "",
+    websiteURL: ""
   },
   plugins: [
     {
@@ -22,12 +23,28 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/content`,
+        ignore: {
+          patterns: [
+            `**/header.mdx`,
+            `**/**.js`,
+            `**/**.json`,
+            `**/404.mdx`,
+            `**/example.mdx`,
+            `**/footer.mdx`,
+            `**/**.pptx`,
+          ],
+          options: { nocase: true },
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-responsive-iframe`,
-    "gatsby-remark-embed-video",
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -53,9 +70,6 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              backgroundColor: "none",
-              disableBgImage: true,
-              showCaptions: ["Title"],
               maxWidth: 1000,
               linkImagesToOriginal: false,
               wrapperStyle: (result) => `margin: unset;`,
@@ -73,38 +87,24 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby + Dai-Ui Starter`,
-        short_name: `Gatsby + Dai-Ui`,
-        start_url: `/`,
-        display: `minimal-ui`, // This path is relative to the root of the site.
+        name: `MakerDAO Community Portal`,
+        short_name: `MKD Comm Portal`,
+        start_url: `.`,
+        background_color: "#291a42", 
+        theme_color: "#5AE2CA",
+        Scope: "/",
+        display: `standalone`,
+        icon: 'static/images/icons/icon-512x512.png',
+        "icons": [
+            {
+            "src": "images/icons/maskable_icon.png",
+            "sizes": "640x640",
+            "type": "image/png",
+            "purpose": "any maskable"
+          }
+        ]
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: ["Roboto Mono"],
-        display: "swap",
-      },
-    },
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: `${__dirname}/content`,
-        ignore: {
-          patterns: [
-            `**/header.mdx`,
-            `**/**.js`,
-            `**/**.json`,
-            `**/404.mdx`,
-            `**/example.mdx`,
-            `**/footer.mdx`,
-            `**/**.pptx`,
-          ],
-          options: { nocase: true },
-        },
-      },
-    },
-
     {
       //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
       resolve: `gatsby-plugin-alias-imports`,
@@ -218,10 +218,10 @@ module.exports = {
         // cookieDomain: "makerdao.com",
       },
     },
-
+    'gatsby-plugin-preload-link-crossorigin',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
     `gatsby-plugin-catch-links`,
   ],
