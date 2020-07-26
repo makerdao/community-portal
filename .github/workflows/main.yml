@@ -5,7 +5,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
     
 jobs:
-  poolparty:
+  lifeguard:
     if: github.base_ref == 'r2d' || github.base_ref == 'master' || github.base_ref == 'production'
     runs-on: ubuntu-16.04
     
