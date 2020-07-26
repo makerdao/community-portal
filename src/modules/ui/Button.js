@@ -48,6 +48,7 @@ const Button = ({
       sx={{
         whiteSpace: "nowrap",
         display: inline ? "inline-block" : "block",
+        mr: inline ? 3 : 0
       }}
     >
     <motion.div whileTap={{scale: 0.9}} whileHover={{scale: 1.064}} sx={{mb: 3, backfaceVisibility: 'hidden'}}>
