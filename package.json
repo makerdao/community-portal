@@ -23,7 +23,7 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-lunr": "^1.5.2",
     "gatsby-plugin-manifest": "^2.4.18",
-    "gatsby-plugin-mdx": "^1.2.27",
+    "gatsby-plugin-mdx": "^1.2.29",
     "gatsby-plugin-offline": "^3.2.18",
     "gatsby-plugin-page-creator": "^2.3.7",
     "gatsby-plugin-react-helmet": "^3.3.10",
