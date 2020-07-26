@@ -44,7 +44,7 @@ const prismPreset = {
 
 const theme = {
   ...maker, //<- Your default theme.
-  // useColorSchemeMediaQuery: true,
+  useColorSchemeMediaQuery: true,
   breakpoints: ["640px", "932px", "infinity"],
   icons: {
     ...themeIcons,

@@ -3,10 +3,7 @@ import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { jsx, ThemeProvider } from "theme-ui";
 
-import Layout from "@modules/layouts/site_layout";
 import { TranslationProvider } from "@modules/localization";
-import {NavigationProvider} from '@modules/navigation';
-import { Location } from '@reach/router'
 
 import shortcodes from "@modules/ui/shortcodes";
 import { ThemeUIConfig } from "@modules/utility";

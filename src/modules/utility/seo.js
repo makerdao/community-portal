@@ -11,7 +11,6 @@ import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import { useThemeUI } from "theme-ui";
 
-import favicon from '@modules/utility/favicon.ico';
 
 function SEO({ description, lang, meta, title, keywords, url }) {
   const { theme } = useThemeUI();
@@ -90,7 +89,7 @@ function SEO({ description, lang, meta, title, keywords, url }) {
         },
       ].concat(meta)}
     >
-      <link rel="icon" href={favicon} />
+      <link rel="icon" href={"/images/icons/favicon.ico"} />
     </Helmet>
   );
 }
