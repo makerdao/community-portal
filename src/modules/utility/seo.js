@@ -5,14 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-import {useThemeUI} from 'theme-ui'
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
+import { useThemeUI } from "theme-ui";
 
-function SEO({ description, lang, meta, title, keywords }) {
-  const {theme} = useThemeUI();
+function SEO({ description, lang, meta, title, keywords, url }) {
+  const { theme } = useThemeUI();
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,9 +26,9 @@ function SEO({ description, lang, meta, title, keywords }) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
@@ -45,10 +46,10 @@ function SEO({ description, lang, meta, title, keywords }) {
         {
           property: `og:title`,
           content: title,
-        },  
+        },
         {
           property: `keywords`,
-          content: keywords
+          content: keywords,
         },
         {
           property: `og:description`,
@@ -60,7 +61,15 @@ function SEO({ description, lang, meta, title, keywords }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          property: "og:url",
+          content: url || site.siteMetadata.websiteURL,
+        },
+        {
+          property: `twitter:url`,
+          content: url || site.siteMetadata.websiteURL,
         },
         {
           name: `twitter:creator`,
@@ -75,25 +84,27 @@ function SEO({ description, lang, meta, title, keywords }) {
           content: metaDescription,
         },
         {
-          name: 'theme-color',
-          content: theme.colors.primary
+          name: "theme-color",
+          content: theme.colors.primary,
         },
       ].concat(meta)}
-    />
-  )
+    >
+      <link rel="icon" href={"/images/icons/favicon.ico"} />
+    </Helmet>
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default SEO
+export default SEO;

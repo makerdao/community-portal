@@ -1,16 +1,20 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- * 
- * NOTE(Rejon): Anything that wraps the element passed in 
- * the wrapElement method here will NOT receive ThemeUI context.
- */
-import React from 'react'
-import {PageDataProvider} from "@modules/layouts/PageContext"
+//** @jsx jsx */
+import React from "react";
+import { MDXProvider } from "@mdx-js/react";
+import { jsx, ThemeProvider } from "theme-ui";
 
-export const wrapPageElement = ({element, props}) => (
-	<PageDataProvider value={props}>
-		{element}
-	</PageDataProvider>
-)
+import { TranslationProvider } from "@modules/localization";
+
+import shortcodes from "@modules/ui/shortcodes";
+import { ThemeUIConfig } from "@modules/utility";
+
+//Load our Primsjs css and Fonts
+import "@modules/layouts/global.css"; //<- Load in Prismjs css. Our custom styles have to be loaded this way cause Prismjs is blackboxed from our own code.
+
+export const wrapRootElement = ({ element }) => (
+  <ThemeProvider {...ThemeUIConfig}>
+    <MDXProvider components={shortcodes}>
+      <TranslationProvider>{element}</TranslationProvider>
+    </MDXProvider>
+  </ThemeProvider>
+);

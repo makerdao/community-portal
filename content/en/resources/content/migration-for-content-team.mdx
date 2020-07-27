@@ -1,0 +1,69 @@
+---
+title: MakerDAOEXTREEMME
+---
+
+# Migration from .md to MakerDAOEXTREEMME (.mdx)files
+
+## Setting up Local development
+
+Let's set up local development environments! Being able to hotload your changes into a local website is no small feat and is kind of a badass skill. [Here is Gatsby's guide to doing basically everything in this doc](https://www.gatsbyjs.org/tutorial/) it's elegant, thorough, and helfpul AF. Plus it's like a half hour, tops, of following directions and installing things.
+
+### The terminal
+
+🤨 ** i see you're reading on... **
+
+If one hasn't done anything before in the terminal, recognize that it's the pinnacle of laziness & elegance. Developers literally have set this thing up to run on as few characters as possible. Our devs, specifically, have set community contributors to use even fewer commands.
+
+If you're lazy (congratulations 🎊 ) , then here the short-short guide to Installs
+
+- [VS code](https://code.visualstudio.com/download)
+  - IDE's with the best text highlighting experience, and development ease/packages/extensions/themes, borders on an obsession. so, download packages/extensions at one's own discretion. Generally it's best to have:
+    - A linter
+    - A prettier extension
+    - Something to enable terminal(the shell) in your IDE
+    - A theme <-- this is where the obsessions start
+- [homebrew](https://brew.sh/)
+  - Little package manager that makes life so much easier. Also, it allows package installs for everything this portal needs.
+- [node.js](https://nodejs.org/en/)
+  - the underlying architecture under the hood is react.js. Both Nodejs and React are javascript languages that can be executed both client and server-side. Developers can execute the Reactjs code directly in the Nodejs environment. The React DOM has components specifically designed to work with Nodejs that reduce lines of code, making server-side rendering comparatively easy.
+
+```shell
+brew install node
+```
+
+- [yarn](https://yarnpkg.com/)
+  - A simpler package manager with some fancy sauce on it in the comm-dev instance. Let's do command line for yarn too 🤭
+
+```shell
+brew install yarn
+{or}
+npm install -g yarn
+```
+
+- [Gatsby]()
+  - Let's install gatsby via terminal, keeping those terminal command skils sharp.
+
+```shell
+npm install -g gatsby-cli
+```
+
+### I pressed buttons, now what??
+
+By this point all the dependencies should be downloaded. let's get our hands dirty
+
+[clone that community repo](https://github.com/makerdao/community-portal) and get building in the IDE! Getting started is as simple as entering the commands `yarn` then `yarn start` in the terminal. So head to terminal and run those commands in order.
+
+Normally there is a flurry of activity in the terminal and eventually some pages that say success.
+
+![](https://i.imgur.com/EL88h6k.png)
+
+Navigate to localhost:8000 in the web browser of choice. :boom: Boom, you just built your local environment. Now when editing an .mdx file and hitting save, Gatsby will do all the work to render the site for you with all the new **_glorious_** changes.
+
+### Common commands to fix things
+
+- `yarn` before you `yarn start`
+- `yarn clean`
+- `gatsby clean`
+- Possibly you'll need to delete the packagelock.json file. then run those clean commands again.
+- We've seen multiple terminal windows open with `yarn start` then the browser says no and a bunch of errors return. Close one of the terminals and try it all again.
+- Occasionally closing VScode and the browser will fix things, in addition to the commands above. _The :black_square_button: turn off :white_square_button: turn on of local builds._

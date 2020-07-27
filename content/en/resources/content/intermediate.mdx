@@ -1,0 +1,872 @@
+---
+order: 4
+---
+
+# Intermediate
+
+Our Basic guide showed how Callouts and CTAs require each piece of content to start on a new line.
+This is because each new mdx line is interpreted as a new **child** when it is passed to the magic box which
+turns it into a React component. This means, when using more advanced components, you'll need to be aware not
+just of the props you're specifying in the actual tag, like `primaryOutline` or `icon`, but also the order
+in which you write the content in each component and **leaving new lines between each separate piece**.
+
+<Aligner xCenter sx={{marginBottom: 3}}>
+
+<Image src="../../../images/children.jpg" />
+
+</Aligner>
+
+## Lists
+
+The list component is an example of why mdx having an opinion in how it renders components works
+in our favor. With mdx, we can order our children consistently.
+This allows us to create smart hooks for rendering each element, which is a fancy way of saying that
+we can create really beautiful lists with more functionality and visual pizzaz than you could ever
+dream of having in normal md files. Let's dive right in.
+
+The rule is **scripting and composition come FIRST**, which just means that you can use the list component
+in the same way you'd write lists normally. Generally we write lists beginning with a hyphen in md. You can use the hyphen,
+or not, when writing content in our `List` component - either way it will render the same thing:
+
+```md:title=basic-list.mdx
+<List>
+
+Hello World
+
+</List>
+
+<List>
+
+Header
+
+Sub Content
+
+</List>
+
+<List>
+
+<Link to="/">
+
+Hello World
+
+</Link>
+
+</List>
+```
+
+All end up looking like this:
+
+<List>
+
+Hello World
+
+</List>
+
+<List>
+
+<Box>
+
+Header
+
+Sub Content
+
+</Box>
+
+</List>
+
+<List>
+
+<Link to="/">
+
+Hello World
+
+</Link>
+
+</List>
+
+If you want a list element with sub content, that's easy enough to organise:
+
+```md:title=subcontent-list.mdx
+<List>
+
+<Box>
+
+Header
+
+Sub content
+
+</Box>
+
+</List>
+```
+
+Which renders like this:
+
+<List>
+
+<Box>
+
+Header
+
+Sub content
+
+</Box>
+
+</List>
+
+For more complex sub content, we recommend using a Box:
+
+<List>
+
+Element Header
+
+<Box>
+      
+<CTA> How About This? </CTA>
+
+<List>A list in a list?!</List>
+
+</Box>
+
+</List>
+
+---
+
+<List>
+
+<Box>
+
+Element Header
+
+<Box>
+
+<CTA> How About? </CTA>
+
+<List>
+
+A list in a list?!
+
+</List>
+
+</Box>
+
+</Box>
+
+</List>
+
+Want to render a few links? Easy! It's important to see, however, that
+these are links that are only in content, and not a Link Element (see more on this below).
+
+```md:title=list-of-links.mdx
+<List>
+ 
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+</List>
+```
+
+Which ends up looking like this:
+
+<List>
+ 
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+<Box>
+
+<Link to="/">Writing style guide →</Link>
+
+</Box>
+
+</List>
+
+<CTA>
+
+NOTE: Mind the gap! There should be a gap between list elements that will be on the same level
+or mdx will not recognize them as seperate elements.
+
+</CTA>
+
+It's possible to have an entire list element be a link by providing the Link component like so:
+
+```md:title=list-as-link.mdx
+<List>
+
+<Link to="https://makerdao.com">
+
+MakerDao
+
+</Link>
+
+<Link to="/learn">
+
+Learn
+
+</Link>
+
+</List>
+```
+
+<CTA>
+
+NOTE: Mind the even bigger gap! There should be 2 new lines between each link as a list item
+otherwise mdx will only render the first item in your list and nothing else!
+
+</CTA>
+
+Which both end up looking like this:
+
+<List>
+
+<Link to="https://makerdao.com">
+
+MakerDao
+
+</Link>
+
+<Link to="/learn">
+
+Learn
+
+</Link>
+
+</List>
+
+These links are also capable of having subcontent as well:
+
+<List>
+
+<Link to="https://makerdao.com">
+
+MakerDao
+
+Sub content
+
+</Link>
+
+<Link to="/learn">
+
+Learn
+
+subcontent
+
+</Link>
+
+</List>
+
+If all this isn't enough to blow your hair back, there's some extra flair:
+
+1. If the link is external, the arrow icon will point up-right to mimic the design language of other external links on the website.
+2. If you hover over the elements I added some minor juice to make the arrows move.
+
+### Differences between Ordered Lists and Unordered Lists
+
+There are none at the moment. The List component recognizes each type and renders
+them the same. Check out [this PR](https://github.com/makerdao/community-portal/pull/45) for further
+examples of all the crazy things you can put in our list component and to deepend your understanding
+and appreciation of children.
+
+We also DO NOT want to replace the expected behavior of how unordered lists and ordered lists
+written outside of the context of the list component or its sub-content.
+
+## Accordion
+
+So you want to make a list, but with a lot of content, and you don't want to take up a lot of space
+on the page? Sounds like you need a collapsable accordion menu... The Accordion component is ultra simple and
+scripting works with the same child rule. Except this time:
+
+1. The first child that appears is the header of the accordion.
+2. Everything AFTER the first child will be included in the collapsable content.
+
+```md:title=accordion.mdx
+<Accordion>
+
+## Hello World
+
+Some other content
+
+</Accordion>
+
+<Accordion>
+
+## Am I eligible to receive a micro-grant if Maker and Dai are only one part of my agenda?
+
+Some other content inside of an accordion!
+
+> CTA content inside of Accordion
+
+![Starfox](../images/starfox.png)
+
+### Let's see how this works?
+
+</Accordion>
+
+<Accordion>
+
+## Some other content inside of an accordion!
+
+### Let's see how this works?
+
+</Accordion>
+
+<Accordion openIcon="chevron_down" closeIcon="chevron_up">
+
+Of course, it's also possible to have your own icons for opening and closing
+
+</Accordion>
+
+<Accordion defaultOpen>
+
+And you can control whether the menu defaults to being open or closed...
+
+This content will show by default now.
+
+</Accordion>
+```
+
+<Accordion>
+
+## Hello World
+
+Some other content
+
+</Accordion>
+
+<Accordion>
+
+## Am I eligible to receive a micro-grant if Maker and Dai are only one part of my agenda?
+
+Some other content inside of an accordion!
+
+> CTA content inside of Accordion
+
+![Starfox](../images/starfox.png)
+
+### Let's see how this works?
+
+</Accordion>
+
+<Accordion>
+
+## Some other content inside of an accordion!
+
+### Let's see how this works?
+
+</Accordion>
+
+<Accordion openIcon="chevron_down" closeIcon="chevron_up">
+
+Of course, it's also possible to have your own icons for opening and closing
+
+</Accordion>
+
+<Accordion defaultOpen>
+
+And you can control whether the menu defaults to being open or closed...
+
+This content will show by default now.
+
+</Accordion>
+
+## Checklist
+
+This is another simple component meant to be more visually engaging. It is **not** interactive - it's
+just meant to organise content in a specific way, mostly for guide pages like preparing for hackathons etc.
+Like all the above, it too follows the Child Rule.
+
+```md:title=checkbox.mdx
+<Checklist>
+
+We can put **anything** inside this component
+
+> How about a CTA?
+
+<StatusBanner notice>
+
+Or a Status Banner...
+
+</StatusBanner>
+
+<Image src="../images/starfox.png" />
+
+#### Now we're talking!
+
+</Checklist>
+```
+
+Which ends up looking like this:
+
+<Checklist>
+
+We can put **anything** inside this component
+
+> How about a CTA?
+
+<StatusBanner notice>
+
+Or a Status Banner...
+
+</StatusBanner>
+
+<Image src="./images/starfox.png" />
+
+```js:title=checkbox-code.js
+const variable =
+  "Can't be shown in the code-block above because that's too meta...";
+```
+
+#### Now we're talking!
+
+</Checklist>
+
+## Process Stepper
+
+The process stepper is a carbon copy of the list component, except shaved down to ignore the Link requirements.
+This means the same mindset of scripting a process element is in place. The children dictate the content,
+and how the children are seperated determine each step in the process.
+
+```md:title=process-stepper.mdx
+<Process>
+
+### Child 1
+
+Child 2
+
+<Box>
+
+### Child 3
+
+Bunches and bunches of content can go in here. Anything you like, tbh.
+
+</Box>
+
+<Box>
+
+### Child 4
+
+> Even CTAs
+
+</Box>
+
+</Process>
+```
+
+<Process>
+
+### Child 1
+
+Child 2
+
+<Box>
+
+### Child 3
+
+Bunches and bunches of content can go in here. Anything you like, tbh.
+
+</Box>
+
+<Box>
+
+### Child 4
+
+> Even CTAs
+
+```js
+or inline code
+```
+
+</Box>
+
+</Process>
+
+## Box
+
+You'll notice that we've begun wrapping our children in boxes. This is the way to overcome the child rule
+and sneak in more content to one specific child should the need arise. If you wrap your multi-line content
+into a `<Box>`, then this will be read and rendered as a single child. You can already see how useful this
+is in the context of complex lists or process steppers, and it will become more apparent with other, more visual
+components like Touts.
+
+Basically, a `<Box>` is just the old html `<div>` element updated for this brave new world we'll be building together.
+Now it's time to head over to the Advanced tutorial and begin understanding our visual components and how to style everything.
+
+## Column
+
+The column is a great example of where it is almost always necessary to wrap your children in boxes. Our specs
+called for a "2 Column Comparison component" but we developers must implement every edge case including when there's only 1 element.
+
+This component follows the same principle as other advanced components in that each child is it's own column element.
+
+```md:title=columns.mdx
+<Column>
+
+Hello World
+
+</Column>
+
+<Column>
+
+<Box>
+
+- Tools that directly benefit Dai users
+- Tools that increase Dai adoption
+- Tools that increase access to personal liquidity.
+
+</Box>
+
+- A Heading
+  - Tools that directly benefit Dai users
+  - Tools that increase Dai adoption
+  - Tools that increase access to personal liquidity.
+
+</Column>
+```
+
+<Column>
+
+Hello World
+
+</Column>
+
+<Column>
+
+<Box>
+
+- Tools that directly benefit Dai users
+- Tools that increase Dai adoption
+- Tools that increase access to personal liquidity.
+
+</Box>
+
+- A Heading
+  - Tools that directly benefit Dai users
+  - Tools that increase Dai adoption
+  - Tools that increase access to personal liquidity.
+
+</Column>
+
+> MIND THE GAPS: If there's only 1 new line between "-" element it will count them
+> as part of the same UL instead of as seperate children.
+
+There is a unique case: if you want a column with a header, follow this pattern:
+
+```md:title=columns-headers.mdx
+<Column>
+
+- ## What we fund
+
+      	- <Box>
+
+      		- Tools that directly benefit Dai users
+      		- Tools that increase Dai adoption
+      		- Tools that increase access to personal liquidity.
+
+      	  </Box>
+
+* ## What we don't fund
+
+      	- <Box>
+
+      		- Pure R&D
+      		- Information gathering
+      		- Additional runway
+      		- Ethereum ecosystem improvements
+      		<br/>
+      		<br/>
+
+      		We also do not allocate grants that contain large marketing budgets and/or Dai giveaways and airdrops.
+
+      	  </Box>
+
+</Column>
+```
+
+<Column>
+
+- ## What we fund
+
+      	- <Box>
+
+      		- Tools that directly benefit Dai users
+      		- Tools that increase Dai adoption
+      		- Tools that increase access to personal liquidity.
+
+      	  </Box>
+
+* ## What we don't fund
+
+      	- <Box>
+
+      		- Pure R&D
+      		- Information gathering
+      		- Additional runway
+      		- Ethereum ecosystem improvements
+      		<br/>
+      		<br/>
+
+      		We also do not allocate grants that contain large marketing budgets and/or Dai giveaways and airdrops.
+
+      	  </Box>
+
+</Column>
+
+## Chocolate Box
+
+The Chocolate component is a 3 column component. It's the equivalent of using a Grid,
+except that it's opinionated on its sizing and gaps. The "Box" part of chocolate boxes comes from the combined use of the Box component
+to render content in each grid cell.
+
+```md:title=chocolate-box.mdx
+<Chocolate>
+
+<Box>
+
+content
+
+</Box>
+
+</Chocolate>
+```
+
+<Chocolate>
+
+<Box>
+
+content
+
+</Box>
+
+</Chocolate>
+
+The child rule here works the same. Each child is 1 grid cell (Box) in the Chocolate component.
+We recommend that you use the Box component for more detailed content.
+
+> **NOTE**: if the first child is an icon, we will set its size to 52px (default), otherwise it will be smaller.
+
+```md:title=chocolate-icons.mdx
+<Chocolate>
+
+<Box>
+   
+<Icon name="eye"/>
+
+Measure community sentiment about issues affecting the MakerDAO ecosystem.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+// This will appear smaller as it is not given the default iconSize
+<Icon name="search"/>
+
+</Box>
+
+<Box>
+
+// This will be given the default iconSize of 52px
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+</Chocolate>
+```
+
+<Chocolate>
+
+<Box>
+   
+<Icon name="eye"/>
+
+Measure community sentiment about issues affecting the MakerDAO ecosystem.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+<Box>
+   
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+<Icon name="search" />
+
+</Box>
+
+<Box>
+   
+<Icon name="search"/>
+
+Determine the consensus that something needs to be done in response to a perceived issue.
+
+[See example](https://example.com)
+
+</Box>
+
+</Chocolate>
+
+## Categories
+
+The Categories component is nearly the same as the Chocolate component, except that it
+has a different visual design (it's width is 107.58% and not 100% of the content's parent container).
+It also has a different rendering style depending on whether there are 2 or 4 elements.
+The stark difference for you is that you only control the content of the Category container,
+not the entire box itself (i.e. you can't change the background of a category box, only it's contents).
+
+The component is also capable of having a unique status bar placement. All that's needed is that
+your categories child has the status banner first:
+
+```md:title=categories.mdx
+<Categories>
+
+<Box>
+
+<StatusBanner warning> Funding is currently closed </StatusBanner>
+
+// This will have a size of 64px  
+<Icon name="metamask"/>
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+<Box>
+
+// This will have a size of 64px
+<Icon name="metamask"/>
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+<Box>
+
+<StatusBanner warning> Funding is currently closed </StatusBanner>
+
+[Hackathons](/funding/hackathons)
+
+// This will NOT have the default 64px size applied
+<Icon name="metamask"/>
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+</Categories>
+```
+
+<Categories>
+
+<Box>
+
+<StatusBanner warning> Funding is currently closed </StatusBanner>
+
+<Icon name="metamask" />
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+<Box>
+
+<Icon name="metamask" />
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+<Box>
+
+<StatusBanner warning> Funding is currently closed </StatusBanner>
+[Hackathons](/funding/hackathons)
+
+<Icon name="metamask" />
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+</Categories>

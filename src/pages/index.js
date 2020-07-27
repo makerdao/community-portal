@@ -1,25 +1,26 @@
-/** @jsx jsx */
-import React from "react"
-import {Card, Box, Label, Input, Button, Heading, jsx, useColorMode} from 'theme-ui'
+import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { useNavigate } from "@reach/router";
+import { useTranslation } from "@modules/localization";
+import { getInitialLocale } from "@utils";
 
-import SEO from "../modules/utility/seo"
-
+//This page doesn't exist and solely acts as a reroute for language.
 const IndexPage = () => {
-  const [colorMode, setColorMode] = useColorMode()
-  
-  return (
-    <>
-      <SEO title="Home" />
-      <Card>
-        <Heading variant="h2" as="h2"> Current Theme: {colorMode === 'default' ? 'Maker Default' : 'Oasis'}</Heading>
-        <Box>
-          <Label>Example Input</Label>
-          <Input defaultValue="Default Text"></Input>
-          <Button sx={{mt: 3}} onClick={() => setColorMode(colorMode === 'default' ? 'oasis' : 'default')}>Toggle Theme</Button>
-        </Box>
-      </Card>
-    </>
-  )
-}
+  const navigate = useNavigate();
+  const { allLocales, DEFAULT_LOCALE } = useTranslation();
 
-export default IndexPage
+  useEffect(() => {
+    let initialLocale = getInitialLocale(allLocales, DEFAULT_LOCALE);
+
+    //Replace current route with locale based index.
+    navigate(`/${initialLocale}/`, { replace: true });
+  });
+
+  return (
+    <Helmet>
+      <meta name="robots" content="noindex, nofollow" />
+    </Helmet>
+  );
+};
+
+export default IndexPage;

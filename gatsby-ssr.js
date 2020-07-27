@@ -1,16 +1,11 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+//** @jsx jsx */
+import React from "react";
+import { jsx, InitializeColorMode } from "theme-ui";
 
-// You can delete this file if you're not using it
-import React from 'react';
-import {PageDataProvider} from "@modules/layouts/PageContext"
+export { wrapRootElement } from "./gatsby-browser";
 
-
-export const wrapPageElement = ({element, props}) => (
-	<PageDataProvider value={props}>
-		{element}
-	</PageDataProvider>
-)
+export const onRenderBody = ({ setPreBodyComponents }) => {
+  setPreBodyComponents([
+    jsx(InitializeColorMode, { key: "theme-ui-no-flash" }),
+  ]);
+};

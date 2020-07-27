@@ -1,4 +1,9 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
@@ -20,21 +25,30 @@ _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-
 ## 🚀 Quick start
 
 1.  **Clone**
+
     ```shell
-    git clone https://github.com/MaximumCrash/maker-portal-sandbox.git
+    git clone https://github.com/makerdao/community-portal.git
     ```
 
 2.  **Install**
     _dai-ui-theme-maker and dai-ui-icons are pre-installed._
+    _This project makes use of `yarn`. You'll likely need to use npm to get everything setup once cloned._
+
     ```shell
     # This project makes use of yarn.
-    yarn 
+    yarn
     ```
 
-3. **Start**
-   ```shell
-    yarn start
-   ```
+    PREREQUISITES: You need to have these dependencies installed before the "yarn" command.
+    ○ https://brew.sh/
+    ○ https://nodejs.org/en/
+    ○ https://yarnpkg.com/
+
+3.  **Start**
+
+    ```shell
+     yarn start
+    ```
 
 4.  **Open the source code and start editing!**
 
@@ -68,7 +82,7 @@ A quick look at some important files and directories you'll see in this project.
 
 1. **`src/gatsby-plugin-theme-ui`**: This directory contains all files that will be consumed by the gatsby-plugin-theme-ui on build and provided to components through context. For more info see their [docs](https://theme-ui.com/packages/gatsby-plugin#customizing-the-theme).
 
-2.  **`src/modules`**: This directory is the mirror image of a components folder. Except it's organized by contextual focused. You can find all your ui related components in the ui folder. 
+2. **`src/modules`**: This directory is the mirror image of a components folder. Except it's organized by contextual focused. You can find all your ui related components in the ui folder.
 
 ### Gatsby Usual Suspects
 
@@ -96,11 +110,35 @@ A quick look at some important files and directories you'll see in this project.
 
 12. **`README.md`**: A text file containing useful reference information about your project.
 
+## ❤️ Made with Love
 
-## ❤️ Made with Love 
 Dai-UI - MakerDAO's Dai-UI Team
 
-This Starter - <a href="https://github.com/MaximumCrash" target="_blank">@Maximum_Crash</a> and <a href="https://github.com/andytudhope" target="_blank">@andytudhope</a> 
-
+This Starter - <a href="https://github.com/MaximumCrash" target="_blank">@Maximum_Crash</a> and <a href="https://github.com/andytudhope" target="_blank">@andytudhope</a>
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://rejontaylor.com"><img src="https://avatars1.githubusercontent.com/u/9157341?v=4" width="100px;" alt=""/><br /><sub><b>Réjon Taylor-Foster</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=MaximumCrash" title="Code">💻</a> <a href="#design-MaximumCrash" title="Design">🎨</a> <a href="#example-MaximumCrash" title="Examples">💡</a></td>
+    <td align="center"><a href="https://www.isaacpearl.com"><img src="https://avatars1.githubusercontent.com/u/21342523?v=4" width="100px;" alt=""/><br /><sub><b>isaacpearl</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=isaacpearl" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/befitsandpiper"><img src="https://avatars3.githubusercontent.com/u/7257527?v=4" width="100px;" alt=""/><br /><sub><b>Be Fit Sandpiper</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=befitsandpiper" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/twblack88"><img src="https://avatars3.githubusercontent.com/u/8991325?v=4" width="100px;" alt=""/><br /><sub><b>Tim Black</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=twblack88" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/amy-jung"><img src="https://avatars1.githubusercontent.com/u/26228406?v=4" width="100px;" alt=""/><br /><sub><b>Amy Jung</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=amy-jung" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/shea-fitz"><img src="https://avatars3.githubusercontent.com/u/59940380?v=4" width="100px;" alt=""/><br /><sub><b>shea-fitz</b></sub></a><br /><a href="#design-shea-fitz" title="Design">🎨</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
