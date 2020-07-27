@@ -26,7 +26,10 @@ jobs:
         yarn install
         yarn build
         yarn test
-   
+      env: 
+        GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
+        GOOGLE_ANALYTICS_OPTIMIZE_ID: ${{ secrets.GOOGLE_ANALYTICS_OPTIMIZE_ID }}   
+        
     - name: Making your code pretty. 
       run: | 
         yarn format
