@@ -5,3 +5,5 @@ node_modules
 static
 .github
 .vscode
+package.json
+README.md

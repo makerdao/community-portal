@@ -37,7 +37,7 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
-const useKeyPress = function(targetKey) {
+const useKeyPress = function (targetKey) {
   const [keyPressed, setKeyPressed] = useState(false);
 
   function downHandler({ key }) {
@@ -123,8 +123,8 @@ export default function Search({ onClick, ...otherProps }) {
 
     if (val === "") {
       setResults([]);
-    } 
-    
+    }
+
     setCursor(0);
     setQuery(val);
   };
@@ -141,7 +141,7 @@ export default function Search({ onClick, ...otherProps }) {
   const resultsVariant = {
     visible: {
       opacity: 1,
-      top: '64px',
+      top: "64px",
       transition: { ease: "easeOut" },
     },
     hidden: {
@@ -163,7 +163,7 @@ export default function Search({ onClick, ...otherProps }) {
 
   useEffect(() => {
     if (results.length > 0 && downPress) {
-      setCursor(prevState =>
+      setCursor((prevState) =>
         prevState < results.length - 1 ? prevState + 1 : prevState
       );
     }
@@ -171,7 +171,7 @@ export default function Search({ onClick, ...otherProps }) {
 
   useEffect(() => {
     if (results.length > 0 && upPress) {
-      setCursor(prevState => (prevState > 0 ? prevState - 1 : prevState));
+      setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
     }
   }, [upPress, results.length]);
 
@@ -207,8 +207,8 @@ export default function Search({ onClick, ...otherProps }) {
         sx={{
           position: "absolute",
           boxShadow: "high",
-          left: '50%',
-          transform: 'translateX(-50%)',
+          left: "50%",
+          transform: "translateX(-50%)",
           top: ["5rem", "5rem", "3.5rem"],
           width: ["80vw", "80vw", "100%"],
           minHeight: 4,
@@ -260,12 +260,12 @@ export default function Search({ onClick, ...otherProps }) {
               },
               "& li:hover > a, & li.active > a": {
                 backgroundColor: "primaryMuted",
-                color: "text"
+                color: "text",
               },
             }}
           >
             {results.map((result, index) => (
-              <li className={index === cursor ? 'active' : ''}>
+              <li className={index === cursor ? "active" : ""}>
                 <SearchHit
                   {...result}
                   query={query}

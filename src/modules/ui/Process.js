@@ -9,9 +9,11 @@ const Process = ({ children }) => {
     <Box sx={{ mt: "34px", mb: "34px" }}>
       {_Children.map((child, index) => {
         return (
-          <Flex sx={{
-            flexDirection: ['column', 'column', 'row']
-          }}>
+          <Flex
+            sx={{
+              flexDirection: ["column", "column", "row"],
+            }}
+          >
             <Box
               sx={{
                 fontSize: "24px",

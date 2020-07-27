@@ -61,13 +61,15 @@ export default function useTranslation(initialLangSpace) {
       }
     } else if (!localeStrings[locale][key] && !otherLocale) {
       //Check for common base key in locale. For example: en:{settings:"string"}
-      if (typeof window !== 'undefined') {
-        console.warn(`Translation of '${key}' for locale '${locale}' not found.`);
+      if (typeof window !== "undefined") {
+        console.warn(
+          `Translation of '${key}' for locale '${locale}' not found.`
+        );
       }
       return key;
     } else if (otherLocale && !localeStrings[otherLocale][key]) {
       //Check for common base key in locale. For example: en:{settings:"string"}
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         console.warn(
           `Translation of '${key}' for  other locale '${otherLocale}' not found.`
         );

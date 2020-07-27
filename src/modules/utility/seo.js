@@ -11,7 +11,6 @@ import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import { useThemeUI } from "theme-ui";
 
-
 function SEO({ description, lang, meta, title, keywords, url }) {
   const { theme } = useThemeUI();
 
@@ -66,11 +65,11 @@ function SEO({ description, lang, meta, title, keywords, url }) {
         },
         {
           property: "og:url",
-          content: url || site.siteMetadata.websiteURL
+          content: url || site.siteMetadata.websiteURL,
         },
         {
           property: `twitter:url`,
-          content: url || site.siteMetadata.websiteURL
+          content: url || site.siteMetadata.websiteURL,
         },
         {
           name: `twitter:creator`,

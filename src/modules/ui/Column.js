@@ -8,12 +8,12 @@ const Column = ({ children }) => {
   const containerStyles = {
     borderRadius: "12px",
     color: "textMuted",
-    bg: 'surfaceAlt',
-    px: '27px',
-    py: '10px',
-    boxShadow: 'raised',
-    border: '1px solid',
-    borderColor: 'muted',
+    bg: "surfaceAlt",
+    px: "27px",
+    py: "10px",
+    boxShadow: "raised",
+    border: "1px solid",
+    borderColor: "muted",
     "& > *:only-child, & >*:only-child > *": { m: 0 },
   };
 
@@ -27,9 +27,10 @@ const Column = ({ children }) => {
     >
       {_Children.map((child, index) => {
         const childChildren = React.Children.toArray(child.props.children);
-        if (typeof child.props.children !== 'string' && childChildren.length > 0) {
-
-
+        if (
+          typeof child.props.children !== "string" &&
+          childChildren.length > 0
+        ) {
           const headerElement = childChildren[0];
           const childElements = childChildren.slice(1);
 
@@ -38,9 +39,9 @@ const Column = ({ children }) => {
               sx={{
                 borderRadius: "12px",
                 overflow: "hidden",
-                boxShadow: 'raised',
-                border: '1px solid',
-                borderColor: 'muted',
+                boxShadow: "raised",
+                border: "1px solid",
+                borderColor: "muted",
               }}
             >
               <Box
@@ -48,9 +49,9 @@ const Column = ({ children }) => {
                 sx={{
                   color: "onPrimary",
                   bg: "primary",
-                  pt: '15px',
+                  pt: "15px",
                   pb: 2,
-                  px: '27px',
+                  px: "27px",
                   "& > *:only-child, & > *:only-child > *": { m: 0 },
                 }}
               >
@@ -59,15 +60,14 @@ const Column = ({ children }) => {
 
               <Box
                 sx={{
-                  px: '27px',
+                  px: "27px",
                   pt: 3,
-                  pb: '27px',
-                  bg: 'surfaceAlt',
-                  color: 'textMuted',
+                  pb: "27px",
+                  bg: "surfaceAlt",
+                  color: "textMuted",
                   "& > *:only-child, & > *:last-child": {
                     m: 0,
-                    
-                  }
+                  },
                 }}
               >
                 {childElements}

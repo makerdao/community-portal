@@ -85,7 +85,7 @@ module.exports = {
               showInfo: false, // Optional: Hides video title and player actions.
             },
           },
-          
+
           `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-images`,
@@ -104,7 +104,7 @@ module.exports = {
         ],
       },
     },
-    
+
     {
       //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
       resolve: `gatsby-plugin-alias-imports`,
@@ -218,34 +218,34 @@ module.exports = {
         // cookieDomain: "makerdao.com",
       },
     },
-    'gatsby-plugin-preload-link-crossorigin',
+    "gatsby-plugin-preload-link-crossorigin",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `MakerDAO Community Portal`,
         short_name: `MKD Comm Portal`,
         start_url: `/`,
-        background_color: "#291a42", 
+        background_color: "#291a42",
         theme_color: "#5AE2CA",
         display: `standalone`,
         include_favicon: false,
-        icon: 'src/modules/utility/icon-512x512.png',
-        cache_busting_mode: 'none',
+        icon: "src/modules/utility/icon-512x512.png",
+        cache_busting_mode: "none",
         theme_color_in_head: false,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    
+
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
     `gatsby-plugin-catch-links`,
     {
-      resolve: 'gatsby-plugin-offline',
+      resolve: "gatsby-plugin-offline",
       options: {
-          workboxConfig: {
-            globPatterns: ['**/images/icons/icon-512x512.png']
-          }
-      }
-    }
+        workboxConfig: {
+          globPatterns: ["**/images/icons/icon-512x512.png"],
+        },
+      },
+    },
   ],
 };

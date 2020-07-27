@@ -11,6 +11,7 @@ description: "Vaults are a tool that let the owner deposit collateral and genera
 A Vault is a tool that lets the owner deposit collateral and generate Dai.
 
 ## Vault Types
+
 Vaults are categorized by the type of collateral used to generated Dai. Users create Dai by generating it against their collateral and destroy Dai when repaying their generated Dai balance.
 
 The process of generating Dai happens entirely on-chain, which enables anyone to audit the amount of circulating Dai and the collateral backing it.
@@ -29,8 +30,8 @@ The Global Debt Ceiling limits the amount of Dai that can be generated across th
 
 The [Stability Fee](/learn/vaults/stability-fees/) is a variable-rate fee continuously added to a Vault owner’s generated Dai balance.
 
-
 ## Emergency Shutdown Module
+
 The Emergency Shutdown Module(ESM) provides a process for shutting down the Maker Protocol and distributing collateral to Dai holders and Vault owners.
 
 To trigger an Emergency Shutdown, a minimum threshold of 50,000 MKR must be placed into the ESM. All MKR placed in the ESM can only be retrieved after redeployment as a decision of MKR governors.

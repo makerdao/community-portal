@@ -51,7 +51,7 @@ const MD_Overrides = {
         fontSize: ["48px", "48px", "64px"],
         letterSpace: "64px",
         fontWeight: ["600", "600", "bold"],
-        lineHeight: 'normal'
+        lineHeight: "normal",
       }}
       {...props}
     />
@@ -60,13 +60,49 @@ const MD_Overrides = {
     <Text
       variant="h2"
       as="h2"
-      sx={{ mb: "32px", fontSize: "48px", fontWeight: "600", lineHeight: 'normal' }}
+      sx={{
+        mb: "32px",
+        fontSize: "48px",
+        fontWeight: "600",
+        lineHeight: "normal",
+      }}
       {...props}
     />
   ),
-  h3: (props) => <Text variant="h3" as="h3" sx={{ mb: "32px", fontSize: '32px', fontWeight: 'bold', lineHeight: 'normal' }} {...props} />,
-  h4: (props) => <Text variant="h4" as="h4" sx={{fontSize: '24px', fontWeight: 'bold', mb: '32px', lineHeight: 'normal'}} {...props} />,
-  h5: (props) => <Text variant="h5" as="h5" sx={{fontSize: '20px', fontWeight: 'normal', lineHeight: 'normal'}} {...props} />,
+  h3: (props) => (
+    <Text
+      variant="h3"
+      as="h3"
+      sx={{
+        mb: "32px",
+        fontSize: "32px",
+        fontWeight: "bold",
+        lineHeight: "normal",
+      }}
+      {...props}
+    />
+  ),
+  h4: (props) => (
+    <Text
+      variant="h4"
+      as="h4"
+      sx={{
+        fontSize: "24px",
+        fontWeight: "bold",
+        mb: "32px",
+        lineHeight: "normal",
+      }}
+      {...props}
+    />
+  ),
+  h5: (props) => (
+    <Text
+      variant="h5"
+      as="h5"
+      sx={{ fontSize: "20px", fontWeight: "normal", lineHeight: "normal" }}
+      {...props}
+    />
+  ),
   table: (props) => <Table {...props} />,
   thematicBreak: (props) => <Divider sx={{ my: 4 }} />,
   hr: (props) => <Divider sx={{ my: 4 }} />,

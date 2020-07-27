@@ -3,7 +3,7 @@
 import React from "react";
 import { Button as ThemedButton, Text, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 import { Link } from "@modules/navigation";
 
@@ -27,61 +27,61 @@ const Button = ({
   //  <Button primary outline />
   // Instead of
   // <Button variant="primaryOutline" />
-  let _variant = `${icon ? 'icon_' : ""}${
-    variant || secondary
-      ? "secondary"
-      : outline
-        ? "outline"
-        : "primary"
-  }${small ? "Small": ""}`;
+  let _variant = `${icon ? "icon_" : ""}${
+    variant || secondary ? "secondary" : outline ? "outline" : "primary"
+  }${small ? "Small" : ""}`;
 
-  const internal = (/^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to));
+  const internal = /^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to);
 
   const willHaveIcon = icon || (!internal && !small);
 
   return (
-    <Link 
-      to={to || href} 
-      disabled={disabled} 
-      isButton={true} 
+    <Link
+      to={to || href}
+      disabled={disabled}
+      isButton={true}
       hideExternalIcon={true}
       sx={{
         whiteSpace: "nowrap",
         display: inline ? "inline-block" : "block",
-        mr: inline ? 3 : 0
+        mr: inline ? 3 : 0,
       }}
     >
-    <motion.div whileTap={{scale: 0.9}} whileHover={{scale: 1.064}} sx={{mb: 3, backfaceVisibility: 'hidden'}}>
-      <ThemedButton
-        className="button"
-        disabled={disabled}
-        variant={_variant}
-        sx={{
-          ...sx,
-           
-          p: willHaveIcon ? '13px 32px' : '',
-          
-          "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
-        }}
-        {...otherProps}
+      <motion.div
+        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.064 }}
+        sx={{ mb: 3, backfaceVisibility: "hidden" }}
       >
-        {willHaveIcon && (
-          <Icon
-            name={icon || "increase"}
-            className="increase"
-            size={'20px'}
-            sx={{ 
-              ml: "2px", 
-              mr: ".5em",
-              verticalAlign: 'middle'
-            }}
-          />
-        )}
-        
-        <Text sx={{verticalAlign: willHaveIcon ? 'middle' : ''}}>
-          {children}
-        </Text>
-      </ThemedButton>
+        <ThemedButton
+          className="button"
+          disabled={disabled}
+          variant={_variant}
+          sx={{
+            ...sx,
+
+            p: willHaveIcon ? "13px 32px" : "",
+
+            "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
+          }}
+          {...otherProps}
+        >
+          {willHaveIcon && (
+            <Icon
+              name={icon || "increase"}
+              className="increase"
+              size={"20px"}
+              sx={{
+                ml: "2px",
+                mr: ".5em",
+                verticalAlign: "middle",
+              }}
+            />
+          )}
+
+          <Text sx={{ verticalAlign: willHaveIcon ? "middle" : "" }}>
+            {children}
+          </Text>
+        </ThemedButton>
       </motion.div>
     </Link>
   );

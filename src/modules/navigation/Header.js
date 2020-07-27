@@ -289,7 +289,11 @@ const Header = () => {
           }}
           aria-label={t("aria_MakerLogo")}
         >
-          <motion.div whileTap={{scale: 0.9}} whileHover={{scale: 1.064}} sx={{backfaceVisibility: 'hidden'}}>
+          <motion.div
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.064 }}
+            sx={{ backfaceVisibility: "hidden" }}
+          >
             <Icon name="maker" color="primary" size={"52px"} />
           </motion.div>
         </Link>
@@ -358,7 +362,7 @@ const Header = () => {
               height: "32px",
               width: "32px",
               mr: "21px",
-              backfaceVisibility: 'hidden'
+              backfaceVisibility: "hidden",
             }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
@@ -392,7 +396,7 @@ const Header = () => {
               display: ["none", "none", "inline-block"],
               height: "32px",
               width: "32px",
-              backfaceVisibility: 'hidden'
+              backfaceVisibility: "hidden",
             }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}

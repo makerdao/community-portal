@@ -4,9 +4,9 @@ import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-import Layout from '@modules/layouts/site_layout'
+import Layout from "@modules/layouts/site_layout";
 import { LanguageSelector } from "@modules/localization";
-import { Sidenav, Breadcrumbs} from "@modules/navigation";
+import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 
 export default (props) => {
@@ -58,11 +58,10 @@ export default (props) => {
 
   const seo = {
     title: _pageTitle,
-    description, 
+    description,
     keywords,
-    featuredImage
+    featuredImage,
   };
-
 
   return (
     <Layout seo={seo}>
@@ -116,7 +115,7 @@ export default (props) => {
               hasTopSection && !hideLanguageSelector
                 ? {
                     "& > *:nth-child(1)": {
-                      lineHeight: 'normal'
+                      lineHeight: "normal",
                     },
                     "& > *:nth-child(1), & > *:nth-child(2)": {
                       maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],

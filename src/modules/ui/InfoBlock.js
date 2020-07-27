@@ -10,10 +10,15 @@ const InfoBlock = ({ children, sx }) => {
 
   //NOTE(Rejon): In the future when css4 comes out this will be replaced by the :has() selector!
   const hasImage = _Children.find((n, index) => {
-    const _isTrue = n.props.mdxType === 'Image' || (n.props.children && !Array.isArray(n.props.children) && n.props.children.props && n.props.children.props.mdxType === 'img');
+    const _isTrue =
+      n.props.mdxType === "Image" ||
+      (n.props.children &&
+        !Array.isArray(n.props.children) &&
+        n.props.children.props &&
+        n.props.children.props.mdxType === "img");
 
     if (_isTrue) {
-      imageIndex = index; 
+      imageIndex = index;
       return _isTrue;
     }
 
@@ -22,12 +27,12 @@ const InfoBlock = ({ children, sx }) => {
 
   if (hasImage && imageIndex !== 0) {
     hasImageMobileOrdering[`& > *:nth-child(${imageIndex + 1})`] = {
-        order: [0,0,1]
-    }
+      order: [0, 0, 1],
+    };
 
     hasImageMobileOrdering[`& > *:not(:nth-child(${imageIndex + 1}))`] = {
-      order: [1,1,0]
-    }
+      order: [1, 1, 0],
+    };
   }
 
   return (
@@ -35,39 +40,38 @@ const InfoBlock = ({ children, sx }) => {
       sx={{
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: ['column', 'column', 'row'],
+        flexDirection: ["column", "column", "row"],
         width: "100%",
-        px: ['20px', '20px', '10.5%'],
-        py: ['60px', '60px', '72px'],
-        textAlign: hasImage ? '' : 'center',
-        '& > *': {
-          width: ['100%', '100%', '50%'],
-          minWidth: ['unset', 'unset', '300px'],
+        px: ["20px", "20px", "10.5%"],
+        py: ["60px", "60px", "72px"],
+        textAlign: hasImage ? "" : "center",
+        "& > *": {
+          width: ["100%", "100%", "50%"],
+          minWidth: ["unset", "unset", "300px"],
           mb: 0,
-          margin: hasImage ? '' : 'auto',
-          '& > *' : {
-            mx: hasImage ? '' : 'auto'
-          }
+          margin: hasImage ? "" : "auto",
+          "& > *": {
+            mx: hasImage ? "" : "auto",
+          },
         },
-        '& > * img': {
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
-          
+        "& > * img": {
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
         },
-        '& > *:first-child': {
-          minWidth: ['unset', 'unset', '250px'],
-          mr: hasImage ? [0,0,'4%'] : 0
+        "& > *:first-child": {
+          minWidth: ["unset", "unset", "250px"],
+          mr: hasImage ? [0, 0, "4%"] : 0,
         },
-        '& > *:last-child': {
-          minWidth: ['unset', 'unset', '250px'],
-          ml: hasImage ? [0,0,'4%'] : 0
+        "& > *:last-child": {
+          minWidth: ["unset", "unset", "250px"],
+          ml: hasImage ? [0, 0, "4%"] : 0,
         },
-        ...hasImageMobileOrdering
+        ...hasImageMobileOrdering,
       }}
     >
-        {_Children.map((child) => child)}
+      {_Children.map((child) => child)}
     </Flex>
   );
 };

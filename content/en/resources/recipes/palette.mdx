@@ -1,11 +1,11 @@
 # Component Palette
 
-#### This page serves as a palette for all the components this project has to offer. 
+#### This page serves as a palette for all the components this project has to offer.
 
 If you want to know where we started and **why** components exist see [this](https://www.notion.so/Components-e4455d1797f74c48aae3019692a39413).
 
 ---
- 
+
 #### Definitions
 
 - **WYSIWYG**: What you see is what you get.
@@ -26,7 +26,7 @@ If you want to know where we started and **why** components exist see [this](htt
 
 - To see dark/light mode variants click the moon/sun in the header
 
-- This palette is primarily to showcase component usage in a vacuum. See the [Frankenstein page](/resources/frankenstein) for advanced usages. 
+- This palette is primarily to showcase component usage in a vacuum. See the [Frankenstein page](/resources/frankenstein) for advanced usages.
 
 - For an in-depth on props available for these components please see the [Cheatsheet](/resources/content/cheatsheet)
 
@@ -38,17 +38,12 @@ If you want to know where we started and **why** components exist see [this](htt
 
 ## Accordion
 
-Click the Accordion header to show and hide the content it offers. 
+Click the Accordion header to show and hide the content it offers.
 
-The First element is always the header. Every other element will be hidden away. 
+The First element is always the header. Every other element will be hidden away.
+
 ```js
-<Accordion>
-
-Hello World
-
-This is hidden inside the Accordion.
-
-</Accordion>
+<Accordion>Hello World This is hidden inside the Accordion.</Accordion>
 ```
 
 ---
@@ -63,9 +58,9 @@ This is hidden inside the Accordion.
 
 ---
 
-## Aligner 
+## Aligner
 
-This is a utility component built to work with the `Image` component. 
+This is a utility component built to work with the `Image` component.
 
 **Dev Note (Réjon): This component exists because remark-images wraps our elements automatically with styles that make it difficult to align an image. It only really works well if the container of the image is large enough to facilitate it.**
 
@@ -108,7 +103,7 @@ This is a utility component built to work with the `Image` component.
 </Callout>
 
 This is a utility component originally built to display the AllContributors grid.
-Yet, it also serves as good way for folks to set an author at the end of a page. 
+Yet, it also serves as good way for folks to set an author at the end of a page.
 
 ```js
 <Authors all/>
@@ -118,9 +113,9 @@ Yet, it also serves as good way for folks to set an author at the end of a page.
 
 ---
 
-<Authors all/>
+<Authors all />
 
-<Authors list author="@MaximumCrash"/>
+<Authors list author="@MaximumCrash" />
 
 ---
 
@@ -130,34 +125,18 @@ It's also possible to render a custom author by filling out the correct informat
 
 ```js
 <Authors list>
-
-<Box>
-
-![Réjon](/images/starfox.png)
-
-[Réjon Taylor-Foster](https://rejontaylor.com)
-
-[Another Test](https://github.com)
-
-[Twitter](https://twitter.com)
-
-[Medium](https://medium.com)
-
-# Réjon Taylor-Foster
-
-## Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pharetra quam augue. Nulla facilisi. Ut sed volutpat nisl. Cras eget nunc sed erat malesuada faucibus. Donec non vehicula elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed blandit imperdiet maximus. In hac habitasse platea dictumst. Sed id luctus justo. Morbi in tortor et quam lacinia finibus ac in quam. Suspendisse mollis efficitur dui eu laoreet.
-
-### MaximumCrash
-
-- ideas
-- audio
-- doc
-- 👀
-- 💦
-
-
-</Box>
-
+  <Box>
+    ![Réjon](/images/starfox.png) [Réjon Taylor-Foster](https://rejontaylor.com)
+    [Another Test](https://github.com) [Twitter](https://twitter.com)
+    [Medium](https://medium.com) # Réjon Taylor-Foster ## Lorem ipsum dolor sit
+    amet, consectetur adipiscing elit. Donec pharetra quam augue. Nulla
+    facilisi. Ut sed volutpat nisl. Cras eget nunc sed erat malesuada faucibus.
+    Donec non vehicula elit. Interdum et malesuada fames ac ante ipsum primis in
+    faucibus. Sed blandit imperdiet maximus. In hac habitasse platea dictumst.
+    Sed id luctus justo. Morbi in tortor et quam lacinia finibus ac in quam.
+    Suspendisse mollis efficitur dui eu laoreet. ### MaximumCrash - ideas -
+    audio - doc - 👀 - 💦
+  </Box>
 </Authors>
 ```
 
@@ -187,7 +166,6 @@ It's also possible to render a custom author by filling out the correct informat
 - 👀
 - 💦
 
-
 </Box>
 
 </Authors>
@@ -196,7 +174,7 @@ It's also possible to render a custom author by filling out the correct informat
 
 ## Button
 
-It's a button. Not much more to it. 
+It's a button. Not much more to it.
 
 **Dev Note(Réjon): Because this site doesn't provide any stateful functionality (besides light/dark modes), Buttons are built to serve as a unique visual display of links.**
 
@@ -211,17 +189,30 @@ It's a button. Not much more to it.
 
 <Button to="https://makerdao.com"> External Link Button </Button>
 ```
+
 ---
 
 <Button to="/"> ET phone Home </Button>
 
-<Button disabled inline to="/resources/palette"> Disabled Inline </Button>
+<Button disabled inline to="/resources/palette">
+  {" "}
+  Disabled Inline{" "}
+</Button>
 
-<Button secondary inline to="/resources/palette"> Inlined Secondary </Button>
+<Button secondary inline to="/resources/palette">
+  {" "}
+  Inlined Secondary{" "}
+</Button>
 
-<Button outline to="/resources/palette"> Click Here </Button>
+<Button outline to="/resources/palette">
+  {" "}
+  Click Here{" "}
+</Button>
 
-<Button small to="/resources/palette"> Small Button </Button>
+<Button small to="/resources/palette">
+  {" "}
+  Small Button{" "}
+</Button>
 
 <Button to="https://makerdao.com"> External Link Button </Button>
 
@@ -229,7 +220,7 @@ It's a button. Not much more to it.
 
 ## Callout
 
-This component is for callouts. It can also be written as a blockquote `>` markdown style. 
+This component is for callouts. It can also be written as a blockquote `>` markdown style.
 
 To have icons show up you have to provide an icon name from our icon palette. See the [Icon Palette](/resources/icon-palette) for those.
 
@@ -275,29 +266,14 @@ Maker dao callout
 
 </Callout>
 
-This is a non-functioning checklist component. It is simply styled to look like one. 
+This is a non-functioning checklist component. It is simply styled to look like one.
 
 ```js
 <Checklist>
-
-Child A
-
-Child B
-
-<Box>
-
-Child C
-
-<Checklist>
-
-Child C - A
-
-Child C - B
-
-</Checklist>
-
-</Box>
-
+  Child A Child B
+  <Box>
+    Child C<Checklist>Child C - A Child C - B</Checklist>
+  </Box>
 </Checklist>
 ```
 
@@ -335,43 +311,26 @@ Child C - B
 
 </Callout>
 
-Originally named "Chocolate Box" components, this component takes into consideration the child rule. 
-Each child is recognized as a new element. Thus it's recommended for more diverse content to be contained 
+Originally named "Chocolate Box" components, this component takes into consideration the child rule.
+Each child is recognized as a new element. Thus it's recommended for more diverse content to be contained
 by a `Box` component.
 
 ```js
 <Chocolate>
+  <Box>
+    <Icon size={"40px"} name="maker" />
+    ##### Child A Some content about something
+  </Box>
 
-<Box>
+  <Box>
+    <Icon size={"40px"} name="globe" />
+    ##### Child B Some content about something
+  </Box>
 
-<Icon size={'40px'} name="maker"/>
-
-##### Child A
-
-Some content about something
-
-</Box>
-
-<Box>
-
-<Icon size={'40px'} name="globe"/>
-
-##### Child B
-
-Some content about something
-
-</Box>
-
-<Box>
-
-<Icon size={'40px'} name="wrench"/>
-
-##### Child C
-
-Some content about something
-
-</Box>
-
+  <Box>
+    <Icon size={"40px"} name="wrench" />
+    ##### Child C Some content about something
+  </Box>
 </Chocolate>
 ```
 
@@ -381,7 +340,7 @@ Some content about something
 
 <Box>
 
-<Icon size={'40px'} name="maker"/>
+<Icon size={"40px"} name="maker" />
 
 ##### Child A
 
@@ -391,7 +350,7 @@ Some content about something
 
 <Box>
 
-<Icon size={'40px'} name="globe"/>
+<Icon size={"40px"} name="globe" />
 
 ##### Child B
 
@@ -401,14 +360,13 @@ Some content about something
 
 <Box>
 
-<Icon size={'40px'} name="wrench"/>
+<Icon size={"40px"} name="wrench" />
 
 ##### Child C
 
 Some content about something
 
 </Box>
-
 
 </Chocolate>
 
@@ -416,15 +374,15 @@ Some content about something
 
 ### Code
 
-There are 2 types of code elements. 
+There are 2 types of code elements.
 
-1. The code blocks you've been seeing so far that leverage 3 back ticks `(```)`
+1. The code blocks you've been seeing so far that leverage 3 back ticks ` (```) `
 2. Inline code that leverage 1 back tick `like this`
 
 #2 makes use of the `Code` component like so:
 
 ```
-<Code> 
+<Code>
 
 const var = "variable";
 
@@ -433,14 +391,13 @@ const var = "variable";
 
 <Code>const var = "variable";</Code>
 
-
-However **inline code doesn't support language highlighting**. 
+However **inline code doesn't support language highlighting**.
 
 #1 makes use of the PrismJS library in conjunction with ThemeUI to render code blocks like so.
 
 **Dev Note(Réjon): We only support so many languages (JS, Text, HTML, CSS, and Markdown). If you want more, check out the [PrismJS documentation](https://prismjs.com/#supported-languages) about it.**
 
-You can provide a language to show it's tab. 
+You can provide a language to show it's tab.
 
 ```js
 const variable = "string";
@@ -449,10 +406,10 @@ const variable = "string";
 If you want to show a file name just provide `title=file-name.js` (or whatever the name is)
 
 ```js:title=palette.mdx
-const example = "This is an example with a title tab"
+const example = "This is an example with a title tab";
 ```
 
---- 
+---
 
 ### Column
 
@@ -462,7 +419,7 @@ const example = "This is an example with a title tab"
 
 </Callout>
 
-This component follows a similar pattern to that of the `Chocolate Box` component. 
+This component follows a similar pattern to that of the `Chocolate Box` component.
 To get a header though, there needs to be a child that has children. It is recommended
 to use a `Box`.
 
@@ -487,7 +444,7 @@ Child B - with Sibling
 
 <Box>
 
-#### Child A 
+#### Child A
 
 Full Width with a Header
 
@@ -500,7 +457,7 @@ Full Width with a Header
 
 <Box>
 
-#### Child A 
+#### Child A
 
 With a sibling and a Header
 
@@ -541,7 +498,7 @@ Child B - with Sibling
 
 <Box>
 
-#### Child A 
+#### Child A
 
 Full Width with a Header
 
@@ -555,7 +512,7 @@ Full Width with a Header
 
 <Box>
 
-#### Child A 
+#### Child A
 
 With a sibling and a Header
 
@@ -581,7 +538,7 @@ With a sibling and a Header
 
 </Callout>
 
-This component is similar to that of a Hero content section. 
+This component is similar to that of a Hero content section.
 Depending on when you put the image is the side it will show up on. If there's no image first or last in content, the content will be centered.
 
 **It is highly recommend you use a box component here. Each child is recognized and will render as so.**
@@ -593,7 +550,7 @@ Depending on when you put the image is the side it will show up on. If there's n
 
 <Box>
 
-### Hello World 
+### Hello World
 
 Some more content
 
@@ -605,7 +562,7 @@ Some more content
 
 <Box>
 
-### Hello World 
+### Hello World
 
 Some more content
 
@@ -629,6 +586,7 @@ Some more content
 
 </InfoBlock>
 ```
+
 ---
 
 <InfoBlock>
@@ -637,7 +595,7 @@ Some more content
 
 <Box>
 
-### Hello World 
+### Hello World
 
 Some more content
 
@@ -649,7 +607,7 @@ Some more content
 
 <Box>
 
-### Hello World 
+### Hello World
 
 Some more content
 
@@ -689,6 +647,7 @@ The List component is great if you want to display content...in the form of....a
 based on your specific needs.**
 
 ---
+
 ```js
 <List>
 
@@ -801,7 +760,7 @@ Some content below the header
 
 ## Process
 
-This components great for stepping folks through a numbered process. 
+This components great for stepping folks through a numbered process.
 
 <Callout variant="warning" icon="warning">
 
@@ -815,19 +774,11 @@ This components great for stepping folks through a numbered process.
 
 ```js
 <Process>
-
-### Process Information 1
-
-### Process Information 2
-
-<Box>
-
-### Process Information 3
-
-Some more content here. The usual suspects and whatever you'd want to put.
-
-</Box>
-
+  ### Process Information 1 ### Process Information 2
+  <Box>
+    ### Process Information 3 Some more content here. The usual suspects and
+    whatever you'd want to put.
+  </Box>
 </Process>
 ```
 
@@ -853,7 +804,7 @@ Some more content here. The usual suspects and whatever you'd want to put.
 
 ### Status Banner
 
-This is your run of the mill status banner. It's also capable of being sticky. 
+This is your run of the mill status banner. It's also capable of being sticky.
 
 ---
 
@@ -905,19 +856,19 @@ I will stick to the top of the screen.
 
 ## Tables
 
-We support the lowest spec for tables in MD. None of that Github alignment stuff here. 
+We support the lowest spec for tables in MD. None of that Github alignment stuff here.
 
 ```js
 | Header A       | Header B                    |
-| --------------- | ------------------------- | 
-| Content A        | Content A              | 
+| --------------- | ------------------------- |
+| Content A        | Content A              |
 | Content B          | Content B              |
 ```
 
-| Header A       | Header B                    |
-| --------------- | ------------------------- | 
-| Content A        | Content A              | 
-| Content B          | Content B              |
+| Header A  | Header B  |
+| --------- | --------- |
+| Content A | Content A |
+| Content B | Content B |
 
 ---
 
@@ -929,7 +880,7 @@ We support the lowest spec for tables in MD. None of that Github alignment stuff
 
 </Callout>
 
-Tout components are meant to be like ultra fancy links, but you can put anything inside of them. 
+Tout components are meant to be like ultra fancy links, but you can put anything inside of them.
 **If there's only one child it will be full width.**
 
 ```js
@@ -971,23 +922,26 @@ Element A - Full Width
 
 ## Video
 
-It's possible to show videos here. They'll always be full width with no styles. 
+It's possible to show videos here. They'll always be full width with no styles.
 
 ---
+
 ```js
 `youtube: [Your love!](mzDVaKRApcg)`
 
 <Video src="https://www.youtube.com/embed/kpk2tdsPh0A"/>
 ```
+
 ---
 
 `youtube: [Your love!](mzDVaKRApcg)`
 
 ---
-<Video src="https://www.youtube.com/embed/kpk2tdsPh0A"/>
+
+<Video src="https://www.youtube.com/embed/kpk2tdsPh0A" />
 
 ---
 
-### This is a living document. Add or remove components as you change things. And always remember to have fun. 
+### This is a living document. Add or remove components as you change things. And always remember to have fun.
 
-<Authors author="@MaximumCrash" list/>
+<Authors author="@MaximumCrash" list />

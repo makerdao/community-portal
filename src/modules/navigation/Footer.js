@@ -103,10 +103,10 @@ const Footer = () => {
             "& > *, & svg": { color: "onBackgroundAlt" },
           }}
         >
-          <Link 
-            to="/" 
-            sx={{ 
-              display: "inline-block", 
+          <Link
+            to="/"
+            sx={{
+              display: "inline-block",
               mb: "31px",
             }}
             aria-label={t("aria_MakerFooterLogo")}

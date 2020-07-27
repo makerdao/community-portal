@@ -6,14 +6,13 @@ import { Icon } from "@makerdao/dai-ui-icons";
 const Callout = ({ icon, variant, children }) => {
   return (
     <Flex
-      
       sx={{
-        px: '24px',
-        py: '28px',
+        px: "24px",
+        py: "28px",
         mb: "24px",
         mt: "24px",
         width: "100%",
-        color: 'text',
+        color: "text",
         borderRadius: "12px",
         bg: variant || "primaryMuted",
       }}
