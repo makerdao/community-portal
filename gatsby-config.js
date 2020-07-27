@@ -84,20 +84,7 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `MakerDAO Community Portal`,
-        short_name: `MKD Comm Portal`,
-        start_url: `/`,
-        background_color: "#291a42", 
-        theme_color: "#5AE2CA",
-        Scope: "/",
-        display: `standalone`,
-        icon: 'src/modules/utility/icon-512x512.png',
-
-      },
-    },
+    
     {
       //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
       resolve: `gatsby-plugin-alias-imports`,
@@ -217,5 +204,19 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
     `gatsby-plugin-catch-links`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `MakerDAO Community Portal`,
+        short_name: `MKD Comm Portal`,
+        start_url: `/`,
+        background_color: "#291a42", 
+        theme_color: "#5AE2CA",
+        Scope: "/",
+        display: `standalone`,
+        icon: 'src/modules/utility/icon-512x512.png',
+
+      },
+    },
   ],
 };
