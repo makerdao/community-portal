@@ -13,9 +13,29 @@ module.exports = {
     description: `A Community of developers, designers, innovators, and just about everything cool under the sun. Come join our team!`,
     author: `MakerDAO Commuminty Development Team`,
     copyright: "",
-    websiteURL: ""
+    siteUrl: "http://localhost:9000", // NOTE(Isaac): TODO: change this to production URL
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -224,5 +244,6 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
     `gatsby-plugin-catch-links`,
+
   ],
 };
