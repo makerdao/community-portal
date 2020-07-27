@@ -223,7 +223,7 @@ module.exports = {
       resolve: 'gatsby-plugin-offline',
       options: {
           workboxConfig: {
-            globPatterns: ['**/src/modules/utility/icon-512x512.png']
+            globPatterns: ['**/images/icons/icon-512x512.png']
           }
       }
     }
