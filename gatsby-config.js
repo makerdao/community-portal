@@ -94,15 +94,8 @@ module.exports = {
         theme_color: "#5AE2CA",
         Scope: "/",
         display: `standalone`,
-        icon: 'static/images/icons/icon-512x512.png',
-        "icons": [
-            {
-            "src": "../src/modules/utility/maskable_icon.png",
-            "sizes": "640x640",
-            "type": "image/png",
-            "purpose": "any maskable"
-          }
-        ]
+        icon: 'src/modules/utility/icon-512x512.png',
+
       },
     },
     {
