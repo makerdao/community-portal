@@ -45,6 +45,7 @@ const Button = ({
         whiteSpace: "nowrap",
         display: inline ? "inline-block" : "block",
         mr: inline ? 3 : 0,
+        cursor: disabled ? 'not-allowed' : ''
       }}
     >
       <motion.div
@@ -58,9 +59,7 @@ const Button = ({
           variant={_variant}
           sx={{
             ...sx,
-
             p: willHaveIcon ? "13px 32px" : "",
-
             "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
           }}
           {...otherProps}
