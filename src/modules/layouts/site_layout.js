@@ -8,7 +8,6 @@ import { SEO } from "@modules/utility";
 import { Header, Footer, NavigationProvider } from "@modules/navigation";
 
 const Layout = ({ children, seo }) => (
-  <NavigationProvider>
     <Flex
       sx={{
         flexDirection: "column",
@@ -16,7 +15,7 @@ const Layout = ({ children, seo }) => (
         height: "100%",
       }}
     >
-      <SEO {...seo} />
+      {seo && <SEO {...seo} />}
       <Header />
       <Flex
         as="main"
@@ -35,7 +34,6 @@ const Layout = ({ children, seo }) => (
       </Flex>
       <Footer />
     </Flex>
-  </NavigationProvider>
 );
 
 Layout.propTypes = {

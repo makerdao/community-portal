@@ -17,6 +17,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
   <Flex
     sx={{
       width: "100%",
+      maxWidth: "1364px",
       justifyContent: "center",
       alignItems: "center",
       py: "77px",
@@ -36,8 +37,8 @@ const PageLayout = ({ children, seoTitle, t }) => (
       <Box>
         <Button
           to={"https://github.com/makerdao/community-portal/issues"}
+          inline
           sx={{
-            display: "inline-block",
             mt: "5px",
           }}
         >

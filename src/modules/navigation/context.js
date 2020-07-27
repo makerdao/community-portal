@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
 import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
+import { globalHistory } from "@reach/router"
 
 import { useTranslation } from "@modules/localization/";
 import calculateTreeData from "@modules/navigation/calculateTreeData";
@@ -9,7 +10,7 @@ import { UrlConverter, getLocaleFromPath } from "@utils";
 export const NavigationContext = createContext();
 
 const NavigationProvider = ({ children }) => {
-  const { pathname } = useLocation();
+  const { pathname } = globalHistory.location;
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
 
   const { allMdx } = useStaticQuery(graphql`

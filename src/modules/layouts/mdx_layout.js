@@ -4,7 +4,7 @@ import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-import Layout from "@modules/layouts/site_layout";
+
 import { LanguageSelector } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
@@ -64,7 +64,7 @@ export default (props) => {
   };
 
   return (
-    <Layout seo={seo}>
+    <>
       {renderSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
@@ -129,6 +129,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </Layout>
+    </>
   );
 };

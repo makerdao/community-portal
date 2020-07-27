@@ -34,7 +34,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
       sx={{
         height: "calc(100vh - 90px)",
         overflow: "auto",
-        zIndex: 1,
+        zIndex: 1000,
         position: "fixed",
         width: "100%",
       }}

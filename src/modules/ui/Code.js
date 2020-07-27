@@ -5,7 +5,7 @@ import { jsx, Box } from "theme-ui";
 
 const Code = ({ children }) => {
   return (
-    <pre sx={{ display: "inline-block" }}>
+    <pre sx={{ display: "inline-block", whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
       <Box
         as="code"
         sx={{
