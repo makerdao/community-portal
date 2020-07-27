@@ -199,11 +199,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-preload-link-crossorigin',
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
-    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -212,11 +207,25 @@ module.exports = {
         start_url: `/`,
         background_color: "#291a42", 
         theme_color: "#5AE2CA",
-        Scope: "/",
         display: `standalone`,
+        include_favicon: false,
         icon: 'src/modules/utility/icon-512x512.png',
-
+        cache_busting_mode: 'none',
+        theme_color_in_head: false,
       },
     },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    
+    `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
+    `gatsby-plugin-catch-links`,
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+          workboxConfig: {
+            globPatterns: ['**/src/modules/utility/icon-512x512.png']
+          }
+      }
+    }
   ],
 };
