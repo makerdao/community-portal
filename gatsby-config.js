@@ -97,7 +97,7 @@ module.exports = {
         icon: 'static/images/icons/icon-512x512.png',
         "icons": [
             {
-            "src": "images/icons/maskable_icon.png",
+            "src": "../static/images/icons/maskable_icon.png",
             "sizes": "640x640",
             "type": "image/png",
             "purpose": "any maskable"
