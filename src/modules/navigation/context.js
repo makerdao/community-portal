@@ -77,6 +77,8 @@ const NavigationProvider = ({ children }) => {
     pathDirs
   );
 
+  console.log(breadcrumbData);
+
   return (
     <NavigationContext.Provider
       value={{
