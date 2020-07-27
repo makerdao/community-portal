@@ -89,7 +89,7 @@ module.exports = {
       options: {
         name: `MakerDAO Community Portal`,
         short_name: `MKD Comm Portal`,
-        start_url: `.`,
+        start_url: `/`,
         background_color: "#291a42", 
         theme_color: "#5AE2CA",
         Scope: "/",
