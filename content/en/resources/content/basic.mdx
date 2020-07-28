@@ -30,7 +30,7 @@ don't know what a React component is, or why you would want to have them in your
 content files, don't stress! This section is all about showing you how this is
 actually a writing superpower, and how you can put it to best use when contributing.
 
-You might have used a [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+You might have used a markdown cheatsheet
 before to figure out how to handle headings, links, images, and other basic necessities.
 The beauty of `mdx` is that all that stuff still works exactly the same. You'll still be
 writing what appears - for the most part - to be normal markdown. It's just that
@@ -130,7 +130,17 @@ of just having a normal icon with your link or an ordinary button, you can do al
   <Icon name="rocketchat" /> Rocket Chat
 </Button>
 
-```mdx:title=advanced-buttons.mdx
+<Button disabled inline to="/resources/palette">
+  {" "}
+  Disabled Inline{" "}
+</Button>
+
+<Button secondary inline to="/resources/palette">
+  {" "}
+  Inlined Secondary{" "}
+</Button>
+
+```md:title=advanced-buttons.mdx
 <Button secondary to="#">
   secondary
 </Button>{" "}
@@ -145,6 +155,16 @@ of just having a normal icon with your link or an ordinary button, you can do al
 
 <Button to="#">
   <Icon name="rocketchat" /> Rocket Chat
+</Button>
+
+<Button disabled inline to="/resources/palette">
+  {" "}
+  Disabled Inline{" "}
+</Button>
+
+<Button secondary inline to="/resources/palette">
+  {" "}
+  Inlined Secondary{" "}
 </Button>
 ```
 
@@ -245,14 +265,6 @@ This is a callout with the (specified) secondary style and the "search' icon fro
 
 </Callout>
 
-<Callout>
-  
-## Header between line breaks
-
-This will render the header correctly, because there are newlines before and after the .mdx child.
-
-</Callout>
-
 In addition to callouts, we can do Calls To Action. CTAs are really just good-looking green boxes to be
 used as shorthand when you want to draw attention to a particular piece of content. They do not change if
 you pass them any props. Callouts are fully fleshed out and they support icons.
@@ -278,14 +290,6 @@ This is a callout with the (default) primary style and the default "warning" ico
 <Callout icon="search" secondary>
 
 This is a callout with the (specified) secondary style and the "search' icon from dai-ui-icons!
-
-</Callout>
-
-<Callout>
-  
-## Header between line breaks
-
-This will render the header correctly, because there are newlines before and after the .mdx child.
 
 </Callout>
 
@@ -317,31 +321,7 @@ which comes replete with flexible color props and a bunch of other cool features
 
 </StatusBanner>
 
-<StatusBanner notice>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
 <StatusBanner warning>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner bear>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="blue">
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="#523897">
 
 **You're becoming an mdx expert already! [Much wow](#)**
 
@@ -354,31 +334,7 @@ which comes replete with flexible color props and a bunch of other cool features
 
 </StatusBanner>
 
-<StatusBanner notice>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
 <StatusBanner warning>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner bear>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="blue">
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="#523897">
 
 **You're becoming an mdx expert already! [Much wow](#)**
 
