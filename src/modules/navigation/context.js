@@ -1,5 +1,4 @@
 import React, { createContext } from "react";
-import { useLocation } from "@reach/router";
 import { useStaticQuery, graphql } from "gatsby";
 import { globalHistory } from "@reach/router"
 

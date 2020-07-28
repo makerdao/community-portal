@@ -4,10 +4,11 @@ import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-
 import { LanguageSelector } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
+import { SEO } from "@modules/utility";
+
 
 export default (props) => {
   const { children, pageContext, uri } = props;
@@ -65,6 +66,7 @@ export default (props) => {
 
   return (
     <Fragment>
+      <SEO {...seo} />
       {renderSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
