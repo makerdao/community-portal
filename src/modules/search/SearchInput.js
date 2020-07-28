@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Input, Flex, jsx } from "theme-ui";
 

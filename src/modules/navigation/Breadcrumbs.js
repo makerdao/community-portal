@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Fragment, useContext } from "react";
+import { Fragment, useContext } from "react";
 import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 

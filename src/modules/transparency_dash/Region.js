@@ -1,5 +1,4 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Flex, Image, Text, jsx } from "theme-ui";
 
 import Regions from "./data/regions";

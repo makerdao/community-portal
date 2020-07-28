@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react';
 import { Grid, jsx } from "theme-ui";
 
 import { ListElement, GridCell, MDXtoAuthor } from "@modules/authors";
@@ -18,7 +18,7 @@ const AuthorRenderer = ({
   children,
   ...props
 }) => {
-  const _children = React.Children.toArray(children);
+  const _children = Children.toArray(children);
 
   //Get Author Data from MDX Child elements.
   //See MDXtoAuthor.js on spec.

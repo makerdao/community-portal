@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react";
+import {Children, Fragment} from 'react';
 import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
@@ -36,7 +36,7 @@ export default (props) => {
   const getFirstHeading = () => {
     //NOTE(Rejon): The children of layouts provided are MDX components!
     //Find the first mdx child that's an H1
-    const firstHeading = React.Children.toArray(children).find(
+    const firstHeading = Children.toArray(children).find(
       (c) => c.props.mdxType === "h1"
     );
 
@@ -64,7 +64,7 @@ export default (props) => {
   };
 
   return (
-    <>
+    <Fragment>
       {renderSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
@@ -129,6 +129,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </>
+    </Fragment>
   );
 };

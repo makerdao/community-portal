@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { jsx, Box } from "theme-ui";
 import { useLocation } from "@reach/router";
 

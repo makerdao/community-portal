@@ -1,5 +1,4 @@
-//** */ @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Flex, Box, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";

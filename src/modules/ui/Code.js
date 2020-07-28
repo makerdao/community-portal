@@ -1,6 +1,4 @@
-//** @jsx jsx */
-
-import React from "react";
+/** @jsx jsx */
 import { jsx, Box } from "theme-ui";
 
 const Code = ({ children }) => {

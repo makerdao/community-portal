@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React, { useContext } from "react";
+/** @jsx jsx */
+import { useContext } from "react";
 import Select, { components } from "react-select";
 import { useLocation, useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";

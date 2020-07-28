@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react';
 import { Box, Flex, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
@@ -179,7 +179,7 @@ const AdvancedListElement = ({
 };
 
 const List = ({ children }) => {
-  const _Children = React.Children.toArray(children);
+  const _Children = Children.toArray(children);
 
   //Logic check for rendering a link element vs a list element.
   const childListLinkRenderCheck = (child, index) => {
@@ -193,7 +193,7 @@ const List = ({ children }) => {
           child.props.children.props &&
           child.props.children.props.mdxType === "a"))
     ) {
-      const boxChildren = React.Children.toArray(child.props.children);
+      const boxChildren = Children.toArray(child.props.children);
       const isLink =
         child.props.mdxType === "Link" || child.props.mdxType === "a";
       const isMDLink =

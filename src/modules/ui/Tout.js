@@ -1,9 +1,9 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from "react";
 import { Box, Grid, jsx } from "theme-ui";
 
 const Tout = ({ children }) => {
-  const _Children = React.Children.toArray(children);
+  const _Children = Children.toArray(children);
   const isGrid = _Children.length > 1;
 
   const ToutElement = ({ children }) => (

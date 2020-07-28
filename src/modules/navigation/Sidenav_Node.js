@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react";
 import { Link } from "@modules/navigation";
 
 import { jsx } from "theme-ui";

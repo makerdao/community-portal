@@ -1,7 +1,6 @@
-import React from "react";
-
+/** @jsx jsx */
 import { Icon } from "@makerdao/dai-ui-icons";
-import { Image, Text, Divider, Box, Flex } from "theme-ui";
+import { Image, Text, Divider, Box, Flex, jsx } from "theme-ui";
 import { motion } from "framer-motion";
 
 import {

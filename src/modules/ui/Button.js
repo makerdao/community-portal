@@ -1,6 +1,4 @@
 /** @jsx jsx */
-
-import React from "react";
 import { Button as ThemedButton, Text, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { motion } from "framer-motion";

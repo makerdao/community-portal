@@ -1,5 +1,4 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Box, jsx } from "theme-ui";
 import { HexLuminanceCheck, colorToHex } from "@utils";
 import Sticky from "react-sticky-el";

@@ -1,10 +1,10 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react'
 import { Flex, jsx } from "theme-ui";
 
 //TODO(Rejon): On mobile have image ALWAYS stack in order first. Do this when we have breakpoints figured out.
 const InfoBlock = ({ children, sx }) => {
-  let _Children = React.Children.toArray(children);
+  let _Children = Children.toArray(children);
   let imageIndex = 0;
   let hasImageMobileOrdering = {};
 

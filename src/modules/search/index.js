@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Box, Flex, Text, jsx } from "theme-ui";
 import LUNR from "lunr";
@@ -51,8 +51,8 @@ const useKeyPress = function (targetKey) {
       setKeyPressed(false);
     }
   };
-
-  React.useEffect(() => {
+  
+  useEffect(() => {
     window.addEventListener("keydown", downHandler);
     window.addEventListener("keyup", upHandler);
 

@@ -1,13 +1,13 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Fragment} from 'react';
 
-import { SEO } from "@modules/utility";
 import { Box, Flex, Text, Image, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { navigate } from "@reach/router";
-import Button from "@modules/ui/Button";
 
+import Button from "@modules/ui/Button";
+import { SEO } from "@modules/utility";
 import { useTranslation } from "@modules/localization";
 
 const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
@@ -96,7 +96,7 @@ const NotFoundPage = () => {
   `);
 
   if (!browser) {
-    return <></>;
+    return <Fragment></Fragment>;
   }
 
   const page = nodes.nodes.find(

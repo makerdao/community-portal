@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React, { useState, useContext } from "react";
+/** @jsx jsx */
+import { useState, useContext } from "react";
 import { Box, Flex, Text, jsx, useColorMode } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useLocation } from "@reach/router";

@@ -1,6 +1,4 @@
-//** @jsx jsx */
-
-import React from "react";
+/** @jsx jsx */
 import PropTypes from "prop-types";
 import { Flex, jsx } from "theme-ui";
 import { SEO } from "@modules/utility";
