@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Box, Flex, Text, jsx } from "theme-ui";
 import LUNR from "lunr";
@@ -37,6 +37,34 @@ const useClickOutside = (ref, handler, events) => {
   });
 };
 
+const useKeyPress = function (targetKey) {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  function downHandler({ key }) {
+    if (key === targetKey) {
+      setKeyPressed(true);
+    }
+  }
+
+  const upHandler = ({ key }) => {
+    if (key === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+  
+  useEffect(() => {
+    window.addEventListener("keydown", downHandler);
+    window.addEventListener("keyup", upHandler);
+
+    return () => {
+      window.removeEventListener("keydown", downHandler);
+      window.removeEventListener("keyup", upHandler);
+    };
+  });
+
+  return keyPressed;
+};
+
 export default function Search({ onClick, ...otherProps }) {
   const MAX_RESULT_COUNT = 10; //<- Return 10 results maximum.
   const ref = useRef();
@@ -45,6 +73,10 @@ export default function Search({ onClick, ...otherProps }) {
   const [focus, setFocus] = useState(false);
   const [results, setResults] = useState([]);
   const [lunr, setLunr] = useState(null);
+  const downPress = useKeyPress("ArrowDown");
+  const upPress = useKeyPress("ArrowUp");
+  const enterPress = useKeyPress("Enter");
+  const [cursor, setCursor] = useState(0);
 
   const navigate = useNavigate();
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
@@ -93,29 +125,28 @@ export default function Search({ onClick, ...otherProps }) {
       setResults([]);
     }
 
+    setCursor(0);
     setQuery(val);
   };
 
   //On form submission, navigate to the url of the first element.
-  const onSubmit = () => {
-    if (results.length > 0) {
-      navigate(results[0].url);
-      setFocus(false);
-      onClick();
-    }
-  };
+  // const onSubmit = () => {
+  //   if (results.length > 0) {
+  //     navigate(results[0].url);
+  //     setFocus(false);
+  //     onClick();
+  //   }
+  // };
 
   const resultsVariant = {
     visible: {
       opacity: 1,
-      y: 0,
-      x: "-50%",
+      top: "64px",
       transition: { ease: "easeOut" },
     },
     hidden: {
       opacity: 0,
-      y: "32px",
-      x: "-50%",
+      top: "86px",
       transition: { ease: "easeOut" },
     },
   };
@@ -129,6 +160,27 @@ export default function Search({ onClick, ...otherProps }) {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (results.length > 0 && downPress) {
+      setCursor((prevState) =>
+        prevState < results.length - 1 ? prevState + 1 : prevState
+      );
+    }
+  }, [downPress, results.length]);
+
+  useEffect(() => {
+    if (results.length > 0 && upPress) {
+      setCursor((prevState) => (prevState > 0 ? prevState - 1 : prevState));
+    }
+  }, [upPress, results.length]);
+
+  useEffect(() => {
+    if (results.length > 0 && enterPress) {
+      navigate(results[cursor].url);
+      setFocus(false);
+    }
+  }, [cursor, enterPress, results, navigate]);
 
   return (
     <Flex
@@ -146,7 +198,6 @@ export default function Search({ onClick, ...otherProps }) {
       <SearchInput
         onFocus={() => setFocus(true)}
         onChange={onChange}
-        onSubmit={onSubmit}
         {...{ focus }}
       />
       <motion.div
@@ -154,11 +205,13 @@ export default function Search({ onClick, ...otherProps }) {
         variants={resultsVariant}
         animate={query.length > 0 && focus ? "visible" : "hidden"}
         sx={{
-          position: "absolute",
+          position: ["fixed", "fixed","absolute"],
           boxShadow: "high",
-          left: ["calc(50% - .5rem)", "calc(50% - .5rem)", "50%"],
+          left: "50%",
+          transform: "translateX(-50%)",
           top: ["5rem", "5rem", "3.5rem"],
-          width: ["calc(100vw - 48px)", "calc(100vw - 48px)", "100%"],
+          width: ["90vw", "90vw", "100%"],
+          mt: [4,4,0],
           minHeight: 4,
           borderRadius: "roundish",
           overflow: "hidden",
@@ -206,14 +259,14 @@ export default function Search({ onClick, ...otherProps }) {
                 borderRadius: "roundish",
                 fontSize: [3, 5, 3],
               },
-              "& li:hover > a": {
+              "& li:hover > a, & li.active > a": {
                 backgroundColor: "primaryMuted",
-                color: "text"
+                color: "text",
               },
             }}
           >
             {results.map((result, index) => (
-              <li>
+              <li key={`search-hit-${index}`} className={index === cursor ? "active" : ""}>
                 <SearchHit
                   {...result}
                   query={query}

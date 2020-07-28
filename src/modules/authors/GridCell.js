@@ -1,5 +1,4 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Box, Flex, Image, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 

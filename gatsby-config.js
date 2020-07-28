@@ -10,11 +10,18 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `MakerDAO Community Portal`,
-    description: `Gatsby DaiUI Starter`,
-    author: `Réjon Taylor-Foster (@Maximum_Crash)`,
+    description: `A Community of developers, designers, innovators, and just about everything cool under the sun. Come join our team!`,
+    author: `MakerDAO Commuminty Development Team`,
     copyright: "",
+    siteUrl: "http://localhost:9000", // NOTE(Isaac): TODO: change this to production URL
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-theme-ui',
+      options: {
+        preset: "@makerdao/dai-ui-theme-maker"
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -22,12 +29,57 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/content`,
+        ignore: {
+          patterns: [
+            `**/header.mdx`,
+            `**/**.js`,
+            `**/**.json`,
+            `**/404.mdx`,
+            `**/example.mdx`,
+            `**/footer.mdx`,
+            `**/**.pptx`,
+          ],
+          options: { nocase: true },
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `#5AE2CA`,
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-responsive-iframe`,
-    "gatsby-remark-embed-video",
     `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -48,16 +100,13 @@ module.exports = {
               showInfo: false, // Optional: Hides video title and player actions.
             },
           },
+
           `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-images`,
             options: {
-              backgroundColor: "none",
-              disableBgImage: true,
-              showCaptions: ["Title"],
               maxWidth: 1000,
               linkImagesToOriginal: false,
-              wrapperStyle: (result) => `margin: unset;`,
             },
           },
           {
@@ -67,40 +116,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Gatsby + Dai-Ui Starter`,
-        short_name: `Gatsby + Dai-Ui`,
-        start_url: `/`,
-        display: `minimal-ui`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: ["Roboto Mono"],
-        display: "swap",
-      },
-    },
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: `${__dirname}/content`,
-        ignore: {
-          patterns: [
-            `**/header.mdx`,
-            `**/**.js`,
-            `**/**.json`,
-            `**/404.mdx`,
-            `**/example.mdx`,
-            `**/footer.mdx`,
-            `**/**.pptx`,
-          ],
-          options: { nocase: true },
-        },
       },
     },
 
@@ -217,11 +232,34 @@ module.exports = {
         // cookieDomain: "makerdao.com",
       },
     },
-
+    "gatsby-plugin-preload-link-crossorigin",
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `MakerDAO Community Portal`,
+        short_name: `MKD Comm Portal`,
+        start_url: `/`,
+        background_color: "#291a42",
+        theme_color: "#5AE2CA",
+        display: `standalone`,
+        include_favicon: false,
+        icon: "src/modules/utility/icon-512x512.png",
+        cache_busting_mode: "none",
+        theme_color_in_head: false,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
     `gatsby-plugin-catch-links`,
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        workboxConfig: {
+          globPatterns: ["**/images/icons/icon-512x512.png"],
+        },
+      },
+    },
   ],
 };

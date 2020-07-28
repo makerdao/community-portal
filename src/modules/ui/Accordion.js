@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React, { useState } from "react";
+/** @jsx jsx */
+import { useState, Children } from "react";
 import SmoothCollapse from "react-smooth-collapse";
 
 import { Box, Flex, jsx } from "theme-ui";
@@ -8,7 +8,7 @@ import { Icon } from "@makerdao/dai-ui-icons";
 const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
   const [expanded, setExpanded] = useState(defaultOpen ? true : false);
 
-  const _Children = React.Children.toArray(children);
+  const _Children = Children.toArray(children);
   const Header = _Children.splice(0, 1);
 
   const OpenIcon = openIcon || "plus";
@@ -21,6 +21,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
         fontSize: "20px",
         borderBottom: "1px solid",
         borderColor: "muted",
+        mb: 4,
         backgroundColor: "background",
       }}
     >

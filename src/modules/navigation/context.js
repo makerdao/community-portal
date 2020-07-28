@@ -1,6 +1,6 @@
-import React, { createContext } from "react";
-import { useLocation } from "@reach/router";
+import React, { createContext, useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { globalHistory } from "@reach/router"
 
 import { useTranslation } from "@modules/localization/";
 import calculateTreeData from "@modules/navigation/calculateTreeData";
@@ -8,8 +8,17 @@ import { UrlConverter, getLocaleFromPath } from "@utils";
 
 export const NavigationContext = createContext();
 
+export const useNavigation = () => {
+  const context = useContext(NavigationContext);
+  if (context === undefined) {
+    throw new Error('useNavigation must be within a NavigationProvider');
+  }
+
+  return context; 
+}
+
 const NavigationProvider = ({ children }) => {
-  const { pathname } = useLocation();
+  const { pathname } = globalHistory.location;
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
 
   const { allMdx } = useStaticQuery(graphql`
@@ -82,8 +91,8 @@ const NavigationProvider = ({ children }) => {
       value={{
         sidenavData: sidenavData || null,
         breadcrumbData: breadcrumbData || null,
-        pathDirs,
-        languageSelectorData,
+        pathDirs: pathDirs || null,
+        languageSelectorData: languageSelectorData || null,
       }}
     >
       {children}

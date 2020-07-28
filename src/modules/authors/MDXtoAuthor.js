@@ -1,4 +1,5 @@
-import React from "react";
+import {Children} from 'react';
+
 //Must an array like
 /* {
 			"login": "MaximumCrash" <- ### Maximum Crash
@@ -69,7 +70,7 @@ const converter = (mdxObj) => {
 
   //Check for Contributions
   if (mdxObj.props.mdxType === "ul" || mdxObj.props.mdxType === "ol") {
-    const contribList = React.Children.toArray(mdxObj.props.children);
+    const contribList = Children.toArray(mdxObj.props.children);
 
     contribList.forEach((li) => {
       if (!contributorData["contributions"]) {

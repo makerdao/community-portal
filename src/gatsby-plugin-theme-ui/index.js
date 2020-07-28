@@ -1,22 +1,17 @@
-import React from "react";
-import { merge } from "theme-ui";
-import Prism from "@theme-ui/prism";
-import maker from "@makerdao/dai-ui-theme-maker";
+import React from 'react';
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
-const components = { 
-  pre: (props) => props.children, 
-  code: Prism,
-};
+import maker from "@makerdao/dai-ui-theme-maker";
 
 const prismPreset = {
-  color: "background", backgroundColor: "codeBG",
+  color: "codeText",
+  backgroundColor: "codeBG",
   ".selector, .attr-name, .string, .char, .builtin, .inserted": {
     color: "primaryEmphasis",
   },
   // comments and characters like <, =>, (), etc
   ".prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url": {
-    color: "background",
+    color: "codeText",
   },
   ".comment": {
     fontStyle: "italic",
@@ -33,17 +28,17 @@ const prismPreset = {
   },
 
   fontSize: 3,
-  fontFamily: "Roboto Mono",
+  fontWeight: "600",
+  fontFamily: "monospace",
   overflow: "auto",
   p: 3,
-  pt: 0,
   mt: 0,
   borderRadius: "4px",
 };
 
-const theme = {
-  ...maker, //<- Your default theme.
-  useColorSchemeMediaQuery: true,
+export default {
+...maker, //<- Your default theme.
+	useColorSchemeMediaQuery: true,
   breakpoints: ["640px", "932px", "infinity"],
   icons: {
     ...themeIcons,
@@ -109,6 +104,94 @@ const theme = {
       ),
       viewBox: "0 0 136 133",
     },
+    clipboard: {
+      path: (
+        <g>
+          <path
+            d="M38 4H29.64C28.8 1.68 26.6 0 24 0C21.4 0 19.2 1.68 18.36 4H10C7.8 4 6 5.8 6 8V40C6 42.2 7.8 44 10 44H38C40.2 44 42 42.2 42 40V8C42 5.8 40.2 4 38 4ZM24 4C25.1 4 26 4.9 26 6C26 7.1 25.1 8 24 8C22.9 8 22 7.1 22 6C22 4.9 22.9 4 24 4ZM36 40H12C10.9 40 10 39.1 10 38V10C10 8.9 10.9 8 12 8H14V10C14 12.2 15.8 14 18 14H30C32.2 14 34 12.2 34 10V8H36C37.1 8 38 8.9 38 10V38C38 39.1 37.1 40 36 40Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
+    folder: {
+      path: (
+        <g>
+          <path
+            d="M21.18 9.18C20.42 8.42 19.4 8 18.34 8H8C5.8 8 4.02 9.8 4.02 12L4 36C4 38.2 5.8 40 8 40H40C42.2 40 44 38.2 44 36V16C44 13.8 42.2 12 40 12H24L21.18 9.18Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
+    forum: {
+      path: (
+        <g>
+          <path
+            d="M40 12H38V28C38 29.1 37.1 30 36 30H12V32C12 34.2 13.8 36 16 36H36L44 44V16C44 13.8 42.2 12 40 12ZM34 22V8C34 5.8 32.2 4 30 4H8C5.8 4 4 5.8 4 8V34L12 26H30C32.2 26 34 24.2 34 22Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
+    globe: {
+      path: (
+        <g>
+          <path
+            d="M24 4C12.96 4 4 12.96 4 24C4 35.04 12.96 44 24 44C35.04 44 44 35.04 44 24C44 12.96 35.04 4 24 4ZM22 39.86C14.1 38.88 8 32.16 8 24C8 22.76 8.16 21.58 8.42 20.42L18 30V32C18 34.2 19.8 36 22 36V39.86ZM35.8 34.78C35.28 33.16 33.8 32 32 32H30V26C30 24.9 29.1 24 28 24H16V20H20C21.1 20 22 19.1 22 18V14H26C28.2 14 30 12.2 30 10V9.18C35.86 11.56 40 17.3 40 24C40 28.16 38.4 31.94 35.8 34.78Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
+    laptop: {
+      path: (
+        <g>
+          <path
+            d="M40 36C42.2 36 43.98 34.2 43.98 32L44 12C44 9.8 42.2 8 40 8H8C5.8 8 4 9.8 4 12V32C4 34.2 5.8 36 8 36H2C0.9 36 0 36.9 0 38C0 39.1 0.9 40 2 40H46C47.1 40 48 39.1 48 38C48 36.9 47.1 36 46 36H40ZM10 12H38C39.1 12 40 12.9 40 14V30C40 31.1 39.1 32 38 32H10C8.9 32 8 31.1 8 30V14C8 12.9 8.9 12 10 12Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
+    pencil: {
+      path: (
+        <g>
+          <path
+            d="M6 34.92V41C6 41.56 6.44 42 7 42H13.08C13.34 42 13.6 41.9 13.78 41.7L35.62 19.88L28.12 12.38L6.3 34.2C6.1 34.4 6 34.64 6 34.92ZM41.42 14.08C42.2 13.3 42.2 12.04 41.42 11.26L36.74 6.58C35.96 5.8 34.7 5.8 33.92 6.58L30.26 10.24L37.76 17.74L41.42 14.08V14.08Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
+    people: {
+      path: (
+        <g>
+          <path
+            d="M32 22C35.32 22 37.98 19.32 37.98 16C37.98 12.68 35.32 10 32 10C28.68 10 26 12.68 26 16C26 19.32 28.68 22 32 22ZM16 22C19.32 22 21.98 19.32 21.98 16C21.98 12.68 19.32 10 16 10C12.68 10 10 12.68 10 16C10 19.32 12.68 22 16 22ZM16 26C11.34 26 2 28.34 2 33V36C2 37.1 2.9 38 4 38H28C29.1 38 30 37.1 30 36V33C30 28.34 20.66 26 16 26ZM32 26C31.42 26 30.76 26.04 30.06 26.1C30.1 26.12 30.12 26.16 30.14 26.18C32.42 27.84 34 30.06 34 33V36C34 36.7 33.86 37.38 33.64 38H44C45.1 38 46 37.1 46 36V33C46 28.34 36.66 26 32 26Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
+    wrench: {
+      path: (
+        <g>
+          <path
+            d="M24.18 5.81991C20.16 1.79991 14.14 0.979909 9.30001 3.33991L16.56 10.5999C17.34 11.3799 17.34 12.6399 16.56 13.4199L13.38 16.5999C12.6 17.3999 11.34 17.3999 10.56 16.5999L3.30001 9.33991C0.960007 14.1999 1.78001 20.1799 5.80001 24.1999C9.52001 27.9199 14.96 28.8999 19.58 27.1599L35.5 43.0799C37.56 45.1399 40.88 45.1399 42.92 43.0799C44.98 41.0199 44.98 37.6999 42.92 35.6599L27.08 19.7999C28.92 15.1199 27.96 9.59991 24.18 5.81991Z"
+            fill="currentColor"
+          />
+        </g>
+      ),
+      viewBox: "0 0 48 48",
+    },
     makerLogo: {
       path: (
         <g width="240" height="35" fill="none">
@@ -157,7 +240,7 @@ const theme = {
     },
   }, //<- Icon package
   colors: {
-    ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
+	  ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
     primary: "#5AE2CA",
     primaryEmphasis: "#68FEE3",
     primaryAlt: "#1AAA9B",
@@ -169,6 +252,7 @@ const theme = {
     background: "#FFFFFF",
     backgroundAlt: "#291A42",
     surface: "#E7FCFA",
+    surfaceAlt: "#FFFFFF",
     surfaceDark: "#4D4968",
     muted: "#D0D3D7",
     link: "#291A42",
@@ -205,6 +289,7 @@ const theme = {
         mutedAlt: "#4D4968",
         background: "#291A42",
         surface: "#4D4968",
+        surfaceAlt: "#4D4968",
         warning: "#FFBA44",
         link: "#68FEE3",
         linkAlt: "#A6FFEF",
@@ -216,6 +301,7 @@ const theme = {
         statusBG: "#291A42",
         statusColor: "#FFFFFF",
         codeBG: "#00585E",
+        codeText: "#FFFFFF",
         onPrimary: "#291A42",
       },
     },
@@ -230,7 +316,6 @@ const theme = {
     codeBG: "#4D4968",
     codeText: "#FFFFFF",
 
-    accordionBG: "#fcfcfc", //<-- What should this be?
     transDash_bodyColor: "#333",
     transDash_headlineColor: "#291A42",
     transDash_makerOrange: "#F5B13D",
@@ -246,16 +331,16 @@ const theme = {
     float: "0px 2px 10px rgba(35, 21, 54, 0.05)",
   },
   radii: {
-    ...maker.radii,
+	  ...maker.radii,
     round: "32px",
   },
   fonts: {
-    ...maker.fonts,
+	  ...maker.fonts,
     body: "FT Base, system-ui, Arial, sans-serif",
     transparencyDashboard: 'system-ui,"Helvetica Neue",sans-serif',
   },
   styles: {
-    ...maker.styles,
+	  ...maker.styles,
     a: {
       color: "primary",
     },
@@ -267,6 +352,7 @@ const theme = {
     },
     code: {
       ...prismPreset,
+      background: 'none'
     },
   },
   buttons: {
@@ -275,7 +361,7 @@ const theme = {
       outline: "none",
       fontFamily: "body",
       borderRadius: "32px",
-      py: '15px',
+      py: "15px",
       px: 4,
       color: "onPrimary",
       fontWeight: "600",
@@ -296,7 +382,7 @@ const theme = {
         bg: "primaryEmphasis",
         transition: ".1s ease",
       },
-      "&:disabled": { 
+      "&:disabled": {
         bg: "primaryMuted",
         color: "muted",
         pointerEvents: "none",
@@ -354,32 +440,29 @@ const theme = {
     primarySmall: {
       variant: "buttons.primary",
       py: 2,
-      px: '24px',
-      fontSize: '10px',
-      letterSpacing: '1px',
-      textTransform: 'uppercase',
-      lineHeight: '12px',
+      px: "24px",
+      fontSize: "10px",
+      letterSpacing: "1px",
+      textTransform: "uppercase",
+      lineHeight: "12px",
     },
     outlineSmall: {
       variant: "buttons.outline",
       py: 2,
-      px: '24px',
-      fontSize: '10px',
-      letterSpacing: '1px',
-      textTransform: 'uppercase',
-      lineHeight: '12px',
+      px: "24px",
+      fontSize: "10px",
+      letterSpacing: "1px",
+      textTransform: "uppercase",
+      lineHeight: "12px",
     },
     icon_primary: {
-      variant: "buttons.primary"
+      variant: "buttons.primary",
     },
     icon_secondary: {
-      variant: "buttons.secondary"
+      variant: "buttons.secondary",
     },
     icon_outline: {
-      variant: "buttons.outline"
-    }
-
+      variant: "buttons.outline",
+    },
   },
-};
-
-export default { theme: merge(prismPreset, theme), components };
+}
