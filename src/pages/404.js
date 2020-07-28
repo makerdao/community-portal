@@ -21,7 +21,9 @@ const PageLayout = ({ children, seoTitle, t }) => (
       margin: 'auto',
       justifyContent: "center",
       alignItems: "center",
+      flexDirection: ['column', 'column', 'row'],
       py: "77px",
+      px: '5%',
     }}
   >
     <SEO title={seoTitle} />
@@ -29,7 +31,9 @@ const PageLayout = ({ children, seoTitle, t }) => (
       sx={{
         flex: 2,
         flexDirection: "column",
-        p: "5%",
+        pr: [0,0,"5%"],
+        textAlign: ['center', 'center', ''],
+        order: [1,1,0],
         width: "100%",
         display: "inline-block",
       }}
@@ -41,6 +45,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
           inline
           sx={{
             mt: "5px",
+            mr: [0,0,3],
           }}
         >
           {t("Bug_Report")}
@@ -53,7 +58,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
           hideExternalIcon={true}
           sx={{
             fontWeight: "bold",
-            display: "inline-block",
+            display: ['block', 'block', "inline-block"],
             ml: "15px",
             cursor: "pointer",
           }}
@@ -63,7 +68,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
       </Box>
     </Flex>
     <Image
-      sx={{ width: "400px", height: "400px", display: "inline-block" }}
+      sx={{ width: "400px", height: "400px", display: "inline-block", order: [0,0,1] }}
       src={
         "https://cdn.shopify.com/s/files/1/0010/0994/2575/products/2046-60-mistyteal_3472a883-658e-4f06-b350-387a8eafa4ae_2000x.png"
       }
