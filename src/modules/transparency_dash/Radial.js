@@ -1,5 +1,4 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Box, jsx } from "theme-ui";
 
 const Radial = ({ size = 200, value = 0, min = 0, max = 1, ...props }) => {

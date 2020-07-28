@@ -1,5 +1,5 @@
-import React from "react";
-import { Card } from "theme-ui";
+/** @jsx jsx */
+import { jsx, Card } from "theme-ui";
 
 const CTA = ({ children, ...otherProps }) => (
   <Card

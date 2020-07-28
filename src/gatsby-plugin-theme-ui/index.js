@@ -1,13 +1,7 @@
-import React from "react";
-import { merge } from "theme-ui";
-import Prism from "@theme-ui/prism";
-import maker from "@makerdao/dai-ui-theme-maker";
+import React from 'react';
 import { icons as themeIcons } from "@makerdao/dai-ui-icons";
 import { icons as brandingIcons } from "@makerdao/dai-ui-icons-branding";
-const components = {
-  pre: (props) => props.children,
-  code: Prism,
-};
+import maker from "@makerdao/dai-ui-theme-maker";
 
 const prismPreset = {
   color: "codeText",
@@ -42,9 +36,9 @@ const prismPreset = {
   borderRadius: "4px",
 };
 
-const theme = {
-  ...maker, //<- Your default theme.
-  useColorSchemeMediaQuery: true,
+export default {
+...maker, //<- Your default theme.
+	useColorSchemeMediaQuery: true,
   breakpoints: ["640px", "932px", "infinity"],
   icons: {
     ...themeIcons,
@@ -246,7 +240,7 @@ const theme = {
     },
   }, //<- Icon package
   colors: {
-    ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
+	  ...maker.colors, //<- Deconstruct maker.colors so default colors aren't lost.
     primary: "#5AE2CA",
     primaryEmphasis: "#68FEE3",
     primaryAlt: "#1AAA9B",
@@ -322,7 +316,6 @@ const theme = {
     codeBG: "#4D4968",
     codeText: "#FFFFFF",
 
-    accordionBG: "#fcfcfc", //<-- What should this be?
     transDash_bodyColor: "#333",
     transDash_headlineColor: "#291A42",
     transDash_makerOrange: "#F5B13D",
@@ -338,16 +331,16 @@ const theme = {
     float: "0px 2px 10px rgba(35, 21, 54, 0.05)",
   },
   radii: {
-    ...maker.radii,
+	  ...maker.radii,
     round: "32px",
   },
   fonts: {
-    ...maker.fonts,
+	  ...maker.fonts,
     body: "FT Base, system-ui, Arial, sans-serif",
     transparencyDashboard: 'system-ui,"Helvetica Neue",sans-serif',
   },
   styles: {
-    ...maker.styles,
+	  ...maker.styles,
     a: {
       color: "primary",
     },
@@ -359,6 +352,7 @@ const theme = {
     },
     code: {
       ...prismPreset,
+      background: 'none'
     },
   },
   buttons: {
@@ -471,6 +465,4 @@ const theme = {
       variant: "buttons.outline",
     },
   },
-};
-
-export default { theme: merge(prismPreset, theme), components };
+}

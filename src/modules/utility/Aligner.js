@@ -1,5 +1,4 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Flex, jsx } from "theme-ui";
 
 const Aligner = ({ children, center, right, bottom, yCenter, xCenter, sx }) => {

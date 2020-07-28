@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Box, Flex, Text, jsx } from "theme-ui";
 import LUNR from "lunr";
@@ -51,8 +51,8 @@ const useKeyPress = function (targetKey) {
       setKeyPressed(false);
     }
   };
-
-  React.useEffect(() => {
+  
+  useEffect(() => {
     window.addEventListener("keydown", downHandler);
     window.addEventListener("keyup", upHandler);
 
@@ -205,12 +205,13 @@ export default function Search({ onClick, ...otherProps }) {
         variants={resultsVariant}
         animate={query.length > 0 && focus ? "visible" : "hidden"}
         sx={{
-          position: "absolute",
+          position: ["fixed", "fixed","absolute"],
           boxShadow: "high",
           left: "50%",
           transform: "translateX(-50%)",
           top: ["5rem", "5rem", "3.5rem"],
-          width: ["80vw", "80vw", "100%"],
+          width: ["90vw", "90vw", "100%"],
+          mt: [4,4,0],
           minHeight: 4,
           borderRadius: "roundish",
           overflow: "hidden",
@@ -265,7 +266,7 @@ export default function Search({ onClick, ...otherProps }) {
             }}
           >
             {results.map((result, index) => (
-              <li className={index === cursor ? "active" : ""}>
+              <li key={`search-hit-${index}`} className={index === cursor ? "active" : ""}>
                 <SearchHit
                   {...result}
                   query={query}
