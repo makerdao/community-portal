@@ -352,6 +352,7 @@ export default {
     },
     code: {
       ...prismPreset,
+      background: 'none'
     },
   },
   buttons: {
