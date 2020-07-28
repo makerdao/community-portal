@@ -112,11 +112,11 @@ const Header = () => {
           return aNode.title.localeCompare(bNode.title);
         }
 
-        if (aNode.headerOrder < bNode.headerOrder) return -1;
-        if (aNode.headerOrder > bNode.headerOrder) return 1;
         return 0;
       }
 
+      if (aNode.headerOrder < bNode.headerOrder) return -1;
+      if (aNode.headerOrder > bNode.headerOrder) return 1;
       return 0;
     })
     .map(({ node }, index) => {
