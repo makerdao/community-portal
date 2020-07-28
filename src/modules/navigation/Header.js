@@ -224,7 +224,7 @@ const Header = () => {
         }
       }
     };
-    
+
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", onScroll);
 
@@ -232,7 +232,7 @@ const Header = () => {
         window.removeEventListener("scroll", onScroll);
       };
     }
-  },[]);
+  },[breakpoints]);
 
   return (
     <Box
@@ -287,7 +287,7 @@ const Header = () => {
             width: "52px",
             height: "52px",
           }}
-          aria-label={t("aria_MakerLogo")}
+          aria-label={t("aria_MakerHomeIcon")}
         >
           <motion.div
             whileTap={{ scale: 0.9 }}

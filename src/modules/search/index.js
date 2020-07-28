@@ -265,7 +265,7 @@ export default function Search({ onClick, ...otherProps }) {
             }}
           >
             {results.map((result, index) => (
-              <li className={index === cursor ? "active" : ""}>
+              <li key={`search-hit-${index}`} className={index === cursor ? "active" : ""}>
                 <SearchHit
                   {...result}
                   query={query}

@@ -96,7 +96,7 @@ const AuthorListElement = ({
               {Array.isArray(profile) ? (
                 <Fragment>
                   {/* NOTE(Rejon): I'm not fleshing this out on purpose. This doesn't need a robust solution. */}
-                  {profile.map((url) => getLinkIcon(url))}
+                  {profile.map((url, index) => <Fragment key={`profile-link-icon-${index}`}>{getLinkIcon(url)}</Fragment> )}
                 </Fragment>
               ) : (
                 getLinkIcon(profile)

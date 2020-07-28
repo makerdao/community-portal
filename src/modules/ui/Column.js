@@ -36,6 +36,7 @@ const Column = ({ children }) => {
 
           return (
             <Box
+              key={`column-child-element-${index}`}
               sx={{
                 borderRadius: "12px",
                 overflow: "hidden",
@@ -76,7 +77,7 @@ const Column = ({ children }) => {
           );
         }
 
-        return <Box sx={containerStyles}>{child}</Box>;
+        return <Box sx={containerStyles} key={`column-child-element-${index}`}>{child}</Box>;
       })}
     </Grid>
   );

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Box, Flex, Text, jsx, useColorMode } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useLocation } from "@reach/router";
@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { Link, SidenavNode } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
-import { NavigationContext } from "@modules/navigation/context";
+import { useNavigation } from "@modules/navigation/context";
 
 const MobileNav = ({ headerLinks, onLinkClick }) => {
-  const { sidenavData, pathDirs } = useContext(NavigationContext);
+  const { sidenavData, pathDirs } = useNavigation()
   const { locale, t } = useTranslation();
   const { pathname } = useLocation();
 

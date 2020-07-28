@@ -10,6 +10,7 @@ const Process = ({ children }) => {
       {_Children.map((child, index) => {
         return (
           <Flex
+            key={`process-child-${index}`}
             sx={{
               flexDirection: ["column", "column", "row"],
             }}

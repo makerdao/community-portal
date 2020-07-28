@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { globalHistory } from "@reach/router"
 
@@ -7,6 +7,15 @@ import calculateTreeData from "@modules/navigation/calculateTreeData";
 import { UrlConverter, getLocaleFromPath } from "@utils";
 
 export const NavigationContext = createContext();
+
+export const useNavigation = () => {
+  const context = useContext(NavigationContext);
+  if (context === undefined) {
+    throw new Error('useNavigation must be within a NavigationProvider');
+  }
+
+  return context; 
+}
 
 const NavigationProvider = ({ children }) => {
   const { pathname } = globalHistory.location;

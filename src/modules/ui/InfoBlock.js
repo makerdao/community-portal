@@ -26,11 +26,11 @@ const InfoBlock = ({ children, sx }) => {
   });
 
   if (hasImage && imageIndex !== 0) {
-    hasImageMobileOrdering[`& > *:nth-child(${imageIndex + 1})`] = {
+    hasImageMobileOrdering[`& > *:nth-of-type(${imageIndex + 1})`] = {
       order: [0, 0, 1],
     };
 
-    hasImageMobileOrdering[`& > *:not(:nth-child(${imageIndex + 1}))`] = {
+    hasImageMobileOrdering[`& > *:not(:nth-of-type(${imageIndex + 1}))`] = {
       order: [1, 1, 0],
     };
   }
@@ -60,7 +60,7 @@ const InfoBlock = ({ children, sx }) => {
           objectFit: "cover",
           objectPosition: "center",
         },
-        "& > *:first-child": {
+        "& > *:first-of-type": {
           minWidth: ["unset", "unset", "250px"],
           mr: hasImage ? [0, 0, "4%"] : 0,
         },

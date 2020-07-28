@@ -22,6 +22,7 @@ const Checklist = ({ children }) => {
       {_Children.map((child, index) => (
         <Flex
           as="li"
+          key={`checklist-child-${index}`}
           sx={{ mb: "24px", color: "text", "&:last-of-type": { mb: 0 } }}
         >
           <Box

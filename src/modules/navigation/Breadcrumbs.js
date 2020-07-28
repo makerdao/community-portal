@@ -1,15 +1,15 @@
 /** @jsx jsx */
-import { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-import { NavigationContext } from "@modules/navigation/context";
+import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization/";
 import {titleCase} from '@utils';
 
 const Breadcrumbs = ({ children }) => {
-  const { breadcrumbData, pathDirs } = useContext(NavigationContext);
+  const { breadcrumbData, pathDirs } = useNavigation()
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
 
   return (
@@ -44,8 +44,6 @@ const Breadcrumbs = ({ children }) => {
       />
       {pathDirs.map((p, index) => {
         const _data = breadcrumbData.find((n) => n.part === p);
-
-        console.log(_data, p);
 
         if (!_data) {
           if (index === pathDirs.length - 1) {
