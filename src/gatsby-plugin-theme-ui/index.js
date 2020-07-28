@@ -350,9 +350,6 @@ export default {
     pre: {
       ...prismPreset,
     },
-    code: {
-      ...prismPreset,
-    },
   },
   buttons: {
     primary: {
