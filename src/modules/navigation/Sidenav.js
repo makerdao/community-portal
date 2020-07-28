@@ -1,13 +1,12 @@
 /** @jsx jsx */
-import React, { useContext } from "react";
 import { jsx, Box } from "theme-ui";
 import { useLocation } from "@reach/router";
 
-import { NavigationContext } from "@modules/navigation/context";
+import { useNavigation } from "@modules/navigation/context";
 import Sidenav_Node from "@modules/navigation/Sidenav_Node";
 
 const Sidenav = (props) => {
-  const { sidenavData } = useContext(NavigationContext);
+  const { sidenavData } = useNavigation()
   const { pathname } = useLocation();
 
   return (

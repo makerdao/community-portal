@@ -1,9 +1,9 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react'
 import { Box, Grid, jsx } from "theme-ui";
 
 const Column = ({ children }) => {
-  const _Children = React.Children.toArray(children);
+  const _Children = Children.toArray(children);
 
   const containerStyles = {
     borderRadius: "12px",
@@ -26,7 +26,7 @@ const Column = ({ children }) => {
       columns={[[1, "1fr"], [1, "1fr"], desktopColumns]}
     >
       {_Children.map((child, index) => {
-        const childChildren = React.Children.toArray(child.props.children);
+        const childChildren =  Children.toArray(child.props.children);
         if (
           typeof child.props.children !== "string" &&
           childChildren.length > 0
@@ -36,6 +36,7 @@ const Column = ({ children }) => {
 
           return (
             <Box
+              key={`column-child-element-${index}`}
               sx={{
                 borderRadius: "12px",
                 overflow: "hidden",
@@ -76,7 +77,7 @@ const Column = ({ children }) => {
           );
         }
 
-        return <Box sx={containerStyles}>{child}</Box>;
+        return <Box sx={containerStyles} key={`column-child-element-${index}`}>{child}</Box>;
       })}
     </Grid>
   );

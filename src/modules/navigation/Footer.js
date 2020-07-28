@@ -1,5 +1,4 @@
-//** */ @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Flex, Box, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -154,7 +153,7 @@ const Footer = () => {
                 pr: ["66px", "66px", "unset"],
                 mb: ["64px", "64px", "unset"],
                 color: "onBackgroundAlt",
-                "& > *nth-child(1):not(ul)": {
+                "& > *:nth-of-type(1):not(ul)": {
                   mb: "8px",
                 },
                 "& > ul": {

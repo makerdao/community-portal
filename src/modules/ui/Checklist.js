@@ -1,9 +1,9 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react';
 import { Box, Flex, jsx } from "theme-ui";
 
 const Checklist = ({ children }) => {
-  const _Children = React.Children.toArray(children);
+  const _Children = Children.toArray(children);
 
   return (
     <Flex
@@ -22,6 +22,7 @@ const Checklist = ({ children }) => {
       {_Children.map((child, index) => (
         <Flex
           as="li"
+          key={`checklist-child-${index}`}
           sx={{ mb: "24px", color: "text", "&:last-of-type": { mb: 0 } }}
         >
           <Box

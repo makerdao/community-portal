@@ -27,15 +27,9 @@ title: Frontmatter
 This specifies that we read and display the title in the **frontmatter first**, then the **first h1 (#) in the file**,
 then we **fall back to the name of the file**.
 
-**### The Title Rule applies globally.**
-
 </Box>
 
-<Box sx={{backgroundColor: 'notice', padding: 3, marginBottom: 4}}>
-
-The "title" attribute is used for the title meta attribute for SEO. The title rule still applies.
-
-</Box>
+The "title" attribute is used for the title meta attribute for SEO. The title rule still applies - it is global.
 
 ## Order
 
@@ -56,13 +50,9 @@ have order in alphabetical order. If this file isn't rendered on the sidenav (ie
 
 </Box>
 
-<Box sx={{backgroundColor: 'notice', padding: 3, marginBottom: 4}}>
-
 The "order" is **relative to the current directory**, so it's not possible to take a page deeper in the directory
 and put it on the top level of the sidebar. For example, `/work_with_us/bounties/test.mdx` with an order of 0 will
 just appear at the top of the `bounties` dropdown in the sidenav and not at the top of the `work_with_us` sidenav.
-
-</Box>
 
 ## Language Selector
 
@@ -95,7 +85,7 @@ the awesome work you've done? We've got you covered.
 
 ```md:title=image-example.mdx
 featuredImage[String] - Image to use when a link is shared (ie. Twitter/Facebook)
-featuredImage: "../images/test.png"
+featuredImage: "content/images/test.png"
 ```
 
 <Box sx={{backgroundColor: 'warning', padding: 3, marginBottom: 4}}>
@@ -114,8 +104,5 @@ description[String] - Description of this page for SEO.
 description: "The most complete guide to writing frontmatter in mdx files that you've ever read."
 ```
 
-<Box sx={{backgroundColor: 'notice', padding: 3, marginBottom: 4}}>
-
 The "description" attribute can ALSO be used for the excerpt that gets rendered and indexed for searching articles on the site.
 
-</Box>

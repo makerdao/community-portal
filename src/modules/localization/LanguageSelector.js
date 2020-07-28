@@ -1,11 +1,10 @@
-//** @jsx jsx */
-import React, { useContext } from "react";
+/** @jsx jsx */
 import Select, { components } from "react-select";
 import { useLocation, useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
-import { NavigationContext } from "@modules/navigation/context";
+import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 
@@ -14,7 +13,7 @@ const LanguageSelector = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { locale, t, allLocales } = useTranslation();
-  const { languageSelectorData } = useContext(NavigationContext);
+  const { languageSelectorData } = useNavigation()
 
   const onChange = ({ value, label }) => {
     //Update local storage on switch

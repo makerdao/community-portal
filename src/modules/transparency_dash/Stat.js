@@ -1,5 +1,4 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Box, Text, jsx } from "theme-ui";
 
 import { formatNumber } from "@utils";

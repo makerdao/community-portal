@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { Input, Flex, jsx } from "theme-ui";
 
@@ -62,6 +62,7 @@ const SearchInput = ({ onChange, onSubmit, ...rest }) => {
         id="search-input"
         type="search"
         ref={searchRef}
+        autocomplete="none"
         aria-label={t("Search")}
         placeholder={t("Search")}
         onChange={(e) => onChange(e.currentTarget.value)}

@@ -1,15 +1,16 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react';
 import { Flex, Box, jsx } from "theme-ui";
 
 const Process = ({ children }) => {
-  const _Children = React.Children.toArray(children);
+  const _Children = Children.toArray(children);
 
   return (
     <Box sx={{ mt: "34px", mb: "34px" }}>
       {_Children.map((child, index) => {
         return (
           <Flex
+            key={`process-child-${index}`}
             sx={{
               flexDirection: ["column", "column", "row"],
             }}
