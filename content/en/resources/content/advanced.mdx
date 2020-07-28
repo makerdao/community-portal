@@ -55,7 +55,117 @@ to come and insert stuff for you. Congratulations, you are now a junior front-en
 ## Arranging Content Visually
 
 Sometimes we'll want to split out content up into visual chunks to make it easier for 
-readers to process and understand at a glance. Enter Chocolate Boxes, Categories, Touts, and InfoBlocks. 
+readers to process and understand at a glance. Enter Columns, Chocolate Boxes, Categories, Touts, and InfoBlocks. 
+
+### Column
+
+The column is a great example of where it is almost always necessary to wrap your children in boxes. Our specs
+called for a "2 Column Comparison component" but we developers must implement every edge case including when there's only 1 element.
+
+This component follows the same principle as other advanced components in that each child is it's own column element.
+
+```md:title=columns.mdx
+<Column>
+
+Child A - Full Width
+
+</Column>
+
+<Column>
+
+Child A - with Sibling
+
+Child B - with Sibling
+
+</Column>
+
+<Column>
+
+<Box>
+
+#### Child A
+
+Full Width with a Header
+
+</Box>
+
+</Column>
+
+
+<Column>
+
+<Box>
+
+#### Child A
+
+With a sibling and a Header
+
+</Box>
+
+<Box>
+
+#### Child B
+
+With a sibling and a Header
+
+</Box>
+
+</Column>
+```
+
+---
+
+<Column>
+
+Child A - Full Width
+
+</Column>
+
+---
+
+<Column>
+
+Child A - with Sibling
+
+Child B - with Sibling
+
+</Column>
+
+---
+
+<Column>
+
+<Box>
+
+#### Child A
+
+Full Width with a Header
+
+</Box>
+
+</Column>
+
+---
+
+<Column>
+
+<Box>
+
+#### Child A
+
+With a sibling and a Header
+
+</Box>
+
+<Box>
+
+#### Child B
+
+With a sibling and a Header
+
+</Box>
+
+</Column>
 
 ### Chocolate Box
 
