@@ -17,7 +17,8 @@ const PageLayout = ({ children, seoTitle, t }) => (
   <Flex
     sx={{
       width: "100%",
-      maxWidth: "1364px",
+      maxWidth: "1000px",
+      margin: 'auto',
       justifyContent: "center",
       alignItems: "center",
       py: "77px",

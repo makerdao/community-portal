@@ -16,26 +16,7 @@ module.exports = {
     siteUrl: "http://localhost:9000", // NOTE(Isaac): TODO: change this to production URL
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
-            allSitePage {
-              edges {
-                node {
-                  path
-                }
-              }
-            }
-        }`,
-      },
-    },
+    
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -59,6 +40,35 @@ module.exports = {
           ],
           options: { nocase: true },
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `#5AE2CA`,
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`,
       },
     },
     `gatsby-plugin-react-helmet`,
