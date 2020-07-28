@@ -4,6 +4,7 @@ import { jsx } from "theme-ui";
 
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
+import {motion} from 'framer-motion';
 
 //More of a Utility
 //Specifically used for Author links but I imagine it will have it's own use else where.
@@ -13,14 +14,20 @@ const LinkWrapper = ({ ariaLabel, ...props }) => {
   const { t } = useTranslation();
 
   return (
-    <Link
-      hideExternalIcon
-      aria-label={t(ariaLabel)}
-      sx={{
-        mr: "6px",
-      }}
-      {...props}
-    />
+    <motion.div 
+      whileTap={{scale: 0.9}}
+      whileHover={{scale: 1.16}}
+      sx={{backfaceVisibility: "hidden", display: 'inline-block'}}
+    >
+      <Link
+        hideExternalIcon
+        aria-label={t(ariaLabel)}
+        sx={{
+          mr: "6px",
+        }}
+        {...props}
+      />
+    </motion.div>
   );
 };
 

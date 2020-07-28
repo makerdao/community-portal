@@ -62,6 +62,7 @@ const SearchInput = ({ onChange, onSubmit, ...rest }) => {
         id="search-input"
         type="search"
         ref={searchRef}
+        autocomplete="none"
         aria-label={t("Search")}
         placeholder={t("Search")}
         onChange={(e) => onChange(e.currentTarget.value)}

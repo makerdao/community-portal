@@ -13,13 +13,11 @@ import { NavigationProvider } from "@modules/navigation";
 import "@modules/layouts/global.css"; //<- Load in Prismjs css. Our custom styles have to be loaded this way cause Prismjs is blackboxed from our own code.
 
 export const wrapRootElement = ({ element }) => (
-  <ThemeProvider {...ThemeUIConfig}>
     <MDXProvider components={shortcodes}>
       <TranslationProvider>
           {element}
       </TranslationProvider>
     </MDXProvider>
-  </ThemeProvider>
 );
 
 export const wrapPageElement = ({element, props}) => (

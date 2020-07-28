@@ -205,12 +205,13 @@ export default function Search({ onClick, ...otherProps }) {
         variants={resultsVariant}
         animate={query.length > 0 && focus ? "visible" : "hidden"}
         sx={{
-          position: "absolute",
+          position: ["fixed", "fixed","absolute"],
           boxShadow: "high",
           left: "50%",
           transform: "translateX(-50%)",
           top: ["5rem", "5rem", "3.5rem"],
-          width: ["80vw", "80vw", "100%"],
+          width: ["90vw", "90vw", "100%"],
+          mt: [4,4,0],
           minHeight: 4,
           borderRadius: "roundish",
           overflow: "hidden",

@@ -151,7 +151,7 @@ const Link = ({
       className="external-link"
       {...other}
       target={!disabled && "_blank"}
-      rel="nofollow noopener noreferrer"
+      rel="nofollow noopener"
     >
       {icon && linkHref && (
         <Fragment>

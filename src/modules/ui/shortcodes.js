@@ -12,7 +12,7 @@ import {
   Checklist,
   Code,
   Column,
-  CTA,
+  // CTA,
   StatusBanner,
   InfoBlock,
   List,
@@ -51,6 +51,9 @@ const MD_Overrides = {
         letterSpace: "64px",
         fontWeight: ["600", "600", "bold"],
         lineHeight: "normal",
+        '&:not(:first-of-type)': {
+          mt: '24px'
+        }
       }}
       {...props}
     />
@@ -64,6 +67,9 @@ const MD_Overrides = {
         fontSize: "48px",
         fontWeight: "600",
         lineHeight: "normal",
+        '&:not(:first-of-type)': {
+          mt: '32px'
+        }
       }}
       {...props}
     />
@@ -77,6 +83,9 @@ const MD_Overrides = {
         fontSize: "32px",
         fontWeight: "bold",
         lineHeight: "normal",
+        '&:not(:first-of-type)': {
+          mt: '32px'
+        }
       }}
       {...props}
     />
@@ -90,6 +99,9 @@ const MD_Overrides = {
         fontWeight: "bold",
         mb: "32px",
         lineHeight: "normal",
+        '&:not(:first-of-type)': {
+          mt: '32px'
+        }
       }}
       {...props}
     />
@@ -98,7 +110,15 @@ const MD_Overrides = {
     <Text
       variant="h5"
       as="h5"
-      sx={{ fontSize: "20px", fontWeight: "normal", lineHeight: "normal" }}
+      sx={{ 
+        mb: '32px',
+        fontSize: "20px", 
+        fontWeight: "normal", 
+        lineHeight: "normal" ,
+        '&:not(:first-of-type)': {
+          mt: '32px'
+        }
+      }}
       {...props}
     />
   ),
@@ -128,7 +148,7 @@ const Custom_Components = {
   Box,
   Flex,
   Icon,
-  CTA,
+  CTA: Callout,
   Process,
   Image, //<- NOTE(Rejon): This is necessary so remark doesn't auto-wrap our component instead of the other way around.
   List,

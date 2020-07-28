@@ -16,7 +16,12 @@ module.exports = {
     siteUrl: "http://localhost:9000", // NOTE(Isaac): TODO: change this to production URL
   },
   plugins: [
-    
+    {
+      resolve: 'gatsby-plugin-theme-ui',
+      options: {
+        preset: "@makerdao/dai-ui-theme-maker"
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -102,7 +107,6 @@ module.exports = {
             options: {
               maxWidth: 1000,
               linkImagesToOriginal: false,
-              wrapperStyle: (result) => `margin: unset;`,
             },
           },
           {
