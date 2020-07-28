@@ -1,14 +1,15 @@
 /** @jsx jsx */
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-import { NavigationContext } from "@modules/navigation/context";
+import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization/";
+import {titleCase} from '@utils';
 
 const Breadcrumbs = ({ children }) => {
-  const { breadcrumbData, pathDirs } = useContext(NavigationContext);
+  const { breadcrumbData, pathDirs } = useNavigation()
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
 
   return (
@@ -45,7 +46,36 @@ const Breadcrumbs = ({ children }) => {
         const _data = breadcrumbData.find((n) => n.part === p);
 
         if (!_data) {
-          return null;
+          if (index === pathDirs.length - 1) {
+            return (
+              <Text
+                sx={{
+                  display: "inline-block",
+                  fontWeight: "bold",
+                  color: "text",
+                }}
+                key={`breadcrumb-${index}`}
+              >
+                {titleCase(p.replace(/-|_|\./g, ' '))}
+                
+              </Text>
+            )
+          }
+
+          return (
+            <Fragment key={`breadcrumb-${index}`}>
+            <Text
+              sx={{
+                display: "inline-block",
+                color: "text",
+              }}
+              key={`breadcrumb-${index}`}
+            >
+              {titleCase(p.replace(/-|_|\./g, ' '))}
+            </Text>
+            <Icon name="chevron_right" size={3} sx={{ mx: "13px" }} />
+            </Fragment>
+          );
         }
 
         const { title, url } = _data;
@@ -60,7 +90,7 @@ const Breadcrumbs = ({ children }) => {
           : "";
 
         //If this is the last crumb, then just render its name.
-        if (index === breadcrumbData.length - 1) {
+        if (index === pathDirs.length - 1) {
           return (
             <Text
               sx={{

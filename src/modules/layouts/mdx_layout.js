@@ -1,13 +1,14 @@
 /** @jsx jsx */
-import React from "react";
+import {Children, Fragment} from 'react';
 import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-import Layout from "@modules/layouts/site_layout";
 import { LanguageSelector } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
+import { SEO } from "@modules/utility";
+
 
 export default (props) => {
   const { children, pageContext, uri } = props;
@@ -36,7 +37,7 @@ export default (props) => {
   const getFirstHeading = () => {
     //NOTE(Rejon): The children of layouts provided are MDX components!
     //Find the first mdx child that's an H1
-    const firstHeading = React.Children.toArray(children).find(
+    const firstHeading = Children.toArray(children).find(
       (c) => c.props.mdxType === "h1"
     );
 
@@ -64,7 +65,8 @@ export default (props) => {
   };
 
   return (
-    <Layout seo={seo}>
+    <Fragment>
+      <SEO {...seo} />
       {renderSidenav && (
         <Sticky
           boundaryElement=".content-boundary"
@@ -114,13 +116,13 @@ export default (props) => {
             sx={
               hasTopSection && !hideLanguageSelector
                 ? {
-                    "& > *:nth-child(1)": {
+                    "& > *:nth-of-type(1)": {
                       lineHeight: "normal",
                     },
-                    "& > *:nth-child(1), & > *:nth-child(2)": {
+                    "& > *:nth-of-type(1), & > *:nth-of-type(2)": {
                       maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
                     },
-                    "& > *:nth-child(2)": { mb: "32px" },
+                    "& > *:nth-of-type(2)": { mb: "32px" },
                   }
                 : {}
             }
@@ -129,6 +131,6 @@ export default (props) => {
           </Box>
         </article>
       </Flex>
-    </Layout>
+    </Fragment>
   );
 };

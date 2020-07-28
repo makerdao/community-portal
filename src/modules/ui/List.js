@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react';
 import { Box, Flex, jsx } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
@@ -15,7 +15,7 @@ const ListElement = ({ children, ...props }) => (
       borderColor: "muted",
       flexDirection: "column",
       alignItems: "flex-start",
-      "& > * > *:only-child, & > * > *nth-child(1)": {
+      "& > * > *:only-child, & > * > *:nth-of-type(1)": {
         fontWeight: "normal",
         fontSize: 3,
         color: "text",
@@ -24,10 +24,10 @@ const ListElement = ({ children, ...props }) => (
       "& > * > *:only-child, & > *:only-child": {
         mb: 0,
       },
-      "& > * > *:not(:only-child)nth-child(1)": {
+      "& > * > *:not(:only-child):nth-of-type(1)": {
         mb: "8px",
       },
-      "& > * > *:not(nth-child(1))": {
+      "& > * > *:not(:nth-of-type(1))": {
         fontWeight: "normal",
         fontSize: "14px",
         color: "textMuted",
@@ -53,13 +53,13 @@ const AdvancedListElement = ({
             sx={{
               flexDirection: "column",
               alignItems: "flex-start",
-              "& > *:only-child, & > *:nth-child(1)": {
+              "& > *:only-child, & > *:nth-of-type(1)": {
                 fontWeight: "normal",
                 fontSize: 3,
                 color: "text",
                 lineHeight: "normal",
               },
-              "& > *:not(:nth-child(1))": {
+              "& > *:not(:nth-of-type(1))": {
                 fontWeight: "normal",
                 fontSize: "14px",
                 color: "textMuted",
@@ -179,7 +179,7 @@ const AdvancedListElement = ({
 };
 
 const List = ({ children }) => {
-  const _Children = React.Children.toArray(children);
+  const _Children = Children.toArray(children);
 
   //Logic check for rendering a link element vs a list element.
   const childListLinkRenderCheck = (child, index) => {
@@ -193,7 +193,7 @@ const List = ({ children }) => {
           child.props.children.props &&
           child.props.children.props.mdxType === "a"))
     ) {
-      const boxChildren = React.Children.toArray(child.props.children);
+      const boxChildren = Children.toArray(child.props.children);
       const isLink =
         child.props.mdxType === "Link" || child.props.mdxType === "a";
       const isMDLink =

@@ -17,24 +17,10 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: 'gatsby-plugin-theme-ui',
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
-            allSitePage {
-              edges {
-                node {
-                  path
-                }
-              }
-            }
-        }`,
-      },
+        preset: "@makerdao/dai-ui-theme-maker"
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -59,6 +45,35 @@ module.exports = {
           ],
           options: { nocase: true },
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `#5AE2CA`,
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`,
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -92,7 +107,6 @@ module.exports = {
             options: {
               maxWidth: 1000,
               linkImagesToOriginal: false,
-              wrapperStyle: (result) => `margin: unset;`,
             },
           },
           {

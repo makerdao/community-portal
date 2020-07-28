@@ -1,13 +1,12 @@
 /** @jsx jsx */
-
-import React from "react";
-
+import {Fragment} from 'react';
 import { Link as GatsbyLink } from "gatsby";
-import { useTranslation } from "@modules/localization";
 import { jsx, Link as ThemeLink } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+
+import { useTranslation } from "@modules/localization";
 
 // Since DOM elements <a> cannot receive activeClassName
 // and partiallyActive, destructure the prop here and // pass it only to GatsbyLink
@@ -92,17 +91,19 @@ const Link = ({
       >
         {/*add space as workaround for svg padding resizing issue*/}
         {icon && linkHref && (
-          <>{` ${(
-            <Icon
-              name={icon}
-              size={"2rem"}
-              sx={{
-                verticalAlign: "middle",
-                top: "-2px",
-                position: "relative",
-              }}
-            />
-          )}`}</>
+          <Fragment>
+            {` ${(
+              <Icon
+                name={icon}
+                size={"2rem"}
+                sx={{
+                  verticalAlign: "middle",
+                  top: "-2px",
+                  position: "relative",
+                }}
+              />
+            )}`}
+          </Fragment>
         )}
         {children}
       </GatsbyLink>
@@ -150,17 +151,17 @@ const Link = ({
       className="external-link"
       {...other}
       target={!disabled && "_blank"}
-      rel="nofollow noopener noreferrer"
+      rel="nofollow noopener"
     >
       {icon && linkHref && (
-        <>
+        <Fragment>
           {` `}
           <Icon
             name={icon}
             size={"2rem"}
             sx={{ verticalAlign: "middle", top: "-2px", position: "relative" }}
           />
-        </>
+        </Fragment>
       )}
       {children}
       {!hideExternalIcon && (

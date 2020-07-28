@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react";
 import { jsx, Grid } from "theme-ui";
 
 const Chocolate = ({ children }) => (
