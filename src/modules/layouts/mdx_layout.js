@@ -19,7 +19,6 @@ export default (props) => {
     featuredImage,
     status,
     hideLanguageSelector,
-    hideSidenav,
     hideBreadcrumbs,
   } = pageContext.frontmatter;
 
@@ -55,7 +54,6 @@ export default (props) => {
 
   const hasTopSection =
     currentTopSection !== undefined && currentTopSection !== "";
-  const renderSidenav = hasTopSection && !hideSidenav;
 
   const seo = {
     title: _pageTitle,
@@ -67,36 +65,11 @@ export default (props) => {
   return (
     <Fragment>
       <SEO {...seo} />
-      {renderSidenav && (
-        <Sticky
-          boundaryElement=".content-boundary"
-          sx={{
-            width: "20%",
-            minWidth: "260px",
-            display: ["none", "none", "initial"],
-          }}
-          dontUpdateHolderHeightWhenSticky={true}
-          style={{ position: "relative" }}
-          hideOnBoundaryHit={false}
-        >
-          <Sidenav />
-        </Sticky>
+      {status && (
+        <Box sx={{ marginTop: hasTopSection ? 2 : 0 }}>
+          <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
+        </Box>
       )}
-
-      <Flex sx={{ flexGrow: 1, flexDirection: "column" }}>
-        <article
-          sx={{
-            pl: hasTopSection ? [4, 4, "64px"] : 0,
-            mt: hasTopSection ? [4, 4, "59px"] : 0,
-            pb: 4,
-            pr: hasTopSection ? 4 : 0,
-          }}
-        >
-          {status && (
-            <Box sx={{ marginTop: hasTopSection ? 2 : 0 }}>
-              <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
-            </Box>
-          )}
           {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) && (
             <Flex
               sx={{
@@ -104,7 +77,6 @@ export default (props) => {
                 position: "relative",
                 alignItems: "flex-start",
                 flexWrap: ["wrap", "wrap", "unset"],
-                mt: !renderSidenav ? "2rem" : "",
                 px: !hasTopSection ? [3, 3, 0] : 0,
               }}
             >
@@ -129,8 +101,6 @@ export default (props) => {
           >
             {children}
           </Box>
-        </article>
-      </Flex>
     </Fragment>
   );
 };
