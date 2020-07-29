@@ -16,25 +16,44 @@ We currently only offer funding for **virtual meetups**.
 
 > Looking to fund a larger event? Please reach out to events@makerdao.com.
 
-### Meetups We Fund
+### What We Do Fund
 
 We fund meetups all over the world to support education around Ethereum, DeFi, and MakerDAO.
 
 Over 40,000 Dai has been granted to over 100 meetups serving over 5,600 people across 33 countries since February 2019.
 
+<Flex sx={{alignItems: 'center', justifyContent: 'space-evenly'}}>
+
+<TDStat data={data.grants.totalMoneyAwarded}>
+Dai Awarded
+</TDStat>
+
+<TDStat data={data.grants.totalMoneyDispersed}>
+Dai Dispersed
+</TDStat>
+
+<TDStat data={data.grants.totalMoneyAwarded / data.acceptedProjects.length}>
+Average Dai Award
+</TDStat>
+
+<TDStat alt data={data.grants.applicationsSubmitted}>
+Grant Applications Submitted
+</TDStat>
+</Flex>
+
 <List>
 
-- Honorarium for Organizers and speakers
+- Honorarium for organizers and speakers
 
 - Space rental
 
 - Equipment rental
 
-- Food and Drinks
+- Food and drinks
 
 </List>
 
-### Meetups We Don't Fund
+### What We Don't Fund
 
 <List>
 
