@@ -65,6 +65,7 @@ export default (props) => {
   return (
     <Fragment>
       <SEO {...seo} />
+      
       {status && (
         <Box sx={{ marginTop: hasTopSection ? 2 : 0 }}>
           <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
