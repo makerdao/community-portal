@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import PropTypes from "prop-types";
-import { Flex, jsx } from "theme-ui";
+import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 
 import { Header, Footer, Sidenav } from "@modules/navigation";
@@ -33,21 +33,25 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
         {(pageContext.frontmatter && !pageContext.frontmatter.hideSidenav &&
           hasTopSection)
           &&
-          <Sticky
-            boundaryElement=".content-boundary"
+          <Box
             sx={{
               width: "20%",
               minWidth: "260px",
               display: ["none", "none", "initial"],
             }}
+          >
+          <Sticky
+            boundaryElement=".content-boundary"
+            
             dontUpdateHolderHeightWhenSticky={true}
             style={{ position: "relative" }}
             hideOnBoundaryHit={false}
           >
             <Sidenav />
           </Sticky>
+          </Box>
         }
-        <Flex sx={{ flexGrow: 1, flexDirection: "column" }}>
+        <Flex sx={{ flexGrow: 1, flexDirection: "column", width: hasTopSection ? '80%' : '' }}>
           <article
             sx={{
               pl: hasTopSection ? [4, 4, "64px"] : 0,
