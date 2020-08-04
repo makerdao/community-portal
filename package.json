@@ -9,7 +9,7 @@
     "@makerdao/dai-ui-icons-branding": "^0.0.59",
     "@makerdao/dai-ui-theme-maker": "^0.0.59",
     "@mdx-js/mdx": "^1.6.13",
-    "@mdx-js/react": "^1.6.13",
+    "@mdx-js/react": "^1.6.16",
     "@theme-ui/prism": "^0.3.0",
     "del": "^5.1.0",
     "dotenv": "^8.2.0",
