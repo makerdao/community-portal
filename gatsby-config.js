@@ -10,79 +10,38 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `MakerDAO Community Portal`,
-    description: `Gatsby DaiUI Starter`,
-    author: `Réjon Taylor-Foster (@Maximum_Crash)`,
+    description: `A Community of developers, designers, innovators, and just about everything cool under the sun. Come join our team!`,
+    author: `MakerDAO Commuminty Development Team`,
     copyright: "",
+    siteUrl: "http://localhost:9000", // NOTE(Isaac): TODO: change this to production URL
   },
   plugins: [
+    'gatsby-plugin-theme-ui',
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-catch-links`,
+    {
+      //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@modules": path.resolve(__dirname, "src/modules"),
+          "@src": path.resolve(__dirname, "src"),
+          "@utils": path.resolve(__dirname, "src/utils.js"),
+          "@pages": path.resolve(__dirname, "src/pages"),
+          "@images": path.resolve(__dirname, "static/images"),
+          "@content": path.resolve(__dirname, "content"),
+        },
+        extensions: [
+          //NOTE(Rejon): You don't have to write .js at the end of js files now.
+          "js",
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
         path: `${__dirname}/content`,
-      },
-    },
-    `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-json`,
-    `gatsby-plugin-sharp`,
-    `gatsby-remark-responsive-iframe`,
-    "gatsby-remark-embed-video",
-    `gatsby-remark-images`,
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          default: require.resolve("./src/modules/layouts/mdx_layout.js"),
-        },
-        gatsbyRemarkPlugins: [
-          {
-            resolve: "gatsby-remark-embed-video",
-            options: {
-              width: 800,
-              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77.
-              height: 400, // Optional: Overrides optional.ratio.
-              related: false, // Optional: Will remove related videos from the end of an embedded YouTube video.
-              noIframeBorder: true, // Optional: Disable insertion of <style> border: 0.
-              showInfo: false, // Optional: Hides video title and player actions.
-            },
-          },
-          `gatsby-remark-responsive-iframe`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              backgroundColor: "none",
-              disableBgImage: true,
-              showCaptions: ["Title"],
-              maxWidth: 1000,
-              linkImagesToOriginal: false,
-              wrapperStyle: (result) => `margin: unset;`,
-            },
-          },
-          {
-            resolve: "gatsby-remark-code-titles",
-            options: {
-              className: "prism-code-title",
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Gatsby + Dai-Ui Starter`,
-        short_name: `Gatsby + Dai-Ui`,
-        start_url: `/`,
-        display: `minimal-ui`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: ["Roboto Mono"],
-        display: "swap",
       },
     },
     {
@@ -103,25 +62,69 @@ module.exports = {
         },
       },
     },
-
     {
-      //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
-      resolve: `gatsby-plugin-alias-imports`,
+      resolve: `gatsby-plugin-sitemap`,
       options: {
-        alias: {
-          "@modules": path.resolve(__dirname, "src/modules"),
-          "@src": path.resolve(__dirname, "src"),
-          "@utils": path.resolve(__dirname, "src/utils.js"),
-          "@pages": path.resolve(__dirname, "src/pages"),
-          "@images": path.resolve(__dirname, "static/images"),
-          "@content": path.resolve(__dirname, "content"),
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
+    `gatsby-plugin-sharp`,
+    `gatsby-remark-images`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          default: require.resolve("./src/modules/layouts/mdx_layout.js"),
         },
-        extensions: [
-          //NOTE(Rejon): You don't have to write .js at the end of js files now.
-          "js",
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              width: 800,
+              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77.
+              height: 400, // Optional: Overrides optional.ratio.
+              related: false, // Optional: Will remove related videos from the end of an embedded YouTube video.
+              noIframeBorder: true, // Optional: Disable insertion of <style> border: 0.
+              showInfo: false, // Optional: Hides video title and player actions.
+            },
+          },
+
+          `gatsby-remark-responsive-iframe`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1000,
+              linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: "gatsby-remark-code-titles",
+            options: {
+              className: "prism-code-title",
+            },
+          },
         ],
       },
     },
+
+    
     {
       //NOTE(Rejon): Your search will have to be manually updated for ever new locale that's added.
       resolve: "gatsby-plugin-lunr",
@@ -136,15 +139,6 @@ module.exports = {
                 /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
-          {
-            name: "es",
-            filterNodes: (node) =>
-              node.frontmatter !== undefined &&
-              node.fileAbsolutePath &&
-              node.fileAbsolutePath.match(
-                /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
-              ) !== null,
-          },
         ],
         fields: [
           { name: "title", store: true, attributes: { boost: 20 } },
@@ -152,7 +146,6 @@ module.exports = {
           { name: "url", store: true },
           { name: "excerpt", store: true, attributes: { boost: 5 } },
         ],
-
         resolvers: {
           Mdx: {
             title: TitleConverter,
@@ -217,11 +210,34 @@ module.exports = {
         // cookieDomain: "makerdao.com",
       },
     },
-
+    "gatsby-plugin-preload-link-crossorigin",
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `MakerDAO Community Portal`,
+        short_name: `MKD Comm Portal`,
+        start_url: `/`,
+        background_color: "#291a42",
+        theme_color: "#5AE2CA",
+        display: `standalone`,
+        include_favicon: false,
+        icon: "src/modules/utility/icon-512x512.png",
+        cache_busting_mode: "none",
+        theme_color_in_head: false,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
-    `gatsby-plugin-catch-links`,
+    
+    {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        workboxConfig: {
+          globPatterns: ["**/images/icons/icon-512x512.png"],
+        },
+      },
+    },
   ],
 };

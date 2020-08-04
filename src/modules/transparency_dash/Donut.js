@@ -1,5 +1,4 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Box, jsx, useThemeUI } from "theme-ui";
 
 const Donut = ({

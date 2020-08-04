@@ -1,39 +1,44 @@
 ---
 order: 3
-status: {text: "You'll learn how to create a banner like this in the tutorial below!", notice: true, sticky: false}
+status:
+  {
+    text: "You'll learn how to create a banner like this in the tutorial below!",
+    notice: true,
+    sticky: false,
+  }
 ---
 
 # Basic
 
-Not everyone wants to be a hardcore developer. Writing truly engaging content, 
-that both delights and educates people, is an underrated talent and you 
-shouldn't be required to learn all the intricacies of modern web frameworks 
-just to produce awesome pages. In the past, the best you could have done 
-would be to write content in your editor of choice, export it into markdown 
-and then hope that some developer somewhere can incorporate it and add the styles, 
-buttons, images and other visual features which are required to make content transformational, 
-rather than just more boring information. 
+Not everyone wants to be a hardcore developer. Writing truly engaging content,
+that both delights and educates people, is an underrated talent and you
+shouldn't be required to learn all the intricacies of modern web frameworks
+just to produce awesome pages. In the past, the best you could have done
+would be to write content in your editor of choice, export it into markdown
+and then hope that some developer somewhere can incorporate it and add the styles,
+buttons, images and other visual features which are required to make content transformational,
+rather than just more boring information.
 
 This site changes all that.
 
 ## What is Mdx anyway?
 
-In short: it's your normal markdown - `md` - with an added little `x` factor. 
-In practice, the `x` means that we can `extend` the capabilities of markdown 
-and, in fact, create entire React components directly in our content files. If you 
-don't know what a React component is, or why you would want to have them in your 
-content files, don't stress! This section is all about showing you how this is 
-actually a writing superpower, and how you can put it to best use when contributing. 
+In short: it's your normal markdown - `md` - with an added little `x` factor.
+In practice, the `x` means that we can `extend` the capabilities of markdown
+and, in fact, create entire React components directly in our content files. If you
+don't know what a React component is, or why you would want to have them in your
+content files, don't stress! This section is all about showing you how this is
+actually a writing superpower, and how you can put it to best use when contributing.
 
-You might have used a [markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) 
-before to figure out how to handle headings, links, images, and other basic necessities. 
-The beauty of `mdx` is that all that stuff still works exactly the same. You'll still be 
-writing what appears - for the most part - to be normal markdown. It's just that 
+You might have used a markdown cheatsheet
+before to figure out how to handle headings, links, images, and other basic necessities.
+The beauty of `mdx` is that all that stuff still works exactly the same. You'll still be
+writing what appears - for the most part - to be normal markdown. It's just that
 we can now do so much more...
 
 ## Images
 
-Let's take images, for example. If you ever written markdown content before, you'll be 
+Let's take images, for example. If you ever written markdown content before, you'll be
 familiar with the way images are added, which remains the same with `mdx`:
 
 ```md:title=basic-image.mdx
@@ -48,12 +53,12 @@ However, because we're extending markdown's capabilities, you could also choose 
 <Image src="../../../images/starfox.png"/>
 ```
 
-<Image src="../../../images/starfox.png"/>
+<Image src="../../../images/starfox.png" />
 
-In this case, the result is the same (except for the bottom margin, which we'll fix later). 
-Using the traditional markdown format defaults to how Gatsby generally processes images, 
-though learning how to use the `Image` tag will allow you to start doing more complicated 
-things later on, like specifying your own styles or passing specific properties to components 
+In this case, the result is the same (except for the bottom margin, which we'll fix later).
+Using the traditional markdown format defaults to how Gatsby generally processes images,
+though learning how to use the `Image` tag will allow you to start doing more complicated
+things later on, like specifying your own styles or passing specific properties to components
 which come ready-made with many different options.
 
 ## Links
@@ -66,33 +71,37 @@ The same idea goes for links. You're likely used to writing markdown links like 
 [Awesome video](https://www.youtube.com/watch?v=Qzm_1Tuor1A)
 ```
 
-Which will still work exactly as you expect it to in `mdx` files. However, sometimes a link 
-just isn't enough. Sometimes, we want to make things a bit more fancy, which is not possible 
+Which will still work exactly as you expect it to in `mdx` files. However, sometimes a link
+just isn't enough. Sometimes, we want to make things a bit more fancy, which is not possible
 using plain old markdown. Happily, this as easy as specifying a proper React Image was:
 
-<Link to="https://www.chat.makerdao.com" icon="rocketchat">link to with an icon.</Link>
+<Link to="https://www.chat.makerdao.com" icon="rocketchat">
+  link to with an icon.
+</Link>
 
 ```mdx:title=react-link.mdx
-<Link to="https://www.chat.makerdao.com" icon="rocketchat">link to with an icon.</Link>
+<Link to="https://www.chat.makerdao.com" icon="rocketchat">
+  link to with an icon.
+</Link>
 ```
 
-> When writing relative links, be aware that you must write out the full route from after the locale, 
-i.e. the [Intermediate tutorial](/develop/content/intermediate) is linked to like this: `[Intermediate tutorial](/develop/content/intermediate)`. 
-If you want to link to other internal locales, then specify the locale as well, i.e. `es/develop/content/intermediate`
+> When writing relative links, be aware that you must write out the full route from after the locale,
+> i.e. the [Intermediate tutorial](/develop/content/intermediate) is linked to like this: `[Intermediate tutorial](/develop/content/intermediate)`.
+> If you want to link to other internal locales, then specify the locale as well, i.e. `es/develop/content/intermediate`
 
-The Link component will check whether the link is internal/external; 
-if the internal has a locale appened (`fr/work_with_us/bounties`); and if external links have `https` 
-(http://google.com will automatically be transformed). Internal links are not directory based, like images, 
+The Link component will check whether the link is internal/external;
+if the internal has a locale appened (`fr/work_with_us/bounties`); and if external links have `https`
+(http://google.com will automatically be transformed). Internal links are not directory based, like images,
 but route based as this is a more robust solution for a site with many different contributors.
 
 ## Buttons
 
-This is where React components begin to become more fun, and powerful, than the normal 
-markdown you're used to. This is becuase we can start adding properties to them, 
+This is where React components begin to become more fun, and powerful, than the normal
+markdown you're used to. This is becuase we can start adding properties to them,
 or `props` in developer-lingo.
 
-Sometimes you really need to grab your reader's attention. You need more than even a fancy 
-icon. You need a button. We want to 
+Sometimes you really need to grab your reader's attention. You need more than even a fancy
+icon. You need a button. We want to
 
 <Button to="#">Do This!</Button>
 
@@ -102,33 +111,73 @@ Which is actually very straightforward:
 <Button to="#">Do This!</Button>
 ```
 
-But this is just the beginning. `Props` control the appearance of your chosen component. So, instead 
+But this is just the beginning. `Props` control the appearance of your chosen component. So, instead
 of just having a normal icon with your link or an ordinary button, you can do all sorts of funky things:
 
-<Button secondary to="#">secondary</Button> 
+<Button secondary to="#">
+  secondary
+</Button>{" "}
 
-<Button primary outline to="#">primary outline</Button> 
+<Button primary outline to="#">
+  primary outline
+</Button>{" "}
 
-<Button secondary outline to="#">secondary outline</Button> 
+<Button secondary outline to="#">
+  secondary outline
+</Button>{" "}
 
-<Button to="#"><Icon name="rocketchat"/> Rocket Chat</Button>
+<Button to="#">
+  <Icon name="rocketchat" /> Rocket Chat
+</Button>
 
-```mdx:title=advanced-buttons.mdx
-<Button secondary to="#">secondary</Button> 
+<Button disabled inline to="/resources/palette">
+  {" "}
+  Disabled Inline{" "}
+</Button>
 
-<Button primary outline to="#">primary outline</Button> 
+<Button secondary inline to="/resources/palette">
+  {" "}
+  Inlined Secondary{" "}
+</Button>
 
-<Button secondary outline to="#">secondary outline</Button> 
+```md:title=advanced-buttons.mdx
+<Button secondary to="#">
+  secondary
+</Button>{" "}
 
-<Button to="#"><Icon name="rocketchat"/> Rocket Chat</Button>
+<Button primary outline to="#">
+  primary outline
+</Button>{" "}
+
+<Button secondary outline to="#">
+  secondary outline
+</Button>{" "}
+
+<Button to="#">
+  <Icon name="rocketchat" /> Rocket Chat
+</Button>
+
+<Button disabled inline to="/resources/palette">
+  {" "}
+  Disabled Inline{" "}
+</Button>
+
+<Button secondary inline to="/resources/palette">
+  {" "}
+  Inlined Secondary{" "}
+</Button>
 ```
 
-The big question here is where to go to see all the different property options, and icons, you could 
+The big question here is where to go to see all the different property options, and icons, you could
 potentially add to your buttons and links? We've got you covered there too:
 
-<Link to={"https://design-system.mkr-js-prod.now.sh/"} icon={"eye"}>Colours</Link>
+<Link to={"https://design-system.mkr-js-prod.now.sh/"} icon={"eye"}>
+  Colours
+</Link>
 
-<Link to={"https://design-system.mkr-js-prod.now.sh/"} icon={"dai"}>Icons</Link>
+<Link to={"https://design-system.mkr-js-prod.now.sh/"} icon={"dai"}>
+  Icons
+</Link>
 
 ## Inline Code
 
@@ -142,14 +191,14 @@ const variable = "hello";
 If you'd like your code to be highlighted specifically just provide a language after the backticks, like **\```js**
 and a language tab will appear on the right.
 
-NOTE: We only support so many languages, and css, html, and js are coded to render their tabs. 
+NOTE: We only support so many languages, and css, html, and js are coded to render their tabs.
 See [here](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js) for languages supported.
 
 ```js
-const variable = "hello"
+const variable = "hello";
 ```
 
-If you'd like the code to have a filename attached, you need to add a title attribute, such as 
+If you'd like the code to have a filename attached, you need to add a title attribute, such as
 **\```js:title=calculateTreeData.js**
 
 ```js:title=calculateTreeData.js
@@ -158,9 +207,9 @@ const variable = "hello";
 
 ## Inline Videos
 
-Inline code is not enough though, we want more cool inline tricks! Bring on those easily-embedded videos! This 
-isn't so much a "component" as it is an integration of gatsby-remark-embed-video for ease of use in mdx. You 
-can write some simple md to embed a responsive iframe from YouTube, vimeo, videoPress and twitch (though twitch is buggy 
+Inline code is not enough though, we want more cool inline tricks! Bring on those easily-embedded videos! This
+isn't so much a "component" as it is an integration of gatsby-remark-embed-video for ease of use in mdx. You
+can write some simple md to embed a responsive iframe from YouTube, vimeo, videoPress and twitch (though twitch is buggy
 and we recommend you stay away from it). Please see [their docs](https://www.gatsbyjs.org/packages/gatsby-remark-embed-video/?=remark-embed) for more detail.
 
 ```md:embed-video.mdx
@@ -173,18 +222,18 @@ and we recommend you stay away from it). Please see [their docs](https://www.gat
 `video: [Your love!](https://www.youtube.com/watch?v=mzDVaKRApcg)`
 
 `youtube: [Your love!](mzDVaKRApcg)`
-
 ```
+
 `vimeo: 411464106`
 
 **A11Y support**
 
 `video: [Your love!](https://www.youtube.com/watch?v=mzDVaKRApcg)`
 
-Sometimes, we'll need to embed a video which also links to a specific playlist. Inline videos do not allow 
-us to do this, which is an issue for our Governance and Risk call series, amongst others. Therefore, if you're 
-wanting to embed a video and link it within a specific YouTube playlist, we do have a bespoke `<Video />` component for you. 
-This serves as a helper for getting around youtube playlists, but we still recommend using the inline video spec 
+Sometimes, we'll need to embed a video which also links to a specific playlist. Inline videos do not allow
+us to do this, which is an issue for our Governance and Risk call series, amongst others. Therefore, if you're
+wanting to embed a video and link it within a specific YouTube playlist, we do have a bespoke `<Video />` component for you.
+This serves as a helper for getting around youtube playlists, but we still recommend using the inline video spec
 (ie. video: https://urltoyoutubevideo.com) for regular inline videos.
 
 ```md:title=video-playlist.mdx
@@ -193,15 +242,15 @@ This serves as a helper for getting around youtube playlists, but we still recom
 
 <Video src="https://www.youtube.com/embed/videoseries?list=PLLzkWCj8ywWNq5-90-Id6VPSsrk4OWVan" />
 
-> NOTE: Embedding a youtube video from a specific playlist requires that you use a url with 
-**videoseries?list=**, NOT **playlist?=**. See [here](https://support.google.com/youtube/answer/171780?hl=en) for more info.
+> NOTE: Embedding a youtube video from a specific playlist requires that you use a url with
+> **videoseries?list=**, NOT **playlist?=**. See [here](https://support.google.com/youtube/answer/171780?hl=en) for more info.
 
 ## Callouts and CTAs
 
-OK, so now we can handle images, links, buttons, and inline code - all of which will make our content really pop 
-and we didn't have to ask a single developer to add anything to our work. What a relief... The last 
-basic tool we want to introduce you to, before moving on to more detailed use of React components, is the 
-Callout. Sometimes, you don't want the user to take action - you just need to draw attention to a very 
+OK, so now we can handle images, links, buttons, and inline code - all of which will make our content really pop
+and we didn't have to ask a single developer to add anything to our work. What a relief... The last
+basic tool we want to introduce you to, before moving on to more detailed use of React components, is the
+Callout. Sometimes, you don't want the user to take action - you just need to draw attention to a very
 specific and important part of your content - a note or summary or key takeaway. We've got you covered.
 
 <Callout icon>
@@ -216,24 +265,16 @@ This is a callout with the (specified) secondary style and the "search' icon fro
 
 </Callout>
 
-<Callout>
-  
-## Header between line breaks  
-
-This will render the header correctly, because there are newlines before and after the .mdx child.
-
-</Callout>
-
-In addition to callouts, we can do Calls To Action. CTAs are really just good-looking green boxes to be 
-used as shorthand when you want to draw attention to a particular piece of content. They do not change if 
-you pass them any props. Callouts are fully fleshed out and they support icons. 
-So, if you want colors and icons, use a Callout. If you just want a green box for attention, use a CTA. This 
+In addition to callouts, we can do Calls To Action. CTAs are really just good-looking green boxes to be
+used as shorthand when you want to draw attention to a particular piece of content. They do not change if
+you pass them any props. Callouts are fully fleshed out and they support icons.
+So, if you want colors and icons, use a Callout. If you just want a green box for attention, use a CTA. This
 can be achieved either with a `<CTA>` React component tag, or the simply md blockquote syntax, i.e. `>`.
 
 <CTA>
 
-One important note is here is that you must ensure your content is on a separate line, with spaces 
-in between. This is because of what we call the "Child Rule", which we explain in the next section. 
+One important note is here is that you must ensure your content is on a separate line, with spaces
+in between. This is because of what we call the "Child Rule", which we explain in the next section.
 
 </CTA>
 
@@ -252,17 +293,9 @@ This is a callout with the (specified) secondary style and the "search' icon fro
 
 </Callout>
 
-<Callout>
-  
-## Header between line breaks  
-
-This will render the header correctly, because there are newlines before and after the .mdx child.
-
-</Callout>
-
 <CTA>
 
-Important note! 
+Important note!
 
 </CTA>
 
@@ -271,8 +304,8 @@ Important note!
 
 ## Status Banners
 
-At various stages in our docs, we need to be able to show the Status of a given project or process. This 
-requires something slightly different from either a Callout or a CTA, so we have the `<StatusBanner>` component 
+At various stages in our docs, we need to be able to show the Status of a given project or process. This
+requires something slightly different from either a Callout or a CTA, so we have the `<StatusBanner>` component
 which comes replete with flexible color props and a bunch of other cool features for the enterprising writer.
 
 <StatusBanner sticky>
@@ -288,31 +321,7 @@ which comes replete with flexible color props and a bunch of other cool features
 
 </StatusBanner>
 
-<StatusBanner notice>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
 <StatusBanner warning>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner bear>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="blue">
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="#523897">
 
 **You're becoming an mdx expert already! [Much wow](#)**
 
@@ -325,38 +334,14 @@ which comes replete with flexible color props and a bunch of other cool features
 
 </StatusBanner>
 
-<StatusBanner notice>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
 <StatusBanner warning>
 
 **You're becoming an mdx expert already! [Much wow](#)**
 
 </StatusBanner>
 
-<StatusBanner bear>
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="blue">
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-<StatusBanner color="#523897">
-
-**You're becoming an mdx expert already! [Much wow](#)**
-
-</StatusBanner>
-
-It gets even better though, because StatusBanner not only give you the ability to control colors and set 
-your own should you require them. They can also receive the `sticky` prop, which means that they will stick 
+It gets even better though, because StatusBanner not only give you the ability to control colors and set
+your own should you require them. They can also receive the `sticky` prop, which means that they will stick
 to the top of the screen as soon as the user scrolls past them, wherever they are in the page.
 
 ```md:title=sticky-status.mdx
@@ -366,13 +351,11 @@ to the top of the screen as soon as the user scrolls past them, wherever they ar
 
 </StatusBanner>
 ```
-And that's not all. You can even include a StatusBanner in your file's frontmatter, which means that it will 
-appear above the breadcrumbs on your page. You can leverage the same options there, defining both its color and 
+
+And that's not all. You can even include a StatusBanner in your file's frontmatter, which means that it will
+appear above the breadcrumbs on your page. You can leverage the same options there, defining both its color and
 stickiness in the frontmatter itself. The one at the top of this page is defined below:
 
 ```md:title=frontmatter-status.mdx
-
 status: {text: "You'll learn how to create a banner like this in the tutorial below!", notice: true, sticky: false}
-
 ```
-

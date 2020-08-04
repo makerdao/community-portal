@@ -1,13 +1,14 @@
 /** @jsx jsx */
-import React from "react";
+import {Children, Fragment} from 'react';
 import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
 import { useLocation } from "@reach/router";
 
-import { SEO } from "@modules/utility";
 import { LanguageSelector } from "@modules/localization";
-import { Sidenav, Breadcrumbs, NavigationProvider } from "@modules/navigation";
+import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
+import { SEO } from "@modules/utility";
+
 
 export default (props) => {
   const { children, pageContext, uri } = props;
@@ -18,7 +19,6 @@ export default (props) => {
     featuredImage,
     status,
     hideLanguageSelector,
-    hideSidenav,
     hideBreadcrumbs,
   } = pageContext.frontmatter;
 
@@ -36,7 +36,7 @@ export default (props) => {
   const getFirstHeading = () => {
     //NOTE(Rejon): The children of layouts provided are MDX components!
     //Find the first mdx child that's an H1
-    const firstHeading = React.Children.toArray(children).find(
+    const firstHeading = Children.toArray(children).find(
       (c) => c.props.mdxType === "h1"
     );
 
@@ -54,46 +54,23 @@ export default (props) => {
 
   const hasTopSection =
     currentTopSection !== undefined && currentTopSection !== "";
-  const renderSidenav = hasTopSection && !hideSidenav;
+
+  const seo = {
+    title: _pageTitle,
+    description,
+    keywords,
+    featuredImage,
+  };
 
   return (
-    <NavigationProvider>
-      <SEO
-        title={_pageTitle}
-        description={description}
-        keywords={keywords}
-        featuredImage={featuredImage}
-      />
-      {renderSidenav && (
-        <Sticky
-          boundaryElement=".content-boundary"
-          sx={{
-            width: "20%",
-            minWidth: "260px",
-            display: ["none", "none", "initial"],
-          }}
-          dontUpdateHolderHeightWhenSticky={true}
-          style={{ position: "relative" }}
-          hideOnBoundaryHit={false}
-        >
-          <Sidenav />
-        </Sticky>
+    <Fragment>
+      <SEO {...seo} />
+      
+      {status && (
+        <Box sx={{ marginTop: hasTopSection ? 2 : 0 }}>
+          <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
+        </Box>
       )}
-
-      <Flex sx={{ flexGrow: 1, flexDirection: "column" }}>
-        <article
-          sx={{
-            pl: hasTopSection ? [4, 4, "64px"] : 0,
-            mt: hasTopSection ? [4, 4, "59px"] : 0,
-            pb: 4,
-            pr: hasTopSection ? 4 : 0,
-          }}
-        >
-          {status && (
-            <Box sx={{ marginTop: hasTopSection ? 2 : 0 }}>
-              <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
-            </Box>
-          )}
           {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) && (
             <Flex
               sx={{
@@ -101,7 +78,6 @@ export default (props) => {
                 position: "relative",
                 alignItems: "flex-start",
                 flexWrap: ["wrap", "wrap", "unset"],
-                mt: !renderSidenav ? "2rem" : "",
                 px: !hasTopSection ? [3, 3, 0] : 0,
               }}
             >
@@ -113,21 +89,19 @@ export default (props) => {
             sx={
               hasTopSection && !hideLanguageSelector
                 ? {
-                    "& > *:nth-child(1)": {
-                      lineHeight: 'normal'
+                    "& > *:nth-of-type(1)": {
+                      lineHeight: "normal",
                     },
-                    "& > *:nth-child(1), & > *:nth-child(2)": {
+                    "& > *:nth-of-type(1), & > *:nth-of-type(2)": {
                       maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
                     },
-                    "& > *:nth-child(2)": { mb: "32px" },
+                    "& > *:nth-of-type(2)": { mb: "32px" },
                   }
                 : {}
             }
           >
             {children}
           </Box>
-        </article>
-      </Flex>
-    </NavigationProvider>
+    </Fragment>
   );
 };

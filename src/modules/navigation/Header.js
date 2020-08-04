@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { jsx, Text, Box, Flex, useColorMode, useThemeUI } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
@@ -9,6 +9,7 @@ import { Link, MobileNav } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
+import theme from '@src/gatsby-plugin-theme-ui/'
 
 var lastScroll = 0; //<- Last scroll top of window. Defined outside because we don't want to re-render for scrolling.
 var delta = 5; //<- Rate of change in scroll needed to hide the header.
@@ -17,7 +18,6 @@ var isShowingMenu = false; //<- For document  event listeners to know if the men
 
 const Header = () => {
   const headerContainer = useRef(null);
-  const { theme } = useThemeUI();
   const breakpoints = theme.breakpoints.slice(0, -1); //NOTE(Rejon): The last element of the break point array SHOULD be infinity.
 
   const [showMenu, setShowMenu] = useState(false);
@@ -112,11 +112,11 @@ const Header = () => {
           return aNode.title.localeCompare(bNode.title);
         }
 
-        if (aNode.headerOrder < bNode.headerOrder) return -1;
-        if (aNode.headerOrder > bNode.headerOrder) return 1;
         return 0;
       }
 
+      if (aNode.headerOrder < bNode.headerOrder) return -1;
+      if (aNode.headerOrder > bNode.headerOrder) return 1;
       return 0;
     })
     .map(({ node }, index) => {
@@ -144,36 +144,6 @@ const Header = () => {
     });
 
   const headerLinks = headerDataLinks.concat(headerConfigLinks);
-
-  const onScroll = () => {
-    if (headerContainer.current && !isShowingMenu) {
-      const inMobileRange = breakpoints.some(
-        (n) => window.innerWidth <= parseInt(n)
-      );
-
-      if (inMobileRange) {
-        const headerHeight = headerContainer.current.offsetHeight;
-        const currentScroll = window.scrollY;
-
-        //Scroll must be more than the delta.
-        if (Math.abs(lastScroll - currentScroll) <= delta) return;
-
-        //If you scroll down AND our scroll top is greater than our header,
-        //hide it.
-        if (currentScroll > lastScroll && currentScroll > headerHeight) {
-          headerContainer.current.classList.add("hide-nav");
-        } else {
-          //We've scrolled up OR our scrollTop is less than the header.
-          headerContainer.current.classList.remove("hide-nav");
-        }
-
-        lastScroll = currentScroll;
-      } else {
-        //Render the header as normal without the "show/hide logic"
-        headerContainer.current.classList.remove("hide-nav");
-      }
-    }
-  };
 
   const onMenuClick = (e) => {
     if (typeof window !== "undefined") {
@@ -224,15 +194,45 @@ const Header = () => {
     },
   };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", onScroll);
+  // useEffect(() => {
+  //   const onScroll = () => {
+  //     if (headerContainer.current && !isShowingMenu) {
+  //       const inMobileRange = breakpoints.some(
+  //         (n) => window.innerWidth <= parseInt(n)
+  //       );
 
-      return () => {
-        window.removeEventListener("scroll", onScroll);
-      };
-    }
-  }, []);
+  //       if (inMobileRange) {
+  //         const headerHeight = headerContainer.current.offsetHeight;
+  //         const currentScroll = window.scrollY;
+
+  //         //Scroll must be more than the delta.
+  //         if (Math.abs(lastScroll - currentScroll) <= delta) return;
+
+  //         //If you scroll down AND our scroll top is greater than our header,
+  //         //hide it.
+  //         if (currentScroll > lastScroll && currentScroll > headerHeight) {
+  //           headerContainer.current.classList.add("hide-nav");
+  //         } else {
+  //           //We've scrolled up OR our scrollTop is less than the header.
+  //           headerContainer.current.classList.remove("hide-nav");
+  //         }
+
+  //         lastScroll = currentScroll;
+  //       } else {
+  //         //Render the header as normal without the "show/hide logic"
+  //         headerContainer.current.classList.remove("hide-nav");
+  //       }
+  //     }
+  //   };
+
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("scroll", onScroll);
+
+  //     return () => {
+  //       window.removeEventListener("scroll", onScroll);
+  //     };
+  //   }
+  // },[breakpoints]);
 
   return (
     <Box
@@ -287,8 +287,15 @@ const Header = () => {
             width: "52px",
             height: "52px",
           }}
+          aria-label={t("aria_MakerHomeIcon")}
         >
-          <Icon name="maker" color="primary" size={"52px"} />
+          <motion.div
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.064 }}
+            sx={{ backfaceVisibility: "hidden" }}
+          >
+            <Icon name="maker" color="primary" size={"52px"} />
+          </motion.div>
         </Link>
         <Flex
           sx={{
@@ -355,7 +362,7 @@ const Header = () => {
               height: "32px",
               width: "32px",
               mr: "21px",
-              backfaceVisibility: 'hidden'
+              backfaceVisibility: "hidden",
             }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}
@@ -389,7 +396,7 @@ const Header = () => {
               display: ["none", "none", "inline-block"],
               height: "32px",
               width: "32px",
-              backfaceVisibility: 'hidden'
+              backfaceVisibility: "hidden",
             }}
             whileTap={{ scale: 0.9 }}
             whileHover={{ scale: 1.1 }}

@@ -1,18 +1,17 @@
-//** @jsx jsx */
-
-import React from "react";
+/** @jsx jsx */
 import { jsx, Box } from "theme-ui";
 
 const Code = ({ children }) => {
   return (
-    <pre sx={{ display: "inline-block", width: "100%" }}>
+    <pre sx={{ display: "inline-block", whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>
       <Box
         as="code"
         sx={{
           color: "codeText",
           bg: "codeBG",
           fontSize: 3,
-          fontFamily: "Roboto Mono",
+          fontWeight: 600,
+          fontFamily: "monospace",
           p: 1,
           px: 2,
           mt: 0,

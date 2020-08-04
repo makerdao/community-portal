@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React, { useState, useContext } from "react";
+/** @jsx jsx */
+import { useState } from "react";
 import { Box, Flex, Text, jsx, useColorMode } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 import { useLocation } from "@reach/router";
@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { Link, SidenavNode } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
-import { NavigationContext } from "@modules/navigation/context";
+import { useNavigation } from "@modules/navigation/context";
 
 const MobileNav = ({ headerLinks, onLinkClick }) => {
-  const { sidenavData, pathDirs } = useContext(NavigationContext);
+  const { sidenavData, pathDirs } = useNavigation()
   const { locale, t } = useTranslation();
   const { pathname } = useLocation();
 
@@ -34,7 +34,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
       sx={{
         height: "calc(100vh - 90px)",
         overflow: "auto",
-        zIndex: 1,
+        zIndex: 1000,
         position: "fixed",
         width: "100%",
       }}
@@ -177,7 +177,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                 whileTap={{ scale: 0.9 }}
                 whileHover={{ scale: 1.1 }}
                 sx={{
-                  backfaceVisibility: 'hidden'
+                  backfaceVisibility: "hidden",
                 }}
               >
                 <Icon
@@ -206,11 +206,11 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                 />
               </motion.div>
 
-              <motion.div 
-                whileTap={{ scale: 0.9 }} 
+              <motion.div
+                whileTap={{ scale: 0.9 }}
                 whileHover={{ scale: 1.1 }}
                 sx={{
-                  backfaceVisibility: 'hidden'
+                  backfaceVisibility: "hidden",
                 }}
               >
                 <Icon

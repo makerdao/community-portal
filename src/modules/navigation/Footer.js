@@ -1,5 +1,4 @@
-//** */ @jsx jsx */
-import React from "react";
+/** @jsx jsx */
 import { Flex, Box, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -9,7 +8,7 @@ import { useTranslation } from "@modules/localization";
 import { getLinkIcon, Link } from "@modules/navigation";
 
 const Footer = () => {
-  const { locale, DEFAULT_LOCALE } = useTranslation();
+  const { locale, DEFAULT_LOCALE, t } = useTranslation();
 
   const { footerFiles, socialLinks } = useStaticQuery(graphql`
     query FooterQuery {
@@ -103,7 +102,14 @@ const Footer = () => {
             "& > *, & svg": { color: "onBackgroundAlt" },
           }}
         >
-          <Link to="/" sx={{ display: "inline-block", mb: "31px" }}>
+          <Link
+            to="/"
+            sx={{
+              display: "inline-block",
+              mb: "31px",
+            }}
+            aria-label={t("aria_MakerFooterLogo")}
+          >
             <Icon
               name="makerLogo"
               sx={{ width: "217px", height: "30px", display: "block" }}
@@ -147,7 +153,7 @@ const Footer = () => {
                 pr: ["66px", "66px", "unset"],
                 mb: ["64px", "64px", "unset"],
                 color: "onBackgroundAlt",
-                "& > *nth-child(1):not(ul)": {
+                "& > *:nth-of-type(1):not(ul)": {
                   mb: "8px",
                 },
                 "& > ul": {

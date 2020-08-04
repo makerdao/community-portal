@@ -1,13 +1,13 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Fragment} from 'react';
 
-import { SEO } from "@modules/utility";
 import { Box, Flex, Text, Image, jsx } from "theme-ui";
 import { useStaticQuery, graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { navigate } from "@reach/router";
-import Button from "@modules/ui/Button";
 
+import Button from "@modules/ui/Button";
+import { SEO } from "@modules/utility";
 import { useTranslation } from "@modules/localization";
 
 const browser = typeof window !== "undefined" && window; //<- This is to stop 404 flashes on route fallbacks.
@@ -17,9 +17,13 @@ const PageLayout = ({ children, seoTitle, t }) => (
   <Flex
     sx={{
       width: "100%",
+      maxWidth: "1000px",
+      margin: 'auto',
       justifyContent: "center",
       alignItems: "center",
+      flexDirection: ['column', 'column', 'row'],
       py: "77px",
+      px: '5%',
     }}
   >
     <SEO title={seoTitle} />
@@ -27,7 +31,9 @@ const PageLayout = ({ children, seoTitle, t }) => (
       sx={{
         flex: 2,
         flexDirection: "column",
-        p: "5%",
+        pr: [0,0,"5%"],
+        textAlign: ['center', 'center', ''],
+        order: [1,1,0],
         width: "100%",
         display: "inline-block",
       }}
@@ -36,9 +42,10 @@ const PageLayout = ({ children, seoTitle, t }) => (
       <Box>
         <Button
           to={"https://github.com/makerdao/community-portal/issues"}
+          inline
           sx={{
-            display: "inline-block",
             mt: "5px",
+            mr: [0,0,3],
           }}
         >
           {t("Bug_Report")}
@@ -51,7 +58,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
           hideExternalIcon={true}
           sx={{
             fontWeight: "bold",
-            display: "inline-block",
+            display: ['block', 'block', "inline-block"],
             ml: "15px",
             cursor: "pointer",
           }}
@@ -61,7 +68,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
       </Box>
     </Flex>
     <Image
-      sx={{ width: "400px", height: "400px", display: "inline-block" }}
+      sx={{ width: "400px", height: "400px", display: "inline-block", order: [0,0,1] }}
       src={
         "https://cdn.shopify.com/s/files/1/0010/0994/2575/products/2046-60-mistyteal_3472a883-658e-4f06-b350-387a8eafa4ae_2000x.png"
       }
@@ -94,7 +101,7 @@ const NotFoundPage = () => {
   `);
 
   if (!browser) {
-    return <></>;
+    return <Fragment></Fragment>;
   }
 
   const page = nodes.nodes.find(

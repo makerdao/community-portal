@@ -1,25 +1,25 @@
 /** @jsx jsx */
-import React from "react";
 import { jsx, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-const Callout = ({ icon, secondary, warning, children }) => {
+const Callout = ({ icon, variant, children }) => {
   return (
     <Flex
-      p={3}
       sx={{
+        px: "24px",
+        py: "28px",
         mb: "24px",
         mt: "24px",
         width: "100%",
-        borderRadius: "medium",
-        bg: secondary ? "calloutSecondary" : "callout",
-        border: secondary ? "1px solid" : "none",
-        borderColor: secondary ? "calloutSecondaryBorder" : "initial",
+        color: "text",
+        borderRadius: "12px",
+        bg: variant || "primaryMuted",
       }}
     >
       {icon && (
         <Icon
-          name={typeof icon === "string" ? icon : "warning"}
+          name={icon}
+          size={3}
           sx={{ minWidth: "32px", minHeight: "32px", mr: "10px" }}
         />
       )}

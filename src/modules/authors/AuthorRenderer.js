@@ -1,5 +1,5 @@
-//** @jsx jsx */
-import React from "react";
+/** @jsx jsx */
+import {Children} from 'react';
 import { Grid, jsx } from "theme-ui";
 
 import { ListElement, GridCell, MDXtoAuthor } from "@modules/authors";
@@ -18,7 +18,7 @@ const AuthorRenderer = ({
   children,
   ...props
 }) => {
-  const _children = React.Children.toArray(children);
+  const _children = Children.toArray(children);
 
   //Get Author Data from MDX Child elements.
   //See MDXtoAuthor.js on spec.
@@ -117,10 +117,11 @@ const AuthorRenderer = ({
     authorsToRender = getAuthorDataFromChildren();
   }
 
+
   return (
     <Grid
       gap={0}
-      columns={list ? [1, "1fr"] : [6, "1fr 1fr 1fr 1fr 1fr 1fr"]}
+      columns={list ? 1 : [2, 4, 6]}
       sx={{
         borderLeft: !list ? "1px solid" : "unset",
         borderColor: "muted",
