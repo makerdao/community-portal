@@ -1416,10 +1416,10 @@
   resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.59.tgz#ee9d7174565ca7a15797954d4fac1e18c2f49618"
   integrity sha512-QWeNUihCzFREqNADh1MZ3/QLucMnOfTdT1XWZUHFB8vXvNJCzzGxchqImYqCFzSsJP2U994wFD19G21vgg1xIQ==
 
-"@makerdao/dai-ui-theme-maker@^0.0.58":
-  version "0.0.58"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.58.tgz#1dbb40602eaaf5c582f37a27afe0504afe00ddfc"
-  integrity sha512-94+Go7KMelHKwGa/QIwY+rODtZQvu5ssxtTXzJfa0mD8L8ddZnFPglxcYuMSgbEIgUVFQ8qa+0Dlt+xh6b1OPg==
+"@makerdao/dai-ui-theme-maker@^0.0.59":
+  version "0.0.59"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.59.tgz#30520cfb8f9989dca4a21e074044df1ff39dafbf"
+  integrity sha512-AOQNn6/P3uHkl07xzOhCy9r3PWHOL/nuLRvKPZeWiRLkoUFqk73LtLZ3jYLzDODPW+AY5Jw9+ADwYgUxM9cucQ==
   dependencies:
     "@theme-ui/color" "^0.3.1"
 
