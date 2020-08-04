@@ -1406,10 +1406,10 @@
     core-js "^3.4.1"
     regenerator-runtime "^0.13.3"
 
-"@makerdao/dai-ui-icons-branding@^0.0.58":
-  version "0.0.58"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.58.tgz#ca19cc046015248f27019a6a69aead1573172987"
-  integrity sha512-P7hzpEj60/NDYzuTthY/Y/wayqCgT8XaaTMvbjL4rtuUzBTVe48B4gBVw5DEn7poejykCFj6D5p4vJya4KkAuQ==
+"@makerdao/dai-ui-icons-branding@^0.0.59":
+  version "0.0.59"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.59.tgz#ce8202730adcae564235da05e8b7c52ae7a4ba44"
+  integrity sha512-fgRiwE3o6SOmZ/DXX8dtIArHLBZmsMnOrfJE1zz9X7BORnMm/HU+YWyTgoInmXKepZdkmqGzskOKqkKfVg+kEg==
 
 "@makerdao/dai-ui-icons@^0.0.59":
   version "0.0.59"
@@ -1448,7 +1448,7 @@
     unist-builder "2.0.3"
     unist-util-visit "2.0.3"
 
-"@mdx-js/mdx@^1.6.16", "@mdx-js/mdx@^1.6.6":
+"@mdx-js/mdx@^1.6.13", "@mdx-js/mdx@^1.6.6":
   version "1.6.16"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.6.16.tgz#f01af0140539c1ce043d246259d8becd2153b2bb"
   integrity sha512-jnYyJ0aCafCIehn3GjYcibIapaLBgs3YkoenNQBPcPFyyuUty7B3B07OE+pMllhJ6YkWeP/R5Ax19x0nqTzgJw==
