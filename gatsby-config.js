@@ -16,11 +16,26 @@ module.exports = {
     siteUrl: "http://localhost:9000", // NOTE(Isaac): TODO: change this to production URL
   },
   plugins: [
+    'gatsby-plugin-theme-ui',
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-catch-links`,
     {
-      resolve: 'gatsby-plugin-theme-ui',
+      //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
+      resolve: `gatsby-plugin-alias-imports`,
       options: {
-        preset: "@makerdao/dai-ui-theme-maker"
-      }
+        alias: {
+          "@modules": path.resolve(__dirname, "src/modules"),
+          "@src": path.resolve(__dirname, "src"),
+          "@utils": path.resolve(__dirname, "src/utils.js"),
+          "@pages": path.resolve(__dirname, "src/pages"),
+          "@images": path.resolve(__dirname, "static/images"),
+          "@content": path.resolve(__dirname, "content"),
+        },
+        extensions: [
+          //NOTE(Rejon): You don't have to write .js at the end of js files now.
+          "js",
+        ],
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -48,15 +63,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        // Setting a color is optional.
-        color: `#5AE2CA`,
-        // Disable the loading spinner.
-        showSpinner: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         query: `
@@ -76,7 +82,6 @@ module.exports = {
         }`,
       },
     },
-    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
@@ -119,24 +124,7 @@ module.exports = {
       },
     },
 
-    {
-      //NOTE(Rejon): This is what allows us to do aliased imports like "@modules/ect..."
-      resolve: `gatsby-plugin-alias-imports`,
-      options: {
-        alias: {
-          "@modules": path.resolve(__dirname, "src/modules"),
-          "@src": path.resolve(__dirname, "src"),
-          "@utils": path.resolve(__dirname, "src/utils.js"),
-          "@pages": path.resolve(__dirname, "src/pages"),
-          "@images": path.resolve(__dirname, "static/images"),
-          "@content": path.resolve(__dirname, "content"),
-        },
-        extensions: [
-          //NOTE(Rejon): You don't have to write .js at the end of js files now.
-          "js",
-        ],
-      },
-    },
+    
     {
       //NOTE(Rejon): Your search will have to be manually updated for ever new locale that's added.
       resolve: "gatsby-plugin-lunr",
@@ -151,15 +139,6 @@ module.exports = {
                 /\/en\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
               ) !== null,
           },
-          {
-            name: "es",
-            filterNodes: (node) =>
-              node.frontmatter !== undefined &&
-              node.fileAbsolutePath &&
-              node.fileAbsolutePath.match(
-                /\/es\/(?!header.mdx|footer.mdx|index.mdx|example.mdx|social.mdx|404.mdx|.js|.json)/
-              ) !== null,
-          },
         ],
         fields: [
           { name: "title", store: true, attributes: { boost: 20 } },
@@ -167,7 +146,6 @@ module.exports = {
           { name: "url", store: true },
           { name: "excerpt", store: true, attributes: { boost: 5 } },
         ],
-
         resolvers: {
           Mdx: {
             title: TitleConverter,
@@ -252,7 +230,7 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
 
     `gatsby-plugin-client-side-redirect`, //<- NOTE(Rejon): We're only using this because we're using Github Pages. If we're on vercel or netlify just use their redirect scripts.
-    `gatsby-plugin-catch-links`,
+    
     {
       resolve: "gatsby-plugin-offline",
       options: {
