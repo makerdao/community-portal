@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>http://localhost:9000/en/funding/community-projects/community-projects-process/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/funding/community-projects/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/funding/development-grants/development-grants-info/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/funding/development-grants/grantee-playbook/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/funding/development-grants/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/funding/hackathon-funding/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -13,9 +14,10 @@
 <url> <loc>http://localhost:9000/en/learn/Dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Dai/spend-dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Dai/use-dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/learn/Fundamentals/acquire/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Fundamentals/best-practices/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Fundamentals/ethereum/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Fundamentals/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Fundamentals/stability/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Fundamentals/wallets/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/governance/discussion/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/governance/emergency-shutdown/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -26,6 +28,9 @@
 <url> <loc>http://localhost:9000/en/learn/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/MakerDAO/core-principles/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/MakerDAO/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Oracles/how-it-works/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Oracles/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Oracles/security/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/vaults/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/vaults/liquidation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/vaults/risk/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -72,10 +77,10 @@
 <url> <loc>http://localhost:9000/en/work_with_us/meetups/getting-started-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/meetups/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/meetups/promotion-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Fundamentals/acquire/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/governance/how-voting-works/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/governance/mkr-token/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/MakerDAO/mkr-101/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/learn/Oracles/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/vaults/vault-onboarding-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/content/advanced/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/content/basic/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
