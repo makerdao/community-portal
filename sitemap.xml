@@ -10,10 +10,7 @@
 <url> <loc>http://localhost:9000/en/funding/meetup-funding/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Dai/dsr/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/learn/Dai/get-dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/learn/Dai/spend-dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/learn/Dai/use-dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Fundamentals/best-practices/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Fundamentals/ethereum/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Fundamentals/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -77,7 +74,8 @@
 <url> <loc>http://localhost:9000/en/work_with_us/meetups/getting-started-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/meetups/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/meetups/promotion-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/learn/Fundamentals/acquire/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Dai/get-dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/Dai/use-dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/governance/how-voting-works/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/governance/mkr-token/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/MakerDAO/mkr-101/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
