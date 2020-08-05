@@ -266,71 +266,6 @@ Determine the consensus that something needs to be done in response to a perceiv
 
 </Chocolate>
 
-### Categories
-
-The Categories component is nearly the same as the Chocolate component, except that it
-has a different visual design (it's width is 107.58% and not 100% of the content's parent container).
-It also has a different rendering style depending on whether there are 2 or 4 elements.
-The stark difference for you is that you only control the content of the Category container,
-not the entire box itself (i.e. you can't change the background of a category box, only it's contents).
-
-The component is also capable of having a unique status bar placement. All that's needed is that
-your categories child has the status banner first:
-
-```md:title=categories.mdx
-<Categories>
-
-<Box>
-
-<StatusBanner warning> Funding is currently closed </StatusBanner>
- 
-<Icon name="metamask"/>
-
-[Hackathons](/funding/hackathons)
-
-Organising a hackathon? Apply for a hackathon micro grant.
-
-</Box>
-
-<Box>
-
-<Icon name="metamask"/>
-
-[Hackathons](/funding/hackathons)
-
-Organising a hackathon? Apply for a hackathon micro grant.
-
-</Box>
-
-</Categories>
-```
-
-<Categories>
-
-<Box>
-
-<StatusBanner warning> Funding is currently closed </StatusBanner>
-
-<Icon name="metamask" />
-
-[Hackathons](/funding/hackathons)
-
-Organising a hackathon? Apply for a hackathon micro grant.
-
-</Box>
-
-<Box>
-
-<Icon name="metamask" />
-
-[Hackathons](/funding/hackathons)
-
-Organising a hackathon? Apply for a hackathon micro grant.
-
-</Box>
-
-</Categories>
-
 ### Touts
 
 Touts are really just a step up on CTAs, which can be arranged to look good on a page, 
@@ -472,3 +407,70 @@ The best place to start is in our chat. Say hello and get to know us.
 > md image), it will appear on the left, and if you put it anywhere else, it will appear on the right.
 
 
+<!--
+Categories was deprecated to chocolate only. 8-5-2020
+### Categories
+
+The Categories component is nearly the same as the Chocolate component, except that it
+has a different visual design (it's width is 107.58% and not 100% of the content's parent container).
+It also has a different rendering style depending on whether there are 2 or 4 elements.
+The stark difference for you is that you only control the content of the Category container,
+not the entire box itself (i.e. you can't change the background of a category box, only it's contents).
+
+The component is also capable of having a unique status bar placement. All that's needed is that
+your categories child has the status banner first:
+
+```md:title=categories.mdx
+<Categories>
+
+<Box>
+
+<StatusBanner warning> Funding is currently closed </StatusBanner>
+ 
+<Icon name="metamask"/>
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+<Box>
+
+<Icon name="metamask"/>
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+</Categories>
+```
+
+<Categories>
+
+<Box>
+
+<StatusBanner warning> Funding is currently closed </StatusBanner>
+
+<Icon name="metamask" />
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+<Box>
+
+<Icon name="metamask" />
+
+[Hackathons](/funding/hackathons)
+
+Organising a hackathon? Apply for a hackathon micro grant.
+
+</Box>
+
+</Categories>
+-->
