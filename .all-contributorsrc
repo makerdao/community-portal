@@ -60,6 +60,16 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "Davidutro",
+      "name": "Davidutro",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/40721951?v=4",
+      "profile": "https://github.com/Davidutro",
+      "contributions": [
+        "doc",
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
