@@ -35,11 +35,9 @@
 <url> <loc>http://localhost:9000/en/learn/vaults/risk/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/vaults/stability-fees/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/vaults/vaults-tutorial/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/resources/content/content-design-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/content/frontmatter/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/content/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/content/intermediate/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/resources/content/migration-for-content-team/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/engineering/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/engineering/language/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/engineering/navigation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -54,12 +52,14 @@
 <url> <loc>http://localhost:9000/en/resources/page-templates/learn-sub-topic/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/page-templates/learn-tutorial/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/page-templates/process-page/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/resources/recipes/icons/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/social/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/test/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/bounties/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/bounties/working-on-a-bounty/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/work_with_us/content/content-design-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/work_with_us/content/icons-recipes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/content/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/work_with_us/content/installation-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/content/publishing-to-repo-process/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/content/reviewer-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/governance_and_risk_meetings/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -84,8 +84,8 @@
 <url> <loc>http://localhost:9000/en/resources/content/advanced/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/content/basic/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/resources/content/cheatsheet/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://localhost:9000/en/resources/recipes/palette/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/content/common-tools/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/work_with_us/content/palette-recipes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/content/using-github/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/content/writing-style-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/work_with_us/onboarding/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
