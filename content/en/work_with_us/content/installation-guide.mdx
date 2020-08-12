@@ -1,12 +1,11 @@
 ---
 title: Installation Guide
 ---
-
 # Migration from .md to (.mdx) files
 
 ### Setting up Local development
 
-Let's set up local development environments! Being able to hotload your changes into a local website is no small feat and is kind of a badass skill. [Here is Gatsby's guide to doing basically everything in this doc](https://www.gatsbyjs.org/tutorial/) it's elegant, thorough, and helfpul AF. Plus it's like a half hour, tops, of following directions and installing things.
+Let's set up local development environments! Being able to hotload your changes into a local website is no small feat and is a useful skill. [Here is Gatsby's guide to doing basically everything in this doc](https://www.gatsbyjs.org/tutorial/) it's elegant, thorough, and extraordinarily helpful. Plus it's like a half hour, tops, of following directions and installing things.
 
 ### The terminal
 
@@ -14,7 +13,7 @@ Let's set up local development environments! Being able to hotload your changes 
 
 If one hasn't done anything before in the terminal, recognize that it's the pinnacle of laziness & elegance. Developers literally have set this thing up to run on as few characters as possible. Our devs, specifically, have set community contributors to use even fewer commands.
 
-If you're lazy (congratulations 🎊 ) , then here the short-short guide to Installs
+If you're lazy (congratulations 🎊 ) then here the short-short guide to installs and spinning up your local development environment:
 
 - [VS code](https://code.visualstudio.com/download)
   - IDE's with the best text highlighting experience, and development ease/packages/extensions/themes, borders on an obsession. so, download packages/extensions at one's own discretion. Generally it's best to have:
@@ -36,12 +35,12 @@ brew install node
 
 ```shell
 brew install yarn
-{or}
-npm install -g yarn
+ // or
+ npm install -g yarn
 ```
 
 - [Gatsby]()
-  - Let's install gatsby via terminal, keeping those terminal command skils sharp.
+  - Let's install gatsby via terminal, keeping those terminal command skills sharp.
 
 ```shell
 npm install -g gatsby-cli
@@ -49,15 +48,13 @@ npm install -g gatsby-cli
 
 ### I pressed buttons, now what??
 
-By this point all the dependencies should be downloaded. let's get our hands dirty
+By this point all the dependencies should be downloaded. The next step is to pull the portal currently, and build some pages up locally.
 
-[clone that community repo](https://github.com/makerdao/community-portal) and get building in the IDE! Getting started is as simple as entering the commands `yarn` then `yarn start` in the terminal. So head to terminal and run those commands in order.
-
-Normally there is a flurry of activity in the terminal and eventually some pages that say success.
+[clone that community repo](https://github.com/makerdao/community-portal) and get building in the IDE! Getting started is as simple as entering the commands `yarn` then `yarn start` in the terminal. So head to terminal and run those commands in order. Normally, there is a flurry of activity in the terminal and eventually some pages that say success.
 
 ![](https://i.imgur.com/EL88h6k.png)
 
-Navigate to localhost:8000 in the web browser of choice. :boom: Boom, you just built your local environment. Now when editing an .mdx file and hitting save, Gatsby will do all the work to render the site for you with all the new **_glorious_** changes.
+Navigate to localhost:8000 in the web browser of choice. 💥 Boom, you just built your local environment. Now when editing an .mdx file and hitting save, Gatsby will do all the work to render the site for you with all the new **_glorious_** changes.
 
 ### Common commands to fix things
 
@@ -65,5 +62,5 @@ Navigate to localhost:8000 in the web browser of choice. :boom: Boom, you just b
 - `yarn clean`
 - `gatsby clean`
 - Possibly you'll need to delete the packagelock.json file. then run those clean commands again.
-- We've seen multiple terminal windows open with `yarn start` then the browser says no and a bunch of errors return. Close one of the terminals and try it all again.
-- Occasionally closing VScode and the browser will fix things, in addition to the commands above. _The :black_square_button: turn off :white_square_button: turn on of local builds._
+- Occasionally closing VScode and the browser will fix things, in addition to the commands above.
+- Opening multiple terminal windows and running `yarn start` will make the browser throw errors; it's trying to send two builds to one server. Close one of the terminals and try it all again.
