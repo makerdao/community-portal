@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -132,6 +132,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/amy-jung"><img src="https://avatars1.githubusercontent.com/u/26228406?v=4" width="100px;" alt=""/><br /><sub><b>Amy Jung</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=amy-jung" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/shea-fitz"><img src="https://avatars3.githubusercontent.com/u/59940380?v=4" width="100px;" alt=""/><br /><sub><b>shea-fitz</b></sub></a><br /><a href="#design-shea-fitz" title="Design">🎨</a></td>
     <td align="center"><a href="https://github.com/Davidutro"><img src="https://avatars2.githubusercontent.com/u/40721951?v=4" width="100px;" alt=""/><br /><sub><b>Davidutro</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=Davidutro" title="Documentation">📖</a> <a href="#content-Davidutro" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/andersonmmi"><img src="https://avatars1.githubusercontent.com/u/16314437?v=4" width="100px;" alt=""/><br /><sub><b>Aaron Anderson</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Documentation">📖</a> <a href="https://github.com/makerdao/community-portal/issues?q=author%3Aandersonmmi" title="Bug reports">🐛</a> <a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Code">💻</a></td>
   </tr>
 </table>
 
