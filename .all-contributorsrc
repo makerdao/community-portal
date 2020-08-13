@@ -71,6 +71,8 @@
         "content"
       ]
     },
+     {
+
     {
       "login": "andersonmmi",
       "name": "Aaron Anderson",
@@ -80,10 +82,11 @@
         "doc",
         "bug",
         "code"
+
       ]
     }
   ],
-  "contributorsPerLine": 7,
+  "contributorsPerLine": 8,
   "projectName": "community-portal",
   "projectOwner": "makerdao",
   "repoType": "github",
