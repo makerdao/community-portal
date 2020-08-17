@@ -1452,10 +1452,10 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@makerdao/dai-ui-icons-branding@^0.0.59":
-  version "0.0.59"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.59.tgz#ce8202730adcae564235da05e8b7c52ae7a4ba44"
-  integrity sha512-fgRiwE3o6SOmZ/DXX8dtIArHLBZmsMnOrfJE1zz9X7BORnMm/HU+YWyTgoInmXKepZdkmqGzskOKqkKfVg+kEg==
+"@makerdao/dai-ui-icons-branding@^0.0.62":
+  version "0.0.62"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.62.tgz#ea713d3218401e977f6d875831f7641499c37ba7"
+  integrity sha512-VOQu2SC7IRTTOZ+CR/aIVT/bKrWVoRqHyKoaC0jK9iRuTMYQrPmV54r7pxk4m7CFD7plhgl/NxvJx0iid2lcww==
 
 "@makerdao/dai-ui-icons@^0.0.59":
   version "0.0.59"
