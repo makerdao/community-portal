@@ -14,6 +14,10 @@
 <url> <loc>http://localhost:9000/en/learn/blockchain-fundamentals/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/blockchain-fundamentals/stablecoins/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/blockchain-fundamentals/wallets/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/collateral-and-risk/dai-credit-system/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/collateral-and-risk/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/collateral-and-risk/risk-teams/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://localhost:9000/en/learn/collateral-and-risk/types-of-risk/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Dai/dsr/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/Dai/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://localhost:9000/en/learn/governance/discussion/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
