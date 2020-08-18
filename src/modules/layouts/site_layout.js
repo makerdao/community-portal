@@ -42,11 +42,10 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
           >
           <Sticky
             boundaryElement=".content-boundary"
-            
             dontUpdateHolderHeightWhenSticky={true}
             style={{ position: "relative" }}
             hideOnBoundaryHit={false}
-            sx={{minWidth: "306px"}}
+            sx={{minWidth: "307px"}}
           >
             <Sidenav />
           </Sticky>
