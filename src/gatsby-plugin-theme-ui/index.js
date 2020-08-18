@@ -255,7 +255,7 @@ export default {
     surfaceAlt: "#FFFFFF",
     surfaceDark: "#4D4968",
     muted: "#D0D3D7",
-    link: "#291A42",
+    link: "#1AAA9B",
     linkAlt: "#5AE2CA",
     mutedAlt: "#90969C",
     error: "#FF6948",
@@ -342,10 +342,12 @@ export default {
   styles: {
 	  ...maker.styles,
     a: {
-      color: "primary",
+      color: "link",
+      textDecoration: "none"
     },
     Link: {
-      color: "primary",
+      color: "link",
+      textDecoration: "none"
     },
     pre: {
       ...prismPreset,
