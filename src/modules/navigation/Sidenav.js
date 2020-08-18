@@ -23,8 +23,7 @@ const Sidenav = (props) => {
         pb: "90px",
         width: "307px",
         borderRight: "1px solid",
-        borderColor: "muted",
-        minWidth: "306px"
+        borderColor: "muted"
       }}
     >
       {sidenavData && sidenavData.items[0] && (
