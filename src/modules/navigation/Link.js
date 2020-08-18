@@ -74,7 +74,7 @@ const Link = ({
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
-            color: "linkAlt",
+            color: "link",
             fontWeight: "600",
           },
           "&:hover": {
