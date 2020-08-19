@@ -110,10 +110,10 @@ const MD_Overrides = {
     <Text
       variant="h5"
       as="h5"
-      sx={{ 
+      sx={{
         mb: '32px',
-        fontSize: "20px", 
-        fontWeight: "normal", 
+        fontSize: "20px",
+        fontWeight: "normal",
         lineHeight: "normal" ,
         '&:not(:first-of-type)': {
           mt: '32px'
