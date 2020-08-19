@@ -8,7 +8,7 @@ description: "Users can generate the Dai stablecoin by locking assets as collate
 
 # Vault Onboarding Guide
 
-The Maker Protocol offers access to decentralized, non-custodial, and permissionless leverage through Maker Vaults. Users can generate the Dai stablecoin by locking assets as collateral in a Vault using Oasis Borrow. It is important for individuals to be mindful of the risks associated with Vault usage, including those indicated in the applicable Terms of Service. This brief guide outlines the basics of getting started with Vaults on Oasis Borrow. While it presents the main features of Oasis Borrow, it only serves as an overall and general introduction.
+The Maker Protocol offers access to decentralized, non-custodial and permissionless leverage through Maker Vaults. Users can generate the Dai stablecoin by locking assets as collateral in a Vault using Oasis Borrow. It’s important for individuals to be mindful of the risks associated with Vault usage, including those indicated in the applicable Terms of Service. This brief guide outlines the basics of getting started with Vaults on Oasis Borrow. While it presents the main features of Oasis Borrow, it only serves as an overall and general introduction.
 
 ![Maker Vaults on Oasis.App - Introduction to Oasis Borrow](/images/vault-onboarding-1.png)
 
@@ -20,7 +20,7 @@ The Maker Vault is a core component of the Maker Protocol, which facilitates the
 
 Vault usage collectively alters the total supply of Dai. Users create Dai by generating it against their collateral and in-turn destroy Dai when repaying their generated Dai balance. This process happens on-chain, which enables full auditability of circulating Dai and the collateral backing it.
 
-Vaults are not free to use and come with inherent risks. Generating Dai requires the payment of [Stability Fees](/learn/vaults/stability-fees/) (SF). The SF is a variable rate and is subject to change based on the decisions of MKR Token holders through [voting](/learn/governance/how-voting-works/). To reclaim collateral, users must repay the previously generated Dai and the accumulated SF.
+Vaults are not free to use and come with inherent risks. Generating Dai requires the payment of [Stability Fees](/learn/vaults/stability-fees/) (SF). The SF is a variable rate and is subject to change based on the decisions of MKR Token holders through [voting](/learn/governance/voting/). To reclaim collateral, users must repay the previously generated Dai and the accumulated SF.
 
 Vaults are required to be overcollateralized and have a [Liquidation Ratio](/learn/vaults/liquidation#liquidation-ratio) that Vault owners need to uphold to avoid the [Liquidation](/learn/vaults/liquidation/) of their Vaults. What a Vault is liquidated, a [Liquidation Penalty](/learn/vaults/liquidation#liquidation-penalty) is applied, and collateral is sold to repay the Vault's outstanding Dai balance. Additionally, a Debt Ceiling is imposed globally on the Maker Protocol, as well as individually on each Vault type.
 
@@ -32,8 +32,8 @@ Vaults let users access the underlying value of their assets while avoiding the 
 
 Some popular examples of how users are utilizing Vaults are listed below:
 
-- **Leverage:** Speculators can “leverage” collateral in a decentralized manner to increase exposure to a given asset by investing Dai generated from their Vault. Users seeking leverage should proceed with caution as it magnifies the risk of loss as well as the potential for gains.
-- **Draw Liquidity from Your Assets:** Users looking for liquidity can turn to Vaults since Dai can serve any purpose. Some examples generate Dai off of their cryptocurrency assets to purchase automobiles, pay college tuition, or cover home renovations.
+- **Leverage:** Speculators can “leverage” collateral in a decentralized manner to increase exposure to a given asset by investing the Dai generated from their Vault. Users seeking leverage should proceed with caution as it magnifies the risk of loss as well as the potential for gains.
+- **Draw Liquidity from Your Assets:** Users looking for liquidity can turn to Vaults since Dai can serve any purpose. Some examples generate Dai off of their cryptocurrency assets to purchase automobiles, pay college tuition or cover home renovations.
 - **Flexible Repayment Schedule:** Vaults offer flexible terms. There are no repayment schedules, no minimum payments, and no credit history requirements. Users can repay at their own pace as long as their Vault is properly collateralized. Read the section below on “Best Practices to Avoid Liquidation” for more in-depth information about how to maintain a healthy Vault.
 
 Each of the above examples, as well as any use case of Vaults in general, is associated with various risks. Every user should have a good understanding of risks applicable in their situation, which depending on the risk profile intended may or may not make Vaults an appropriate solution for them.
@@ -64,7 +64,7 @@ The Oasis Borrow Dashboard appears once a wallet is connected. Any existing Vaul
 
 ![Oasis Borrow Dashboard](/images/vault-onboarding-5.png)
 
-The top right-hand panel displays information about the connected wallet, including token balances. The menu below lists information about the global state of Vaults and [the prices of relevant assets.](/learn/Oracles/)
+The top right-hand panel displays information about the connected wallet, including token balances. The menu below lists information about the global state of Vaults and [the prices of relevant assets.](/learn/oracles/)
 
 ![Wallet Information Panel](/images/vault-onboarding-6.png)
 
@@ -137,7 +137,7 @@ Check the preview to make sure the Vault's new terms are acceptable. Click “De
 
 Paying back Dai is useful in a number of situations. Similarly to adding collateral, paying back Dai is a [more efficient](/learn/vaults/liquidation#liquidation-price) way to save a Vault from liquidation. Additionally, paying back Dai is especially appropriate when a Vault owner thinks the Stability Fee is too high and wants to decrease the size of their position, the Vault is no longer needed, or when collateral needs to be freed.
 
-To pay back Dai, click “Pay Back” from the dashboard to bring up the menu below. Please note that when paying back Dai for the first time, a one-time transaction to unlock it needs to occur. Clicking the “Unlock DAI to Continue” switch above the "Pay Back" button will bring up this transaction.
+To pay back Dai, click “Pay back” from the dashboard to bring up the menu below. Please note that when paying back Dai for the first time, a one-time transaction to unlock it needs to occur. Clicking the “Unlock DAI to Continue” switch above the "Pay back" button will bring up this transaction.
 
 Check the preview to make sure the Vault's new terms are acceptable. Click “Pay Back” and follow prompts to confirm the transaction. Once approved, the Vault’s dashboard will update automatically to reflect the changes.
 
@@ -163,7 +163,7 @@ The sections below present some best practices, useful tips, and resources relat
 
 ### Community Observed Means to Avoid Liquidation
 
-**Maintaining a Vault's Health is the Vault Owner's Responsibility.** Given the volatile nature of cryptocurrencies, a safe Vault can become at risk very quickly depending on the Dai balance and amount of Collateral locked within. Ensuring that the collateralized assets remain safe from liquidation is entirely in the hands of each Vault owner. Some commonly observed practices to avoid liquidation can be found below:
+**Maintaining a Vault's health is the Vault owner's responsibility.** Given the volatile nature of cryptocurrencies, a safe Vault can become at risk very quickly depending on the Dai balance and amount of Collateral locked within. Ensuring that the collateralized assets remain safe from liquidation is entirely in the hands of each Vault owner. Some commonly observed practices to avoid liquidation can be found below:
 
 - **Monitor the Vault:**
   - Keep note of the Vault ID numbers that you are responsible for. This will enable you to identify your Vault without needing access to the wallet that owns it.
@@ -177,7 +177,7 @@ The sections below present some best practices, useful tips, and resources relat
   - When done manually, this technique temporarily puts the Vault in a riskier position until Dai is paid on the balance. This is because collateral is being withdrawn, which increases the Liquidation Price.
   - Set a personal rule to unwinding the Vault if the collateral price falls below a certain level or takes a sharp downturn. This may act as an additional buffer.
   - Some services will offer Vault unwinding for a nominal fee.
-- **Use a Vault Unwinding Service:**
+- **Use a Vault Unwinding service:**
   - There are 3rd party web3 applications that enable a Vault owner to automate the unwinding process. One example is [DefiSaver.com’s](https://defisaver.com/) Automate feature.
   - Note that the Vault owner is responsible for doing their due diligence to assess whether such a service is safe to use and legitimate.
 
