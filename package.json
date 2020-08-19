@@ -53,6 +53,7 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
+    "imagemin-pngquant": "^9.0.0",
     "prettier": "2.0.5"
   },
   "keywords": [
