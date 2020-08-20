@@ -255,7 +255,7 @@ export default {
     surfaceAlt: "#FFFFFF",
     surfaceDark: "#4D4968",
     muted: "#D0D3D7",
-    link: "#291A42",
+    link: "#1AAA9B",
     linkAlt: "#5AE2CA",
     mutedAlt: "#90969C",
     error: "#FF6948",
@@ -278,8 +278,8 @@ export default {
         primary: "#68FEE3",
         primaryEmphasis: "#A6FFEF",
         primaryMuted: "#00585E",
-        secondary: "#F2B9FF",
-        secondaryEmphasis: "#FF78F2",
+        secondary: "#FF78F2",
+        secondaryEmphasis: "#F2B9FF",
         backgroundAlt: "#4D4968",
         secondaryMuted: "#94008E",
         text: "#FFFFFF",
@@ -342,10 +342,12 @@ export default {
   styles: {
 	  ...maker.styles,
     a: {
-      color: "primary",
+      color: "link",
+      textDecoration: "none"
     },
     Link: {
-      color: "primary",
+      color: "link",
+      textDecoration: "none"
     },
     pre: {
       ...prismPreset,
