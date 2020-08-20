@@ -8,18 +8,15 @@ description: "How collateral and risk factor into the Maker Protocol."
 
 # Dai Credit System
 
+### A permissionless loan facility for issuing the Dai stablecoin
 
-
-The core function of the Dai Credit System is to allow users to self-issue Dai-denominated loans against collateral deposited into smart contract-based escrow. 
-
+The Dai Credit System allows users to self-issue Dai-denominated loans against collateral deposited into smart contract-based escrow. 
 
 At the core is the collateral portfolio, a pool of on-chain digital assets that back the Dai supply. 
 
 While the collateral presents a source of value, additional heuristics are required to maintain a soft peg of $1. 
 
 ### Governance
-
-
 
 #### Arbitrage
 
@@ -31,7 +28,7 @@ Market makers have come to rely on these Stability Fee changes, and as a result 
 
 #### Emergency Shutdown
 
-In extreme events, 1 Dai can be redeemed for $1 worth of collateral through a process known as Emergency Shutdown. 
+In extreme events, 1 Dai can be redeemed for $1 worth of collateral through a process known as [Emergency Shutdown](/learn/governance/emergency-shutdown.mdx). 
 
 However, collateral values can sometimes fluctuate dramatically. If they were to suffer a sharp decline in value, the settlement feature enabled by Emergency Shutdown may not allow for full redemption. 
 
@@ -39,7 +36,7 @@ As a last line of defense against volatile asset prices, a process for auctionin
 
 ### MKR Token Holders
 
-MKR token holders are ultimately the group motivated to ensure the successful operation of the Dai Credit System.
+[MKR token](/learn/governance/mkrtokens.mdx) holders are ultimately the group motivated to ensure the successful operation of the Dai Credit System.
 
 MKR token holders coordinate themselves using a decentralized governance process through which they evaluate and select appropriate collateral assets. 
 
@@ -65,7 +62,7 @@ The decentralized model affords us a near limitless talent pool, blanket coverag
 
 #### Risk Teams
 
-Decentralized risk teams are designed to be resistant to capture from biased ecosystem actors; risk teams operate solely for the benefit of MKR token holders.
+Decentralized [risk teams](learn/collateral-and-risk/risk-teams.mdx) are designed to be resistant to capture from biased ecosystem actors; risk teams operate solely for the benefit of MKR token holders.
 
 Through the governance process, the MKR token holders are responsible for managing the operational aspects of Maker risk teams. 
 

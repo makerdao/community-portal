@@ -8,9 +8,13 @@ description: "How the Oracle system is made secure"
 
 # Security
 
-To defend against fraudulent price-data, the reporting is decentralized. There are multiple organizations and individuals who report price-data, they are called Feeds.
+### How the Maker Protocol handles the security of oracles
 
-At the launch of Multi-Collateral Dai, Oracles received data from a total of 20 Feeds which consisted of 15 individuals and five public organizations.
+The oracle system for the Maker Protocol uses decentralized reporting to defend against fraudulent price data.
+
+There are multiple organizations and individuals who report price-data, they are called Feeds.
+
+At the launch of Multi-Collateral Dai, oracles received data from a total of 20 Feeds which consisted of 15 individuals and five public organizations.
 
 Oracles use the median of the reported prices for each asset as the reference price. Using a median instead of an average makes it harder to manipulate the reference price since control over half of the data providers is needed in order for a fraudulent price to be pushed through.
 
@@ -34,7 +38,7 @@ The [Oracle Security Module(OSM)](https://docs.makerdao.com/smart-contract-modul
 
 Oracle Security Modules (OSMs) delay the publishing of new reference prices for a predefined set of time. This parameter is called the Oracle Security Module Delay and was set to be one hour at the launch of MCD. 
 
-This allows MKR token holders and other stakeholders the time to react to bugs or attacks on the Oracles. An OSM is active on each Oracle in the Maker Protocol.
+This allows [MKR token](/learn/governance/mkrtokens.mdx) holders and other stakeholders the time to react to bugs or attacks on the Oracles. An OSM is active on each Oracle in the Maker Protocol.
 
 This allows MKR governors and other stakeholders the time to identify bugs or attacks on the price-feed system. An OSM is active on all Oracles in the Maker Protocol.
 
@@ -50,4 +54,4 @@ For technical documentation, please visit the [Medianizer](https://docs.makerdao
 
 ## Secure Scuttlebutt Network
 
-Secure Scuttlebutt is a database protocol for unforgeable append-only message feeds. For more information on how a Secure Scuttlebut Network works visit this [informative page](https://scuttlebot.io/more/protocols/secure-scuttlebutt.html) on [scuttlebot.io.](https://scuttlebot.io/)
+Secure Scuttlebutt is a database protocol for unforgeable append-only message feeds. For more information on how a Secure Scuttlebutt Network works visit this [informative page](https://scuttlebot.io/more/protocols/secure-scuttlebutt.html) on [scuttlebot.io.](https://scuttlebot.io/)

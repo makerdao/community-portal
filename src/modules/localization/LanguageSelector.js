@@ -155,8 +155,8 @@ const LanguageSelector = () => {
             <Link
               to="/work_with_us/translations"
               sx={{
-                color: "text",
-                textDecoration: "underline",
+                color: "link",
+                textDecoration: "none",
                 fontWeight: "bold",
                 mt: 1,
                 lineHeight: "normal",
@@ -244,8 +244,8 @@ const LanguageSelector = () => {
           <Link
             to="/work_with_us/translations"
             sx={{
-              color: "text",
-              textDecoration: "underline",
+              color: "link",
+              textDecoration: "none",
               fontWeight: "bold",
               mt: 1,
               lineHeight: "normal",

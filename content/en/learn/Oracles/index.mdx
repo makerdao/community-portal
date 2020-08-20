@@ -8,13 +8,11 @@ description: "How oracles are used in the Maker Protocol."
 
 # Oracles
 
-An Oracle makes both off-chain and on-chain data available for use in smart-contracts.
+### Oracles makes on- and off-chain data available to smart-contracts
 
-In the Maker Protocol, Oracles enable the use of price data of various assets to determine a number of important things like when to Liquidate a Vault or how much Dai a given Vault can generate.
+The Maker Protocol uses oracles enable the use of price data of various assets to determine a number of important things like when to liquidate a Vault or how much Dai a given Vault can generate.
 
-MakerDAO Oracles receive data from a number of independent Feeds that consist of individuals and organizations. Each Oracle corresponds to a single asset and its reference price.
-
-For technical documentation, please visit the [Oracle Module](https://docs.makerdao.com/smart-contract-modules/oracle-module) section of our [Documentation Portal.](https://docs.makerdao.com/)
+MakerDAO's oracles receive data from a number of independent feeds that consist of individuals and organizations. Each oracle corresponds to a single asset and its reference price.
 
 <Tout>
 
@@ -22,7 +20,7 @@ For technical documentation, please visit the [Oracle Module](https://docs.maker
 
 ## How it Works
 
-Learn about how the Oracle system works
+Learn about how the oracle system works.
 
 [How it Works](/oracles/how-it-works/)
 
@@ -30,10 +28,9 @@ Learn about how the Oracle system works
 
 <Box>
 
-
 ## Security
 
-Learn about Oracle system is made secure
+Learn about oracle system is made secure.
 
 [Security](/oracles/security/)
 
@@ -41,61 +38,4 @@ Learn about Oracle system is made secure
 
 </Tout>
 
-
-
-## FAQs
-
-### Why are Oracles an attack target for malicious actors?
-
-In the Maker Protocol, if the reference price for an asset was determined by a single party, then they could fraudulently report an incorrect price and cause severe issues.
-
-For instance, if the price of ETH was reported to be fraudulently low, say $0.01, then every single ETH [Vault](/learn/vaults/) in the system would be [Liquidated.](https://community-development.makerdao.com/makerdao-mcd-faqs/faqs/liquidation) 
-
-On the other hand, if the price of ETH was reported to be artificially high, say $1,000,000.00, then any ETH Vault owner would be able to issue an excessive amount of Dai since the system thinks there is more Collateral value than there actually is.
-
-Oracle attacks can be very profitable for a successful attacker and can be very disruptive to MakerDAO and its users.
-
-### How is privacy handled?
-
-From their onset, the individuals running Feeds have been pseudonymous out of necessity, to protect the individuals from the risk of extortion and blackmail. 
-
-Pseudonymous Feeds also have the benefit of making it harder to coordinate an Oracle attack since the Feeds don’t know who the others are. Organizations running Feeds, however, are different. 
-
-Organizations are much more resilient against coercion, have the resources to combat malicious actors, and have their reputations at stake. This makes them much better equipped to be Feeds with public identities. A hybrid model is optimal, one that incorporates the benefits of both individual and organizational Feeds.
-
-### Is the oracle system Sybil-resistant?
-
-"In a Sybil attack, the attacker subverts the reputation system of a peer-to-peer network by creating a large number of pseudonymous identities, using them to gain a disproportionately large influence. A reputation system's vulnerability to a Sybil attack depends on how cheaply identities can be generated, the degree to which the reputation system accepts inputs from entities that do not have a chain of trust linking them to a trusted entity, and whether the reputation system treats all entities identically." - [Wikipedia](https://en.wikipedia.org/wiki/Sybil_attack)
-
-The short answer is yes, the Oracle system is resistant to Sybil attacks because of the existence of a whitelist for Feeds. It's not simple to become a Feed, they need to be approved by MKR governance. Therefore, an attacker cannot gain a majority influence by creating many pseudo-feeds.
-
-### What happens if there is a flash crash on an exchange?
-
-Since the reference price published by the Oracles is a median of the median prices that are reported by at least 20 different Feeds, outliers are automatically filtered out. 
-
-In practice, this means if a single exchange experiences a flash crash the set of prices will look something like this:
-
-
-
-[0.70, 104.80, 104.82, **104.88**, 104.90, 105.02, 105.04]
-
-
-
-The median of this set still reflects the real market price of the asset. Flash crashes on single exchanges do not affect the published reference price.
-
-### Can MakerDAO governance change the time of the Oracle Security Module’s delay?
-
-Yes. This parameter is called the <inline code>Oracle Security Module Delay</inline> and can be adjusted by MKR token holders.
-
-<Tout>
-
-<Box>
-
-
-## Technical Docs
-Technical documentation of Oracles can be found in the [Oracle Module](https://docs.makerdao.com/smart-contract-modules/oracle-module) section of our [Documentation Portal.](https://docs.makerdao.com/)
-
-
-</Box>
-
-</Tout>
+Please visit the [Oracle Module](https://docs.makerdao.com/smart-contract-modules/oracle-module) section for technical [Documentation](https://docs.makerdao.com/).
