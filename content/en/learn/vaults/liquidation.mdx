@@ -22,9 +22,9 @@ During the Liquidation process, enough collateral is sold to cover the debt alon
 
 ## Liquidation Ratio
 
-The Liquidation Ratio is the minimum required collateralization level for each Vault type before it is considered undercollateralized and subject to Liquidation.
+The Liquidation Ratio is the minimum required collateralization level for each Vault type before it is considered undercollateralized and subject to liquidation.
 
-The Maker Protocol’s Oracles provide the system with pricing data that is used to track Vaults for when their Liquidation Ratio is breached. Once breached, they are available for Liquidation.
+The Maker Protocol’s oracles provide the system with pricing data that is used to track Vaults for when their Liquidation Ratio is breached. Once breached, they are available for Liquidation.
 
 Each Vault type’s Liquidation Ratio is determined by a combination of the collateral’s risk profile and the Stability Fee. There may be multiple Vault types for each collateral, with varying Liquidation Ratios and Stability Fees.
 
@@ -58,7 +58,7 @@ Liquidation Price = (Generated Dai \* Liquidation Ratio) / (Amount of Collateral
 
 ## Liquidation Penalty
 
-A Liquidation Penalty is a fee paid by Vault owners when the value of their collateral reaches the Vault's Liqudation Price.
+A Liquidation Penalty is a fee paid by Vault owners when the value of their collateral reaches the Vault's Liquidation Price.
 
 The Liquidation Penalty is added to the Vault’s total outstanding generated DAI when liquidation occurs, which results in more collateral being sold at auction.
 
