@@ -2,7 +2,7 @@
 title: Emergency Shutdown
 order: 7
 hideLanguageSelector: true
-keywords: "shutdown, hacked"
+keywords: "shutdown, emergency, ESM"
 description: "A description of the Maker Protocol's Emergency Shutdown Module."
 ---
 
@@ -36,7 +36,7 @@ Emergency Shutdown may or may not be initiated with a Redeployment Scenario to a
 
 ## Emergency Shutdown Module
 
-The Emergency Shutdown Module (ESM) is a contract with the ability to call End.cage() to trigger the Shutdown of the Maker Protocol.
+The Emergency Shutdown Module (ESM) is a contract with the ability to call `End.cage()` to trigger the Shutdown of the Maker Protocol.
 
 Emergency Shutdown stops and settles the Maker Protocol while ensuring that Dai holders and Vault users receive the net value of assets they are entitled to.
 
@@ -49,7 +49,6 @@ Emergency Shutdown stops and settles the Maker Protocol while ensuring that Dai 
 - Vault Parity: Vault Owners are prioritized, allowing them to withdraw their excess Collateral before Dai holders are able to access Collateral.
 
   - At the time of Emergency Shutdown, individual Vaults, entire collateral types, or the Maker Protocol can be undercollateralized, which is when the value of debt exceeds the value of the Collateral ("negative equity"). Thus, the value of Collateral that Dai holders can redeem may vary, depending on the system surplus or deficit at the time of Emergency Shutdown. It is, therefore, possible that Dai holders will receive less or more than 1 USD worth of Collateral for 1 Dai.
-
 
 - Immediate Vault redemption: After Emergency Shutdown is initiated, Vault owners are allowed to free their Collateral immediately, provided that they execute all contract calls atomically.
 
@@ -69,11 +68,11 @@ The general guidance is that the delay should be long enough to ensure all aucti
 
 Vault owners can retrieve excess collateral from their Vaults immediately after the initialization of Emergency Shutdown.
 
-This can be achieved using Vault frontends like [Oasis Borrow](https://oasis.app/borrow) that have Emergency Shutdown support implemented as well as via the command-line.
+This can be achieved using Vault front ends like [Oasis Borrow](https://oasis.app/borrow) that have Emergency Shutdown support implemented, in addition to command-line tools.
 
 ### For Dai Holders
 
-Dai holders can, after a waiting period determined by MKR voters, swap their Dai for a relative share of all types of collateral in the system. The Maker Foundation will initially offer a web page for this purpose.
+Dai holders can, after a waiting period determined by MKR voters, swap their Dai for a relative share of all types of collateral in the system. The Maker Foundation will initially offer a web page for this specific use case.
 
 To claim Dai:
 
@@ -89,7 +88,7 @@ Dai holders may also sell their Dai to Keepers (if available) to avoid self-mana
 
 For technical information about the Shutdown of the Maker Protocol, please see the [Emergency Shutdown Module Documentation](/learn/vaults/vaults-tutorial#emergency-shutdown-module/).
 
-- Contract Name: esm.sol
+- Contract Name: `esm.sol`
 
 - [Associated MCD System Diagram](/learn/vaults/vaults-tutorial#emergency-shutdown-module/)
 
