@@ -102,7 +102,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                           textDecoration: "none",
                           color: "onBackgroundAlt",
                           position: "relative",
-                          fontWeight: "bold",
+                          fontWeight: "500",
                           cursor: "pointer",
                           "&:hover": {
                             textDecoration: "none",

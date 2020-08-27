@@ -81,7 +81,7 @@ const AuthorListElement = ({
       </Box>
 
       <Box sx={{ marginLeft: "1rem", marginTop: "10px" }}>
-        <Text sx={{ fontWeight: "bold", fontSize: "1.32rem" }}>
+        <Text sx={{ fontWeight: "500", fontSize: "1.32rem" }}>
           {name || ""}
           {!noLinks && (
             <Box
