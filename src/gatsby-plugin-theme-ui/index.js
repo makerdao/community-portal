@@ -369,7 +369,7 @@ export default {
       px: 4,
       color: "onPrimary",
       fontWeight: "500",
-      fontSize: 3,
+      fontSize: "18px",
       letterSpacing: "0.03px",
       lineHeight: "19px",
       bg: "primary",

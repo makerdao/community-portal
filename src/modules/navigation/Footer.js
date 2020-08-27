@@ -145,7 +145,7 @@ const Footer = () => {
                 mr: ["unset", "unset", "5vw"],
               },
               "& > li": {
-                fontWeight: "bold",
+                fontWeight: "500",
                 fontSize: "1rem",
                 flexShrink: 0,
                 flex: ["0 50%", "0 50%", 1],

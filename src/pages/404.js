@@ -57,7 +57,7 @@ const PageLayout = ({ children, seoTitle, t }) => (
           disabled={true}
           hideExternalIcon={true}
           sx={{
-            fontWeight: "bold",
+            fontWeight: "500",
             display: ['block', 'block', "inline-block"],
             ml: "15px",
             cursor: "pointer",

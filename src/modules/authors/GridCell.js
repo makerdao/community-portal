@@ -34,7 +34,7 @@ const AuthorGridCell = ({
       <Link
         hideExternalIcon
         to={profile}
-        sx={{ fontSize: "13px", fontWeight: "bold" }}
+        sx={{ fontSize: "13px", fontWeight: "500" }}
       >
         {avatar_url ? (
           <Image
@@ -61,7 +61,7 @@ const AuthorGridCell = ({
         {name ? name : ""}
       </Link>
     ) : (
-      <Box sx={{ fontSize: "13px", fontWeight: "bold" }}>
+      <Box sx={{ fontSize: "13px", fontWeight: "500" }}>
         {avatar_url ? (
           <Image
             src={avatar_url}

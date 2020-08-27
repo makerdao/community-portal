@@ -49,7 +49,7 @@ const MD_Overrides = {
         mb: "24px",
         fontSize: ["48px", "48px", "64px"],
         letterSpace: "64px",
-        fontWeight: ["600", "600", "bold"],
+        fontWeight: ["500", "500"],
         lineHeight: "normal",
         '&:not(:first-of-type)': {
           mt: '24px'
@@ -81,7 +81,7 @@ const MD_Overrides = {
       sx={{
         mb: "32px",
         fontSize: "32px",
-        fontWeight: "bold",
+        fontWeight: "500",
         lineHeight: "normal",
         '&:not(:first-of-type)': {
           mt: '32px'
@@ -96,7 +96,7 @@ const MD_Overrides = {
       as="h4"
       sx={{
         fontSize: "24px",
-        fontWeight: "bold",
+        fontWeight: "500",
         mb: "32px",
         lineHeight: "normal",
         '&:not(:first-of-type)': {
@@ -110,10 +110,10 @@ const MD_Overrides = {
     <Text
       variant="h5"
       as="h5"
-      sx={{ 
+      sx={{
         mb: '32px',
-        fontSize: "20px", 
-        fontWeight: "normal", 
+        fontSize: "20px",
+        fontWeight: "normal",
         lineHeight: "normal" ,
         '&:not(:first-of-type)': {
           mt: '32px'
