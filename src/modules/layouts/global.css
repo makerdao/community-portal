@@ -97,13 +97,13 @@ body {
 	background: #f7df1e;
 	color: black;
   }
-  
+
    pre[class~="language-html"]::before {
 	content: "html";
 	background: #005a9c;
 	color: white;
   }
-  
+
    pre[class~="language-css"]::before {
 	content: "css";
 	background: #ff9800;
