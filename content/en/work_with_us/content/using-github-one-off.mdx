@@ -1,11 +1,11 @@
 ---
-title: How to Use GitHub For One-off Tasks
+title: How to Use GitHub For One-off Changes
 order: 4
 keywords: "makerdao, GitHub"
 description: "A simple guide to GitHub by the MakerDAO Community Development team."
 ---
 
-# How to Use GitHub For One-off Tasks
+# How to Use GitHub For One-off Changes
 
 <Process>
 
@@ -42,7 +42,7 @@ That is it. You are now ready to add a file or make changes to any existing file
 
 ## Navigate to File/Folder
 
-Go to your forked version of the repo and then the file you want to edit. For example, [main README file](https://github.com/makerdao/communityb).
+Go to your forked version of the repo and then the file you want to edit. For example, the [main README file](https://github.com/makerdao/community/blob/master/README.md).
 
 </Box>
 
@@ -52,7 +52,7 @@ Go to your forked version of the repo and then the file you want to edit. For ex
 
 ### Edit File
 
-Once in the file, press the pen icon to edit content. This will create a duplicate of the content in your own GitHub account. This allows making and proposing new changes without overwriting the published content.
+Once in the file, press the pen icon to edit content. This will enter edit mode within Github. Edit mode allows making and proposing new changes without overwriting existing content.
 
 ![Welcome to Comm-dev](/images/edit-github-file.png)
 
@@ -68,8 +68,9 @@ Once in the folder that represents proper page placement, press “Create new fi
 
 Once file changes are complete, you'll need to commit your changes. To do this scroll to the bottom of the page to where it says "Commit changes," write a short description of your changes, and then click the 'commit changes' button.
 
-You will then be prompted to submit a Pull Request (PR). During that process you will be asked for an explaination of changes. This will help any reviewer understand what the changes you made, so they can make a decision whether to publish it to the main site.
-// image
+You will then be prompted to submit a Pull Request (PR). During that process you will be asked for an explanation of changes. This will help any reviewer understand what changes were made, so they can make a decision whether to publish it to the main branch/site. The github GUI makes this easy, but most contributors have a setup that leverages VScode, Atom, or another IDE.
+
+![Commit and PR](/images/github-commit-changes.png)
 
 </Box>
 
@@ -77,8 +78,9 @@ You will then be prompted to submit a Pull Request (PR). During that process you
 
 ## Stage Changes
 
-Whether uploading a file or making changes to existing work, git will catch all changes made. Depending on the environment (code editor, github's website etc.) initating a live change is as simple as staging the fresh update
-// stage commit image
+Whether uploading a file or making changes to existing work, git will catch all changes made. Depending on the environment (code editor, github's website etc.) initiating a live change is as simple as staging fresh update(s) as commits. This image is in VScode:
+
+![Commit your changes](/images/github-simple-commit-vscode.png)
 
 </Box>
 
@@ -86,9 +88,13 @@ Whether uploading a file or making changes to existing work, git will catch all 
 
 ## Create Pull Request
 
-//continue narrative of commits
-//image of CTA on Github
-//image of PR a thing
+Whether in an IDE, or on Githubs interface, the next step is a pull request (PR). Pull Requests merge any changes (commits) tracked in Git, lumps them together, and suggests a path to merging.
+
+![Open a pull request CTA](/images/pull-request-CTA.png)
+
+Clicking compare and pull request opens the full pull request page, including checks for merging and fields to exaplin the changes.
+
+![Create Pull request](/images/github-create-pull-request.png)
 
 </Box>
 
@@ -190,7 +196,7 @@ Click the links in this section for short animated examples of key GitHub action
   - **Example:** [Cloning a GitHub Repository](https://imgur.com/GjX6cf9)
   - Make sure to have the [repository's URL](repository-url.png)
 - Sync the Comm-Dev repo when it's already on the machine with the Fetch Origin Master button.
-    - In the command line, this is called: `~ git fetch`.
+    - In the command line, this is called: `$ git fetch`.
   - **Example:** [Fetch Origin Master](https://imgur.com/VREFUKV)
 - Use [GitHub Desktop](https://desktop.github.com/) to simplify uploading images.
 - Create distinct branches to later merge changes into the master.
