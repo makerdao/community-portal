@@ -49,7 +49,8 @@ const MD_Overrides = {
         mb: "24px",
         fontSize: ["48px", "48px", "64px"],
         letterSpace: "64px",
-        fontWeight: ["600", "600", "bold"],
+        fontWeight: ["500", "500"],
+        letterSpacing: ".03px",
         lineHeight: "normal",
         '&:not(:first-of-type)': {
           mt: '24px'
@@ -65,7 +66,8 @@ const MD_Overrides = {
       sx={{
         mb: "32px",
         fontSize: "48px",
-        fontWeight: "600",
+        fontWeight: "500",
+        letterSpacing: ".03px",
         lineHeight: "normal",
         '&:not(:first-of-type)': {
           mt: '32px'
@@ -81,7 +83,8 @@ const MD_Overrides = {
       sx={{
         mb: "32px",
         fontSize: "32px",
-        fontWeight: "bold",
+        fontWeight: "500",
+        letterSpacing: ".03px",
         lineHeight: "normal",
         '&:not(:first-of-type)': {
           mt: '32px'
@@ -96,7 +99,8 @@ const MD_Overrides = {
       as="h4"
       sx={{
         fontSize: "24px",
-        fontWeight: "bold",
+        fontWeight: "500",
+        letterSpacing: ".03px",
         mb: "32px",
         lineHeight: "normal",
         '&:not(:first-of-type)': {
@@ -114,6 +118,7 @@ const MD_Overrides = {
         mb: '32px',
         fontSize: "20px",
         fontWeight: "normal",
+        letterSpacing: ".03px",
         lineHeight: "normal" ,
         '&:not(:first-of-type)': {
           mt: '32px'
@@ -127,7 +132,7 @@ const MD_Overrides = {
   hr: (props) => <Divider sx={{ my: 4 }} />,
   p: (props) => (
     <Text
-      sx={{ mb: "16px", "& .button": { display: "inline-block" } }}
+      sx={{ mb: "16px", fontSize: "18px", letterSpacing: ".03px", lineHeight: "150%", "& .button": { display: "inline-block" } }}
       {...props}
     />
   ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.

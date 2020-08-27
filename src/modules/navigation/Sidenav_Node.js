@@ -25,9 +25,9 @@ const Sidenav_Node = ({
   const active =
     currentPath === url || currentPath.includes(otherProps.slugPart);
   const fontWeight = [
-    active ? "bold" : "normal",
-    active ? "bold" : "normal",
-    active ? "bold" : null || parentDepth !== 0 ? "bold" : "normal",
+    active ? "500" : "normal",
+    active ? "500" : "normal",
+    active ? "500" : null || parentDepth !== 0 ? "500" : "normal",
   ];
 
   return (

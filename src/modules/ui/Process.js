@@ -18,7 +18,7 @@ const Process = ({ children }) => {
             <Box
               sx={{
                 fontSize: "24px",
-                fontWeight: "bold",
+                fontWeight: "500",
                 width: "40px",
                 minWidth: "40px",
                 height: "40px",

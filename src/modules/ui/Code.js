@@ -10,7 +10,7 @@ const Code = ({ children }) => {
           color: "codeText",
           bg: "codeBG",
           fontSize: 3,
-          fontWeight: 600,
+          fontWeight: 400,
           fontFamily: "monospace",
           p: 1,
           px: 2,
