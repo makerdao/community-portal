@@ -8,16 +8,9 @@ description: "A description of the Maker Protocol's Emergency Shutdown Module."
 
 # Emergency Shutdown
 
-The Emergency Shutdown Module (ESM) is a contract with the ability to call End.cage() to trigger the Shutdown of the Maker Protocol.
-
-Emergency Shutdown stops and settles the Maker Protocol while ensuring that Dai holders and Vault users receive the net value of assets they are entitled to.
-
-![](https://lh6.googleusercontent.com/tHGq8IsHybndRILRSF_pkAObTOPrcylSnBdN4DC7LDudq2EeH0K8Q9qEZgrQG-ozBtjwCWZtWPBbp-_tSnlP75nXRWcSMb4FzZsjCZvZBAPavGkJcsaoYDwIehDqE_6tlqp8KH3Y)
-
+Emergency Shutdown is intended to be triggered in the case of a system upgrade or serious emergencies, such as long-term market irrationality, a hack, or a security breach.
 
 ## Purpose
-
-Emergency Shutdown is intended to be triggered in the case of a system upgrade or serious emergencies, such as long-term market irrationality, a hack, or a security breach.
 
 When triggered, Emergency Shutdown stops and shuts down the Maker Protocol while ensuring that all users, both Dai holders, and Vault users, receive the net value of assets they are entitled to under the Protocol’s smart contract logic.
 
@@ -40,6 +33,14 @@ The process of initiating Emergency Shutdown is decentralized and controlled by 
 50,000 MKR must be deposited into the Emergency Shutdown Module to trigger an Emergency Shutdown. Once users deposit MKR into the Emergency Shutdown Module, it is immediately burned.
 
 Emergency Shutdown may or may not be initiated with a Redeployment Scenario to allow users to open new Vaults and have a new Dai token while claiming Collateral from the old system.
+
+## Emergency Shutdown Module
+
+The Emergency Shutdown Module (ESM) is a contract with the ability to call End.cage() to trigger the Shutdown of the Maker Protocol.
+
+Emergency Shutdown stops and settles the Maker Protocol while ensuring that Dai holders and Vault users receive the net value of assets they are entitled to.
+
+![](https://lh6.googleusercontent.com/tHGq8IsHybndRILRSF_pkAObTOPrcylSnBdN4DC7LDudq2EeH0K8Q9qEZgrQG-ozBtjwCWZtWPBbp-_tSnlP75nXRWcSMb4FzZsjCZvZBAPavGkJcsaoYDwIehDqE_6tlqp8KH3Y)
 
 ## Shutdown Conditions
 
