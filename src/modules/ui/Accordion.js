@@ -19,6 +19,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
       sx={{
         color: "text",
         fontSize: "20px",
+        letterSpacing: ".03px",
         borderBottom: "1px solid",
         borderColor: "muted",
         mb: 4,
@@ -72,7 +73,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
           sx={{
             pb: "24px",
             px: "12px",
-            fontSize: "16px",
+            fontSize: "18px",
             color: "textMuted",
             "& > *:only-child": { m: 0 },
           }}

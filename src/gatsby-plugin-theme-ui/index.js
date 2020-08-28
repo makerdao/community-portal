@@ -28,7 +28,7 @@ const prismPreset = {
   },
 
   fontSize: 3,
-  fontWeight: "600",
+  fontWeight: "400",
   fontFamily: "monospace",
   overflow: "auto",
   p: 3,
@@ -343,10 +343,12 @@ export default {
 	  ...maker.styles,
     a: {
       color: "link",
+      fontWeight: "500",
       textDecoration: "none"
     },
     Link: {
       color: "link",
+      fontWeight: "500",
       textDecoration: "none"
     },
     pre: {
@@ -366,9 +368,9 @@ export default {
       py: "15px",
       px: 4,
       color: "onPrimary",
-      fontWeight: "600",
-      fontSize: 3,
-      letterSpacing: "0.03em",
+      fontWeight: "500",
+      fontSize: "18px",
+      letterSpacing: "0.03px",
       lineHeight: "19px",
       bg: "primary",
       "&:hover": {

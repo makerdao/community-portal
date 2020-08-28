@@ -51,13 +51,13 @@ const Breadcrumbs = ({ children }) => {
               <Text
                 sx={{
                   display: "inline-block",
-                  fontWeight: "bold",
+                  fontWeight: "500",
                   color: "text",
                 }}
                 key={`breadcrumb-${index}`}
               >
                 {titleCase(p.replace(/-|_|\./g, ' '))}
-                
+
               </Text>
             )
           }
@@ -95,7 +95,7 @@ const Breadcrumbs = ({ children }) => {
             <Text
               sx={{
                 display: "inline-block",
-                fontWeight: "bold",
+                fontWeight: "500",
                 color: "text",
               }}
               key={`breadcrumb-${index}`}

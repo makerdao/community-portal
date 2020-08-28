@@ -71,7 +71,7 @@ body {
     font-size: 0.75rem;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	letter-spacing: 0.085em;
-	font-weight: bold;
+	font-weight: 500;
     line-height: 1;
     position: relative;
     left: 0rem;
@@ -97,13 +97,13 @@ body {
 	background: #f7df1e;
 	color: black;
   }
-  
+
    pre[class~="language-html"]::before {
 	content: "html";
 	background: #005a9c;
 	color: white;
   }
-  
+
    pre[class~="language-css"]::before {
 	content: "css";
 	background: #ff9800;

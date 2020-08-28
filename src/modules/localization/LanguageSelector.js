@@ -157,7 +157,7 @@ const LanguageSelector = () => {
               sx={{
                 color: "link",
                 textDecoration: "none",
-                fontWeight: "bold",
+                fontWeight: "500",
                 mt: 1,
                 lineHeight: "normal",
                 display: ["inline-block", "inline-block", "block"],
@@ -246,7 +246,7 @@ const LanguageSelector = () => {
             sx={{
               color: "link",
               textDecoration: "none",
-              fontWeight: "bold",
+              fontWeight: "500",
               mt: 1,
               lineHeight: "normal",
               display: ["inline-block", "inline-block", "block"],

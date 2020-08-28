@@ -17,7 +17,7 @@ const ListElement = ({ children, ...props }) => (
       alignItems: "flex-start",
       "& > * > *:only-child, & > * > *:nth-of-type(1)": {
         fontWeight: "normal",
-        fontSize: 3,
+        fontSize: "18px",
         color: "text",
         lineHeight: "normal",
       },
@@ -29,7 +29,7 @@ const ListElement = ({ children, ...props }) => (
       },
       "& > * > *:not(:nth-of-type(1))": {
         fontWeight: "normal",
-        fontSize: "14px",
+        fontSize: "16px",
         color: "textMuted",
       },
     }}
@@ -55,13 +55,13 @@ const AdvancedListElement = ({
               alignItems: "flex-start",
               "& > *:only-child, & > *:nth-of-type(1)": {
                 fontWeight: "normal",
-                fontSize: 3,
+                fontSize: "18px",
                 color: "text",
                 lineHeight: "normal",
               },
               "& > *:not(:nth-of-type(1))": {
                 fontWeight: "normal",
-                fontSize: "14px",
+                fontSize: "16px",
                 color: "textMuted",
               },
               "& > *:only-child, & > *:only-child > *:last-child": {
@@ -105,7 +105,7 @@ const AdvancedListElement = ({
               sx={{
                 p: {
                   fontWeight: "normal",
-                  fontSize: 3,
+                  fontSize: "18px",
                   color: "text",
                   lineHeight: "normal",
                 },
@@ -129,7 +129,7 @@ const AdvancedListElement = ({
             sx={{
               width: "100%",
               fontWeight: "normal",
-              fontSize: "14px",
+              fontSize: "16px",
               color: "textMuted",
               "& > *:only-child": {
                 mb: 0,
