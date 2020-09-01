@@ -22,6 +22,7 @@ const Sidenav = (props) => {
         pr: 2,
         pb: "90px",
         width: "307px",
+        overflow: 'auto',
         borderRight: "1px solid",
         borderColor: "muted"
       }}
