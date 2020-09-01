@@ -43,6 +43,7 @@ const Column = ({ children }) => {
                 boxShadow: "raised",
                 border: "1px solid",
                 borderColor: "muted",
+                bg: "surfaceAlt"
               }}
             >
               <Box
@@ -64,7 +65,6 @@ const Column = ({ children }) => {
                   px: "27px",
                   pt: 3,
                   pb: "27px",
-                  bg: "surfaceAlt",
                   color: "textMuted",
                   "& > *:only-child, & > *:last-child": {
                     m: 0,
