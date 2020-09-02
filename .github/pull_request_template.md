@@ -6,24 +6,42 @@
 
 ## Summary of changes
 
-_Description of the changes included in this pull request. Steps to follow to confirm the feature is completed or the bug/issue is resolved. Are there any dependencies? Does this code break any existing functionality or introduce any risk?_
+_Description of the changes included in this pull request. 
+Steps to follow to confirm the feature is completed or the bug/issue is resolved. 
+Are there any dependencies? 
+Does this code break any existing functionality or introduce any risk?_
 
-## Motivation & Context
+## Relevant Context
 
 - Feature: [ticket number](link to project management ticket)
-- Issue: #\<add number\> \_references to issues
-- Related: #\<add number\> _add any related pull requests numbers_
+- Relevant Pull Request: # 
 
+## How Has This Been Tested?
+
+<!--- Please describe in detail how you tested your changes. -->
+<!--- Include details of your testing environment, and the tests you ran to -->
+<!--- see how your change affects other areas of the code, etc. -->
+
+## Screenshots (if appropriate):
+
+
+## Further comments
+
+<!--- If this is a relatively large or complex change, kick off the discussion by explaining why you chose the solution you did and what alternatives you considered, etc... -->
+
+
+--- 
 ## Types of changes
 
 <!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
 
+- [ ] Content edit, File upload, content addition
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Code style update (formatting, renaming)
 - [ ] Refactoring (no functional changes, no api changes)
 - [ ] Build related changes
-- [ ] Documentation Update
+- [ ] Technical Documentation Update
 - [ ] Other (please describe):
 
 ## Does this introduce a breaking change?
@@ -43,15 +61,3 @@ _Breaking change is defined as_ **"A fix or feature that would cause existing fu
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] I have added/changed necessary documentation (if appropriate)
 - [ ] All new and existing tests passed.
-
-## How Has This Been Tested?
-
-<!--- Please describe in detail how you tested your changes. -->
-<!--- Include details of your testing environment, and the tests you ran to -->
-<!--- see how your change affects other areas of the code, etc. -->
-
-## Screenshots (if appropriate):
-
-## Further comments
-
-<!--- If this is a relatively large or complex change, kick off the discussion by explaining why you chose the solution you did and what alternatives you considered, etc... -->
