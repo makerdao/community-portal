@@ -115,7 +115,7 @@ const Footer = () => {
               sx={{ width: "217px", height: "30px", display: "block" }}
             />
           </Link>
-          <Box sx={{ "& > a:not(:last-of-type)": { mr: "24px" } }}>
+          <Box sx={{ "& > *:not(:last-of-type)": { mr: "18px" }, '& > a': {mr: 0} }}>
             {_socialLinks.map((s, index) => {
               const link = s.match(/\(([^)]+)\)/)[1];
 
