@@ -47,92 +47,60 @@ const MD_Overrides = {
       variant="h1"
       sx={{
         mb: "24px",
-        fontSize: ["48px", "48px", "64px"],
-        letterSpace: "64px",
-        fontWeight: ["500", "500"],
-        letterSpacing: ".03px",
         lineHeight: "normal",
-        '&:not(:first-of-type)': {
-          mt: '24px'
-        }
       }}
       {...props}
     />
   ),
   h2: (props) => (
     <Text
-      variant="h2"
       as="h2"
       sx={{
         mb: "32px",
-        fontSize: "48px",
-        fontWeight: "500",
-        letterSpacing: ".03px",
         lineHeight: "normal",
-        '&:not(:first-of-type)': {
-          mt: '32px'
-        }
       }}
       {...props}
     />
   ),
   h3: (props) => (
     <Text
-      variant="h3"
       as="h3"
       sx={{
         mb: "32px",
-        fontSize: "32px",
-        fontWeight: "500",
-        letterSpacing: ".03px",
         lineHeight: "normal",
-        '&:not(:first-of-type)': {
-          mt: '32px'
-        }
       }}
       {...props}
     />
   ),
   h4: (props) => (
     <Text
-      variant="h4"
       as="h4"
       sx={{
-        fontSize: "24px",
-        fontWeight: "500",
-        letterSpacing: ".03px",
         mb: "32px",
         lineHeight: "normal",
-        '&:not(:first-of-type)': {
-          mt: '32px'
-        }
       }}
       {...props}
     />
   ),
-  h5: (props) => (
+  h5: ({children,...props}) => (
     <Text
-      variant="h5"
       as="h5"
       sx={{
         mb: '32px',
-        fontSize: "20px",
-        fontWeight: "normal",
-        letterSpacing: ".03px",
+        fontSize: '20px',
+        fontWeight: 'normal',
         lineHeight: "normal" ,
-        '&:not(:first-of-type)': {
-          mt: '32px'
-        }
       }}
-      {...props}
-    />
+    >
+      {children}
+    </Text>
   ),
   table: (props) => <Table {...props} />,
   thematicBreak: (props) => <Divider sx={{ my: 4 }} />,
   hr: (props) => <Divider sx={{ my: 4 }} />,
   p: (props) => (
     <Text
-      sx={{ mb: "16px", fontSize: "18px", letterSpacing: ".03px", lineHeight: "150%", "& .button": { display: "inline-block" } }}
+      sx={{ mb: "16px", fontSize: "16px", letterSpacing: "0.3px", lineHeight: "150%", "& .button": { display: "inline-block" } }}
       {...props}
     />
   ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.

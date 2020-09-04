@@ -325,6 +325,44 @@ export default {
     transDash_regionBG:
       "linear-gradient(rgb(248, 237, 216), rgb(244, 227, 194))",
   },
+  text: {
+    ...maker.text,
+    h1: {
+      fontSize: '64px',
+      letterSpacing: "0.3px",
+      fontWeight: "600",
+      fontFamily: 'heading'
+    },
+    h2: {
+      fontSize: '48px',
+      fontWeight: "600",
+      letterSpacing: '0.3px',
+      fontFamily: 'heading',
+    },
+    h3: {
+      fontSize: '32px',
+      fontWeight: '600',
+      letterSpacing: "0.3px",
+      fontFamily: 'heading'
+    },
+    h4: {
+      fontSize: '24px',
+      fontWeight: '600',
+      letterSpacing: '0.3px',
+      fontFamily: 'heading'
+    },
+    largeText: {
+      fontSize: '20px',
+      fontWeight: 'normal',
+      letterSpacing: '0.3px',
+      fontFamily: 'heading'
+    },
+    smallText: {
+      fontSize: '14px',
+      lineHeight: '17px',
+      letterSpacing: '0.1px'
+    }
+  },
   shadows: {
     high: "0px 2px 17px rgba(35, 21, 54, 0.46)",
     raised: "0px 2px 15px rgba(35, 21, 54, 0.15)",
@@ -336,7 +374,8 @@ export default {
   },
   fonts: {
 	  ...maker.fonts,
-    body: "FT Base, system-ui, Arial, sans-serif",
+    body: 'FT Base, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif',
+    heading: 'FT Base, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif',
     transparencyDashboard: 'system-ui,"Helvetica Neue",sans-serif',
   },
   styles: {
