@@ -64,6 +64,7 @@ export default (props) => {
 
   return (
     <Fragment>
+      <Box sx={{width: ['100%', '100%', 'calc(100% - 234px)']}}>
       <SEO {...seo} />
       
       {status && (
@@ -71,37 +72,25 @@ export default (props) => {
           <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
         </Box>
       )}
-          {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) && (
-            <Flex
-              sx={{
-                justifyContent: "space-between",
-                position: "relative",
-                alignItems: "flex-start",
-                flexWrap: ["wrap", "wrap", "unset"],
-                px: !hasTopSection ? [3, 3, 0] : 0,
-              }}
-            >
-              {!hideBreadcrumbs && <Breadcrumbs />}
-              {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
-            </Flex>
-          )}
-          <Box
-            sx={
-              hasTopSection && !hideLanguageSelector
-                ? {
-                    "& > *:nth-of-type(1)": {
-                      lineHeight: "normal",
-                    },
-                    "& > *:nth-of-type(1), & > *:nth-of-type(2)": {
-                      maxWidth: ["100%", "100%", "calc(100% - 234px - 1rem)"],
-                    },
-                    "& > *:nth-of-type(2)": { mb: "32px" },
-                  }
-                : {}
-            }
-          >
-            {children}
-          </Box>
+      {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) && (
+        <Flex
+          sx={{
+            justifyContent: "space-between",
+            position: "relative",
+            alignItems: "flex-start",
+            flexWrap: ["wrap", "wrap", "unset"],
+            px: !hasTopSection ? [3, 3, 0] : 0,
+          }}
+        >
+          {!hideBreadcrumbs && <Breadcrumbs />}
+          
+        </Flex>
+      )}
+      <Box>
+        {children}
+      </Box>
+      </Box>
+      {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
     </Fragment>
   );
 };

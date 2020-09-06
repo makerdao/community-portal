@@ -306,7 +306,7 @@ const Header = () => {
             alignItems: "center",
             justifyContent: "center",
             "& > a": { fontSize: "16px", p: 2, textAlign: "center" },
-            "& > a:not(:last-child)": { mr: "3%" },
+            "& > a:not(:last-child)": { mr: "5%" },
           }}
         >
           <Link

@@ -51,16 +51,17 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
           </Box>
         }
         <Flex sx={{ flexGrow: 1, flexDirection: "column", width: hasTopSection ? '80%' : '' }}>
-          <article
+          <Flex as="article"
             sx={{
               pl: hasTopSection ? [4, 4, "64px"] : 0,
               mt: hasTopSection ? [4, 4, "59px"] : 0,
               pb: 4,
-              pr: hasTopSection ? 4 : 0,
+              pr: hasTopSection ? '64px' : 0,
+              alignItems: 'start'
             }}
           >
           {children}
-          </article>
+          </Flex>
         </Flex>
       </Flex>
       <Footer />

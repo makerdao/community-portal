@@ -116,7 +116,7 @@ const LanguageSelector = () => {
         sx={{
           width: ["100%", "100%", "205px"],
           mb: [3, 3, "unset"],
-          position: ["initial", "initial", "absolute"],
+          position: 'relative',
           top: 0,
           right: 0,
         }}
@@ -182,7 +182,7 @@ const LanguageSelector = () => {
         borderRadius: "12px",
         bg: "background",
         mb: 2,
-        position: ["relative", "relative", "absolute"],
+        position: 'relative',
         right: 0,
         top: 0,
       }}
