@@ -315,6 +315,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                   sx={{
                     m: 0,
                     p: 0,
+                    pb: '5rem',
                     listStyleType: "none",
                     "& li > a": {
                       color: "onBackgroundAlt",
