@@ -25,9 +25,9 @@ const Sidenav_Node = ({
   const active =
     currentPath === url || currentPath.includes(otherProps.slugPart);
   const fontWeight = [
-    active ? "500" : "normal",
-    active ? "500" : "normal",
-    active ? "500" : null || parentDepth !== 0 ? "500" : "normal",
+    active ? "600" : "normal",
+    active ? "600" : "normal",
+    active ? "600" : null || parentDepth === 1 ? "600" : "normal",
   ];
 
   return (
@@ -70,7 +70,11 @@ const Sidenav_Node = ({
         >
           {title}
 
-          {hasChildren && (
+          
+        </Link>
+      )}
+
+      {hasChildren && (
             <Icon
               name={active ? "chevron_down" : "chevron_right"}
               sx={{
@@ -87,8 +91,6 @@ const Sidenav_Node = ({
               }}
             />
           )}
-        </Link>
-      )}
 
       {active && hasChildren && (
         <ul

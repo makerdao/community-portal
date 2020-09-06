@@ -20,7 +20,7 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
       <Flex
         as="main"
         sx={{
-          maxWidth: "1364px",
+          maxWidth: "1440px",
           flex: "1 0 auto",
           width: "100%",
           m: "0 auto",
@@ -35,8 +35,7 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
           &&
           <Box
             sx={{
-              width: "20%",
-              minWidth: "260px",
+              width: "256px",
               display: ["none", "none", "initial"],
             }}
           >
@@ -45,7 +44,7 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
             dontUpdateHolderHeightWhenSticky={true}
             style={{ position: "relative" }}
             hideOnBoundaryHit={false}
-            sx={{minWidth: "307px", display: ["none", "none", "initial"]}}
+            sx={{display: ["none", "none", "initial"]}}
           >
             <Sidenav />
           </Sticky>
