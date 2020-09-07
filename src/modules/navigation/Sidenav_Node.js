@@ -30,10 +30,10 @@ const Sidenav_Node = ({
   ];
 
   useEffect(() => {
-    if (!active && currentPath === url || currentPath.includes(otherProps.slugPart)) {
+    if (!active && (currentPath === url || currentPath.includes(otherProps.slugPart))) {
       setActive(true);
     }
-  }, [currentPath, url, otherProps.slugPart])
+  }, [active, currentPath, url, otherProps.slugPart])
 
   return (
     <li
@@ -88,7 +88,7 @@ const Sidenav_Node = ({
                 cursor: 'pointer',
                 width: '32px',
                 height: '32px',
-                right: "5%",
+                right: "2%",
                 p: '7px',
                 top: [
                   "calc(1.5em)",
