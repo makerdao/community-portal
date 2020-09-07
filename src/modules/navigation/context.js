@@ -53,6 +53,7 @@ const NavigationProvider = ({ children }) => {
   const urlNoLocale = pathDirs.join("/");
 
   //NOTE(Rejon): Must be in the shape that React Select expects for it's options.
+  //Something that can be queried? 
   const languageSelectorData = allMdx.edges
     .filter(({ node }) => {
       //Drop the end slash, remove the locale, compare the string

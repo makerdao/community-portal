@@ -1,21 +1,15 @@
 /** @jsx jsx */
 import { jsx, Box } from "theme-ui";
-import { useLocation } from "@reach/router";
 
-import { useNavigation } from "@modules/navigation/context";
 import Sidenav_Node from "@modules/navigation/Sidenav_Node";
 
-const Sidenav = (props) => {
-  const { sidenavData } = useNavigation()
-  const { pathname } = useLocation();
-
+const Sidenav = ({data, currentPath}) => {
   return (
     <Box
       as="aside"
       sx={{
         flexGrow: 0,
         position: "relative",
-        maxHeight: "1012px",
         height: "calc(100vh)",
         pt: "60px",
         pl: '26px',
@@ -27,12 +21,12 @@ const Sidenav = (props) => {
         borderColor: "muted"
       }}
     >
-      {sidenavData && sidenavData.items[0] && (
+      {data && data.items[0] && (
         <ul sx={{ m: 0, p: 0, listStyleType: "none" }}>
-          {sidenavData.items[0].items.map((item, index) => (
+          {data.items[0].items.map((item, index) => (
             <Sidenav_Node
               key={`${item.url}-${index}`}
-              currentPath={pathname}
+              currentPath={currentPath}
               {...item}
             />
           ))}

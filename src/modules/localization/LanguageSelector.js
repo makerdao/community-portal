@@ -8,7 +8,7 @@ import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 
-const LanguageSelector = () => {
+const LanguageSelector = ({sx}) => {
   const { theme } = useThemeUI();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -182,6 +182,7 @@ const LanguageSelector = () => {
         borderRadius: "12px",
         bg: "background",
         mb: 2,
+        mt: ['unset','unset','64px'],
         position: 'relative',
         right: 0,
         top: 0,

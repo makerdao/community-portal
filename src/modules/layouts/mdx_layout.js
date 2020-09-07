@@ -2,16 +2,49 @@
 import {Children, Fragment} from 'react';
 import { Box, Flex, jsx } from "theme-ui";
 import Sticky from "react-sticky-el";
+import { useStaticQuery, graphql } from "gatsby";
 import { useLocation } from "@reach/router";
 
+import { useTranslation } from "@modules/localization/";
 import { LanguageSelector } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
+import calculateTreeData from "@modules/navigation/calculateTreeData";
 import { SEO } from "@modules/utility";
 
 
 export default (props) => {
+  const { locale, t, DEFAULT_LOCALE } = useTranslation();
+
+  const { allMdx } = useStaticQuery(graphql`
+    query getMDXData {
+      # Regex for all files that are NOT config files
+      allMdx(
+        filter: {
+          fileAbsolutePath: {
+            regex: "//([\\\\w]{2})/(?!header.mdx|index.mdx|sidenav.mdx|example.mdx|social.mdx|footer.mdx|404.mdx|.js|.json)/"
+          }
+        }
+      ) {
+        edges {
+          node {
+            headings(depth: h1) {
+              value
+            }
+            fileAbsolutePath
+            frontmatter {
+              title
+              order
+            }
+          }
+        }
+      }
+    }
+  `);
+
   const { children, pageContext, uri } = props;
+
+  const {pagePath} = pageContext; 
   const {
     title,
     description,
@@ -21,6 +54,17 @@ export default (props) => {
     hideLanguageSelector,
     hideBreadcrumbs,
   } = pageContext.frontmatter;
+
+  const pathDirs = pagePath.replace(/^\/|\/$/g, "").split("/").slice(1);
+  const urlNoLocale = pathDirs.join("/");
+
+  const { sidenavData, breadcrumbData } = calculateTreeData(
+    allMdx.edges,
+    pathDirs[0],
+    DEFAULT_LOCALE,
+    locale,
+    pathDirs
+  );
 
   const statusProps =
     typeof status === "object"
@@ -55,6 +99,10 @@ export default (props) => {
   const hasTopSection =
     currentTopSection !== undefined && currentTopSection !== "";
 
+  const renderSidenav = pageContext.frontmatter && !pageContext.frontmatter.hideSidenav && hasTopSection;
+  const renderLanguageSelector = hasTopSection && !hideLanguageSelector;
+  const renderBreadcrumbs = (!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector));
+
   const seo = {
     title: _pageTitle,
     description,
@@ -62,9 +110,46 @@ export default (props) => {
     featuredImage,
   };
 
+  let contentWidthSubtract = 0;
+
+  if (renderLanguageSelector) {
+    contentWidthSubtract += 234;
+  }
+
+  if (renderSidenav) {
+    contentWidthSubtract += 256;
+  }
+
+
   return (
     <Fragment>
-      <Box sx={{width: ['100%', '100%', 'calc(100% - 234px)']}}>
+      {renderSidenav
+          &&
+          <Box
+            sx={{
+              width: "256px",
+              display: ["none", "none", "initial"],
+            }}
+          >
+          <Sticky
+            boundaryElement=".content-boundary"
+            dontUpdateHolderHeightWhenSticky={true}
+            style={{ position: "relative" }}
+            hideOnBoundaryHit={false}
+            sx={{display: ["none", "none", "initial"]}}
+          >
+            <Sidenav data={sidenavData} currentPath={pagePath}/>
+          </Sticky>
+        </Box>
+      }
+      <Box as="article" sx={{
+        width: ['100%', '100%', `calc(100% - ${contentWidthSubtract}px)`],
+        mt: hasTopSection ? [4, 4, "59px"] : 0,
+        pl: hasTopSection ? [4, 4, "64px"] : 0,
+        pr: hasTopSection ? [4, 4, 0] : 0,
+        pb: 4,
+        
+      }}>
       <SEO {...seo} />
       
       {status && (
@@ -72,7 +157,7 @@ export default (props) => {
           <StatusBanner sticky {...statusProps} sx={{ width: "100%" }} />
         </Box>
       )}
-      {(!hideBreadcrumbs || (hasTopSection && !hideLanguageSelector)) && (
+      {renderBreadcrumbs && 
         <Flex
           sx={{
             justifyContent: "space-between",
@@ -82,15 +167,23 @@ export default (props) => {
             px: !hasTopSection ? [3, 3, 0] : 0,
           }}
         >
-          {!hideBreadcrumbs && <Breadcrumbs />}
-          
+          <Breadcrumbs data={breadcrumbData} pathDirs={pathDirs}/>
         </Flex>
-      )}
+      }
+      <Box sx={{display: ['block', 'block', 'none']}}>
+        {/* MOBILE LANGUAGE SELECTOR */}
+        {renderLanguageSelector && <LanguageSelector/>}
+      </Box>
       <Box>
         {children}
       </Box>
       </Box>
-      {hasTopSection && !hideLanguageSelector && <LanguageSelector />}
+      
+      <Box sx={{display: ['none', 'none', 'block']}}>
+        {/* DESKTOP LANGUAGE SELECTOR */}
+        {renderLanguageSelector && <LanguageSelector/>}
+      </Box>
+
     </Fragment>
   );
 };

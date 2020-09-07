@@ -302,11 +302,11 @@ const Header = () => {
           sx={{
             display: ["none", "none", "flex"],
             flex: "auto",
-            ml: 3,
+            ml: [3,3,'56px'],
             alignItems: "center",
             justifyContent: "center",
             "& > a": { fontSize: "16px", p: 2, textAlign: "center" },
-            "& > a:not(:last-child)": { mr: "5%" },
+            "& > a:not(:last-child)": { mr: "1.4vw" },
           }}
         >
           <Link
@@ -329,6 +329,7 @@ const Header = () => {
               key={`header-link-${index}`}
               sx={{
                 fontWeight: "normal",
+                flexShrink: 0
               }}
             >
               {title}
@@ -338,7 +339,7 @@ const Header = () => {
         <Flex
           sx={{
             width: ["100%", "100%", "auto"],
-            ml: "1rem",
+            ml: [3,3,"3rem"],
             alignItems: "center",
             letterSpacing: ".03px",
             color: "onBackgroundAlt",

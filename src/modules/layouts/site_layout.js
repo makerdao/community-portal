@@ -30,34 +30,12 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
         }}
         className="content-boundary"
       >
-        {(pageContext.frontmatter && !pageContext.frontmatter.hideSidenav &&
-          hasTopSection)
-          &&
-          <Box
-            sx={{
-              width: "256px",
-              display: ["none", "none", "initial"],
-            }}
-          >
-          <Sticky
-            boundaryElement=".content-boundary"
-            dontUpdateHolderHeightWhenSticky={true}
-            style={{ position: "relative" }}
-            hideOnBoundaryHit={false}
-            sx={{display: ["none", "none", "initial"]}}
-          >
-            <Sidenav />
-          </Sticky>
-          </Box>
-        }
+        
         <Flex sx={{ flexGrow: 1, flexDirection: "column", width: hasTopSection ? '80%' : '' }}>
-          <Flex as="article"
+          <Flex
             sx={{
-              pl: hasTopSection ? [4, 4, "64px"] : 0,
-              mt: hasTopSection ? [4, 4, "59px"] : 0,
-              pb: 4,
-              pr: hasTopSection ? '64px' : 0,
-              alignItems: 'start'
+              alignItems: 'start',
+              pr: ['unset', 'unset','64px']
             }}
           >
           {children}
