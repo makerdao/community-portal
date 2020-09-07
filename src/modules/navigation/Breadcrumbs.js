@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization/";
 import {titleCase} from '@utils';

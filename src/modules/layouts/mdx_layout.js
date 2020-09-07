@@ -11,7 +11,7 @@ import { Sidenav, Breadcrumbs } from "@modules/navigation";
 import { StatusBanner } from "@modules/ui";
 import calculateTreeData from "@modules/navigation/calculateTreeData";
 import { SEO } from "@modules/utility";
-
+import { UrlConverter, getLocaleFromPath } from "@utils";
 
 export default (props) => {
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
@@ -65,6 +65,33 @@ export default (props) => {
     locale,
     pathDirs
   );
+
+  //NOTE(Rejon): Must be in the shape that React Select expects for it's options.
+  //Something that can be queried? 
+  const languageSelectorData = allMdx.edges
+    .filter(({ node }) => {
+      //Drop the end slash, remove the locale, compare the string
+      //TODO(Rejon): This works for now, but can probably be optimized with a Regex solution.
+      const nodeURL = UrlConverter(node)
+        .replace(/^\/|\/$/g, "")
+        .split("/")
+        .slice(1)
+        .join("/");
+
+      return (
+        nodeURL === urlNoLocale &&
+        getLocaleFromPath(node.fileAbsolutePath) !== locale
+      );
+    })
+    .map(({ node }) => ({
+      value: UrlConverter(node),
+      label: t(
+        "Language",
+        null,
+        null,
+        getLocaleFromPath(node.fileAbsolutePath)
+      ),
+    }));
 
   const statusProps =
     typeof status === "object"
@@ -172,7 +199,7 @@ export default (props) => {
       }
       <Box sx={{display: ['block', 'block', 'none']}}>
         {/* MOBILE LANGUAGE SELECTOR */}
-        {renderLanguageSelector && <LanguageSelector/>}
+        {renderLanguageSelector && <LanguageSelector data={languageSelectorData} pagePath={pagePath}/>}
       </Box>
       <Box>
         {children}
@@ -181,7 +208,7 @@ export default (props) => {
       
       <Box sx={{display: ['none', 'none', 'block']}}>
         {/* DESKTOP LANGUAGE SELECTOR */}
-        {renderLanguageSelector && <LanguageSelector/>}
+        {renderLanguageSelector && <LanguageSelector data={languageSelectorData} pagePath={pagePath}/>}
       </Box>
 
     </Fragment>

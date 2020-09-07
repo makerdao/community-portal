@@ -1,19 +1,16 @@
 /** @jsx jsx */
 import Select, { components } from "react-select";
-import { useLocation, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
-import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 
-const LanguageSelector = ({sx}) => {
+const LanguageSelector = ({sx, data, pagePath}) => {
   const { theme } = useThemeUI();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { locale, t, allLocales } = useTranslation();
-  const { languageSelectorData } = useNavigation()
 
   const onChange = ({ value, label }) => {
     //Update local storage on switch
@@ -25,7 +22,7 @@ const LanguageSelector = ({sx}) => {
     trackCustomEvent({
       category: "Language Selector",
       action: `Switch Page to ${label}`,
-      label: `From Page: ${pathname} (${locale}) |  To Page: ${value} (${
+      label: `From Page: ${pagePath} (${locale}) |  To Page: ${value} (${
         value.split("/")[1]
       })`,
     });
@@ -110,7 +107,7 @@ const LanguageSelector = ({sx}) => {
   };
 
   //If we have existing languages or we're swapping, show the select.
-  if (languageSelectorData.length > 0) {
+  if (data.length > 0) {
     return (
       <Box
         sx={{
@@ -136,11 +133,11 @@ const LanguageSelector = ({sx}) => {
             Control,
             Option,
           }}
-          options={languageSelectorData}
+          options={data}
           onChange={onChange}
           aria-label={t("Page_Language_Selector")}
           value={{
-            value: pathname,
+            value: pagePath,
             label: t("Language"),
           }}
         />
@@ -205,11 +202,11 @@ const LanguageSelector = ({sx}) => {
           Control,
           Option,
         }}
-        options={languageSelectorData}
+        options={data}
         onChange={onChange}
         aria-label={t("Page_Language_Selector")}
         value={{
-          value: pathname,
+          value: pagePath,
           label: t("Language"),
         }}
       />

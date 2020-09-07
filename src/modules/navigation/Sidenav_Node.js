@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import {useState, useEffect} from 'react';
 import { Link } from "@modules/navigation";
 
 import { jsx } from "theme-ui";
@@ -14,6 +15,7 @@ const Sidenav_Node = ({
   onClick,
   ...otherProps
 }) => {
+  const [active, setActive] = useState(currentPath === url || currentPath.includes(otherProps.slugPart))
   const hasChildren = items.length !== 0;
 
   //URL fallback for directories that have children, but don't have an index file.
@@ -21,19 +23,22 @@ const Sidenav_Node = ({
     url = items[0].url;
   }
 
-  //Check if element is active or not based on current path.
-  const active =
-    currentPath === url || currentPath.includes(otherProps.slugPart);
   const fontWeight = [
-    active ? "600" : "normal",
-    active ? "600" : "normal",
-    active ? "600" : null || parentDepth === 1 ? "600" : "normal",
+    currentPath === url || currentPath.includes(otherProps.slugPart) ? "600" : "normal",
+    currentPath === url || currentPath.includes(otherProps.slugPart) ? "600" : "normal",
+    currentPath === url || currentPath.includes(otherProps.slugPart) ? "600" : null || parentDepth === 1 ? "600" : "normal",
   ];
+
+  useEffect(() => {
+    if (!active && currentPath === url || currentPath.includes(otherProps.slugPart)) {
+      setActive(true);
+    }
+  }, [currentPath, url, otherProps.slugPart])
 
   return (
     <li
       sx={{
-        color: active ? "primary" : "text",
+        color: currentPath === url || currentPath.includes(otherProps.slugPart) ? "primary" : "text",
         position: "relative",
         "&:not(:last-of-type)": {
           mb: "14px",
@@ -47,7 +52,7 @@ const Sidenav_Node = ({
           activeClassName={active ? "active" : " "}
           onClick={onClick}
           sx={{
-            color: active ? "primary" : "text",
+            color: currentPath === url || currentPath.includes(otherProps.slugPart) ? "primary" : "text",
             fontWeight,
             py: "6px",
             pr: "36px",
@@ -77,9 +82,14 @@ const Sidenav_Node = ({
       {hasChildren && (
             <Icon
               name={active ? "chevron_down" : "chevron_right"}
+              onClick={() => setActive(!active)}
               sx={{
                 position: "absolute",
+                cursor: 'pointer',
+                width: '32px',
+                height: '32px',
                 right: "5%",
+                p: '7px',
                 top: [
                   "calc(1.5em)",
                   "calc(1.5em)",
@@ -87,7 +97,10 @@ const Sidenav_Node = ({
                 ],
                 transform: "translate(0, -50%) rotate(0deg)",
                 transformOrigin: "center",
-                transition: "all .1s ease",
+                transition: "all .2s ease",
+                '&:hover': {
+                  transform: active ? "translate(0, -50%) rotate(180deg)" : "translate(0, -50%) rotate(90deg)",
+                }
               }}
             />
           )}

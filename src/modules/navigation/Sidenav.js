@@ -16,7 +16,8 @@ const Sidenav = ({data, currentPath}) => {
         pr: 2,
         pb: "90px",
         width: "256px",
-        overflow: 'auto',
+        overflowY: 'auto',
+        overflowX: 'hidden',
         borderRight: "1px solid",
         borderColor: "muted"
       }}
