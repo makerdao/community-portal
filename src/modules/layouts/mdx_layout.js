@@ -5,6 +5,7 @@ import Sticky from "react-sticky-el";
 import { useStaticQuery, graphql } from "gatsby";
 import { useLocation } from "@reach/router";
 
+import {MobileNav} from '@modules/navigation';
 import { useTranslation } from "@modules/localization/";
 import { LanguageSelector } from "@modules/localization";
 import { Sidenav, Breadcrumbs } from "@modules/navigation";
@@ -210,7 +211,7 @@ export default (props) => {
         {/* DESKTOP LANGUAGE SELECTOR */}
         {renderLanguageSelector && <LanguageSelector data={languageSelectorData} pagePath={pagePath}/>}
       </Box>
-
+      <MobileNav sidenavData={sidenavData}/>
     </Fragment>
   );
 };

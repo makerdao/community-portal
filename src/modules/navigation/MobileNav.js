@@ -9,8 +9,8 @@ import { Link, SidenavNode } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 import { useNavigation } from "@modules/navigation/context";
 
-const MobileNav = ({ headerLinks, onLinkClick }) => {
-  const { sidenavData, pathDirs } = useNavigation()
+const MobileNav = ({ sidenavData, onLinkClick }) => {
+  const { headerLinks, mobileNavOpen } = useNavigation()
   const { locale, t } = useTranslation();
   const { pathname } = useLocation();
 
@@ -20,7 +20,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
   //Else render the main menu
   const renderSubmenuInitial =
     sidenavData.items[0] !== undefined &&
-    sidenavData.items[0].slugPart === pathDirs[0] &&
+    sidenavData.items[0].slugPart === pathname.split("/")[1] &&
     sidenavData.items[0].items.length > 0;
 
   const [showMainMenu, setShowMainMenu] = useState(
@@ -29,12 +29,17 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
 
   const [colorMode, setColorMode] = useColorMode();
 
+  if (!mobileNavOpen) {
+    return null;
+  }
+
   return (
     <Box
       sx={{
         height: "calc(100vh - 90px)",
         zIndex: 1000,
         position: "fixed",
+        display: ['block', 'block', 'none'],
         width: "100%",
       }}
     >
