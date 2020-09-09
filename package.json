@@ -36,7 +36,7 @@
     "gatsby-remark-responsive-iframe": "^2.4.13",
     "gatsby-source-filesystem": "^2.3.28",
     "gatsby-transformer-json": "^2.4.11",
-    "gatsby-transformer-remark": "^2.8.33",
+    "gatsby-transformer-remark": "^2.8.34",
     "gatsby-transformer-sharp": "^2.5.12",
     "html-react-parser": "^0.13.0",
     "lodash.debounce": "^4.0.8",
