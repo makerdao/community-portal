@@ -13,7 +13,7 @@ const MobileNav = ({ sidenavData }) => {
   const { headerLinks, mobileNavOpen,hideMobileMenu } = useNavigation()
   const { locale, t } = useTranslation();
   const { pathname } = useLocation();
-  console.log(pathname.split("/"))
+  
   //If there's sidenav data we're on a page with a topSection
   //If the sidenav data's top section matches our current url path section
   //AND if the sidenav for this top section has items render inside the submenu.

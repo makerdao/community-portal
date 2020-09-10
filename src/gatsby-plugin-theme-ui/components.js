@@ -23,7 +23,7 @@ import {
 
 import { Link } from "@modules/navigation/";
 
-import { Aligner, Video } from "@modules/utility/";
+import { Aligner, Video, Indent } from "@modules/utility/";
 
 import { AuthorRenderer } from "@modules/authors";
 
@@ -126,6 +126,7 @@ const Custom_Components = {
   Image, //<- NOTE(Rejon): This is necessary so remark doesn't auto-wrap our component instead of the other way around.
   List,
   Aligner,
+  Indent,
   Accordion,
   InfoBlock,
   Chocolate,
