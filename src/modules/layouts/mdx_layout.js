@@ -58,7 +58,7 @@ export default (props) => {
 
   const pathDirs = pagePath.replace(/^\/|\/$/g, "").split("/").slice(1);
   const urlNoLocale = pathDirs.join("/");
-
+  console.log(pathDirs[0]);
   const { sidenavData, breadcrumbData } = calculateTreeData(
     allMdx.edges,
     pathDirs[0],

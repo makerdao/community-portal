@@ -33,7 +33,7 @@ const Sidenav_Node = ({
     if (!active && (currentPath === url || currentPath.includes(otherProps.slugPart))) {
       setActive(true);
     }
-  }, [active, currentPath, url, otherProps.slugPart])
+  }, [currentPath, url, otherProps.slugPart])
 
   return (
     <li
