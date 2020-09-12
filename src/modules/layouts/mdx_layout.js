@@ -138,7 +138,7 @@ export default (props) => {
     featuredImage,
   };
 
-  let contentWidthSubtract = 234; //NOTE(Rejon): Based on word from design, language selector being hidden doesn't change content width.
+  let contentWidthSubtract = renderLanguageSelector ? 234 : 0; //NOTE(Rejon): Based on word from design, language selector being hidden doesn't change content width.
 
   if (renderSidenav) {
     contentWidthSubtract += 256;
