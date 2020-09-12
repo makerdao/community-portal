@@ -6,6 +6,7 @@ import { Icon } from "@makerdao/dai-ui-icons";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { Link, MobileNav } from "@modules/navigation";
+import { useNavigation } from "@modules/navigation/context";
 import { useTranslation } from "@modules/localization";
 import Search from "@modules/search";
 import { UrlConverter, TitleConverter } from "@utils";
@@ -18,166 +19,29 @@ var isShowingMenu = false; //<- For document  event listeners to know if the men
 
 const Header = () => {
   const headerContainer = useRef(null);
+  const {headerLinks, mobileNavOpen, showMobileMenu, hideMobileMenu} = useNavigation();
   const breakpoints = theme.breakpoints.slice(0, -1); //NOTE(Rejon): The last element of the break point array SHOULD be infinity.
 
-  const [showMenu, setShowMenu] = useState(false);
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
   const [colorMode, setColorMode] = useColorMode();
 
-  const { headerFiles, headerConfigFiles } = useStaticQuery(graphql`
-    query HeaderQuery {
-      #Get files that have header/headerOrder frontmatter
-      headerFiles: allMdx(
-        filter: {
-          frontmatter: { header: { in: true } }
-          fileAbsolutePath: {
-            regex: "//([\\\\w]{2})/(?!header.mdx|example.mdx|index.mdx|404.mdx|footer.mdx)/"
-          }
-        }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              header
-              headerOrder
-            }
-            fileAbsolutePath
-            headings(depth: h1) {
-              value
-            }
-          }
-        }
-      }
-
-      #Get header.mdx files from only the top level locale folders. (ie. /content/en/header.mdx)
-      headerConfigFiles: allMdx(
-        filter: {
-          fileAbsolutePath: { regex: "//content/([^/]+)/?/(header.mdx)$/" }
-        }
-      ) {
-        nodes {
-          fileAbsolutePath
-          internal {
-            content
-          }
-        }
-      }
-    }
-  `);
-
-  const edges =
-    DEFAULT_LOCALE !== locale
-      ? headerFiles.edges.filter(({ node }) =>
-          node.fileAbsolutePath.includes(`/${locale}/`)
-        )
-      : [];
-
-  const defaultLocaleEdges = headerFiles.edges.filter(({ node }) =>
-    node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`)
-  );
-
-  const headerLinkEdges = edges.length !== 0 ? edges : defaultLocaleEdges;
-
-  //allMDX will return all header.mdx files at top level locale folders.
-  //Find only the one we need for our current locale and use it's body in the MDX renderer below.
-  const headerDataLinks = headerLinkEdges
-    .sort((a, b) => {
-      const aNode = {
-        ...a.node,
-        title: TitleConverter(a.node),
-        headerOrder: a.node.frontmatter.headerOrder,
-      };
-
-      const bNode = {
-        ...b.node,
-        title: TitleConverter(b.node),
-        headerOrder: b.node.frontmatter.headerOrder,
-      };
-
-      if (aNode.headerOrder === null && bNode.headerOrder !== null) {
-        return 1;
-      } else if (aNode.headerOrder !== null && bNode.headerOrder === null) {
-        return -1;
-      }
-
-      if (aNode.headerOrder === null && bNode.headerOrder === null) {
-        if (aNode.headerOrder === null && bNode.headerOrder === null) {
-          if (aNode.title === bNode.title) return 0;
-          return aNode.title.localeCompare(bNode.title);
-        }
-
-        if (aNode.headerOrder === bNode.headerOrder) {
-          if (aNode.title === bNode.title) return 0;
-          return aNode.title.localeCompare(bNode.title);
-        }
-
-        return 0;
-      }
-
-      if (aNode.headerOrder < bNode.headerOrder) return -1;
-      if (aNode.headerOrder > bNode.headerOrder) return 1;
-      return 0;
-    })
-    .map(({ node }, index) => {
-      const title = TitleConverter(node);
-      const url = UrlConverter(node);
-
-      return {
-        url,
-        title,
-      };
-    });
-
-  const headerConfigLinks = headerConfigFiles.nodes
-    .find((n) => n.fileAbsolutePath.includes(`/${locale}/`))
-    .internal.content.trim()
-    .split("\n")
-    .map((l, index) => {
-      const url = l.match(/\(([^)]+)\)/)[1];
-      const title = l.match(/\[([^)]+)\]/)[1];
-
-      return {
-        url,
-        title,
-      };
-    });
-
-  const headerLinks = headerDataLinks.concat(headerConfigLinks);
-
   const onMenuClick = (e) => {
-    if (typeof window !== "undefined") {
-      //Solution from: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
-      if (showMenu) {
-        //We're hiding the menu. Remove the fixed styling, put scroll position back.
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
-        window.scrollTo(0, scrollBeforeMenuOpen);
-      } else {
-        //We're showing the menu. Add fixed styling so the user doesn't scroll the window when in the menu.
-        scrollBeforeMenuOpen = window.scrollY;
-        document.body.style.position = "fixed";
-        document.body.style.width = "100vw";
-        document.body.style.top = `-${scrollBeforeMenuOpen}px`;
-      }
-
-      isShowingMenu = !showMenu;
-      setShowMenu(!showMenu);
+    if (mobileNavOpen) {
+      hideMobileMenu();
     }
+    else {
+      showMobileMenu();
+      
+    }
+    
+    isShowingMenu = !mobileNavOpen;
+    
   };
 
   const hideMenu = () => {
-    if (showMenu) {
-      if (typeof window !== "undefined") {
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
-        window.scrollTo(0, 0);
-
+    if (mobileNavOpen) {
         isShowingMenu = false;
-        setShowMenu(false);
-      }
+        hideMobileMenu();
     }
   };
 
@@ -194,45 +58,45 @@ const Header = () => {
     },
   };
 
-  // useEffect(() => {
-  //   const onScroll = () => {
-  //     if (headerContainer.current && !isShowingMenu) {
-  //       const inMobileRange = breakpoints.some(
-  //         (n) => window.innerWidth <= parseInt(n)
-  //       );
+  useEffect(() => {
+    const onScroll = () => {
+      if (headerContainer.current && !mobileNavOpen) {
+        const inMobileRange = breakpoints.some(
+          (n) => window.innerWidth <= parseInt(n)
+        );
 
-  //       if (inMobileRange) {
-  //         const headerHeight = headerContainer.current.offsetHeight;
-  //         const currentScroll = window.scrollY;
+        if (inMobileRange) {
+          const headerHeight = headerContainer.current.offsetHeight;
+          const currentScroll = window.scrollY;
 
-  //         //Scroll must be more than the delta.
-  //         if (Math.abs(lastScroll - currentScroll) <= delta) return;
+          //Scroll must be more than the delta.
+          if (Math.abs(lastScroll - currentScroll) <= delta) return;
 
-  //         //If you scroll down AND our scroll top is greater than our header,
-  //         //hide it.
-  //         if (currentScroll > lastScroll && currentScroll > headerHeight) {
-  //           headerContainer.current.classList.add("hide-nav");
-  //         } else {
-  //           //We've scrolled up OR our scrollTop is less than the header.
-  //           headerContainer.current.classList.remove("hide-nav");
-  //         }
+          //If you scroll down AND our scroll top is greater than our header,
+          //hide it.
+          if (currentScroll > lastScroll && currentScroll > headerHeight) {
+            headerContainer.current.classList.add("hide-nav");
+          } else {
+            //We've scrolled up OR our scrollTop is less than the header.
+            headerContainer.current.classList.remove("hide-nav");
+          }
 
-  //         lastScroll = currentScroll;
-  //       } else {
-  //         //Render the header as normal without the "show/hide logic"
-  //         headerContainer.current.classList.remove("hide-nav");
-  //       }
-  //     }
-  //   };
+          lastScroll = currentScroll;
+        } else {
+          //Render the header as normal without the "show/hide logic"
+          headerContainer.current.classList.remove("hide-nav");
+        }
+      }
+    };
 
-  //   if (typeof window !== "undefined") {
-  //     window.addEventListener("scroll", onScroll);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", onScroll);
 
-  //     return () => {
-  //       window.removeEventListener("scroll", onScroll);
-  //     };
-  //   }
-  // },[breakpoints]);
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+      };
+    }
+  },[breakpoints]);
 
   return (
     <Box
@@ -302,11 +166,11 @@ const Header = () => {
           sx={{
             display: ["none", "none", "flex"],
             flex: "auto",
-            ml: 3,
+            ml: [3,3,'56px'],
             alignItems: "center",
             justifyContent: "center",
             "& > a": { fontSize: "16px", p: 2, textAlign: "center" },
-            "& > a:not(:last-child)": { mr: "3%" },
+            "& > a:not(:last-child)": { mr: "1.4vw" },
           }}
         >
           <Link
@@ -329,6 +193,7 @@ const Header = () => {
               key={`header-link-${index}`}
               sx={{
                 fontWeight: "normal",
+                flexShrink: 0
               }}
             >
               {title}
@@ -338,7 +203,7 @@ const Header = () => {
         <Flex
           sx={{
             width: ["100%", "100%", "auto"],
-            ml: "1rem",
+            ml: [3,3,"3rem"],
             alignItems: "center",
             letterSpacing: ".03px",
             color: "onBackgroundAlt",
@@ -431,9 +296,9 @@ const Header = () => {
         <Icon
           size={"39px"}
           onClick={onMenuClick}
-          name={showMenu ? "close" : "menu"}
+          name={mobileNavOpen ? "close" : "menu"}
           sx={{
-            p: showMenu ? "7px" : "0px", //NOTE(Rejon): Close and Menu have different viewbox sizes in the dai-ui spec.
+            p: mobileNavOpen ? "7px" : "0px", //NOTE(Rejon): Close and Menu have different viewbox sizes in the dai-ui spec.
             color: "onBackgroundAlt",
             cursor: "pointer",
             ml: "1rem",
@@ -442,7 +307,7 @@ const Header = () => {
         />
       </Flex>
       <Box
-        className={showMenu ? "visible" : ""}
+        className={mobileNavOpen ? "visible" : ""}
         sx={{
           display: ["initial", "initial", "none"],
           "&::after": {
@@ -466,7 +331,7 @@ const Header = () => {
       >
         <motion.div
           initial="hidden"
-          animate={showMenu ? "visible" : "hidden"}
+          animate={mobileNavOpen ? "visible" : "hidden"}
           variants={mobileNavBGVariant}
           sx={{
             bg: "backgroundAlt",
@@ -480,10 +345,6 @@ const Header = () => {
             transformOrigin: "center",
           }}
         ></motion.div>
-
-        {showMenu && (
-          <MobileNav onLinkClick={hideMenu} headerLinks={headerLinks} />
-        )}
       </Box>
     </Box>
   );

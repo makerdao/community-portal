@@ -9,18 +9,18 @@ import { Link, SidenavNode } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 import { useNavigation } from "@modules/navigation/context";
 
-const MobileNav = ({ headerLinks, onLinkClick }) => {
-  const { sidenavData, pathDirs } = useNavigation()
+const MobileNav = ({ sidenavData }) => {
+  const { headerLinks, mobileNavOpen,hideMobileMenu } = useNavigation()
   const { locale, t } = useTranslation();
   const { pathname } = useLocation();
-
+  
   //If there's sidenav data we're on a page with a topSection
   //If the sidenav data's top section matches our current url path section
   //AND if the sidenav for this top section has items render inside the submenu.
   //Else render the main menu
   const renderSubmenuInitial =
     sidenavData.items[0] !== undefined &&
-    sidenavData.items[0].slugPart === pathDirs[0] &&
+    sidenavData.items[0].slugPart === pathname.split("/")[2] &&
     sidenavData.items[0].items.length > 0;
 
   const [showMainMenu, setShowMainMenu] = useState(
@@ -29,13 +29,17 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
 
   const [colorMode, setColorMode] = useColorMode();
 
+  if (!mobileNavOpen) {
+    return null;
+  }
+
   return (
     <Box
       sx={{
         height: "calc(100vh - 90px)",
-        overflow: "auto",
         zIndex: 1000,
         position: "fixed",
+        display: ['block', 'block', 'none'],
         width: "100%",
       }}
     >
@@ -70,7 +74,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
               <Link
                 to={`/${locale}/`}
                 variant="nav"
-                onClick={onLinkClick}
+                onClick={hideMobileMenu}
                 sx={{
                   textDecoration: "none",
                   color: "onBackgroundAlt",
@@ -144,7 +148,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                         textDecoration: "none",
                       },
                     }}
-                    onClick={onLinkClick}
+                    onClick={hideMobileMenu}
                     key={`mobile-nav-header-link-${index}`}
                     hideExternalIcon
                   >
@@ -291,7 +295,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
               <Box sx={{ overflow: "auto", maxHeight: "80vh", pb: "10vh" }}>
                 {sidenavData.items[0].slugPart && (
                   <Link
-                    onClick={onLinkClick}
+                    onClick={hideMobileMenu}
                     sx={{
                       pb: "2vh",
                       fontSize: ["5vw", "5vw", null],
@@ -315,6 +319,7 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                   sx={{
                     m: 0,
                     p: 0,
+                    pb: '5rem',
                     listStyleType: "none",
                     "& li > a": {
                       color: "onBackgroundAlt",
@@ -323,21 +328,25 @@ const MobileNav = ({ headerLinks, onLinkClick }) => {
                       textDecoration: "none",
                       position: "relative",
                       px: "30px",
-                      "& > svg": {
-                        width: "3.9vw",
-                        height: "3.9vw",
-                      },
                       "&:hover": {
                         textDecoration: "none",
                       },
                     },
+                    '& li > svg': {
+                        width: "64px",
+                        height: "64px",
+                        color: 'onBackgroundAlt',
+                        padding: '18px',
+                        right: '4%',
+                        top: '2.3rem'
+                    }
                   }}
                 >
                   {sidenavData.items[0].items.map((item, index) => (
                     <SidenavNode
                       key={`${item.url}-${index}`}
                       currentPath={pathname}
-                      onClick={onLinkClick}
+                      onClick={hideMobileMenu}
                       {...item}
                     />
                   ))}

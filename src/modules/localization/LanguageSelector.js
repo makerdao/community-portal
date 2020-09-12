@@ -1,19 +1,16 @@
 /** @jsx jsx */
 import Select, { components } from "react-select";
-import { useLocation, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import { Box, jsx, Text, useThemeUI } from "theme-ui";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
-import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization";
 
-const LanguageSelector = () => {
+const LanguageSelector = ({sx, data, pagePath}) => {
   const { theme } = useThemeUI();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { locale, t, allLocales } = useTranslation();
-  const { languageSelectorData } = useNavigation()
 
   const onChange = ({ value, label }) => {
     //Update local storage on switch
@@ -25,7 +22,7 @@ const LanguageSelector = () => {
     trackCustomEvent({
       category: "Language Selector",
       action: `Switch Page to ${label}`,
-      label: `From Page: ${pathname} (${locale}) |  To Page: ${value} (${
+      label: `From Page: ${pagePath} (${locale}) |  To Page: ${value} (${
         value.split("/")[1]
       })`,
     });
@@ -110,13 +107,13 @@ const LanguageSelector = () => {
   };
 
   //If we have existing languages or we're swapping, show the select.
-  if (languageSelectorData.length > 0) {
+  if (data.length > 0) {
     return (
       <Box
         sx={{
           width: ["100%", "100%", "205px"],
           mb: [3, 3, "unset"],
-          position: ["initial", "initial", "absolute"],
+          position: 'relative',
           top: 0,
           right: 0,
         }}
@@ -136,11 +133,11 @@ const LanguageSelector = () => {
             Control,
             Option,
           }}
-          options={languageSelectorData}
+          options={data}
           onChange={onChange}
           aria-label={t("Page_Language_Selector")}
           value={{
-            value: pathname,
+            value: pagePath,
             label: t("Language"),
           }}
         />
@@ -182,7 +179,8 @@ const LanguageSelector = () => {
         borderRadius: "12px",
         bg: "background",
         mb: 2,
-        position: ["relative", "relative", "absolute"],
+        mt: ['unset','unset','64px'],
+        position: 'relative',
         right: 0,
         top: 0,
       }}
@@ -204,11 +202,11 @@ const LanguageSelector = () => {
           Control,
           Option,
         }}
-        options={languageSelectorData}
+        options={data}
         onChange={onChange}
         aria-label={t("Page_Language_Selector")}
         value={{
-          value: pathname,
+          value: pagePath,
           label: t("Language"),
         }}
       />

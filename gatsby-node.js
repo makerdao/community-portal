@@ -5,7 +5,6 @@
  */
 const { UrlConverter } = require("./src/build-utils");
 const FALLBACK_LOCALE = "en";
-
 //TODO(Rejon): Add in support for the case similar pages exist outside of the locale folders.
 //			   We don't want to override pages at the top level if they exist.
 
@@ -41,3 +40,18 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+exports.onCreatePage = async ({page, pathPrefix, actions}) => {
+  const {createPage, deletePage} = actions;
+
+  // inject breadcrumbs into page context
+  const { context: oldPageContext } = page
+  deletePage(page)
+  createPage({
+    ...page,
+    context: {
+      ...oldPageContext,
+      pagePath: page.path //NOTE(Rejon): I provide this so we can have a navigational anchor during static builds for pathDirs and sidenav/breadcrumb data.
+    }
+  });
+}
