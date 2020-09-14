@@ -3,20 +3,18 @@ import React, { Fragment } from "react";
 import { jsx, Text, Flex } from "theme-ui";
 import { Icon } from "@makerdao/dai-ui-icons";
 
-import { useNavigation } from "@modules/navigation/context";
 import { Link } from "@modules/navigation";
 import { useTranslation } from "@modules/localization/";
 import {titleCase} from '@utils';
 
-const Breadcrumbs = ({ children }) => {
-  const { breadcrumbData, pathDirs } = useNavigation()
+const Breadcrumbs = ({ children, data, pathDirs }) => {
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
 
   return (
     <Flex
       sx={{
         alignItems: "center",
-        width: ["100%", "100%", "calc(100% - 234px)"],
+        width: '100%',
         mb: "28px",
         flexWrap: "wrap",
         fontSize: 3,
@@ -43,7 +41,7 @@ const Breadcrumbs = ({ children }) => {
         sx={{ mx: ["10px", "10px", "13px"] }}
       />
       {pathDirs.map((p, index) => {
-        const _data = breadcrumbData.find((n) => n.part === p);
+        const _data = data.find((n) => n.part === p);
 
         if (!_data) {
           if (index === pathDirs.length - 1) {

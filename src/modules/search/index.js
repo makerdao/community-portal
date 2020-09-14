@@ -207,6 +207,7 @@ export default function Search({ onClick, ...otherProps }) {
         sx={{
           position: ["fixed", "fixed","absolute"],
           boxShadow: "high",
+          zIndex: ["1000000", null, null],
           left: "50%",
           transform: "translateX(-50%)",
           top: ["5rem", "5rem", "3.5rem"],
