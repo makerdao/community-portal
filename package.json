@@ -37,7 +37,7 @@
     "gatsby-source-filesystem": "^2.3.29",
     "gatsby-transformer-json": "^2.4.11",
     "gatsby-transformer-remark": "^2.8.34",
-    "gatsby-transformer-sharp": "^2.5.12",
+    "gatsby-transformer-sharp": "^2.5.14",
     "html-react-parser": "^0.13.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
