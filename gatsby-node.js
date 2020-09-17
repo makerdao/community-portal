@@ -9,7 +9,7 @@ const FALLBACK_LOCALE = "en";
 //			   We don't want to override pages at the top level if they exist.
 
 //Create redirect fallbacks to default locales.
-//ie If the user types /work_with_us and it exists in our default locale, take us to that page.
+//ie If the user types /contribute and it exists in our default locale, take us to that page.
 exports.createPages = async ({ graphql, actions }) => {
   const { createRedirect } = actions; //actions is collection of many actions - https://www.gatsbyjs.org/docs/actions
   const { data: pages } = await graphql(`
