@@ -38,7 +38,7 @@ const prismPreset = {
 
 export default {
 ...maker, //<- Your default theme.
-	useColorSchemeMediaQuery: true,
+	//useColorSchemeMediaQuery: true, //TODO(Rejon): useBodyStyles could be the culprit for the flashing we're seeing. Will explore. 
   breakpoints: ["640px", "932px", "infinity"],
   icons: {
     ...themeIcons,
@@ -326,30 +326,41 @@ export default {
       "linear-gradient(rgb(248, 237, 216), rgb(244, 227, 194))",
   },
   text: {
-    ...maker.text,
+    text: {
+      ...maker.text.text,
+      color: 'textMuted'
+    },
+    heaing: {
+      ...maker.text.heading,
+      color: 'textMuted'
+    },
     h1: {
       fontSize: '64px',
       letterSpacing: "0.3px",
       fontWeight: "600",
-      fontFamily: 'heading'
+      fontFamily: 'heading',
+      color: 'textMuted'
     },
     h2: {
       fontSize: '48px',
       fontWeight: "600",
       letterSpacing: '0.3px',
       fontFamily: 'heading',
+      color: 'textMuted'
     },
     h3: {
       fontSize: '32px',
       fontWeight: '600',
       letterSpacing: "0.3px",
-      fontFamily: 'heading'
+      fontFamily: 'heading',
+      color: 'textMuted'
     },
     h4: {
       fontSize: '24px',
       fontWeight: '600',
       letterSpacing: '0.3px',
-      fontFamily: 'heading'
+      fontFamily: 'heading',
+      color: 'textMuted'
     },
     largeText: {
       fontSize: '20px',
@@ -380,6 +391,10 @@ export default {
   },
   styles: {
 	  ...maker.styles,
+    root: {
+    ...maker.styles.root,
+    color: "textMuted",
+  },
     a: {
       color: "link",
       fontWeight: "500",
@@ -398,6 +413,7 @@ export default {
       background: 'none'
     },
   },
+  
   buttons: {
     primary: {
       cursor: "pointer",
@@ -457,17 +473,17 @@ export default {
     outline: {
       variant: "buttons.primary",
       bg: "background",
-      color: "text",
+      color: "textMuted",
       border: "1px solid",
       borderColor: "text",
       "&:hover": {
-        color: "text",
+        color: "textMuted",
         textDecoration: "none",
         bg: "primaryMuted",
         transition: ".1s ease",
       },
       "&:active": {
-        color: "text",
+        color: "textMuted",
         textDecoration: "none",
         bg: "primaryMuted",
         boxShadow: "raised",
@@ -507,5 +523,32 @@ export default {
     icon_outline: {
       variant: "buttons.outline",
     },
+    text: {
+      variant: 'buttons.primary',
+      fontSize: 3, 
+      bg: 'transparent', 
+      color: 'link',
+      "&:hover": {
+        color: "primaryEmphasis",
+        textDecoration: "none",
+        transition: ".1s ease",
+      },
+      "&:active": {
+        color: "primary",
+        textDecoration: "none",
+        transition: ".1s ease",
+      },
+      "&:disabled": {
+        color: "mutedAlt",
+        pointerEvents: "none",
+        cursor: "not-allowed",
+      },
+    },
+    textSmall: {
+      variant: 'buttons.text'
+    },
+    icon_text: {
+      variant: 'buttons.text'
+    }
   },
 }

@@ -66,7 +66,7 @@ const useKeyPress = function (targetKey) {
 };
 
 export default function Search({ onClick, ...otherProps }) {
-  const MAX_RESULT_COUNT = 10; //<- Return 10 results maximum.
+  const MAX_RESULT_COUNT = 5; //<- Return 5 results maximum.
   const ref = useRef();
   const resultList = useRef();
   const [query, setQuery] = useState(``);
@@ -262,7 +262,7 @@ export default function Search({ onClick, ...otherProps }) {
               },
               "& li:hover > a, & li.active > a": {
                 backgroundColor: "primaryMuted",
-                color: "text",
+                color: "textMuted",
               },
             }}
           >

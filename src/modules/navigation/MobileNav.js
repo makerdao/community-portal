@@ -39,6 +39,7 @@ const MobileNav = ({ sidenavData }) => {
         height: "calc(100vh - 90px)",
         zIndex: 1000,
         position: "fixed",
+        top: '90px',
         display: ['block', 'block', 'none'],
         width: "100%",
       }}

@@ -22,7 +22,7 @@ const NavigationProvider = ({ children }) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const { locale, t, DEFAULT_LOCALE } = useTranslation();
 
-  const { allMdx, headerFiles, headerConfigFiles } = useStaticQuery(graphql`
+  const { allMdx, headerFiles, headerConfigFiles, footerFiles, socialLinks } = useStaticQuery(graphql`
     query getNavigationData {
       # Regex for all files that are NOT config files
       allMdx: allMdx(
@@ -84,6 +84,30 @@ const NavigationProvider = ({ children }) => {
           }
         }
       }
+
+      footerFiles: allMdx(
+        filter: {
+          fileAbsolutePath: { regex: "//content/([^/]+)/?/(footer.mdx)$/" }
+        }
+      ) {
+        nodes {
+          fileAbsolutePath
+          body
+        }
+      }
+
+      socialLinks: allMdx(
+        filter: {
+          fileAbsolutePath: { regex: "//content/([^/]+)/?/(social.mdx)$/" }
+        }
+      ) {
+        nodes {
+          fileAbsolutePath
+          internal {
+            content
+          }
+        }
+      }
     }
   `);
 
@@ -94,11 +118,11 @@ const NavigationProvider = ({ children }) => {
         )
       : [];
 
-  const defaultLocaleEdges = headerFiles.edges.filter(({ node }) =>
+  const defaultHeaderLocaleEdges = headerFiles.edges.filter(({ node }) =>
     node.fileAbsolutePath.includes(`/${DEFAULT_LOCALE}/`)
   );
 
-  const headerLinkEdges = headerEdges.length !== 0 ? headerEdges : defaultLocaleEdges;
+  const headerLinkEdges = headerEdges.length !== 0 ? headerEdges : defaultHeaderLocaleEdges;
 
   //allMDX will return all header.mdx files at top level locale folders.
   //Find only the one we need for our current locale and use it's body in the MDX renderer below.
@@ -174,6 +198,7 @@ const NavigationProvider = ({ children }) => {
         document.body.style.position = "";
         document.body.style.top = "";
         document.body.style.width = "";
+        console.log(scrollBeforeMenuOpen)
         window.scrollTo(0, scrollBeforeMenuOpen);
       } else {
         //We're showing the menu. Add fixed styling so the user doesn't scroll the window when in the menu.
@@ -187,13 +212,13 @@ const NavigationProvider = ({ children }) => {
     }
   }
 
-  const hideMobileMenu = () => {
+  const hideMobileMenu = (scrollBeforeMenuOpen) => {
     if (mobileNavOpen) {
       if (typeof window !== "undefined") {
         document.body.style.position = "";
         document.body.style.top = "";
         document.body.style.width = "";
-        window.scrollTo(0, 0);
+        window.scrollTo(0, scrollBeforeMenuOpen);
 
         setMobileNavOpen(false);
       }
@@ -206,7 +231,9 @@ const NavigationProvider = ({ children }) => {
         mobileNavOpen,
         showMobileMenu, 
         hideMobileMenu,
-        headerLinks
+        headerLinks,
+        footerFiles,
+        socialLinks
       }}>
       {children}
     </NavigationContext.Provider>
