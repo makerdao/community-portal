@@ -17,7 +17,7 @@ and how non-developers can control all these things using nothing more than mdx.
 
 ## The Sidenav
 
-Each top level section (Funding, Learn, Work With Us) has it's own directory displayed
+Each top level section (Funding, Learn, Contribute) has it's own directory displayed
 in the form of a vertical [sidenav](https://github.com/makerdao/community-portal/tree/r2d/src/modules/navigation).
 This sidenav has very specific features:
 
@@ -45,7 +45,7 @@ as a reference for how to logically put this together.
 
 To keep it short, there's a file called `Sidenav_Tree` that exports a method that
 converts the MDX edge data into {title, slug, rawSlug} (rawSlug being the file path without it's locale)
-and only returns elements for the locale specified and our currentTopSection (Learn, Work With Us, Funding, etc.).
+and only returns elements for the locale specified and our currentTopSection (Learn, Contribute, Funding, etc.).
 We convert this into sidenav objects for our default locale and our current locale
 (if our current locale is the same as the default we don't make objects for it).
 Then we merge overlap the locale files over the default locale files.
