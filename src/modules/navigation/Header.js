@@ -322,25 +322,7 @@ const Header = () => {
           },
         }}
       >
-        <div
-          className={mobileNavOpen ? 'open' : ''}
-          sx={{
-            bg: "backgroundAlt",
-            right: "-2500px",
-            top: "-2500px",
-            position: "fixed",
-            width: "5000px",
-            opacity: 0,
-            height: "5000px",
-            borderRadius: "10000px",
-            zIndex: 1,
-            transition: 'all .25s ease',
-            transformOrigin: "center",
-            '&.open': {
-              opacity: 1
-            }
-          }}
-        ></div>
+        
       </Box>
     </Box>
   );

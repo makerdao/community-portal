@@ -335,7 +335,7 @@ export default {
       color: 'textMuted'
     },
     h1: {
-      fontSize: '64px',
+      fontSize: ['48px', '48px', '64px'],
       letterSpacing: "0.3px",
       fontWeight: "600",
       fontFamily: 'heading',

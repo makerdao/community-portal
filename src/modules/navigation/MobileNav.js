@@ -37,13 +37,32 @@ const MobileNav = ({ sidenavData }) => {
     <Box
       sx={{
         height: "calc(100vh - 90px)",
-        zIndex: 1000,
+        zIndex: 100,
         position: "fixed",
         top: '90px',
         display: ['block', 'block', 'none'],
         width: "100%",
       }}
     >
+      <div
+          className={mobileNavOpen ? 'open' : ''}
+          sx={{
+            bg: "backgroundAlt",
+            right: "-2500px",
+            top: "-2500px",
+            position: "absolute",
+            width: "5000px",
+            opacity: 0,
+            height: "5000px",
+            borderRadius: "10000px",
+            zIndex: 0,
+            transition: 'all .25s ease',
+            transformOrigin: "center",
+            '&.open': {
+              opacity: 1
+            }
+          }}
+        ></div>
       <AnimatePresence exitBeforeEnter>
         {showMainMenu && (
           <motion.div
@@ -334,12 +353,11 @@ const MobileNav = ({ sidenavData }) => {
                       },
                     },
                     '& li > svg': {
-                        width: "64px",
-                        height: "64px",
+                        width: "54px",
+                        height: "54px",
                         color: 'onBackgroundAlt',
                         padding: '18px',
                         right: '4%',
-                        top: '2.3rem'
                     }
                   }}
                 >
