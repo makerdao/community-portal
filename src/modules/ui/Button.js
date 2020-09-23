@@ -11,6 +11,7 @@ const Button = ({
   variant,
   secondary,
   outline,
+  bottomOut,
   text,
   small,
   disabled,
@@ -44,18 +45,19 @@ const Button = ({
         whiteSpace: "nowrap",
         display: inline ? "inline-block" : "block",
         mr: inline ? 3 : 0,
-        cursor: disabled ? 'not-allowed' : ''
+        cursor: disabled ? 'not-allowed' : '',
+        '&:not(:last-child)': {
+          mb: 3
+        },
+        ...sx,
       }}
     >
-      <div
-        sx={{ mb: 3}}
-      >
         <ThemedButton
           className="button"
           disabled={disabled}
           variant={_variant}
           sx={{
-            ...sx,
+            
             p: willHaveIcon ? "13px 32px" : "",
             "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
           }}
@@ -78,7 +80,6 @@ const Button = ({
             {children}
           </Text>
         </ThemedButton>
-      </div>
     </Link>
   );
 };
