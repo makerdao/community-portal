@@ -12,7 +12,7 @@ const Categories = ({ children, minBoxSize = "321px" }) => {
     border: "1px solid",
     borderColor: "muted",
     bg: "background",
-    "& > * > div": { color: "text", mb: "9px" },
+    "& > * > div": { color: "textMuted", mb: "9px" },
     padding: "19px 33px",
     borderRadius: "4px",
     "& > * > div:nth-of-type(2) > a, & > * > div:nth-of-type(3) > a": {

@@ -18,7 +18,7 @@ const ListElement = ({ children, ...props }) => (
       "& > * > *:only-child, & > * > *:nth-of-type(1)": {
         fontWeight: "normal",
         fontSize: "18px",
-        color: "text",
+        color: "textMuted",
         lineHeight: "normal",
       },
       "& > * > *:only-child, & > *:only-child": {
@@ -56,7 +56,7 @@ const AdvancedListElement = ({
               "& > *:only-child, & > *:nth-of-type(1)": {
                 fontWeight: "normal",
                 fontSize: "18px",
-                color: "text",
+                color: "textMuted",
                 lineHeight: "normal",
               },
               "& > *:not(:nth-of-type(1))": {

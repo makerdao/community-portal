@@ -10,7 +10,7 @@ const SearchHit = ({ title, excerpt, url, query, ...props }) => (
     {...props}
   >
     <Text
-      variant="h4"
+      variant="h5"
       aria-live="assertive"
       sx={{
         m: 0,
