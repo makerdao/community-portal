@@ -75,7 +75,7 @@ const LanguageSelector = ({sx, data, pagePath}) => {
     <components.ValueContainer
       sx={{
         fontFamily: "body",
-        color: "text",
+        color: "textMuted",
         pl: 3,
       }}
       {...props}

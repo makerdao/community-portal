@@ -23,7 +23,7 @@ const Checklist = ({ children }) => {
         <Flex
           as="li"
           key={`checklist-child-${index}`}
-          sx={{ mb: "24px", color: "text", "&:last-of-type": { mb: 0 } }}
+          sx={{ mb: "24px", color: "textMuted", "&:last-of-type": { mb: 0 } }}
         >
           <Box
             sx={{
@@ -32,7 +32,7 @@ const Checklist = ({ children }) => {
               bg: "background",
               borderRadius: "4px",
               border: "1px solid",
-              borderColor: "text",
+              borderColor: "textMuted",
               mr: "14px",
             }}
           ></Box>

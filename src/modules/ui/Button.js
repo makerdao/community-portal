@@ -11,6 +11,7 @@ const Button = ({
   variant,
   secondary,
   outline,
+  text,
   small,
   disabled,
   children,
@@ -26,7 +27,7 @@ const Button = ({
   // Instead of
   // <Button variant="primaryOutline" />
   let _variant = `${icon ? "icon_" : ""}${
-    variant || secondary ? "secondary" : outline ? "outline" : "primary"
+    variant || secondary ? "secondary" : outline ? "outline" : text ? "text" : "primary"
   }${small ? "Small" : ""}`;
 
   const internal = /^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to);
@@ -46,10 +47,8 @@ const Button = ({
         cursor: disabled ? 'not-allowed' : ''
       }}
     >
-      <motion.div
-        whileTap={{ scale: 0.9 }}
-        whileHover={{ scale: 1.064 }}
-        sx={{ mb: 3, backfaceVisibility: "hidden" }}
+      <div
+        sx={{ mb: 3}}
       >
         <ThemedButton
           className="button"
@@ -79,7 +78,7 @@ const Button = ({
             {children}
           </Text>
         </ThemedButton>
-      </motion.div>
+      </div>
     </Link>
   );
 };

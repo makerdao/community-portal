@@ -14,9 +14,9 @@ const LinkWrapper = ({ ariaLabel, ...props }) => {
   const { t } = useTranslation();
 
   return (
-    <motion.div 
-      whileTap={{scale: 0.9}}
-      whileHover={{scale: 1.16}}
+    <div 
+      // whileTap={{scale: 0.9}}
+      // whileHover={{scale: 1.16}}
       sx={{backfaceVisibility: "hidden", display: 'inline-block'}}
     >
       <Link
@@ -27,7 +27,7 @@ const LinkWrapper = ({ ariaLabel, ...props }) => {
         }}
         {...props}
       />
-    </motion.div>
+    </div>
   );
 };
 
@@ -37,49 +37,49 @@ const getLinkIcon = (url, key) => {
   if (url.includes("github")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_GithubIcon"}>
-        <Icon name="github" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="github" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   } else if (url.includes("twitter")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_TwitterIcon"}>
-        <Icon name="twitter" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="twitter" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   } else if (url.includes("medium")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_MediumIcon"}>
-        <Icon name="medium" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="medium" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   } else if (url.includes("youtube")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_YoutubeIcon"}>
-        <Icon name="youtube" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="youtube" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   } else if (url.includes("wechat")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_WeChatIcon"}>
-        <Icon name="wechat" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="wechat" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   } else if (url.includes("t.me")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_TelegramIcon"}>
-        <Icon name="telegram" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="telegram" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   } else if (url.includes("reddit")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_RedditIcon"}>
-        <Icon name="reddit" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="reddit" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   } else if (url.includes("chat.")) {
     return (
       <LinkWrapper to={url} key={key} ariaLabel={"aria_RocketChatIcon"}>
-        <Icon name="rocketchat" size={"23px"} sx={{ color: "text" }} />
+        <Icon name="rocketchat" size={"23px"} sx={{ color: "textMuted" }} />
       </LinkWrapper>
     );
   }

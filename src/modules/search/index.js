@@ -66,7 +66,7 @@ const useKeyPress = function (targetKey) {
 };
 
 export default function Search({ onClick, ...otherProps }) {
-  const MAX_RESULT_COUNT = 10; //<- Return 10 results maximum.
+  const MAX_RESULT_COUNT = 5; //<- Return 5 results maximum.
   const ref = useRef();
   const resultList = useRef();
   const [query, setQuery] = useState(``);
@@ -207,7 +207,7 @@ export default function Search({ onClick, ...otherProps }) {
         sx={{
           position: ["fixed", "fixed","absolute"],
           boxShadow: "high",
-          zIndex: ["1000000", null, null],
+          zIndex: ["1000000", "1000000", null],
           left: "50%",
           transform: "translateX(-50%)",
           top: ["5rem", "5rem", "3.5rem"],
@@ -224,7 +224,6 @@ export default function Search({ onClick, ...otherProps }) {
           sx={{
             display: "grid",
             backgroundColor: "surfaceDark",
-            zIndex: "1000000000",
           }}
         >
           {results.length === 0 && query.length > 0 && (
@@ -262,7 +261,7 @@ export default function Search({ onClick, ...otherProps }) {
               },
               "& li:hover > a, & li.active > a": {
                 backgroundColor: "primaryMuted",
-                color: "text",
+                color: "textMuted",
               },
             }}
           >
