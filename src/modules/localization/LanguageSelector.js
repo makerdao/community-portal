@@ -75,7 +75,7 @@ const LanguageSelector = ({sx, data, pagePath}) => {
     <components.ValueContainer
       sx={{
         fontFamily: "body",
-        color: "text",
+        color: "textMuted",
         pl: 3,
       }}
       {...props}
@@ -150,7 +150,7 @@ const LanguageSelector = ({sx, data, pagePath}) => {
           >
             {`${t("Need_Another_Language")}  `}
             <Link
-              to="/work_with_us/translations"
+              to="/contribute/translations"
               sx={{
                 color: "link",
                 textDecoration: "none",
@@ -240,7 +240,7 @@ const LanguageSelector = ({sx, data, pagePath}) => {
         >
           {`${t("Need_Another_Language")}  `}
           <Link
-            to="/work_with_us/translations"
+            to="/contribute/translations"
             sx={{
               color: "link",
               textDecoration: "none",

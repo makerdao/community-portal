@@ -11,6 +11,8 @@ const Button = ({
   variant,
   secondary,
   outline,
+  bottomOut,
+  text,
   small,
   disabled,
   children,
@@ -26,7 +28,7 @@ const Button = ({
   // Instead of
   // <Button variant="primaryOutline" />
   let _variant = `${icon ? "icon_" : ""}${
-    variant || secondary ? "secondary" : outline ? "outline" : "primary"
+    variant || secondary ? "secondary" : outline ? "outline" : text ? "text" : "primary"
   }${small ? "Small" : ""}`;
 
   const internal = /^\/(?!\/)/.test(href) || /^\/(?!\/)/.test(to);
@@ -43,20 +45,19 @@ const Button = ({
         whiteSpace: "nowrap",
         display: inline ? "inline-block" : "block",
         mr: inline ? 3 : 0,
-        cursor: disabled ? 'not-allowed' : ''
+        cursor: disabled ? 'not-allowed' : '',
+        '&:not(:last-child)': {
+          mb: 3
+        },
+        ...sx,
       }}
     >
-      <motion.div
-        whileTap={{ scale: 0.9 }}
-        whileHover={{ scale: 1.064 }}
-        sx={{ mb: 3, backfaceVisibility: "hidden" }}
-      >
         <ThemedButton
           className="button"
           disabled={disabled}
           variant={_variant}
           sx={{
-            ...sx,
+            
             p: willHaveIcon ? "13px 32px" : "",
             "& > *": { display: "inline-block", mb: "0 !important" }, //NOTE(Rejon): I use important here because we don't want child elements to dictate margins
           }}
@@ -79,7 +80,6 @@ const Button = ({
             {children}
           </Text>
         </ThemedButton>
-      </motion.div>
     </Link>
   );
 };

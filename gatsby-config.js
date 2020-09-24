@@ -151,7 +151,7 @@ module.exports = {
             title: TitleConverter,
             url: UrlConverter,
             excerpt: (node) => {
-              const excerptLength = 90; // Hard coded excerpt length
+              const excerptLength = 60; // Hard coded excerpt length
 
               //If this node's frontmatter has a description use THAT for excerpts.
               if (node.frontmatter.description) {
@@ -166,7 +166,7 @@ module.exports = {
                 .use(removeFrontmatter)
                 .parse(node.rawBody);
               visit(tree, "text", (node) => {
-                excerpt += node.value;
+                excerpt += node.value + " ";
               });
               return `${excerpt.slice(0, excerptLength)}${
                 excerpt.length > excerptLength ? "..." : ""

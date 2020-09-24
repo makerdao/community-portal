@@ -74,8 +74,7 @@ const Link = ({
           pointerEvents: disabled ? "none" : "initial",
           transition: "all .1s ease",
           "&.active": {
-            color: "link",
-            fontWeight: "600",
+            color: "linkAlt",
           },
           "&:hover": {
             color: "linkAlt",
@@ -136,7 +135,6 @@ const Link = ({
         textDecoration: isButton && "none",
         "&.active": {
           color: "linkAlt",
-          fontWeight: "600",
         },
         "&:hover": {
           color: "linkAlt",
