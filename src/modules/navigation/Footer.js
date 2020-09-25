@@ -5,39 +5,12 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Icon } from "@makerdao/dai-ui-icons";
 
 import { useTranslation } from "@modules/localization";
+import { useNavigation } from "@modules/navigation/context";
 import { getLinkIcon, Link } from "@modules/navigation";
 
 const Footer = () => {
   const { locale, DEFAULT_LOCALE, t } = useTranslation();
-
-  const { footerFiles, socialLinks } = useStaticQuery(graphql`
-    query FooterQuery {
-      #Get header.mdx files from only the top level locale folders. (ie. /content/en/header.mdx)
-      footerFiles: allMdx(
-        filter: {
-          fileAbsolutePath: { regex: "//content/([^/]+)/?/(footer.mdx)$/" }
-        }
-      ) {
-        nodes {
-          fileAbsolutePath
-          body
-        }
-      }
-
-      socialLinks: allMdx(
-        filter: {
-          fileAbsolutePath: { regex: "//content/([^/]+)/?/(social.mdx)$/" }
-        }
-      ) {
-        nodes {
-          fileAbsolutePath
-          internal {
-            content
-          }
-        }
-      }
-    }
-  `);
+  const { footerFiles, socialLinks } = useNavigation();
 
   const footerConfigLinks =
     DEFAULT_LOCALE !== locale
@@ -75,6 +48,7 @@ const Footer = () => {
       : defaultSocialConfigLinks
       ? defaultSocialConfigLinks.internal.content.trim().split("\n")
       : null;
+
 
   return (
     <Box

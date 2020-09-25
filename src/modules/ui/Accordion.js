@@ -17,7 +17,7 @@ const Accordion = ({ children, defaultOpen, openIcon, closeIcon }) => {
   return (
     <Box
       sx={{
-        color: "text",
+        color: "textMuted",
         fontSize: "20px",
         letterSpacing: ".03px",
         borderBottom: "1px solid",

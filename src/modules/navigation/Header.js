@@ -27,7 +27,7 @@ const Header = () => {
 
   const onMenuClick = (e) => {
     if (mobileNavOpen) {
-      hideMobileMenu();
+      hideMobileMenu(lastScroll);
     }
     else {
       showMobileMenu();
@@ -154,13 +154,10 @@ const Header = () => {
           }}
           aria-label={t("aria_MakerHomeIcon")}
         >
-          <motion.div
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.064 }}
-            sx={{ backfaceVisibility: "hidden" }}
+          <div
           >
             <Icon name="maker" color="primary" size={"52px"} />
-          </motion.div>
+          </div>
         </Link>
         <Flex
           sx={{
@@ -184,7 +181,7 @@ const Header = () => {
               color: "onBackgroundAlt",
             }}
           >
-            <Text>{t("Home")}</Text>
+            {t("Home")}
           </Link>
           {headerLinks.map(({ url, title }, index) => (
             <Link
@@ -225,16 +222,13 @@ const Header = () => {
             }}
           />
 
-          <motion.div
+          <div
             sx={{
               display: ["none", "none", "inline-block"],
               height: "32px",
               width: "32px",
               mr: "21px",
-              backfaceVisibility: "hidden",
             }}
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.1 }}
           >
             <Icon
               size={"32px"}
@@ -258,17 +252,16 @@ const Header = () => {
                 }
               }}
             />
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             sx={{
               display: ["none", "none", "inline-block"],
               height: "32px",
               width: "32px",
-              backfaceVisibility: "hidden",
             }}
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.1 }}
+            // whileTap={{ scale: 0.9 }}
+            // whileHover={{ scale: 1.1 }}
           >
             <Icon
               size={"32px"}
@@ -291,7 +284,7 @@ const Header = () => {
                 }
               }}
             />
-          </motion.div>
+          </div>
         </Flex>
         <Icon
           size={"39px"}
@@ -329,22 +322,7 @@ const Header = () => {
           },
         }}
       >
-        <motion.div
-          initial="hidden"
-          animate={mobileNavOpen ? "visible" : "hidden"}
-          variants={mobileNavBGVariant}
-          sx={{
-            bg: "backgroundAlt",
-            right: "-2500px",
-            top: "-2500px",
-            position: "fixed",
-            width: "5000px",
-            height: "5000px",
-            borderRadius: "10000px",
-            zIndex: 1,
-            transformOrigin: "center",
-          }}
-        ></motion.div>
+        
       </Box>
     </Box>
   );
