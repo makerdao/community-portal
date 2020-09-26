@@ -11,7 +11,7 @@ const Callout = ({ icon, variant, children }) => {
         mb: "24px",
         mt: "24px",
         width: "100%",
-        color: "text",
+        color: "textMuted",
         borderRadius: "12px",
         bg: variant || "primaryMuted",
       }}

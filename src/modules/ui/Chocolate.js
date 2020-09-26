@@ -25,7 +25,7 @@ const Chocolate = ({ children }) => {
     (
       <Grid
         gap={4}
-        columns={columnWidth()}
+        columns={['1fr', '1fr', columnWidth()]}
         sx={{
           "& > * > * > img": {
             width: "100%",

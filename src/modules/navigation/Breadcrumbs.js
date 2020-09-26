@@ -50,7 +50,7 @@ const Breadcrumbs = ({ children, data, pathDirs }) => {
                 sx={{
                   display: "inline-block",
                   fontWeight: "500",
-                  color: "text",
+                  color: "textMuted",
                 }}
                 key={`breadcrumb-${index}`}
               >
@@ -65,7 +65,7 @@ const Breadcrumbs = ({ children, data, pathDirs }) => {
             <Text
               sx={{
                 display: "inline-block",
-                color: "text",
+                color: "textMuted",
               }}
               key={`breadcrumb-${index}`}
             >
@@ -94,7 +94,7 @@ const Breadcrumbs = ({ children, data, pathDirs }) => {
               sx={{
                 display: "inline-block",
                 fontWeight: "500",
-                color: "text",
+                color: "textMuted",
               }}
               key={`breadcrumb-${index}`}
             >
