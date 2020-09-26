@@ -48,15 +48,9 @@ If you have any suggestions about how you think these initiatives should work, c
 
 Awesome-MakerDAO is a community-curated list of MakerDAO-related resources and content to which anyone can contribute. It contains official documentation, beginner guides, in-depth analysis, links to 3rd party tools, partnership announcements, AMAs, podcasts, and much more.
 
-### [MakerDAO MCD FAQs](faqs/README.md)
+### [MakerDAO MCD FAQs](/faqs/index/)
 
 This section provides answers to commonly asked questions about everything MakerDAO.
-
-We welcome you to help improve the MakerDAO FAQs by submitting Pull Requests or reaching out to us with feedback.
-
-### [MakerDAO SCD FAQs](scd-faqs/README.md)
-
-This section provides answers to commonly asked questions about everything MakerDAO, specifically as it related to the Single-Collateral Dai version of the system.
 
 We welcome you to help improve the MakerDAO FAQs by submitting Pull Requests or reaching out to us with feedback.
 
