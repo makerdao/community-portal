@@ -16,11 +16,19 @@
 <a href="https://github.com/gatsbyjs/gatsby-starter-default" target="_blank">Gatsby-Starter</a> + <a href="https://github.com/makerdao/dai-ui/" target="_blank">Dai-UI</a> = "A UI to Dai for!"
 </p>
 
-A Theme-UI Gatsby starter for projects that will use Dai-UI theme kits.
+# Community Development at Maker
+
+The Community Development group's mandate is to directly foster the growth of the MakerDAO ecosystem by incentivizing our most motivated members. We do this through a series of initiatives that encourage people to participate in, and contribute to, the success of the Dai Stablecoin platform.
+
+## Our Initiatives
+
+
+
+## 🚀 Our Tech Stack and Getting it Working
+
+We've built this as a Theme-UI Gatsby starter for projects that will use Dai-UI theme kits.
 
 _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-depth information._
-
-## 🚀 Quick start
 
 1.  **Clone**
 
