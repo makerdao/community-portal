@@ -22,7 +22,7 @@ The Community Development group's mandate is to directly foster the growth of th
 
 ## Our Initiatives
 
-### [Community Meetup Grants](/content/en/contribute/meetups/index/)
+### [Community Meetup Grants](content/en/contribute/meetups/index.mdx)
 
 Community members play an invaluable role in building a stronger MakerDAO ecosystem. The Community Development Group provides the resources needed to increase Dai adoption and help MakerDAO bring stability and financial inclusion to the world. To accomplish these goals, we created a 'Do It Yourself' Meetup guide and microgranting program dedicated to helping anyone create and organize a local community meetup.
 
