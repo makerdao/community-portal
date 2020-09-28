@@ -10,17 +10,12 @@
   </a>
 </p>
 <h1 align="center">
-  Dai-UI Gatsby Starter
+  Community Development at Maker 
 </h1>
-<p align="center">
-<a href="https://github.com/gatsbyjs/gatsby-starter-default" target="_blank">Gatsby-Starter</a> + <a href="https://github.com/makerdao/dai-ui/" target="_blank">Dai-UI</a> = "A UI to Dai for!"
-</p>
 
-# Community Development at Maker
+The Community Development group's mandate is to directly foster the growth of the MakerDAO ecosystem by incentivizing our most motivated members. We do this through a series of initiatives that encourage people to participate in, and contribute to, the success of the Dai Stablecoin platform. Welcome to our portal, built with [Gatsby](https://github.com/gatsbyjs/gatsby-starter-default) and [DAI UI](https://github.com/makerdao/dai-ui/).
 
-The Community Development group's mandate is to directly foster the growth of the MakerDAO ecosystem by incentivizing our most motivated members. We do this through a series of initiatives that encourage people to participate in, and contribute to, the success of the Dai Stablecoin platform.
-
-## Our Initiatives
+## 🏗 Our Initiatives
 
 ### [Community Meetup Grants](/content/en/contribute/meetups/index.mdx)
 
@@ -42,7 +37,7 @@ MakerDAO participates in a number of Hackathons every year. This section contain
 
 If you have any suggestions about how you think these initiatives should work, could be improved, or if you are interested in helping out, please join our [#community-development](https://chat.makerdao.com/channel/community-development) channel and introduce yourself.
 
-## Our Resources
+## 📚 Our Resources
 
 ### [Awesome-MakerDAO](https://github.com/makerdao/awesome-makerdao/)
 
@@ -62,7 +57,7 @@ To ensure good governance and accountability, we've set up this section to conta
 
 These are community-built guides to help onboard different types of users into our ecosystem. Whether you're a potential MKR voter, a Vault owner, or Dai user, this section should have something for you. If it doesn't, reach out to us in our [chat](https://chat.makerdao.com/channel/community-development) or [forums](https://forum.makerdao.com/). This section has a handful of guides _coming soon™️._
 
-## 🚀 Our Tech Stack and Getting it Working
+## 🚀 Our Stack
 
 We've built this as a Theme-UI Gatsby starter for projects that will use Dai-UI theme kits.
 
