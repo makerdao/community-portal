@@ -44,7 +44,6 @@ const Button = ({
       sx={{
         whiteSpace: "nowrap",
         display: inline ? "inline-block" : "block",
-        mr: inline ? 3 : 0,
         cursor: disabled ? 'not-allowed' : '',
         '&:not(:last-child)': {
           mb: 3
