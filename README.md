@@ -4,23 +4,64 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+    <img alt="Gatsby" src="https://camo.githubusercontent.com/c82d5dbe0efc4f71771b4c656fd96b91d6103a8d/68747470733a2f2f7777772e6761747362796a732e636f6d2f4761747362792d4d6f6e6f6772616d2e737667" width="60" />
     ❤️
     <img alt="Dai" src="https://cryptologos.cc/logos/multi-collateral-dai-dai-logo.png" width="60"/>
   </a>
 </p>
 <h1 align="center">
-  Dai-UI Gatsby Starter
+  Community Development at Maker 
 </h1>
-<p align="center">
-<a href="https://github.com/gatsbyjs/gatsby-starter-default" target="_blank">Gatsby-Starter</a> + <a href="https://github.com/makerdao/dai-ui/" target="_blank">Dai-UI</a> = "A UI to Dai for!"
-</p>
 
-A Theme-UI Gatsby starter for projects that will use Dai-UI theme kits.
+The Community Development group's mandate is to directly foster the growth of the MakerDAO ecosystem by incentivizing our most motivated members. We do this through a series of initiatives that encourage people to participate in, and contribute to, the success of the Dai Stablecoin platform. Welcome to our portal, built with [Gatsby](https://github.com/gatsbyjs/gatsby-starter-default) and [DAI UI](https://github.com/makerdao/dai-ui/).
+
+## 🏗 Our Initiatives
+
+### [Community Meetup Grants](/content/en/contribute/meetups/index.mdx)
+
+Community members play an invaluable role in building a stronger MakerDAO ecosystem. The Community Development Group provides the resources needed to increase Dai adoption and help MakerDAO bring stability and financial inclusion to the world. To accomplish these goals, we created a 'Do It Yourself' Meetup guide and microgranting program dedicated to helping anyone create and organize a local community meetup.
+
+### [Community Translations](/content/en/contribute/translations/index.mdx)
+
+We bring MakerDAO educational content to people around the world in their native languages by incentivizing our community translators with Dai bounties.
+
+### [Development Grants Program](/content/en/funding/development-grants/index.mdx)
+
+The MakerDAO Community grants program provides funding for projects that increase Dai adoption, support emerging economies, open new markets, provide novel uses for the stablecoin, or otherwise further the principles of the MakerDAO Foundation.
+
+### [Hackathons](/content/en/funding/hackathon-funding.mdx)
+
+MakerDAO participates in a number of Hackathons every year. This section contains some information about how to request our participation in an upcoming event.
+
+### [Contributing](/content/en/contribute/index.mdx)
+
+If you have any suggestions about how you think these initiatives should work, could be improved, or if you are interested in helping out, please join our [#community-development](https://chat.makerdao.com/channel/community-development) channel and introduce yourself.
+
+## 📚 Our Resources
+
+### [Awesome-MakerDAO](https://github.com/makerdao/awesome-makerdao/)
+
+Awesome-MakerDAO is a community-curated list of MakerDAO-related resources and content to which anyone can contribute. It contains official documentation, beginner guides, in-depth analysis, links to 3rd party tools, partnership announcements, AMAs, podcasts, and much more.
+
+### [MakerDAO MCD FAQs](/faqs/index.md)
+
+This section provides answers to commonly asked questions about everything MakerDAO.
+
+We welcome you to help improve the MakerDAO FAQs by submitting Pull Requests or reaching out to us with feedback.
+
+### [Governance](/content/en/learn/governance/index.mdx)
+
+To ensure good governance and accountability, we've set up this section to contain helpful resources such as transcripts of the meetings, historical summaries, and more.
+
+### [Onboarding Guides](onboarding/README.md)
+
+These are community-built guides to help onboard different types of users into our ecosystem. Whether you're a potential MKR voter, a Vault owner, or Dai user, this section should have something for you. If it doesn't, reach out to us in our [chat](https://chat.makerdao.com/channel/community-development) or [forums](https://forum.makerdao.com/). This section has a handful of guides _coming soon™️._
+
+## 🚀 Our Stack
+
+We've built this as a Theme-UI Gatsby starter for projects that will use Dai-UI theme kits.
 
 _See the official [Dai-UI](https://github.com/makerdao/dai-ui) repo for more in-depth information._
-
-## 🚀 Quick start
 
 1.  **Clone**
 
@@ -75,6 +116,8 @@ A quick look at some important files and directories you'll see in this project.
     ├── package-lock.json
     ├── package.json
     └── README.md
+
+
 
 ### Important Directories
 
