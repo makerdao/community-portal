@@ -11,7 +11,7 @@
     "@mdx-js/mdx": "^1.6.18",
     "@mdx-js/react": "^1.6.18",
     "@theme-ui/prism": "^0.3.0",
-    "del": "^5.1.0",
+    "del": "^6.0.0",
     "dotenv": "^8.2.0",
     "framer-motion": "^2.6.13",
     "gatsby": "^2.24.37",
