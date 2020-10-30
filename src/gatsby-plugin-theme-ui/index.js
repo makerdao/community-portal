@@ -380,7 +380,7 @@ export default {
     smallText: {
       fontSize: '14px',
       lineHeight: '17px',
-      letterSpacing: '0.1px'
+      letterSpacing: '0.3px'
     }
   },
   shadows: {
