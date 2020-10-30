@@ -436,6 +436,7 @@ export default {
       fontSize: "18px",
       letterSpacing: "0.03px",
       lineHeight: "19px",
+      margin: "8px 24px 8px 0",
       bg: "primary",
       "&:hover": {
         bg: "primaryEmphasis",
