@@ -20,7 +20,7 @@ const Layout = ({ children, pageContext, uri, ...props }) => {
       <Flex
         as="main"
         sx={{
-          maxWidth: "1440px",
+          maxWidth: "1296px",
           flex: "1 0 auto",
           width: "100%",
           m: "0 auto",

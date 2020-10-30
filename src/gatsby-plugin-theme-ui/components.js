@@ -128,7 +128,7 @@ const MD_Overrides = {
   hr: (props) => <Divider sx={{ my: 4 }} />,
   p: (props) => (
     <Text
-      sx={{ mb: "16px", fontSize: "16px", letterSpacing: "0.4px", lineHeight: "150%", marginBottom: '24px', maxWidth: "1024px", "& .button": { display: "inline-block" } }}
+      sx={{ mb: "16px", fontSize: "16px", letterSpacing: "0.4px", lineHeight: "150%", marginBottom: '24px', "& .button": { display: "inline-block" } }}
       {...props}
     />
   ), //NOTE(Rejon): Don't add the as="p" prop to this text component, else you'll get warnings about our interweaving.
