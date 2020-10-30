@@ -148,7 +148,7 @@ const Header = () => {
           sx={{
             textDecoration: "none",
             color: "onBackgroundAlt",
-            letterSpacing: ".03px",
+            letterSpacing: "0.3px",
             width: "52px",
             height: "52px",
           }}
@@ -177,7 +177,7 @@ const Header = () => {
             sx={{
               textDecoration: "none",
               fontWeight: "normal",
-              letterSpacing: ".03px",
+              letterSpacing: "0.3px",
               color: "onBackgroundAlt",
             }}
           >
@@ -202,7 +202,7 @@ const Header = () => {
             width: ["100%", "100%", "auto"],
             ml: [3,3,"3rem"],
             alignItems: "center",
-            letterSpacing: ".03px",
+            letterSpacing: "0.3px",
             color: "onBackgroundAlt",
             flexDirection: "row",
           }}
@@ -216,7 +216,7 @@ const Header = () => {
               mr: ["unset", "unset", "1vw"],
 
               fontFamily: "body",
-              letterSpacing: ".03px",
+              letterSpacing: "0.3px",
               display: "inline-block",
               fontSize: "15px",
             }}

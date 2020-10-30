@@ -168,8 +168,9 @@ export default (props) => {
       }
       <Box as="article" sx={{
         width: ['100%', '100%', `calc(100% - ${contentWidthSubtract}px)`],
-        mt: hasTopSection ? [4, 4, "59px"] : 0,
-        pl: hasTopSection ? [4, 4, "64px"] : 0,
+        maxWidth: '1024px',
+        mt: hasTopSection ? [4, 4, "64px"] : 0,
+        pl: hasTopSection ? [4, 4, "96px"] : 0,
         pr: hasTopSection ? [4, 4, 0] : 0,
         pb: 4,
         
