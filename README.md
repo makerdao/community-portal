@@ -179,6 +179,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/juan-fintech"><img src="https://avatars.githubusercontent.com/u/63864964?v=4?s=100" width="100px;" alt=""/><br /><sub><b>juan</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=juan-fintech" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/annaalexakr"><img src="https://avatars.githubusercontent.com/u/68355495?v=4?s=100" width="100px;" alt=""/><br /><sub><b>annaalexakr</b></sub></a><br /><a href="#content-annaalexakr" title="Content">🖋</a> <a href="#ideas-annaalexakr" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/makerdao/community-portal/pulls?q=is%3Apr+reviewed-by%3Aannaalexakr" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
