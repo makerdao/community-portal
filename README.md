@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -168,21 +168,23 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://rejontaylor.com"><img src="https://avatars1.githubusercontent.com/u/9157341?v=4" width="100px;" alt=""/><br /><sub><b>Réjon Taylor-Foster</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=MaximumCrash" title="Code">💻</a> <a href="#design-MaximumCrash" title="Design">🎨</a> <a href="#example-MaximumCrash" title="Examples">💡</a></td>
-    <td align="center"><a href="https://www.isaacpearl.com"><img src="https://avatars1.githubusercontent.com/u/21342523?v=4" width="100px;" alt=""/><br /><sub><b>isaacpearl</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=isaacpearl" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/befitsandpiper"><img src="https://avatars3.githubusercontent.com/u/7257527?v=4" width="100px;" alt=""/><br /><sub><b>Be Fit Sandpiper</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=befitsandpiper" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/twblack88"><img src="https://avatars3.githubusercontent.com/u/8991325?v=4" width="100px;" alt=""/><br /><sub><b>Tim Black</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=twblack88" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/amy-jung"><img src="https://avatars1.githubusercontent.com/u/26228406?v=4" width="100px;" alt=""/><br /><sub><b>Amy Jung</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=amy-jung" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/shea-fitz"><img src="https://avatars3.githubusercontent.com/u/59940380?v=4" width="100px;" alt=""/><br /><sub><b>shea-fitz</b></sub></a><br /><a href="#design-shea-fitz" title="Design">🎨</a></td>
-    <td align="center"><a href="https://github.com/Davidutro"><img src="https://avatars2.githubusercontent.com/u/40721951?v=4" width="100px;" alt=""/><br /><sub><b>Davidutro</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=Davidutro" title="Documentation">📖</a> <a href="#content-Davidutro" title="Content">🖋</a></td>
+    <td align="center"><a href="https://rejontaylor.com"><img src="https://avatars1.githubusercontent.com/u/9157341?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Réjon Taylor-Foster</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=MaximumCrash" title="Code">💻</a> <a href="#design-MaximumCrash" title="Design">🎨</a> <a href="#example-MaximumCrash" title="Examples">💡</a></td>
+    <td align="center"><a href="https://www.isaacpearl.com"><img src="https://avatars1.githubusercontent.com/u/21342523?v=4?s=100" width="100px;" alt=""/><br /><sub><b>isaacpearl</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=isaacpearl" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/befitsandpiper"><img src="https://avatars3.githubusercontent.com/u/7257527?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Be Fit Sandpiper</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=befitsandpiper" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/twblack88"><img src="https://avatars3.githubusercontent.com/u/8991325?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tim Black</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=twblack88" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/amy-jung"><img src="https://avatars1.githubusercontent.com/u/26228406?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Amy Jung</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=amy-jung" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/shea-fitz"><img src="https://avatars3.githubusercontent.com/u/59940380?v=4?s=100" width="100px;" alt=""/><br /><sub><b>shea-fitz</b></sub></a><br /><a href="#design-shea-fitz" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/Davidutro"><img src="https://avatars2.githubusercontent.com/u/40721951?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Davidutro</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=Davidutro" title="Documentation">📖</a> <a href="#content-Davidutro" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/andersonmmi"><img src="https://avatars1.githubusercontent.com/u/16314437?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron Anderson</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Documentation">📖</a> <a href="https://github.com/makerdao/community-portal/issues?q=author%3Aandersonmmi" title="Bug reports">🐛</a> <a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Code">💻</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/andersonmmi"><img src="https://avatars1.githubusercontent.com/u/16314437?v=4" width="100px;" alt=""/><br /><sub><b>Aaron Anderson</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Documentation">📖</a> <a href="https://github.com/makerdao/community-portal/issues?q=author%3Aandersonmmi" title="Bug reports">🐛</a> <a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/LongForWisdom"><img src="https://avatars.githubusercontent.com/u/53664591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LongForWisdom</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=LongForWisdom" title="Documentation">📖</a> <a href="#maintenance-LongForWisdom" title="Maintenance">🚧</a> <a href="#projectManagement-LongForWisdom" title="Project Management">📆</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
