@@ -139,6 +139,18 @@
         "video",
         "review"
       ]
+    },
+    {
+      "login": "TomDeMichele",
+      "name": "TomDeMichele",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54551507?v=4",
+      "profile": "https://github.com/TomDeMichele",
+      "contributions": [
+        "blog",
+        "content",
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 8,
