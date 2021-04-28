@@ -151,6 +151,20 @@
         "bug",
         "ideas"
       ]
+    },
+    {
+      "login": "goldfarbas",
+      "name": "Seth Goldfarb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41171114?v=4",
+      "profile": "https://www.sethgoldfarbthewriter.com/",
+      "contributions": [
+        "blog",
+        "content",
+        "bug",
+        "ideas",
+        "review",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 8,
