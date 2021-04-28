@@ -240,6 +240,19 @@
         "video",
         "projectManagement"
       ]
+    },
+    {
+      "login": "0xElihu",
+      "name": "Elihu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78811955?v=4",
+      "profile": "https://github.com/0xElihu",
+      "contributions": [
+        "content",
+        "doc",
+        "maintenance",
+        "projectManagement",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 8,
