@@ -165,6 +165,17 @@
         "review",
         "doc"
       ]
+    },
+    {
+      "login": "jerrygoldfarb",
+      "name": "Jerry Goldfarb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60902685?v=4",
+      "profile": "https://github.com/jerrygoldfarb",
+      "contributions": [
+        "blog",
+        "content",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 8,
