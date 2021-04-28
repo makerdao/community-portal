@@ -199,6 +199,22 @@
         "doc",
         "maintenance"
       ]
+    },
+    {
+      "login": "andytudhope",
+      "name": "Andy Tudhope",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13001517?v=4",
+      "profile": "https://andytudhope.africa/",
+      "contributions": [
+        "bug",
+        "blog",
+        "code",
+        "content",
+        "doc",
+        "maintenance",
+        "mentoring",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 8,
