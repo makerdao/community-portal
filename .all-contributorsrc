@@ -227,6 +227,19 @@
         "translation",
         "projectManagement"
       ]
+    },
+    {
+      "login": "blimpa",
+      "name": "blimpa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72349134?v=4",
+      "profile": "https://github.com/blimpa",
+      "contributions": [
+        "content",
+        "doc",
+        "maintenance",
+        "video",
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 8,
