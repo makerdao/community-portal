@@ -178,7 +178,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/andersonmmi"><img src="https://avatars1.githubusercontent.com/u/16314437?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron Anderson</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Documentation">📖</a> <a href="https://github.com/makerdao/community-portal/issues?q=author%3Aandersonmmi" title="Bug reports">🐛</a> <a href="https://github.com/makerdao/community-portal/commits?author=andersonmmi" title="Code">💻</a></td>
   </tr>
   <tr>
+
     <td align="center"><a href="https://github.com/LongForWisdom"><img src="https://avatars.githubusercontent.com/u/53664591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>LongForWisdom</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=LongForWisdom" title="Documentation">📖</a> <a href="#maintenance-LongForWisdom" title="Maintenance">🚧</a> <a href="#projectManagement-LongForWisdom" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://github.com/juan-fintech"><img src="https://avatars.githubusercontent.com/u/63864964?v=4?s=100" width="100px;" alt=""/><br /><sub><b>juan</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=juan-fintech" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/annaalexakr"><img src="https://avatars.githubusercontent.com/u/68355495?v=4?s=100" width="100px;" alt=""/><br /><sub><b>annaalexakr</b></sub></a><br /><a href="#content-annaalexakr" title="Content">🖋</a> <a href="#ideas-annaalexakr" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/makerdao/community-portal/pulls?q=is%3Apr+reviewed-by%3Aannaalexakr" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
