@@ -215,6 +215,18 @@
         "mentoring",
         "review"
       ]
+    },
+    {
+      "login": "reuptaken",
+      "name": "reuptaken",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26765602?v=4",
+      "profile": "https://github.com/reuptaken",
+      "contributions": [
+        "content",
+        "doc",
+        "translation",
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 8,
