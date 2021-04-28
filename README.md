@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -189,6 +189,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/aburban90"><img src="https://avatars.githubusercontent.com/u/47543589?v=4?s=100" width="100px;" alt=""/><br /><sub><b>aburban90</b></sub></a><br /><a href="#content-aburban90" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/issues?q=author%3Aaburban90" title="Bug reports">🐛</a> <a href="#ideas-aburban90" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-aburban90" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/HaydenSander"><img src="https://avatars.githubusercontent.com/u/39495762?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mal</b></sub></a><br /><a href="#content-HaydenSander" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/commits?author=HaydenSander" title="Documentation">📖</a> <a href="#maintenance-HaydenSander" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
