@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -191,6 +191,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/aburban90"><img src="https://avatars.githubusercontent.com/u/47543589?v=4?s=100" width="100px;" alt=""/><br /><sub><b>aburban90</b></sub></a><br /><a href="#content-aburban90" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/issues?q=author%3Aaburban90" title="Bug reports">🐛</a> <a href="#ideas-aburban90" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-aburban90" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://github.com/HaydenSander"><img src="https://avatars.githubusercontent.com/u/39495762?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mal</b></sub></a><br /><a href="#content-HaydenSander" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/commits?author=HaydenSander" title="Documentation">📖</a> <a href="#maintenance-HaydenSander" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://andytudhope.africa/"><img src="https://avatars.githubusercontent.com/u/13001517?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andy Tudhope</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/issues?q=author%3Aandytudhope" title="Bug reports">🐛</a> <a href="#blog-andytudhope" title="Blogposts">📝</a> <a href="https://github.com/makerdao/community-portal/commits?author=andytudhope" title="Code">💻</a> <a href="#content-andytudhope" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/commits?author=andytudhope" title="Documentation">📖</a> <a href="#maintenance-andytudhope" title="Maintenance">🚧</a> <a href="#mentoring-andytudhope" title="Mentoring">🧑‍🏫</a> <a href="https://github.com/makerdao/community-portal/pulls?q=is%3Apr+reviewed-by%3Aandytudhope" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/reuptaken"><img src="https://avatars.githubusercontent.com/u/26765602?v=4?s=100" width="100px;" alt=""/><br /><sub><b>reuptaken</b></sub></a><br /><a href="#content-reuptaken" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/commits?author=reuptaken" title="Documentation">📖</a> <a href="#translation-reuptaken" title="Translation">🌍</a> <a href="#projectManagement-reuptaken" title="Project Management">📆</a></td>
   </tr>
 </table>
 
