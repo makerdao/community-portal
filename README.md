@@ -1,6 +1,6 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -182,6 +182,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/juan-fintech"><img src="https://avatars.githubusercontent.com/u/63864964?v=4?s=100" width="100px;" alt=""/><br /><sub><b>juan</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/commits?author=juan-fintech" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/annaalexakr"><img src="https://avatars.githubusercontent.com/u/68355495?v=4?s=100" width="100px;" alt=""/><br /><sub><b>annaalexakr</b></sub></a><br /><a href="#content-annaalexakr" title="Content">🖋</a> <a href="#ideas-annaalexakr" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/makerdao/community-portal/pulls?q=is%3Apr+reviewed-by%3Aannaalexakr" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/prose11"><img src="https://avatars.githubusercontent.com/u/75535017?v=4?s=100" width="100px;" alt=""/><br /><sub><b>prose11</b></sub></a><br /><a href="#content-prose11" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/commits?author=prose11" title="Documentation">📖</a> <a href="#maintenance-prose11" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/ghettodev"><img src="https://avatars.githubusercontent.com/u/1900655?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Richard Brown</b></sub></a><br /><a href="https://github.com/makerdao/community-portal/issues?q=author%3Aghettodev" title="Bug reports">🐛</a> <a href="#content-ghettodev" title="Content">🖋</a> <a href="https://github.com/makerdao/community-portal/commits?author=ghettodev" title="Documentation">📖</a> <a href="#financial-ghettodev" title="Financial">💵</a> <a href="#maintenance-ghettodev" title="Maintenance">🚧</a> <a href="#mentoring-ghettodev" title="Mentoring">🧑‍🏫</a> <a href="#video-ghettodev" title="Videos">📹</a> <a href="https://github.com/makerdao/community-portal/pulls?q=is%3Apr+reviewed-by%3Aghettodev" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
