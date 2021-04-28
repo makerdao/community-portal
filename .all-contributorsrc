@@ -83,6 +83,14 @@
       ]
     },
     {
+      "login": "juan-fintech",
+      "name": "juan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63864964?v=4",
+      "profile": "https://github.com/juan-fintech",
+      "contributions": [
+        "doc"
+      ]
+    }
       "login": "annaalexakr",
       "name": "annaalexakr",
       "avatar_url": "https://avatars.githubusercontent.com/u/68355495?v=4",
@@ -91,6 +99,7 @@
         "content",
         "ideas",
         "review"
+
       ]
     }
   ],
