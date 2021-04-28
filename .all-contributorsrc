@@ -81,6 +81,17 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "LongForWisdom",
+      "name": "LongForWisdom",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53664591?v=4",
+      "profile": "https://github.com/LongForWisdom",
+      "contributions": [
+        "doc",
+        "maintenance",
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 8,
