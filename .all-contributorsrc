@@ -91,18 +91,18 @@
         "doc",
         "maintenance",
         "projectManagement"
-       ]
-     },
-     {
+      ]
+    },
+    {
       "login": "juan-fintech",
       "name": "juan",
       "avatar_url": "https://avatars.githubusercontent.com/u/63864964?v=4",
       "profile": "https://github.com/juan-fintech",
       "contributions": [
         "doc"
-       ]
-     },
-     {
+      ]
+    },
+    {
       "login": "annaalexakr",
       "name": "annaalexakr",
       "avatar_url": "https://avatars.githubusercontent.com/u/68355495?v=4",
@@ -112,7 +112,18 @@
         "ideas",
         "review"
       ]
-     }
+    },
+    {
+      "login": "prose11",
+      "name": "prose11",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75535017?v=4",
+      "profile": "https://github.com/prose11",
+      "contributions": [
+        "content",
+        "doc",
+        "maintenance"
+      ]
+    }
   ],
   "contributorsPerLine": 8,
   "projectName": "community-portal",
